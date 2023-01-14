@@ -525,7 +525,7 @@ background: rgba(118, 214, 255, 85)
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -539,7 +539,7 @@ background: rgba(118, 214, 255, 85)
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QFrame" name="frame">
+         <widget class="QFrame" name="EQ1_frame">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1497,7 +1497,7 @@ background: rgba(118, 214, 255, 85)
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QFrame" name="frame">
+         <widget class="QFrame" name="EQ2_frame1">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -2451,7 +2451,7 @@ background: rgba(118, 214, 255, 85)
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="frame">
+         <widget class="QFrame" name="EQ2_frame2">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -3399,7 +3399,7 @@ background: rgba(118, 214, 255, 85)
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="frame">
+         <widget class="QFrame" name="EQ2_frame3">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -4383,13 +4383,17 @@ background: rgba(118, 214, 255, 85)
      <string>Help</string>
     </property>
     <addaction name="actionAbout"/>
+    <addaction name="separator"/>
     <addaction name="actionVideo_Tutorial"/>
+    <addaction name="separator"/>
     <addaction name="actionHow_to_Support_the_App"/>
    </widget>
    <widget class="QMenu" name="menuWindow">
     <property name="title">
      <string>Window</string>
     </property>
+    <addaction name="actionMinimize"/>
+    <addaction name="actionZoom"/>
    </widget>
    <widget class="QMenu" name="menuControls">
     <property name="title">
@@ -4451,9 +4455,6 @@ background: rgba(118, 214, 255, 85)
    </property>
    <property name="floating">
     <bool>false</bool>
-   </property>
-   <property name="features">
-    <set>QDockWidget::AllDockWidgetFeatures</set>
    </property>
    <property name="allowedAreas">
     <set>Qt::BottomDockWidgetArea|Qt::TopDockWidgetArea</set>
@@ -5063,9 +5064,6 @@ background: rgba(118, 214, 255, 85)
    <property name="acceptDrops">
     <bool>false</bool>
    </property>
-   <property name="features">
-    <set>QDockWidget::AllDockWidgetFeatures</set>
-   </property>
    <property name="allowedAreas">
     <set>Qt::BottomDockWidgetArea|Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
@@ -5182,9 +5180,6 @@ background: rgba(118, 214, 255, 85)
    </property>
    <property name="floating">
     <bool>false</bool>
-   </property>
-   <property name="features">
-    <set>QDockWidget::AllDockWidgetFeatures</set>
    </property>
    <property name="allowedAreas">
     <set>Qt::BottomDockWidgetArea|Qt::RightDockWidgetArea</set>
@@ -5363,12 +5358,12 @@ background: rgba(118, 214, 255, 85)
   </action>
   <action name="actionVideo_Tutorial">
    <property name="text">
-    <string>Video Tutorial</string>
+    <string>Tutorial Video</string>
    </property>
   </action>
   <action name="actionHow_to_Support_the_App">
    <property name="text">
-    <string>How to Support the App</string>
+    <string>Support the App</string>
    </property>
   </action>
   <action name="actionEnter_Full_Screen">
@@ -5380,15 +5375,24 @@ background: rgba(118, 214, 255, 85)
    <property name="text">
     <string>Preview Mode</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
   </action>
   <action name="actionLearn_Mode">
    <property name="text">
     <string>Learn Mode</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
   </action>
   <action name="actionTest_Mode">
    <property name="text">
     <string>Test Mode</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
    </property>
   </action>
   <action name="actionPlay">
@@ -5403,25 +5407,40 @@ background: rgba(118, 214, 255, 85)
    <property name="text">
     <string>Stop</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+., Return</string>
+   </property>
   </action>
   <action name="actionPrevious_Track">
    <property name="text">
     <string>Previous Track</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Left</string>
    </property>
   </action>
   <action name="actionNext_Track">
    <property name="text">
     <string>Next Track</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Right</string>
+   </property>
   </action>
   <action name="actionIncrease_Volume">
    <property name="text">
     <string>Increase Volume</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Up, +</string>
+   </property>
   </action>
   <action name="actionDecrease_Volume">
    <property name="text">
     <string>Decrease Volume</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Down, -</string>
    </property>
   </action>
   <action name="actionAscending">
@@ -5444,6 +5463,9 @@ background: rgba(118, 214, 255, 85)
    </property>
   </action>
   <action name="actionRandom_No_Repeat">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Random No Repeat</string>
    </property>
@@ -5452,13 +5474,38 @@ background: rgba(118, 214, 255, 85)
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Each Band Boosted, then Cut</string>
    </property>
   </action>
   <action name="actionAll_Bands_Boosted_then_All_Bands_Cut">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>All Bands Boosted, then All Bands Cut</string>
+   </property>
+  </action>
+  <action name="actionMinimize">
+   <property name="text">
+    <string>Minimize</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+  </action>
+  <action name="actionZoom">
+   <property name="text">
+    <string>Zoom</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

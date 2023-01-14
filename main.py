@@ -1,16 +1,12 @@
-# This is a sample Python script.
+from PySide6.QtGui import QIcon
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+from GUI.WinContr.mw import MainWindow
+from PySide6.QtWidgets import QApplication
+import sys
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    app = QApplication(sys.argv)
+    mw = MainWindow()
+    app.setWindowIcon(QIcon(":/App/Icons/Logo/EM_Logo.png"))
+    app.exec()
