@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="Player">
+    <file>Icons/Player/Actions-media-playback-pause-icon.png</file>
+    <file>Icons/Player/Actions-media-playback-start-icon.png</file>
+    <file>Icons/Player/Actions-media-playback-stop-icon.png</file>
+    <file>Icons/Player/Actions-media-skip-backward-icon.png</file>
+    <file>Icons/Player/Actions-media-skip-forward-icon.png</file>
+  </qresource>
+  <qresource prefix="AddRemove">
+    <file>Icons/AddRemove/clear.png</file>
+    <file>Icons/AddRemove/minus.png</file>
+    <file>Icons/AddRemove/plus.png</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,19 @@
+import time
+
+from pedalboard.io import AudioFile
+from AudioEngine.load_audio import AudioChunk
+from AudioEngine.process import eq
+
+fn = 'Agutin_mono'
+a = time.time()
+with AudioFile(f'Audio/{fn}.wav') as f:
+    chunk = AudioChunk(f, 0, 15)
+
+    with AudioFile(f'Audio/{fn}_chunk1.wav', 'w', f.samplerate, f.num_channels) as o:
+        o.write(chunk.croped)
+    with AudioFile(f'Audio/{fn}_chunk1_norm.wav', 'w', f.samplerate, f.num_channels) as o:
+        o.write(chunk.normalize(-16))
+    eqed = eq(chunk.croped, chunk.samplerate, freq=1000, freq2=16000, gain_depth=15)
+    with AudioFile(f'Audio/{fn}_chunk1_norm_eq.wav', 'w', f.samplerate, f.num_channels) as o:
+        o.write(eqed)
+print(time.time()-a)
