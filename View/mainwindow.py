@@ -2762,6 +2762,7 @@ class Ui_MainWindow(object):
         self.menuFile.addAction(self.actionClose)
         self.menuView.addAction(self.actionMinimal)
         self.menuView.addAction(self.actionMaximal)
+        self.menuView.addSeparator()
         self.menuHelp.addAction(self.actionAbout)
         self.menuHelp.addAction(self.actionVideo_Tutorial)
         self.menuHelp.addSeparator()

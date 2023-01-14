@@ -4379,6 +4379,7 @@ background: rgba(118, 214, 255, 85)
     </property>
     <addaction name="actionMinimal"/>
     <addaction name="actionMaximal"/>
+    <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
