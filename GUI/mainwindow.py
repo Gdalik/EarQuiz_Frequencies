@@ -2423,8 +2423,8 @@ class Ui_MainWindow(object):
         self.VolumeSlider.setObjectName(u"VolumeSlider")
         sizePolicy2.setHeightForWidth(self.VolumeSlider.sizePolicy().hasHeightForWidth())
         self.VolumeSlider.setSizePolicy(sizePolicy2)
-        self.VolumeSlider.setMinimumSize(QSize(60, 22))
-        self.VolumeSlider.setMaximumSize(QSize(60, 22))
+        self.VolumeSlider.setMinimumSize(QSize(60, 18))
+        self.VolumeSlider.setMaximumSize(QSize(60, 18))
         self.VolumeSlider.setAcceptDrops(True)
         self.VolumeSlider.setMinimum(0)
         self.VolumeSlider.setMaximum(100)
@@ -2440,7 +2440,11 @@ class Ui_MainWindow(object):
         self.VolumePerc = QLabel(self.dockWidgetContents)
         self.VolumePerc.setObjectName(u"VolumePerc")
 
-        self.VolLay.addWidget(self.VolumePerc, 0, Qt.AlignHCenter)
+        self.VolLay.addWidget(self.VolumePerc, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.VolLay.addItem(self.verticalSpacer)
 
 
         self.TransportLay.addLayout(self.VolLay)
@@ -2753,7 +2757,6 @@ class Ui_MainWindow(object):
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionClose)
         self.menuHelp.addAction(self.actionAbout)
-        self.menuHelp.addSeparator()
         self.menuHelp.addAction(self.actionVideo_Tutorial)
         self.menuHelp.addSeparator()
         self.menuHelp.addAction(self.actionHow_to_Support_the_App)

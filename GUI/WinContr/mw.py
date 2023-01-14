@@ -1,4 +1,3 @@
-from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QMainWindow
 from GUI.mainwindow import Ui_MainWindow
 

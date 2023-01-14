@@ -6,11 +6,12 @@ import numpy as np
 def eq(cur_sample, samplerate: int, freq: int or float, freq2=None, boost_cut='+', boost_cut2='+', gain_depth=12, Q=1.41, proc_t_perc=40):
     def sec2fr(sec: int or float):
         return int(samplerate * sec)
-    def equalize(buffer_size: int=8192):
-        equalized = _eq.process(audio_parts[1], samplerate, buffer_size=buffer_size, reset=True)
+
+    def equalize(buffer_size: int = 8192):
+        _equalized = _eq.process(audio_parts[1], samplerate, buffer_size=buffer_size, reset=True)
         if _eq2:
-            equalized = _eq2.process(equalized, samplerate, buffer_size=buffer_size, reset=True)
-        return equalized
+            _equalized = _eq2.process(_equalized, samplerate, buffer_size=buffer_size, reset=True)
+        return _equalized
     cur_sample_length = cur_sample[0].size / samplerate
     proc_len, unproc_len = proc_unproc_len(cur_sample_length, proc_t_perc)
     gain = gain_depth*-1 if boost_cut == '-' else gain_depth

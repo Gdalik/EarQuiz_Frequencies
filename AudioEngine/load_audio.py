@@ -50,5 +50,5 @@ class AudioChunk:
         self.croped = gained
         return self.croped
 
-    def split(self, slices_num:int):
+    def split(self, slices_num: int):
         return np.hsplit(self.croped, slices_num)

@@ -4383,7 +4383,6 @@ background: rgba(118, 214, 255, 85)
      <string>Help</string>
     </property>
     <addaction name="actionAbout"/>
-    <addaction name="separator"/>
     <addaction name="actionVideo_Tutorial"/>
     <addaction name="separator"/>
     <addaction name="actionHow_to_Support_the_App"/>
@@ -4651,13 +4650,13 @@ background: rgba(118, 214, 255, 85)
            <property name="minimumSize">
             <size>
              <width>60</width>
-             <height>22</height>
+             <height>18</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
              <width>60</width>
-             <height>22</height>
+             <height>18</height>
             </size>
            </property>
            <property name="acceptDrops">
@@ -4689,12 +4688,25 @@ background: rgba(118, 214, 255, 85)
            </property>
           </widget>
          </item>
-         <item alignment="Qt::AlignHCenter">
+         <item alignment="Qt::AlignHCenter|Qt::AlignTop">
           <widget class="QLabel" name="VolumePerc">
            <property name="text">
             <string>75%</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
