@@ -470,7 +470,7 @@ background: rgba(118, 214, 255, 85)
         </layout>
        </item>
        <item>
-        <widget class="QListWidget" name="PlayListWidget">
+        <widget class="QListView" name="PlayListView">
          <property name="minimumSize">
           <size>
            <width>230</width>
