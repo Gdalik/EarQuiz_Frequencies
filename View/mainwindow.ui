@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1128</width>
+    <width>1151</width>
     <height>856</height>
    </rect>
   </property>
@@ -499,7 +499,7 @@ background: rgba(118, 214, 255, 85)
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="QTabWidget" name="EQtabWidget">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -2235,13 +2235,13 @@ background: rgba(118, 214, 255, 85)
               <widget class="QLabel" name="EQ2_3150_Lab">
                <property name="minimumSize">
                 <size>
-                 <width>32</width>
+                 <width>34</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>30</width>
+                 <width>34</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -2329,7 +2329,7 @@ background: rgba(118, 214, 255, 85)
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>30</width>
+                 <width>32</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -2411,13 +2411,13 @@ background: rgba(118, 214, 255, 85)
               <widget class="QLabel" name="EQ2_12500_Lab">
                <property name="minimumSize">
                 <size>
-                 <width>32</width>
+                 <width>34</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>30</width>
+                 <width>34</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -3007,13 +3007,13 @@ background: rgba(118, 214, 255, 85)
               <widget class="QLabel" name="EQ2_1000_Lab">
                <property name="minimumSize">
                 <size>
-                 <width>30</width>
+                 <width>34</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>30</width>
+                 <width>34</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -3955,13 +3955,13 @@ background: rgba(118, 214, 255, 85)
               <widget class="QLabel" name="EQ2_1250_Lab">
                <property name="minimumSize">
                 <size>
-                 <width>32</width>
+                 <width>34</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>30</width>
+                 <width>34</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -4360,8 +4360,8 @@ background: rgba(118, 214, 255, 85)
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1128</width>
-     <height>22</height>
+     <width>1151</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -4487,7 +4487,7 @@ background: rgba(118, 214, 255, 85)
          </property>
          <property name="maximumSize">
           <size>
-           <width>110</width>
+           <width>130</width>
            <height>40</height>
           </size>
          </property>
@@ -4729,13 +4729,13 @@ background: rgba(118, 214, 255, 85)
              <property name="minimumSize">
               <size>
                <width>50</width>
-               <height>10</height>
+               <height>12</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>50</width>
-               <height>10</height>
+               <height>12</height>
               </size>
              </property>
              <property name="toolTip">
@@ -4777,6 +4777,11 @@ color: green;
                <height>24</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <pointsize>8</pointsize>
+              </font>
+             </property>
              <property name="maximumTime">
               <time>
                <hour>2</hour>
@@ -4801,13 +4806,13 @@ color: green;
              <property name="minimumSize">
               <size>
                <width>50</width>
-               <height>10</height>
+               <height>12</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>50</width>
-               <height>10</height>
+               <height>12</height>
               </size>
              </property>
              <property name="toolTip">
@@ -4999,7 +5004,7 @@ background: rgba(118, 214, 255, 85)
          </property>
          <property name="maximumSize">
           <size>
-           <width>110</width>
+           <width>130</width>
            <height>40</height>
           </size>
          </property>

@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QIcon
-from Control.WinContr.mw import MainWindowContr
+from Control.WinContr.mw_contr import MainWindowContr
 import sys
 
 

@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1128, 856)
+        MainWindow.resize(1151, 856)
         sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -331,19 +331,19 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.SourceBox, 0, 0, 3, 1)
 
-        self.tabWidget = QTabWidget(self.centralwidget)
-        self.tabWidget.setObjectName(u"tabWidget")
-        self.tabWidget.setEnabled(True)
+        self.EQtabWidget = QTabWidget(self.centralwidget)
+        self.EQtabWidget.setObjectName(u"EQtabWidget")
+        self.EQtabWidget.setEnabled(True)
         sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.MinimumExpanding)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
-        self.tabWidget.setSizePolicy(sizePolicy1)
-        self.tabWidget.setMinimumSize(QSize(520, 0))
-        self.tabWidget.setMaximumSize(QSize(520, 500))
-        self.tabWidget.setAutoFillBackground(False)
-        self.tabWidget.setTabsClosable(False)
-        self.tabWidget.setTabBarAutoHide(False)
+        sizePolicy1.setHeightForWidth(self.EQtabWidget.sizePolicy().hasHeightForWidth())
+        self.EQtabWidget.setSizePolicy(sizePolicy1)
+        self.EQtabWidget.setMinimumSize(QSize(520, 0))
+        self.EQtabWidget.setMaximumSize(QSize(520, 500))
+        self.EQtabWidget.setAutoFillBackground(False)
+        self.EQtabWidget.setTabsClosable(False)
+        self.EQtabWidget.setTabBarAutoHide(False)
         self.EQ1 = QWidget()
         self.EQ1.setObjectName(u"EQ1")
         self.verticalLayout_2 = QVBoxLayout(self.EQ1)
@@ -836,7 +836,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.EQ1_frame)
 
-        self.tabWidget.addTab(self.EQ1, "")
+        self.EQtabWidget.addTab(self.EQ1, "")
         self.EQ2 = QWidget()
         self.EQ2.setObjectName(u"EQ2")
         self.verticalLayout = QVBoxLayout(self.EQ2)
@@ -1217,8 +1217,8 @@ class Ui_MainWindow(object):
 
         self.EQ2_3150_Lab = QLabel(self.EQ2_frame1)
         self.EQ2_3150_Lab.setObjectName(u"EQ2_3150_Lab")
-        self.EQ2_3150_Lab.setMinimumSize(QSize(32, 0))
-        self.EQ2_3150_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_3150_Lab.setMinimumSize(QSize(34, 0))
+        self.EQ2_3150_Lab.setMaximumSize(QSize(34, 16777215))
         self.EQ2_3150_Lab.setAlignment(Qt.AlignCenter)
 
         self.Band8_2.addWidget(self.EQ2_3150_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
@@ -1264,7 +1264,7 @@ class Ui_MainWindow(object):
         self.EQ2_6300_Lab = QLabel(self.EQ2_frame1)
         self.EQ2_6300_Lab.setObjectName(u"EQ2_6300_Lab")
         self.EQ2_6300_Lab.setMinimumSize(QSize(32, 0))
-        self.EQ2_6300_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_6300_Lab.setMaximumSize(QSize(32, 16777215))
         self.EQ2_6300_Lab.setAlignment(Qt.AlignCenter)
 
         self.Band9_2.addWidget(self.EQ2_6300_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
@@ -1309,8 +1309,8 @@ class Ui_MainWindow(object):
 
         self.EQ2_12500_Lab = QLabel(self.EQ2_frame1)
         self.EQ2_12500_Lab.setObjectName(u"EQ2_12500_Lab")
-        self.EQ2_12500_Lab.setMinimumSize(QSize(32, 0))
-        self.EQ2_12500_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_12500_Lab.setMinimumSize(QSize(34, 0))
+        self.EQ2_12500_Lab.setMaximumSize(QSize(34, 16777215))
         self.EQ2_12500_Lab.setAlignment(Qt.AlignCenter)
 
         self.Band10_2.addWidget(self.EQ2_12500_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
@@ -1607,8 +1607,8 @@ class Ui_MainWindow(object):
 
         self.EQ2_1000_Lab = QLabel(self.EQ2_frame2)
         self.EQ2_1000_Lab.setObjectName(u"EQ2_1000_Lab")
-        self.EQ2_1000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_1000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_1000_Lab.setMinimumSize(QSize(34, 0))
+        self.EQ2_1000_Lab.setMaximumSize(QSize(34, 16777215))
         self.EQ2_1000_Lab.setAlignment(Qt.AlignCenter)
 
         self.Band6_3.addWidget(self.EQ2_1000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
@@ -2089,8 +2089,8 @@ class Ui_MainWindow(object):
 
         self.EQ2_1250_Lab = QLabel(self.EQ2_frame3)
         self.EQ2_1250_Lab.setObjectName(u"EQ2_1250_Lab")
-        self.EQ2_1250_Lab.setMinimumSize(QSize(32, 0))
-        self.EQ2_1250_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_1250_Lab.setMinimumSize(QSize(34, 0))
+        self.EQ2_1250_Lab.setMaximumSize(QSize(34, 16777215))
         self.EQ2_1250_Lab.setAlignment(Qt.AlignCenter)
 
         self.Band6_4.addWidget(self.EQ2_1250_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
@@ -2288,14 +2288,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.EQ2_frame3)
 
-        self.tabWidget.addTab(self.EQ2, "")
+        self.EQtabWidget.addTab(self.EQ2, "")
 
-        self.gridLayout_2.addWidget(self.tabWidget, 2, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.EQtabWidget, 2, 1, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1128, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1151, 21))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuView = QMenu(self.menubar)
@@ -2333,7 +2333,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.Position_Lab.sizePolicy().hasHeightForWidth())
         self.Position_Lab.setSizePolicy(sizePolicy3)
         self.Position_Lab.setMinimumSize(QSize(90, 30))
-        self.Position_Lab.setMaximumSize(QSize(110, 40))
+        self.Position_Lab.setMaximumSize(QSize(130, 40))
         font4 = QFont()
         font4.setPointSize(16)
         font4.setBold(False)
@@ -2465,8 +2465,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.StartPointBut = QPushButton(self.dockWidgetContents)
         self.StartPointBut.setObjectName(u"StartPointBut")
-        self.StartPointBut.setMinimumSize(QSize(50, 10))
-        self.StartPointBut.setMaximumSize(QSize(50, 10))
+        self.StartPointBut.setMinimumSize(QSize(50, 12))
+        self.StartPointBut.setMaximumSize(QSize(50, 12))
         self.StartPointBut.setStyleSheet(u"QPushButton{\n"
 "border: none;\n"
 "color: blue\n"
@@ -2486,6 +2486,9 @@ class Ui_MainWindow(object):
         self.StartTimeEdit.setObjectName(u"StartTimeEdit")
         self.StartTimeEdit.setMinimumSize(QSize(105, 24))
         self.StartTimeEdit.setMaximumSize(QSize(105, 24))
+        font5 = QFont()
+        font5.setPointSize(8)
+        self.StartTimeEdit.setFont(font5)
         self.StartTimeEdit.setMaximumTime(QTime(2, 59, 59))
         self.StartTimeEdit.setCurrentSection(QDateTimeEdit.HourSection)
 
@@ -2498,8 +2501,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.EndPointBut = QPushButton(self.dockWidgetContents)
         self.EndPointBut.setObjectName(u"EndPointBut")
-        self.EndPointBut.setMinimumSize(QSize(50, 10))
-        self.EndPointBut.setMaximumSize(QSize(50, 10))
+        self.EndPointBut.setMinimumSize(QSize(50, 12))
+        self.EndPointBut.setMaximumSize(QSize(50, 12))
         self.EndPointBut.setStyleSheet(u"QPushButton{\n"
 "border: none;\n"
 "color: blue\n"
@@ -2594,7 +2597,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.Duration_Lab.sizePolicy().hasHeightForWidth())
         self.Duration_Lab.setSizePolicy(sizePolicy3)
         self.Duration_Lab.setMinimumSize(QSize(90, 30))
-        self.Duration_Lab.setMaximumSize(QSize(110, 40))
+        self.Duration_Lab.setMaximumSize(QSize(130, 40))
         self.Duration_Lab.setFont(font4)
         self.Duration_Lab.setAutoFillBackground(False)
         self.Duration_Lab.setStyleSheet(u"background-color: white;")
@@ -2634,41 +2637,41 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.ExampleNLab = QLabel(self.dockWidgetContents_3)
         self.ExampleNLab.setObjectName(u"ExampleNLab")
-        font5 = QFont()
-        font5.setPointSize(18)
-        self.ExampleNLab.setFont(font5)
+        font6 = QFont()
+        font6.setPointSize(18)
+        self.ExampleNLab.setFont(font6)
 
         self.verticalLayout_3.addWidget(self.ExampleNLab)
 
         self.UserAnswerLab = QLabel(self.dockWidgetContents_3)
         self.UserAnswerLab.setObjectName(u"UserAnswerLab")
         self.UserAnswerLab.setMinimumSize(QSize(0, 0))
-        self.UserAnswerLab.setFont(font5)
+        self.UserAnswerLab.setFont(font6)
         self.UserAnswerLab.setAcceptDrops(False)
 
         self.verticalLayout_3.addWidget(self.UserAnswerLab)
 
         self.CorAnswerLab = QLabel(self.dockWidgetContents_3)
         self.CorAnswerLab.setObjectName(u"CorAnswerLab")
-        self.CorAnswerLab.setFont(font5)
+        self.CorAnswerLab.setFont(font6)
 
         self.verticalLayout_3.addWidget(self.CorAnswerLab)
 
         self.AnswerScoreLab = QLabel(self.dockWidgetContents_3)
         self.AnswerScoreLab.setObjectName(u"AnswerScoreLab")
-        self.AnswerScoreLab.setFont(font5)
+        self.AnswerScoreLab.setFont(font6)
 
         self.verticalLayout_3.addWidget(self.AnswerScoreLab)
 
         self.TotalScoreLab = QLabel(self.dockWidgetContents_3)
         self.TotalScoreLab.setObjectName(u"TotalScoreLab")
-        self.TotalScoreLab.setFont(font5)
+        self.TotalScoreLab.setFont(font6)
 
         self.verticalLayout_3.addWidget(self.TotalScoreLab)
 
         self.ExcStatusLab = QLabel(self.dockWidgetContents_3)
         self.ExcStatusLab.setObjectName(u"ExcStatusLab")
-        self.ExcStatusLab.setFont(font5)
+        self.ExcStatusLab.setFont(font6)
 
         self.verticalLayout_3.addWidget(self.ExcStatusLab)
 
@@ -2791,7 +2794,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.PatternBox.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(1)
+        self.EQtabWidget.setCurrentIndex(1)
         self.BWBox.setCurrentIndex(3)
 
 
@@ -2906,7 +2909,7 @@ class Ui_MainWindow(object):
         self.EQ1_4000_Lab.setText(QCoreApplication.translate("MainWindow", u"4k", None))
         self.EQ1_8000_Lab.setText(QCoreApplication.translate("MainWindow", u"8k", None))
         self.EQ1_16000_Lab.setText(QCoreApplication.translate("MainWindow", u"16k", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.EQ1), QCoreApplication.translate("MainWindow", u"EQ1", None))
+        self.EQtabWidget.setTabText(self.EQtabWidget.indexOf(self.EQ1), QCoreApplication.translate("MainWindow", u"EQ1", None))
         self.EQ2_25_Lab.setText(QCoreApplication.translate("MainWindow", u"25", None))
         self.EQ2_50_Lab.setText(QCoreApplication.translate("MainWindow", u"50", None))
         self.EQ2_100_Lab.setText(QCoreApplication.translate("MainWindow", u"100", None))
@@ -2937,7 +2940,7 @@ class Ui_MainWindow(object):
         self.EQ2_5000_Lab.setText(QCoreApplication.translate("MainWindow", u"5k", None))
         self.EQ2_10000_Lab.setText(QCoreApplication.translate("MainWindow", u"10k", None))
         self.EQ2_20000_Lab.setText(QCoreApplication.translate("MainWindow", u"20k", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.EQ2), QCoreApplication.translate("MainWindow", u"EQ2", None))
+        self.EQtabWidget.setTabText(self.EQtabWidget.indexOf(self.EQ2), QCoreApplication.translate("MainWindow", u"EQ2", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuView.setTitle(QCoreApplication.translate("MainWindow", u"View", None))
         self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
