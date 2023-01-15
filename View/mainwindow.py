@@ -342,6 +342,7 @@ class Ui_MainWindow(object):
         self.EQtabWidget.setMinimumSize(QSize(520, 0))
         self.EQtabWidget.setMaximumSize(QSize(520, 500))
         self.EQtabWidget.setAutoFillBackground(False)
+        self.EQtabWidget.setTabPosition(QTabWidget.North)
         self.EQtabWidget.setTabsClosable(False)
         self.EQtabWidget.setTabBarAutoHide(False)
         self.EQ1 = QWidget()

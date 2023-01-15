@@ -524,6 +524,9 @@ background: rgba(118, 214, 255, 85)
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::North</enum>
+      </property>
       <property name="currentIndex">
        <number>1</number>
       </property>
