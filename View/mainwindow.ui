@@ -216,7 +216,7 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>21</pointsize>
+             <pointsize>22</pointsize>
             </font>
            </property>
            <property name="styleSheet">

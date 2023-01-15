@@ -171,9 +171,7 @@ class Ui_MainWindow(object):
         self.buttonGroup.addButton(self.TestBut)
         self.TestBut.setObjectName(u"TestBut")
         self.TestBut.setMaximumSize(QSize(16777215, 30))
-        font1 = QFont()
-        font1.setPointSize(21)
-        self.TestBut.setFont(font1)
+        self.TestBut.setFont(font)
         self.TestBut.setStyleSheet(u"background-color: rgba(255, 126, 121, 191)")
         self.TestBut.setCheckable(True)
 
@@ -222,11 +220,11 @@ class Ui_MainWindow(object):
 
         self.EqOnOffLab = QLabel(self.centralwidget)
         self.EqOnOffLab.setObjectName(u"EqOnOffLab")
-        font2 = QFont()
-        font2.setFamilies([u"Arial"])
-        font2.setPointSize(20)
-        font2.setBold(True)
-        self.EqOnOffLab.setFont(font2)
+        font1 = QFont()
+        font1.setFamilies([u"Arial"])
+        font1.setPointSize(20)
+        font1.setBold(True)
+        self.EqOnOffLab.setFont(font1)
         self.EqOnOffLab.setStyleSheet(u"color: rgb(115, 115, 115)")
         self.EqOnOffLab.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -372,9 +370,9 @@ class Ui_MainWindow(object):
         self.verticalSlider1.setObjectName(u"verticalSlider1")
         self.verticalSlider1.setMinimumSize(QSize(0, 100))
         self.verticalSlider1.setMaximumSize(QSize(16777215, 100))
-        font3 = QFont()
-        font3.setKerning(True)
-        self.verticalSlider1.setFont(font3)
+        font2 = QFont()
+        font2.setKerning(True)
+        self.verticalSlider1.setFont(font2)
         self.verticalSlider1.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -421,7 +419,7 @@ class Ui_MainWindow(object):
         self.EQ1_63.setObjectName(u"EQ1_63")
         self.EQ1_63.setMinimumSize(QSize(0, 100))
         self.EQ1_63.setMaximumSize(QSize(16777215, 100))
-        self.EQ1_63.setFont(font3)
+        self.EQ1_63.setFont(font2)
         self.EQ1_63.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -467,7 +465,7 @@ class Ui_MainWindow(object):
         self.EQ1_125.setObjectName(u"EQ1_125")
         self.EQ1_125.setMinimumSize(QSize(0, 100))
         self.EQ1_125.setMaximumSize(QSize(16777215, 100))
-        self.EQ1_125.setFont(font3)
+        self.EQ1_125.setFont(font2)
         self.EQ1_125.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -513,7 +511,7 @@ class Ui_MainWindow(object):
         self.EQ1_250.setObjectName(u"EQ1_250")
         self.EQ1_250.setMinimumSize(QSize(0, 100))
         self.EQ1_250.setMaximumSize(QSize(16777215, 100))
-        self.EQ1_250.setFont(font3)
+        self.EQ1_250.setFont(font2)
         self.EQ1_250.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -559,7 +557,7 @@ class Ui_MainWindow(object):
         self.EQ1_500.setObjectName(u"EQ1_500")
         self.EQ1_500.setMinimumSize(QSize(0, 100))
         self.EQ1_500.setMaximumSize(QSize(16777215, 100))
-        self.EQ1_500.setFont(font3)
+        self.EQ1_500.setFont(font2)
         self.EQ1_500.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -606,7 +604,7 @@ class Ui_MainWindow(object):
         self.EQ1_1000.setMinimumSize(QSize(0, 100))
         self.EQ1_1000.setMaximumSize(QSize(16777215, 100))
         self.EQ1_1000.setSizeIncrement(QSize(0, 0))
-        self.EQ1_1000.setFont(font3)
+        self.EQ1_1000.setFont(font2)
         self.EQ1_1000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -652,7 +650,7 @@ class Ui_MainWindow(object):
         self.EQ1_2000.setObjectName(u"EQ1_2000")
         self.EQ1_2000.setMinimumSize(QSize(0, 100))
         self.EQ1_2000.setMaximumSize(QSize(16777215, 100))
-        self.EQ1_2000.setFont(font3)
+        self.EQ1_2000.setFont(font2)
         self.EQ1_2000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -698,7 +696,7 @@ class Ui_MainWindow(object):
         self.EQ1_4000.setObjectName(u"EQ1_4000")
         self.EQ1_4000.setMinimumSize(QSize(0, 100))
         self.EQ1_4000.setMaximumSize(QSize(16777215, 100))
-        self.EQ1_4000.setFont(font3)
+        self.EQ1_4000.setFont(font2)
         self.EQ1_4000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -744,7 +742,7 @@ class Ui_MainWindow(object):
         self.EQ1_8000.setObjectName(u"EQ1_8000")
         self.EQ1_8000.setMinimumSize(QSize(0, 100))
         self.EQ1_8000.setMaximumSize(QSize(16777215, 100))
-        self.EQ1_8000.setFont(font3)
+        self.EQ1_8000.setFont(font2)
         self.EQ1_8000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -790,7 +788,7 @@ class Ui_MainWindow(object):
         self.EQ1_16000.setObjectName(u"EQ1_16000")
         self.EQ1_16000.setMinimumSize(QSize(0, 100))
         self.EQ1_16000.setMaximumSize(QSize(16777215, 100))
-        self.EQ1_16000.setFont(font3)
+        self.EQ1_16000.setFont(font2)
         self.EQ1_16000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -863,7 +861,7 @@ class Ui_MainWindow(object):
         self.EQ2_25.setEnabled(False)
         self.EQ2_25.setMinimumSize(QSize(0, 100))
         self.EQ2_25.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_25.setFont(font3)
+        self.EQ2_25.setFont(font2)
         self.EQ2_25.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -910,7 +908,7 @@ class Ui_MainWindow(object):
         self.EQ2_50.setObjectName(u"EQ2_50")
         self.EQ2_50.setMinimumSize(QSize(0, 100))
         self.EQ2_50.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_50.setFont(font3)
+        self.EQ2_50.setFont(font2)
         self.EQ2_50.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -956,7 +954,7 @@ class Ui_MainWindow(object):
         self.EQ2_100.setObjectName(u"EQ2_100")
         self.EQ2_100.setMinimumSize(QSize(0, 100))
         self.EQ2_100.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_100.setFont(font3)
+        self.EQ2_100.setFont(font2)
         self.EQ2_100.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1002,7 +1000,7 @@ class Ui_MainWindow(object):
         self.EQ2_200.setObjectName(u"EQ2_200")
         self.EQ2_200.setMinimumSize(QSize(0, 100))
         self.EQ2_200.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_200.setFont(font3)
+        self.EQ2_200.setFont(font2)
         self.EQ2_200.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1048,7 +1046,7 @@ class Ui_MainWindow(object):
         self.EQ2_400.setObjectName(u"EQ2_400")
         self.EQ2_400.setMinimumSize(QSize(0, 100))
         self.EQ2_400.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_400.setFont(font3)
+        self.EQ2_400.setFont(font2)
         self.EQ2_400.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1095,7 +1093,7 @@ class Ui_MainWindow(object):
         self.EQ2_800.setMinimumSize(QSize(0, 100))
         self.EQ2_800.setMaximumSize(QSize(16777215, 100))
         self.EQ2_800.setSizeIncrement(QSize(0, 0))
-        self.EQ2_800.setFont(font3)
+        self.EQ2_800.setFont(font2)
         self.EQ2_800.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1141,7 +1139,7 @@ class Ui_MainWindow(object):
         self.EQ2_1600.setObjectName(u"EQ2_1600")
         self.EQ2_1600.setMinimumSize(QSize(0, 100))
         self.EQ2_1600.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_1600.setFont(font3)
+        self.EQ2_1600.setFont(font2)
         self.EQ2_1600.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1187,7 +1185,7 @@ class Ui_MainWindow(object):
         self.EQ2_3150.setObjectName(u"EQ2_3150")
         self.EQ2_3150.setMinimumSize(QSize(0, 100))
         self.EQ2_3150.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_3150.setFont(font3)
+        self.EQ2_3150.setFont(font2)
         self.EQ2_3150.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1233,7 +1231,7 @@ class Ui_MainWindow(object):
         self.EQ2_6300.setObjectName(u"EQ2_6300")
         self.EQ2_6300.setMinimumSize(QSize(0, 100))
         self.EQ2_6300.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_6300.setFont(font3)
+        self.EQ2_6300.setFont(font2)
         self.EQ2_6300.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1279,7 +1277,7 @@ class Ui_MainWindow(object):
         self.EQ2_12500.setObjectName(u"EQ2_12500")
         self.EQ2_12500.setMinimumSize(QSize(0, 100))
         self.EQ2_12500.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_12500.setFont(font3)
+        self.EQ2_12500.setFont(font2)
         self.EQ2_12500.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1346,7 +1344,7 @@ class Ui_MainWindow(object):
         self.EQ2_32.setObjectName(u"EQ2_32")
         self.EQ2_32.setMinimumSize(QSize(0, 100))
         self.EQ2_32.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_32.setFont(font3)
+        self.EQ2_32.setFont(font2)
         self.EQ2_32.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1392,7 +1390,7 @@ class Ui_MainWindow(object):
         self.EQ2_63.setObjectName(u"EQ2_63")
         self.EQ2_63.setMinimumSize(QSize(0, 100))
         self.EQ2_63.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_63.setFont(font3)
+        self.EQ2_63.setFont(font2)
         self.EQ2_63.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1438,7 +1436,7 @@ class Ui_MainWindow(object):
         self.EQ2_125.setObjectName(u"EQ2_125")
         self.EQ2_125.setMinimumSize(QSize(0, 100))
         self.EQ2_125.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_125.setFont(font3)
+        self.EQ2_125.setFont(font2)
         self.EQ2_125.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1484,7 +1482,7 @@ class Ui_MainWindow(object):
         self.EQ2_250.setObjectName(u"EQ2_250")
         self.EQ2_250.setMinimumSize(QSize(0, 100))
         self.EQ2_250.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_250.setFont(font3)
+        self.EQ2_250.setFont(font2)
         self.EQ2_250.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1530,7 +1528,7 @@ class Ui_MainWindow(object):
         self.EQ2_500.setObjectName(u"EQ2_500")
         self.EQ2_500.setMinimumSize(QSize(0, 100))
         self.EQ2_500.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_500.setFont(font3)
+        self.EQ2_500.setFont(font2)
         self.EQ2_500.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1577,7 +1575,7 @@ class Ui_MainWindow(object):
         self.EQ2_1000.setMinimumSize(QSize(0, 100))
         self.EQ2_1000.setMaximumSize(QSize(16777215, 100))
         self.EQ2_1000.setSizeIncrement(QSize(0, 0))
-        self.EQ2_1000.setFont(font3)
+        self.EQ2_1000.setFont(font2)
         self.EQ2_1000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1623,7 +1621,7 @@ class Ui_MainWindow(object):
         self.EQ2_2000.setObjectName(u"EQ2_2000")
         self.EQ2_2000.setMinimumSize(QSize(0, 100))
         self.EQ2_2000.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_2000.setFont(font3)
+        self.EQ2_2000.setFont(font2)
         self.EQ2_2000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1669,7 +1667,7 @@ class Ui_MainWindow(object):
         self.EQ2_4000.setObjectName(u"EQ2_4000")
         self.EQ2_4000.setMinimumSize(QSize(0, 100))
         self.EQ2_4000.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_4000.setFont(font3)
+        self.EQ2_4000.setFont(font2)
         self.EQ2_4000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1715,7 +1713,7 @@ class Ui_MainWindow(object):
         self.EQ2_8000.setObjectName(u"EQ2_8000")
         self.EQ2_8000.setMinimumSize(QSize(0, 100))
         self.EQ2_8000.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_8000.setFont(font3)
+        self.EQ2_8000.setFont(font2)
         self.EQ2_8000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1761,7 +1759,7 @@ class Ui_MainWindow(object):
         self.EQ2_16000.setObjectName(u"EQ2_16000")
         self.EQ2_16000.setMinimumSize(QSize(0, 100))
         self.EQ2_16000.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_16000.setFont(font3)
+        self.EQ2_16000.setFont(font2)
         self.EQ2_16000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1828,7 +1826,7 @@ class Ui_MainWindow(object):
         self.EQ2_40.setObjectName(u"EQ2_40")
         self.EQ2_40.setMinimumSize(QSize(0, 100))
         self.EQ2_40.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_40.setFont(font3)
+        self.EQ2_40.setFont(font2)
         self.EQ2_40.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1874,7 +1872,7 @@ class Ui_MainWindow(object):
         self.EQ2_80.setObjectName(u"EQ2_80")
         self.EQ2_80.setMinimumSize(QSize(0, 100))
         self.EQ2_80.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_80.setFont(font3)
+        self.EQ2_80.setFont(font2)
         self.EQ2_80.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1920,7 +1918,7 @@ class Ui_MainWindow(object):
         self.EQ2_160.setObjectName(u"EQ2_160")
         self.EQ2_160.setMinimumSize(QSize(0, 100))
         self.EQ2_160.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_160.setFont(font3)
+        self.EQ2_160.setFont(font2)
         self.EQ2_160.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -1966,7 +1964,7 @@ class Ui_MainWindow(object):
         self.EQ2_315.setObjectName(u"EQ2_315")
         self.EQ2_315.setMinimumSize(QSize(0, 100))
         self.EQ2_315.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_315.setFont(font3)
+        self.EQ2_315.setFont(font2)
         self.EQ2_315.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -2012,7 +2010,7 @@ class Ui_MainWindow(object):
         self.EQ2_630.setObjectName(u"EQ2_630")
         self.EQ2_630.setMinimumSize(QSize(0, 100))
         self.EQ2_630.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_630.setFont(font3)
+        self.EQ2_630.setFont(font2)
         self.EQ2_630.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -2059,7 +2057,7 @@ class Ui_MainWindow(object):
         self.EQ2_1250.setMinimumSize(QSize(0, 100))
         self.EQ2_1250.setMaximumSize(QSize(16777215, 100))
         self.EQ2_1250.setSizeIncrement(QSize(0, 0))
-        self.EQ2_1250.setFont(font3)
+        self.EQ2_1250.setFont(font2)
         self.EQ2_1250.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -2105,7 +2103,7 @@ class Ui_MainWindow(object):
         self.EQ2_2500.setObjectName(u"EQ2_2500")
         self.EQ2_2500.setMinimumSize(QSize(0, 100))
         self.EQ2_2500.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_2500.setFont(font3)
+        self.EQ2_2500.setFont(font2)
         self.EQ2_2500.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -2151,7 +2149,7 @@ class Ui_MainWindow(object):
         self.EQ2_5000.setObjectName(u"EQ2_5000")
         self.EQ2_5000.setMinimumSize(QSize(0, 100))
         self.EQ2_5000.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_5000.setFont(font3)
+        self.EQ2_5000.setFont(font2)
         self.EQ2_5000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -2197,7 +2195,7 @@ class Ui_MainWindow(object):
         self.EQ2_10000.setObjectName(u"EQ2_10000")
         self.EQ2_10000.setMinimumSize(QSize(0, 100))
         self.EQ2_10000.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_10000.setFont(font3)
+        self.EQ2_10000.setFont(font2)
         self.EQ2_10000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -2244,7 +2242,7 @@ class Ui_MainWindow(object):
         self.EQ2_20000.setEnabled(False)
         self.EQ2_20000.setMinimumSize(QSize(0, 100))
         self.EQ2_20000.setMaximumSize(QSize(16777215, 100))
-        self.EQ2_20000.setFont(font3)
+        self.EQ2_20000.setFont(font2)
         self.EQ2_20000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
@@ -2335,10 +2333,10 @@ class Ui_MainWindow(object):
         self.Position_Lab.setSizePolicy(sizePolicy3)
         self.Position_Lab.setMinimumSize(QSize(90, 30))
         self.Position_Lab.setMaximumSize(QSize(130, 40))
-        font4 = QFont()
-        font4.setPointSize(16)
-        font4.setBold(False)
-        self.Position_Lab.setFont(font4)
+        font3 = QFont()
+        font3.setPointSize(16)
+        font3.setBold(False)
+        self.Position_Lab.setFont(font3)
         self.Position_Lab.setAutoFillBackground(False)
         self.Position_Lab.setStyleSheet(u"background-color: white;")
         self.Position_Lab.setFrameShape(QFrame.Panel)
@@ -2487,9 +2485,9 @@ class Ui_MainWindow(object):
         self.StartTimeEdit.setObjectName(u"StartTimeEdit")
         self.StartTimeEdit.setMinimumSize(QSize(105, 24))
         self.StartTimeEdit.setMaximumSize(QSize(105, 24))
-        font5 = QFont()
-        font5.setPointSize(8)
-        self.StartTimeEdit.setFont(font5)
+        font4 = QFont()
+        font4.setPointSize(8)
+        self.StartTimeEdit.setFont(font4)
         self.StartTimeEdit.setMaximumTime(QTime(2, 59, 59))
         self.StartTimeEdit.setCurrentSection(QDateTimeEdit.HourSection)
 
@@ -2599,7 +2597,7 @@ class Ui_MainWindow(object):
         self.Duration_Lab.setSizePolicy(sizePolicy3)
         self.Duration_Lab.setMinimumSize(QSize(90, 30))
         self.Duration_Lab.setMaximumSize(QSize(130, 40))
-        self.Duration_Lab.setFont(font4)
+        self.Duration_Lab.setFont(font3)
         self.Duration_Lab.setAutoFillBackground(False)
         self.Duration_Lab.setStyleSheet(u"background-color: white;")
         self.Duration_Lab.setFrameShape(QFrame.Panel)
@@ -2638,41 +2636,41 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.ExampleNLab = QLabel(self.dockWidgetContents_3)
         self.ExampleNLab.setObjectName(u"ExampleNLab")
-        font6 = QFont()
-        font6.setPointSize(18)
-        self.ExampleNLab.setFont(font6)
+        font5 = QFont()
+        font5.setPointSize(18)
+        self.ExampleNLab.setFont(font5)
 
         self.verticalLayout_3.addWidget(self.ExampleNLab)
 
         self.UserAnswerLab = QLabel(self.dockWidgetContents_3)
         self.UserAnswerLab.setObjectName(u"UserAnswerLab")
         self.UserAnswerLab.setMinimumSize(QSize(0, 0))
-        self.UserAnswerLab.setFont(font6)
+        self.UserAnswerLab.setFont(font5)
         self.UserAnswerLab.setAcceptDrops(False)
 
         self.verticalLayout_3.addWidget(self.UserAnswerLab)
 
         self.CorAnswerLab = QLabel(self.dockWidgetContents_3)
         self.CorAnswerLab.setObjectName(u"CorAnswerLab")
-        self.CorAnswerLab.setFont(font6)
+        self.CorAnswerLab.setFont(font5)
 
         self.verticalLayout_3.addWidget(self.CorAnswerLab)
 
         self.AnswerScoreLab = QLabel(self.dockWidgetContents_3)
         self.AnswerScoreLab.setObjectName(u"AnswerScoreLab")
-        self.AnswerScoreLab.setFont(font6)
+        self.AnswerScoreLab.setFont(font5)
 
         self.verticalLayout_3.addWidget(self.AnswerScoreLab)
 
         self.TotalScoreLab = QLabel(self.dockWidgetContents_3)
         self.TotalScoreLab.setObjectName(u"TotalScoreLab")
-        self.TotalScoreLab.setFont(font6)
+        self.TotalScoreLab.setFont(font5)
 
         self.verticalLayout_3.addWidget(self.TotalScoreLab)
 
         self.ExcStatusLab = QLabel(self.dockWidgetContents_3)
         self.ExcStatusLab.setObjectName(u"ExcStatusLab")
-        self.ExcStatusLab.setFont(font6)
+        self.ExcStatusLab.setFont(font5)
 
         self.verticalLayout_3.addWidget(self.ExcStatusLab)
 
