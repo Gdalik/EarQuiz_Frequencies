@@ -1112,6 +1112,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "\n"
+"\n"
 "")
         self.EQ2_800.setMinimum(-1)
         self.EQ2_800.setMaximum(1)
