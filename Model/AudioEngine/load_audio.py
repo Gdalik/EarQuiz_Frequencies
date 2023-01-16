@@ -1,5 +1,5 @@
 import math
-from Misc.calc import rand_buffer
+from Model.calc import rand_buffer
 import numpy as np
 from pedalboard import Gain
 
@@ -45,7 +45,7 @@ class AudioChunk:
         delta = head_level - self.max_level
         gain = Gain(delta)
         gained = gain.process(self.croped, self.samplerate)
-        while gained.size != self.croped.size:
+        while gained.size != self.croped.size:      # Solving possible buffering issues (see Pedalboard docs).
             gained = gain.process(self.croped, self.samplerate, buffer_size=rand_buffer(), reset=True)
         self.croped = gained
         return self.croped

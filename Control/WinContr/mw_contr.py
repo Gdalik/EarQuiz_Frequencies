@@ -8,3 +8,6 @@ class MainWindowContr:
         if platform.system() == 'Windows':
             self.mw_view.win_os_settings()
         self.mw_view.show()
+        self.mw_view.EQ.setCurrentEq('EQ2')
+        self.mw_view.EQ.highlight_right_Filter('EQ2', 10000, 'full')
+        self.mw_view.EQ.resetEQ('EQ2', '+-')

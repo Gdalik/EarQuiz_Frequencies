@@ -19,10 +19,11 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QButtonGroup, QComboBox,
     QDateTimeEdit, QDockWidget, QFrame, QGridLayout,
     QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-    QListView, QMainWindow, QMenu, QMenuBar,
-    QPushButton, QRadioButton, QSizePolicy, QSlider,
-    QSpacerItem, QSpinBox, QStatusBar, QTabWidget,
-    QTimeEdit, QToolButton, QVBoxLayout, QWidget)
+    QListWidget, QListWidgetItem, QMainWindow, QMenu,
+    QMenuBar, QPushButton, QRadioButton, QSizePolicy,
+    QSlider, QSpacerItem, QSpinBox, QStatusBar,
+    QTabWidget, QTimeEdit, QToolButton, QVBoxLayout,
+    QWidget)
 
 from pyqtgraph import PlotWidget
 import Icons_rc
@@ -313,12 +314,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addLayout(self.AddPlusRemoveAudioLay)
 
-        self.PlayListView = QListView(self.SourceBox)
-        self.PlayListView.setObjectName(u"PlayListView")
-        self.PlayListView.setMinimumSize(QSize(230, 0))
-        self.PlayListView.setDragDropMode(QAbstractItemView.InternalMove)
+        self.PlayListWidget = QListWidget(self.SourceBox)
+        self.PlayListWidget.setObjectName(u"PlayListWidget")
+        self.PlayListWidget.setMinimumSize(QSize(230, 0))
+        self.PlayListWidget.setDragDropMode(QAbstractItemView.InternalMove)
 
-        self.verticalLayout_4.addWidget(self.PlayListView)
+        self.verticalLayout_4.addWidget(self.PlayListWidget)
 
         self.SearchAudio = QLineEdit(self.SourceBox)
         self.SearchAudio.setObjectName(u"SearchAudio")
@@ -2294,7 +2295,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1151, 21))
+        self.menubar.setGeometry(QRect(0, 0, 1151, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuView = QMenu(self.menubar)
@@ -2486,7 +2487,7 @@ class Ui_MainWindow(object):
         self.StartTimeEdit.setMinimumSize(QSize(105, 24))
         self.StartTimeEdit.setMaximumSize(QSize(105, 24))
         font4 = QFont()
-        font4.setPointSize(8)
+        font4.setPointSize(13)
         self.StartTimeEdit.setFont(font4)
         self.StartTimeEdit.setMaximumTime(QTime(2, 59, 59))
         self.StartTimeEdit.setCurrentSection(QDateTimeEdit.HourSection)

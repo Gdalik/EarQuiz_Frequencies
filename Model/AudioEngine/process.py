@@ -1,5 +1,5 @@
-from pedalboard import PeakFilter
-from Misc.calc import proc_unproc_len, rand_buffer
+from pedalboard import PeakFilter, Pedalboard
+from Model.calc import proc_unproc_len, rand_buffer
 import numpy as np
 
 
@@ -8,9 +8,7 @@ def eq_proc(cur_sample, samplerate: int, freq1: int or float, freq2=None, boost_
         return int(samplerate * sec)
 
     def equalize(buffer_size: int = 8192):
-        _equalized = eq1.process(audio_parts[1], samplerate, buffer_size=buffer_size, reset=True)
-        if eq2:
-            _equalized = eq2.process(_equalized, samplerate, buffer_size=buffer_size, reset=True)
+        _equalized = chain.process(audio_parts[1], samplerate, buffer_size=buffer_size, reset=True)
         return _equalized
     cur_sample_length = cur_sample[0].size / samplerate
     proc_len, unproc_len = proc_unproc_len(cur_sample_length, proc_t_perc)
@@ -21,12 +19,13 @@ def eq_proc(cur_sample, samplerate: int, freq1: int or float, freq2=None, boost_
         eq2 = PeakFilter(cutoff_frequency_hz=freq2, gain_db=gain2, q=Q)
     else:
         eq2 = None
+    chain = Pedalboard([eq1, eq2])
     proc_len_fr = sec2fr(proc_len)
     unproc_len_fr = sec2fr(unproc_len)
     audio_parts = np.hsplit(cur_sample, [unproc_len_fr, unproc_len_fr+proc_len_fr])
     pre_eq = audio_parts[0]
     equalized = equalize()
-    while equalized.size != audio_parts[1].size:
+    while equalized.size != audio_parts[1].size:    # Solving possible buffering issues (see Pedalboard docs).
         equalized = equalize(buffer_size=rand_buffer())
     post_eq = audio_parts[2]
     return np.concatenate((pre_eq, equalized, post_eq), axis=1)

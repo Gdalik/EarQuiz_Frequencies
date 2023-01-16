@@ -470,7 +470,7 @@ background: rgba(118, 214, 255, 85)
         </layout>
        </item>
        <item>
-        <widget class="QListView" name="PlayListView">
+        <widget class="QListWidget" name="PlayListWidget">
          <property name="minimumSize">
           <size>
            <width>230</width>
@@ -4364,7 +4364,7 @@ background: rgba(118, 214, 255, 85)
      <x>0</x>
      <y>0</y>
      <width>1151</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -4782,7 +4782,7 @@ color: green;
              </property>
              <property name="font">
               <font>
-               <pointsize>8</pointsize>
+               <pointsize>13</pointsize>
               </font>
              </property>
              <property name="maximumTime">

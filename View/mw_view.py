@@ -1,3 +1,5 @@
+import time
+
 from PySide6.QtWidgets import QMainWindow, QWidget
 from View.mainwindow import Ui_MainWindow
 from View.transport_view import TransportPanelView
@@ -10,7 +12,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.TransportPanel = TransportPanelView(self)
         self.EQ = EqView(self)
-        self.EQ.setCurrentEq('EQ2')
 
     def win_os_settings(self):
         widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + self.dockWidgetContents_2.findChildren(QWidget) + self.dockWidgetContents_3.findChildren(QWidget)
