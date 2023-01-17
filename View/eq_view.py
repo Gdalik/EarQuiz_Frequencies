@@ -1,5 +1,4 @@
 from PySide6.QtWidgets import QSlider, QLabel
-from contextlib import suppress
 from Misc.common_calcs import findAdjacentEl
 
 class EqView:
@@ -126,6 +125,10 @@ class EqView:
             if freqs[0] <= self._getfreq(F) <= freqs[1]:
                 self._filterSetEnabled(F, arg)
         return Filters
+
+    def rangeCrop(self, freq1: int, freq2: int):
+        self.rangeSetEnabled(20, 20000, False)
+        self.rangeSetEnabled(freq1, freq2, True)
 
     def _sortedFilters(self):
         filter_list = self.getFilters()

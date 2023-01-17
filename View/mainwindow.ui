@@ -46,7 +46,7 @@
         <widget class="QComboBox" name="PatternBox">
          <property name="minimumSize">
           <size>
-           <width>440</width>
+           <width>445</width>
            <height>0</height>
           </size>
          </property>

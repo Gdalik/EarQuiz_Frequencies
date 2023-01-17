@@ -124,7 +124,7 @@ class Ui_MainWindow(object):
         self.PatternBox.addItem("")
         self.PatternBox.addItem("")
         self.PatternBox.setObjectName(u"PatternBox")
-        self.PatternBox.setMinimumSize(QSize(440, 0))
+        self.PatternBox.setMinimumSize(QSize(445, 0))
 
         self.horizontalLayout_6.addWidget(self.PatternBox, 0, Qt.AlignLeft)
 
