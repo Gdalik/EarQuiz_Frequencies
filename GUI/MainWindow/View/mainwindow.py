@@ -19,12 +19,12 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QButtonGroup, QComboBox,
     QDateTimeEdit, QDockWidget, QFrame, QGridLayout,
     QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-    QListWidget, QListWidgetItem, QMainWindow, QMenu,
-    QMenuBar, QPushButton, QRadioButton, QSizePolicy,
-    QSlider, QSpacerItem, QSpinBox, QStatusBar,
-    QTabWidget, QTimeEdit, QToolButton, QVBoxLayout,
-    QWidget)
+    QListWidgetItem, QMainWindow, QMenu, QMenuBar,
+    QPushButton, QRadioButton, QSizePolicy, QSlider,
+    QSpacerItem, QSpinBox, QStatusBar, QTabWidget,
+    QTimeEdit, QToolButton, QVBoxLayout, QWidget)
 
+from playlistwidget import PlayListWidget
 from pyqtgraph import PlotWidget
 import Icons_rc
 
@@ -109,20 +109,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6 = QHBoxLayout(self.PatternGroupBox)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.PatternBox = QComboBox(self.PatternGroupBox)
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
-        self.PatternBox.addItem("")
         self.PatternBox.setObjectName(u"PatternBox")
         self.PatternBox.setMinimumSize(QSize(445, 0))
 
@@ -314,7 +300,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addLayout(self.AddPlusRemoveAudioLay)
 
-        self.PlayListWidget = QListWidget(self.SourceBox)
+        self.PlayListWidget = PlayListWidget(self.SourceBox)
         self.PlayListWidget.setObjectName(u"PlayListWidget")
         self.PlayListWidget.setMinimumSize(QSize(230, 0))
         self.PlayListWidget.setDragDropMode(QAbstractItemView.InternalMove)
@@ -2794,7 +2780,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.PatternBox.setCurrentIndex(0)
+        self.PatternBox.setCurrentIndex(-1)
         self.EQtabWidget.setCurrentIndex(0)
         self.BWBox.setCurrentIndex(3)
 
@@ -2869,21 +2855,6 @@ class Ui_MainWindow(object):
         self.actionMinimal.setText(QCoreApplication.translate("MainWindow", u"Minimal", None))
         self.actionMaximal.setText(QCoreApplication.translate("MainWindow", u"Maximal", None))
         self.PatternGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Exercise / difficulty pattern:", None))
-        self.PatternBox.setItemText(0, QCoreApplication.translate("MainWindow", u"1. Lowest five (31-500 Hz) 1-octave bands boosted (+)", None))
-        self.PatternBox.setItemText(1, QCoreApplication.translate("MainWindow", u"2. Middle five (250-4000 Hz) 1-octave bands boosted (+)", None))
-        self.PatternBox.setItemText(2, QCoreApplication.translate("MainWindow", u"3. Highest five (1-16 kHz) 1-octave bands boosted (+)", None))
-        self.PatternBox.setItemText(3, QCoreApplication.translate("MainWindow", u"4. Lowest five (31-500 Hz) 1-octave bands cut (-)", None))
-        self.PatternBox.setItemText(4, QCoreApplication.translate("MainWindow", u"5. Middle five (250-4000 Hz) 1-octave bands cut (-)", None))
-        self.PatternBox.setItemText(5, QCoreApplication.translate("MainWindow", u"6. Highest five (1-16 kHz) 1-octave bands cut (-)", None))
-        self.PatternBox.setItemText(6, QCoreApplication.translate("MainWindow", u"7. All ten 1-octave bands boosted (+)", None))
-        self.PatternBox.setItemText(7, QCoreApplication.translate("MainWindow", u"8. All ten 1-octave bands cut (-)", None))
-        self.PatternBox.setItemText(8, QCoreApplication.translate("MainWindow", u"9. All ten 1-octave bands boosted (+) or cut (-)", None))
-        self.PatternBox.setItemText(9, QCoreApplication.translate("MainWindow", u"10. Low (32-315 Hz) 1/3-octave bands boosted (+) or cut (-)", None))
-        self.PatternBox.setItemText(10, QCoreApplication.translate("MainWindow", u"11. Mid (315-1250 Hz) 1/3-octave bands boosted (+) or cut (-)", None))
-        self.PatternBox.setItemText(11, QCoreApplication.translate("MainWindow", u"12. High (1.6 kHz - 16 kHz) 1/3-octave bands boosted (+) or cut (-)", None))
-        self.PatternBox.setItemText(12, QCoreApplication.translate("MainWindow", u"13. All 1/3-octave bands boosted (+) or cut (-)", None))
-        self.PatternBox.setItemText(13, QCoreApplication.translate("MainWindow", u"14. Two 1-octave bands treated (boosted/cut) simultaneously", None))
-
         self.NextPatternBut.setText(QCoreApplication.translate("MainWindow", u"Next >", None))
         self.ModeButtonsGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Mode:", None))
         self.PreviewButton.setText(QCoreApplication.translate("MainWindow", u"Preview", None))

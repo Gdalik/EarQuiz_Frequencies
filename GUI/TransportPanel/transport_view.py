@@ -8,7 +8,7 @@ class TransportPanelView:
             self.__setattr__(W.objectName(), W)
         self.upd_VolumeLab()
         self.VolumeSlider.valueChanged.connect(self.upd_VolumeLab)
-        self.AudioSlider.setBackground('w')
+        self.AudioSlider.setBackground('darkgray')
 
     def upd_VolumeLab(self):
         self.VolumePerc.setText(f'{self.VolumeSlider.value()}%')

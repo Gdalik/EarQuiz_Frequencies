@@ -12,7 +12,7 @@ class EqView:
         self.disabledHandleStyle = '.QSlider::handle:vertical{background: white; border: 2px solid rgb(191, 191, 191); height: 5px; width: 10px; margin: 0px -5px}'
         self.basicSliderStyle = '.QSlider::groove:vertical{border: 1px solid #262626; background: rgb(191, 191, 191); width: 5px; margin: 0 12px;}'+self.handleStyle
         self.disabledSliderStyle = self.basicSliderStyle + self.disabledHandleStyle
-        self._disableAdjacentFiltersMode = (False, 0)
+        self._disableAdjacentFiltersMode = False
         self.currentEQ = None
 
     def setCurrentEQ(self, EQ: str):    # 'EQ1' (10-band) / 'EQ2' (30-band)
@@ -94,7 +94,8 @@ class EqView:
     def filterHandle(self, freq: int, boost_cut: str, blockSignals=False):      # boost_cut: '+'/'-'
         return self._filterHandle(self.getFilter(freq), boost_cut, blockSignals=blockSignals)
 
-    def _filterHandle(self, Filter: tuple, boost_cut: str, blockSignals=False):     # boost_cut: '+'/'-'
+    @staticmethod
+    def _filterHandle(Filter: tuple, boost_cut: str, blockSignals=False):     # boost_cut: '+'/'-'
         Slider, _ = Filter
         Slider.blockSignals(blockSignals)
         if boost_cut == '+':
@@ -136,11 +137,15 @@ class EqView:
         filter_list.sort(key=key_func)
         return filter_list
 
-    def _getAdjacentFilters(self, Filter: tuple, num: int):     # num: the number of adjacent filters from each side
+    def _getAdjacentFilters(self, Filter: tuple, arg: int or bool):     # arg: the number of adjacent filters from each side or False
+        if not arg:
+            return
         sorted_filters = self._sortedFilters()
-        return findAdjacentEl(sorted_filters, Filter, num=num)
+        return findAdjacentEl(sorted_filters, Filter, num=arg)
 
     def disableAdjacentFilters(self, freq: int, num=1):   # num: the number of adjacent filters from each side
+        if not num:
+            return
         adj_filt = self._getAdjacentFilters(self.getFilter(freq), num)
         for F in adj_filt:
             self._filterSetEnabled(F, False)
@@ -150,15 +155,15 @@ class EqView:
         for F in adj_filt:
             self._filterSetEnabled(F, True)
 
-    def disableAdjacentFiltersMode(self, arg: bool, num=1):    # num: the number of adjacent filters from each side
-        self._disableAdjacentFiltersMode = (arg, num)
+    def disableAdjacentFiltersMode(self, arg: int or bool):    # arg: the number of adjacent filters from each side or False
+        self._disableAdjacentFiltersMode = arg
 
     def case_disableAdjacentFiltersModeOn(self, sliderValue: int, activeFreqRange=(20, 20000)):
-        if not self._disableAdjacentFiltersMode[0]:
+        if not self._disableAdjacentFiltersMode:
             return
         filters = self.getFilters()
         if sliderValue == 0:
             self.rangeSetEnabled(*activeFreqRange, True)
         for F in filters:
             if F[0].value() != 0:
-                self.disableAdjacentFilters(self._getfreq(F), num=self._disableAdjacentFiltersMode[1])
+                self.disableAdjacentFilters(self._getfreq(F), num=self._disableAdjacentFiltersMode)

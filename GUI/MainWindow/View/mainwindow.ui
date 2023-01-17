@@ -51,78 +51,8 @@
           </size>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>-1</number>
          </property>
-         <item>
-          <property name="text">
-           <string>1. Lowest five (31-500 Hz) 1-octave bands boosted (+)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2. Middle five (250-4000 Hz) 1-octave bands boosted (+)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3. Highest five (1-16 kHz) 1-octave bands boosted (+)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4. Lowest five (31-500 Hz) 1-octave bands cut (-)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5. Middle five (250-4000 Hz) 1-octave bands cut (-)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6. Highest five (1-16 kHz) 1-octave bands cut (-)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7. All ten 1-octave bands boosted (+)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8. All ten 1-octave bands cut (-)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>9. All ten 1-octave bands boosted (+) or cut (-)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>10. Low (32-315 Hz) 1/3-octave bands boosted (+) or cut (-)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>11. Mid (315-1250 Hz) 1/3-octave bands boosted (+) or cut (-)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>12. High (1.6 kHz - 16 kHz) 1/3-octave bands boosted (+) or cut (-)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>13. All 1/3-octave bands boosted (+) or cut (-)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>14. Two 1-octave bands treated (boosted/cut) simultaneously</string>
-          </property>
-         </item>
         </widget>
        </item>
        <item alignment="Qt::AlignRight">
@@ -252,7 +182,7 @@ background: rgba(118, 214, 255, 85)
          <string>...</string>
         </property>
         <property name="icon">
-         <iconset resource="Icons.qrc">
+         <iconset resource="../../Icons.qrc">
           <normaloff>:/Player/Icons/Player/Actions-media-playback-start-icon.png</normaloff>:/Player/Icons/Player/Actions-media-playback-start-icon.png</iconset>
         </property>
         <property name="iconSize">
@@ -279,7 +209,7 @@ background: rgba(118, 214, 255, 85)
          <string>...</string>
         </property>
         <property name="icon">
-         <iconset resource="Icons.qrc">
+         <iconset resource="../../Icons.qrc">
           <normaloff>:/Player/Icons/Player/Actions-media-playback-stop-icon.png</normaloff>:/Player/Icons/Player/Actions-media-playback-stop-icon.png</iconset>
         </property>
         <property name="iconSize">
@@ -401,7 +331,7 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="Icons.qrc">
+            <iconset resource="../../Icons.qrc">
              <normaloff>:/AddRemove/Icons/AddRemove/plus.png</normaloff>:/AddRemove/Icons/AddRemove/plus.png</iconset>
            </property>
           </widget>
@@ -422,7 +352,7 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="Icons.qrc">
+            <iconset resource="../../Icons.qrc">
              <normaloff>:/AddRemove/Icons/AddRemove/minus.png</normaloff>:/AddRemove/Icons/AddRemove/minus.png</iconset>
            </property>
           </widget>
@@ -456,7 +386,7 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="Icons.qrc">
+            <iconset resource="../../Icons.qrc">
              <normaloff>:/AddRemove/Icons/AddRemove/clear.png</normaloff>:/AddRemove/Icons/AddRemove/clear.png</iconset>
            </property>
            <property name="iconSize">
@@ -470,7 +400,7 @@ background: rgba(118, 214, 255, 85)
         </layout>
        </item>
        <item>
-        <widget class="QListWidget" name="PlayListWidget">
+        <widget class="PlayListWidget" name="PlayListWidget">
          <property name="minimumSize">
           <size>
            <width>230</width>
@@ -4543,7 +4473,7 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="Icons.qrc">
+            <iconset resource="../../Icons.qrc">
              <normaloff>:/Player/Icons/Player/Actions-media-skip-backward-icon.png</normaloff>:/Player/Icons/Player/Actions-media-skip-backward-icon.png</iconset>
            </property>
            <property name="iconSize">
@@ -4570,7 +4500,7 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="Icons.qrc">
+            <iconset resource="../../Icons.qrc">
              <normaloff>:/Player/Icons/Player/Actions-media-playback-start-icon.png</normaloff>:/Player/Icons/Player/Actions-media-playback-start-icon.png</iconset>
            </property>
            <property name="iconSize">
@@ -4597,7 +4527,7 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="Icons.qrc">
+            <iconset resource="../../Icons.qrc">
              <normaloff>:/Player/Icons/Player/Actions-media-playback-stop-icon.png</normaloff>:/Player/Icons/Player/Actions-media-playback-stop-icon.png</iconset>
            </property>
            <property name="iconSize">
@@ -4624,7 +4554,7 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="Icons.qrc">
+            <iconset resource="../../Icons.qrc">
              <normaloff>:/Player/Icons/Player/Actions-media-skip-forward-icon.png</normaloff>:/Player/Icons/Player/Actions-media-skip-forward-icon.png</iconset>
            </property>
            <property name="iconSize">
@@ -4905,7 +4835,7 @@ background: rgba(118, 214, 255, 85)
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="Icons.qrc">
+          <iconset resource="../../Icons.qrc">
            <normaloff>:/AddRemove/Icons/AddRemove/clear.png</normaloff>:/AddRemove/Icons/AddRemove/clear.png</iconset>
          </property>
         </widget>
@@ -5553,9 +5483,14 @@ background: rgba(118, 214, 255, 85)
    <header>pyqtgraph</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>PlayListWidget</class>
+   <extends>QListWidget</extends>
+   <header>playlistwidget</header>
+  </customwidget>
  </customwidgets>
  <resources>
-  <include location="Icons.qrc"/>
+  <include location="../../Icons.qrc"/>
  </resources>
  <connections/>
  <buttongroups>
