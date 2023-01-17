@@ -1,5 +1,3 @@
-import time
-
 from PySide6.QtWidgets import QMainWindow, QWidget
 from View.mainwindow import Ui_MainWindow
 from View.transport_view import TransportPanelView

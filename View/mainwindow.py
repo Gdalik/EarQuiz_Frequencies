@@ -367,14 +367,14 @@ class Ui_MainWindow(object):
 
         self.Band1 = QVBoxLayout()
         self.Band1.setObjectName(u"Band1")
-        self.verticalSlider1 = QSlider(self.EQ1_frame)
-        self.verticalSlider1.setObjectName(u"verticalSlider1")
-        self.verticalSlider1.setMinimumSize(QSize(0, 100))
-        self.verticalSlider1.setMaximumSize(QSize(16777215, 100))
+        self.EQ1_31 = QSlider(self.EQ1_frame)
+        self.EQ1_31.setObjectName(u"EQ1_31")
+        self.EQ1_31.setMinimumSize(QSize(0, 100))
+        self.EQ1_31.setMaximumSize(QSize(16777215, 100))
         font2 = QFont()
         font2.setKerning(True)
-        self.verticalSlider1.setFont(font2)
-        self.verticalSlider1.setStyleSheet(u".QSlider::groove:vertical {\n"
+        self.EQ1_31.setFont(font2)
+        self.EQ1_31.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "	background: rgb(191, 191, 191);\n"
 "	width: 5px;\n"
@@ -392,16 +392,16 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "")
-        self.verticalSlider1.setMinimum(-1)
-        self.verticalSlider1.setMaximum(1)
-        self.verticalSlider1.setPageStep(1)
-        self.verticalSlider1.setValue(0)
-        self.verticalSlider1.setTracking(True)
-        self.verticalSlider1.setOrientation(Qt.Vertical)
-        self.verticalSlider1.setInvertedAppearance(False)
-        self.verticalSlider1.setInvertedControls(False)
+        self.EQ1_31.setMinimum(-1)
+        self.EQ1_31.setMaximum(1)
+        self.EQ1_31.setPageStep(1)
+        self.EQ1_31.setValue(0)
+        self.EQ1_31.setTracking(True)
+        self.EQ1_31.setOrientation(Qt.Vertical)
+        self.EQ1_31.setInvertedAppearance(False)
+        self.EQ1_31.setInvertedControls(False)
 
-        self.Band1.addWidget(self.verticalSlider1, 0, Qt.AlignHCenter)
+        self.Band1.addWidget(self.EQ1_31, 0, Qt.AlignHCenter)
 
         self.EQ1_31_Lab = QLabel(self.EQ1_frame)
         self.EQ1_31_Lab.setObjectName(u"EQ1_31_Lab")
@@ -2795,7 +2795,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.PatternBox.setCurrentIndex(0)
-        self.EQtabWidget.setCurrentIndex(1)
+        self.EQtabWidget.setCurrentIndex(0)
         self.BWBox.setCurrentIndex(3)
 
 
