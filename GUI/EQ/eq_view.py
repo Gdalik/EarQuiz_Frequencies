@@ -41,10 +41,10 @@ class EqView:
         Label.setStyleSheet('color: green; font-weight: bold')
         return Slider, Label
 
-    def _getEQ(self, Filter: tuple):
+    def getEQ(self, Filter: tuple):
         return Filter[0].objectName().split('_')[0]
 
-    def _getfreq(self, Filter: tuple):
+    def getfreq(self, Filter: tuple):
         return int(Filter[0].objectName().split('_')[-1])
 
     def getFilter(self, freq: int):
@@ -125,7 +125,7 @@ class EqView:
         freqs.sort()
         Filters = self.getFilters()
         for F in Filters:
-            if freqs[0] <= self._getfreq(F) <= freqs[1]:
+            if freqs[0] <= self.getfreq(F) <= freqs[1]:
                 self._filterSetEnabled(F, arg)
         return Filters
 
@@ -133,27 +133,27 @@ class EqView:
         self.rangeSetEnabled(20, 20000, False)
         self.rangeSetEnabled(freq1, freq2, True)
 
-    def _sortedFilters(self):
+    def sortedFilters(self):
         filter_list = self.getFilters()
-        key_func = lambda Filter: self._getfreq(Filter)
+        key_func = lambda Filter: self.getfreq(Filter)
         filter_list.sort(key=key_func)
         return filter_list
 
-    def _getAdjacentFilters(self, Filter: tuple, arg: int or bool):     # arg: the number of adjacent filters from each side or False
+    def getAdjacentFilters(self, Filter: tuple, arg: int or bool):     # arg: the number of adjacent filters from each side or False
         if not arg:
             return
-        sorted_filters = self._sortedFilters()
+        sorted_filters = self.sortedFilters()
         return findAdjacentEl(sorted_filters, Filter, num=arg)
 
     def disableAdjacentFilters(self, freq: int, num=1):   # num: the number of adjacent filters from each side
         if not num:
             return
-        adj_filt = self._getAdjacentFilters(self.getFilter(freq), num)
+        adj_filt = self.getAdjacentFilters(self.getFilter(freq), num)
         for F in adj_filt:
             self._filterSetEnabled(F, False)
 
     def enableAdjacentFilters(self, freq: int, num=1):   # num: the number of adjacent filters from each side
-        adj_filt = self._getAdjacentFilters(self.getFilter(freq), num)
+        adj_filt = self.getAdjacentFilters(self.getFilter(freq), num)
         for F in adj_filt:
             self._filterSetEnabled(F, True)
 
@@ -168,4 +168,4 @@ class EqView:
             self.rangeSetEnabled(*activeFreqRange, True)
         for F in filters:
             if F[0].value() != 0:
-                self.disableAdjacentFilters(self._getfreq(F), num=self._disableAdjacentFiltersMode)
+                self.disableAdjacentFilters(self.getfreq(F), num=self._disableAdjacentFiltersMode)

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1166</width>
-    <height>856</height>
+    <height>776</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -15,6 +15,12 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -498,13 +504,13 @@ background: rgba(118, 214, 255, 85)
           <property name="minimumSize">
            <size>
             <width>490</width>
-            <height>145</height>
+            <height>115</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>490</width>
-            <height>145</height>
+            <height>115</height>
            </size>
           </property>
           <property name="frameShape">
@@ -537,13 +543,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -628,13 +634,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -716,13 +722,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -804,13 +810,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -892,13 +898,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -980,13 +986,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="sizeIncrement">
@@ -1074,13 +1080,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -1162,13 +1168,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -1250,13 +1256,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -1338,13 +1344,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -1456,13 +1462,13 @@ background: rgba(118, 214, 255, 85)
           <property name="minimumSize">
            <size>
             <width>490</width>
-            <height>145</height>
+            <height>115</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>490</width>
-            <height>145</height>
+            <height>115</height>
            </size>
           </property>
           <property name="frameShape">
@@ -1498,13 +1504,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -1589,13 +1595,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -1677,13 +1683,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -1765,13 +1771,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -1853,13 +1859,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -1941,13 +1947,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="sizeIncrement">
@@ -2036,13 +2042,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -2124,13 +2130,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -2212,13 +2218,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -2300,13 +2306,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -2411,13 +2417,13 @@ background: rgba(118, 214, 255, 85)
           <property name="minimumSize">
            <size>
             <width>490</width>
-            <height>145</height>
+            <height>115</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>490</width>
-            <height>145</height>
+            <height>115</height>
            </size>
           </property>
           <property name="frameShape">
@@ -2450,13 +2456,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -2538,13 +2544,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -2626,13 +2632,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -2714,13 +2720,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -2802,13 +2808,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -2890,13 +2896,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="sizeIncrement">
@@ -2984,13 +2990,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -3072,13 +3078,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -3160,13 +3166,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -3248,13 +3254,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -3359,13 +3365,13 @@ background: rgba(118, 214, 255, 85)
           <property name="minimumSize">
            <size>
             <width>490</width>
-            <height>145</height>
+            <height>115</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>490</width>
-            <height>145</height>
+            <height>115</height>
            </size>
           </property>
           <property name="frameShape">
@@ -3398,13 +3404,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -3486,13 +3492,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -3574,13 +3580,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -3662,13 +3668,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -3750,13 +3756,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -3838,13 +3844,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="sizeIncrement">
@@ -3932,13 +3938,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -4020,13 +4026,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -4108,13 +4114,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">
@@ -4199,13 +4205,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>100</height>
+                 <height>70</height>
                 </size>
                </property>
                <property name="font">

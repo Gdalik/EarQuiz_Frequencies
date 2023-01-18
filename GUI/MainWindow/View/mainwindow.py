@@ -32,12 +32,13 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1166, 856)
+        MainWindow.resize(1166, 776)
         sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
+        MainWindow.setMaximumSize(QSize(16777215, 16777215))
         MainWindow.setStyleSheet(u"")
         self.actionOpen = QAction(MainWindow)
         self.actionOpen.setObjectName(u"actionOpen")
@@ -342,8 +343,8 @@ class Ui_MainWindow(object):
         self.EQ1_frame.setObjectName(u"EQ1_frame")
         sizePolicy1.setHeightForWidth(self.EQ1_frame.sizePolicy().hasHeightForWidth())
         self.EQ1_frame.setSizePolicy(sizePolicy1)
-        self.EQ1_frame.setMinimumSize(QSize(490, 145))
-        self.EQ1_frame.setMaximumSize(QSize(490, 145))
+        self.EQ1_frame.setMinimumSize(QSize(490, 115))
+        self.EQ1_frame.setMaximumSize(QSize(490, 115))
         self.EQ1_frame.setFrameShape(QFrame.Panel)
         self.EQ1_frame.setFrameShadow(QFrame.Sunken)
         self.horizontalLayout = QHBoxLayout(self.EQ1_frame)
@@ -356,8 +357,8 @@ class Ui_MainWindow(object):
         self.Band1.setObjectName(u"Band1")
         self.EQ1_31 = QSlider(self.EQ1_frame)
         self.EQ1_31.setObjectName(u"EQ1_31")
-        self.EQ1_31.setMinimumSize(QSize(0, 100))
-        self.EQ1_31.setMaximumSize(QSize(16777215, 100))
+        self.EQ1_31.setMinimumSize(QSize(0, 70))
+        self.EQ1_31.setMaximumSize(QSize(16777215, 70))
         font2 = QFont()
         font2.setKerning(True)
         self.EQ1_31.setFont(font2)
@@ -405,8 +406,8 @@ class Ui_MainWindow(object):
         self.Band2.setObjectName(u"Band2")
         self.EQ1_63 = QSlider(self.EQ1_frame)
         self.EQ1_63.setObjectName(u"EQ1_63")
-        self.EQ1_63.setMinimumSize(QSize(0, 100))
-        self.EQ1_63.setMaximumSize(QSize(16777215, 100))
+        self.EQ1_63.setMinimumSize(QSize(0, 70))
+        self.EQ1_63.setMaximumSize(QSize(16777215, 70))
         self.EQ1_63.setFont(font2)
         self.EQ1_63.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -451,8 +452,8 @@ class Ui_MainWindow(object):
         self.Band3.setObjectName(u"Band3")
         self.EQ1_125 = QSlider(self.EQ1_frame)
         self.EQ1_125.setObjectName(u"EQ1_125")
-        self.EQ1_125.setMinimumSize(QSize(0, 100))
-        self.EQ1_125.setMaximumSize(QSize(16777215, 100))
+        self.EQ1_125.setMinimumSize(QSize(0, 70))
+        self.EQ1_125.setMaximumSize(QSize(16777215, 70))
         self.EQ1_125.setFont(font2)
         self.EQ1_125.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -497,8 +498,8 @@ class Ui_MainWindow(object):
         self.Band4.setObjectName(u"Band4")
         self.EQ1_250 = QSlider(self.EQ1_frame)
         self.EQ1_250.setObjectName(u"EQ1_250")
-        self.EQ1_250.setMinimumSize(QSize(0, 100))
-        self.EQ1_250.setMaximumSize(QSize(16777215, 100))
+        self.EQ1_250.setMinimumSize(QSize(0, 70))
+        self.EQ1_250.setMaximumSize(QSize(16777215, 70))
         self.EQ1_250.setFont(font2)
         self.EQ1_250.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -543,8 +544,8 @@ class Ui_MainWindow(object):
         self.Band5.setObjectName(u"Band5")
         self.EQ1_500 = QSlider(self.EQ1_frame)
         self.EQ1_500.setObjectName(u"EQ1_500")
-        self.EQ1_500.setMinimumSize(QSize(0, 100))
-        self.EQ1_500.setMaximumSize(QSize(16777215, 100))
+        self.EQ1_500.setMinimumSize(QSize(0, 70))
+        self.EQ1_500.setMaximumSize(QSize(16777215, 70))
         self.EQ1_500.setFont(font2)
         self.EQ1_500.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -589,8 +590,8 @@ class Ui_MainWindow(object):
         self.Band6.setObjectName(u"Band6")
         self.EQ1_1000 = QSlider(self.EQ1_frame)
         self.EQ1_1000.setObjectName(u"EQ1_1000")
-        self.EQ1_1000.setMinimumSize(QSize(0, 100))
-        self.EQ1_1000.setMaximumSize(QSize(16777215, 100))
+        self.EQ1_1000.setMinimumSize(QSize(0, 70))
+        self.EQ1_1000.setMaximumSize(QSize(16777215, 70))
         self.EQ1_1000.setSizeIncrement(QSize(0, 0))
         self.EQ1_1000.setFont(font2)
         self.EQ1_1000.setStyleSheet(u".QSlider::groove:vertical {\n"
@@ -636,8 +637,8 @@ class Ui_MainWindow(object):
         self.Band7.setObjectName(u"Band7")
         self.EQ1_2000 = QSlider(self.EQ1_frame)
         self.EQ1_2000.setObjectName(u"EQ1_2000")
-        self.EQ1_2000.setMinimumSize(QSize(0, 100))
-        self.EQ1_2000.setMaximumSize(QSize(16777215, 100))
+        self.EQ1_2000.setMinimumSize(QSize(0, 70))
+        self.EQ1_2000.setMaximumSize(QSize(16777215, 70))
         self.EQ1_2000.setFont(font2)
         self.EQ1_2000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -682,8 +683,8 @@ class Ui_MainWindow(object):
         self.Band8.setObjectName(u"Band8")
         self.EQ1_4000 = QSlider(self.EQ1_frame)
         self.EQ1_4000.setObjectName(u"EQ1_4000")
-        self.EQ1_4000.setMinimumSize(QSize(0, 100))
-        self.EQ1_4000.setMaximumSize(QSize(16777215, 100))
+        self.EQ1_4000.setMinimumSize(QSize(0, 70))
+        self.EQ1_4000.setMaximumSize(QSize(16777215, 70))
         self.EQ1_4000.setFont(font2)
         self.EQ1_4000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -728,8 +729,8 @@ class Ui_MainWindow(object):
         self.Band9.setObjectName(u"Band9")
         self.EQ1_8000 = QSlider(self.EQ1_frame)
         self.EQ1_8000.setObjectName(u"EQ1_8000")
-        self.EQ1_8000.setMinimumSize(QSize(0, 100))
-        self.EQ1_8000.setMaximumSize(QSize(16777215, 100))
+        self.EQ1_8000.setMinimumSize(QSize(0, 70))
+        self.EQ1_8000.setMaximumSize(QSize(16777215, 70))
         self.EQ1_8000.setFont(font2)
         self.EQ1_8000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -774,8 +775,8 @@ class Ui_MainWindow(object):
         self.Band10.setObjectName(u"Band10")
         self.EQ1_16000 = QSlider(self.EQ1_frame)
         self.EQ1_16000.setObjectName(u"EQ1_16000")
-        self.EQ1_16000.setMinimumSize(QSize(0, 100))
-        self.EQ1_16000.setMaximumSize(QSize(16777215, 100))
+        self.EQ1_16000.setMinimumSize(QSize(0, 70))
+        self.EQ1_16000.setMaximumSize(QSize(16777215, 70))
         self.EQ1_16000.setFont(font2)
         self.EQ1_16000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -832,8 +833,8 @@ class Ui_MainWindow(object):
         self.EQ2_frame1.setObjectName(u"EQ2_frame1")
         sizePolicy1.setHeightForWidth(self.EQ2_frame1.sizePolicy().hasHeightForWidth())
         self.EQ2_frame1.setSizePolicy(sizePolicy1)
-        self.EQ2_frame1.setMinimumSize(QSize(490, 145))
-        self.EQ2_frame1.setMaximumSize(QSize(490, 145))
+        self.EQ2_frame1.setMinimumSize(QSize(490, 115))
+        self.EQ2_frame1.setMaximumSize(QSize(490, 115))
         self.EQ2_frame1.setFrameShape(QFrame.Panel)
         self.EQ2_frame1.setFrameShadow(QFrame.Sunken)
         self.horizontalLayout_2 = QHBoxLayout(self.EQ2_frame1)
@@ -847,8 +848,8 @@ class Ui_MainWindow(object):
         self.EQ2_25 = QSlider(self.EQ2_frame1)
         self.EQ2_25.setObjectName(u"EQ2_25")
         self.EQ2_25.setEnabled(False)
-        self.EQ2_25.setMinimumSize(QSize(0, 100))
-        self.EQ2_25.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_25.setMinimumSize(QSize(0, 70))
+        self.EQ2_25.setMaximumSize(QSize(16777215, 70))
         self.EQ2_25.setFont(font2)
         self.EQ2_25.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -894,8 +895,8 @@ class Ui_MainWindow(object):
         self.Band2_2.setObjectName(u"Band2_2")
         self.EQ2_50 = QSlider(self.EQ2_frame1)
         self.EQ2_50.setObjectName(u"EQ2_50")
-        self.EQ2_50.setMinimumSize(QSize(0, 100))
-        self.EQ2_50.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_50.setMinimumSize(QSize(0, 70))
+        self.EQ2_50.setMaximumSize(QSize(16777215, 70))
         self.EQ2_50.setFont(font2)
         self.EQ2_50.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -940,8 +941,8 @@ class Ui_MainWindow(object):
         self.Band3_2.setObjectName(u"Band3_2")
         self.EQ2_100 = QSlider(self.EQ2_frame1)
         self.EQ2_100.setObjectName(u"EQ2_100")
-        self.EQ2_100.setMinimumSize(QSize(0, 100))
-        self.EQ2_100.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_100.setMinimumSize(QSize(0, 70))
+        self.EQ2_100.setMaximumSize(QSize(16777215, 70))
         self.EQ2_100.setFont(font2)
         self.EQ2_100.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -986,8 +987,8 @@ class Ui_MainWindow(object):
         self.Band4_2.setObjectName(u"Band4_2")
         self.EQ2_200 = QSlider(self.EQ2_frame1)
         self.EQ2_200.setObjectName(u"EQ2_200")
-        self.EQ2_200.setMinimumSize(QSize(0, 100))
-        self.EQ2_200.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_200.setMinimumSize(QSize(0, 70))
+        self.EQ2_200.setMaximumSize(QSize(16777215, 70))
         self.EQ2_200.setFont(font2)
         self.EQ2_200.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1032,8 +1033,8 @@ class Ui_MainWindow(object):
         self.Band5_2.setObjectName(u"Band5_2")
         self.EQ2_400 = QSlider(self.EQ2_frame1)
         self.EQ2_400.setObjectName(u"EQ2_400")
-        self.EQ2_400.setMinimumSize(QSize(0, 100))
-        self.EQ2_400.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_400.setMinimumSize(QSize(0, 70))
+        self.EQ2_400.setMaximumSize(QSize(16777215, 70))
         self.EQ2_400.setFont(font2)
         self.EQ2_400.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1078,8 +1079,8 @@ class Ui_MainWindow(object):
         self.Band6_2.setObjectName(u"Band6_2")
         self.EQ2_800 = QSlider(self.EQ2_frame1)
         self.EQ2_800.setObjectName(u"EQ2_800")
-        self.EQ2_800.setMinimumSize(QSize(0, 100))
-        self.EQ2_800.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_800.setMinimumSize(QSize(0, 70))
+        self.EQ2_800.setMaximumSize(QSize(16777215, 70))
         self.EQ2_800.setSizeIncrement(QSize(0, 0))
         self.EQ2_800.setFont(font2)
         self.EQ2_800.setStyleSheet(u".QSlider::groove:vertical {\n"
@@ -1126,8 +1127,8 @@ class Ui_MainWindow(object):
         self.Band7_2.setObjectName(u"Band7_2")
         self.EQ2_1600 = QSlider(self.EQ2_frame1)
         self.EQ2_1600.setObjectName(u"EQ2_1600")
-        self.EQ2_1600.setMinimumSize(QSize(0, 100))
-        self.EQ2_1600.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_1600.setMinimumSize(QSize(0, 70))
+        self.EQ2_1600.setMaximumSize(QSize(16777215, 70))
         self.EQ2_1600.setFont(font2)
         self.EQ2_1600.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1172,8 +1173,8 @@ class Ui_MainWindow(object):
         self.Band8_2.setObjectName(u"Band8_2")
         self.EQ2_3150 = QSlider(self.EQ2_frame1)
         self.EQ2_3150.setObjectName(u"EQ2_3150")
-        self.EQ2_3150.setMinimumSize(QSize(0, 100))
-        self.EQ2_3150.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_3150.setMinimumSize(QSize(0, 70))
+        self.EQ2_3150.setMaximumSize(QSize(16777215, 70))
         self.EQ2_3150.setFont(font2)
         self.EQ2_3150.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1218,8 +1219,8 @@ class Ui_MainWindow(object):
         self.Band9_2.setObjectName(u"Band9_2")
         self.EQ2_6300 = QSlider(self.EQ2_frame1)
         self.EQ2_6300.setObjectName(u"EQ2_6300")
-        self.EQ2_6300.setMinimumSize(QSize(0, 100))
-        self.EQ2_6300.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_6300.setMinimumSize(QSize(0, 70))
+        self.EQ2_6300.setMaximumSize(QSize(16777215, 70))
         self.EQ2_6300.setFont(font2)
         self.EQ2_6300.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1264,8 +1265,8 @@ class Ui_MainWindow(object):
         self.Band10_2.setObjectName(u"Band10_2")
         self.EQ2_12500 = QSlider(self.EQ2_frame1)
         self.EQ2_12500.setObjectName(u"EQ2_12500")
-        self.EQ2_12500.setMinimumSize(QSize(0, 100))
-        self.EQ2_12500.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_12500.setMinimumSize(QSize(0, 70))
+        self.EQ2_12500.setMaximumSize(QSize(16777215, 70))
         self.EQ2_12500.setFont(font2)
         self.EQ2_12500.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1317,8 +1318,8 @@ class Ui_MainWindow(object):
         self.EQ2_frame2.setObjectName(u"EQ2_frame2")
         sizePolicy1.setHeightForWidth(self.EQ2_frame2.sizePolicy().hasHeightForWidth())
         self.EQ2_frame2.setSizePolicy(sizePolicy1)
-        self.EQ2_frame2.setMinimumSize(QSize(490, 145))
-        self.EQ2_frame2.setMaximumSize(QSize(490, 145))
+        self.EQ2_frame2.setMinimumSize(QSize(490, 115))
+        self.EQ2_frame2.setMaximumSize(QSize(490, 115))
         self.EQ2_frame2.setFrameShape(QFrame.Panel)
         self.EQ2_frame2.setFrameShadow(QFrame.Sunken)
         self.horizontalLayout_3 = QHBoxLayout(self.EQ2_frame2)
@@ -1331,8 +1332,8 @@ class Ui_MainWindow(object):
         self.Band1_3.setObjectName(u"Band1_3")
         self.EQ2_32 = QSlider(self.EQ2_frame2)
         self.EQ2_32.setObjectName(u"EQ2_32")
-        self.EQ2_32.setMinimumSize(QSize(0, 100))
-        self.EQ2_32.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_32.setMinimumSize(QSize(0, 70))
+        self.EQ2_32.setMaximumSize(QSize(16777215, 70))
         self.EQ2_32.setFont(font2)
         self.EQ2_32.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1377,8 +1378,8 @@ class Ui_MainWindow(object):
         self.Band2_3.setObjectName(u"Band2_3")
         self.EQ2_63 = QSlider(self.EQ2_frame2)
         self.EQ2_63.setObjectName(u"EQ2_63")
-        self.EQ2_63.setMinimumSize(QSize(0, 100))
-        self.EQ2_63.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_63.setMinimumSize(QSize(0, 70))
+        self.EQ2_63.setMaximumSize(QSize(16777215, 70))
         self.EQ2_63.setFont(font2)
         self.EQ2_63.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1423,8 +1424,8 @@ class Ui_MainWindow(object):
         self.Band3_3.setObjectName(u"Band3_3")
         self.EQ2_125 = QSlider(self.EQ2_frame2)
         self.EQ2_125.setObjectName(u"EQ2_125")
-        self.EQ2_125.setMinimumSize(QSize(0, 100))
-        self.EQ2_125.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_125.setMinimumSize(QSize(0, 70))
+        self.EQ2_125.setMaximumSize(QSize(16777215, 70))
         self.EQ2_125.setFont(font2)
         self.EQ2_125.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1469,8 +1470,8 @@ class Ui_MainWindow(object):
         self.Band4_3.setObjectName(u"Band4_3")
         self.EQ2_250 = QSlider(self.EQ2_frame2)
         self.EQ2_250.setObjectName(u"EQ2_250")
-        self.EQ2_250.setMinimumSize(QSize(0, 100))
-        self.EQ2_250.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_250.setMinimumSize(QSize(0, 70))
+        self.EQ2_250.setMaximumSize(QSize(16777215, 70))
         self.EQ2_250.setFont(font2)
         self.EQ2_250.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1515,8 +1516,8 @@ class Ui_MainWindow(object):
         self.Band5_3.setObjectName(u"Band5_3")
         self.EQ2_500 = QSlider(self.EQ2_frame2)
         self.EQ2_500.setObjectName(u"EQ2_500")
-        self.EQ2_500.setMinimumSize(QSize(0, 100))
-        self.EQ2_500.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_500.setMinimumSize(QSize(0, 70))
+        self.EQ2_500.setMaximumSize(QSize(16777215, 70))
         self.EQ2_500.setFont(font2)
         self.EQ2_500.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1561,8 +1562,8 @@ class Ui_MainWindow(object):
         self.Band6_3.setObjectName(u"Band6_3")
         self.EQ2_1000 = QSlider(self.EQ2_frame2)
         self.EQ2_1000.setObjectName(u"EQ2_1000")
-        self.EQ2_1000.setMinimumSize(QSize(0, 100))
-        self.EQ2_1000.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_1000.setMinimumSize(QSize(0, 70))
+        self.EQ2_1000.setMaximumSize(QSize(16777215, 70))
         self.EQ2_1000.setSizeIncrement(QSize(0, 0))
         self.EQ2_1000.setFont(font2)
         self.EQ2_1000.setStyleSheet(u".QSlider::groove:vertical {\n"
@@ -1608,8 +1609,8 @@ class Ui_MainWindow(object):
         self.Band7_3.setObjectName(u"Band7_3")
         self.EQ2_2000 = QSlider(self.EQ2_frame2)
         self.EQ2_2000.setObjectName(u"EQ2_2000")
-        self.EQ2_2000.setMinimumSize(QSize(0, 100))
-        self.EQ2_2000.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_2000.setMinimumSize(QSize(0, 70))
+        self.EQ2_2000.setMaximumSize(QSize(16777215, 70))
         self.EQ2_2000.setFont(font2)
         self.EQ2_2000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1654,8 +1655,8 @@ class Ui_MainWindow(object):
         self.Band8_3.setObjectName(u"Band8_3")
         self.EQ2_4000 = QSlider(self.EQ2_frame2)
         self.EQ2_4000.setObjectName(u"EQ2_4000")
-        self.EQ2_4000.setMinimumSize(QSize(0, 100))
-        self.EQ2_4000.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_4000.setMinimumSize(QSize(0, 70))
+        self.EQ2_4000.setMaximumSize(QSize(16777215, 70))
         self.EQ2_4000.setFont(font2)
         self.EQ2_4000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1700,8 +1701,8 @@ class Ui_MainWindow(object):
         self.Band9_3.setObjectName(u"Band9_3")
         self.EQ2_8000 = QSlider(self.EQ2_frame2)
         self.EQ2_8000.setObjectName(u"EQ2_8000")
-        self.EQ2_8000.setMinimumSize(QSize(0, 100))
-        self.EQ2_8000.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_8000.setMinimumSize(QSize(0, 70))
+        self.EQ2_8000.setMaximumSize(QSize(16777215, 70))
         self.EQ2_8000.setFont(font2)
         self.EQ2_8000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1746,8 +1747,8 @@ class Ui_MainWindow(object):
         self.Band10_3.setObjectName(u"Band10_3")
         self.EQ2_16000 = QSlider(self.EQ2_frame2)
         self.EQ2_16000.setObjectName(u"EQ2_16000")
-        self.EQ2_16000.setMinimumSize(QSize(0, 100))
-        self.EQ2_16000.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_16000.setMinimumSize(QSize(0, 70))
+        self.EQ2_16000.setMaximumSize(QSize(16777215, 70))
         self.EQ2_16000.setFont(font2)
         self.EQ2_16000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1799,8 +1800,8 @@ class Ui_MainWindow(object):
         self.EQ2_frame3.setObjectName(u"EQ2_frame3")
         sizePolicy1.setHeightForWidth(self.EQ2_frame3.sizePolicy().hasHeightForWidth())
         self.EQ2_frame3.setSizePolicy(sizePolicy1)
-        self.EQ2_frame3.setMinimumSize(QSize(490, 145))
-        self.EQ2_frame3.setMaximumSize(QSize(490, 145))
+        self.EQ2_frame3.setMinimumSize(QSize(490, 115))
+        self.EQ2_frame3.setMaximumSize(QSize(490, 115))
         self.EQ2_frame3.setFrameShape(QFrame.Panel)
         self.EQ2_frame3.setFrameShadow(QFrame.Sunken)
         self.horizontalLayout_5 = QHBoxLayout(self.EQ2_frame3)
@@ -1813,8 +1814,8 @@ class Ui_MainWindow(object):
         self.Band1_4.setObjectName(u"Band1_4")
         self.EQ2_40 = QSlider(self.EQ2_frame3)
         self.EQ2_40.setObjectName(u"EQ2_40")
-        self.EQ2_40.setMinimumSize(QSize(0, 100))
-        self.EQ2_40.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_40.setMinimumSize(QSize(0, 70))
+        self.EQ2_40.setMaximumSize(QSize(16777215, 70))
         self.EQ2_40.setFont(font2)
         self.EQ2_40.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1859,8 +1860,8 @@ class Ui_MainWindow(object):
         self.Band2_4.setObjectName(u"Band2_4")
         self.EQ2_80 = QSlider(self.EQ2_frame3)
         self.EQ2_80.setObjectName(u"EQ2_80")
-        self.EQ2_80.setMinimumSize(QSize(0, 100))
-        self.EQ2_80.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_80.setMinimumSize(QSize(0, 70))
+        self.EQ2_80.setMaximumSize(QSize(16777215, 70))
         self.EQ2_80.setFont(font2)
         self.EQ2_80.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1905,8 +1906,8 @@ class Ui_MainWindow(object):
         self.Band3_4.setObjectName(u"Band3_4")
         self.EQ2_160 = QSlider(self.EQ2_frame3)
         self.EQ2_160.setObjectName(u"EQ2_160")
-        self.EQ2_160.setMinimumSize(QSize(0, 100))
-        self.EQ2_160.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_160.setMinimumSize(QSize(0, 70))
+        self.EQ2_160.setMaximumSize(QSize(16777215, 70))
         self.EQ2_160.setFont(font2)
         self.EQ2_160.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1951,8 +1952,8 @@ class Ui_MainWindow(object):
         self.Band4_4.setObjectName(u"Band4_4")
         self.EQ2_315 = QSlider(self.EQ2_frame3)
         self.EQ2_315.setObjectName(u"EQ2_315")
-        self.EQ2_315.setMinimumSize(QSize(0, 100))
-        self.EQ2_315.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_315.setMinimumSize(QSize(0, 70))
+        self.EQ2_315.setMaximumSize(QSize(16777215, 70))
         self.EQ2_315.setFont(font2)
         self.EQ2_315.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -1997,8 +1998,8 @@ class Ui_MainWindow(object):
         self.Band5_4.setObjectName(u"Band5_4")
         self.EQ2_630 = QSlider(self.EQ2_frame3)
         self.EQ2_630.setObjectName(u"EQ2_630")
-        self.EQ2_630.setMinimumSize(QSize(0, 100))
-        self.EQ2_630.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_630.setMinimumSize(QSize(0, 70))
+        self.EQ2_630.setMaximumSize(QSize(16777215, 70))
         self.EQ2_630.setFont(font2)
         self.EQ2_630.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -2043,8 +2044,8 @@ class Ui_MainWindow(object):
         self.Band6_4.setObjectName(u"Band6_4")
         self.EQ2_1250 = QSlider(self.EQ2_frame3)
         self.EQ2_1250.setObjectName(u"EQ2_1250")
-        self.EQ2_1250.setMinimumSize(QSize(0, 100))
-        self.EQ2_1250.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_1250.setMinimumSize(QSize(0, 70))
+        self.EQ2_1250.setMaximumSize(QSize(16777215, 70))
         self.EQ2_1250.setSizeIncrement(QSize(0, 0))
         self.EQ2_1250.setFont(font2)
         self.EQ2_1250.setStyleSheet(u".QSlider::groove:vertical {\n"
@@ -2090,8 +2091,8 @@ class Ui_MainWindow(object):
         self.Band7_4.setObjectName(u"Band7_4")
         self.EQ2_2500 = QSlider(self.EQ2_frame3)
         self.EQ2_2500.setObjectName(u"EQ2_2500")
-        self.EQ2_2500.setMinimumSize(QSize(0, 100))
-        self.EQ2_2500.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_2500.setMinimumSize(QSize(0, 70))
+        self.EQ2_2500.setMaximumSize(QSize(16777215, 70))
         self.EQ2_2500.setFont(font2)
         self.EQ2_2500.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -2136,8 +2137,8 @@ class Ui_MainWindow(object):
         self.Band8_4.setObjectName(u"Band8_4")
         self.EQ2_5000 = QSlider(self.EQ2_frame3)
         self.EQ2_5000.setObjectName(u"EQ2_5000")
-        self.EQ2_5000.setMinimumSize(QSize(0, 100))
-        self.EQ2_5000.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_5000.setMinimumSize(QSize(0, 70))
+        self.EQ2_5000.setMaximumSize(QSize(16777215, 70))
         self.EQ2_5000.setFont(font2)
         self.EQ2_5000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -2182,8 +2183,8 @@ class Ui_MainWindow(object):
         self.Band9_4.setObjectName(u"Band9_4")
         self.EQ2_10000 = QSlider(self.EQ2_frame3)
         self.EQ2_10000.setObjectName(u"EQ2_10000")
-        self.EQ2_10000.setMinimumSize(QSize(0, 100))
-        self.EQ2_10000.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_10000.setMinimumSize(QSize(0, 70))
+        self.EQ2_10000.setMaximumSize(QSize(16777215, 70))
         self.EQ2_10000.setFont(font2)
         self.EQ2_10000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
@@ -2229,8 +2230,8 @@ class Ui_MainWindow(object):
         self.EQ2_20000 = QSlider(self.EQ2_frame3)
         self.EQ2_20000.setObjectName(u"EQ2_20000")
         self.EQ2_20000.setEnabled(False)
-        self.EQ2_20000.setMinimumSize(QSize(0, 100))
-        self.EQ2_20000.setMaximumSize(QSize(16777215, 100))
+        self.EQ2_20000.setMinimumSize(QSize(0, 70))
+        self.EQ2_20000.setMaximumSize(QSize(16777215, 70))
         self.EQ2_20000.setFont(font2)
         self.EQ2_20000.setStyleSheet(u".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
