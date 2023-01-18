@@ -20,7 +20,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         for W in widget_list:
             w_font = W.font()
             w_fontsize = w_font.pointSize()
-            print(f'{W.objectName()}:{w_fontsize}')
+            # print(f'{W.objectName()}:{w_fontsize}')
             if w_fontsize < 10:
                 w_font.setPointSize(10)
             elif 18 <= w_fontsize <= 20:
