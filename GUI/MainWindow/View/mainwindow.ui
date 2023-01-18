@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1131</width>
-    <height>761</height>
+    <width>1097</width>
+    <height>736</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -35,13 +35,13 @@
       <property name="minimumSize">
        <size>
         <width>541</width>
-        <height>71</height>
+        <height>70</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
         <width>541</width>
-        <height>71</height>
+        <height>70</height>
        </size>
       </property>
       <property name="title">
@@ -335,13 +335,13 @@ background: rgba(118, 214, 255, 85)
       <property name="minimumSize">
        <size>
         <width>520</width>
-        <height>0</height>
+        <height>375</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
         <width>520</width>
-        <height>500</height>
+        <height>375</height>
        </size>
       </property>
       <property name="autoFillBackground">
@@ -351,7 +351,7 @@ background: rgba(118, 214, 255, 85)
        <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -4188,6 +4188,12 @@ background: rgba(118, 214, 255, 85)
         <height>550</height>
        </size>
       </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>550</height>
+       </size>
+      </property>
       <property name="title">
        <string>Audio source:</string>
       </property>
@@ -4322,6 +4328,12 @@ background: rgba(118, 214, 255, 85)
        </item>
        <item>
         <widget class="QLineEdit" name="SearchAudio">
+         <property name="minimumSize">
+          <size>
+           <width>230</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="inputMask">
           <string/>
          </property>
@@ -4343,7 +4355,7 @@ background: rgba(118, 214, 255, 85)
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1131</width>
+     <width>1097</width>
      <height>22</height>
     </rect>
    </property>

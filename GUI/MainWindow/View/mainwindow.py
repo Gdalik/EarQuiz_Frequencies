@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1131, 761)
+        MainWindow.resize(1097, 736)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -105,8 +105,8 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.PatternGroupBox = QGroupBox(self.centralwidget)
         self.PatternGroupBox.setObjectName(u"PatternGroupBox")
-        self.PatternGroupBox.setMinimumSize(QSize(541, 71))
-        self.PatternGroupBox.setMaximumSize(QSize(541, 71))
+        self.PatternGroupBox.setMinimumSize(QSize(541, 70))
+        self.PatternGroupBox.setMaximumSize(QSize(541, 70))
         self.horizontalLayout_6 = QHBoxLayout(self.PatternGroupBox)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.PatternBox = QComboBox(self.PatternGroupBox)
@@ -241,8 +241,8 @@ class Ui_MainWindow(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.EQtabWidget.sizePolicy().hasHeightForWidth())
         self.EQtabWidget.setSizePolicy(sizePolicy1)
-        self.EQtabWidget.setMinimumSize(QSize(520, 0))
-        self.EQtabWidget.setMaximumSize(QSize(520, 500))
+        self.EQtabWidget.setMinimumSize(QSize(520, 375))
+        self.EQtabWidget.setMaximumSize(QSize(520, 375))
         self.EQtabWidget.setAutoFillBackground(False)
         self.EQtabWidget.setTabPosition(QTabWidget.North)
         self.EQtabWidget.setTabsClosable(False)
@@ -2196,6 +2196,7 @@ class Ui_MainWindow(object):
         self.SourceBox = QGroupBox(self.centralwidget)
         self.SourceBox.setObjectName(u"SourceBox")
         self.SourceBox.setMinimumSize(QSize(255, 550))
+        self.SourceBox.setMaximumSize(QSize(16777215, 550))
         self.verticalLayout_4 = QVBoxLayout(self.SourceBox)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.PinkNoiseRBut = QRadioButton(self.SourceBox)
@@ -2278,6 +2279,7 @@ class Ui_MainWindow(object):
 
         self.SearchAudio = QLineEdit(self.SourceBox)
         self.SearchAudio.setObjectName(u"SearchAudio")
+        self.SearchAudio.setMinimumSize(QSize(230, 0))
         self.SearchAudio.setClearButtonEnabled(True)
 
         self.verticalLayout_4.addWidget(self.SearchAudio)
@@ -2288,7 +2290,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1131, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1097, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuView = QMenu(self.menubar)
@@ -2788,7 +2790,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.PatternBox.setCurrentIndex(-1)
-        self.EQtabWidget.setCurrentIndex(0)
+        self.EQtabWidget.setCurrentIndex(1)
         self.BWBox.setCurrentIndex(3)
 
 
