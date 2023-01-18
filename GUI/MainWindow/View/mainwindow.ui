@@ -434,7 +434,7 @@ background: rgba(118, 214, 255, 85)
        <bool>true</bool>
       </property>
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="MinimumExpanding">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -4784,6 +4784,11 @@ color: green;
                <width>105</width>
                <height>24</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>13</pointsize>
+              </font>
              </property>
              <property name="maximumTime">
               <time>

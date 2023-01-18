@@ -1,3 +1,5 @@
+import time
+
 from PySide6.QtWidgets import QSlider, QLabel
 from Misc.common_calcs import findAdjacentEl
 
@@ -51,7 +53,7 @@ class EqView:
         return Slider, Label
 
     def getFilters(self):
-        SliderList = [Slider for Slider in self.TabWidget.findChildren(QSlider) if Slider.objectName().startswith(self.currentEQ)]
+        SliderList = [Slider for Slider in self.TabWidget.findChildren(QSlider) if Slider.objectName().startswith(self.currentEQ) and Slider.objectName() not in self._permDisabledFilters]
         LabelList = [self.TabWidget.findChild(QLabel, f'{SliderName}_Lab') for SliderName in map(QSlider.objectName, SliderList)]
         FilterList = zip(SliderList, LabelList)
         return [*FilterList]

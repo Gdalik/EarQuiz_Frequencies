@@ -8,7 +8,6 @@ class EQContr:
         self.Sliders = mw_view.EQtabWidget.findChildren(QSlider)
         for Slider in self.Sliders:
             Slider.valueChanged.connect(self.onSliderDragged)
-        self.setEQMode(mw_view.PatternBox.currentIndex()+1)
 
     def onSliderDragged(self, value):
         self.EQ_view.case_disableAdjacentFiltersModeOn(value, self.EQpattern['ActiveFreqRange'])
@@ -20,4 +19,9 @@ class EQContr:
         self.EQ_view.resetEQ(self.EQpattern['EQ_boost_cut'])
         self.EQ_view.rangeCrop(*self.EQpattern['ActiveFreqRange'])
         self.EQ_view.disableAdjacentFiltersMode(self.EQpattern.get('disableAdjacentFiltersMode', False))
+
+    def getAvailableFreq(self):
+        return list(map(self.EQ_view._getfreq, self.EQ_view._sortedFilters()))
+
+
 
