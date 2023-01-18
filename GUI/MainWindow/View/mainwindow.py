@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1151, 856)
+        MainWindow.resize(1166, 856)
         sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -166,6 +166,10 @@ class Ui_MainWindow(object):
 
 
         self.HeadLayout.addWidget(self.ModeButtonsGroupBox)
+
+        self.horizontalSpacer_13 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.HeadLayout.addItem(self.horizontalSpacer_13)
 
         self.MW_PlayPause = QToolButton(self.centralwidget)
         self.MW_PlayPause.setObjectName(u"MW_PlayPause")
@@ -2279,7 +2283,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1151, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1166, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuView = QMenu(self.menubar)
