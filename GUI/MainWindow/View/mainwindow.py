@@ -32,8 +32,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1166, 776)
-        sizePolicy = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
+        MainWindow.resize(1131, 761)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
@@ -126,8 +126,11 @@ class Ui_MainWindow(object):
 
         self.HeadLayout = QHBoxLayout()
         self.HeadLayout.setObjectName(u"HeadLayout")
+        self.HeadLayout.setContentsMargins(0, 0, -1, 0)
         self.ModeButtonsGroupBox = QGroupBox(self.centralwidget)
         self.ModeButtonsGroupBox.setObjectName(u"ModeButtonsGroupBox")
+        self.ModeButtonsGroupBox.setMinimumSize(QSize(0, 79))
+        self.ModeButtonsGroupBox.setMaximumSize(QSize(16777215, 79))
         self.horizontalLayout_4 = QHBoxLayout(self.ModeButtonsGroupBox)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.PreviewButton = QToolButton(self.ModeButtonsGroupBox)
@@ -168,7 +171,7 @@ class Ui_MainWindow(object):
 
         self.HeadLayout.addWidget(self.ModeButtonsGroupBox)
 
-        self.horizontalSpacer_13 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer_13 = QSpacerItem(5, 0, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
         self.HeadLayout.addItem(self.horizontalSpacer_13)
 
@@ -206,12 +209,13 @@ class Ui_MainWindow(object):
 
         self.HeadLayout.addWidget(self.MW_Stop)
 
-        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_7 = QSpacerItem(40, 0, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.HeadLayout.addItem(self.horizontalSpacer_7)
 
         self.EqOnOffLab = QLabel(self.centralwidget)
         self.EqOnOffLab.setObjectName(u"EqOnOffLab")
+        self.EqOnOffLab.setMaximumSize(QSize(16777215, 30))
         font1 = QFont()
         font1.setFamilies([u"Arial"])
         font1.setPointSize(20)
@@ -222,12 +226,1972 @@ class Ui_MainWindow(object):
 
         self.HeadLayout.addWidget(self.EqOnOffLab)
 
-        self.horizontalSpacer_8 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_8 = QSpacerItem(20, 0, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.HeadLayout.addItem(self.horizontalSpacer_8)
 
 
         self.gridLayout_2.addLayout(self.HeadLayout, 1, 1, 1, 1)
+
+        self.EQtabWidget = QTabWidget(self.centralwidget)
+        self.EQtabWidget.setObjectName(u"EQtabWidget")
+        self.EQtabWidget.setEnabled(True)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.EQtabWidget.sizePolicy().hasHeightForWidth())
+        self.EQtabWidget.setSizePolicy(sizePolicy1)
+        self.EQtabWidget.setMinimumSize(QSize(520, 0))
+        self.EQtabWidget.setMaximumSize(QSize(520, 500))
+        self.EQtabWidget.setAutoFillBackground(False)
+        self.EQtabWidget.setTabPosition(QTabWidget.North)
+        self.EQtabWidget.setTabsClosable(False)
+        self.EQtabWidget.setTabBarAutoHide(False)
+        self.EQ1 = QWidget()
+        self.EQ1.setObjectName(u"EQ1")
+        self.verticalLayout_2 = QVBoxLayout(self.EQ1)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.EQ1_frame = QFrame(self.EQ1)
+        self.EQ1_frame.setObjectName(u"EQ1_frame")
+        sizePolicy1.setHeightForWidth(self.EQ1_frame.sizePolicy().hasHeightForWidth())
+        self.EQ1_frame.setSizePolicy(sizePolicy1)
+        self.EQ1_frame.setMinimumSize(QSize(490, 110))
+        self.EQ1_frame.setMaximumSize(QSize(490, 110))
+        self.EQ1_frame.setFrameShape(QFrame.Panel)
+        self.EQ1_frame.setFrameShadow(QFrame.Sunken)
+        self.horizontalLayout = QHBoxLayout(self.EQ1_frame)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalSpacer = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.Band1 = QVBoxLayout()
+        self.Band1.setObjectName(u"Band1")
+        self.EQ1_31 = QSlider(self.EQ1_frame)
+        self.EQ1_31.setObjectName(u"EQ1_31")
+        self.EQ1_31.setMinimumSize(QSize(0, 65))
+        self.EQ1_31.setMaximumSize(QSize(16777215, 65))
+        font2 = QFont()
+        font2.setKerning(True)
+        self.EQ1_31.setFont(font2)
+        self.EQ1_31.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ1_31.setMinimum(-1)
+        self.EQ1_31.setMaximum(1)
+        self.EQ1_31.setPageStep(1)
+        self.EQ1_31.setValue(0)
+        self.EQ1_31.setTracking(True)
+        self.EQ1_31.setOrientation(Qt.Vertical)
+        self.EQ1_31.setInvertedAppearance(False)
+        self.EQ1_31.setInvertedControls(False)
+
+        self.Band1.addWidget(self.EQ1_31, 0, Qt.AlignHCenter)
+
+        self.EQ1_31_Lab = QLabel(self.EQ1_frame)
+        self.EQ1_31_Lab.setObjectName(u"EQ1_31_Lab")
+        self.EQ1_31_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ1_31_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ1_31_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band1.addWidget(self.EQ1_31_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout.addLayout(self.Band1)
+
+        self.Band2 = QVBoxLayout()
+        self.Band2.setObjectName(u"Band2")
+        self.EQ1_63 = QSlider(self.EQ1_frame)
+        self.EQ1_63.setObjectName(u"EQ1_63")
+        self.EQ1_63.setMinimumSize(QSize(0, 65))
+        self.EQ1_63.setMaximumSize(QSize(16777215, 65))
+        self.EQ1_63.setFont(font2)
+        self.EQ1_63.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ1_63.setMinimum(-1)
+        self.EQ1_63.setMaximum(1)
+        self.EQ1_63.setPageStep(1)
+        self.EQ1_63.setTracking(True)
+        self.EQ1_63.setOrientation(Qt.Vertical)
+        self.EQ1_63.setInvertedAppearance(False)
+        self.EQ1_63.setInvertedControls(False)
+
+        self.Band2.addWidget(self.EQ1_63, 0, Qt.AlignHCenter)
+
+        self.EQ1_63_Lab = QLabel(self.EQ1_frame)
+        self.EQ1_63_Lab.setObjectName(u"EQ1_63_Lab")
+        self.EQ1_63_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ1_63_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ1_63_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band2.addWidget(self.EQ1_63_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout.addLayout(self.Band2)
+
+        self.Band3 = QVBoxLayout()
+        self.Band3.setObjectName(u"Band3")
+        self.EQ1_125 = QSlider(self.EQ1_frame)
+        self.EQ1_125.setObjectName(u"EQ1_125")
+        self.EQ1_125.setMinimumSize(QSize(0, 65))
+        self.EQ1_125.setMaximumSize(QSize(16777215, 65))
+        self.EQ1_125.setFont(font2)
+        self.EQ1_125.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ1_125.setMinimum(-1)
+        self.EQ1_125.setMaximum(1)
+        self.EQ1_125.setPageStep(1)
+        self.EQ1_125.setTracking(True)
+        self.EQ1_125.setOrientation(Qt.Vertical)
+        self.EQ1_125.setInvertedAppearance(False)
+        self.EQ1_125.setInvertedControls(False)
+
+        self.Band3.addWidget(self.EQ1_125, 0, Qt.AlignHCenter)
+
+        self.EQ1_125_Lab = QLabel(self.EQ1_frame)
+        self.EQ1_125_Lab.setObjectName(u"EQ1_125_Lab")
+        self.EQ1_125_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ1_125_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ1_125_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band3.addWidget(self.EQ1_125_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout.addLayout(self.Band3)
+
+        self.Band4 = QVBoxLayout()
+        self.Band4.setObjectName(u"Band4")
+        self.EQ1_250 = QSlider(self.EQ1_frame)
+        self.EQ1_250.setObjectName(u"EQ1_250")
+        self.EQ1_250.setMinimumSize(QSize(0, 65))
+        self.EQ1_250.setMaximumSize(QSize(16777215, 65))
+        self.EQ1_250.setFont(font2)
+        self.EQ1_250.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ1_250.setMinimum(-1)
+        self.EQ1_250.setMaximum(1)
+        self.EQ1_250.setPageStep(1)
+        self.EQ1_250.setTracking(True)
+        self.EQ1_250.setOrientation(Qt.Vertical)
+        self.EQ1_250.setInvertedAppearance(False)
+        self.EQ1_250.setInvertedControls(False)
+
+        self.Band4.addWidget(self.EQ1_250, 0, Qt.AlignHCenter)
+
+        self.EQ1_250_Lab = QLabel(self.EQ1_frame)
+        self.EQ1_250_Lab.setObjectName(u"EQ1_250_Lab")
+        self.EQ1_250_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ1_250_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ1_250_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band4.addWidget(self.EQ1_250_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout.addLayout(self.Band4)
+
+        self.Band5 = QVBoxLayout()
+        self.Band5.setObjectName(u"Band5")
+        self.EQ1_500 = QSlider(self.EQ1_frame)
+        self.EQ1_500.setObjectName(u"EQ1_500")
+        self.EQ1_500.setMinimumSize(QSize(0, 65))
+        self.EQ1_500.setMaximumSize(QSize(16777215, 65))
+        self.EQ1_500.setFont(font2)
+        self.EQ1_500.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ1_500.setMinimum(-1)
+        self.EQ1_500.setMaximum(1)
+        self.EQ1_500.setPageStep(1)
+        self.EQ1_500.setTracking(True)
+        self.EQ1_500.setOrientation(Qt.Vertical)
+        self.EQ1_500.setInvertedAppearance(False)
+        self.EQ1_500.setInvertedControls(False)
+
+        self.Band5.addWidget(self.EQ1_500, 0, Qt.AlignHCenter)
+
+        self.EQ1_500_Lab = QLabel(self.EQ1_frame)
+        self.EQ1_500_Lab.setObjectName(u"EQ1_500_Lab")
+        self.EQ1_500_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ1_500_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ1_500_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band5.addWidget(self.EQ1_500_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout.addLayout(self.Band5)
+
+        self.Band6 = QVBoxLayout()
+        self.Band6.setObjectName(u"Band6")
+        self.EQ1_1000 = QSlider(self.EQ1_frame)
+        self.EQ1_1000.setObjectName(u"EQ1_1000")
+        self.EQ1_1000.setMinimumSize(QSize(0, 65))
+        self.EQ1_1000.setMaximumSize(QSize(16777215, 65))
+        self.EQ1_1000.setSizeIncrement(QSize(0, 0))
+        self.EQ1_1000.setFont(font2)
+        self.EQ1_1000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ1_1000.setMinimum(-1)
+        self.EQ1_1000.setMaximum(1)
+        self.EQ1_1000.setPageStep(1)
+        self.EQ1_1000.setTracking(True)
+        self.EQ1_1000.setOrientation(Qt.Vertical)
+        self.EQ1_1000.setInvertedAppearance(False)
+        self.EQ1_1000.setInvertedControls(False)
+
+        self.Band6.addWidget(self.EQ1_1000, 0, Qt.AlignHCenter)
+
+        self.EQ1_1000_Lab = QLabel(self.EQ1_frame)
+        self.EQ1_1000_Lab.setObjectName(u"EQ1_1000_Lab")
+        self.EQ1_1000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ1_1000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ1_1000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band6.addWidget(self.EQ1_1000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout.addLayout(self.Band6)
+
+        self.Band7 = QVBoxLayout()
+        self.Band7.setObjectName(u"Band7")
+        self.EQ1_2000 = QSlider(self.EQ1_frame)
+        self.EQ1_2000.setObjectName(u"EQ1_2000")
+        self.EQ1_2000.setMinimumSize(QSize(0, 65))
+        self.EQ1_2000.setMaximumSize(QSize(16777215, 65))
+        self.EQ1_2000.setFont(font2)
+        self.EQ1_2000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ1_2000.setMinimum(-1)
+        self.EQ1_2000.setMaximum(1)
+        self.EQ1_2000.setPageStep(1)
+        self.EQ1_2000.setTracking(True)
+        self.EQ1_2000.setOrientation(Qt.Vertical)
+        self.EQ1_2000.setInvertedAppearance(False)
+        self.EQ1_2000.setInvertedControls(False)
+
+        self.Band7.addWidget(self.EQ1_2000, 0, Qt.AlignHCenter)
+
+        self.EQ1_2000_Lab = QLabel(self.EQ1_frame)
+        self.EQ1_2000_Lab.setObjectName(u"EQ1_2000_Lab")
+        self.EQ1_2000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ1_2000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ1_2000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band7.addWidget(self.EQ1_2000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout.addLayout(self.Band7)
+
+        self.Band8 = QVBoxLayout()
+        self.Band8.setObjectName(u"Band8")
+        self.EQ1_4000 = QSlider(self.EQ1_frame)
+        self.EQ1_4000.setObjectName(u"EQ1_4000")
+        self.EQ1_4000.setMinimumSize(QSize(0, 65))
+        self.EQ1_4000.setMaximumSize(QSize(16777215, 65))
+        self.EQ1_4000.setFont(font2)
+        self.EQ1_4000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ1_4000.setMinimum(-1)
+        self.EQ1_4000.setMaximum(1)
+        self.EQ1_4000.setPageStep(1)
+        self.EQ1_4000.setTracking(True)
+        self.EQ1_4000.setOrientation(Qt.Vertical)
+        self.EQ1_4000.setInvertedAppearance(False)
+        self.EQ1_4000.setInvertedControls(False)
+
+        self.Band8.addWidget(self.EQ1_4000, 0, Qt.AlignHCenter)
+
+        self.EQ1_4000_Lab = QLabel(self.EQ1_frame)
+        self.EQ1_4000_Lab.setObjectName(u"EQ1_4000_Lab")
+        self.EQ1_4000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ1_4000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ1_4000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band8.addWidget(self.EQ1_4000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout.addLayout(self.Band8)
+
+        self.Band9 = QVBoxLayout()
+        self.Band9.setObjectName(u"Band9")
+        self.EQ1_8000 = QSlider(self.EQ1_frame)
+        self.EQ1_8000.setObjectName(u"EQ1_8000")
+        self.EQ1_8000.setMinimumSize(QSize(0, 65))
+        self.EQ1_8000.setMaximumSize(QSize(16777215, 65))
+        self.EQ1_8000.setFont(font2)
+        self.EQ1_8000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ1_8000.setMinimum(-1)
+        self.EQ1_8000.setMaximum(1)
+        self.EQ1_8000.setPageStep(1)
+        self.EQ1_8000.setTracking(True)
+        self.EQ1_8000.setOrientation(Qt.Vertical)
+        self.EQ1_8000.setInvertedAppearance(False)
+        self.EQ1_8000.setInvertedControls(False)
+
+        self.Band9.addWidget(self.EQ1_8000, 0, Qt.AlignHCenter)
+
+        self.EQ1_8000_Lab = QLabel(self.EQ1_frame)
+        self.EQ1_8000_Lab.setObjectName(u"EQ1_8000_Lab")
+        self.EQ1_8000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ1_8000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ1_8000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band9.addWidget(self.EQ1_8000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout.addLayout(self.Band9)
+
+        self.Band10 = QVBoxLayout()
+        self.Band10.setObjectName(u"Band10")
+        self.EQ1_16000 = QSlider(self.EQ1_frame)
+        self.EQ1_16000.setObjectName(u"EQ1_16000")
+        self.EQ1_16000.setMinimumSize(QSize(0, 65))
+        self.EQ1_16000.setMaximumSize(QSize(16777215, 65))
+        self.EQ1_16000.setFont(font2)
+        self.EQ1_16000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ1_16000.setMinimum(-1)
+        self.EQ1_16000.setMaximum(1)
+        self.EQ1_16000.setPageStep(1)
+        self.EQ1_16000.setTracking(True)
+        self.EQ1_16000.setOrientation(Qt.Vertical)
+        self.EQ1_16000.setInvertedAppearance(False)
+        self.EQ1_16000.setInvertedControls(False)
+
+        self.Band10.addWidget(self.EQ1_16000, 0, Qt.AlignHCenter)
+
+        self.EQ1_16000_Lab = QLabel(self.EQ1_frame)
+        self.EQ1_16000_Lab.setObjectName(u"EQ1_16000_Lab")
+        self.EQ1_16000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ1_16000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ1_16000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band10.addWidget(self.EQ1_16000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout.addLayout(self.Band10)
+
+        self.horizontalSpacer_2 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
+
+        self.verticalLayout_2.addWidget(self.EQ1_frame)
+
+        self.EQtabWidget.addTab(self.EQ1, "")
+        self.EQ2 = QWidget()
+        self.EQ2.setObjectName(u"EQ2")
+        self.verticalLayout = QVBoxLayout(self.EQ2)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.EQ2_frame1 = QFrame(self.EQ2)
+        self.EQ2_frame1.setObjectName(u"EQ2_frame1")
+        sizePolicy1.setHeightForWidth(self.EQ2_frame1.sizePolicy().hasHeightForWidth())
+        self.EQ2_frame1.setSizePolicy(sizePolicy1)
+        self.EQ2_frame1.setMinimumSize(QSize(490, 110))
+        self.EQ2_frame1.setMaximumSize(QSize(490, 110))
+        self.EQ2_frame1.setFrameShape(QFrame.Panel)
+        self.EQ2_frame1.setFrameShadow(QFrame.Sunken)
+        self.horizontalLayout_2 = QHBoxLayout(self.EQ2_frame1)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalSpacer_3 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_3)
+
+        self.Band1_2 = QVBoxLayout()
+        self.Band1_2.setObjectName(u"Band1_2")
+        self.EQ2_25 = QSlider(self.EQ2_frame1)
+        self.EQ2_25.setObjectName(u"EQ2_25")
+        self.EQ2_25.setEnabled(False)
+        self.EQ2_25.setMinimumSize(QSize(0, 65))
+        self.EQ2_25.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_25.setFont(font2)
+        self.EQ2_25.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(191, 191, 191);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_25.setMinimum(-1)
+        self.EQ2_25.setMaximum(1)
+        self.EQ2_25.setPageStep(1)
+        self.EQ2_25.setTracking(True)
+        self.EQ2_25.setOrientation(Qt.Vertical)
+        self.EQ2_25.setInvertedAppearance(False)
+        self.EQ2_25.setInvertedControls(False)
+
+        self.Band1_2.addWidget(self.EQ2_25, 0, Qt.AlignHCenter)
+
+        self.EQ2_25_Lab = QLabel(self.EQ2_frame1)
+        self.EQ2_25_Lab.setObjectName(u"EQ2_25_Lab")
+        self.EQ2_25_Lab.setEnabled(False)
+        self.EQ2_25_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_25_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_25_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band1_2.addWidget(self.EQ2_25_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_2.addLayout(self.Band1_2)
+
+        self.Band2_2 = QVBoxLayout()
+        self.Band2_2.setObjectName(u"Band2_2")
+        self.EQ2_50 = QSlider(self.EQ2_frame1)
+        self.EQ2_50.setObjectName(u"EQ2_50")
+        self.EQ2_50.setMinimumSize(QSize(0, 65))
+        self.EQ2_50.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_50.setFont(font2)
+        self.EQ2_50.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_50.setMinimum(-1)
+        self.EQ2_50.setMaximum(1)
+        self.EQ2_50.setPageStep(1)
+        self.EQ2_50.setTracking(True)
+        self.EQ2_50.setOrientation(Qt.Vertical)
+        self.EQ2_50.setInvertedAppearance(False)
+        self.EQ2_50.setInvertedControls(False)
+
+        self.Band2_2.addWidget(self.EQ2_50, 0, Qt.AlignHCenter)
+
+        self.EQ2_50_Lab = QLabel(self.EQ2_frame1)
+        self.EQ2_50_Lab.setObjectName(u"EQ2_50_Lab")
+        self.EQ2_50_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_50_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_50_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band2_2.addWidget(self.EQ2_50_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_2.addLayout(self.Band2_2)
+
+        self.Band3_2 = QVBoxLayout()
+        self.Band3_2.setObjectName(u"Band3_2")
+        self.EQ2_100 = QSlider(self.EQ2_frame1)
+        self.EQ2_100.setObjectName(u"EQ2_100")
+        self.EQ2_100.setMinimumSize(QSize(0, 65))
+        self.EQ2_100.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_100.setFont(font2)
+        self.EQ2_100.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_100.setMinimum(-1)
+        self.EQ2_100.setMaximum(1)
+        self.EQ2_100.setPageStep(1)
+        self.EQ2_100.setTracking(True)
+        self.EQ2_100.setOrientation(Qt.Vertical)
+        self.EQ2_100.setInvertedAppearance(False)
+        self.EQ2_100.setInvertedControls(False)
+
+        self.Band3_2.addWidget(self.EQ2_100, 0, Qt.AlignHCenter)
+
+        self.EQ2_100_Lab = QLabel(self.EQ2_frame1)
+        self.EQ2_100_Lab.setObjectName(u"EQ2_100_Lab")
+        self.EQ2_100_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_100_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_100_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band3_2.addWidget(self.EQ2_100_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_2.addLayout(self.Band3_2)
+
+        self.Band4_2 = QVBoxLayout()
+        self.Band4_2.setObjectName(u"Band4_2")
+        self.EQ2_200 = QSlider(self.EQ2_frame1)
+        self.EQ2_200.setObjectName(u"EQ2_200")
+        self.EQ2_200.setMinimumSize(QSize(0, 65))
+        self.EQ2_200.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_200.setFont(font2)
+        self.EQ2_200.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_200.setMinimum(-1)
+        self.EQ2_200.setMaximum(1)
+        self.EQ2_200.setPageStep(1)
+        self.EQ2_200.setTracking(True)
+        self.EQ2_200.setOrientation(Qt.Vertical)
+        self.EQ2_200.setInvertedAppearance(False)
+        self.EQ2_200.setInvertedControls(False)
+
+        self.Band4_2.addWidget(self.EQ2_200, 0, Qt.AlignHCenter)
+
+        self.EQ2_200_Lab = QLabel(self.EQ2_frame1)
+        self.EQ2_200_Lab.setObjectName(u"EQ2_200_Lab")
+        self.EQ2_200_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_200_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_200_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band4_2.addWidget(self.EQ2_200_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_2.addLayout(self.Band4_2)
+
+        self.Band5_2 = QVBoxLayout()
+        self.Band5_2.setObjectName(u"Band5_2")
+        self.EQ2_400 = QSlider(self.EQ2_frame1)
+        self.EQ2_400.setObjectName(u"EQ2_400")
+        self.EQ2_400.setMinimumSize(QSize(0, 65))
+        self.EQ2_400.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_400.setFont(font2)
+        self.EQ2_400.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_400.setMinimum(-1)
+        self.EQ2_400.setMaximum(1)
+        self.EQ2_400.setPageStep(1)
+        self.EQ2_400.setTracking(True)
+        self.EQ2_400.setOrientation(Qt.Vertical)
+        self.EQ2_400.setInvertedAppearance(False)
+        self.EQ2_400.setInvertedControls(False)
+
+        self.Band5_2.addWidget(self.EQ2_400, 0, Qt.AlignHCenter)
+
+        self.EQ2_400_Lab = QLabel(self.EQ2_frame1)
+        self.EQ2_400_Lab.setObjectName(u"EQ2_400_Lab")
+        self.EQ2_400_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_400_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_400_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band5_2.addWidget(self.EQ2_400_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_2.addLayout(self.Band5_2)
+
+        self.Band6_2 = QVBoxLayout()
+        self.Band6_2.setObjectName(u"Band6_2")
+        self.EQ2_800 = QSlider(self.EQ2_frame1)
+        self.EQ2_800.setObjectName(u"EQ2_800")
+        self.EQ2_800.setMinimumSize(QSize(0, 65))
+        self.EQ2_800.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_800.setSizeIncrement(QSize(0, 0))
+        self.EQ2_800.setFont(font2)
+        self.EQ2_800.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.EQ2_800.setMinimum(-1)
+        self.EQ2_800.setMaximum(1)
+        self.EQ2_800.setPageStep(1)
+        self.EQ2_800.setTracking(True)
+        self.EQ2_800.setOrientation(Qt.Vertical)
+        self.EQ2_800.setInvertedAppearance(False)
+        self.EQ2_800.setInvertedControls(False)
+
+        self.Band6_2.addWidget(self.EQ2_800, 0, Qt.AlignHCenter)
+
+        self.EQ2_800_Lab = QLabel(self.EQ2_frame1)
+        self.EQ2_800_Lab.setObjectName(u"EQ2_800_Lab")
+        self.EQ2_800_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_800_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_800_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band6_2.addWidget(self.EQ2_800_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_2.addLayout(self.Band6_2)
+
+        self.Band7_2 = QVBoxLayout()
+        self.Band7_2.setObjectName(u"Band7_2")
+        self.EQ2_1600 = QSlider(self.EQ2_frame1)
+        self.EQ2_1600.setObjectName(u"EQ2_1600")
+        self.EQ2_1600.setMinimumSize(QSize(0, 65))
+        self.EQ2_1600.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_1600.setFont(font2)
+        self.EQ2_1600.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_1600.setMinimum(-1)
+        self.EQ2_1600.setMaximum(1)
+        self.EQ2_1600.setPageStep(1)
+        self.EQ2_1600.setTracking(True)
+        self.EQ2_1600.setOrientation(Qt.Vertical)
+        self.EQ2_1600.setInvertedAppearance(False)
+        self.EQ2_1600.setInvertedControls(False)
+
+        self.Band7_2.addWidget(self.EQ2_1600, 0, Qt.AlignHCenter)
+
+        self.EQ2_1600_Lab = QLabel(self.EQ2_frame1)
+        self.EQ2_1600_Lab.setObjectName(u"EQ2_1600_Lab")
+        self.EQ2_1600_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_1600_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_1600_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band7_2.addWidget(self.EQ2_1600_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_2.addLayout(self.Band7_2)
+
+        self.Band8_2 = QVBoxLayout()
+        self.Band8_2.setObjectName(u"Band8_2")
+        self.EQ2_3150 = QSlider(self.EQ2_frame1)
+        self.EQ2_3150.setObjectName(u"EQ2_3150")
+        self.EQ2_3150.setMinimumSize(QSize(0, 65))
+        self.EQ2_3150.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_3150.setFont(font2)
+        self.EQ2_3150.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_3150.setMinimum(-1)
+        self.EQ2_3150.setMaximum(1)
+        self.EQ2_3150.setPageStep(1)
+        self.EQ2_3150.setTracking(True)
+        self.EQ2_3150.setOrientation(Qt.Vertical)
+        self.EQ2_3150.setInvertedAppearance(False)
+        self.EQ2_3150.setInvertedControls(False)
+
+        self.Band8_2.addWidget(self.EQ2_3150, 0, Qt.AlignHCenter)
+
+        self.EQ2_3150_Lab = QLabel(self.EQ2_frame1)
+        self.EQ2_3150_Lab.setObjectName(u"EQ2_3150_Lab")
+        self.EQ2_3150_Lab.setMinimumSize(QSize(34, 0))
+        self.EQ2_3150_Lab.setMaximumSize(QSize(34, 16777215))
+        self.EQ2_3150_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band8_2.addWidget(self.EQ2_3150_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_2.addLayout(self.Band8_2)
+
+        self.Band9_2 = QVBoxLayout()
+        self.Band9_2.setObjectName(u"Band9_2")
+        self.EQ2_6300 = QSlider(self.EQ2_frame1)
+        self.EQ2_6300.setObjectName(u"EQ2_6300")
+        self.EQ2_6300.setMinimumSize(QSize(0, 65))
+        self.EQ2_6300.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_6300.setFont(font2)
+        self.EQ2_6300.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_6300.setMinimum(-1)
+        self.EQ2_6300.setMaximum(1)
+        self.EQ2_6300.setPageStep(1)
+        self.EQ2_6300.setTracking(True)
+        self.EQ2_6300.setOrientation(Qt.Vertical)
+        self.EQ2_6300.setInvertedAppearance(False)
+        self.EQ2_6300.setInvertedControls(False)
+
+        self.Band9_2.addWidget(self.EQ2_6300, 0, Qt.AlignHCenter)
+
+        self.EQ2_6300_Lab = QLabel(self.EQ2_frame1)
+        self.EQ2_6300_Lab.setObjectName(u"EQ2_6300_Lab")
+        self.EQ2_6300_Lab.setMinimumSize(QSize(32, 0))
+        self.EQ2_6300_Lab.setMaximumSize(QSize(32, 16777215))
+        self.EQ2_6300_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band9_2.addWidget(self.EQ2_6300_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_2.addLayout(self.Band9_2)
+
+        self.Band10_2 = QVBoxLayout()
+        self.Band10_2.setObjectName(u"Band10_2")
+        self.EQ2_12500 = QSlider(self.EQ2_frame1)
+        self.EQ2_12500.setObjectName(u"EQ2_12500")
+        self.EQ2_12500.setMinimumSize(QSize(0, 65))
+        self.EQ2_12500.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_12500.setFont(font2)
+        self.EQ2_12500.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_12500.setMinimum(-1)
+        self.EQ2_12500.setMaximum(1)
+        self.EQ2_12500.setPageStep(1)
+        self.EQ2_12500.setTracking(True)
+        self.EQ2_12500.setOrientation(Qt.Vertical)
+        self.EQ2_12500.setInvertedAppearance(False)
+        self.EQ2_12500.setInvertedControls(False)
+
+        self.Band10_2.addWidget(self.EQ2_12500, 0, Qt.AlignHCenter)
+
+        self.EQ2_12500_Lab = QLabel(self.EQ2_frame1)
+        self.EQ2_12500_Lab.setObjectName(u"EQ2_12500_Lab")
+        self.EQ2_12500_Lab.setMinimumSize(QSize(34, 0))
+        self.EQ2_12500_Lab.setMaximumSize(QSize(34, 16777215))
+        self.EQ2_12500_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band10_2.addWidget(self.EQ2_12500_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_2.addLayout(self.Band10_2)
+
+        self.horizontalSpacer_4 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_4)
+
+
+        self.verticalLayout.addWidget(self.EQ2_frame1)
+
+        self.EQ2_frame2 = QFrame(self.EQ2)
+        self.EQ2_frame2.setObjectName(u"EQ2_frame2")
+        sizePolicy1.setHeightForWidth(self.EQ2_frame2.sizePolicy().hasHeightForWidth())
+        self.EQ2_frame2.setSizePolicy(sizePolicy1)
+        self.EQ2_frame2.setMinimumSize(QSize(490, 110))
+        self.EQ2_frame2.setMaximumSize(QSize(490, 110))
+        self.EQ2_frame2.setFrameShape(QFrame.Panel)
+        self.EQ2_frame2.setFrameShadow(QFrame.Sunken)
+        self.horizontalLayout_3 = QHBoxLayout(self.EQ2_frame2)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalSpacer_5 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_5)
+
+        self.Band1_3 = QVBoxLayout()
+        self.Band1_3.setObjectName(u"Band1_3")
+        self.EQ2_32 = QSlider(self.EQ2_frame2)
+        self.EQ2_32.setObjectName(u"EQ2_32")
+        self.EQ2_32.setMinimumSize(QSize(0, 65))
+        self.EQ2_32.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_32.setFont(font2)
+        self.EQ2_32.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_32.setMinimum(-1)
+        self.EQ2_32.setMaximum(1)
+        self.EQ2_32.setPageStep(1)
+        self.EQ2_32.setTracking(True)
+        self.EQ2_32.setOrientation(Qt.Vertical)
+        self.EQ2_32.setInvertedAppearance(False)
+        self.EQ2_32.setInvertedControls(False)
+
+        self.Band1_3.addWidget(self.EQ2_32, 0, Qt.AlignHCenter)
+
+        self.EQ2_32_Lab = QLabel(self.EQ2_frame2)
+        self.EQ2_32_Lab.setObjectName(u"EQ2_32_Lab")
+        self.EQ2_32_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_32_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_32_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band1_3.addWidget(self.EQ2_32_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_3.addLayout(self.Band1_3)
+
+        self.Band2_3 = QVBoxLayout()
+        self.Band2_3.setObjectName(u"Band2_3")
+        self.EQ2_63 = QSlider(self.EQ2_frame2)
+        self.EQ2_63.setObjectName(u"EQ2_63")
+        self.EQ2_63.setMinimumSize(QSize(0, 65))
+        self.EQ2_63.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_63.setFont(font2)
+        self.EQ2_63.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_63.setMinimum(-1)
+        self.EQ2_63.setMaximum(1)
+        self.EQ2_63.setPageStep(1)
+        self.EQ2_63.setTracking(True)
+        self.EQ2_63.setOrientation(Qt.Vertical)
+        self.EQ2_63.setInvertedAppearance(False)
+        self.EQ2_63.setInvertedControls(False)
+
+        self.Band2_3.addWidget(self.EQ2_63, 0, Qt.AlignHCenter)
+
+        self.EQ2_63_Lab = QLabel(self.EQ2_frame2)
+        self.EQ2_63_Lab.setObjectName(u"EQ2_63_Lab")
+        self.EQ2_63_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_63_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_63_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band2_3.addWidget(self.EQ2_63_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_3.addLayout(self.Band2_3)
+
+        self.Band3_3 = QVBoxLayout()
+        self.Band3_3.setObjectName(u"Band3_3")
+        self.EQ2_125 = QSlider(self.EQ2_frame2)
+        self.EQ2_125.setObjectName(u"EQ2_125")
+        self.EQ2_125.setMinimumSize(QSize(0, 65))
+        self.EQ2_125.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_125.setFont(font2)
+        self.EQ2_125.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_125.setMinimum(-1)
+        self.EQ2_125.setMaximum(1)
+        self.EQ2_125.setPageStep(1)
+        self.EQ2_125.setTracking(True)
+        self.EQ2_125.setOrientation(Qt.Vertical)
+        self.EQ2_125.setInvertedAppearance(False)
+        self.EQ2_125.setInvertedControls(False)
+
+        self.Band3_3.addWidget(self.EQ2_125, 0, Qt.AlignHCenter)
+
+        self.EQ2_125_Lab = QLabel(self.EQ2_frame2)
+        self.EQ2_125_Lab.setObjectName(u"EQ2_125_Lab")
+        self.EQ2_125_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_125_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_125_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band3_3.addWidget(self.EQ2_125_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_3.addLayout(self.Band3_3)
+
+        self.Band4_3 = QVBoxLayout()
+        self.Band4_3.setObjectName(u"Band4_3")
+        self.EQ2_250 = QSlider(self.EQ2_frame2)
+        self.EQ2_250.setObjectName(u"EQ2_250")
+        self.EQ2_250.setMinimumSize(QSize(0, 65))
+        self.EQ2_250.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_250.setFont(font2)
+        self.EQ2_250.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_250.setMinimum(-1)
+        self.EQ2_250.setMaximum(1)
+        self.EQ2_250.setPageStep(1)
+        self.EQ2_250.setTracking(True)
+        self.EQ2_250.setOrientation(Qt.Vertical)
+        self.EQ2_250.setInvertedAppearance(False)
+        self.EQ2_250.setInvertedControls(False)
+
+        self.Band4_3.addWidget(self.EQ2_250, 0, Qt.AlignHCenter)
+
+        self.EQ2_250_Lab = QLabel(self.EQ2_frame2)
+        self.EQ2_250_Lab.setObjectName(u"EQ2_250_Lab")
+        self.EQ2_250_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_250_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_250_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band4_3.addWidget(self.EQ2_250_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_3.addLayout(self.Band4_3)
+
+        self.Band5_3 = QVBoxLayout()
+        self.Band5_3.setObjectName(u"Band5_3")
+        self.EQ2_500 = QSlider(self.EQ2_frame2)
+        self.EQ2_500.setObjectName(u"EQ2_500")
+        self.EQ2_500.setMinimumSize(QSize(0, 65))
+        self.EQ2_500.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_500.setFont(font2)
+        self.EQ2_500.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_500.setMinimum(-1)
+        self.EQ2_500.setMaximum(1)
+        self.EQ2_500.setPageStep(1)
+        self.EQ2_500.setTracking(True)
+        self.EQ2_500.setOrientation(Qt.Vertical)
+        self.EQ2_500.setInvertedAppearance(False)
+        self.EQ2_500.setInvertedControls(False)
+
+        self.Band5_3.addWidget(self.EQ2_500, 0, Qt.AlignHCenter)
+
+        self.EQ2_500_Lab = QLabel(self.EQ2_frame2)
+        self.EQ2_500_Lab.setObjectName(u"EQ2_500_Lab")
+        self.EQ2_500_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_500_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_500_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band5_3.addWidget(self.EQ2_500_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_3.addLayout(self.Band5_3)
+
+        self.Band6_3 = QVBoxLayout()
+        self.Band6_3.setObjectName(u"Band6_3")
+        self.EQ2_1000 = QSlider(self.EQ2_frame2)
+        self.EQ2_1000.setObjectName(u"EQ2_1000")
+        self.EQ2_1000.setMinimumSize(QSize(0, 65))
+        self.EQ2_1000.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_1000.setSizeIncrement(QSize(0, 0))
+        self.EQ2_1000.setFont(font2)
+        self.EQ2_1000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_1000.setMinimum(-1)
+        self.EQ2_1000.setMaximum(1)
+        self.EQ2_1000.setPageStep(1)
+        self.EQ2_1000.setTracking(True)
+        self.EQ2_1000.setOrientation(Qt.Vertical)
+        self.EQ2_1000.setInvertedAppearance(False)
+        self.EQ2_1000.setInvertedControls(False)
+
+        self.Band6_3.addWidget(self.EQ2_1000, 0, Qt.AlignHCenter)
+
+        self.EQ2_1000_Lab = QLabel(self.EQ2_frame2)
+        self.EQ2_1000_Lab.setObjectName(u"EQ2_1000_Lab")
+        self.EQ2_1000_Lab.setMinimumSize(QSize(34, 0))
+        self.EQ2_1000_Lab.setMaximumSize(QSize(34, 16777215))
+        self.EQ2_1000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band6_3.addWidget(self.EQ2_1000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_3.addLayout(self.Band6_3)
+
+        self.Band7_3 = QVBoxLayout()
+        self.Band7_3.setObjectName(u"Band7_3")
+        self.EQ2_2000 = QSlider(self.EQ2_frame2)
+        self.EQ2_2000.setObjectName(u"EQ2_2000")
+        self.EQ2_2000.setMinimumSize(QSize(0, 65))
+        self.EQ2_2000.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_2000.setFont(font2)
+        self.EQ2_2000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_2000.setMinimum(-1)
+        self.EQ2_2000.setMaximum(1)
+        self.EQ2_2000.setPageStep(1)
+        self.EQ2_2000.setTracking(True)
+        self.EQ2_2000.setOrientation(Qt.Vertical)
+        self.EQ2_2000.setInvertedAppearance(False)
+        self.EQ2_2000.setInvertedControls(False)
+
+        self.Band7_3.addWidget(self.EQ2_2000, 0, Qt.AlignHCenter)
+
+        self.EQ2_2000_Lab = QLabel(self.EQ2_frame2)
+        self.EQ2_2000_Lab.setObjectName(u"EQ2_2000_Lab")
+        self.EQ2_2000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_2000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_2000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band7_3.addWidget(self.EQ2_2000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_3.addLayout(self.Band7_3)
+
+        self.Band8_3 = QVBoxLayout()
+        self.Band8_3.setObjectName(u"Band8_3")
+        self.EQ2_4000 = QSlider(self.EQ2_frame2)
+        self.EQ2_4000.setObjectName(u"EQ2_4000")
+        self.EQ2_4000.setMinimumSize(QSize(0, 65))
+        self.EQ2_4000.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_4000.setFont(font2)
+        self.EQ2_4000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_4000.setMinimum(-1)
+        self.EQ2_4000.setMaximum(1)
+        self.EQ2_4000.setPageStep(1)
+        self.EQ2_4000.setTracking(True)
+        self.EQ2_4000.setOrientation(Qt.Vertical)
+        self.EQ2_4000.setInvertedAppearance(False)
+        self.EQ2_4000.setInvertedControls(False)
+
+        self.Band8_3.addWidget(self.EQ2_4000, 0, Qt.AlignHCenter)
+
+        self.EQ2_4000_Lab = QLabel(self.EQ2_frame2)
+        self.EQ2_4000_Lab.setObjectName(u"EQ2_4000_Lab")
+        self.EQ2_4000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_4000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_4000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band8_3.addWidget(self.EQ2_4000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_3.addLayout(self.Band8_3)
+
+        self.Band9_3 = QVBoxLayout()
+        self.Band9_3.setObjectName(u"Band9_3")
+        self.EQ2_8000 = QSlider(self.EQ2_frame2)
+        self.EQ2_8000.setObjectName(u"EQ2_8000")
+        self.EQ2_8000.setMinimumSize(QSize(0, 65))
+        self.EQ2_8000.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_8000.setFont(font2)
+        self.EQ2_8000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_8000.setMinimum(-1)
+        self.EQ2_8000.setMaximum(1)
+        self.EQ2_8000.setPageStep(1)
+        self.EQ2_8000.setTracking(True)
+        self.EQ2_8000.setOrientation(Qt.Vertical)
+        self.EQ2_8000.setInvertedAppearance(False)
+        self.EQ2_8000.setInvertedControls(False)
+
+        self.Band9_3.addWidget(self.EQ2_8000, 0, Qt.AlignHCenter)
+
+        self.EQ2_8000_Lab = QLabel(self.EQ2_frame2)
+        self.EQ2_8000_Lab.setObjectName(u"EQ2_8000_Lab")
+        self.EQ2_8000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_8000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_8000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band9_3.addWidget(self.EQ2_8000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_3.addLayout(self.Band9_3)
+
+        self.Band10_3 = QVBoxLayout()
+        self.Band10_3.setObjectName(u"Band10_3")
+        self.EQ2_16000 = QSlider(self.EQ2_frame2)
+        self.EQ2_16000.setObjectName(u"EQ2_16000")
+        self.EQ2_16000.setMinimumSize(QSize(0, 65))
+        self.EQ2_16000.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_16000.setFont(font2)
+        self.EQ2_16000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_16000.setMinimum(-1)
+        self.EQ2_16000.setMaximum(1)
+        self.EQ2_16000.setPageStep(1)
+        self.EQ2_16000.setTracking(True)
+        self.EQ2_16000.setOrientation(Qt.Vertical)
+        self.EQ2_16000.setInvertedAppearance(False)
+        self.EQ2_16000.setInvertedControls(False)
+
+        self.Band10_3.addWidget(self.EQ2_16000, 0, Qt.AlignHCenter)
+
+        self.EQ2_16000_Lab = QLabel(self.EQ2_frame2)
+        self.EQ2_16000_Lab.setObjectName(u"EQ2_16000_Lab")
+        self.EQ2_16000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_16000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_16000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band10_3.addWidget(self.EQ2_16000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_3.addLayout(self.Band10_3)
+
+        self.horizontalSpacer_6 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_6)
+
+
+        self.verticalLayout.addWidget(self.EQ2_frame2)
+
+        self.EQ2_frame3 = QFrame(self.EQ2)
+        self.EQ2_frame3.setObjectName(u"EQ2_frame3")
+        sizePolicy1.setHeightForWidth(self.EQ2_frame3.sizePolicy().hasHeightForWidth())
+        self.EQ2_frame3.setSizePolicy(sizePolicy1)
+        self.EQ2_frame3.setMinimumSize(QSize(490, 110))
+        self.EQ2_frame3.setMaximumSize(QSize(490, 110))
+        self.EQ2_frame3.setFrameShape(QFrame.Panel)
+        self.EQ2_frame3.setFrameShadow(QFrame.Sunken)
+        self.horizontalLayout_5 = QHBoxLayout(self.EQ2_frame3)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalSpacer_9 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_9)
+
+        self.Band1_4 = QVBoxLayout()
+        self.Band1_4.setObjectName(u"Band1_4")
+        self.EQ2_40 = QSlider(self.EQ2_frame3)
+        self.EQ2_40.setObjectName(u"EQ2_40")
+        self.EQ2_40.setMinimumSize(QSize(0, 65))
+        self.EQ2_40.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_40.setFont(font2)
+        self.EQ2_40.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_40.setMinimum(-1)
+        self.EQ2_40.setMaximum(1)
+        self.EQ2_40.setPageStep(1)
+        self.EQ2_40.setTracking(True)
+        self.EQ2_40.setOrientation(Qt.Vertical)
+        self.EQ2_40.setInvertedAppearance(False)
+        self.EQ2_40.setInvertedControls(False)
+
+        self.Band1_4.addWidget(self.EQ2_40, 0, Qt.AlignHCenter)
+
+        self.EQ2_40_Lab = QLabel(self.EQ2_frame3)
+        self.EQ2_40_Lab.setObjectName(u"EQ2_40_Lab")
+        self.EQ2_40_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_40_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_40_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band1_4.addWidget(self.EQ2_40_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_5.addLayout(self.Band1_4)
+
+        self.Band2_4 = QVBoxLayout()
+        self.Band2_4.setObjectName(u"Band2_4")
+        self.EQ2_80 = QSlider(self.EQ2_frame3)
+        self.EQ2_80.setObjectName(u"EQ2_80")
+        self.EQ2_80.setMinimumSize(QSize(0, 65))
+        self.EQ2_80.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_80.setFont(font2)
+        self.EQ2_80.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_80.setMinimum(-1)
+        self.EQ2_80.setMaximum(1)
+        self.EQ2_80.setPageStep(1)
+        self.EQ2_80.setTracking(True)
+        self.EQ2_80.setOrientation(Qt.Vertical)
+        self.EQ2_80.setInvertedAppearance(False)
+        self.EQ2_80.setInvertedControls(False)
+
+        self.Band2_4.addWidget(self.EQ2_80, 0, Qt.AlignHCenter)
+
+        self.EQ2_80_Lab = QLabel(self.EQ2_frame3)
+        self.EQ2_80_Lab.setObjectName(u"EQ2_80_Lab")
+        self.EQ2_80_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_80_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_80_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band2_4.addWidget(self.EQ2_80_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_5.addLayout(self.Band2_4)
+
+        self.Band3_4 = QVBoxLayout()
+        self.Band3_4.setObjectName(u"Band3_4")
+        self.EQ2_160 = QSlider(self.EQ2_frame3)
+        self.EQ2_160.setObjectName(u"EQ2_160")
+        self.EQ2_160.setMinimumSize(QSize(0, 65))
+        self.EQ2_160.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_160.setFont(font2)
+        self.EQ2_160.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_160.setMinimum(-1)
+        self.EQ2_160.setMaximum(1)
+        self.EQ2_160.setPageStep(1)
+        self.EQ2_160.setTracking(True)
+        self.EQ2_160.setOrientation(Qt.Vertical)
+        self.EQ2_160.setInvertedAppearance(False)
+        self.EQ2_160.setInvertedControls(False)
+
+        self.Band3_4.addWidget(self.EQ2_160, 0, Qt.AlignHCenter)
+
+        self.EQ2_160_Lab = QLabel(self.EQ2_frame3)
+        self.EQ2_160_Lab.setObjectName(u"EQ2_160_Lab")
+        self.EQ2_160_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_160_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_160_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band3_4.addWidget(self.EQ2_160_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_5.addLayout(self.Band3_4)
+
+        self.Band4_4 = QVBoxLayout()
+        self.Band4_4.setObjectName(u"Band4_4")
+        self.EQ2_315 = QSlider(self.EQ2_frame3)
+        self.EQ2_315.setObjectName(u"EQ2_315")
+        self.EQ2_315.setMinimumSize(QSize(0, 65))
+        self.EQ2_315.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_315.setFont(font2)
+        self.EQ2_315.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_315.setMinimum(-1)
+        self.EQ2_315.setMaximum(1)
+        self.EQ2_315.setPageStep(1)
+        self.EQ2_315.setTracking(True)
+        self.EQ2_315.setOrientation(Qt.Vertical)
+        self.EQ2_315.setInvertedAppearance(False)
+        self.EQ2_315.setInvertedControls(False)
+
+        self.Band4_4.addWidget(self.EQ2_315, 0, Qt.AlignHCenter)
+
+        self.EQ2_315_Lab = QLabel(self.EQ2_frame3)
+        self.EQ2_315_Lab.setObjectName(u"EQ2_315_Lab")
+        self.EQ2_315_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_315_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_315_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band4_4.addWidget(self.EQ2_315_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_5.addLayout(self.Band4_4)
+
+        self.Band5_4 = QVBoxLayout()
+        self.Band5_4.setObjectName(u"Band5_4")
+        self.EQ2_630 = QSlider(self.EQ2_frame3)
+        self.EQ2_630.setObjectName(u"EQ2_630")
+        self.EQ2_630.setMinimumSize(QSize(0, 65))
+        self.EQ2_630.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_630.setFont(font2)
+        self.EQ2_630.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_630.setMinimum(-1)
+        self.EQ2_630.setMaximum(1)
+        self.EQ2_630.setPageStep(1)
+        self.EQ2_630.setTracking(True)
+        self.EQ2_630.setOrientation(Qt.Vertical)
+        self.EQ2_630.setInvertedAppearance(False)
+        self.EQ2_630.setInvertedControls(False)
+
+        self.Band5_4.addWidget(self.EQ2_630, 0, Qt.AlignHCenter)
+
+        self.EQ2_630_Lab = QLabel(self.EQ2_frame3)
+        self.EQ2_630_Lab.setObjectName(u"EQ2_630_Lab")
+        self.EQ2_630_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_630_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_630_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band5_4.addWidget(self.EQ2_630_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_5.addLayout(self.Band5_4)
+
+        self.Band6_4 = QVBoxLayout()
+        self.Band6_4.setObjectName(u"Band6_4")
+        self.EQ2_1250 = QSlider(self.EQ2_frame3)
+        self.EQ2_1250.setObjectName(u"EQ2_1250")
+        self.EQ2_1250.setMinimumSize(QSize(0, 65))
+        self.EQ2_1250.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_1250.setSizeIncrement(QSize(0, 0))
+        self.EQ2_1250.setFont(font2)
+        self.EQ2_1250.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_1250.setMinimum(-1)
+        self.EQ2_1250.setMaximum(1)
+        self.EQ2_1250.setPageStep(1)
+        self.EQ2_1250.setTracking(True)
+        self.EQ2_1250.setOrientation(Qt.Vertical)
+        self.EQ2_1250.setInvertedAppearance(False)
+        self.EQ2_1250.setInvertedControls(False)
+
+        self.Band6_4.addWidget(self.EQ2_1250, 0, Qt.AlignHCenter)
+
+        self.EQ2_1250_Lab = QLabel(self.EQ2_frame3)
+        self.EQ2_1250_Lab.setObjectName(u"EQ2_1250_Lab")
+        self.EQ2_1250_Lab.setMinimumSize(QSize(34, 0))
+        self.EQ2_1250_Lab.setMaximumSize(QSize(34, 16777215))
+        self.EQ2_1250_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band6_4.addWidget(self.EQ2_1250_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_5.addLayout(self.Band6_4)
+
+        self.Band7_4 = QVBoxLayout()
+        self.Band7_4.setObjectName(u"Band7_4")
+        self.EQ2_2500 = QSlider(self.EQ2_frame3)
+        self.EQ2_2500.setObjectName(u"EQ2_2500")
+        self.EQ2_2500.setMinimumSize(QSize(0, 65))
+        self.EQ2_2500.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_2500.setFont(font2)
+        self.EQ2_2500.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_2500.setMinimum(-1)
+        self.EQ2_2500.setMaximum(1)
+        self.EQ2_2500.setPageStep(1)
+        self.EQ2_2500.setTracking(True)
+        self.EQ2_2500.setOrientation(Qt.Vertical)
+        self.EQ2_2500.setInvertedAppearance(False)
+        self.EQ2_2500.setInvertedControls(False)
+
+        self.Band7_4.addWidget(self.EQ2_2500, 0, Qt.AlignHCenter)
+
+        self.EQ2_2500_Lab = QLabel(self.EQ2_frame3)
+        self.EQ2_2500_Lab.setObjectName(u"EQ2_2500_Lab")
+        self.EQ2_2500_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_2500_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_2500_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band7_4.addWidget(self.EQ2_2500_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_5.addLayout(self.Band7_4)
+
+        self.Band8_4 = QVBoxLayout()
+        self.Band8_4.setObjectName(u"Band8_4")
+        self.EQ2_5000 = QSlider(self.EQ2_frame3)
+        self.EQ2_5000.setObjectName(u"EQ2_5000")
+        self.EQ2_5000.setMinimumSize(QSize(0, 65))
+        self.EQ2_5000.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_5000.setFont(font2)
+        self.EQ2_5000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_5000.setMinimum(-1)
+        self.EQ2_5000.setMaximum(1)
+        self.EQ2_5000.setPageStep(1)
+        self.EQ2_5000.setTracking(True)
+        self.EQ2_5000.setOrientation(Qt.Vertical)
+        self.EQ2_5000.setInvertedAppearance(False)
+        self.EQ2_5000.setInvertedControls(False)
+
+        self.Band8_4.addWidget(self.EQ2_5000, 0, Qt.AlignHCenter)
+
+        self.EQ2_5000_Lab = QLabel(self.EQ2_frame3)
+        self.EQ2_5000_Lab.setObjectName(u"EQ2_5000_Lab")
+        self.EQ2_5000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_5000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_5000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band8_4.addWidget(self.EQ2_5000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_5.addLayout(self.Band8_4)
+
+        self.Band9_4 = QVBoxLayout()
+        self.Band9_4.setObjectName(u"Band9_4")
+        self.EQ2_10000 = QSlider(self.EQ2_frame3)
+        self.EQ2_10000.setObjectName(u"EQ2_10000")
+        self.EQ2_10000.setMinimumSize(QSize(0, 65))
+        self.EQ2_10000.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_10000.setFont(font2)
+        self.EQ2_10000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(15, 128, 255);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.EQ2_10000.setMinimum(-1)
+        self.EQ2_10000.setMaximum(1)
+        self.EQ2_10000.setPageStep(1)
+        self.EQ2_10000.setTracking(True)
+        self.EQ2_10000.setOrientation(Qt.Vertical)
+        self.EQ2_10000.setInvertedAppearance(False)
+        self.EQ2_10000.setInvertedControls(False)
+
+        self.Band9_4.addWidget(self.EQ2_10000, 0, Qt.AlignHCenter)
+
+        self.EQ2_10000_Lab = QLabel(self.EQ2_frame3)
+        self.EQ2_10000_Lab.setObjectName(u"EQ2_10000_Lab")
+        self.EQ2_10000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_10000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_10000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band9_4.addWidget(self.EQ2_10000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_5.addLayout(self.Band9_4)
+
+        self.Band10_4 = QVBoxLayout()
+        self.Band10_4.setObjectName(u"Band10_4")
+        self.EQ2_20000 = QSlider(self.EQ2_frame3)
+        self.EQ2_20000.setObjectName(u"EQ2_20000")
+        self.EQ2_20000.setEnabled(False)
+        self.EQ2_20000.setMinimumSize(QSize(0, 65))
+        self.EQ2_20000.setMaximumSize(QSize(16777215, 65))
+        self.EQ2_20000.setFont(font2)
+        self.EQ2_20000.setStyleSheet(u".QSlider::groove:vertical {\n"
+"    border: 1px solid #262626;\n"
+"	background: rgb(191, 191, 191);\n"
+"	width: 5px;\n"
+"	margin: 0 12px;\n"
+"}\n"
+"\n"
+".QSlider::handle:vertical {\n"
+"    background: white;\n"
+"    border: 2px solid rgb(191, 191, 191);\n"
+"    height: 5px;\n"
+"    width: 10px;\n"
+"	margin: 0px -5px\n"
+"	\n"
+"}")
+        self.EQ2_20000.setMinimum(-1)
+        self.EQ2_20000.setMaximum(1)
+        self.EQ2_20000.setPageStep(1)
+        self.EQ2_20000.setTracking(True)
+        self.EQ2_20000.setOrientation(Qt.Vertical)
+        self.EQ2_20000.setInvertedAppearance(False)
+        self.EQ2_20000.setInvertedControls(False)
+
+        self.Band10_4.addWidget(self.EQ2_20000, 0, Qt.AlignHCenter)
+
+        self.EQ2_20000_Lab = QLabel(self.EQ2_frame3)
+        self.EQ2_20000_Lab.setObjectName(u"EQ2_20000_Lab")
+        self.EQ2_20000_Lab.setEnabled(False)
+        self.EQ2_20000_Lab.setMinimumSize(QSize(30, 0))
+        self.EQ2_20000_Lab.setMaximumSize(QSize(30, 16777215))
+        self.EQ2_20000_Lab.setAlignment(Qt.AlignCenter)
+
+        self.Band10_4.addWidget(self.EQ2_20000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+
+        self.horizontalLayout_5.addLayout(self.Band10_4)
+
+        self.horizontalSpacer_10 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_10)
+
+
+        self.verticalLayout.addWidget(self.EQ2_frame3)
+
+        self.EQtabWidget.addTab(self.EQ2, "")
+
+        self.gridLayout_2.addWidget(self.EQtabWidget, 2, 1, 1, 1)
 
         self.SourceBox = QGroupBox(self.centralwidget)
         self.SourceBox.setObjectName(u"SourceBox")
@@ -321,1970 +2285,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.SourceBox, 0, 0, 3, 1)
 
-        self.EQtabWidget = QTabWidget(self.centralwidget)
-        self.EQtabWidget.setObjectName(u"EQtabWidget")
-        self.EQtabWidget.setEnabled(True)
-        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.EQtabWidget.sizePolicy().hasHeightForWidth())
-        self.EQtabWidget.setSizePolicy(sizePolicy1)
-        self.EQtabWidget.setMinimumSize(QSize(520, 0))
-        self.EQtabWidget.setMaximumSize(QSize(520, 500))
-        self.EQtabWidget.setAutoFillBackground(False)
-        self.EQtabWidget.setTabPosition(QTabWidget.North)
-        self.EQtabWidget.setTabsClosable(False)
-        self.EQtabWidget.setTabBarAutoHide(False)
-        self.EQ1 = QWidget()
-        self.EQ1.setObjectName(u"EQ1")
-        self.verticalLayout_2 = QVBoxLayout(self.EQ1)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.EQ1_frame = QFrame(self.EQ1)
-        self.EQ1_frame.setObjectName(u"EQ1_frame")
-        sizePolicy1.setHeightForWidth(self.EQ1_frame.sizePolicy().hasHeightForWidth())
-        self.EQ1_frame.setSizePolicy(sizePolicy1)
-        self.EQ1_frame.setMinimumSize(QSize(490, 115))
-        self.EQ1_frame.setMaximumSize(QSize(490, 115))
-        self.EQ1_frame.setFrameShape(QFrame.Panel)
-        self.EQ1_frame.setFrameShadow(QFrame.Sunken)
-        self.horizontalLayout = QHBoxLayout(self.EQ1_frame)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalSpacer = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.horizontalLayout.addItem(self.horizontalSpacer)
-
-        self.Band1 = QVBoxLayout()
-        self.Band1.setObjectName(u"Band1")
-        self.EQ1_31 = QSlider(self.EQ1_frame)
-        self.EQ1_31.setObjectName(u"EQ1_31")
-        self.EQ1_31.setMinimumSize(QSize(0, 70))
-        self.EQ1_31.setMaximumSize(QSize(16777215, 70))
-        font2 = QFont()
-        font2.setKerning(True)
-        self.EQ1_31.setFont(font2)
-        self.EQ1_31.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ1_31.setMinimum(-1)
-        self.EQ1_31.setMaximum(1)
-        self.EQ1_31.setPageStep(1)
-        self.EQ1_31.setValue(0)
-        self.EQ1_31.setTracking(True)
-        self.EQ1_31.setOrientation(Qt.Vertical)
-        self.EQ1_31.setInvertedAppearance(False)
-        self.EQ1_31.setInvertedControls(False)
-
-        self.Band1.addWidget(self.EQ1_31, 0, Qt.AlignHCenter)
-
-        self.EQ1_31_Lab = QLabel(self.EQ1_frame)
-        self.EQ1_31_Lab.setObjectName(u"EQ1_31_Lab")
-        self.EQ1_31_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ1_31_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ1_31_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band1.addWidget(self.EQ1_31_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout.addLayout(self.Band1)
-
-        self.Band2 = QVBoxLayout()
-        self.Band2.setObjectName(u"Band2")
-        self.EQ1_63 = QSlider(self.EQ1_frame)
-        self.EQ1_63.setObjectName(u"EQ1_63")
-        self.EQ1_63.setMinimumSize(QSize(0, 70))
-        self.EQ1_63.setMaximumSize(QSize(16777215, 70))
-        self.EQ1_63.setFont(font2)
-        self.EQ1_63.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ1_63.setMinimum(-1)
-        self.EQ1_63.setMaximum(1)
-        self.EQ1_63.setPageStep(1)
-        self.EQ1_63.setTracking(True)
-        self.EQ1_63.setOrientation(Qt.Vertical)
-        self.EQ1_63.setInvertedAppearance(False)
-        self.EQ1_63.setInvertedControls(False)
-
-        self.Band2.addWidget(self.EQ1_63, 0, Qt.AlignHCenter)
-
-        self.EQ1_63_Lab = QLabel(self.EQ1_frame)
-        self.EQ1_63_Lab.setObjectName(u"EQ1_63_Lab")
-        self.EQ1_63_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ1_63_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ1_63_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band2.addWidget(self.EQ1_63_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout.addLayout(self.Band2)
-
-        self.Band3 = QVBoxLayout()
-        self.Band3.setObjectName(u"Band3")
-        self.EQ1_125 = QSlider(self.EQ1_frame)
-        self.EQ1_125.setObjectName(u"EQ1_125")
-        self.EQ1_125.setMinimumSize(QSize(0, 70))
-        self.EQ1_125.setMaximumSize(QSize(16777215, 70))
-        self.EQ1_125.setFont(font2)
-        self.EQ1_125.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ1_125.setMinimum(-1)
-        self.EQ1_125.setMaximum(1)
-        self.EQ1_125.setPageStep(1)
-        self.EQ1_125.setTracking(True)
-        self.EQ1_125.setOrientation(Qt.Vertical)
-        self.EQ1_125.setInvertedAppearance(False)
-        self.EQ1_125.setInvertedControls(False)
-
-        self.Band3.addWidget(self.EQ1_125, 0, Qt.AlignHCenter)
-
-        self.EQ1_125_Lab = QLabel(self.EQ1_frame)
-        self.EQ1_125_Lab.setObjectName(u"EQ1_125_Lab")
-        self.EQ1_125_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ1_125_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ1_125_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band3.addWidget(self.EQ1_125_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout.addLayout(self.Band3)
-
-        self.Band4 = QVBoxLayout()
-        self.Band4.setObjectName(u"Band4")
-        self.EQ1_250 = QSlider(self.EQ1_frame)
-        self.EQ1_250.setObjectName(u"EQ1_250")
-        self.EQ1_250.setMinimumSize(QSize(0, 70))
-        self.EQ1_250.setMaximumSize(QSize(16777215, 70))
-        self.EQ1_250.setFont(font2)
-        self.EQ1_250.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ1_250.setMinimum(-1)
-        self.EQ1_250.setMaximum(1)
-        self.EQ1_250.setPageStep(1)
-        self.EQ1_250.setTracking(True)
-        self.EQ1_250.setOrientation(Qt.Vertical)
-        self.EQ1_250.setInvertedAppearance(False)
-        self.EQ1_250.setInvertedControls(False)
-
-        self.Band4.addWidget(self.EQ1_250, 0, Qt.AlignHCenter)
-
-        self.EQ1_250_Lab = QLabel(self.EQ1_frame)
-        self.EQ1_250_Lab.setObjectName(u"EQ1_250_Lab")
-        self.EQ1_250_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ1_250_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ1_250_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band4.addWidget(self.EQ1_250_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout.addLayout(self.Band4)
-
-        self.Band5 = QVBoxLayout()
-        self.Band5.setObjectName(u"Band5")
-        self.EQ1_500 = QSlider(self.EQ1_frame)
-        self.EQ1_500.setObjectName(u"EQ1_500")
-        self.EQ1_500.setMinimumSize(QSize(0, 70))
-        self.EQ1_500.setMaximumSize(QSize(16777215, 70))
-        self.EQ1_500.setFont(font2)
-        self.EQ1_500.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ1_500.setMinimum(-1)
-        self.EQ1_500.setMaximum(1)
-        self.EQ1_500.setPageStep(1)
-        self.EQ1_500.setTracking(True)
-        self.EQ1_500.setOrientation(Qt.Vertical)
-        self.EQ1_500.setInvertedAppearance(False)
-        self.EQ1_500.setInvertedControls(False)
-
-        self.Band5.addWidget(self.EQ1_500, 0, Qt.AlignHCenter)
-
-        self.EQ1_500_Lab = QLabel(self.EQ1_frame)
-        self.EQ1_500_Lab.setObjectName(u"EQ1_500_Lab")
-        self.EQ1_500_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ1_500_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ1_500_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band5.addWidget(self.EQ1_500_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout.addLayout(self.Band5)
-
-        self.Band6 = QVBoxLayout()
-        self.Band6.setObjectName(u"Band6")
-        self.EQ1_1000 = QSlider(self.EQ1_frame)
-        self.EQ1_1000.setObjectName(u"EQ1_1000")
-        self.EQ1_1000.setMinimumSize(QSize(0, 70))
-        self.EQ1_1000.setMaximumSize(QSize(16777215, 70))
-        self.EQ1_1000.setSizeIncrement(QSize(0, 0))
-        self.EQ1_1000.setFont(font2)
-        self.EQ1_1000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ1_1000.setMinimum(-1)
-        self.EQ1_1000.setMaximum(1)
-        self.EQ1_1000.setPageStep(1)
-        self.EQ1_1000.setTracking(True)
-        self.EQ1_1000.setOrientation(Qt.Vertical)
-        self.EQ1_1000.setInvertedAppearance(False)
-        self.EQ1_1000.setInvertedControls(False)
-
-        self.Band6.addWidget(self.EQ1_1000, 0, Qt.AlignHCenter)
-
-        self.EQ1_1000_Lab = QLabel(self.EQ1_frame)
-        self.EQ1_1000_Lab.setObjectName(u"EQ1_1000_Lab")
-        self.EQ1_1000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ1_1000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ1_1000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band6.addWidget(self.EQ1_1000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout.addLayout(self.Band6)
-
-        self.Band7 = QVBoxLayout()
-        self.Band7.setObjectName(u"Band7")
-        self.EQ1_2000 = QSlider(self.EQ1_frame)
-        self.EQ1_2000.setObjectName(u"EQ1_2000")
-        self.EQ1_2000.setMinimumSize(QSize(0, 70))
-        self.EQ1_2000.setMaximumSize(QSize(16777215, 70))
-        self.EQ1_2000.setFont(font2)
-        self.EQ1_2000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ1_2000.setMinimum(-1)
-        self.EQ1_2000.setMaximum(1)
-        self.EQ1_2000.setPageStep(1)
-        self.EQ1_2000.setTracking(True)
-        self.EQ1_2000.setOrientation(Qt.Vertical)
-        self.EQ1_2000.setInvertedAppearance(False)
-        self.EQ1_2000.setInvertedControls(False)
-
-        self.Band7.addWidget(self.EQ1_2000, 0, Qt.AlignHCenter)
-
-        self.EQ1_2000_Lab = QLabel(self.EQ1_frame)
-        self.EQ1_2000_Lab.setObjectName(u"EQ1_2000_Lab")
-        self.EQ1_2000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ1_2000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ1_2000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band7.addWidget(self.EQ1_2000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout.addLayout(self.Band7)
-
-        self.Band8 = QVBoxLayout()
-        self.Band8.setObjectName(u"Band8")
-        self.EQ1_4000 = QSlider(self.EQ1_frame)
-        self.EQ1_4000.setObjectName(u"EQ1_4000")
-        self.EQ1_4000.setMinimumSize(QSize(0, 70))
-        self.EQ1_4000.setMaximumSize(QSize(16777215, 70))
-        self.EQ1_4000.setFont(font2)
-        self.EQ1_4000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ1_4000.setMinimum(-1)
-        self.EQ1_4000.setMaximum(1)
-        self.EQ1_4000.setPageStep(1)
-        self.EQ1_4000.setTracking(True)
-        self.EQ1_4000.setOrientation(Qt.Vertical)
-        self.EQ1_4000.setInvertedAppearance(False)
-        self.EQ1_4000.setInvertedControls(False)
-
-        self.Band8.addWidget(self.EQ1_4000, 0, Qt.AlignHCenter)
-
-        self.EQ1_4000_Lab = QLabel(self.EQ1_frame)
-        self.EQ1_4000_Lab.setObjectName(u"EQ1_4000_Lab")
-        self.EQ1_4000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ1_4000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ1_4000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band8.addWidget(self.EQ1_4000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout.addLayout(self.Band8)
-
-        self.Band9 = QVBoxLayout()
-        self.Band9.setObjectName(u"Band9")
-        self.EQ1_8000 = QSlider(self.EQ1_frame)
-        self.EQ1_8000.setObjectName(u"EQ1_8000")
-        self.EQ1_8000.setMinimumSize(QSize(0, 70))
-        self.EQ1_8000.setMaximumSize(QSize(16777215, 70))
-        self.EQ1_8000.setFont(font2)
-        self.EQ1_8000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ1_8000.setMinimum(-1)
-        self.EQ1_8000.setMaximum(1)
-        self.EQ1_8000.setPageStep(1)
-        self.EQ1_8000.setTracking(True)
-        self.EQ1_8000.setOrientation(Qt.Vertical)
-        self.EQ1_8000.setInvertedAppearance(False)
-        self.EQ1_8000.setInvertedControls(False)
-
-        self.Band9.addWidget(self.EQ1_8000, 0, Qt.AlignHCenter)
-
-        self.EQ1_8000_Lab = QLabel(self.EQ1_frame)
-        self.EQ1_8000_Lab.setObjectName(u"EQ1_8000_Lab")
-        self.EQ1_8000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ1_8000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ1_8000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band9.addWidget(self.EQ1_8000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout.addLayout(self.Band9)
-
-        self.Band10 = QVBoxLayout()
-        self.Band10.setObjectName(u"Band10")
-        self.EQ1_16000 = QSlider(self.EQ1_frame)
-        self.EQ1_16000.setObjectName(u"EQ1_16000")
-        self.EQ1_16000.setMinimumSize(QSize(0, 70))
-        self.EQ1_16000.setMaximumSize(QSize(16777215, 70))
-        self.EQ1_16000.setFont(font2)
-        self.EQ1_16000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ1_16000.setMinimum(-1)
-        self.EQ1_16000.setMaximum(1)
-        self.EQ1_16000.setPageStep(1)
-        self.EQ1_16000.setTracking(True)
-        self.EQ1_16000.setOrientation(Qt.Vertical)
-        self.EQ1_16000.setInvertedAppearance(False)
-        self.EQ1_16000.setInvertedControls(False)
-
-        self.Band10.addWidget(self.EQ1_16000, 0, Qt.AlignHCenter)
-
-        self.EQ1_16000_Lab = QLabel(self.EQ1_frame)
-        self.EQ1_16000_Lab.setObjectName(u"EQ1_16000_Lab")
-        self.EQ1_16000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ1_16000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ1_16000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band10.addWidget(self.EQ1_16000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout.addLayout(self.Band10)
-
-        self.horizontalSpacer_2 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.horizontalLayout.addItem(self.horizontalSpacer_2)
-
-
-        self.verticalLayout_2.addWidget(self.EQ1_frame)
-
-        self.EQtabWidget.addTab(self.EQ1, "")
-        self.EQ2 = QWidget()
-        self.EQ2.setObjectName(u"EQ2")
-        self.verticalLayout = QVBoxLayout(self.EQ2)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.EQ2_frame1 = QFrame(self.EQ2)
-        self.EQ2_frame1.setObjectName(u"EQ2_frame1")
-        sizePolicy1.setHeightForWidth(self.EQ2_frame1.sizePolicy().hasHeightForWidth())
-        self.EQ2_frame1.setSizePolicy(sizePolicy1)
-        self.EQ2_frame1.setMinimumSize(QSize(490, 115))
-        self.EQ2_frame1.setMaximumSize(QSize(490, 115))
-        self.EQ2_frame1.setFrameShape(QFrame.Panel)
-        self.EQ2_frame1.setFrameShadow(QFrame.Sunken)
-        self.horizontalLayout_2 = QHBoxLayout(self.EQ2_frame1)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalSpacer_3 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.horizontalLayout_2.addItem(self.horizontalSpacer_3)
-
-        self.Band1_2 = QVBoxLayout()
-        self.Band1_2.setObjectName(u"Band1_2")
-        self.EQ2_25 = QSlider(self.EQ2_frame1)
-        self.EQ2_25.setObjectName(u"EQ2_25")
-        self.EQ2_25.setEnabled(False)
-        self.EQ2_25.setMinimumSize(QSize(0, 70))
-        self.EQ2_25.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_25.setFont(font2)
-        self.EQ2_25.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(191, 191, 191);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_25.setMinimum(-1)
-        self.EQ2_25.setMaximum(1)
-        self.EQ2_25.setPageStep(1)
-        self.EQ2_25.setTracking(True)
-        self.EQ2_25.setOrientation(Qt.Vertical)
-        self.EQ2_25.setInvertedAppearance(False)
-        self.EQ2_25.setInvertedControls(False)
-
-        self.Band1_2.addWidget(self.EQ2_25, 0, Qt.AlignHCenter)
-
-        self.EQ2_25_Lab = QLabel(self.EQ2_frame1)
-        self.EQ2_25_Lab.setObjectName(u"EQ2_25_Lab")
-        self.EQ2_25_Lab.setEnabled(False)
-        self.EQ2_25_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_25_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_25_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band1_2.addWidget(self.EQ2_25_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_2.addLayout(self.Band1_2)
-
-        self.Band2_2 = QVBoxLayout()
-        self.Band2_2.setObjectName(u"Band2_2")
-        self.EQ2_50 = QSlider(self.EQ2_frame1)
-        self.EQ2_50.setObjectName(u"EQ2_50")
-        self.EQ2_50.setMinimumSize(QSize(0, 70))
-        self.EQ2_50.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_50.setFont(font2)
-        self.EQ2_50.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_50.setMinimum(-1)
-        self.EQ2_50.setMaximum(1)
-        self.EQ2_50.setPageStep(1)
-        self.EQ2_50.setTracking(True)
-        self.EQ2_50.setOrientation(Qt.Vertical)
-        self.EQ2_50.setInvertedAppearance(False)
-        self.EQ2_50.setInvertedControls(False)
-
-        self.Band2_2.addWidget(self.EQ2_50, 0, Qt.AlignHCenter)
-
-        self.EQ2_50_Lab = QLabel(self.EQ2_frame1)
-        self.EQ2_50_Lab.setObjectName(u"EQ2_50_Lab")
-        self.EQ2_50_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_50_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_50_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band2_2.addWidget(self.EQ2_50_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_2.addLayout(self.Band2_2)
-
-        self.Band3_2 = QVBoxLayout()
-        self.Band3_2.setObjectName(u"Band3_2")
-        self.EQ2_100 = QSlider(self.EQ2_frame1)
-        self.EQ2_100.setObjectName(u"EQ2_100")
-        self.EQ2_100.setMinimumSize(QSize(0, 70))
-        self.EQ2_100.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_100.setFont(font2)
-        self.EQ2_100.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_100.setMinimum(-1)
-        self.EQ2_100.setMaximum(1)
-        self.EQ2_100.setPageStep(1)
-        self.EQ2_100.setTracking(True)
-        self.EQ2_100.setOrientation(Qt.Vertical)
-        self.EQ2_100.setInvertedAppearance(False)
-        self.EQ2_100.setInvertedControls(False)
-
-        self.Band3_2.addWidget(self.EQ2_100, 0, Qt.AlignHCenter)
-
-        self.EQ2_100_Lab = QLabel(self.EQ2_frame1)
-        self.EQ2_100_Lab.setObjectName(u"EQ2_100_Lab")
-        self.EQ2_100_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_100_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_100_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band3_2.addWidget(self.EQ2_100_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_2.addLayout(self.Band3_2)
-
-        self.Band4_2 = QVBoxLayout()
-        self.Band4_2.setObjectName(u"Band4_2")
-        self.EQ2_200 = QSlider(self.EQ2_frame1)
-        self.EQ2_200.setObjectName(u"EQ2_200")
-        self.EQ2_200.setMinimumSize(QSize(0, 70))
-        self.EQ2_200.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_200.setFont(font2)
-        self.EQ2_200.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_200.setMinimum(-1)
-        self.EQ2_200.setMaximum(1)
-        self.EQ2_200.setPageStep(1)
-        self.EQ2_200.setTracking(True)
-        self.EQ2_200.setOrientation(Qt.Vertical)
-        self.EQ2_200.setInvertedAppearance(False)
-        self.EQ2_200.setInvertedControls(False)
-
-        self.Band4_2.addWidget(self.EQ2_200, 0, Qt.AlignHCenter)
-
-        self.EQ2_200_Lab = QLabel(self.EQ2_frame1)
-        self.EQ2_200_Lab.setObjectName(u"EQ2_200_Lab")
-        self.EQ2_200_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_200_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_200_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band4_2.addWidget(self.EQ2_200_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_2.addLayout(self.Band4_2)
-
-        self.Band5_2 = QVBoxLayout()
-        self.Band5_2.setObjectName(u"Band5_2")
-        self.EQ2_400 = QSlider(self.EQ2_frame1)
-        self.EQ2_400.setObjectName(u"EQ2_400")
-        self.EQ2_400.setMinimumSize(QSize(0, 70))
-        self.EQ2_400.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_400.setFont(font2)
-        self.EQ2_400.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_400.setMinimum(-1)
-        self.EQ2_400.setMaximum(1)
-        self.EQ2_400.setPageStep(1)
-        self.EQ2_400.setTracking(True)
-        self.EQ2_400.setOrientation(Qt.Vertical)
-        self.EQ2_400.setInvertedAppearance(False)
-        self.EQ2_400.setInvertedControls(False)
-
-        self.Band5_2.addWidget(self.EQ2_400, 0, Qt.AlignHCenter)
-
-        self.EQ2_400_Lab = QLabel(self.EQ2_frame1)
-        self.EQ2_400_Lab.setObjectName(u"EQ2_400_Lab")
-        self.EQ2_400_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_400_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_400_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band5_2.addWidget(self.EQ2_400_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_2.addLayout(self.Band5_2)
-
-        self.Band6_2 = QVBoxLayout()
-        self.Band6_2.setObjectName(u"Band6_2")
-        self.EQ2_800 = QSlider(self.EQ2_frame1)
-        self.EQ2_800.setObjectName(u"EQ2_800")
-        self.EQ2_800.setMinimumSize(QSize(0, 70))
-        self.EQ2_800.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_800.setSizeIncrement(QSize(0, 0))
-        self.EQ2_800.setFont(font2)
-        self.EQ2_800.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"")
-        self.EQ2_800.setMinimum(-1)
-        self.EQ2_800.setMaximum(1)
-        self.EQ2_800.setPageStep(1)
-        self.EQ2_800.setTracking(True)
-        self.EQ2_800.setOrientation(Qt.Vertical)
-        self.EQ2_800.setInvertedAppearance(False)
-        self.EQ2_800.setInvertedControls(False)
-
-        self.Band6_2.addWidget(self.EQ2_800, 0, Qt.AlignHCenter)
-
-        self.EQ2_800_Lab = QLabel(self.EQ2_frame1)
-        self.EQ2_800_Lab.setObjectName(u"EQ2_800_Lab")
-        self.EQ2_800_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_800_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_800_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band6_2.addWidget(self.EQ2_800_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_2.addLayout(self.Band6_2)
-
-        self.Band7_2 = QVBoxLayout()
-        self.Band7_2.setObjectName(u"Band7_2")
-        self.EQ2_1600 = QSlider(self.EQ2_frame1)
-        self.EQ2_1600.setObjectName(u"EQ2_1600")
-        self.EQ2_1600.setMinimumSize(QSize(0, 70))
-        self.EQ2_1600.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_1600.setFont(font2)
-        self.EQ2_1600.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_1600.setMinimum(-1)
-        self.EQ2_1600.setMaximum(1)
-        self.EQ2_1600.setPageStep(1)
-        self.EQ2_1600.setTracking(True)
-        self.EQ2_1600.setOrientation(Qt.Vertical)
-        self.EQ2_1600.setInvertedAppearance(False)
-        self.EQ2_1600.setInvertedControls(False)
-
-        self.Band7_2.addWidget(self.EQ2_1600, 0, Qt.AlignHCenter)
-
-        self.EQ2_1600_Lab = QLabel(self.EQ2_frame1)
-        self.EQ2_1600_Lab.setObjectName(u"EQ2_1600_Lab")
-        self.EQ2_1600_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_1600_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_1600_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band7_2.addWidget(self.EQ2_1600_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_2.addLayout(self.Band7_2)
-
-        self.Band8_2 = QVBoxLayout()
-        self.Band8_2.setObjectName(u"Band8_2")
-        self.EQ2_3150 = QSlider(self.EQ2_frame1)
-        self.EQ2_3150.setObjectName(u"EQ2_3150")
-        self.EQ2_3150.setMinimumSize(QSize(0, 70))
-        self.EQ2_3150.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_3150.setFont(font2)
-        self.EQ2_3150.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_3150.setMinimum(-1)
-        self.EQ2_3150.setMaximum(1)
-        self.EQ2_3150.setPageStep(1)
-        self.EQ2_3150.setTracking(True)
-        self.EQ2_3150.setOrientation(Qt.Vertical)
-        self.EQ2_3150.setInvertedAppearance(False)
-        self.EQ2_3150.setInvertedControls(False)
-
-        self.Band8_2.addWidget(self.EQ2_3150, 0, Qt.AlignHCenter)
-
-        self.EQ2_3150_Lab = QLabel(self.EQ2_frame1)
-        self.EQ2_3150_Lab.setObjectName(u"EQ2_3150_Lab")
-        self.EQ2_3150_Lab.setMinimumSize(QSize(34, 0))
-        self.EQ2_3150_Lab.setMaximumSize(QSize(34, 16777215))
-        self.EQ2_3150_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band8_2.addWidget(self.EQ2_3150_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_2.addLayout(self.Band8_2)
-
-        self.Band9_2 = QVBoxLayout()
-        self.Band9_2.setObjectName(u"Band9_2")
-        self.EQ2_6300 = QSlider(self.EQ2_frame1)
-        self.EQ2_6300.setObjectName(u"EQ2_6300")
-        self.EQ2_6300.setMinimumSize(QSize(0, 70))
-        self.EQ2_6300.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_6300.setFont(font2)
-        self.EQ2_6300.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_6300.setMinimum(-1)
-        self.EQ2_6300.setMaximum(1)
-        self.EQ2_6300.setPageStep(1)
-        self.EQ2_6300.setTracking(True)
-        self.EQ2_6300.setOrientation(Qt.Vertical)
-        self.EQ2_6300.setInvertedAppearance(False)
-        self.EQ2_6300.setInvertedControls(False)
-
-        self.Band9_2.addWidget(self.EQ2_6300, 0, Qt.AlignHCenter)
-
-        self.EQ2_6300_Lab = QLabel(self.EQ2_frame1)
-        self.EQ2_6300_Lab.setObjectName(u"EQ2_6300_Lab")
-        self.EQ2_6300_Lab.setMinimumSize(QSize(32, 0))
-        self.EQ2_6300_Lab.setMaximumSize(QSize(32, 16777215))
-        self.EQ2_6300_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band9_2.addWidget(self.EQ2_6300_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_2.addLayout(self.Band9_2)
-
-        self.Band10_2 = QVBoxLayout()
-        self.Band10_2.setObjectName(u"Band10_2")
-        self.EQ2_12500 = QSlider(self.EQ2_frame1)
-        self.EQ2_12500.setObjectName(u"EQ2_12500")
-        self.EQ2_12500.setMinimumSize(QSize(0, 70))
-        self.EQ2_12500.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_12500.setFont(font2)
-        self.EQ2_12500.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_12500.setMinimum(-1)
-        self.EQ2_12500.setMaximum(1)
-        self.EQ2_12500.setPageStep(1)
-        self.EQ2_12500.setTracking(True)
-        self.EQ2_12500.setOrientation(Qt.Vertical)
-        self.EQ2_12500.setInvertedAppearance(False)
-        self.EQ2_12500.setInvertedControls(False)
-
-        self.Band10_2.addWidget(self.EQ2_12500, 0, Qt.AlignHCenter)
-
-        self.EQ2_12500_Lab = QLabel(self.EQ2_frame1)
-        self.EQ2_12500_Lab.setObjectName(u"EQ2_12500_Lab")
-        self.EQ2_12500_Lab.setMinimumSize(QSize(34, 0))
-        self.EQ2_12500_Lab.setMaximumSize(QSize(34, 16777215))
-        self.EQ2_12500_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band10_2.addWidget(self.EQ2_12500_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_2.addLayout(self.Band10_2)
-
-        self.horizontalSpacer_4 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.horizontalLayout_2.addItem(self.horizontalSpacer_4)
-
-
-        self.verticalLayout.addWidget(self.EQ2_frame1)
-
-        self.EQ2_frame2 = QFrame(self.EQ2)
-        self.EQ2_frame2.setObjectName(u"EQ2_frame2")
-        sizePolicy1.setHeightForWidth(self.EQ2_frame2.sizePolicy().hasHeightForWidth())
-        self.EQ2_frame2.setSizePolicy(sizePolicy1)
-        self.EQ2_frame2.setMinimumSize(QSize(490, 115))
-        self.EQ2_frame2.setMaximumSize(QSize(490, 115))
-        self.EQ2_frame2.setFrameShape(QFrame.Panel)
-        self.EQ2_frame2.setFrameShadow(QFrame.Sunken)
-        self.horizontalLayout_3 = QHBoxLayout(self.EQ2_frame2)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalSpacer_5 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_5)
-
-        self.Band1_3 = QVBoxLayout()
-        self.Band1_3.setObjectName(u"Band1_3")
-        self.EQ2_32 = QSlider(self.EQ2_frame2)
-        self.EQ2_32.setObjectName(u"EQ2_32")
-        self.EQ2_32.setMinimumSize(QSize(0, 70))
-        self.EQ2_32.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_32.setFont(font2)
-        self.EQ2_32.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_32.setMinimum(-1)
-        self.EQ2_32.setMaximum(1)
-        self.EQ2_32.setPageStep(1)
-        self.EQ2_32.setTracking(True)
-        self.EQ2_32.setOrientation(Qt.Vertical)
-        self.EQ2_32.setInvertedAppearance(False)
-        self.EQ2_32.setInvertedControls(False)
-
-        self.Band1_3.addWidget(self.EQ2_32, 0, Qt.AlignHCenter)
-
-        self.EQ2_32_Lab = QLabel(self.EQ2_frame2)
-        self.EQ2_32_Lab.setObjectName(u"EQ2_32_Lab")
-        self.EQ2_32_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_32_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_32_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band1_3.addWidget(self.EQ2_32_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_3.addLayout(self.Band1_3)
-
-        self.Band2_3 = QVBoxLayout()
-        self.Band2_3.setObjectName(u"Band2_3")
-        self.EQ2_63 = QSlider(self.EQ2_frame2)
-        self.EQ2_63.setObjectName(u"EQ2_63")
-        self.EQ2_63.setMinimumSize(QSize(0, 70))
-        self.EQ2_63.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_63.setFont(font2)
-        self.EQ2_63.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_63.setMinimum(-1)
-        self.EQ2_63.setMaximum(1)
-        self.EQ2_63.setPageStep(1)
-        self.EQ2_63.setTracking(True)
-        self.EQ2_63.setOrientation(Qt.Vertical)
-        self.EQ2_63.setInvertedAppearance(False)
-        self.EQ2_63.setInvertedControls(False)
-
-        self.Band2_3.addWidget(self.EQ2_63, 0, Qt.AlignHCenter)
-
-        self.EQ2_63_Lab = QLabel(self.EQ2_frame2)
-        self.EQ2_63_Lab.setObjectName(u"EQ2_63_Lab")
-        self.EQ2_63_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_63_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_63_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band2_3.addWidget(self.EQ2_63_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_3.addLayout(self.Band2_3)
-
-        self.Band3_3 = QVBoxLayout()
-        self.Band3_3.setObjectName(u"Band3_3")
-        self.EQ2_125 = QSlider(self.EQ2_frame2)
-        self.EQ2_125.setObjectName(u"EQ2_125")
-        self.EQ2_125.setMinimumSize(QSize(0, 70))
-        self.EQ2_125.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_125.setFont(font2)
-        self.EQ2_125.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_125.setMinimum(-1)
-        self.EQ2_125.setMaximum(1)
-        self.EQ2_125.setPageStep(1)
-        self.EQ2_125.setTracking(True)
-        self.EQ2_125.setOrientation(Qt.Vertical)
-        self.EQ2_125.setInvertedAppearance(False)
-        self.EQ2_125.setInvertedControls(False)
-
-        self.Band3_3.addWidget(self.EQ2_125, 0, Qt.AlignHCenter)
-
-        self.EQ2_125_Lab = QLabel(self.EQ2_frame2)
-        self.EQ2_125_Lab.setObjectName(u"EQ2_125_Lab")
-        self.EQ2_125_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_125_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_125_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band3_3.addWidget(self.EQ2_125_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_3.addLayout(self.Band3_3)
-
-        self.Band4_3 = QVBoxLayout()
-        self.Band4_3.setObjectName(u"Band4_3")
-        self.EQ2_250 = QSlider(self.EQ2_frame2)
-        self.EQ2_250.setObjectName(u"EQ2_250")
-        self.EQ2_250.setMinimumSize(QSize(0, 70))
-        self.EQ2_250.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_250.setFont(font2)
-        self.EQ2_250.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_250.setMinimum(-1)
-        self.EQ2_250.setMaximum(1)
-        self.EQ2_250.setPageStep(1)
-        self.EQ2_250.setTracking(True)
-        self.EQ2_250.setOrientation(Qt.Vertical)
-        self.EQ2_250.setInvertedAppearance(False)
-        self.EQ2_250.setInvertedControls(False)
-
-        self.Band4_3.addWidget(self.EQ2_250, 0, Qt.AlignHCenter)
-
-        self.EQ2_250_Lab = QLabel(self.EQ2_frame2)
-        self.EQ2_250_Lab.setObjectName(u"EQ2_250_Lab")
-        self.EQ2_250_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_250_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_250_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band4_3.addWidget(self.EQ2_250_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_3.addLayout(self.Band4_3)
-
-        self.Band5_3 = QVBoxLayout()
-        self.Band5_3.setObjectName(u"Band5_3")
-        self.EQ2_500 = QSlider(self.EQ2_frame2)
-        self.EQ2_500.setObjectName(u"EQ2_500")
-        self.EQ2_500.setMinimumSize(QSize(0, 70))
-        self.EQ2_500.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_500.setFont(font2)
-        self.EQ2_500.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_500.setMinimum(-1)
-        self.EQ2_500.setMaximum(1)
-        self.EQ2_500.setPageStep(1)
-        self.EQ2_500.setTracking(True)
-        self.EQ2_500.setOrientation(Qt.Vertical)
-        self.EQ2_500.setInvertedAppearance(False)
-        self.EQ2_500.setInvertedControls(False)
-
-        self.Band5_3.addWidget(self.EQ2_500, 0, Qt.AlignHCenter)
-
-        self.EQ2_500_Lab = QLabel(self.EQ2_frame2)
-        self.EQ2_500_Lab.setObjectName(u"EQ2_500_Lab")
-        self.EQ2_500_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_500_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_500_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band5_3.addWidget(self.EQ2_500_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_3.addLayout(self.Band5_3)
-
-        self.Band6_3 = QVBoxLayout()
-        self.Band6_3.setObjectName(u"Band6_3")
-        self.EQ2_1000 = QSlider(self.EQ2_frame2)
-        self.EQ2_1000.setObjectName(u"EQ2_1000")
-        self.EQ2_1000.setMinimumSize(QSize(0, 70))
-        self.EQ2_1000.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_1000.setSizeIncrement(QSize(0, 0))
-        self.EQ2_1000.setFont(font2)
-        self.EQ2_1000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_1000.setMinimum(-1)
-        self.EQ2_1000.setMaximum(1)
-        self.EQ2_1000.setPageStep(1)
-        self.EQ2_1000.setTracking(True)
-        self.EQ2_1000.setOrientation(Qt.Vertical)
-        self.EQ2_1000.setInvertedAppearance(False)
-        self.EQ2_1000.setInvertedControls(False)
-
-        self.Band6_3.addWidget(self.EQ2_1000, 0, Qt.AlignHCenter)
-
-        self.EQ2_1000_Lab = QLabel(self.EQ2_frame2)
-        self.EQ2_1000_Lab.setObjectName(u"EQ2_1000_Lab")
-        self.EQ2_1000_Lab.setMinimumSize(QSize(34, 0))
-        self.EQ2_1000_Lab.setMaximumSize(QSize(34, 16777215))
-        self.EQ2_1000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band6_3.addWidget(self.EQ2_1000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_3.addLayout(self.Band6_3)
-
-        self.Band7_3 = QVBoxLayout()
-        self.Band7_3.setObjectName(u"Band7_3")
-        self.EQ2_2000 = QSlider(self.EQ2_frame2)
-        self.EQ2_2000.setObjectName(u"EQ2_2000")
-        self.EQ2_2000.setMinimumSize(QSize(0, 70))
-        self.EQ2_2000.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_2000.setFont(font2)
-        self.EQ2_2000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_2000.setMinimum(-1)
-        self.EQ2_2000.setMaximum(1)
-        self.EQ2_2000.setPageStep(1)
-        self.EQ2_2000.setTracking(True)
-        self.EQ2_2000.setOrientation(Qt.Vertical)
-        self.EQ2_2000.setInvertedAppearance(False)
-        self.EQ2_2000.setInvertedControls(False)
-
-        self.Band7_3.addWidget(self.EQ2_2000, 0, Qt.AlignHCenter)
-
-        self.EQ2_2000_Lab = QLabel(self.EQ2_frame2)
-        self.EQ2_2000_Lab.setObjectName(u"EQ2_2000_Lab")
-        self.EQ2_2000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_2000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_2000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band7_3.addWidget(self.EQ2_2000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_3.addLayout(self.Band7_3)
-
-        self.Band8_3 = QVBoxLayout()
-        self.Band8_3.setObjectName(u"Band8_3")
-        self.EQ2_4000 = QSlider(self.EQ2_frame2)
-        self.EQ2_4000.setObjectName(u"EQ2_4000")
-        self.EQ2_4000.setMinimumSize(QSize(0, 70))
-        self.EQ2_4000.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_4000.setFont(font2)
-        self.EQ2_4000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_4000.setMinimum(-1)
-        self.EQ2_4000.setMaximum(1)
-        self.EQ2_4000.setPageStep(1)
-        self.EQ2_4000.setTracking(True)
-        self.EQ2_4000.setOrientation(Qt.Vertical)
-        self.EQ2_4000.setInvertedAppearance(False)
-        self.EQ2_4000.setInvertedControls(False)
-
-        self.Band8_3.addWidget(self.EQ2_4000, 0, Qt.AlignHCenter)
-
-        self.EQ2_4000_Lab = QLabel(self.EQ2_frame2)
-        self.EQ2_4000_Lab.setObjectName(u"EQ2_4000_Lab")
-        self.EQ2_4000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_4000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_4000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band8_3.addWidget(self.EQ2_4000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_3.addLayout(self.Band8_3)
-
-        self.Band9_3 = QVBoxLayout()
-        self.Band9_3.setObjectName(u"Band9_3")
-        self.EQ2_8000 = QSlider(self.EQ2_frame2)
-        self.EQ2_8000.setObjectName(u"EQ2_8000")
-        self.EQ2_8000.setMinimumSize(QSize(0, 70))
-        self.EQ2_8000.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_8000.setFont(font2)
-        self.EQ2_8000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_8000.setMinimum(-1)
-        self.EQ2_8000.setMaximum(1)
-        self.EQ2_8000.setPageStep(1)
-        self.EQ2_8000.setTracking(True)
-        self.EQ2_8000.setOrientation(Qt.Vertical)
-        self.EQ2_8000.setInvertedAppearance(False)
-        self.EQ2_8000.setInvertedControls(False)
-
-        self.Band9_3.addWidget(self.EQ2_8000, 0, Qt.AlignHCenter)
-
-        self.EQ2_8000_Lab = QLabel(self.EQ2_frame2)
-        self.EQ2_8000_Lab.setObjectName(u"EQ2_8000_Lab")
-        self.EQ2_8000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_8000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_8000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band9_3.addWidget(self.EQ2_8000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_3.addLayout(self.Band9_3)
-
-        self.Band10_3 = QVBoxLayout()
-        self.Band10_3.setObjectName(u"Band10_3")
-        self.EQ2_16000 = QSlider(self.EQ2_frame2)
-        self.EQ2_16000.setObjectName(u"EQ2_16000")
-        self.EQ2_16000.setMinimumSize(QSize(0, 70))
-        self.EQ2_16000.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_16000.setFont(font2)
-        self.EQ2_16000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_16000.setMinimum(-1)
-        self.EQ2_16000.setMaximum(1)
-        self.EQ2_16000.setPageStep(1)
-        self.EQ2_16000.setTracking(True)
-        self.EQ2_16000.setOrientation(Qt.Vertical)
-        self.EQ2_16000.setInvertedAppearance(False)
-        self.EQ2_16000.setInvertedControls(False)
-
-        self.Band10_3.addWidget(self.EQ2_16000, 0, Qt.AlignHCenter)
-
-        self.EQ2_16000_Lab = QLabel(self.EQ2_frame2)
-        self.EQ2_16000_Lab.setObjectName(u"EQ2_16000_Lab")
-        self.EQ2_16000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_16000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_16000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band10_3.addWidget(self.EQ2_16000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_3.addLayout(self.Band10_3)
-
-        self.horizontalSpacer_6 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.horizontalLayout_3.addItem(self.horizontalSpacer_6)
-
-
-        self.verticalLayout.addWidget(self.EQ2_frame2)
-
-        self.EQ2_frame3 = QFrame(self.EQ2)
-        self.EQ2_frame3.setObjectName(u"EQ2_frame3")
-        sizePolicy1.setHeightForWidth(self.EQ2_frame3.sizePolicy().hasHeightForWidth())
-        self.EQ2_frame3.setSizePolicy(sizePolicy1)
-        self.EQ2_frame3.setMinimumSize(QSize(490, 115))
-        self.EQ2_frame3.setMaximumSize(QSize(490, 115))
-        self.EQ2_frame3.setFrameShape(QFrame.Panel)
-        self.EQ2_frame3.setFrameShadow(QFrame.Sunken)
-        self.horizontalLayout_5 = QHBoxLayout(self.EQ2_frame3)
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.horizontalSpacer_9 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.horizontalLayout_5.addItem(self.horizontalSpacer_9)
-
-        self.Band1_4 = QVBoxLayout()
-        self.Band1_4.setObjectName(u"Band1_4")
-        self.EQ2_40 = QSlider(self.EQ2_frame3)
-        self.EQ2_40.setObjectName(u"EQ2_40")
-        self.EQ2_40.setMinimumSize(QSize(0, 70))
-        self.EQ2_40.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_40.setFont(font2)
-        self.EQ2_40.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_40.setMinimum(-1)
-        self.EQ2_40.setMaximum(1)
-        self.EQ2_40.setPageStep(1)
-        self.EQ2_40.setTracking(True)
-        self.EQ2_40.setOrientation(Qt.Vertical)
-        self.EQ2_40.setInvertedAppearance(False)
-        self.EQ2_40.setInvertedControls(False)
-
-        self.Band1_4.addWidget(self.EQ2_40, 0, Qt.AlignHCenter)
-
-        self.EQ2_40_Lab = QLabel(self.EQ2_frame3)
-        self.EQ2_40_Lab.setObjectName(u"EQ2_40_Lab")
-        self.EQ2_40_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_40_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_40_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band1_4.addWidget(self.EQ2_40_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_5.addLayout(self.Band1_4)
-
-        self.Band2_4 = QVBoxLayout()
-        self.Band2_4.setObjectName(u"Band2_4")
-        self.EQ2_80 = QSlider(self.EQ2_frame3)
-        self.EQ2_80.setObjectName(u"EQ2_80")
-        self.EQ2_80.setMinimumSize(QSize(0, 70))
-        self.EQ2_80.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_80.setFont(font2)
-        self.EQ2_80.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_80.setMinimum(-1)
-        self.EQ2_80.setMaximum(1)
-        self.EQ2_80.setPageStep(1)
-        self.EQ2_80.setTracking(True)
-        self.EQ2_80.setOrientation(Qt.Vertical)
-        self.EQ2_80.setInvertedAppearance(False)
-        self.EQ2_80.setInvertedControls(False)
-
-        self.Band2_4.addWidget(self.EQ2_80, 0, Qt.AlignHCenter)
-
-        self.EQ2_80_Lab = QLabel(self.EQ2_frame3)
-        self.EQ2_80_Lab.setObjectName(u"EQ2_80_Lab")
-        self.EQ2_80_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_80_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_80_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band2_4.addWidget(self.EQ2_80_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_5.addLayout(self.Band2_4)
-
-        self.Band3_4 = QVBoxLayout()
-        self.Band3_4.setObjectName(u"Band3_4")
-        self.EQ2_160 = QSlider(self.EQ2_frame3)
-        self.EQ2_160.setObjectName(u"EQ2_160")
-        self.EQ2_160.setMinimumSize(QSize(0, 70))
-        self.EQ2_160.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_160.setFont(font2)
-        self.EQ2_160.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_160.setMinimum(-1)
-        self.EQ2_160.setMaximum(1)
-        self.EQ2_160.setPageStep(1)
-        self.EQ2_160.setTracking(True)
-        self.EQ2_160.setOrientation(Qt.Vertical)
-        self.EQ2_160.setInvertedAppearance(False)
-        self.EQ2_160.setInvertedControls(False)
-
-        self.Band3_4.addWidget(self.EQ2_160, 0, Qt.AlignHCenter)
-
-        self.EQ2_160_Lab = QLabel(self.EQ2_frame3)
-        self.EQ2_160_Lab.setObjectName(u"EQ2_160_Lab")
-        self.EQ2_160_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_160_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_160_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band3_4.addWidget(self.EQ2_160_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_5.addLayout(self.Band3_4)
-
-        self.Band4_4 = QVBoxLayout()
-        self.Band4_4.setObjectName(u"Band4_4")
-        self.EQ2_315 = QSlider(self.EQ2_frame3)
-        self.EQ2_315.setObjectName(u"EQ2_315")
-        self.EQ2_315.setMinimumSize(QSize(0, 70))
-        self.EQ2_315.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_315.setFont(font2)
-        self.EQ2_315.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_315.setMinimum(-1)
-        self.EQ2_315.setMaximum(1)
-        self.EQ2_315.setPageStep(1)
-        self.EQ2_315.setTracking(True)
-        self.EQ2_315.setOrientation(Qt.Vertical)
-        self.EQ2_315.setInvertedAppearance(False)
-        self.EQ2_315.setInvertedControls(False)
-
-        self.Band4_4.addWidget(self.EQ2_315, 0, Qt.AlignHCenter)
-
-        self.EQ2_315_Lab = QLabel(self.EQ2_frame3)
-        self.EQ2_315_Lab.setObjectName(u"EQ2_315_Lab")
-        self.EQ2_315_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_315_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_315_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band4_4.addWidget(self.EQ2_315_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_5.addLayout(self.Band4_4)
-
-        self.Band5_4 = QVBoxLayout()
-        self.Band5_4.setObjectName(u"Band5_4")
-        self.EQ2_630 = QSlider(self.EQ2_frame3)
-        self.EQ2_630.setObjectName(u"EQ2_630")
-        self.EQ2_630.setMinimumSize(QSize(0, 70))
-        self.EQ2_630.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_630.setFont(font2)
-        self.EQ2_630.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_630.setMinimum(-1)
-        self.EQ2_630.setMaximum(1)
-        self.EQ2_630.setPageStep(1)
-        self.EQ2_630.setTracking(True)
-        self.EQ2_630.setOrientation(Qt.Vertical)
-        self.EQ2_630.setInvertedAppearance(False)
-        self.EQ2_630.setInvertedControls(False)
-
-        self.Band5_4.addWidget(self.EQ2_630, 0, Qt.AlignHCenter)
-
-        self.EQ2_630_Lab = QLabel(self.EQ2_frame3)
-        self.EQ2_630_Lab.setObjectName(u"EQ2_630_Lab")
-        self.EQ2_630_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_630_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_630_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band5_4.addWidget(self.EQ2_630_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_5.addLayout(self.Band5_4)
-
-        self.Band6_4 = QVBoxLayout()
-        self.Band6_4.setObjectName(u"Band6_4")
-        self.EQ2_1250 = QSlider(self.EQ2_frame3)
-        self.EQ2_1250.setObjectName(u"EQ2_1250")
-        self.EQ2_1250.setMinimumSize(QSize(0, 70))
-        self.EQ2_1250.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_1250.setSizeIncrement(QSize(0, 0))
-        self.EQ2_1250.setFont(font2)
-        self.EQ2_1250.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_1250.setMinimum(-1)
-        self.EQ2_1250.setMaximum(1)
-        self.EQ2_1250.setPageStep(1)
-        self.EQ2_1250.setTracking(True)
-        self.EQ2_1250.setOrientation(Qt.Vertical)
-        self.EQ2_1250.setInvertedAppearance(False)
-        self.EQ2_1250.setInvertedControls(False)
-
-        self.Band6_4.addWidget(self.EQ2_1250, 0, Qt.AlignHCenter)
-
-        self.EQ2_1250_Lab = QLabel(self.EQ2_frame3)
-        self.EQ2_1250_Lab.setObjectName(u"EQ2_1250_Lab")
-        self.EQ2_1250_Lab.setMinimumSize(QSize(34, 0))
-        self.EQ2_1250_Lab.setMaximumSize(QSize(34, 16777215))
-        self.EQ2_1250_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band6_4.addWidget(self.EQ2_1250_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_5.addLayout(self.Band6_4)
-
-        self.Band7_4 = QVBoxLayout()
-        self.Band7_4.setObjectName(u"Band7_4")
-        self.EQ2_2500 = QSlider(self.EQ2_frame3)
-        self.EQ2_2500.setObjectName(u"EQ2_2500")
-        self.EQ2_2500.setMinimumSize(QSize(0, 70))
-        self.EQ2_2500.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_2500.setFont(font2)
-        self.EQ2_2500.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_2500.setMinimum(-1)
-        self.EQ2_2500.setMaximum(1)
-        self.EQ2_2500.setPageStep(1)
-        self.EQ2_2500.setTracking(True)
-        self.EQ2_2500.setOrientation(Qt.Vertical)
-        self.EQ2_2500.setInvertedAppearance(False)
-        self.EQ2_2500.setInvertedControls(False)
-
-        self.Band7_4.addWidget(self.EQ2_2500, 0, Qt.AlignHCenter)
-
-        self.EQ2_2500_Lab = QLabel(self.EQ2_frame3)
-        self.EQ2_2500_Lab.setObjectName(u"EQ2_2500_Lab")
-        self.EQ2_2500_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_2500_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_2500_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band7_4.addWidget(self.EQ2_2500_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_5.addLayout(self.Band7_4)
-
-        self.Band8_4 = QVBoxLayout()
-        self.Band8_4.setObjectName(u"Band8_4")
-        self.EQ2_5000 = QSlider(self.EQ2_frame3)
-        self.EQ2_5000.setObjectName(u"EQ2_5000")
-        self.EQ2_5000.setMinimumSize(QSize(0, 70))
-        self.EQ2_5000.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_5000.setFont(font2)
-        self.EQ2_5000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_5000.setMinimum(-1)
-        self.EQ2_5000.setMaximum(1)
-        self.EQ2_5000.setPageStep(1)
-        self.EQ2_5000.setTracking(True)
-        self.EQ2_5000.setOrientation(Qt.Vertical)
-        self.EQ2_5000.setInvertedAppearance(False)
-        self.EQ2_5000.setInvertedControls(False)
-
-        self.Band8_4.addWidget(self.EQ2_5000, 0, Qt.AlignHCenter)
-
-        self.EQ2_5000_Lab = QLabel(self.EQ2_frame3)
-        self.EQ2_5000_Lab.setObjectName(u"EQ2_5000_Lab")
-        self.EQ2_5000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_5000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_5000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band8_4.addWidget(self.EQ2_5000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_5.addLayout(self.Band8_4)
-
-        self.Band9_4 = QVBoxLayout()
-        self.Band9_4.setObjectName(u"Band9_4")
-        self.EQ2_10000 = QSlider(self.EQ2_frame3)
-        self.EQ2_10000.setObjectName(u"EQ2_10000")
-        self.EQ2_10000.setMinimumSize(QSize(0, 70))
-        self.EQ2_10000.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_10000.setFont(font2)
-        self.EQ2_10000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"")
-        self.EQ2_10000.setMinimum(-1)
-        self.EQ2_10000.setMaximum(1)
-        self.EQ2_10000.setPageStep(1)
-        self.EQ2_10000.setTracking(True)
-        self.EQ2_10000.setOrientation(Qt.Vertical)
-        self.EQ2_10000.setInvertedAppearance(False)
-        self.EQ2_10000.setInvertedControls(False)
-
-        self.Band9_4.addWidget(self.EQ2_10000, 0, Qt.AlignHCenter)
-
-        self.EQ2_10000_Lab = QLabel(self.EQ2_frame3)
-        self.EQ2_10000_Lab.setObjectName(u"EQ2_10000_Lab")
-        self.EQ2_10000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_10000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_10000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band9_4.addWidget(self.EQ2_10000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_5.addLayout(self.Band9_4)
-
-        self.Band10_4 = QVBoxLayout()
-        self.Band10_4.setObjectName(u"Band10_4")
-        self.EQ2_20000 = QSlider(self.EQ2_frame3)
-        self.EQ2_20000.setObjectName(u"EQ2_20000")
-        self.EQ2_20000.setEnabled(False)
-        self.EQ2_20000.setMinimumSize(QSize(0, 70))
-        self.EQ2_20000.setMaximumSize(QSize(16777215, 70))
-        self.EQ2_20000.setFont(font2)
-        self.EQ2_20000.setStyleSheet(u".QSlider::groove:vertical {\n"
-"    border: 1px solid #262626;\n"
-"	background: rgb(191, 191, 191);\n"
-"	width: 5px;\n"
-"	margin: 0 12px;\n"
-"}\n"
-"\n"
-".QSlider::handle:vertical {\n"
-"    background: white;\n"
-"    border: 2px solid rgb(191, 191, 191);\n"
-"    height: 5px;\n"
-"    width: 10px;\n"
-"	margin: 0px -5px\n"
-"	\n"
-"}")
-        self.EQ2_20000.setMinimum(-1)
-        self.EQ2_20000.setMaximum(1)
-        self.EQ2_20000.setPageStep(1)
-        self.EQ2_20000.setTracking(True)
-        self.EQ2_20000.setOrientation(Qt.Vertical)
-        self.EQ2_20000.setInvertedAppearance(False)
-        self.EQ2_20000.setInvertedControls(False)
-
-        self.Band10_4.addWidget(self.EQ2_20000, 0, Qt.AlignHCenter)
-
-        self.EQ2_20000_Lab = QLabel(self.EQ2_frame3)
-        self.EQ2_20000_Lab.setObjectName(u"EQ2_20000_Lab")
-        self.EQ2_20000_Lab.setEnabled(False)
-        self.EQ2_20000_Lab.setMinimumSize(QSize(30, 0))
-        self.EQ2_20000_Lab.setMaximumSize(QSize(30, 16777215))
-        self.EQ2_20000_Lab.setAlignment(Qt.AlignCenter)
-
-        self.Band10_4.addWidget(self.EQ2_20000_Lab, 0, Qt.AlignHCenter|Qt.AlignTop)
-
-
-        self.horizontalLayout_5.addLayout(self.Band10_4)
-
-        self.horizontalSpacer_10 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.horizontalLayout_5.addItem(self.horizontalSpacer_10)
-
-
-        self.verticalLayout.addWidget(self.EQ2_frame3)
-
-        self.EQtabWidget.addTab(self.EQ2, "")
-
-        self.gridLayout_2.addWidget(self.EQtabWidget, 2, 1, 1, 1)
-
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1166, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1131, 22))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuView = QMenu(self.menubar)
@@ -2866,14 +2870,6 @@ class Ui_MainWindow(object):
         self.MW_PlayPause.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.MW_Stop.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.EqOnOffLab.setText(QCoreApplication.translate("MainWindow", u"EQ Off", None))
-        self.SourceBox.setTitle(QCoreApplication.translate("MainWindow", u"Audio source:", None))
-        self.PinkNoiseRBut.setText(QCoreApplication.translate("MainWindow", u"Pink Noise", None))
-        self.AudiofileRBut.setText(QCoreApplication.translate("MainWindow", u"Audiofile (Playlist):", None))
-        self.PlusFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.MinusFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.ClearFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.SearchAudio.setInputMask("")
-        self.SearchAudio.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.EQ1_31_Lab.setText(QCoreApplication.translate("MainWindow", u"31", None))
         self.EQ1_63_Lab.setText(QCoreApplication.translate("MainWindow", u"63", None))
         self.EQ1_125_Lab.setText(QCoreApplication.translate("MainWindow", u"125", None))
@@ -2916,6 +2912,14 @@ class Ui_MainWindow(object):
         self.EQ2_10000_Lab.setText(QCoreApplication.translate("MainWindow", u"10k", None))
         self.EQ2_20000_Lab.setText(QCoreApplication.translate("MainWindow", u"20k", None))
         self.EQtabWidget.setTabText(self.EQtabWidget.indexOf(self.EQ2), QCoreApplication.translate("MainWindow", u"EQ2", None))
+        self.SourceBox.setTitle(QCoreApplication.translate("MainWindow", u"Audio source:", None))
+        self.PinkNoiseRBut.setText(QCoreApplication.translate("MainWindow", u"Pink Noise", None))
+        self.AudiofileRBut.setText(QCoreApplication.translate("MainWindow", u"Audiofile (Playlist):", None))
+        self.PlusFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.MinusFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.ClearFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.SearchAudio.setInputMask("")
+        self.SearchAudio.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuView.setTitle(QCoreApplication.translate("MainWindow", u"View", None))
         self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
