@@ -65,7 +65,7 @@
         <widget class="QPushButton" name="NextPatternBut">
          <property name="maximumSize">
           <size>
-           <width>70</width>
+           <width>65</width>
            <height>16777215</height>
           </size>
          </property>
@@ -351,7 +351,7 @@ background: rgba(118, 214, 255, 85)
        <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -4284,6 +4284,47 @@ background: rgba(118, 214, 255, 85)
            </property>
           </spacer>
          </item>
+         <item>
+          <widget class="QToolButton" name="toolButton">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{border: none;}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 3px;
+}</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../Icons.qrc">
+             <normaloff>:/Player/Icons/Player/shuffle_black.png</normaloff>
+             <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_15">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item alignment="Qt::AlignRight">
           <widget class="QToolButton" name="ClearFilesBut">
            <property name="styleSheet">
@@ -4366,6 +4407,9 @@ background: rgba(118, 214, 255, 85)
     <addaction name="actionOpen"/>
     <addaction name="actionSave_Playlist"/>
     <addaction name="separator"/>
+    <addaction name="actionMake_Learning_Files"/>
+    <addaction name="actionMake_Test_Files"/>
+    <addaction name="separator"/>
     <addaction name="actionClose"/>
    </widget>
    <widget class="QMenu" name="menuView">
@@ -4400,9 +4444,9 @@ background: rgba(118, 214, 255, 85)
      <property name="title">
       <string>EQ Bands Playback Order</string>
      </property>
-     <addaction name="actionAscending"/>
-     <addaction name="actionDescending"/>
-     <addaction name="actionRandom_No_Repeat"/>
+     <addaction name="actionAscendingEQ"/>
+     <addaction name="actionDescendingEQ"/>
+     <addaction name="actionShuffleEQ"/>
      <addaction name="separator"/>
      <addaction name="actionEach_Band_Boosted_then_Cut"/>
      <addaction name="actionAll_Bands_Boosted_then_All_Bands_Cut"/>
@@ -4416,10 +4460,14 @@ background: rgba(118, 214, 255, 85)
     <addaction name="actionPrevious_Track"/>
     <addaction name="actionNext_Track"/>
     <addaction name="separator"/>
+    <addaction name="actionShuffle_Playback"/>
+    <addaction name="separator"/>
     <addaction name="actionIncrease_Volume"/>
     <addaction name="actionDecrease_Volume"/>
     <addaction name="separator"/>
     <addaction name="menuEQ_Bands_Playback_Order"/>
+    <addaction name="separator"/>
+    <addaction name="actionPlayback_Audio_Devices"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -5463,7 +5511,7 @@ background: rgba(118, 214, 255, 85)
     <string>Ctrl+Down, -</string>
    </property>
   </action>
-  <action name="actionAscending">
+  <action name="actionAscendingEQ">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -5474,7 +5522,7 @@ background: rgba(118, 214, 255, 85)
     <string>Ascending</string>
    </property>
   </action>
-  <action name="actionDescending">
+  <action name="actionDescendingEQ">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -5482,12 +5530,12 @@ background: rgba(118, 214, 255, 85)
     <string>Descending</string>
    </property>
   </action>
-  <action name="actionRandom_No_Repeat">
+  <action name="actionShuffleEQ">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Random No Repeat</string>
+    <string>Shuffle</string>
    </property>
   </action>
   <action name="actionEach_Band_Boosted_then_Cut">
@@ -5498,7 +5546,7 @@ background: rgba(118, 214, 255, 85)
     <bool>true</bool>
    </property>
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>Each Band Boosted, then Cut</string>
@@ -5509,7 +5557,7 @@ background: rgba(118, 214, 255, 85)
     <bool>true</bool>
    </property>
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>All Bands Boosted, then All Bands Cut</string>
@@ -5536,6 +5584,34 @@ background: rgba(118, 214, 255, 85)
   <action name="actionMaximal">
    <property name="text">
     <string>Maximal</string>
+   </property>
+  </action>
+  <action name="actionMake_Learning_Files">
+   <property name="text">
+    <string>Make Learning Files...</string>
+   </property>
+  </action>
+  <action name="actionMake_Test_Files">
+   <property name="text">
+    <string>Make Test Files...</string>
+   </property>
+  </action>
+  <action name="actionPlayback_Audio_Devices">
+   <property name="text">
+    <string>Playback Audio Devices...</string>
+   </property>
+  </action>
+  <action name="actionShuffle_Playback">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../Icons.qrc">
+     <normaloff>:/Player/Icons/Player/shuffle_black.png</normaloff>
+     <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
+   </property>
+   <property name="text">
+    <string>Shuffle Playback</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

@@ -5,3 +5,4 @@
 
 Player Icons:
 https://iconarchive.com/icons/oxygen-icons.org/oxygen/authors.txt
+<a href="https://www.flaticon.com/free-icons/random" title="random icons">Random icons created by mavadee - Flaticon</a>

@@ -18,7 +18,7 @@ mode10 = {'Name': '10. Low (32-315 Hz) 1/3-octave bands boosted (+) or cut (-)',
           'ActiveFreqRange': (32, 315), 'EQ_boost_cut': '+-'}
 mode11 = {'Name': '11. Mid (315-1250 Hz) 1/3-octave bands boosted (+) or cut (-)', 'EQtype': 'EQ2',
           'ActiveFreqRange': (315, 1250), 'EQ_boost_cut': '+-'}
-mode12 = {'Name': '12. High (1.6 kHz - 16 kHz) 1/3-octave bands boosted(+) or cut (-)', 'EQtype': 'EQ2', 'ActiveFreqRange': (1600, 16000),
+mode12 = {'Name': '12. High (1.6 kHz - 16 kHz) 1/3-octave bands boosted (+) or cut (-)', 'EQtype': 'EQ2', 'ActiveFreqRange': (1600, 16000),
           'EQ_boost_cut': '+-'}
 mode13 = {'Name': '13. All 1/3-octave bands boosted (+) or cut (-)', 'EQtype': 'EQ2', 'ActiveFreqRange': (32, 16000), 'EQ_boost_cut': '+-'}
 mode14 = {'Name': '14. Two 1-octave bands treated (boosted/cut) simultaneously', 'EQtype': 'EQ1', 'ActiveFreqRange': (31, 16000),

@@ -72,25 +72,25 @@ class Ui_MainWindow(object):
         self.actionIncrease_Volume.setObjectName(u"actionIncrease_Volume")
         self.actionDecrease_Volume = QAction(MainWindow)
         self.actionDecrease_Volume.setObjectName(u"actionDecrease_Volume")
-        self.actionAscending = QAction(MainWindow)
-        self.actionAscending.setObjectName(u"actionAscending")
-        self.actionAscending.setCheckable(True)
-        self.actionAscending.setChecked(True)
-        self.actionDescending = QAction(MainWindow)
-        self.actionDescending.setObjectName(u"actionDescending")
-        self.actionDescending.setCheckable(True)
-        self.actionRandom_No_Repeat = QAction(MainWindow)
-        self.actionRandom_No_Repeat.setObjectName(u"actionRandom_No_Repeat")
-        self.actionRandom_No_Repeat.setCheckable(True)
+        self.actionAscendingEQ = QAction(MainWindow)
+        self.actionAscendingEQ.setObjectName(u"actionAscendingEQ")
+        self.actionAscendingEQ.setCheckable(True)
+        self.actionAscendingEQ.setChecked(True)
+        self.actionDescendingEQ = QAction(MainWindow)
+        self.actionDescendingEQ.setObjectName(u"actionDescendingEQ")
+        self.actionDescendingEQ.setCheckable(True)
+        self.actionShuffleEQ = QAction(MainWindow)
+        self.actionShuffleEQ.setObjectName(u"actionShuffleEQ")
+        self.actionShuffleEQ.setCheckable(True)
         self.actionEach_Band_Boosted_then_Cut = QAction(MainWindow)
         self.actionEach_Band_Boosted_then_Cut.setObjectName(u"actionEach_Band_Boosted_then_Cut")
         self.actionEach_Band_Boosted_then_Cut.setCheckable(True)
         self.actionEach_Band_Boosted_then_Cut.setChecked(True)
-        self.actionEach_Band_Boosted_then_Cut.setEnabled(False)
+        self.actionEach_Band_Boosted_then_Cut.setEnabled(True)
         self.actionAll_Bands_Boosted_then_All_Bands_Cut = QAction(MainWindow)
         self.actionAll_Bands_Boosted_then_All_Bands_Cut.setObjectName(u"actionAll_Bands_Boosted_then_All_Bands_Cut")
         self.actionAll_Bands_Boosted_then_All_Bands_Cut.setCheckable(True)
-        self.actionAll_Bands_Boosted_then_All_Bands_Cut.setEnabled(False)
+        self.actionAll_Bands_Boosted_then_All_Bands_Cut.setEnabled(True)
         self.actionMinimize = QAction(MainWindow)
         self.actionMinimize.setObjectName(u"actionMinimize")
         self.actionZoom = QAction(MainWindow)
@@ -99,6 +99,19 @@ class Ui_MainWindow(object):
         self.actionMinimal.setObjectName(u"actionMinimal")
         self.actionMaximal = QAction(MainWindow)
         self.actionMaximal.setObjectName(u"actionMaximal")
+        self.actionMake_Learning_Files = QAction(MainWindow)
+        self.actionMake_Learning_Files.setObjectName(u"actionMake_Learning_Files")
+        self.actionMake_Test_Files = QAction(MainWindow)
+        self.actionMake_Test_Files.setObjectName(u"actionMake_Test_Files")
+        self.actionPlayback_Audio_Devices = QAction(MainWindow)
+        self.actionPlayback_Audio_Devices.setObjectName(u"actionPlayback_Audio_Devices")
+        self.actionShuffle_Playback = QAction(MainWindow)
+        self.actionShuffle_Playback.setObjectName(u"actionShuffle_Playback")
+        self.actionShuffle_Playback.setCheckable(True)
+        icon = QIcon()
+        icon.addFile(u":/Player/Icons/Player/shuffle_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/Player/Icons/Player/shuffle_blue.png", QSize(), QIcon.Normal, QIcon.On)
+        self.actionShuffle_Playback.setIcon(icon)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_2 = QGridLayout(self.centralwidget)
@@ -117,7 +130,7 @@ class Ui_MainWindow(object):
 
         self.NextPatternBut = QPushButton(self.PatternGroupBox)
         self.NextPatternBut.setObjectName(u"NextPatternBut")
-        self.NextPatternBut.setMaximumSize(QSize(70, 16777215))
+        self.NextPatternBut.setMaximumSize(QSize(65, 16777215))
 
         self.horizontalLayout_6.addWidget(self.NextPatternBut, 0, Qt.AlignRight)
 
@@ -185,9 +198,9 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon = QIcon()
-        icon.addFile(u":/Player/Icons/Player/Actions-media-playback-start-icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.MW_PlayPause.setIcon(icon)
+        icon1 = QIcon()
+        icon1.addFile(u":/Player/Icons/Player/Actions-media-playback-start-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.MW_PlayPause.setIcon(icon1)
         self.MW_PlayPause.setIconSize(QSize(32, 32))
 
         self.HeadLayout.addWidget(self.MW_PlayPause)
@@ -202,9 +215,9 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon1 = QIcon()
-        icon1.addFile(u":/Player/Icons/Player/Actions-media-playback-stop-icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.MW_Stop.setIcon(icon1)
+        icon2 = QIcon()
+        icon2.addFile(u":/Player/Icons/Player/Actions-media-playback-stop-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.MW_Stop.setIcon(icon2)
         self.MW_Stop.setIconSize(QSize(32, 32))
 
         self.HeadLayout.addWidget(self.MW_Stop)
@@ -2224,9 +2237,9 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon2 = QIcon()
-        icon2.addFile(u":/AddRemove/Icons/AddRemove/plus.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.PlusFilesBut.setIcon(icon2)
+        icon3 = QIcon()
+        icon3.addFile(u":/AddRemove/Icons/AddRemove/plus.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.PlusFilesBut.setIcon(icon3)
 
         self.AddPlusRemoveAudioLay.addWidget(self.PlusFilesBut)
 
@@ -2240,15 +2253,32 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon3 = QIcon()
-        icon3.addFile(u":/AddRemove/Icons/AddRemove/minus.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.MinusFilesBut.setIcon(icon3)
+        icon4 = QIcon()
+        icon4.addFile(u":/AddRemove/Icons/AddRemove/minus.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.MinusFilesBut.setIcon(icon4)
 
         self.AddPlusRemoveAudioLay.addWidget(self.MinusFilesBut)
 
         self.horizontalSpacer_12 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.AddPlusRemoveAudioLay.addItem(self.horizontalSpacer_12)
+
+        self.toolButton = QToolButton(self.SourceBox)
+        self.toolButton.setObjectName(u"toolButton")
+        self.toolButton.setMaximumSize(QSize(16777215, 26))
+        self.toolButton.setStyleSheet(u"QToolButton{border: none;}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 3px;\n"
+"}")
+        self.toolButton.setIcon(icon)
+        self.toolButton.setCheckable(True)
+
+        self.AddPlusRemoveAudioLay.addWidget(self.toolButton)
+
+        self.horizontalSpacer_15 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.AddPlusRemoveAudioLay.addItem(self.horizontalSpacer_15)
 
         self.ClearFilesBut = QToolButton(self.SourceBox)
         self.ClearFilesBut.setObjectName(u"ClearFilesBut")
@@ -2260,9 +2290,9 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon4 = QIcon()
-        icon4.addFile(u":/AddRemove/Icons/AddRemove/clear.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.ClearFilesBut.setIcon(icon4)
+        icon5 = QIcon()
+        icon5.addFile(u":/AddRemove/Icons/AddRemove/clear.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.ClearFilesBut.setIcon(icon5)
         self.ClearFilesBut.setIconSize(QSize(20, 20))
 
         self.AddPlusRemoveAudioLay.addWidget(self.ClearFilesBut, 0, Qt.AlignRight)
@@ -2353,9 +2383,9 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon5 = QIcon()
-        icon5.addFile(u":/Player/Icons/Player/Actions-media-skip-backward-icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.Player_SkipBackw.setIcon(icon5)
+        icon6 = QIcon()
+        icon6.addFile(u":/Player/Icons/Player/Actions-media-skip-backward-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.Player_SkipBackw.setIcon(icon6)
         self.Player_SkipBackw.setIconSize(QSize(32, 32))
 
         self.PlayerLay.addWidget(self.Player_SkipBackw)
@@ -2370,7 +2400,7 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        self.Player_PlayPause.setIcon(icon)
+        self.Player_PlayPause.setIcon(icon1)
         self.Player_PlayPause.setIconSize(QSize(32, 32))
 
         self.PlayerLay.addWidget(self.Player_PlayPause)
@@ -2385,7 +2415,7 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        self.Player_Stop.setIcon(icon1)
+        self.Player_Stop.setIcon(icon2)
         self.Player_Stop.setIconSize(QSize(32, 32))
 
         self.PlayerLay.addWidget(self.Player_Stop)
@@ -2400,9 +2430,9 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon6 = QIcon()
-        icon6.addFile(u":/Player/Icons/Player/Actions-media-skip-forward-icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.Player_SkipForw.setIcon(icon6)
+        icon7 = QIcon()
+        icon7.addFile(u":/Player/Icons/Player/Actions-media-skip-forward-icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.Player_SkipForw.setIcon(icon7)
         self.Player_SkipForw.setIconSize(QSize(32, 32))
 
         self.PlayerLay.addWidget(self.Player_SkipForw)
@@ -2541,7 +2571,7 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        self.ClearRangeBut.setIcon(icon4)
+        self.ClearRangeBut.setIcon(icon5)
 
         self.TransportLay.addWidget(self.ClearRangeBut)
 
@@ -2757,6 +2787,9 @@ class Ui_MainWindow(object):
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave_Playlist)
         self.menuFile.addSeparator()
+        self.menuFile.addAction(self.actionMake_Learning_Files)
+        self.menuFile.addAction(self.actionMake_Test_Files)
+        self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionClose)
         self.menuView.addAction(self.actionMinimal)
         self.menuView.addAction(self.actionMaximal)
@@ -2776,13 +2809,17 @@ class Ui_MainWindow(object):
         self.menuControls.addAction(self.actionPrevious_Track)
         self.menuControls.addAction(self.actionNext_Track)
         self.menuControls.addSeparator()
+        self.menuControls.addAction(self.actionShuffle_Playback)
+        self.menuControls.addSeparator()
         self.menuControls.addAction(self.actionIncrease_Volume)
         self.menuControls.addAction(self.actionDecrease_Volume)
         self.menuControls.addSeparator()
         self.menuControls.addAction(self.menuEQ_Bands_Playback_Order.menuAction())
-        self.menuEQ_Bands_Playback_Order.addAction(self.actionAscending)
-        self.menuEQ_Bands_Playback_Order.addAction(self.actionDescending)
-        self.menuEQ_Bands_Playback_Order.addAction(self.actionRandom_No_Repeat)
+        self.menuControls.addSeparator()
+        self.menuControls.addAction(self.actionPlayback_Audio_Devices)
+        self.menuEQ_Bands_Playback_Order.addAction(self.actionAscendingEQ)
+        self.menuEQ_Bands_Playback_Order.addAction(self.actionDescendingEQ)
+        self.menuEQ_Bands_Playback_Order.addAction(self.actionShuffleEQ)
         self.menuEQ_Bands_Playback_Order.addSeparator()
         self.menuEQ_Bands_Playback_Order.addAction(self.actionEach_Band_Boosted_then_Cut)
         self.menuEQ_Bands_Playback_Order.addAction(self.actionAll_Bands_Boosted_then_All_Bands_Cut)
@@ -2790,7 +2827,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.PatternBox.setCurrentIndex(-1)
-        self.EQtabWidget.setCurrentIndex(1)
+        self.EQtabWidget.setCurrentIndex(0)
         self.BWBox.setCurrentIndex(3)
 
 
@@ -2851,9 +2888,9 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(shortcut)
         self.actionDecrease_Volume.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Down, -", None))
 #endif // QT_CONFIG(shortcut)
-        self.actionAscending.setText(QCoreApplication.translate("MainWindow", u"Ascending", None))
-        self.actionDescending.setText(QCoreApplication.translate("MainWindow", u"Descending", None))
-        self.actionRandom_No_Repeat.setText(QCoreApplication.translate("MainWindow", u"Random No Repeat", None))
+        self.actionAscendingEQ.setText(QCoreApplication.translate("MainWindow", u"Ascending", None))
+        self.actionDescendingEQ.setText(QCoreApplication.translate("MainWindow", u"Descending", None))
+        self.actionShuffleEQ.setText(QCoreApplication.translate("MainWindow", u"Shuffle", None))
         self.actionEach_Band_Boosted_then_Cut.setText(QCoreApplication.translate("MainWindow", u"Each Band Boosted, then Cut", None))
         self.actionAll_Bands_Boosted_then_All_Bands_Cut.setText(QCoreApplication.translate("MainWindow", u"All Bands Boosted, then All Bands Cut", None))
         self.actionMinimize.setText(QCoreApplication.translate("MainWindow", u"Minimize", None))
@@ -2863,6 +2900,10 @@ class Ui_MainWindow(object):
         self.actionZoom.setText(QCoreApplication.translate("MainWindow", u"Zoom", None))
         self.actionMinimal.setText(QCoreApplication.translate("MainWindow", u"Minimal", None))
         self.actionMaximal.setText(QCoreApplication.translate("MainWindow", u"Maximal", None))
+        self.actionMake_Learning_Files.setText(QCoreApplication.translate("MainWindow", u"Make Learning Files...", None))
+        self.actionMake_Test_Files.setText(QCoreApplication.translate("MainWindow", u"Make Test Files...", None))
+        self.actionPlayback_Audio_Devices.setText(QCoreApplication.translate("MainWindow", u"Playback Audio Devices...", None))
+        self.actionShuffle_Playback.setText(QCoreApplication.translate("MainWindow", u"Shuffle Playback", None))
         self.PatternGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Exercise / difficulty pattern:", None))
         self.NextPatternBut.setText(QCoreApplication.translate("MainWindow", u"Next >", None))
         self.ModeButtonsGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Mode:", None))
@@ -2919,6 +2960,7 @@ class Ui_MainWindow(object):
         self.AudiofileRBut.setText(QCoreApplication.translate("MainWindow", u"Audiofile (Playlist):", None))
         self.PlusFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.MinusFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.toolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.ClearFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.SearchAudio.setInputMask("")
         self.SearchAudio.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
