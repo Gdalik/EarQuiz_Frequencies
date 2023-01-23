@@ -1,7 +1,7 @@
-import time
-
+from dataclasses import dataclass, field
 from PySide6.QtWidgets import QSlider, QLabel
-from Misc.common_calcs import findAdjacentEl
+from Utilities.common_calcs import findAdjacentEl
+
 
 class EqView:
     def __init__(self, mw_view):
@@ -9,13 +9,27 @@ class EqView:
         self.TabWidget = mw_view.EQtabWidget
         self.TabWidget.setTabText(0, '10-Band Equalizer')
         self.TabWidget.setTabText(1, '30-Band Equalizer')
-        self._permDisabledFilters = ('EQ2_25', 'EQ2_20000')
-        self.handleStyle = '.QSlider::handle:vertical{background: white; border: 2px solid rgb(15, 128, 255); height: 5px; width: 10px; margin: 0px -5px}'
-        self.disabledHandleStyle = '.QSlider::handle:vertical{background: white; border: 2px solid rgb(191, 191, 191); height: 5px; width: 10px; margin: 0px -5px}'
-        self.basicSliderStyle = '.QSlider::groove:vertical{border: 1px solid #262626; background: rgb(191, 191, 191); width: 5px; margin: 0 12px;}'+self.handleStyle
+        self.handleStyle = '.QSlider::handle:vertical{background: white; border: 2px solid rgb(15, 128, 255); ' \
+                           'height: 5px; width: 10px; margin: 0px -5px}'
+        self.disabledHandleStyle = '.QSlider::handle:vertical{background: white; ' \
+                                   'border: 2px solid rgb(191, 191, 191); height: 5px; width: 10px; margin: 0px -5px}'
+        self.basicSliderStyle = '.QSlider::groove:vertical{border: 1px solid #262626; ' \
+                                'background: rgb(191, 191, 191); width: 5px; margin: 0 12px;}'+self.handleStyle
         self.disabledSliderStyle = self.basicSliderStyle + self.disabledHandleStyle
-        self._disableAdjacentFiltersMode = False
+        self._DisableAdjacentFiltersMode = False
         self.currentEQ = None
+        self.Filters = None
+
+    @dataclass
+    class Filter:
+        EQ: str
+        freq: int
+        Slider: field(default_factory=QSlider)
+        Label: field(default_factory=QLabel)
+
+        @property
+        def PermDisabled(self):
+            return self.freq < 30 or self.freq > 16000
 
     def setCurrentEQ(self, EQ: str):    # 'EQ1' (10-band) / 'EQ2' (30-band)
         if EQ == 'EQ1':
@@ -25,11 +39,12 @@ class EqView:
             self.TabWidget.setTabVisible(0, False)
             self.TabWidget.setTabVisible(1, True)
         self.currentEQ = EQ
+        self.Filters = self.makeFilters()
 
     def highlight_right_Filter(self, freq: int, mode: str):    # mode: 'full'/'half+'/'half-'
         green_slider_settings = '{margin: 0 12px; background: green; width: 5px;border: 1px solid #262626}'
-        Slider, Label = self.getFilter(freq)
-        slider_style = Slider.styleSheet()
+        F = self.getFilter(freq)
+        slider_style = F.Slider.styleSheet()
         handle_style = self.disabledHandleStyle if self.disabledHandleStyle in slider_style else self.handleStyle
         if mode == 'half+':
             slider_style += f'.QSlider::sub-page:vertical{green_slider_settings}'
@@ -37,42 +52,35 @@ class EqView:
             slider_style += f'.QSlider::add-page:vertical{green_slider_settings}'
         else:
             slider_style = f'.QSlider::groove:vertical{green_slider_settings}{handle_style}'
-        Slider.setStyleSheet(slider_style)
-        Label.setStyleSheet('color: green; font-weight: bold')
-        return Slider, Label
-
-    def getEQ(self, Filter: tuple):
-        return Filter[0].objectName().split('_')[0]
-
-    def getfreq(self, Filter: tuple):
-        return int(Filter[0].objectName().split('_')[-1])
+        F.Slider.setStyleSheet(slider_style)
+        F.Label.setStyleSheet('color: green; font-weight: bold')
+        return F
 
     def getFilter(self, freq: int):
-        Slider = self.TabWidget.findChild(QSlider, name=f'{self.currentEQ}_{freq}')
-        Label = self.TabWidget.findChild(QLabel, name=f'{self.currentEQ}_{freq}_Lab')
-        return Slider, Label
+        for F in self.Filters:
+            if F.EQ == self.currentEQ and F.freq == freq:
+                return F
 
-    def getFilters(self):
-        SliderList = [Slider for Slider in self.TabWidget.findChildren(QSlider) if Slider.objectName().startswith(self.currentEQ) and Slider.objectName() not in self._permDisabledFilters]
+    def makeFilters(self):
+        getEQ = lambda SliderLabel: SliderLabel[0].objectName().split('_')[0]
+        getfreq = lambda SliderLabel: int(SliderLabel[0].objectName().split('_')[-1])
+        SliderList = [Slider for Slider in self.TabWidget.findChildren(QSlider) if Slider.objectName().startswith(self.currentEQ)]
         LabelList = [self.TabWidget.findChild(QLabel, f'{SliderName}_Lab') for SliderName in map(QSlider.objectName, SliderList)]
-        FilterList = zip(SliderList, LabelList)
-        return [*FilterList]
+        return [self.Filter(getEQ(El), getfreq(El), *El) for El in zip(SliderList, LabelList)]
 
     def resetFilterStyle(self, freq: int):
         return self._resetFilterStyle(self.getFilter(freq))
 
-    def _resetFilterStyle(self, Filter: tuple):
-        Slider, Label = Filter
-        sliderStyle = self.basicSliderStyle if Slider.objectName() not in self._permDisabledFilters else self.disabledSliderStyle
-        Slider.setStyleSheet(sliderStyle)
-        Label.setStyleSheet('')
-        return Slider, Label
+    def _resetFilterStyle(self, F: Filter):
+        sliderStyle = self.disabledSliderStyle if F.PermDisabled else self.basicSliderStyle
+        F.Slider.setStyleSheet(sliderStyle)
+        F.Label.setStyleSheet('')
+        return F
 
     def resetEQStyle(self):
-        Filters = self.getFilters()
-        for Filter in Filters:
+        for Filter in self.Filters:
             self._resetFilterStyle(Filter)
-        return Filters
+        return self.Filters
 
     def resetEQ(self, mode: str):  # mode: '+', '-', '+-'
         if mode == '+':
@@ -87,9 +95,9 @@ class EqView:
             max_value = 1
         Filters = self.resetEQStyle()
         for F in Filters:
-            F[0].setMinimum(min_value)
-            F[0].setMaximum(max_value)
-            F[0].setValue(value)
+            F.Slider.setMinimum(min_value)
+            F.Slider.setMaximum(max_value)
+            F.Slider.setValue(value)
             self._filterSetEnabled(F, True)
         return Filters
 
@@ -97,53 +105,49 @@ class EqView:
         return self._filterHandle(self.getFilter(freq), boost_cut, blockSignals=blockSignals)
 
     @staticmethod
-    def _filterHandle(Filter: tuple, boost_cut: str, blockSignals=False):     # boost_cut: '+'/'-'
-        Slider, _ = Filter
-        Slider.blockSignals(blockSignals)
+    def _filterHandle(F: Filter, boost_cut: str, blockSignals=False):     # boost_cut: '+'/'-'
+        F.Slider.blockSignals(blockSignals)
         if boost_cut == '+':
-            Slider.setValue(Slider.maximum())
+            F.Slider.setValue(F.Slider.maximum())
         elif boost_cut == '-':
-            Slider.setValue(Slider.minimum())
-        Slider.blockSignals(False)
-        return Slider
+            F.Slider.setValue(F.Slider.minimum())
+        F.Slider.blockSignals(False)
+        return F.Slider
 
     def filterSetEnabled(self, freq: int, arg: bool):
         return self._filterSetEnabled(self.getFilter(freq), arg)
 
-    def _filterSetEnabled(self, Filter: tuple, arg: bool):
-        Slider, Label = Filter
-        if Slider.objectName() in self._permDisabledFilters:
-            return Filter
-        Slider.setEnabled(arg)
-        Label.setEnabled(arg)
-        slider_style = Slider.styleSheet().replace(self.disabledHandleStyle, self.handleStyle) if arg else Slider.styleSheet().replace(self.handleStyle, self.disabledHandleStyle)
-        Slider.setStyleSheet(slider_style)
-        return Slider, Label
+    def _filterSetEnabled(self, F: Filter, arg: bool):
+        if F.PermDisabled:
+            return F
+        F.Slider.setEnabled(arg)
+        F.Label.setEnabled(arg)
+        slider_style = F.Slider.styleSheet().replace(self.disabledHandleStyle, self.handleStyle) if arg else F.Slider.styleSheet().replace(self.handleStyle, self.disabledHandleStyle)
+        F.Slider.setStyleSheet(slider_style)
+        return F
 
     def rangeSetEnabled(self, freq1: int, freq2: int, arg: bool):
         freqs = [freq1, freq2]
         freqs.sort()
-        Filters = self.getFilters()
-        for F in Filters:
-            if freqs[0] <= self.getfreq(F) <= freqs[1]:
+        for F in self.Filters:
+            if freqs[0] <= F.freq <= freqs[1]:
                 self._filterSetEnabled(F, arg)
-        return Filters
+        return self.Filters
 
     def rangeCrop(self, freq1: int, freq2: int):
         self.rangeSetEnabled(20, 20000, False)
         self.rangeSetEnabled(freq1, freq2, True)
 
     def sortedFilters(self):
-        filter_list = self.getFilters()
-        key_func = lambda Filter: self.getfreq(Filter)
-        filter_list.sort(key=key_func)
+        filter_list = self.Filters
+        filter_list.sort(key=lambda F: F.freq)
         return filter_list
 
-    def getAdjacentFilters(self, Filter: tuple, arg: int or bool):     # arg: the number of adjacent filters from each side or False
+    def getAdjacentFilters(self, F: Filter, arg: int or bool):     # arg: the number of adjacent filters from each side or False
         if not arg:
             return
         sorted_filters = self.sortedFilters()
-        return findAdjacentEl(sorted_filters, Filter, num=arg)
+        return findAdjacentEl(sorted_filters, F, num=arg)
 
     def disableAdjacentFilters(self, freq: int, num=1):   # num: the number of adjacent filters from each side
         if not num:
@@ -158,14 +162,13 @@ class EqView:
             self._filterSetEnabled(F, True)
 
     def disableAdjacentFiltersMode(self, arg: int or bool):    # arg: the number of adjacent filters from each side or False
-        self._disableAdjacentFiltersMode = arg
+        self._DisableAdjacentFiltersMode = arg
 
-    def case_disableAdjacentFiltersModeOn(self, sliderValue: int, activeFreqRange=(20, 20000)):
-        if not self._disableAdjacentFiltersMode:
+    def case_DisableAdjacentFiltersModeOn(self, sliderValue: int, activeFreqRange=(20, 20000)):
+        if not self._DisableAdjacentFiltersMode:
             return
-        filters = self.getFilters()
         if sliderValue == 0:
             self.rangeSetEnabled(*activeFreqRange, True)
-        for F in filters:
-            if F[0].value() != 0:
-                self.disableAdjacentFilters(self.getfreq(F), num=self._disableAdjacentFiltersMode)
+        for F in self.Filters:
+            if F.Slider.value() != 0:
+                self.disableAdjacentFilters(F.freq, num=self._DisableAdjacentFiltersMode)

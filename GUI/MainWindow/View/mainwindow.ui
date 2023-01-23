@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1097</width>
+    <width>1108</width>
     <height>736</height>
    </rect>
   </property>
@@ -27,6 +27,12 @@
   </property>
   <property name="styleSheet">
    <string notr="true"/>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
@@ -123,7 +129,7 @@
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgba(255, 255, 102, 207)</string>
+            <string notr="true">background-color: rgba(255, 255, 102, 207);</string>
            </property>
            <property name="text">
             <string>Preview</string>
@@ -211,6 +217,9 @@
       </item>
       <item>
        <widget class="QToolButton" name="MW_PlayPause">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="styleSheet">
          <string notr="true">QToolButton{
 border: None;
@@ -264,17 +273,59 @@ background: rgba(118, 214, 255, 85)
        </widget>
       </item>
       <item>
+       <widget class="QToolButton" name="NextExercise">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Next Exercise</string>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QToolButton{
+border: None;
+}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85);
+}</string>
+        </property>
+        <property name="text">
+         <string>Next Exercise</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../Icons.qrc">
+          <normaloff>:/Player/Icons/Player/arrow-right_gray.png</normaloff>:/Player/Icons/Player/arrow-right_gray.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>26</width>
+          <height>26</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_7">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeType">
-         <enum>QSizePolicy::Expanding</enum>
+         <enum>QSizePolicy::Fixed</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>40</width>
-          <height>0</height>
+          <width>20</width>
+          <height>20</height>
          </size>
         </property>
        </spacer>
@@ -4286,6 +4337,12 @@ background: rgba(118, 214, 255, 85)
          </item>
          <item>
           <widget class="QToolButton" name="toolButton">
+           <property name="minimumSize">
+            <size>
+             <width>21</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -4296,7 +4353,11 @@ background: rgba(118, 214, 255, 85)
             <string notr="true">QToolButton{border: none;}
 QToolButton:hover{
 background: rgba(192, 192, 192, 128);
-border-radius: 3px;
+border-radius: 4px;
+}
+QToolButton:checked{
+background: rgba(118, 214, 255, 51);
+border-radius: 4px;
 }</string>
            </property>
            <property name="text">
@@ -4396,7 +4457,7 @@ background: rgba(118, 214, 255, 85)
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1097</width>
+     <width>1108</width>
      <height>22</height>
     </rect>
    </property>
@@ -4405,6 +4466,7 @@ background: rgba(118, 214, 255, 85)
      <string>File</string>
     </property>
     <addaction name="actionOpen"/>
+    <addaction name="actionOpen_Folder"/>
     <addaction name="actionSave_Playlist"/>
     <addaction name="separator"/>
     <addaction name="actionMake_Learning_Files"/>
@@ -4455,6 +4517,7 @@ background: rgba(118, 214, 255, 85)
     <addaction name="actionLearn_Mode"/>
     <addaction name="actionTest_Mode"/>
     <addaction name="separator"/>
+    <addaction name="actionNext_Exercise"/>
     <addaction name="actionPlay"/>
     <addaction name="actionStop"/>
     <addaction name="actionPrevious_Track"/>
@@ -4462,16 +4525,22 @@ background: rgba(118, 214, 255, 85)
     <addaction name="separator"/>
     <addaction name="actionShuffle_Playback"/>
     <addaction name="separator"/>
+    <addaction name="menuEQ_Bands_Playback_Order"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuAudio">
+    <property name="title">
+     <string>Audio</string>
+    </property>
     <addaction name="actionIncrease_Volume"/>
     <addaction name="actionDecrease_Volume"/>
     <addaction name="separator"/>
-    <addaction name="menuEQ_Bands_Playback_Order"/>
-    <addaction name="separator"/>
-    <addaction name="actionPlayback_Audio_Devices"/>
+    <addaction name="actionAudio_Device"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
    <addaction name="menuControls"/>
+   <addaction name="menuAudio"/>
    <addaction name="menuWindow"/>
    <addaction name="menuHelp"/>
   </widget>
@@ -5144,14 +5213,14 @@ background: rgba(118, 214, 255, 85)
    <widget class="QWidget" name="dockWidgetContents_3">
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QLabel" name="ExampleNLab">
+      <widget class="QLabel" name="ExerciseNLab">
        <property name="font">
         <font>
          <pointsize>18</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>Example:</string>
+        <string>Exercise:</string>
        </property>
       </widget>
      </item>
@@ -5213,14 +5282,14 @@ background: rgba(118, 214, 255, 85)
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="ExcStatusLab">
+      <widget class="QLabel" name="TestStatusLab">
        <property name="font">
         <font>
          <pointsize>18</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>Excercise status:</string>
+        <string>Test status:</string>
        </property>
       </widget>
      </item>
@@ -5342,6 +5411,9 @@ background: rgba(118, 214, 255, 85)
        </item>
        <item>
         <widget class="QComboBox" name="BWBox">
+         <property name="currentText">
+          <string>1/3 Oct (Q=4.32)</string>
+         </property>
          <property name="currentIndex">
           <number>3</number>
          </property>
@@ -5397,7 +5469,7 @@ background: rgba(118, 214, 255, 85)
   </widget>
   <action name="actionOpen">
    <property name="text">
-    <string>Open...</string>
+    <string>Open Files...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -5476,7 +5548,7 @@ background: rgba(118, 214, 255, 85)
     <string>Stop</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+., Return</string>
+    <string>., Ctrl+.</string>
    </property>
   </action>
   <action name="actionPrevious_Track">
@@ -5596,9 +5668,9 @@ background: rgba(118, 214, 255, 85)
     <string>Make Test Files...</string>
    </property>
   </action>
-  <action name="actionPlayback_Audio_Devices">
+  <action name="actionAudio_Device">
    <property name="text">
-    <string>Playback Audio Devices...</string>
+    <string>Audio Device</string>
    </property>
   </action>
   <action name="actionShuffle_Playback">
@@ -5612,6 +5684,19 @@ background: rgba(118, 214, 255, 85)
    </property>
    <property name="text">
     <string>Shuffle Playback</string>
+   </property>
+  </action>
+  <action name="actionOpen_Folder">
+   <property name="text">
+    <string>Open Folder...</string>
+   </property>
+  </action>
+  <action name="actionNext_Exercise">
+   <property name="text">
+    <string>Next Exercise</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Return</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

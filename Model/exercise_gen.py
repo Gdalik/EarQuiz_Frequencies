@@ -1,17 +1,17 @@
 import copy
 import random
 import itertools
-from Misc.common_calcs import findAdjacentEl as findAdj
+from Utilities.common_calcs import findAdjacentEl as findAdj
 
 
 class ExerciseGenerator:
-    def __init__(self, freq_options: list, boost_cut: str, dualBandMode: bool, order: str, boost_cut_priority=1,
-                 disableAdjacent=1):
-        # order: 'asc', 'desc', 'shuffle'
+    def __init__(self, freq_options: list, boost_cut: str, DualBandMode: bool, order: str, boost_cut_priority=1,
+                 disableAdjacent=1, inf_cycle=True):
+        # order: 'asc', 'desc', 'shuffle', 'random'
         # boost_cut_priority 1 (Each Band Boosted, then Cut) / 2 (All Bands Boosted, then All Bands Cut)
         self.freq_options = freq_options
         self.boost_cut = boost_cut
-        self.dualBandMode = dualBandMode
+        self.DualBandMode = DualBandMode
         self.order = order
         self.boost_cut_priority = boost_cut_priority
         self.disableAdjacent = disableAdjacent
@@ -19,17 +19,25 @@ class ExerciseGenerator:
         self.full_sequence = []
         self._lastRandomChoice = None
         self.cycle = None
+        self.inf_cycle = inf_cycle if order != 'random' else True
 
     def seqGen(self, start_freq=None):
         self.cycle = None
-        return self._dualBandSeqGen(start_freq) if self.dualBandMode else self._singleBandSeqGen(start_freq)
+        return self._dualBandSeqGen(start_freq) if self.DualBandMode else self._singleBandSeqGen(start_freq)
 
     def seqOut(self, start_freq=None):
+        first_run = False
+        if self.order == 'random':
+            return self.randOut()
         if not self.full_sequence or start_freq is not None:
             self.seqGen(start_freq)
         if not self.cycle:
             self.cycle = itertools.cycle(self.full_sequence)
-        return next(self.cycle)
+            first_run = True
+        output = next(self.cycle)
+        if not self.inf_cycle and output == self.full_sequence[0] and not first_run:
+            raise StopIteration
+        return output
 
     def randOut(self):
         if not self.full_sequence:
@@ -49,10 +57,17 @@ class ExerciseGenerator:
         return self.full_sequence
 
     def _dualBandSeqGen(self, start_freq=None):
+        def abs_source(t: tuple, n: int):
+            L = [abs(x) for x in t]
+            return t[L.index(abs(n))]
+
+        def crop_tuple(x):
+            if not isinstance(x, tuple):
+                return x
+            return abs_source(x, max(abs(x[0]), abs(x[1]))) if self.order == 'desc' else abs_source(x, min(abs(x[0]), abs(x[1])))
         self._genSourceSequence()
         start_freq = self._source_sequence[0] if start_freq is None else start_freq
-        start_freq = start_freq[0] if isinstance(start_freq, tuple) else start_freq
-        source_seq = self._source_seq_reorder(abs(start_freq))
+        source_seq = self._source_seq_reorder(abs(crop_tuple(start_freq)))
         source_seq = list(itertools.combinations(source_seq, 2))
         if self.order == 'shuffle':
             rand = random.Random()
@@ -62,16 +77,23 @@ class ExerciseGenerator:
         if self.boost_cut == '-':
             source_seq = list(map(lambda x: (x[0]*-1, x[1]*-1), source_seq))
         elif self.boost_cut == '+-':
-            startfrom = '+' if start_freq > 0 else '-'
+            startfrom = '+' if crop_tuple(start_freq) > 0 else '-'
             source_seq = self._make_dual_boostcut_seq(source_seq, startfrom=startfrom)
         self.full_sequence = source_seq
+        if isinstance(start_freq, tuple):
+            try:
+                self.full_sequence.remove(start_freq)
+            except ValueError:
+                self.full_sequence.remove((start_freq[1], start_freq[0]))
+            self.full_sequence.insert(0, start_freq)
         return source_seq
 
     def _make_single_boostcut_seq(self, source_seq: list, startfrom='+'):
         k = -1 if startfrom == '-' else 1
         if self.boost_cut_priority == 1:
+            bc_cycle = itertools.cycle([k, k * -1])
             source_seq = list(itertools.chain.from_iterable([[x, x] for x in source_seq]))
-            source_seq = [el * next(itertools.cycle([k, k * -1])) for el in source_seq]
+            source_seq = [el * next(bc_cycle) for el in source_seq]
         elif self.boost_cut_priority == 2:
             source_seq = [x * k for x in source_seq] + [x * k * -1 for x in source_seq]
         return source_seq
@@ -98,12 +120,12 @@ class ExerciseGenerator:
         return self._source_sequence
 
     def _genSourceSequence(self):
-        if self.order == 'asc':
-            self._genAscSeq()
-        elif self.order == 'desc':
+        if self.order == 'desc':
             self._genDescSeq()
         elif self.order == 'shuffle':
             self._genRandNoRepeatSeq()
+        else:
+            self._genAscSeq()
 
     def _genDescSeq(self):
         self._source_sequence = copy.copy(self.freq_options)

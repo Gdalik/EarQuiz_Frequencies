@@ -7,6 +7,7 @@
     <file>Icons/Player/Actions-media-playback-stop-icon.png</file>
     <file>Icons/Player/Actions-media-skip-backward-icon.png</file>
     <file>Icons/Player/Actions-media-skip-forward-icon.png</file>
+    <file>Icons/Player/arrow-right_gray.png</file>
   </qresource>
   <qresource prefix="App">
     <file>Icons/Logo/EM_Logo.png</file>

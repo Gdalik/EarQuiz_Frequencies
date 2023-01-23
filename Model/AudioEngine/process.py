@@ -1,5 +1,5 @@
 from pedalboard import PeakFilter, Pedalboard
-from Model.calc import proc_unproc_len, rand_buffer
+from Model.calc import proc_unproc_len, rand_buffer, find_divider
 import numpy as np
 
 
@@ -30,3 +30,21 @@ def eq_proc(cur_sample, samplerate: int, freq1: int or float, freq2=None, gain_d
         equalized = equalize(buffer_size=rand_buffer())
     post_eq = audio_parts[2]
     return np.concatenate((pre_eq, equalized, post_eq), axis=1)
+
+
+def chunked_proc(source: np.array, samplerate: int, DSP, proc_name='Processing audio', callback=None):
+    def callback_out():
+        if callback is not None:
+            callback(out_stat)
+    out_stat = {'State': proc_name, 'Percent': 0}
+    callback_out()
+    output = np.empty((len(source), 0))
+    chunks = np.hsplit(source, find_divider(source[0].size, min=4))
+    for ind, chunk in enumerate([*chunks]):
+        processed = DSP.process(chunk, samplerate)
+        while processed.size != chunk.size:  # Solving possible buffering issues (see Pedalboard docs).
+            processed = DSP.process(chunk, samplerate, buffer_size=rand_buffer(), reset=True)
+        output = np.concatenate((output, processed), axis=1)
+        out_stat['Percent'] = (ind + 1) / len(chunks) * 100
+        callback_out()
+    return output

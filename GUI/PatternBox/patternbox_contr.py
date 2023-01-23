@@ -1,8 +1,9 @@
-from Model.eq_patterns import eqPatterns
+from Model.eq_patterns import EQPatterns
 
 
 class PatternBoxContr:
     def __init__(self, mw_contr):
+        self.EQPatterns = EQPatterns()
         self.mw_contr = mw_contr
         self.mw_view = mw_contr.mw_view
         self.mw_view.PatternBox.currentIndexChanged.connect(self.onPatternBoxIndexChanged)
@@ -23,6 +24,5 @@ class PatternBoxContr:
     def _nextPatternButEnable(self):
         self.mw_view.NextPatternBut.setEnabled(self.mw_view.PatternBox.currentIndex() < self.mw_view.PatternBox.count() - 1)
 
-    @staticmethod
-    def getPatternNames():
-        return [mode['Name'] for mode in eqPatterns]
+    def getPatternNames(self):
+        return [mode['Name'] for mode in self.EQPatterns.List]

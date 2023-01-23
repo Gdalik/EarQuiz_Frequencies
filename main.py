@@ -12,3 +12,4 @@ if __name__ == '__main__':
     app.setApplicationName(definitions.app_name)
     mw = MainWindowContr()
     app.exec()
+

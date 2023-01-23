@@ -1,0 +1,143 @@
+{
+ "Patterns": [
+  {
+   "Name": "Lowest five (31-500 Hz) 1-octave bands boosted (+)",
+   "EQtype": "EQ1",
+   "ActiveFreqRange": [
+    31,
+    500
+   ],
+   "EQ_boost_cut": "+"
+  },
+  {
+   "Name": "Middle five (250-4000 Hz) 1-octave bands boosted (+)",
+   "EQtype": "EQ1",
+   "ActiveFreqRange": [
+    250,
+    4000
+   ],
+   "EQ_boost_cut": "+"
+  },
+  {
+   "Name": "Highest five (1-16 kHz) 1-octave bands boosted (+)",
+   "EQtype": "EQ1",
+   "ActiveFreqRange": [
+    1000,
+    16000
+   ],
+   "EQ_boost_cut": "+"
+  },
+  {
+   "Name": "Lowest five (31-500 Hz) 1-octave bands cut (-)",
+   "EQtype": "EQ1",
+   "ActiveFreqRange": [
+    31,
+    500
+   ],
+   "EQ_boost_cut": "-"
+  },
+  {
+   "Name": "Middle five (250-4000 Hz) 1-octave bands cut (-)",
+   "EQtype": "EQ1",
+   "ActiveFreqRange": [
+    250,
+    4000
+   ],
+   "EQ_boost_cut": "-"
+  },
+  {
+   "Name": "Highest five (1-16 kHz) 1-octave bands cut (-)",
+   "EQtype": "EQ1",
+   "ActiveFreqRange": [
+    1000,
+    16000
+   ],
+   "EQ_boost_cut": "-"
+  },
+  {
+   "Name": "All ten 1-octave bands boosted (+)",
+   "EQtype": "EQ1",
+   "ActiveFreqRange": [
+    31,
+    16000
+   ],
+   "EQ_boost_cut": "+"
+  },
+  {
+   "Name": "All ten 1-octave bands cut (-)",
+   "EQtype": "EQ1",
+   "ActiveFreqRange": [
+    31,
+    16000
+   ],
+   "EQ_boost_cut": "-"
+  },
+  {
+   "Name": "All ten 1-octave bands boosted (+) or cut (-)",
+   "EQtype": "EQ1",
+   "ActiveFreqRange": [
+    31,
+    16000
+   ],
+   "EQ_boost_cut": "+-"
+  },
+  {
+   "Name": "Low (32-315 Hz) 1/3-octave bands boosted (+) or cut (-)",
+   "EQtype": "EQ2",
+   "ActiveFreqRange": [
+    32,
+    315
+   ],
+   "EQ_boost_cut": "+-"
+  },
+  {
+   "Name": "Mid (315-1250 Hz) 1/3-octave bands boosted (+) or cut (-)",
+   "EQtype": "EQ2",
+   "ActiveFreqRange": [
+    315,
+    1250
+   ],
+   "EQ_boost_cut": "+-"
+  },
+  {
+   "Name": "High (1.6 kHz - 16 kHz) 1/3-octave bands boosted (+) or cut (-)",
+   "EQtype": "EQ2",
+   "ActiveFreqRange": [
+    1600,
+    16000
+   ],
+   "EQ_boost_cut": "+-"
+  },
+  {
+   "Name": "All 1/3-octave bands boosted (+) or cut (-)",
+   "EQtype": "EQ2",
+   "ActiveFreqRange": [
+    32,
+    16000
+   ],
+   "EQ_boost_cut": "+-"
+  },
+  {
+   "Name": "Two 1-octave bands treated, each one boosted (+) or cut (-)",
+   "EQtype": "EQ1",
+   "ActiveFreqRange": [
+    31,
+    16000
+   ],
+   "EQ_boost_cut": "+-",
+   "DualBandMode": true,
+   "DisableAdjacentFiltersMode": 1
+  },
+  {
+   "Name": "Two 1/3-octave bands treated, each one boosted (+) or cut (-)",
+   "EQtype": "EQ2",
+   "ActiveFreqRange": [
+    31,
+    16000
+   ],
+   "EQ_boost_cut": "+-",
+   "DualBandMode": true,
+   "DisableAdjacentFiltersMode": 4
+  }
+ ]
+}
