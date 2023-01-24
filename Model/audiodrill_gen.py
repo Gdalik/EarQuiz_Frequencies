@@ -6,7 +6,7 @@ from Model.exercise_gen import ExerciseGenerator
 from Model.AudioEngine.process import eq_proc
 
 
-pinknoise_path = str(pathlib.PurePath(ROOT_DIR, 'Data', 'pink_noise.wav'))
+pinknoise_path = str(pathlib.PurePath(ROOT_DIR, 'Model', 'Data', 'pink_noise.wav'))
 EQ1_freq = [31, 63, 125, 250, 500, 1000, 2000, 4000, 8000, 16000]
 EQ2_freq = [32, 40, 50, 63, 80, 100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500,
             3150, 4000, 5000, 6300, 8000, 10000, 12500, 16000]

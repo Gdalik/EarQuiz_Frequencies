@@ -5,7 +5,7 @@ from pathlib import PurePath
 
 class EQPatterns:
     def __init__(self):
-        with open(PurePath(definitions.ROOT_DIR, 'Data', 'eq_patterns.json')) as f:
+        with open(PurePath(definitions.ROOT_DIR, 'Model', 'Data', 'eq_patterns.json')) as f:
             d = json.load(f)
             self.List = d['Patterns']
         defaults = {'DualBandMode': False, 'DisableAdjacentFiltersMode': False, 'Gain_depth': 12,

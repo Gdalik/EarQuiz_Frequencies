@@ -2789,12 +2789,6 @@ class Ui_MainWindow(object):
         self.BWLayout.addWidget(self.BWLab, 0, Qt.AlignRight)
 
         self.BWBox = QComboBox(self.dockWidgetContents_2)
-        self.BWBox.addItem("")
-        self.BWBox.addItem("")
-        self.BWBox.addItem("")
-        self.BWBox.addItem("")
-        self.BWBox.addItem("")
-        self.BWBox.addItem("")
         self.BWBox.setObjectName(u"BWBox")
 
         self.BWLayout.addWidget(self.BWBox)
@@ -2866,7 +2860,7 @@ class Ui_MainWindow(object):
 
         self.PatternBox.setCurrentIndex(-1)
         self.EQtabWidget.setCurrentIndex(0)
-        self.BWBox.setCurrentIndex(3)
+        self.BWBox.setCurrentIndex(-1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -3074,14 +3068,7 @@ class Ui_MainWindow(object):
         self.GainRangeSpin.setPrefix("")
         self.dBLab.setText(QCoreApplication.translate("MainWindow", u"dB", None))
         self.BWLab.setText(QCoreApplication.translate("MainWindow", u"Bandwidth:", None))
-        self.BWBox.setItemText(0, QCoreApplication.translate("MainWindow", u"1 Oct (Q=1.41)", None))
-        self.BWBox.setItemText(1, QCoreApplication.translate("MainWindow", u"2/3 Oct (Q=2.14)", None))
-        self.BWBox.setItemText(2, QCoreApplication.translate("MainWindow", u"1/2 Oct (Q=2.87)", None))
-        self.BWBox.setItemText(3, QCoreApplication.translate("MainWindow", u"1/3 Oct (Q=4.32)", None))
-        self.BWBox.setItemText(4, QCoreApplication.translate("MainWindow", u"1/4 Oct (Q=5.76)", None))
-        self.BWBox.setItemText(5, QCoreApplication.translate("MainWindow", u"1/6 Oct (Q=8.65)", None))
-
-        self.BWBox.setCurrentText(QCoreApplication.translate("MainWindow", u"1/3 Oct (Q=4.32)", None))
+        self.BWBox.setCurrentText("")
         self.ResetEQBut.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
     # retranslateUi
 
