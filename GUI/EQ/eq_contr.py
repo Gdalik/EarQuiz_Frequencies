@@ -3,10 +3,11 @@ from Model.eq_patterns import EQPatterns
 
 
 class EQContr:
-    def __init__(self, mw_view):
-        self.EQ_view = mw_view.EQView
+    def __init__(self, parent):
+        self.EQ_view = parent.mw_view.EQView
         self.EQPatterns = EQPatterns()
-        self.Sliders = mw_view.EQtabWidget.findChildren(QSlider)
+        self.EQpattern = None
+        self.Sliders = parent.mw_view.EQtabWidget.findChildren(QSlider)
         for Slider in self.Sliders:
             Slider.valueChanged.connect(self.onSliderDragged)
 

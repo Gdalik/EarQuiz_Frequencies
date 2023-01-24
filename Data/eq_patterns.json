@@ -7,7 +7,8 @@
     31,
     500
    ],
-   "EQ_boost_cut": "+"
+   "EQ_boost_cut": "+",
+   "Gain_depth": 6
   },
   {
    "Name": "Middle five (250-4000 Hz) 1-octave bands boosted (+)",
@@ -126,6 +127,7 @@
    ],
    "EQ_boost_cut": "+-",
    "DualBandMode": true,
+   "BW_Q": "1 Oct (Q=1.41)",
    "DisableAdjacentFiltersMode": 1
   },
   {

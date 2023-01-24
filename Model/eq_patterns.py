@@ -8,7 +8,7 @@ class EQPatterns:
         with open(PurePath(definitions.ROOT_DIR, 'Data', 'eq_patterns.json')) as f:
             d = json.load(f)
             self.List = d['Patterns']
-        defaults = {'DualBandMode': False, 'DisableAdjacentFiltersMode': False, 'gain_depth': 12,
+        defaults = {'DualBandMode': False, 'DisableAdjacentFiltersMode': False, 'Gain_depth': 12,
                     'BW_Q': '1/3 Oct (Q=4.32)'}
         for P in self.List:
             for key in defaults:

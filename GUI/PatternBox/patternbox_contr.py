@@ -1,7 +1,7 @@
 from Model.eq_patterns import EQPatterns
 
 
-class PatternBoxContr:
+class PatternBoxContr(object):
     def __init__(self, mw_contr):
         self.EQPatterns = EQPatterns()
         self.mw_contr = mw_contr
@@ -14,6 +14,7 @@ class PatternBoxContr:
     def onPatternBoxIndexChanged(self, index):
         self.mw_contr.EQContr.setEQMode(mode_num=index + 1)
         self._nextPatternButEnable()
+        self.mw_contr.EQSetContr.refreshSet()
 
     def onNextPatternBut_clicked(self):
         PBindex = self.mw_view.PatternBox.currentIndex()
