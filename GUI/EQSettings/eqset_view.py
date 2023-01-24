@@ -4,7 +4,7 @@ class EQSetView:
         self.GainRangeSpin = self.mw_view.GainRangeSpin
         self.BWBox = self.mw_view.BWBox
 
-    def loadBWQList(self, items: list):
+    def refreshBWQList(self, items: list):
         self.BWBox.clear()
         for item in items:
             self.BWBox.addItem(item)
