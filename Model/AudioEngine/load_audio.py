@@ -23,12 +23,11 @@ class AudioChunk:
         self.source_length = audiofile.frames / audiofile.samplerate
         self._endtime = min(self._endtime, self.source_length)
         self._slice_length = min(self._slice_length, self._endtime - self._starttime, 30)
-        self.cropped = None
         self.norm_level = norm_level
-        self.cropped_normalized = None
-        self.cropped_norm_split = None
+        self.cropped = self.cropped_normalized = self.cropped_norm_split = self.cycle = self.cycle_id = None
         self._slices_num = self.chunk_length // self.slice_length
         self.callback = callback
+        self.reading_stopped = None
         self.reset()
 
     def _callback_out(self, arg: dict):
@@ -43,15 +42,20 @@ class AudioChunk:
         starttime_fr = int(self.sec2fr(self.starttime))
         target_length_fr = int(self.sec2fr(self.slice_length * self._slices_num))
         divider = find_divider(target_length_fr, min=5)
-        while self.cropped[0].size != starttime_fr + target_length_fr:
+        while self.cropped[0].size != starttime_fr + target_length_fr and not self.reading_stopped:
             ch = self.audiofile.read(int(target_length_fr/divider))
             self.cropped = np.concatenate((self.cropped, ch), axis=1)
             output['Percent'] = int(self.cropped[0].size / target_length_fr * 100)
             self._callback_out(output)
         output.clear()
 
+    def stop_reading(self):
+        self.reading_stopped = True
+        self.cropped = self.cropped_normalized = self.cropped_norm_split = self.cycle = self.cycle_id = None
+
     def reset(self):
         a = time.time()
+        self.reading_stopped = False
         self._read_and_crop()
         self.cycle = self.cycle_id = None
         if self.norm_level is None:
@@ -151,4 +155,3 @@ class AudioChunk:
             self.cycle_id = itertools.cycle(range(len(self.cropped_norm_split)))
         next(self.cycle_id)
         return next(self.cycle)
-

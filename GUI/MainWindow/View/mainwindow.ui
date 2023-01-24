@@ -5365,6 +5365,9 @@ background: rgba(118, 214, 255, 85)
            <height>16777215</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::WheelFocus</enum>
+         </property>
          <property name="suffix">
           <string/>
          </property>
@@ -5518,7 +5521,7 @@ background: rgba(118, 214, 255, 85)
     <string>Stop</string>
    </property>
    <property name="shortcut">
-    <string>., Ctrl+.</string>
+    <string>.</string>
    </property>
   </action>
   <action name="actionPrevious_Track">

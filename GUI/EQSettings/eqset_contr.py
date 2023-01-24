@@ -10,9 +10,15 @@ class EQSetContr:
         self.EQSetView = parent.mw_view.EQSetView
         self.BWQPresets = self.getPresetNames()
         self.EQSetView.refreshBWQList(self.BWQPresets)
+        self.ResetEQBut = parent.mw_view.ResetEQBut
+        self.ResetEQBut.clicked.connect(self.on_ResetClicked)
+
+    @property
+    def EQpattern(self):
+        return self.parent.EQContr.EQpattern
 
     def refreshSet(self):
-        EQpattern = self.parent.EQContr.EQpattern
+        EQpattern = self.EQpattern
         if EQpattern is None:
             return
         BW_Q = EQpattern['BW_Q']
@@ -31,5 +37,8 @@ class EQSetContr:
     def _addCustomBWQPreset(self, BW_Q: str):
         self.BWQPresets.append(BW_Q)
         self.BWQPresets.sort(key=lambda Q: Qextr(Q))
+
+    def on_ResetClicked(self):
+        self.EQSetView.update(self.EQpattern['Gain_depth'], self.EQpattern['BW_Q'])
 
 
