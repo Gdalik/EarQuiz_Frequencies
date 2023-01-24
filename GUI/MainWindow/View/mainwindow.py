@@ -2374,7 +2374,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.TransportPanel = QDockWidget(MainWindow)
         self.TransportPanel.setObjectName(u"TransportPanel")
-        self.TransportPanel.setMinimumSize(QSize(830, 125))
+        self.TransportPanel.setMinimumSize(QSize(928, 125))
         self.TransportPanel.setMaximumSize(QSize(524287, 125))
         self.TransportPanel.setStyleSheet(u"")
         self.TransportPanel.setFloating(False)
@@ -2554,6 +2554,23 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.StartTimeEdit, 0, Qt.AlignLeft|Qt.AlignVCenter)
 
+        self.RangeToStart = QPushButton(self.dockWidgetContents)
+        self.RangeToStart.setObjectName(u"RangeToStart")
+        self.RangeToStart.setStyleSheet(u"QPushButton{\n"
+"border: none;\n"
+"color: blue\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"color: green;\n"
+"}")
+
+        self.horizontalLayout_8.addWidget(self.RangeToStart)
+
 
         self.StartEndLay.addLayout(self.horizontalLayout_8)
 
@@ -2587,6 +2604,23 @@ class Ui_MainWindow(object):
         self.EndTimeEdit.setCurrentSection(QDateTimeEdit.HourSection)
 
         self.horizontalLayout_9.addWidget(self.EndTimeEdit, 0, Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.RangeToEnd = QPushButton(self.dockWidgetContents)
+        self.RangeToEnd.setObjectName(u"RangeToEnd")
+        self.RangeToEnd.setStyleSheet(u"QPushButton{\n"
+"border: none;\n"
+"color: blue\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"color: green;\n"
+"}")
+
+        self.horizontalLayout_9.addWidget(self.RangeToEnd)
 
 
         self.StartEndLay.addLayout(self.horizontalLayout_9)
@@ -3042,10 +3076,18 @@ class Ui_MainWindow(object):
         self.StartPointBut.setText(QCoreApplication.translate("MainWindow", u"Start:", None))
         self.StartTimeEdit.setDisplayFormat(QCoreApplication.translate("MainWindow", u"HH:mm:ss.zzz", None))
 #if QT_CONFIG(tooltip)
+        self.RangeToStart.setToolTip(QCoreApplication.translate("MainWindow", u"Click to set starting point to beginning of audiofile", None))
+#endif // QT_CONFIG(tooltip)
+        self.RangeToStart.setText(QCoreApplication.translate("MainWindow", u"[\u2190", None))
+#if QT_CONFIG(tooltip)
         self.EndPointBut.setToolTip(QCoreApplication.translate("MainWindow", u"Click to set ending point to cursor position", None))
 #endif // QT_CONFIG(tooltip)
         self.EndPointBut.setText(QCoreApplication.translate("MainWindow", u"End:", None))
         self.EndTimeEdit.setDisplayFormat(QCoreApplication.translate("MainWindow", u"HH:mm:ss.zzz", None))
+#if QT_CONFIG(tooltip)
+        self.RangeToEnd.setToolTip(QCoreApplication.translate("MainWindow", u"Click to set ending point to end of audiofile", None))
+#endif // QT_CONFIG(tooltip)
+        self.RangeToEnd.setText(QCoreApplication.translate("MainWindow", u"\u2192]", None))
 #if QT_CONFIG(tooltip)
         self.ClearRangeBut.setToolTip(QCoreApplication.translate("MainWindow", u"Reset starting/ending points", None))
 #endif // QT_CONFIG(tooltip)

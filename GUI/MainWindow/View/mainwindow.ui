@@ -4548,7 +4548,7 @@ background: rgba(118, 214, 255, 85)
   <widget class="QDockWidget" name="TransportPanel">
    <property name="minimumSize">
     <size>
-     <width>830</width>
+     <width>928</width>
      <height>125</height>
     </size>
    </property>
@@ -4909,6 +4909,30 @@ color: green;
              </property>
             </widget>
            </item>
+           <item>
+            <widget class="QPushButton" name="RangeToStart">
+             <property name="toolTip">
+              <string>Click to set starting point to beginning of audiofile</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+border: none;
+color: blue
+}
+
+QPushButton:hover{
+font-weight: bold;
+}
+
+QPushButton:pressed{
+color: green;
+}</string>
+             </property>
+             <property name="text">
+              <string>[←</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
          <item>
@@ -4980,6 +5004,30 @@ color: green;
              </property>
              <property name="displayFormat">
               <string>HH:mm:ss.zzz</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="RangeToEnd">
+             <property name="toolTip">
+              <string>Click to set ending point to end of audiofile</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+border: none;
+color: blue
+}
+
+QPushButton:hover{
+font-weight: bold;
+}
+
+QPushButton:pressed{
+color: green;
+}</string>
+             </property>
+             <property name="text">
+              <string>→]</string>
              </property>
             </widget>
            </item>
