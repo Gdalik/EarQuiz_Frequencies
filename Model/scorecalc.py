@@ -3,15 +3,16 @@ import math
 
 class ScoreCalculator:
     def __init__(self):
-        self._ex_count = 0
         self.CurrentRightAnswer = None
         self.CurrentUserAnswer = None
+        self.ScoreList = []
 
     def input(self, RightAnswer: int or tuple, UserAnswer: int or tuple):
-        if self._ex_count == 10:
+        if len(self.ScoreList) == 10:
             raise ValueError('The number of drills in a test cannot exceed 10.')
         self.CurrentRightAnswer = RightAnswer
         self.CurrentUserAnswer = UserAnswer
+        self.ScoreList.append((self.CurrentRightAnswer, self.CurrentUserAnswer, self.count()))
 
     def count(self):
         if isinstance(self.CurrentRightAnswer, int):
@@ -45,5 +46,10 @@ class ScoreCalculator:
         return max(score_list)
 
     @property
-    def ex_num(self):
-        return f'{self._ex_count}/10'
+    def next_ex_num(self):
+        count = len(self.ScoreList)
+        return f'{count + 1}/10' if count < 10 else ''
+
+    @property
+    def totalScore(self):
+        return round(sum(x[2] for x in self.ScoreList))
