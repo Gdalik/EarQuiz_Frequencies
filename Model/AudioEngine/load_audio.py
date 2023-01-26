@@ -1,7 +1,7 @@
 import math
 import time
 import inspect
-from Model.AudioEngine.process import chunked_proc
+from Model.AudioEngine.process import ChunkedProc
 from Model.calc import find_divider
 import numpy as np
 from pedalboard import Gain
@@ -26,6 +26,7 @@ class AudioChunk:
         self._endtime = min(self._endtime, self.source_length)
         self._slice_length = min(self._slice_length, self._endtime - self._starttime, 30)
         self.norm_level = norm_level
+        self.norm_proc = None
         self.cropped = self.cropped_normalized = self.cropped_norm_split = self.cycle = self.cycle_id = None
         self._slices_num = self.chunk_length // self.slice_length
         self.callback = callback
@@ -128,8 +129,9 @@ class AudioChunk:
     def normalize(self, head_level: int or float):
         delta = head_level - self.max_level
         gain = Gain(delta)
-        self.cropped_normalized = chunked_proc(self.cropped, self.audiofile.samplerate, gain,
+        self.norm_proc = ChunkedProc(self.cropped, self.audiofile.samplerate, gain,
                                                proc_name='Normalizing audio', callback=self.callback)
+        self.cropped_normalized = self.norm_proc.call()
         self.split()
         if self.cycle_id is not None:
             cycle_id = next(self.cycle_id)
