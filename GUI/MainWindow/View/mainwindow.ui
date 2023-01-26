@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1108</width>
+    <width>1161</width>
     <height>736</height>
    </rect>
   </property>
@@ -30,6 +30,9 @@
   </property>
   <property name="documentMode">
    <bool>false</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AnimatedDocks</set>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>false</bool>
@@ -4457,7 +4460,7 @@ background: rgba(118, 214, 255, 85)
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1108</width>
+     <width>1161</width>
      <height>22</height>
     </rect>
    </property>
@@ -4487,9 +4490,8 @@ background: rgba(118, 214, 255, 85)
      <string>Help</string>
     </property>
     <addaction name="actionAbout"/>
-    <addaction name="actionVideo_Tutorial"/>
     <addaction name="separator"/>
-    <addaction name="actionHow_to_Support_the_App"/>
+    <addaction name="actionVideo_Tutorial"/>
    </widget>
    <widget class="QMenu" name="menuWindow">
     <property name="title">
@@ -5488,6 +5490,30 @@ background: rgba(118, 214, 255, 85)
     </layout>
    </widget>
   </widget>
+  <widget class="QDockWidget" name="SupportProject">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>260</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::BottomDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Support the App</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_4"/>
+  </widget>
   <action name="actionOpen">
    <property name="text">
     <string>Open Files...</string>
@@ -5723,6 +5749,7 @@ background: rgba(118, 214, 255, 85)
   <zorder>Eq_Settings</zorder>
   <zorder>TransportPanel</zorder>
   <zorder>Info</zorder>
+  <zorder>SupportProject</zorder>
  </widget>
  <customwidgets>
   <customwidget>
