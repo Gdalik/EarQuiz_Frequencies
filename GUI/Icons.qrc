@@ -10,7 +10,7 @@
     <file>Icons/Player/arrow-right_gray.png</file>
   </qresource>
   <qresource prefix="App">
-    <file>Icons/Logo/EM_Logo.png</file>
+    <file>Icons/Logo/EarQuiz_Icon.png</file>
   </qresource>
   <qresource prefix="AddRemove">
     <file>Icons/AddRemove/clear.png</file>

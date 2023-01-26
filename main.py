@@ -7,7 +7,7 @@ import sys
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon(":/App/Icons/Logo/EM_Logo.png"))
+    app.setWindowIcon(QIcon(":/App/Icons/Logo/EarQuiz_Icon.png"))
     app.setApplicationDisplayName(definitions.app_name)
     app.setApplicationName(definitions.app_name)
     mw = MainWindowContr()
