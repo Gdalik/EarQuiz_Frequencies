@@ -18,13 +18,13 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QButtonGroup, QComboBox,
     QDateTimeEdit, QDockWidget, QFrame, QGridLayout,
-    QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-    QListWidgetItem, QMainWindow, QMenu, QMenuBar,
+    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QMainWindow, QMenu, QMenuBar,
     QPushButton, QRadioButton, QSizePolicy, QSlider,
     QSpacerItem, QSpinBox, QStatusBar, QTabWidget,
     QTimeEdit, QToolButton, QVBoxLayout, QWidget)
 
-from playlistwidget import PlayListWidget
+from playlistview import PlaylistView
 from pyqtgraph import PlotWidget
 import Icons_rc
 
@@ -2334,12 +2334,15 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addLayout(self.AddPlusRemoveAudioLay)
 
-        self.PlayListWidget = PlayListWidget(self.SourceBox)
-        self.PlayListWidget.setObjectName(u"PlayListWidget")
-        self.PlayListWidget.setMinimumSize(QSize(230, 0))
-        self.PlayListWidget.setDragDropMode(QAbstractItemView.InternalMove)
+        self.PlaylistView = PlaylistView(self.SourceBox)
+        self.PlaylistView.setObjectName(u"PlaylistView")
+        self.PlaylistView.setMinimumSize(QSize(230, 0))
+        self.PlaylistView.setAcceptDrops(True)
+        self.PlaylistView.setStyleSheet(u"")
+        self.PlaylistView.setDragEnabled(True)
+        self.PlaylistView.setDragDropMode(QAbstractItemView.InternalMove)
 
-        self.verticalLayout_4.addWidget(self.PlayListWidget)
+        self.verticalLayout_4.addWidget(self.PlaylistView)
 
         self.SearchAudio = QLineEdit(self.SourceBox)
         self.SearchAudio.setObjectName(u"SearchAudio")

@@ -4419,12 +4419,21 @@ background: rgba(118, 214, 255, 85)
         </layout>
        </item>
        <item>
-        <widget class="PlayListWidget" name="PlayListWidget">
+        <widget class="PlaylistView" name="PlaylistView">
          <property name="minimumSize">
           <size>
            <width>230</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="acceptDrops">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="dragEnabled">
+          <bool>true</bool>
          </property>
          <property name="dragDropMode">
           <enum>QAbstractItemView::InternalMove</enum>
@@ -5759,9 +5768,9 @@ background: rgba(118, 214, 255, 85)
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>PlayListWidget</class>
-   <extends>QListWidget</extends>
-   <header>playlistwidget</header>
+   <class>PlaylistView</class>
+   <extends>QTableView</extends>
+   <header>playlistview</header>
   </customwidget>
  </customwidgets>
  <resources>
