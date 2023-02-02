@@ -2,7 +2,7 @@ from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilter
 from GUI.Playlist.plsong import PlSong
 from PySide6.QtCore import QObject, Qt, QModelIndex
 from definitions import app
-from GUI.Playlist.UrlInputParser import pathsResolve
+from GUI.Playlist.FileLinksParser import pathsResolve
 
 
 class PlaylistContr(QObject):
