@@ -4,12 +4,11 @@ from urllib import parse
 import re
 from xspf_lib import Playlist
 
-
 AudioMimes = ['audio/x-wav', 'audio/mpeg', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg']
 PLMimes = ['audio/x-mpegurl', 'application/pls+xml', 'application/xspf+xml']
 
 
-def pathsResolve(Paths: list):
+def pathsResolve(Paths: list, callback=None):
     paths = []
     for path in Paths:
         _Path = Path(path)
@@ -18,7 +17,7 @@ def pathsResolve(Paths: list):
         elif _Path.is_dir():
             paths.extend(filesFromDir(_Path))
             paths.sort()
-    return filePathsFilter(expandPlayLists(filePathsFilter(paths)))
+    return filePathsFilter(expandPlayLists(filePathsFilter(paths), callback=callback))
 
 
 def filesFromDir(dirpath: Path):
@@ -28,28 +27,42 @@ def filesFromDir(dirpath: Path):
 
 def filePathsFilter(paths: list):
     MimeTypes = AudioMimes + PLMimes
-    return [path for path in paths if mimetypes.guess_type(path)[0] in MimeTypes and not Path(path).name.startswith('.')]
+    return [path for path in paths if
+            mimetypes.guess_type(path)[0] in MimeTypes and not Path(path).name.startswith('.')]
 
 
-def expandPlayLists(paths: list):
+def expandPlayLists(paths: list, callback=None):
     paths_expanded = []
     for path in paths:
         if mimetypes.guess_type(path)[0] in PLMimes:
-            files = files_from_PL(path)
+            files = files_from_PL(path, callback)
             paths_expanded.extend(files)
         else:
             paths_expanded.append(path)
     return paths_expanded
 
 
-def files_from_PL(pl_path: str):
+def files_from_PL(pl_path: str, callback=None):
+    def cb(arg):
+        if callback is not None:
+            callback(str(arg))
+
     mime = mimetypes.guess_type(pl_path)[0]
+    err_mess = f'Error occurred while parsing "{pl_path}": '
     if mime == 'application/xspf+xml':
-        pl_urls = parseUrlsFromXSPF(pl_path)
+        try:
+            pl_urls = parseUrlsFromXSPF(pl_path)
+        except Exception as e:
+            cb(f'{err_mess}{e}')
+            return []
     elif mime in ('audio/x-mpegurl', 'application/pls+xml'):
-        with open(pl_path, 'r') as f:
-            pl_lines = [line.rstrip() for line in f.readlines()]
-        pl_urls = list(map(parseUrlFrom_PLS, pl_lines)) if mime == 'application/pls+xml' else pl_lines
+        try:
+            with open(pl_path, 'r') as f:
+                pl_lines = [line.rstrip() for line in f.readlines()]
+        except Exception as e:
+            cb(f'{err_mess}{e}')
+            return []
+        pl_urls = pl_lines if mime != 'application/pls+xml' else list(map(parseUrlFrom_PLS, pl_lines))
     else:
         return []
     return urlsToExistingFiles(pl_urls, Path(pl_path).parent)

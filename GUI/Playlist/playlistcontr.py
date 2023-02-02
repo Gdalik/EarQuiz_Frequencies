@@ -1,5 +1,6 @@
 from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilterProxyModel
 from GUI.Playlist.plsong import PlSong
+from GUI.Misc.error_message import error_message
 from PySide6.QtCore import QObject, Qt, QModelIndex
 from definitions import app
 from GUI.Playlist.FileLinksParser import pathsResolve
@@ -24,7 +25,7 @@ class PlaylistContr(QObject):
     def addTracks(self, URLs: list, index=-1):
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)
         paths = [url.path() for url in URLs]
-        paths = pathsResolve(paths)
+        paths = pathsResolve(paths, callback=self.error_msg)
         tracklist = list(map(lambda p: PlSong(p), paths))
         _index = len(self.playlistModel.playlistdata) if index == -1 else index
         self.playlistModel.layoutAboutToBeChanged.emit()
@@ -41,3 +42,6 @@ class PlaylistContr(QObject):
                                           len(self.selModel.selectedRows()), QModelIndex())
             self.playlistView.selectRows(self.playlistModel.lastInsertedRows[0],
                                          self.playlistModel.lastInsertedRows[-1])
+
+    def error_msg(self, message: str):
+        error_message(self.mw_view, message)
