@@ -1,4 +1,4 @@
-from pathlib import Path
+from pathlib import Path, PureWindowsPath, PurePath
 import mimetypes
 from urllib import parse
 import re
@@ -80,7 +80,8 @@ def urlsToExistingFiles(urls: list, current_dir):
     files = []
     for url in urls:
         path = parse.urlparse(url).path
-        abs_path = path if Path(path).is_absolute() else str(Path(current_dir, path))
+        abs_path = path if Path(path).is_absolute() \
+            else str(PurePath.joinpath(current_dir, PureWindowsPath(path).as_posix()))
         if Path(abs_path).is_file():
             files.append(abs_path)
     return files

@@ -54,7 +54,7 @@
        </size>
       </property>
       <property name="title">
-       <string>Exercise / difficulty pattern:</string>
+       <string>Equalization Pattern (difficulty ranked)</string>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item alignment="Qt::AlignLeft">
@@ -4245,7 +4245,7 @@ background: rgba(118, 214, 255, 85);
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>550</height>
+        <height>16777215</height>
        </size>
       </property>
       <property name="title">
@@ -4285,6 +4285,9 @@ background: rgba(118, 214, 255, 85);
          </property>
          <item>
           <widget class="QToolButton" name="PlusFilesBut">
+           <property name="toolTip">
+            <string>Add tracks</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QToolButton{
 border: None;
@@ -4306,6 +4309,9 @@ background: rgba(118, 214, 255, 85)
          </item>
          <item>
           <widget class="QToolButton" name="MinusFilesBut">
+           <property name="toolTip">
+            <string>Remove tracks</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QToolButton{
 border: None;
@@ -4352,6 +4358,9 @@ background: rgba(118, 214, 255, 85)
              <height>26</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>Shuffle playback mode</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QToolButton{border: none;}
 QToolButton:hover{
@@ -4391,6 +4400,9 @@ border-radius: 4px;
          </item>
          <item alignment="Qt::AlignRight">
           <widget class="QToolButton" name="ClearFilesBut">
+           <property name="toolTip">
+            <string>Clear playlist</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QToolButton{
 border: None;
@@ -4751,6 +4763,43 @@ background: rgba(118, 214, 255, 85)
              <width>32</width>
              <height>32</height>
             </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="LoopButton">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{border: none;}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+QToolButton:checked{
+border-radius: 4px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../Icons.qrc">
+             <normaloff>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png</normaloff>
+             <normalon>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around-blue.png</normalon>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>

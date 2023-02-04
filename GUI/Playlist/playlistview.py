@@ -61,6 +61,7 @@ class PlaylistView(QTableView):
         super(PlaylistView, self).dropEvent(event)
         if self.checkDroppedMimeData(event.mimeData()):
             self.signals.urlsDropped.emit(event.mimeData().urls(), self.model().mapToSource(self.currentIndex()).row())
+            event.mimeData().clear()
             event.accept()
 
     def checkDroppedMimeData(self, data):
@@ -76,7 +77,7 @@ class PlaylistView(QTableView):
 
     def mouseMoveEvent(self, event):
         super(PlaylistView, self).mouseMoveEvent(event)
-        if not self.selectedItems:
+        if not self.selectionModel().selectedRows():
             return
         drag = QDrag(self)
         mimeData = QMimeData()
@@ -85,9 +86,9 @@ class PlaylistView(QTableView):
         mimeData.setUrls(paths)
         drag.setMimeData(mimeData)
 
-        action = drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.MoveAction |
-                           Qt.DropAction.IgnoreAction, Qt.DropAction.IgnoreAction)
+        action = drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.MoveAction | Qt.DropAction.IgnoreAction)
         self.signals.dragDropFromPLFinished.emit(action)
+        mimeData.clear()
 
     def selectRows(self, first: int, last: int, scrolling=True):
         selection = QItemSelection()

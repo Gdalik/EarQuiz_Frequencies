@@ -2238,7 +2238,7 @@ class Ui_MainWindow(object):
         self.SourceBox = QGroupBox(self.centralwidget)
         self.SourceBox.setObjectName(u"SourceBox")
         self.SourceBox.setMinimumSize(QSize(255, 550))
-        self.SourceBox.setMaximumSize(QSize(16777215, 550))
+        self.SourceBox.setMaximumSize(QSize(16777215, 16777215))
         self.verticalLayout_4 = QVBoxLayout(self.SourceBox)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.PinkNoiseRBut = QRadioButton(self.SourceBox)
@@ -2475,6 +2475,27 @@ class Ui_MainWindow(object):
         self.Player_SkipForw.setIconSize(QSize(32, 32))
 
         self.PlayerLay.addWidget(self.Player_SkipForw)
+
+        self.LoopButton = QToolButton(self.dockWidgetContents)
+        self.LoopButton.setObjectName(u"LoopButton")
+        self.LoopButton.setEnabled(True)
+        self.LoopButton.setStyleSheet(u"QToolButton{border: none;}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:checked{\n"
+"border-radius: 4px;\n"
+"}")
+        icon9 = QIcon()
+        icon9.addFile(u":/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon9.addFile(u":/Player/Icons/Player/music-note-with-loop-circular-arrows-around-blue.png", QSize(), QIcon.Normal, QIcon.On)
+        self.LoopButton.setIcon(icon9)
+        self.LoopButton.setIconSize(QSize(32, 32))
+        self.LoopButton.setCheckable(True)
+        self.LoopButton.setChecked(True)
+
+        self.PlayerLay.addWidget(self.LoopButton)
 
 
         self.TransportLay.addLayout(self.PlayerLay)
@@ -2990,7 +3011,7 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(shortcut)
         self.actionNext_Exercise.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Return", None))
 #endif // QT_CONFIG(shortcut)
-        self.PatternGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Exercise / difficulty pattern:", None))
+        self.PatternGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Equalization Pattern (difficulty ranked)", None))
         self.NextPatternBut.setText(QCoreApplication.translate("MainWindow", u"Next >", None))
         self.ModeButtonsGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Mode:", None))
         self.PreviewButton.setText(QCoreApplication.translate("MainWindow", u"Preview", None))
@@ -3051,9 +3072,21 @@ class Ui_MainWindow(object):
         self.SourceBox.setTitle(QCoreApplication.translate("MainWindow", u"Audio source:", None))
         self.PinkNoiseRBut.setText(QCoreApplication.translate("MainWindow", u"Pink Noise", None))
         self.AudiofileRBut.setText(QCoreApplication.translate("MainWindow", u"Audiofile (Playlist):", None))
+#if QT_CONFIG(tooltip)
+        self.PlusFilesBut.setToolTip(QCoreApplication.translate("MainWindow", u"Add tracks", None))
+#endif // QT_CONFIG(tooltip)
         self.PlusFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
+#if QT_CONFIG(tooltip)
+        self.MinusFilesBut.setToolTip(QCoreApplication.translate("MainWindow", u"Remove tracks", None))
+#endif // QT_CONFIG(tooltip)
         self.MinusFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
+#if QT_CONFIG(tooltip)
+        self.toolButton.setToolTip(QCoreApplication.translate("MainWindow", u"Shuffle playback mode", None))
+#endif // QT_CONFIG(tooltip)
         self.toolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+#if QT_CONFIG(tooltip)
+        self.ClearFilesBut.setToolTip(QCoreApplication.translate("MainWindow", u"Clear playlist", None))
+#endif // QT_CONFIG(tooltip)
         self.ClearFilesBut.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.SearchAudio.setInputMask("")
         self.SearchAudio.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search", None))
@@ -3079,6 +3112,7 @@ class Ui_MainWindow(object):
         self.Player_PlayPause.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.Player_Stop.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.Player_SkipForw.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.LoopButton.setText("")
         self.VolumeLab.setText(QCoreApplication.translate("MainWindow", u"Volume:", None))
         self.VolumePerc.setText(QCoreApplication.translate("MainWindow", u"75%", None))
 #if QT_CONFIG(tooltip)

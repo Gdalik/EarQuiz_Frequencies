@@ -17,3 +17,10 @@ def Qcalc(BW_Noct: float or int or str):
 def mmss(s, string=False):
     m, s = divmod(s, 60)
     return ['%02d' % m, '%02d' % s] if string else [m, s]
+
+def ms2samp(ms: int or float, samplerate=44100):
+    return ms*samplerate/1000
+
+def samp2ms(samples: int, samplerate=44100):
+    return samples / samplerate * 1000
+

@@ -78,9 +78,9 @@ class AudioDrillGen:
         self._exercise_gen.boost_cut_priority = value
         self._on_EQ_order_change()
 
-    def output(self, force_freq=None, audio_path=None):
+    def output(self, force_freq=None, fromStart=False, audio_path=None):
         freq = self._freq_out(force_freq)
-        audio = self._audio_out()
+        audio = self._audio_out(fromStart)
         if audio_path:
             with AudioFile(audio_path, 'w', self.audio_source.samplerate, self.audio_source.num_channels) as o:
                 o.write(audio)
@@ -90,12 +90,12 @@ class AudioDrillGen:
         self._last_freq = self._exercise_gen.seqOut(force_freq)
         return self._last_freq
 
-    def _audio_out(self):
+    def _audio_out(self, fromStart=False):
         if isinstance(self._last_freq, tuple):
             freq1, freq2 = self._last_freq
         else:
             freq1, freq2 = self._last_freq, None
-        return eq_proc(self.audiochunk.slice_iter(), self.audiochunk.samplerate, freq1, freq2=freq2,
+        return eq_proc(self.audiochunk.slice_iter(refresh=fromStart), self.audiochunk.samplerate, freq1, freq2=freq2,
                        gain_depth=self.gain_depth, Q=self.Q, proc_t_perc=self.proc_t_perc)
 
     def _on_EQ_order_change(self):

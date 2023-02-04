@@ -1,6 +1,8 @@
 <RCC>
   <qresource prefix="Player">
     <file>Icons/Player/shuffle_black.png</file>
+    <file>Icons/Player/music-note-with-loop-circular-arrows-around-blue.png</file>
+    <file>Icons/Player/music-note-with-loop-circular-arrows-around.png</file>
     <file>Icons/Player/shuffle_blue.png</file>
     <file>Icons/Player/Actions-media-playback-pause-icon.png</file>
     <file>Icons/Player/Actions-media-playback-start-icon.png</file>

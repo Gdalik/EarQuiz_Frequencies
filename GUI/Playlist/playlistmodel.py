@@ -46,8 +46,10 @@ class PlaylistModel(QtCore.QAbstractTableModel):
         if self.canDropMimeData(data, action, row, column, parent) is False:
             return False
 
-        if action == Qt.DropAction.IgnoreAction:
+        '''if action == Qt.DropAction.IgnoreAction:
             return True
+        if action != Qt.DropAction.MoveAction:
+            return False'''
 
         if row == -1:
             row = len(self.playlistdata)
@@ -62,7 +64,7 @@ class PlaylistModel(QtCore.QAbstractTableModel):
         return True
 
     def supportedDropActions(self):
-        return Qt.DropAction.CopyAction | Qt.DropAction.MoveAction | Qt.DropAction.IgnoreAction
+        return Qt.DropAction.MoveAction
 
     def setData(self, index, value, role=Qt.DisplayRole):
         if role != Qt.DisplayRole:

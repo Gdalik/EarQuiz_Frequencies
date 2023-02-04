@@ -27,7 +27,8 @@ class AudioChunk:
         self._slice_length = min(self._slice_length, self._endtime - self._starttime, 30)
         self.norm_level = norm_level
         self.norm_proc = None
-        self.cropped = self.cropped_normalized = self.cropped_norm_split = self.cycle = self.cycle_id = None
+        self.cropped = self.cropped_normalized = self.cropped_norm_split = \
+            self.cycle = self.cycle_id_gen = self.cycle_id = None
         self._slices_num = self.chunk_length // self.slice_length
         self.callback = callback
         self.reading_stopped = None
@@ -42,27 +43,26 @@ class AudioChunk:
         output = {'State': 'Reading / cropping audiofile', 'Percent': 0}
         self._callback_out(output)
         self.audiofile.seek(int(self.sec2fr(self.starttime)))
-        starttime_fr = int(self.sec2fr(self.starttime))
-        target_length_fr = int(self.sec2fr(self.slice_length * self.slices_num))
-        divider = find_divider(target_length_fr, min=5)
-        while self.cropped[0].size != target_length_fr and not self.reading_stopped:
-            # print(f'{self.cropped[0].size} ; {starttime_fr + target_length_fr}')
-            ch = self.audiofile.read(int(target_length_fr/divider))
+        chunk_length_fr = int(self.sec2fr(self.chunk_length))
+        divider = find_divider(chunk_length_fr, min=5)
+        while self.cropped[0].size != chunk_length_fr and not self.reading_stopped:
+            ch = self.audiofile.read(int(chunk_length_fr/divider))
             self.cropped = np.concatenate((self.cropped, ch), axis=1)
-            output['Percent'] = int(self.cropped[0].size / target_length_fr * 100)
+            output['Percent'] = int(self.cropped[0].size / chunk_length_fr * 100)
             self._callback_out(output)
         output.clear()
 
     def stop_reading(self):
         self.reading_stopped = True
-        self.cropped = self.cropped_normalized = self.cropped_norm_split = self.cycle = self.cycle_id = None
+        self.cropped = self.cropped_normalized = self.cropped_norm_split = self.cycle = \
+            self.cycle_id_gen = self.cycle_id = None
 
     def _reset(self):
         a = time.time()
         self.reading_stopped = False
         self._read_and_crop()
-        self._old_values = {'starttime': self.starttime, 'slices_num': self.slices_num, 'slice_length': self.slice_length}
-        self.cycle = self.cycle_id = None
+        self._refresh_old_values()
+        self.cycle = self.cycle_id_gen = self.cycle_id = None
         if self.norm_level is None:
             self.cropped_normalized = copy(self.cropped)
             self.split()
@@ -95,7 +95,7 @@ class AudioChunk:
 
     @slice_length.setter
     def slice_length(self, value):
-        self._slice_length = min(value, self.endtime - self.starttime, 30)
+        self._slice_length = min(value, self.chunk_length, 30)
         self._slice_length = max(self._slice_length, 10)
 
     @property
@@ -133,26 +133,55 @@ class AudioChunk:
                                                proc_name='Normalizing audio', callback=self.callback)
         self.cropped_normalized = self.norm_proc.call()
         self.split()
-        if self.cycle_id is not None:
-            cycle_id = next(self.cycle_id)
+        if self.cycle_id_gen is not None:
+            self.cycle_id = next(self.cycle_id_gen)
             self.cycle = None
-            for _ in range(cycle_id):
+            for _ in range(self.cycle_id):
                 self.slice_iter()
         return self.cropped_normalized
 
     def split(self):
-        self.cropped_norm_split = np.hsplit(self.cropped_normalized, self.slices_num)
+        target_length_fr = int(self.sec2fr(self.slice_length * self.slices_num))
+        cropped_norm_adj = self.cropped_normalized[:, :target_length_fr]
+        print(f'{target_length_fr=} ; {self.cropped_normalized[0].size=} ; {cropped_norm_adj[0].size=}')
+        self.cropped_norm_split = np.hsplit(cropped_norm_adj, self.slices_num)
         return self.cropped_norm_split
 
     def slice_iter(self, refresh=False):
         if self.cycle is None or refresh:
             self.cycle = itertools.cycle(self.cropped_norm_split)
-            self.cycle_id = itertools.cycle(range(len(self.cropped_norm_split)))
-        next(self.cycle_id)
+            self.cycle_id_gen = itertools.cycle(range(len(self.cropped_norm_split)))
+        self.cycle_id = next(self.cycle_id_gen)
         return next(self.cycle)
 
+    def _reslice(self):
+        self.split()
+        self.cycle = self.cycle_id = self.cycle_id_gen = None
+        self._refresh_old_values()
+
+    @property
+    def currentSliceRange(self):
+        if self.cycle_id is None:
+            return None
+        StartTime = self.starttime + self.slice_length * self.cycle_id
+        EndTime = self.starttime + self.slice_length * (self.cycle_id + 1)
+        return StartTime, EndTime
+
     def update(self):
-        new_values = {'starttime': self.starttime, 'slices_num': self.slices_num, 'slice_length': self.slice_length}
-        if self._old_values and self._old_values != new_values:
+        if not self._old_values:
+            return
+        reset_cond1 = self._old_values['starttime'] != self.starttime
+        reset_cond2 = self._old_values['chunk_length'] != self.chunk_length and \
+                      (self._old_values['slices_num'] != self.slices_num or self._old_values['slice_length']
+                       != self.slice_length)
+        if reset_cond1 or reset_cond2:
             self._reset()
+        elif self._old_values['slice_length'] != self.slice_length:
+            self._reslice()
+        else:
+            self._refresh_old_values()
+
+    def _refresh_old_values(self):
+        self._old_values = {'starttime': self.starttime, 'chunk_length': self.chunk_length,
+                            'slices_num': self.slices_num, 'slice_length': self.slice_length}
 
