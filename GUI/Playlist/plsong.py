@@ -3,44 +3,35 @@ from dataclasses import dataclass
 from pedalboard.io import AudioFile
 from Utilities.common_calcs import mmss
 from pathlib import PurePath, Path
+from functools import cached_property
 
 
 @dataclass
 class PlSong:
     inputPath: str
 
-    @property
+    @cached_property
     def path(self):
-        if hasattr(self, '_path'):
-            return self._path
         self._path = str(PurePath(urlparse(self.inputPath).path))
         return self._path
 
-    @property
+    @cached_property
     def name(self):
-        if hasattr(self, '_name'):
-            return self._name
         self._name = str(PurePath(self.path).name)
         return self._name
 
-    @property
+    @cached_property
     def dirPath(self):
-        if hasattr(self, '_dirPath'):
-            return self._dirPath
         path = str(PurePath(self.path).parent)
         self._dirPath = path if path != '.' else ''
         return self._dirPath
 
-    @property
+    @cached_property
     def exists(self):
         return Path(self.path).is_file()
 
-    @property
+    @cached_property
     def duration(self):
-        if not self.exists:
-            return False
-        if hasattr(self, '_duration'):
-            return self._duration
         try:
             with AudioFile(self.path) as f:
                 dur_sec = f.frames / f.samplerate
@@ -50,10 +41,8 @@ class PlSong:
         finally:
             return self._duration
 
-    @property
+    @cached_property
     def duration_str(self):
-        if hasattr(self, '_duration_str'):
-            return self._duration_str
         self._duration_str = ':'.join(mmss(self.duration, string=True)) if self.duration else 'n/d'
         return self._duration_str
 

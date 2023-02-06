@@ -4,12 +4,13 @@ from urllib import parse
 import re
 from xspf_lib import Playlist
 
-AudioMimes = ['audio/x-wav', 'audio/mpeg', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg']
+AudioMimes = ['audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg']
 PLMimes = ['audio/x-mpegurl', 'application/pls+xml', 'application/xspf+xml']
 
 
 def pathsResolve(Paths: list, callback=None):
     paths = []
+
     for path in Paths:
         _Path = Path(path)
         if _Path.is_file():

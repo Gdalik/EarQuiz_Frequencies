@@ -58,7 +58,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             event.setDropAction(Qt.CopyAction)
             event.accept()
 
-            print(event.mimeData().urls())
         else:
             event.ignore()
 

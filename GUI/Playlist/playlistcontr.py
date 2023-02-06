@@ -5,6 +5,7 @@ from GUI.Playlist.FileLinksParser import pathsResolve
 from PySide6.QtCore import QObject, Qt, QModelIndex, QUrl
 from PySide6.QtWidgets import QFileDialog, QWidget
 from definitions import app
+from pathlib import Path
 
 
 class PlaylistContr(QObject):
@@ -29,7 +30,8 @@ class PlaylistContr(QObject):
 
     def addTracks(self, URLs: list, index=-1):
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)
-        paths = [url.path() for url in URLs]
+
+        paths = [url.toLocalFile() for url in URLs]
         paths = pathsResolve(paths, callback=self.error_msg)
         if not paths:
             app.restoreOverrideCursor()
@@ -46,7 +48,7 @@ class PlaylistContr(QObject):
 
     def removeTracks(self):
         sel_items = self.PlaylistView.selectedItems
-        if not sel_items:
+        if not self.selModel.selectedRows():
             return
         self.playlistModel.layoutAboutToBeChanged.emit()
         for item in sel_items:
@@ -76,7 +78,7 @@ class PlaylistContr(QObject):
         else:
             self._setFileDialogToFolderMode(dialog)
         if dialog.exec():
-            filenames = list(map(QUrl, dialog.selectedFiles()))
+            filenames = list(map(QUrl.fromLocalFile, dialog.selectedFiles()))
             index = self.PlaylistView.selectedIndexes()[0].row() if self.PlaylistView.selectedIndexes() else -1
             self.addTracks(filenames, index)
 

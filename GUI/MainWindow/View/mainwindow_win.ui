@@ -306,7 +306,7 @@ background: rgba(118, 214, 255, 85);
          <string>Next Exercise</string>
         </property>
         <property name="icon">
-         <iconset resource="../../Icons.qrc">
+         <iconset>
           <normaloff>:/Player/Icons/Player/arrow-right_gray.png</normaloff>:/Player/Icons/Player/arrow-right_gray.png</iconset>
         </property>
         <property name="iconSize">
@@ -399,7 +399,10 @@ background: rgba(118, 214, 255, 85);
        </size>
       </property>
       <property name="autoFillBackground">
-       <bool>false</bool>
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:rgb(240, 240, 240)</string>
       </property>
       <property name="tabPosition">
        <enum>QTabWidget::North</enum>
@@ -4376,7 +4379,7 @@ border-radius: 4px;
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="../../Icons.qrc">
+            <iconset>
              <normaloff>:/Player/Icons/Player/shuffle_black.png</normaloff>
              <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
            </property>
@@ -4482,7 +4485,7 @@ background: rgba(118, 214, 255, 85)
      <x>0</x>
      <y>0</y>
      <width>1161</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -4785,7 +4788,7 @@ border-radius: 4px;
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../../Icons.qrc">
+            <iconset>
              <normaloff>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png</normaloff>
              <normalon>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around-blue.png</normalon>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png</iconset>
            </property>
@@ -5783,7 +5786,7 @@ background: rgba(118, 214, 255, 85)
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="../../Icons.qrc">
+    <iconset>
      <normaloff>:/Player/Icons/Player/shuffle_black.png</normaloff>
      <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
    </property>
