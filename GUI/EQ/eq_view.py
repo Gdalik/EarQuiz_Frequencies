@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from PySide6.QtWidgets import QSlider, QLabel
+from PyQt6.QtWidgets import QSlider, QLabel
 from Utilities.common_calcs import findAdjacentEl
 
 

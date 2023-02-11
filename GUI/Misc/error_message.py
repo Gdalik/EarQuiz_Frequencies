@@ -1,4 +1,4 @@
-from PySide6 import QtWidgets, QtCore
+from PyQt6 import QtWidgets, QtCore
 
 
 def error_message(window, msg: str, modal='WinModal'):

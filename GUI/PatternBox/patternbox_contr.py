@@ -11,7 +11,8 @@ class PatternBoxContr(object):
         self.mw_view.PatternBoxView.loadItems(self.getPatternNames())
         self._nextPatternButEnable()
 
-    def onPatternBoxIndexChanged(self, index):
+    def onPatternBoxIndexChanged(self, index=None):
+        index = self.mw_view.PatternBox.currentIndex() if index is None else index
         self.mw_contr.EQContr.setEQMode(mode_num=index + 1)
         self._nextPatternButEnable()
         self.mw_contr.EQSetContr.refreshSet()

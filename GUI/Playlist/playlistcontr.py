@@ -1,11 +1,10 @@
 from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilterProxyModel
 from GUI.Playlist.plsong import PlSong
+from GUI.Playlist.PLLoadDialog import PLProcDialog
 from GUI.Misc.error_message import error_message
-from GUI.Playlist.FileLinksParser import pathsResolve
-from PySide6.QtCore import QObject, Qt, QModelIndex, QUrl
-from PySide6.QtWidgets import QFileDialog, QWidget
+from PyQt6.QtCore import QObject, Qt, QModelIndex, QUrl
+from PyQt6.QtWidgets import QFileDialog, QWidget
 from definitions import app
-from pathlib import Path
 
 
 class PlaylistContr(QObject):
@@ -13,6 +12,7 @@ class PlaylistContr(QObject):
     def __init__(self, parent):
         super().__init__()
         self.mw_view = parent.mw_view
+        self.mw_contr = parent
         for W in self.mw_view.SourceBox.findChildren(QWidget):
             self.__setattr__(W.objectName(), W)
         self.playlistData = PlaylistData
@@ -27,12 +27,18 @@ class PlaylistContr(QObject):
         self.ClearFilesBut.clicked.connect(self.clearPL)
         self.MinusFilesBut.clicked.connect(self.removeTracks)
         self.PlusFilesBut.clicked.connect(lambda x: self.openFiles(mode='files'))
+        self.PlaylistView.doubleClicked.connect(self.onDoubleClicked)
 
     def addTracks(self, URLs: list, index=-1):
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)
 
         paths = [url.toLocalFile() for url in URLs]
-        paths = pathsResolve(paths, callback=self.error_msg)
+
+        pl_audio_adding_dialog = PLProcDialog(paths)
+        paths = pl_audio_adding_dialog.return_dict['Paths'] if pl_audio_adding_dialog.exec() else []
+        if 'Errors' in pl_audio_adding_dialog.return_dict:
+            self.error_msg(';\n'.join(pl_audio_adding_dialog.return_dict['Errors']))
+
         if not paths:
             app.restoreOverrideCursor()
             return
@@ -81,6 +87,11 @@ class PlaylistContr(QObject):
             filenames = list(map(QUrl.fromLocalFile, dialog.selectedFiles()))
             index = self.PlaylistView.selectedIndexes()[0].row() if self.PlaylistView.selectedIndexes() else -1
             self.addTracks(filenames, index)
+
+    def onDoubleClicked(self, index):
+        source_ind = self.proxyModel.mapToSource(index).row()
+        song2load = self.playlistModel.playlistdata[source_ind]
+        self.mw_contr.load_song(song2load)
 
     @staticmethod
     def _setFileDialogToFileMode(dialog: QFileDialog):

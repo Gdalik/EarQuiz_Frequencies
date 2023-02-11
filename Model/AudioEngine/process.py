@@ -1,6 +1,7 @@
 from pedalboard import PeakFilter, Pedalboard
 from Model.calc import proc_unproc_len, rand_buffer, find_divider
 import numpy as np
+from Utilities.exceptions import InterruptedException
 
 
 def eq_proc(cur_sample, samplerate: int, freq1: int or float, freq2=None, gain_depth=12, Q=1.41, proc_t_perc=40):
@@ -33,17 +34,13 @@ def eq_proc(cur_sample, samplerate: int, freq1: int or float, freq2=None, gain_d
     return np.concatenate((pre_eq, equalized, post_eq), axis=1)
 
 
-class InterruptedException(Exception):
-    pass
-
-
 class ChunkedProc:
     def __init__(self, source: np.array, samplerate: int, DSP, proc_name='Processing audio', callback=None):
         self.source = source
         self.samplerate = samplerate
         self.DSP = DSP
         self.callback = callback
-        self._stopped = None
+        self.stopped = None
         self.out_stat = {'State': proc_name, 'Percent': 0}
 
     def call(self):
@@ -51,20 +48,21 @@ class ChunkedProc:
             if self.callback is not None:
                 self.callback(self.out_stat)
 
-        self._stopped = False
-        callback_out()
+        self.stopped = False
         output = np.empty((len(self.source), 0))
         chunks = np.hsplit(self.source, find_divider(self.source[0].size, min=4))
         for ind, chunk in enumerate([*chunks]):
-            if self._stopped:
-                raise InterruptedException('Process aborted by user')
+            try:
+                callback_out()
+            except InterruptedException:
+                self._stop()
+                return
             processed = self.DSP.process(chunk, self.samplerate)
             while processed.size != chunk.size:  # Solving possible buffering issues (see Pedalboard docs).
                 processed = self.DSP.process(chunk, self.samplerate, buffer_size=rand_buffer(), reset=True)
             output = np.concatenate((output, processed), axis=1)
             self.out_stat['Percent'] = int((ind + 1) / len(chunks) * 100)
-            callback_out()
         return output
 
-    def stop(self):
-        self._stopped = True
+    def _stop(self):
+        self.stopped = True

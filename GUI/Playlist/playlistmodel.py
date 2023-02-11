@@ -1,5 +1,5 @@
-from PySide6 import QtCore, QtGui
-from PySide6.QtCore import Qt, QSortFilterProxyModel
+from PyQt6 import QtCore, QtGui
+from PyQt6.QtCore import Qt, QSortFilterProxyModel
 from GUI.Playlist.plsong import PlSong
 
 
@@ -17,9 +17,9 @@ class PlaylistModel(QtCore.QAbstractTableModel):
 
     def data(self, index, role: int):
         CurData = self.playlistdata[index.row()]
-        if role == Qt.DisplayRole:
+        if role == Qt.ItemDataRole.DisplayRole:
             return [CurData.name, CurData.duration_str, CurData.dirPath][index.column()]
-        if role == Qt.ForegroundRole and not CurData.available:
+        if role == Qt.ItemDataRole.ForegroundRole and not CurData.available:
             return QtGui.QColor('gray')
 
     def rowCount(self, index):
@@ -66,8 +66,8 @@ class PlaylistModel(QtCore.QAbstractTableModel):
     def supportedDropActions(self):
         return Qt.DropAction.MoveAction
 
-    def setData(self, index, value, role=Qt.DisplayRole):
-        if role != Qt.DisplayRole:
+    def setData(self, index, value, role=Qt.ItemDataRole.DisplayRole):
+        if role != Qt.ItemDataRole.DisplayRole:
             return False
         self.playlistdata[index.row()] = value
         return True
@@ -100,7 +100,7 @@ class PlaylistModel(QtCore.QAbstractTableModel):
         return True
 
     def headerData(self, section, orientation, role):
-        if role == Qt.DisplayRole and orientation == Qt.Horizontal:
+        if role == Qt.ItemDataRole.DisplayRole and orientation == Qt.Orientation.Horizontal:
             return ['Filename', 'Duration', 'Folder Path'][section]
 
 
@@ -118,5 +118,5 @@ class PLSortFilterProxyModel(QSortFilterProxyModel):
     def filterAcceptsRow(self, source_row: int, source_parent):
         index0 = self.sourceModel().index(source_row, 0, source_parent)
         index2 = self.sourceModel().index(source_row, 2, source_parent)
-        return self._filter_string in self.sourceModel().data(index0, role=Qt.DisplayRole).lower() or \
-               self._filter_string in self.sourceModel().data(index2, role=Qt.DisplayRole).lower()
+        return self._filter_string in self.sourceModel().data(index0, role=Qt.ItemDataRole.DisplayRole).lower() or \
+               self._filter_string in self.sourceModel().data(index2, role=Qt.ItemDataRole.DisplayRole).lower()

@@ -8,6 +8,7 @@ from pedalboard import Gain
 from pedalboard.io import AudioFile
 from copy import copy
 import itertools
+from Utilities.exceptions import InterruptedException
 
 
 class AudioChunk:
@@ -39,27 +40,31 @@ class AudioChunk:
             self.callback(arg)
 
     def _read_and_crop(self):
+        self.reading_stopped = False
         self.cropped = np.empty((self.audiofile.num_channels, 0))
         output = {'State': 'Reading / cropping audiofile', 'Percent': 0}
-        self._callback_out(output)
+        # self._callback_out(output)
         self.audiofile.seek(int(self.sec2fr(self.starttime)))
         chunk_length_fr = int(self.sec2fr(self.chunk_length))
         divider = find_divider(chunk_length_fr, min=5)
-        while self.cropped[0].size != chunk_length_fr and not self.reading_stopped:
+        while self.cropped[0].size != chunk_length_fr:
+            try:
+                self._callback_out(output)
+            except InterruptedException:
+                self._stop_reading()
+                return
             ch = self.audiofile.read(int(chunk_length_fr/divider))
             self.cropped = np.concatenate((self.cropped, ch), axis=1)
             output['Percent'] = int(self.cropped[0].size / chunk_length_fr * 100)
-            self._callback_out(output)
         output.clear()
 
-    def stop_reading(self):
+    def _stop_reading(self):
         self.reading_stopped = True
         self.cropped = self.cropped_normalized = self.cropped_norm_split = self.cycle = \
             self.cycle_id_gen = self.cycle_id = None
 
     def _reset(self):
         a = time.time()
-        self.reading_stopped = False
         self._read_and_crop()
         self._refresh_old_values()
         self.cycle = self.cycle_id_gen = self.cycle_id = None
@@ -126,7 +131,8 @@ class AudioChunk:
     def sec2fr(self, sec: int or float):
         return int(self.samplerate * sec)
 
-    def normalize(self, head_level: int or float):
+    def normalize(self, head_level: int or float, callback=None):
+        self.callback = callback or self.callback
         delta = head_level - self.max_level
         gain = Gain(delta)
         self.norm_proc = ChunkedProc(self.cropped, self.audiofile.samplerate, gain,
@@ -167,12 +173,13 @@ class AudioChunk:
         EndTime = self.starttime + self.slice_length * (self.cycle_id + 1)
         return StartTime, EndTime
 
-    def update(self):
+    def update(self, callback=None):
+        self.callback = callback or self.callback
         if not self._old_values:
             return
         reset_cond1 = self._old_values['starttime'] != self.starttime
         reset_cond2 = self._old_values['chunk_length'] != self.chunk_length and \
-                      (self._old_values['slices_num'] != self.slices_num or self._old_values['slice_length']
+                          (self._old_values['slices_num'] != self.slices_num or self._old_values['slice_length']
                        != self.slice_length)
         if reset_cond1 or reset_cond2:
             self._reset()

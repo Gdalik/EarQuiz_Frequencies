@@ -12,39 +12,57 @@ class PlSong:
 
     @cached_property
     def path(self):
-        self._path = str(PurePath(urlparse(self.inputPath).path))
-        return self._path
+        return str(PurePath(urlparse(self.inputPath).path))
 
     @cached_property
     def name(self):
-        self._name = str(PurePath(self.path).name)
-        return self._name
+        return str(PurePath(self.path).name)
 
     @cached_property
     def dirPath(self):
         path = str(PurePath(self.path).parent)
-        self._dirPath = path if path != '.' else ''
-        return self._dirPath
+        return path if path != '.' else ''
 
-    @cached_property
+    @property
     def exists(self):
         return Path(self.path).is_file()
 
     @cached_property
-    def duration(self):
+    def file_properties(self):
+        duration = False
+        num_channels = None
+        samplerate = None
         try:
             with AudioFile(self.path) as f:
-                dur_sec = f.frames / f.samplerate
-            self._duration = dur_sec
+                duration = f.frames / f.samplerate
+                num_channels = f.num_channels
+                if num_channels == 1:
+                    num_channels = 'Mono'
+                elif num_channels == 2:
+                    num_channels = 'Stereo'
+                else:
+                    num_channels = f'{num_channels} Channels'
+                samplerate = f.samplerate
         except Exception:
-            self._duration = False
+            pass
         finally:
-            return self._duration
+            return {'duration': duration, 'num_channels': num_channels, 'samplerate': int(samplerate)}
 
-    @cached_property
+    @property
+    def duration(self):
+        return self.file_properties['duration']
+
+    @property
+    def num_channels(self):
+        return self.file_properties['num_channels']
+
+    @property
+    def samplerate(self):
+        return self.file_properties['samplerate']
+
+    @property
     def duration_str(self):
-        self._duration_str = ':'.join(mmss(self.duration, string=True)) if self.duration else 'n/d'
-        return self._duration_str
+        return ':'.join(mmss(self.duration, string=True)) if self.duration else 'n/d'
 
     @property
     def canLoad(self):

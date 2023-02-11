@@ -4,6 +4,7 @@ from Model.AudioEngine.load_audio import AudioChunk
 from pedalboard.io import AudioFile
 from Model.exercise_gen import ExerciseGenerator
 from Model.AudioEngine.process import eq_proc
+from Utilities.exceptions import InterruptedException
 
 
 pinknoise_path = str(pathlib.PurePath(ROOT_DIR, 'Model', 'Data', 'pink_noise.wav'))
@@ -30,7 +31,9 @@ class AudioDrillGen:
         self.audiochunk = AudioChunk(self.audio_source,
                                      starttime=starttime,
                                      endtime=endtime or self.audio_source.frames / self.audio_source.samplerate,
-                                     slice_length=drill_length, norm_level=self.gain_depth/-2 + headroom, callback=callback)
+                                     slice_length=drill_length, norm_level=self.gain_depth()/-2 + headroom, callback=callback)
+        if self.audiochunk.reading_stopped:
+            raise InterruptedException
         self._Q = Q
         self._order = order
         self._boost_cut_priority = boost_cut_priority
@@ -39,16 +42,14 @@ class AudioDrillGen:
                                                boost_cut_priority=boost_cut_priority, disableAdjacent=disableAdjacent, inf_cycle=inf_cycle)
         self._last_freq = None
 
-    @property
     def gain_depth(self):
         return self._gain_depth
 
-    @gain_depth.setter
-    def gain_depth(self, value: int):
+    def setGain_depth(self, value: int, callback=None):
         old_value = self._gain_depth
         self._gain_depth = abs(value)
         if old_value != self._gain_depth:
-            self.audiochunk.normalize(self._gain_depth*-1 - 1)
+            self.audiochunk.normalize(self._gain_depth*-1 - 1, callback=callback)
 
     @property
     def Q(self):
@@ -96,7 +97,7 @@ class AudioDrillGen:
         else:
             freq1, freq2 = self._last_freq, None
         return eq_proc(self.audiochunk.slice_iter(refresh=fromStart), self.audiochunk.samplerate, freq1, freq2=freq2,
-                       gain_depth=self.gain_depth, Q=self.Q, proc_t_perc=self.proc_t_perc)
+                       gain_depth=self.gain_depth(), Q=self.Q, proc_t_perc=self.proc_t_perc)
 
     def _on_EQ_order_change(self):
         self._exercise_gen.inf_cycle = True
