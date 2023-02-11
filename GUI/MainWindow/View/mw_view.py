@@ -25,6 +25,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.status = self.statusBar()
         self.setMinimalistView()
         self.actionMinimal.triggered.connect(self.setMinimalistView)
+        self.NextExercise.hide()
+        self.EqOnOffLab.hide()
 
         '''self.progress = QProgressBar(self)
         self.progress.setMaximumWidth(100)

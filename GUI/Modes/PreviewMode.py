@@ -9,6 +9,7 @@ class PreviewMode:
         self.parent.PatternBoxContr.onPatternBoxIndexChanged()
         self.setPlayerControls()
         self.view.TransportPanel.show()
+        self.view.NextExercise.hide()
         self.updateCurrentAudio()
 
     def setPlayerControls(self):

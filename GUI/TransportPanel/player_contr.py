@@ -15,7 +15,6 @@ class PlayerContr(QMediaPlayer):
         self.playbackStateChanged.connect(self.onPlaybackStateChanged)
         MediaDevices.audioOutputsChanged.connect(self.onAudioOutputsChanged)
         self.audioOutput = QAudioOutput()
-        self.audioOutput.deviceChanged.connect(self.onDeviceChanged)
         self.mw_view.actionPlayPause.triggered.connect(self.onPlayPause_triggered)
         self.mw_view.actionStop.triggered.connect(self.stop)
         self.mw_view.AudioDevicesGroup.triggered.connect(self.onAudioDeviceChecked)
@@ -40,7 +39,7 @@ class PlayerContr(QMediaPlayer):
             displ_data.append(author or albumArtist)
         return f'{" - ".join(displ_data)}' if displ_data else ''
 
-    def _sourceAudioData(self):
+    def sourceAudioData(self):
         metadata = self.loadMetaData()
         displ_data = [f'"{self.mw_contr.SourceAudio.name}"']
         if metadata:
@@ -50,14 +49,19 @@ class PlayerContr(QMediaPlayer):
 
     def onPlayerStatusChanged(self, status):
         if status == QMediaPlayer.MediaStatus.LoadedMedia:
-            if self.mw_contr.CurrentMode.name == 'Preview':
-                self.TransportView.setHeader(self._sourceAudioData())
-            self.audioOutput = QAudioOutput()
-            self.audioOutput.setDevice(self.mw_view.AudioDevicesView.selectedOutput())
-            self.setAudioOutput(self.audioOutput)
-            if self.playAfterAudioLoaded:
-                self.play()
-                self.playAfterAudioLoaded = False
+            self.parent.setHeader()
+            self._refreshAudioOutput()
+            self._playLoadedAudio()
+
+    def _refreshAudioOutput(self):
+        self.audioOutput = QAudioOutput()
+        self.audioOutput.setDevice(self.mw_view.AudioDevicesView.selectedOutput())
+        self.setAudioOutput(self.audioOutput)
+
+    def _playLoadedAudio(self):
+        if self.playAfterAudioLoaded:
+            self.play()
+            self.playAfterAudioLoaded = False
 
     def onPlaybackStateChanged(self, state):
         if state == self.PlaybackState.PlayingState:
@@ -65,9 +69,6 @@ class PlayerContr(QMediaPlayer):
                 self.PlayerView.setPlayPause2Pause()
         elif state in [self.PlaybackState.PausedState, self.PlaybackState.StoppedState]:
             self.PlayerView.setPlayPause2Play()
-
-    def onDeviceChanged(self):
-        self.mw_view.AudioDevicesView.selectOutput(self.audioOutput.device().description())
 
     def onPlayPause_triggered(self):
         if self.playbackState() == self.PlaybackState.PlayingState and self.mw_contr.CurrentMode.playPause_toggleable:

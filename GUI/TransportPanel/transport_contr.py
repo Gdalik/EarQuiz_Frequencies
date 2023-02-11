@@ -15,6 +15,10 @@ class TransportContr(QObject):
         self.TransportView.AudioSliderView.CropRegion.hide()
         self.TransportView.AudioSliderView.Cursor.hide()
 
+    def setHeader(self):
+        if self.parent.CurrentMode.name == 'Preview':
+            self.TransportView.setHeader(self.PlayerContr.sourceAudioData())
+
     @property
     def currentAudio(self):
         return self.parent.CurrentMode.CurrentAudio

@@ -7,7 +7,7 @@ class LearnMode:
             self.parent.PatternBoxContr.onPatternBoxIndexChanged()
         self.playPause_toggleable = False
         self.view.TransportPanelView.PlayerView.setPlayPause2Play()
-
+        self.view.NextExercise.show()
         self.setPlayerControls()
 
     def setPlayerControls(self):
