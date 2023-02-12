@@ -6,4 +6,5 @@ class TestMode(UniMode):
         super().__init__(parent)
         self.name = 'Test'
         self.parent.PatternBoxContr.onPatternBoxIndexChanged()
+        self.view.actionNext_Exercise.setEnabled(True)
         self.view.NextExercise.show()

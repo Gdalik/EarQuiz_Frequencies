@@ -7,6 +7,7 @@ class UniMode:
         # self.parent.PatternBoxContr.onPatternBoxIndexChanged()
         self.playPause_toggleable = False
         self.parent.TransportContr.PlayerContr.stop()
+        self.view.actionNext_Exercise.setEnabled(False)
         self.view.NextExercise.hide()
         self.view.EqOnOffLab.hide()
         self.setPlayerControls()
