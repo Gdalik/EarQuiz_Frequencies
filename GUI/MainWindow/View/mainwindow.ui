@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1098</width>
+    <width>1139</width>
     <height>736</height>
    </rect>
   </property>
@@ -309,6 +309,9 @@ background: rgba(118, 214, 255, 85)
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(240, 240, 240)</string>
       </property>
       <property name="tabPosition">
        <enum>QTabWidget::North</enum>
@@ -4460,22 +4463,28 @@ font-weight: bold</string>
            <height>0</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="currentIndex">
           <number>-1</number>
          </property>
         </widget>
        </item>
-       <item alignment="Qt::AlignLeft">
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
         <widget class="QPushButton" name="NextPatternBut">
          <property name="minimumSize">
           <size>
-           <width>35</width>
+           <width>26</width>
            <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>35</width>
+           <width>26</width>
            <height>16777215</height>
           </size>
          </property>
@@ -4520,8 +4529,8 @@ font-weight: bold</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1098</width>
-     <height>22</height>
+     <width>1139</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -5760,7 +5769,7 @@ font-weight: normal</string>
     <string>Increase Volume</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Up, +</string>
+    <string>+</string>
    </property>
   </action>
   <action name="actionDecrease_Volume">
@@ -5768,7 +5777,7 @@ font-weight: normal</string>
     <string>Decrease Volume</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Down, -</string>
+    <string>-</string>
    </property>
   </action>
   <action name="actionAscendingEQ">
@@ -5878,6 +5887,10 @@ font-weight: normal</string>
    </property>
   </action>
   <action name="actionNext_Exercise">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Icons/Player/arrow-right_gray.png</normaloff>../../Icons/Player/arrow-right_gray.png</iconset>
+   </property>
    <property name="text">
     <string>Next Exercise</string>
    </property>

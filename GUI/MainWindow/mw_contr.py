@@ -1,3 +1,4 @@
+from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.EQ.eq_contr import EQContr
 from GUI.EQSettings.eqset_contr import EQSetContr
@@ -6,15 +7,19 @@ from GUI.Playlist.playlistcontr import PlaylistContr
 from GUI.Modes.PreviewMode import PreviewMode
 from GUI.Modes.LearnMode import LearnMode
 from GUI.Modes.TestMode import TestMode
+from GUI.Modes.UniMode import UniMode
 from GUI.Playlist.plsong import PlSong
 from GUI.TransportPanel.transport_contr import TransportContr
 from PyQt6.QtCore import QObject
 from PyQt6.QtGui import QActionGroup
-from PyQt6.QtMultimedia import QMediaDevices
 import platform
 
 
 class MainWindowContr(QObject):
+    modesActionGroup: Union[QActionGroup, QActionGroup]
+    SourceAudio: PlSong or None
+    SourceRange: list[int]
+
     def __init__(self):
         super().__init__()
         self.mw_view = MainWindowView()
@@ -31,10 +36,9 @@ class MainWindowContr(QObject):
         self.setModesButtons()
         self.setPlaybackButtons()
         self.setShufflePBMode()
-        self.CurrentMode = self.LastMode = None
+        self.mw_view.NextExercise.setDefaultAction(self.mw_view.actionNext_Exercise)
+        self.CurrentMode = self.LastMode = UniMode(self)
         self.setNoAudio()
-        self.audio_devices = QMediaDevices()
-
 
     def setFileMenuActions(self):
         self.mw_view.actionOpen.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='files'))
@@ -67,6 +71,9 @@ class MainWindowContr(QObject):
     def setNoAudio(self):
         self.SourceAudio = None
         self.TransportContr.noSongState()
+        self.SourceRange = [0, 0]
+        self.mw_view.actionPlayPause.setEnabled(False)
+        self.mw_view.actionStop.setEnabled(False)
 
     def setPlaybackButtons(self):
         self.mw_view.MW_PlayPause.setDefaultAction(self.mw_view.actionPlayPause)
@@ -82,10 +89,8 @@ class MainWindowContr(QObject):
         if Song.duration < 30 or not Song.exists:
             return
         self.SourceAudio = Song
-        if self.CurrentMode is None or self.CurrentMode.name != 'Preview':
+        if self.CurrentMode.name != 'Preview':
             self.mw_view.actionPreview_Mode.toggle()
         else:
             self.CurrentMode.updateCurrentAudio()
         self.TransportContr.PlayerContr.loadCurrentAudio()
-
-

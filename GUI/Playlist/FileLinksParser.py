@@ -23,6 +23,7 @@ def pathsResolve(Paths: list, return_dict: dict):
     paths = filePathsFilter(expandPlayLists(filePathsFilter(paths), callback=make_error_list))
     return_dict['Paths'] = paths
     return_dict['Errors'] = errors
+    # print(return_dict)
     return return_dict
 
 

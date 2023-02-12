@@ -1,6 +1,7 @@
 from PyQt6.QtCore import QUrl
-from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
+from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData, QAudio
 from definitions import MediaDevices
+import platform
 
 
 class PlayerContr(QMediaPlayer):
@@ -14,10 +15,13 @@ class PlayerContr(QMediaPlayer):
         self.mediaStatusChanged.connect(self.onPlayerStatusChanged)
         self.playbackStateChanged.connect(self.onPlaybackStateChanged)
         MediaDevices.audioOutputsChanged.connect(self.onAudioOutputsChanged)
-        self.audioOutput = QAudioOutput()
+        self._setupAudioOutput()
         self.mw_view.actionPlayPause.triggered.connect(self.onPlayPause_triggered)
         self.mw_view.actionStop.triggered.connect(self.stop)
+        self.mw_view.actionIncrease_Volume.triggered.connect(self.increaseVolume)
+        self.mw_view.actionDecrease_Volume.triggered.connect(self.decreaseVolume)
         self.mw_view.AudioDevicesGroup.triggered.connect(self.onAudioDeviceChecked)
+        self.mw_view.VolumeSlider.valueChanged.connect(self.applyVolume)
         self.playAfterAudioLoaded = False
 
     def loadCurrentAudio(self, play_after=True):
@@ -49,14 +53,26 @@ class PlayerContr(QMediaPlayer):
 
     def onPlayerStatusChanged(self, status):
         if status == QMediaPlayer.MediaStatus.LoadedMedia:
-            self.parent.setHeader()
-            self._refreshAudioOutput()
+            self.parent.onLoadSourceAudio()
+            self._refreshAudioOutput_mac()
             self._playLoadedAudio()
 
-    def _refreshAudioOutput(self):
+    def increaseVolume(self):
+        self.mw_view.VolumeSlider.setValue(self.mw_view.VolumeSlider.value() + 5)
+
+    def decreaseVolume(self):
+        self.mw_view.VolumeSlider.setValue(self.mw_view.VolumeSlider.value() - 5)
+
+    def _refreshAudioOutput_mac(self):
+        if platform.system() == 'Darwin':
+            self._setupAudioOutput(anyplatform=True)
+
+    def _setupAudioOutput(self, anyplatform=False):
         self.audioOutput = QAudioOutput()
-        self.audioOutput.setDevice(self.mw_view.AudioDevicesView.selectedOutput())
-        self.setAudioOutput(self.audioOutput)
+        if platform.system() == 'Windows' or anyplatform:
+            self.audioOutput.setDevice(self.mw_view.AudioDevicesView.selectedOutput())
+            self.setAudioOutput(self.audioOutput)
+        self.applyVolume(self.mw_view.VolumeSlider.value())
 
     def _playLoadedAudio(self):
         if self.playAfterAudioLoaded:
@@ -78,7 +94,8 @@ class PlayerContr(QMediaPlayer):
 
     def onAudioDeviceChecked(self):
         selected_out = self.mw_view.AudioDevicesView.selectedOutput()
-        if self.playbackState() == self.PlaybackState.PlayingState and selected_out != self.audioOutput.device():
+        if (self.playbackState() == self.PlaybackState.PlayingState or platform.system() == 'Windows') \
+                and selected_out != self.audioOutput.device():
             self.audioOutput.setDevice(selected_out)
 
     def onAudioOutputsChanged(self):
@@ -86,3 +103,9 @@ class PlayerContr(QMediaPlayer):
         if not checked_item:
             self.mw_view.AudioDevicesView.selectOutput(self.mw_view.AudioDevicesView.default_name)
         self.onAudioDeviceChecked()
+
+    def applyVolume(self, volumeSliderValue):
+        linearVolume = QAudio.convertVolume(volumeSliderValue / 100,
+        QAudio.VolumeScale.LogarithmicVolumeScale,
+        QAudio.VolumeScale.LinearVolumeScale)
+        self.audioOutput.setVolume(linearVolume)

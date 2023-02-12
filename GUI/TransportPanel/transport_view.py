@@ -8,6 +8,8 @@ class TransportPanelView:
         self.mw_view = mw_view
         self.PlayerView = PlayerView(self.mw_view)
         self.AudioSliderView = AudioSliderView(self.mw_view.AudioSlider)
+        self.Duration_Lab = mw_view.Duration_Lab
+        self.Position_Lab = mw_view.Position_Lab
         self.setHeader()
 
     def setHeader(self, audio_name='No audio'):

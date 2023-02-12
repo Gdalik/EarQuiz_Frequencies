@@ -25,8 +25,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.status = self.statusBar()
         self.setMinimalistView()
         self.actionMinimal.triggered.connect(self.setMinimalistView)
-        self.NextExercise.hide()
-        self.EqOnOffLab.hide()
+        self.alt_pressed = None
 
         '''self.progress = QProgressBar(self)
         self.progress.setMaximumWidth(100)
@@ -48,27 +47,20 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             elif 'TimeEdit' in W.objectName():
                 w_font.setPointSize(11)
             W.setFont(w_font)
+        self.NextPatternBut.setMinimumSize(26, 26)
+        self.NextPatternBut.setMaximumSize(26, 26)
 
-    def dragEnterEvent(self, event):
-        if event.mimeData().hasUrls():
-            event.accept()
-        else:
-            event.ignore()
+    def keyPressEvent(self, event):
+        super(MainWindowView, self).keyPressEvent(event)
+        if event.key() == Qt.Key.Key_Alt:
+            self.alt_pressed = True
+        event.accept()
 
-    def dragMoveEvent(self, event):
-        if event.mimeData().hasUrls():
-            event.setDropAction(Qt.DropAction.CopyAction)
-            event.accept()
-        else:
-            event.ignore()
-
-    def dropEvent(self, event):
-        if event.mimeData().hasUrls():
-            event.setDropAction(Qt.DropAction.CopyAction)
-            event.accept()
-
-        else:
-            event.ignore()
+    def keyReleaseEvent(self, event):
+        super(MainWindowView, self).keyReleaseEvent(event)
+        if event.key() == Qt.Key.Key_Alt:
+            self.alt_pressed = False
+        event.accept()
 
     def setViewMenuActions(self):
         DockActions = self.createPopupMenu().actions()
@@ -81,7 +73,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.Eq_Settings.hide()
         self.SupportProject.hide()
         self.TransportPanel.hide()
-        self.set_size(1080, 700)
+        self.set_size(1080, 720)
 
     def set_size(self, width: int, height: int):
         self.setFixedSize(width, height)

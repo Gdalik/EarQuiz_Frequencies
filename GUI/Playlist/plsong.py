@@ -1,4 +1,4 @@
-from urllib.parse import urlparse
+# from urllib.parse import urlparse
 from dataclasses import dataclass
 from pedalboard.io import AudioFile
 from Utilities.common_calcs import mmss
@@ -12,7 +12,8 @@ class PlSong:
 
     @cached_property
     def path(self):
-        return str(PurePath(urlparse(self.inputPath).path))
+        # return str(Path(urlparse(self.inputPath).path).absolute())
+        return str(Path(self.inputPath).absolute()) if self.inputPath else ''
 
     @cached_property
     def name(self):
@@ -29,12 +30,12 @@ class PlSong:
 
     @cached_property
     def file_properties(self):
-        duration = False
-        num_channels = None
-        samplerate = None
+        return_dict = {'duration': False, 'num_channels': None, 'samplerate': None}
+        if not self.exists:
+            return return_dict
         try:
             with AudioFile(self.path) as f:
-                duration = f.frames / f.samplerate
+                return_dict['duration'] = f.frames / f.samplerate
                 num_channels = f.num_channels
                 if num_channels == 1:
                     num_channels = 'Mono'
@@ -42,11 +43,12 @@ class PlSong:
                     num_channels = 'Stereo'
                 else:
                     num_channels = f'{num_channels} Channels'
-                samplerate = f.samplerate
+                return_dict['num_channels'] = num_channels
+                return_dict['samplerate'] = int(f.samplerate)
         except Exception:
             pass
         finally:
-            return {'duration': duration, 'num_channels': num_channels, 'samplerate': int(samplerate)}
+            return return_dict
 
     @property
     def duration(self):

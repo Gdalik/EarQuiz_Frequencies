@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QTableView, QAbstractItemView, QHeaderView
 from PyQt6.QtGui import QPainter, QDrag, QColor
 from PyQt6.QtCore import Qt, pyqtSignal, QObject, QMimeData, QUrl, QItemSelection, QItemSelectionModel, QModelIndex
-from pathlib import Path
+from Utilities.urlcheck import validUrls
 
 
 class PL_Signals(QObject):
@@ -20,7 +20,6 @@ class PlaylistView(QTableView):
         self.setHeader()
         self.setShowGrid(False)
         self.selectedItems = []
-        self._alt_pressed = False
 
     @property
     def Model(self):
@@ -71,8 +70,10 @@ class PlaylistView(QTableView):
         super(PlaylistView, self).dropEvent(event)
         if self.checkDroppedMimeData(event.mimeData()):
             event.accept()
-            self.signals.urlsDropped.emit(event.mimeData().urls(), self.model().mapToSource(self.currentIndex()).row())
-            event.mimeData().clear()
+            valid_urls = validUrls(event.mimeData().urls())
+            if valid_urls:
+                self.signals.urlsDropped.emit(valid_urls, self.model().mapToSource(self.currentIndex()).row())
+            # event.mimeData().clear()
 
     def checkDroppedMimeData(self, data):
         return data.hasUrls() and data.objectName() != 'FromPlaylist'
@@ -95,22 +96,10 @@ class PlaylistView(QTableView):
         paths = [QUrl.fromLocalFile(item.path) for item in self.selectedItems]
         mimeData.setUrls(paths)
         drag.setMimeData(mimeData)
-        action = drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.IgnoreAction) if self._alt_pressed \
-            else drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.MoveAction | Qt.DropAction.IgnoreAction)
+        action = drag.exec(Qt.DropAction.CopyAction) if self.mw_view.alt_pressed \
+            else drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.MoveAction)
         self.signals.dragDropFromPLFinished.emit(action)
-        mimeData.clear()
-
-    def keyPressEvent(self, event):
-        super(PlaylistView, self).keyPressEvent(event)
-        if event.key() == Qt.Key.Key_Alt:
-            self._alt_pressed = True
-        event.accept()
-
-    def keyReleaseEvent(self, event):
-        super(PlaylistView, self).keyReleaseEvent(event)
-        if event.key() == Qt.Key.Key_Alt:
-            self._alt_pressed = False
-        event.accept()
+        # mimeData.clear()
 
     def selectRows(self, first: int, last: int, scrolling=True):
         selection = QItemSelection()

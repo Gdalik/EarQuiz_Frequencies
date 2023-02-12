@@ -31,8 +31,8 @@ class EQSetContr:
     @staticmethod
     def getPresetNames():
         with open(PurePath(definitions.ROOT_DIR, 'Model', 'Data', 'bw_q_patterns.json')) as f:
-            list = json.load(f)
-        return list
+            preset_list = json.load(f)
+        return preset_list
 
     def _addCustomBWQPreset(self, BW_Q: str):
         self.BWQPresets.append(BW_Q)
@@ -40,5 +40,3 @@ class EQSetContr:
 
     def on_ResetClicked(self):
         self.EQSetView.update(self.EQpattern['Gain_depth'], self.EQpattern['BW_Q'])
-
-

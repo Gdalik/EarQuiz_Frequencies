@@ -14,7 +14,7 @@ class EQContr:
 
     def onSliderDragged(self, value):
         self.EQ_view.case_DisableAdjacentFiltersModeOn(value, self.EQpattern['ActiveFreqRange'])
-        if (self.parent.CurrentMode is None or self.parent.CurrentMode.name == 'Preview') and value != 0:
+        if self.parent.CurrentMode.name in ['Uni', 'Preview'] and value != 0:
             self.parent.mw_view.actionLearn_Mode.toggle()
 
     def setEQMode(self, mode_num=1):
@@ -28,4 +28,3 @@ class EQContr:
 
     def getAvailableFreq(self):
         return [F.freq for F in self.EQ_view.Filters if self.EQpattern['ActiveFreqRange'][0] <= F.freq <= self.EQpattern['ActiveFreqRange'][1]]
-

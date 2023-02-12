@@ -1,6 +1,8 @@
 from PyQt6 import QtCore, QtGui
 from PyQt6.QtCore import Qt, QSortFilterProxyModel
 from GUI.Playlist.plsong import PlSong
+from pathlib import Path
+from Utilities.urlcheck import validUrls
 
 
 PlaylistData = []
@@ -53,12 +55,14 @@ class PlaylistModel(QtCore.QAbstractTableModel):
 
         if row == -1:
             row = len(self.playlistdata)
-        urls = data.urls()
+        urls = validUrls(data.urls())
+        if not urls:
+            return False
         rows_count = len(urls)
         self.insertRows(row, rows_count, parent)
 
         for r in range(rows_count):
-            CurData = PlSong(urls[r].path())
+            CurData = PlSong(str(Path(urls[r].toLocalFile()).absolute()))
             self.setData(self.index(row + r, 0, parent), CurData)
 
         return True

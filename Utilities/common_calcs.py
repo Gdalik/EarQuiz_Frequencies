@@ -18,9 +18,23 @@ def mmss(s, string=False):
     m, s = divmod(s, 60)
     return ['%02d' % m, '%02d' % s] if string else [m, s]
 
+
+def hhmmss(secs):
+    ms = secs * 1000
+    secs, ms = divmod(ms, 1000)
+    mins, secs = divmod(secs, 60)
+    hours, mins = divmod(mins, 60)
+    return '%02d:%02d:%02d.%03d' % (hours, mins, secs, ms)
+
+
+def get_sec(time_str):
+    h, m, s = time_str.split(':')
+    return int(h) * 3600 + int(m) * 60 + float(s)
+
+
 def ms2samp(ms: int or float, samplerate=44100):
     return ms*samplerate/1000
 
+
 def samp2ms(samples: int, samplerate=44100):
     return samples / samplerate * 1000
-
