@@ -1,3 +1,4 @@
+import contextlib
 from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.EQ.eq_contr import EQContr
@@ -10,15 +11,17 @@ from GUI.Modes.TestMode import TestMode
 from GUI.Modes.UniMode import UniMode
 from GUI.Playlist.plsong import PlSong
 from GUI.TransportPanel.transport_contr import TransportContr
+from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from PyQt6.QtCore import QObject
 from PyQt6.QtGui import QActionGroup
 import platform
+from Model.calc import optimal_range_length
 
 
 class MainWindowContr(QObject):
     modesActionGroup: Union[QActionGroup, QActionGroup]
     SourceAudio: PlSong or None
-    SourceRange: list[int]
+    SourceRange: PreviewAudioCrop or None
 
     def __init__(self):
         super().__init__()
@@ -70,8 +73,9 @@ class MainWindowContr(QObject):
 
     def setNoAudio(self):
         self.SourceAudio = None
-        self.TransportContr.noSongState()
-        self.SourceRange = [0, 0]
+        self.disconnectSourceRangeSig()
+        self.SourceRange = None
+        self.mw_view.TransportPanelView.noSongState()
         self.mw_view.actionPlayPause.setEnabled(False)
         self.mw_view.actionStop.setEnabled(False)
 
@@ -94,3 +98,16 @@ class MainWindowContr(QObject):
         else:
             self.CurrentMode.updateCurrentAudio()
         self.TransportContr.PlayerContr.loadCurrentAudio()
+
+    def _setSourceRange(self):
+        self.disconnectSourceRangeSig()
+        duration = self.SourceAudio.duration
+        slice_length = self.mw_view.SliceLenSpin.value()
+        self.SourceRange = PreviewAudioCrop(duration, 0,
+                                            optimal_range_length(duration, slice_length), slice_length)
+        self.TransportContr.initCropRegion()
+        self.SourceRange.rangeChanged.connect(self.TransportContr.onSourceRangeChanged)
+
+    def disconnectSourceRangeSig(self):
+        if hasattr(self, 'SourceRange') and self.SourceRange is not None:
+            self.SourceRange.rangeChanged.disconnect(self.TransportContr.onSourceRangeChanged)

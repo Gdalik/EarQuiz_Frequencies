@@ -31,7 +31,7 @@ class PLLoadChecker(QRunnable):
 class PLProcDialog(QDialog):
     def __init__(self, paths: list):
         super().__init__()
-        self.setWindowFlags(Qt.WindowType.CustomizeWindowHint | Qt.WindowType.WindowStaysOnTopHint)
+        self.setWindowFlags(Qt.WindowType.SplashScreen)
         self.paths = paths
         self.setWindowTitle("Please, wait...")
         self.buttonBox = QDialogButtonBox(QDialogButtonBox.StandardButton.Cancel)

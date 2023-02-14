@@ -1,5 +1,5 @@
 class UniMode:
-    def __init__(self, parent):
+    def __init__(self, parent):     # parent: MainWindowContr
         self.name = 'Uni'
         self.view = parent.mw_view
         self.parent = parent
@@ -7,8 +7,9 @@ class UniMode:
         # self.parent.PatternBoxContr.onPatternBoxIndexChanged()
         self.playPause_toggleable = False
         self.parent.TransportContr.PlayerContr.stop()
-        self.view.actionNext_Exercise.setEnabled(False)
-        self.view.NextExercise.hide()
+        self.view.setActionNextExerciseEnabled(False)
+        self.view.TransportPanelView.AudioSliderView.Cursor.setMovable(False)
+        self.view.TransportPanelView.AudioSliderView.CropRegion.setMovable(False)
         self.view.EqOnOffLab.hide()
         self.setPlayerControls()
 

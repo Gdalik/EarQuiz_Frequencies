@@ -2,13 +2,15 @@ from GUI.Modes.UniMode import UniMode
 
 
 class PreviewMode(UniMode):
-    def __init__(self, parent):
+    def __init__(self, parent):     # parent: MainWindowContr
         super().__init__(parent)
         self.name = 'Preview'
         self.view.AudiofileRBut.setChecked(True)
         self.playPause_toggleable = True
         self.parent.PatternBoxContr.onPatternBoxIndexChanged()
         self.view.TransportPanel.show()
+        self.view.TransportPanelView.AudioSliderView.Cursor.setMovable(True)
+        self.view.TransportPanelView.AudioSliderView.CropRegion.setMovable(True)
         self.updateCurrentAudio()
 
     def setPlayerControls(self):

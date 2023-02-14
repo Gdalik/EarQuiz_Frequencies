@@ -1,6 +1,5 @@
 from PyQt6.QtWidgets import QMainWindow, QWidget, QSizePolicy
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QActionGroup
 from GUI.MainWindow.View.mainwindow import Ui_MainWindow
 from GUI.TransportPanel.transport_view import TransportPanelView
 from GUI.PatternBox.patternbox_view import PatternBoxView
@@ -35,7 +34,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.progress.hide()'''
 
     def win_os_settings(self):
-        widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + self.dockWidgetContents_2.findChildren(QWidget) + self.dockWidgetContents_3.findChildren(QWidget)
+        widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + \
+                      self.dockWidgetContents_2.findChildren(QWidget) + self.dockWidgetContents_3.findChildren(QWidget)
         for W in widget_list:
             w_font = W.font()
             w_fontsize = w_font.pointSize()
@@ -80,3 +80,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         self.setMinimumSize(width, height)
         self.setMaximumSize(16777215, 16777215)
+
+    def setActionNextExerciseEnabled(self, arg):
+        self.actionNext_Exercise.setEnabled(arg)
+        self.actionNext_Exercise.setVisible(arg)
+        self.NextExercise.setVisible(arg)

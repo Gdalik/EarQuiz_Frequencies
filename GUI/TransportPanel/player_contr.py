@@ -23,11 +23,13 @@ class PlayerContr(QMediaPlayer):
         self.mw_view.AudioDevicesGroup.triggered.connect(self.onAudioDeviceChecked)
         self.mw_view.VolumeSlider.valueChanged.connect(self.applyVolume)
         self.playAfterAudioLoaded = False
+        self.onceAudioLoaded = False
 
     def loadCurrentAudio(self, play_after=True):
         self.setSource(QUrl())
         self.setSource(QUrl.fromLocalFile(self.parent.currentAudio))
         self.playAfterAudioLoaded = play_after
+        self.onceAudioLoaded = True
 
     def loadMetaData(self):
         if not self.metaData():
@@ -44,17 +46,22 @@ class PlayerContr(QMediaPlayer):
         return f'{" - ".join(displ_data)}' if displ_data else ''
 
     def sourceAudioData(self):
+        def hzTokHz(value: int or float):
+            res = value / 1000
+            return int(res) if value % 1000 == 0 else round(res, 1)
         metadata = self.loadMetaData()
         displ_data = [f'"{self.mw_contr.SourceAudio.name}"']
         if metadata:
             displ_data.append(f'({metadata})')
-        displ_data.append(f'[{self.mw_contr.SourceAudio.samplerate} Hz {self.mw_contr.SourceAudio.num_channels}]')
+        displ_data.append(f'[{hzTokHz(self.mw_contr.SourceAudio.samplerate)} kHz | {self.mw_contr.SourceAudio.num_channels}]')
         return ' '.join(displ_data)
 
     def onPlayerStatusChanged(self, status):
         if status == QMediaPlayer.MediaStatus.LoadedMedia:
-            self.parent.onLoadSourceAudio()
-            self._refreshAudioOutput_mac()
+            if self.onceAudioLoaded:
+                self.parent.onLoadSourceAudio()
+                self._refreshAudioOutput_mac()
+                self.onceAudioLoaded = False
             self._playLoadedAudio()
 
     def increaseVolume(self):
@@ -94,8 +101,9 @@ class PlayerContr(QMediaPlayer):
 
     def onAudioDeviceChecked(self):
         selected_out = self.mw_view.AudioDevicesView.selectedOutput()
-        if (self.playbackState() == self.PlaybackState.PlayingState or platform.system() == 'Windows') \
-                and selected_out != self.audioOutput.device():
+        '''if (self.playbackState() == self.PlaybackState.PlayingState or platform.system() == 'Windows') \
+                and selected_out != self.audioOutput.device():'''
+        if selected_out != self.audioOutput.device():
             self.audioOutput.setDevice(selected_out)
 
     def onAudioOutputsChanged(self):

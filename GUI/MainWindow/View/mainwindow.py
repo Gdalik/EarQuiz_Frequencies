@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'C:\Users\gdali\PycharmProjects\EarQuiz_Frequencies\GUI\MainWindow\View\mainwindow.ui'
+# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/mainwindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -59,7 +59,7 @@ class Ui_MainWindow(object):
 "background: rgba(118, 214, 255, 85)\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/AddRemove/plus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/AddRemove/plus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.PlusFilesBut.setIcon(icon)
         self.PlusFilesBut.setObjectName("PlusFilesBut")
         self.AddPlusRemoveAudioLay.addWidget(self.PlusFilesBut)
@@ -73,7 +73,7 @@ class Ui_MainWindow(object):
 "background: rgba(118, 214, 255, 85)\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/AddRemove/minus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/AddRemove/minus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.MinusFilesBut.setIcon(icon1)
         self.MinusFilesBut.setObjectName("MinusFilesBut")
         self.AddPlusRemoveAudioLay.addWidget(self.MinusFilesBut)
@@ -91,8 +91,8 @@ class Ui_MainWindow(object):
 "border-radius: 4px;\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/Player/shuffle_black.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon2.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/Player/shuffle_blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        icon2.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/Player/shuffle_black.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon2.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/Player/shuffle_blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.ShufflePlaybackBut.setIcon(icon2)
         self.ShufflePlaybackBut.setCheckable(True)
         self.ShufflePlaybackBut.setObjectName("ShufflePlaybackBut")
@@ -109,7 +109,7 @@ class Ui_MainWindow(object):
 "background: rgba(118, 214, 255, 85)\n"
 "}")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/AddRemove/clear.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon3.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/AddRemove/clear.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.ClearFilesBut.setIcon(icon3)
         self.ClearFilesBut.setIconSize(QtCore.QSize(20, 20))
         self.ClearFilesBut.setObjectName("ClearFilesBut")
@@ -185,7 +185,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -228,7 +228,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -270,7 +270,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -312,7 +312,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -354,7 +354,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -397,7 +397,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -439,7 +439,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -481,7 +481,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -523,7 +523,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -565,7 +565,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -631,7 +631,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -674,7 +674,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -716,7 +716,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -758,7 +758,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -800,7 +800,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -843,7 +843,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -886,7 +886,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -928,7 +928,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -970,7 +970,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1012,7 +1012,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1072,7 +1072,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1114,7 +1114,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1156,7 +1156,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1198,7 +1198,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1240,7 +1240,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1283,7 +1283,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1325,7 +1325,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1367,7 +1367,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1409,7 +1409,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1451,7 +1451,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1511,7 +1511,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1553,7 +1553,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1595,7 +1595,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1637,7 +1637,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1679,7 +1679,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1722,7 +1722,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1764,7 +1764,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1806,7 +1806,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1848,7 +1848,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}\n"
 "\n"
 "\n"
@@ -1891,7 +1891,7 @@ class Ui_MainWindow(object):
 "    height: 5px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"    \n"
+"\n"
 "}")
         self.EQ2_20000.setMinimum(-1)
         self.EQ2_20000.setMaximum(1)
@@ -1971,7 +1971,7 @@ class Ui_MainWindow(object):
 "background: rgba(118, 214, 255, 85)\n"
 "}")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/Player/Actions-media-playback-start-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon4.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/Player/Actions-media-playback-start-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.MW_PlayPause.setIcon(icon4)
         self.MW_PlayPause.setIconSize(QtCore.QSize(32, 32))
         self.MW_PlayPause.setObjectName("MW_PlayPause")
@@ -1986,7 +1986,7 @@ class Ui_MainWindow(object):
 "background: rgba(118, 214, 255, 85)\n"
 "}")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/Player/Actions-media-playback-stop-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon5.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/Player/Actions-media-playback-stop-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.MW_Stop.setIcon(icon5)
         self.MW_Stop.setIconSize(QtCore.QSize(32, 32))
         self.MW_Stop.setObjectName("MW_Stop")
@@ -2006,7 +2006,7 @@ class Ui_MainWindow(object):
 "background: rgba(118, 214, 255, 85);\n"
 "}")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/Player/arrow-right_gray.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon6.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/Player/arrow-right_gray.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.NextExercise.setIcon(icon6)
         self.NextExercise.setIconSize(QtCore.QSize(26, 26))
         self.NextExercise.setObjectName("NextExercise")
@@ -2042,6 +2042,7 @@ class Ui_MainWindow(object):
         font.setBold(False)
         font.setWeight(50)
         self.PatternBox.setFont(font)
+        self.PatternBox.setStyleSheet("font-weight: normal;")
         self.PatternBox.setObjectName("PatternBox")
         self.horizontalLayout_6.addWidget(self.PatternBox, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
         self.NextPatternBut = QtWidgets.QPushButton(parent=self.PatternGroupBox)
@@ -2060,7 +2061,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.PatternGroupBox, 0, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1139, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1139, 22))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(parent=self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -2129,7 +2130,7 @@ class Ui_MainWindow(object):
 "background: rgba(118, 214, 255, 85)\n"
 "}")
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/Player/Actions-media-skip-backward-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon7.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/Player/Actions-media-skip-backward-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.Player_SkipBackw.setIcon(icon7)
         self.Player_SkipBackw.setIconSize(QtCore.QSize(32, 32))
         self.Player_SkipBackw.setObjectName("Player_SkipBackw")
@@ -2170,7 +2171,7 @@ class Ui_MainWindow(object):
 "background: rgba(118, 214, 255, 85)\n"
 "}")
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/Player/Actions-media-skip-forward-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon8.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/Player/Actions-media-skip-forward-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.Player_SkipForw.setIcon(icon8)
         self.Player_SkipForw.setIconSize(QtCore.QSize(32, 32))
         self.Player_SkipForw.setObjectName("Player_SkipForw")
@@ -2187,8 +2188,8 @@ class Ui_MainWindow(object):
 "}")
         self.LoopButton.setText("")
         icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/Player/music-note-with-loop-circular-arrows-around.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon9.addPixmap(QtGui.QPixmap("C:\\Users\\gdali\\PycharmProjects\\EarQuiz_Frequencies\\GUI\\MainWindow\\View\\../../Icons/Player/music-note-with-loop-circular-arrows-around-blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        icon9.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/Player/music-note-with-loop-circular-arrows-around.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon9.addPixmap(QtGui.QPixmap("/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/../../Icons/Player/music-note-with-loop-circular-arrows-around-blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.LoopButton.setIcon(icon9)
         self.LoopButton.setIconSize(QtCore.QSize(32, 32))
         self.LoopButton.setCheckable(True)
@@ -2598,6 +2599,7 @@ class Ui_MainWindow(object):
         self.actionOpen_Folder.setObjectName("actionOpen_Folder")
         self.actionNext_Exercise = QtGui.QAction(parent=MainWindow)
         self.actionNext_Exercise.setIcon(icon6)
+        self.actionNext_Exercise.setIconVisibleInMenu(False)
         self.actionNext_Exercise.setObjectName("actionNext_Exercise")
         self.actionLoop_Playback = QtGui.QAction(parent=MainWindow)
         self.actionLoop_Playback.setCheckable(True)
@@ -2739,7 +2741,6 @@ class Ui_MainWindow(object):
         self.menuEQ_Bands_Playback_Order.setTitle(_translate("MainWindow", "EQ Bands Playback Order"))
         self.menuAudio.setTitle(_translate("MainWindow", "Audio"))
         self.menuAudio_Device.setTitle(_translate("MainWindow", "Audio Device"))
-        self.TransportPanel.setToolTip(_translate("MainWindow", "Click to change end point"))
         self.TransportPanel.setWindowTitle(_translate("MainWindow", "Transport Panel"))
         self.Position_Lab.setToolTip(_translate("MainWindow", "Playback Position"))
         self.Position_Lab.setText(_translate("MainWindow", "00:00:00.000"))

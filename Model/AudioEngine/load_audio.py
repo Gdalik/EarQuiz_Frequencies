@@ -1,8 +1,8 @@
 import math
 import time
-import inspect
 from Model.AudioEngine.process import ChunkedProc
 from Model.calc import find_divider
+from Model.AudioEngine.preview_audio import PreviewAudioCrop
 import numpy as np
 from pedalboard import Gain
 from pedalboard.io import AudioFile
@@ -11,26 +11,20 @@ import itertools
 from Utilities.exceptions import InterruptedException
 
 
-class AudioChunk:
+class AudioChunk(PreviewAudioCrop):
     def __init__(self, audiofile: AudioFile, starttime: int or float, endtime: int or float,
                  slice_length=15, norm_level=None, callback=None):
         self.source_length = audiofile.frames / audiofile.samplerate
         if self.source_length < 30:
             raise ValueError('Audio file length cannot be less than 30 sec')
+        super().__init__(audiofile_length=self.source_length,
+                         starttime=starttime, endtime=endtime, slice_length=slice_length)
         self.audiofile = audiofile
-        self._starttime = max(0, starttime)
-        self._endtime = max(0, endtime)
-        self._starttime = min(self.starttime, self.endtime)
-        self._endtime = max(self.starttime + 10, self.endtime)
-        self._slice_length = max(slice_length, 10)
         self.samplerate = audiofile.samplerate
-        self._endtime = min(self._endtime, self.source_length)
-        self._slice_length = min(self._slice_length, self._endtime - self._starttime, 30)
         self.norm_level = norm_level
         self.norm_proc = None
         self.cropped = self.cropped_normalized = self.cropped_norm_split = \
             self.cycle = self.cycle_id_gen = self.cycle_id = None
-        self._slices_num = self.chunk_length // self.slice_length
         self.callback = callback
         self.reading_stopped = None
         self._reset()
@@ -46,14 +40,14 @@ class AudioChunk:
         # self._callback_out(output)
         self.audiofile.seek(int(self.sec2fr(self.starttime)))
         chunk_length_fr = int(self.sec2fr(self.chunk_length))
-        divider = find_divider(chunk_length_fr, min=5)
+        divider = find_divider(chunk_length_fr, Min=5)
         while self.cropped[0].size != chunk_length_fr:
             try:
                 self._callback_out(output)
             except InterruptedException:
                 self._stop_reading()
                 return
-            ch = self.audiofile.read(int(chunk_length_fr/divider))
+            ch = self.audiofile.read(int(chunk_length_fr / divider))
             self.cropped = np.concatenate((self.cropped, ch), axis=1)
             output['Percent'] = int(self.cropped[0].size / chunk_length_fr * 100)
         output.clear()
@@ -75,43 +69,11 @@ class AudioChunk:
             self.normalize(self.norm_level)
         print(f'Processing time = {time.time() - a}')
 
-
-    @property
-    def starttime(self):
-        return self._starttime
-
-    @starttime.setter
-    def starttime(self, value):
-        self._starttime = max(value, 0)
-        self._starttime = min(self._starttime, self.endtime - self.slice_length)
-
-    @property
-    def endtime(self):
-        return self._endtime
-
-    @endtime.setter
-    def endtime(self, value):
-        self._endtime = max(self.starttime + self.slice_length, value)
-        self._endtime = min(self._endtime, self.source_length)
-
-    @property
-    def slice_length(self):
-        return self._slice_length
-
-    @slice_length.setter
-    def slice_length(self, value):
-        self._slice_length = min(value, self.chunk_length, 30)
-        self._slice_length = max(self._slice_length, 10)
-
-    @property
-    def chunk_length(self):
-        return self.endtime - self.starttime
-
     @property
     def input_db_array(self):
         chunk = self.cropped
         chunk_abs = np.absolute(chunk)
-        return 20*np.emath.log10(chunk_abs)
+        return 20 * np.emath.log10(chunk_abs)
 
     @property
     def max_level(self):
@@ -121,12 +83,8 @@ class AudioChunk:
 
     @property
     def rms_level(self):
-        rms_ar = np.sqrt(np.mean(self.cropped**2))
-        return 20*math.log10(rms_ar)
-
-    @property
-    def slices_num(self):
-        return int(self.chunk_length // self.slice_length)
+        rms_ar = np.sqrt(np.mean(self.cropped ** 2))
+        return 20 * math.log10(rms_ar)
 
     def sec2fr(self, sec: int or float):
         return int(self.samplerate * sec)
@@ -135,8 +93,8 @@ class AudioChunk:
         self.callback = callback or self.callback
         delta = head_level - self.max_level
         gain = Gain(delta)
-        self.norm_proc = ChunkedProc(self.cropped, self.audiofile.samplerate, gain,
-                                               proc_name='Normalizing audio', callback=self.callback)
+        self.norm_proc = ChunkedProc(self.cropped, self.samplerate, gain,
+                                     proc_name='Normalizing audio', callback=self.callback)
         self.cropped_normalized = self.norm_proc.call()
         self.split()
         if self.cycle_id_gen is not None:
@@ -179,7 +137,7 @@ class AudioChunk:
             return
         reset_cond1 = self._old_values['starttime'] != self.starttime
         reset_cond2 = self._old_values['chunk_length'] != self.chunk_length and \
-                          (self._old_values['slices_num'] != self.slices_num or self._old_values['slice_length']
+                      (self._old_values['slices_num'] != self.slices_num or self._old_values['slice_length']
                        != self.slice_length)
         if reset_cond1 or reset_cond2:
             self._reset()
@@ -191,4 +149,3 @@ class AudioChunk:
     def _refresh_old_values(self):
         self._old_values = {'starttime': self.starttime, 'chunk_length': self.chunk_length,
                             'slices_num': self.slices_num, 'slice_length': self.slice_length}
-
