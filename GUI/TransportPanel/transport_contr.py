@@ -145,7 +145,8 @@ class TransportContr(QObject):
         if self.CropRegionBeingChanged:
             return
         pos = self.PlayerContr.position() / 1000    # ms -> s
-        if pos < self.SourceRange.starttime - 0.1 or pos > self.SourceRange.endtime:
+        # if pos < self.SourceRange.starttime - 0.1 or pos > self.SourceRange.endtime:
+        if pos < self.SourceRange.starttime or pos > self.SourceRange.endtime:
             # starttime - 0.1 is a workaround to prevent infinite loop caused by QMediaPlayer.setPosition behavior
             # print(f'{pos=} {self.SourceRange.starttime=} {self.SourceRange.endtime=}')
             if not self.parent.mw_view.actionLoop_Playback.isChecked():
