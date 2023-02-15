@@ -273,11 +273,14 @@ background: rgba(118, 214, 255, 85)
          <property name="styleSheet">
           <string notr="true"/>
          </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QAbstractScrollArea::AdjustToContents</enum>
+         </property>
          <property name="dragEnabled">
           <bool>true</bool>
          </property>
          <property name="dragDropMode">
-          <enum>QAbstractItemView::InternalMove</enum>
+          <enum>QAbstractItemView::DragDrop</enum>
          </property>
         </widget>
        </item>
