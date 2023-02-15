@@ -48,8 +48,6 @@ class TransportContr(QObject):
         _range = (region[0] / 1000, region[1] / 1000)    # ms -> s
         self._resetSourceRange(_range)
 
-
-
     def onCropRegionChangeFinished(self):
         self.CropRegionBeingChanged = False
         self._checkPlaybackRange()

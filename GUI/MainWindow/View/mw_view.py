@@ -73,7 +73,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.Eq_Settings.hide()
         self.SupportProject.hide()
         self.TransportPanel.hide()
-        self.set_size(1080, 720)
+        self.set_size(1080, 700)
 
     def set_size(self, width: int, height: int):
         self.setFixedSize(width, height)
