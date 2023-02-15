@@ -4,7 +4,7 @@ import definitions
 from Utilities.Q_extract import Qextr
 
 
-class EQSetContr:
+class EQSetContr:   # parent: MainWindowContr
     def __init__(self, parent):
         self.parent = parent
         self.EQSetView = parent.mw_view.EQSetView

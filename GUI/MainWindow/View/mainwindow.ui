@@ -4629,7 +4629,7 @@ font-weight: bold</string>
   <widget class="QDockWidget" name="TransportPanel">
    <property name="minimumSize">
     <size>
-     <width>900</width>
+     <width>923</width>
      <height>125</height>
     </size>
    </property>
@@ -4671,13 +4671,13 @@ font-weight: bold</string>
          </property>
          <property name="minimumSize">
           <size>
-           <width>90</width>
+           <width>110</width>
            <height>30</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>130</width>
+           <width>110</width>
            <height>40</height>
           </size>
          </property>
@@ -5011,6 +5011,9 @@ color: green;
                <pointsize>13</pointsize>
               </font>
              </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::UpDownArrows</enum>
+             </property>
              <property name="maximumTime">
               <time>
                <hour>2</hour>
@@ -5280,13 +5283,13 @@ background: rgba(118, 214, 255, 85)
          </property>
          <property name="minimumSize">
           <size>
-           <width>90</width>
+           <width>110</width>
            <height>30</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>130</width>
+           <width>110</width>
            <height>40</height>
           </size>
          </property>

@@ -1,4 +1,4 @@
-import contextlib
+from definitions import app
 from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.EQ.eq_contr import EQContr
@@ -32,6 +32,7 @@ class MainWindowContr(QObject):
         self.EQSetContr = EQSetContr(self)
         self.PlaylistContr = PlaylistContr(self)
         self.PatternBoxContr = PatternBoxContr(self)
+        self.setNoAudio()
         self.TransportContr = TransportContr(self)
         self.mw_view.show()
         self.setFileMenuActions()
@@ -41,7 +42,7 @@ class MainWindowContr(QObject):
         self.setShufflePBMode()
         self.mw_view.NextExercise.setDefaultAction(self.mw_view.actionNext_Exercise)
         self.CurrentMode = self.LastMode = UniMode(self)
-        self.setNoAudio()
+        self.mw_view.actionClose.triggered.connect(self.onCloseTriggered)
 
     def setFileMenuActions(self):
         self.mw_view.actionOpen.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='files'))
@@ -99,15 +100,25 @@ class MainWindowContr(QObject):
             self.CurrentMode.updateCurrentAudio()
         self.TransportContr.PlayerContr.loadCurrentAudio()
 
-    def _setSourceRange(self):
+    def setInitSourceRangeView(self):
         self.disconnectSourceRangeSig()
+        self.setOptimalSourceRange()
+        self.mw_view.TransportPanelView.CropRegionTstr.noAudioState(False)
+        self.SourceRange.rangeChanged.connect(self.TransportContr.onSourceRangeChanged)
+
+    def setOptimalSourceRange(self, reset=True):
         duration = self.SourceAudio.duration
         slice_length = self.mw_view.SliceLenSpin.value()
-        self.SourceRange = PreviewAudioCrop(duration, 0,
-                                            optimal_range_length(duration, slice_length), slice_length)
-        self.TransportContr.initCropRegion()
-        self.SourceRange.rangeChanged.connect(self.TransportContr.onSourceRangeChanged)
+        opt_length = optimal_range_length(duration, slice_length)
+        if reset:
+            self.SourceRange = PreviewAudioCrop(duration, 0, opt_length, slice_length)
+        elif self.SourceRange is not None:
+            self.SourceRange.starttime = 0
+            self.SourceRange.endtime = opt_length
 
     def disconnectSourceRangeSig(self):
         if hasattr(self, 'SourceRange') and self.SourceRange is not None:
             self.SourceRange.rangeChanged.disconnect(self.TransportContr.onSourceRangeChanged)
+
+    def onCloseTriggered(self):
+        app.quit()

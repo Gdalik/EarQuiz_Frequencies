@@ -5,7 +5,7 @@ import platform
 
 
 class PlayerContr(QMediaPlayer):
-    def __init__(self, parent):
+    def __init__(self, parent):  # parent: TransportContr
         super().__init__()
         self.parent = parent
         self.mw_contr = parent.parent
@@ -17,7 +17,7 @@ class PlayerContr(QMediaPlayer):
         MediaDevices.audioOutputsChanged.connect(self.onAudioOutputsChanged)
         self._setupAudioOutput()
         self.mw_view.actionPlayPause.triggered.connect(self.onPlayPause_triggered)
-        self.mw_view.actionStop.triggered.connect(self.stop)
+        self.mw_view.actionStop.triggered.connect(self.onStopTriggered)
         self.mw_view.actionIncrease_Volume.triggered.connect(self.increaseVolume)
         self.mw_view.actionDecrease_Volume.triggered.connect(self.decreaseVolume)
         self.mw_view.AudioDevicesGroup.triggered.connect(self.onAudioDeviceChecked)
@@ -49,20 +49,38 @@ class PlayerContr(QMediaPlayer):
         def hzTokHz(value: int or float):
             res = value / 1000
             return int(res) if value % 1000 == 0 else round(res, 1)
+
         metadata = self.loadMetaData()
-        displ_data = [f'"{self.mw_contr.SourceAudio.name}"']
+        SourceAudio = self.mw_contr.SourceAudio
+        displ_data = [f'"{SourceAudio.name}"']
         if metadata:
             displ_data.append(f'({metadata})')
-        displ_data.append(f'[{hzTokHz(self.mw_contr.SourceAudio.samplerate)} kHz | {self.mw_contr.SourceAudio.num_channels}]')
+        displ_data.append(f'[{hzTokHz(SourceAudio.samplerate)} kHz | {SourceAudio.num_channels}]')
         return ' '.join(displ_data)
 
     def onPlayerStatusChanged(self, status):
         if status == QMediaPlayer.MediaStatus.LoadedMedia:
-            if self.onceAudioLoaded:
-                self.parent.onLoadSourceAudio()
-                self._refreshAudioOutput_mac()
-                self.onceAudioLoaded = False
-            self._playLoadedAudio()
+            self._onLoadedMedia()
+        elif status == QMediaPlayer.MediaStatus.EndOfMedia:
+            self._onEndofMedia()
+
+    def _onLoadedMedia(self):
+        if self.onceAudioLoaded:
+            self.parent.onLoadSourceAudio()
+            self._refreshAudioOutput_mac()
+            self.onceAudioLoaded = False
+        self._playLoadedAudio()
+
+    def _onEndofMedia(self):
+        self.setPosition(self.parent.SourceRange.starttime)
+        if self.mw_view.actionLoop_Playback.isChecked():
+            self.play()
+
+    def onStopTriggered(self):
+        self.stop()
+        starttime = self.parent.SourceRange.starttime * 1000 if self.parent.SourceRange is not None else 0
+        if self.position() != starttime:
+            self.setPosition(starttime)
 
     def increaseVolume(self):
         self.mw_view.VolumeSlider.setValue(self.mw_view.VolumeSlider.value() + 5)
@@ -101,8 +119,6 @@ class PlayerContr(QMediaPlayer):
 
     def onAudioDeviceChecked(self):
         selected_out = self.mw_view.AudioDevicesView.selectedOutput()
-        '''if (self.playbackState() == self.PlaybackState.PlayingState or platform.system() == 'Windows') \
-                and selected_out != self.audioOutput.device():'''
         if selected_out != self.audioOutput.device():
             self.audioOutput.setDevice(selected_out)
 
@@ -114,6 +130,6 @@ class PlayerContr(QMediaPlayer):
 
     def applyVolume(self, volumeSliderValue):
         linearVolume = QAudio.convertVolume(volumeSliderValue / 100,
-        QAudio.VolumeScale.LogarithmicVolumeScale,
-        QAudio.VolumeScale.LinearVolumeScale)
+                                            QAudio.VolumeScale.LogarithmicVolumeScale,
+                                            QAudio.VolumeScale.LinearVolumeScale)
         self.audioOutput.setVolume(linearVolume)

@@ -34,7 +34,7 @@ class AudioSliderView:
 
     def initCropRegion(self):
         self.CropRegion = CropRegion(0, 0)
-        self.CropRegion.setBounds([0, self.data_arr.size])
+        # self.CropRegion.setBounds([0, self.data_arr.size])
         self.parent.addItem(self.CropRegion)
 
     def initSliceRegion(self):
@@ -52,7 +52,7 @@ class AudioSliderView:
         self._hline_draw()
         self.ViewBox.setLimits(xMin=0, xMax=self.data_arr.size, yMin=-1, yMax=1)
         bounds = [0, self.data_arr.size]
-        self.CropRegion.setBounds(bounds)
+        #self.CropRegion.setBounds(bounds)
         self.Cursor.setBounds(bounds)
 
     def _hline_draw(self):
@@ -65,7 +65,7 @@ class AudioSliderView:
 
 
 class AudioCursor(pg.InfiniteLine):
-    def __init__(self, parent):
+    def __init__(self, parent):     # parent: AudioSliderView
         super().__init__(movable=False)
         self.setPen(style=Qt.PenStyle.SolidLine, color='red', width=8)
         self.setHoverPen(style=Qt.PenStyle.SolidLine, color='darkred', width=8)
@@ -75,7 +75,9 @@ class AudioCursor(pg.InfiniteLine):
         self.hide()
 
     def update_pos(self, s):
-        self.setPos(int(s*1000))
+        self.blockSignals(True)
+        self.setPos(int(s * 1000))
+        self.blockSignals(False)
 
 
 class CropRegion(pg.LinearRegionItem):
@@ -87,9 +89,10 @@ class CropRegion(pg.LinearRegionItem):
         self.hide()
 
     def setValues(self, a_pos, b_pos):
-        print(f'{a_pos=} {b_pos=}')
+        # print(f'{a_pos=} {b_pos=}')
+        self.blockSignals(True)
         self.setRegion((a_pos * 1000, b_pos * 1000))
-
+        self.blockSignals(False)
 
 class SliceRegion(pg.LinearRegionItem):
     def __init__(self, a_pos: int or float, b_pos: int or float):

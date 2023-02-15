@@ -14,8 +14,8 @@ class PreviewAudioCrop(QObject):
         self._endtime = max(0, endtime)
         self._starttime = min(self.starttime, self.endtime)
         self._endtime = max(self.starttime + self.min_slice_length, self.endtime)
-        self._slice_length = max(slice_length, self.min_slice_length)
         self._endtime = min(self._endtime, self.source_length)
+        self._slice_length = max(slice_length, self.min_slice_length)
         self._slice_length = min(self._slice_length, self._endtime - self._starttime, self.max_slice_length)
 
     @property

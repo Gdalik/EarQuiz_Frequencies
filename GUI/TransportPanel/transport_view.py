@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QWidget
 from GUI.TransportPanel.audioslider_view import AudioSliderView
 from GUI.TransportPanel.player_view import PlayerView
+from GUI.TransportPanel.cropregiontimestr import CropRegionTimestr
 from Utilities.common_calcs import hhmmss
 
 
@@ -12,6 +13,14 @@ class TransportPanelView:
         self.Duration_Lab = mw_view.Duration_Lab
         self.Position_Lab = mw_view.Position_Lab
         self.SliceLenSpin = mw_view.SliceLenSpin
+        self.StartTimeEdit = mw_view.StartTimeEdit
+        self.EndTimeEdit = mw_view.EndTimeEdit
+        self.StartPointBut = mw_view.StartPointBut
+        self.EndPointBut = mw_view.EndPointBut
+        self.RangeToStart = mw_view.RangeToStart
+        self.RangeToEnd = mw_view.RangeToEnd
+        self.ClearRangeBut = mw_view.ClearRangeBut
+        self.CropRegionTstr = CropRegionTimestr(self)
         self.setHeader()
 
     def setHeader(self, audio_name='No audio'):
@@ -22,6 +31,7 @@ class TransportPanelView:
         self.AudioSliderView.SliceRegion.hide()
         self.AudioSliderView.CropRegion.hide()
         self.AudioSliderView.Cursor.hide()
+        self.CropRegionTstr.noAudioState(True)
         zero_time_str = hhmmss(0)
         self.Position_Lab.setText(zero_time_str)
         self.Duration_Lab.setText(zero_time_str)

@@ -16,15 +16,15 @@ def Qcalc(BW_Noct: float or int or str):
 
 def mmss(s, string=False):
     m, s = divmod(s, 60)
-    return ['%02d' % m, '%02d' % s] if string else [m, s]
+    return ['%02d' % m, '%02d' % s] if string else (m, s)
 
 
-def hhmmss(secs):
+def hhmmss(secs, string=True):
     ms = secs * 1000
     secs, ms = divmod(ms, 1000)
     mins, secs = divmod(secs, 60)
     hours, mins = divmod(mins, 60)
-    return '%02d:%02d:%02d.%03d' % (hours, mins, secs, ms)
+    return '%02d:%02d:%02d.%03d' % (hours, mins, secs, ms) if string else (hours, mins, secs, ms)
 
 
 def get_sec(time_str):

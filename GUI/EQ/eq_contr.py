@@ -3,7 +3,7 @@ from Model.eq_patterns import EQPatterns
 
 
 class EQContr:
-    def __init__(self, parent):
+    def __init__(self, parent):     # parent: MainWindowContr
         self.parent = parent
         self.EQ_view = parent.mw_view.EQView
         self.EQPatterns = EQPatterns()
@@ -27,4 +27,5 @@ class EQContr:
         # print(self.getAvailableFreq())
 
     def getAvailableFreq(self):
-        return [F.freq for F in self.EQ_view.Filters if self.EQpattern['ActiveFreqRange'][0] <= F.freq <= self.EQpattern['ActiveFreqRange'][1]]
+        return [F.freq for F in self.EQ_view.Filters
+                if self.EQpattern['ActiveFreqRange'][0] <= F.freq <= self.EQpattern['ActiveFreqRange'][1]]

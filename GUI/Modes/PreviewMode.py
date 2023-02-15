@@ -9,9 +9,13 @@ class PreviewMode(UniMode):
         self.playPause_toggleable = True
         self.parent.PatternBoxContr.onPatternBoxIndexChanged()
         self.view.TransportPanel.show()
-        self.view.TransportPanelView.AudioSliderView.Cursor.setMovable(True)
-        self.view.TransportPanelView.AudioSliderView.CropRegion.setMovable(True)
+        if self.parent.SourceAudio is not None:
+            self.enableTimeSettingsChanges(True)
         self.updateCurrentAudio()
+
+    @property
+    def proxyCursorPos(self):   # in sec
+        return self.parent.TransportContr.PlayerContr.position() / 1000 if self.parent.SourceAudio is not None else 0
 
     def setPlayerControls(self):
         self.view.actionPlayPause.setEnabled(True)

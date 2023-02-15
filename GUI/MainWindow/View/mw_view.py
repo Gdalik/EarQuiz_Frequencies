@@ -85,3 +85,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.actionNext_Exercise.setEnabled(arg)
         self.actionNext_Exercise.setVisible(arg)
         self.NextExercise.setVisible(arg)
+
+    def mousePressEvent(self, event):
+        super(MainWindowView, self).mousePressEvent(event)
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.setFocus()
