@@ -68,11 +68,11 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             self.menuView.addAction(item)
 
     def setMinimalistView(self):
-        self.showNormal()
         self.ExScoreInfo.hide()
         self.Eq_Settings.hide()
         self.SupportProject.hide()
         self.TransportPanel.hide()
+        self.showNormal()
         self.set_size(1080, 700)
 
     def set_size(self, width: int, height: int):
