@@ -34,7 +34,6 @@ class MainWindowContr(QObject):
         self.PatternBoxContr = PatternBoxContr(self)
         self.setNoAudio()
         self.TransportContr = TransportContr(self)
-        self.mw_view.show()
         self.setFileMenuActions()
         self.setModesActions()
         self.setModesButtons()
@@ -43,6 +42,7 @@ class MainWindowContr(QObject):
         self.mw_view.NextExercise.setDefaultAction(self.mw_view.actionNext_Exercise)
         self.CurrentMode = self.LastMode = UniMode(self)
         self.mw_view.actionClose.triggered.connect(self.onCloseTriggered)
+        self.mw_view.show()
 
     def setFileMenuActions(self):
         self.mw_view.actionOpen.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='files'))
