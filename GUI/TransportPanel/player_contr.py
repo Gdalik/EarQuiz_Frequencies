@@ -67,12 +67,12 @@ class PlayerContr(QMediaPlayer):
     def __infLoopResolve(self, position: int or float):
         # This is a workaround to prevent infinite loop due to QMediaPlayer.setPosition behavior.
         inf_loop: bool = self.__infLoopDetect((position, self.position()))
-        # print(f'{inf_loop=}')
+        print(f'{inf_loop=}')
         if inf_loop:
             if self.__inf_loop_repos is None:
                 self.__inf_loop_repos = self.startPos
             self.__inf_loop_repos += 1
-            # print(f'{self.__inf_loop_repos=}')
+            print(f'{self.__inf_loop_repos=}')
             self._setPos(self.__inf_loop_repos)
             self.__infLoopDetect((self.__inf_loop_repos, self.position()))
 
@@ -82,7 +82,11 @@ class PlayerContr(QMediaPlayer):
         else:
             self.__positions.clear()
             self.__inf_loop_repos = None
-        return len(self.__positions) >= 3
+        return len(self.__positions) >= 5
+
+    def infLoopClear(self):
+        self.__positions.clear()
+        self.__inf_loop_repos = None
 
     def sourceAudioData(self):
         def hzTokHz(value: int or float):

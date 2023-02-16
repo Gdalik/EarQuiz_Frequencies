@@ -135,11 +135,11 @@ class TransportContr(QObject):
         self.TransportView.AudioSliderView.CropRegion.show()
 
     def onPlaybackPosChanged(self):
-        self._checkPlaybackRange()
         if not self.CursorBeingDragged:
             CursorPos = self.parent.CurrentMode.proxyCursorPos
             self.TransportView.AudioSliderView.Cursor.update_pos(CursorPos)
             self.TransportView.Position_Lab.setText(hhmmss(CursorPos))
+        self._checkPlaybackRange()
 
     def _checkPlaybackRange(self):
         if self.CropRegionBeingChanged or self.parent.CurrentMode.name != 'Preview':
@@ -150,3 +150,5 @@ class TransportContr(QObject):
                 self.PlayerContr.onStopTriggered()
             else:
                 self.PlayerContr.loopPlayback()
+        else:
+            self.PlayerContr.infLoopClear()
