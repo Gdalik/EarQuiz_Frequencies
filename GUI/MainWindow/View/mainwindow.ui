@@ -4645,7 +4645,7 @@ font-weight: bold</string>
   <widget class="QDockWidget" name="TransportPanel">
    <property name="minimumSize">
     <size>
-     <width>923</width>
+     <width>943</width>
      <height>125</height>
     </size>
    </property>
@@ -4687,13 +4687,13 @@ font-weight: bold</string>
          </property>
          <property name="minimumSize">
           <size>
-           <width>110</width>
+           <width>120</width>
            <height>30</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>110</width>
+           <width>120</width>
            <height>40</height>
           </size>
          </property>
@@ -4723,6 +4723,12 @@ font-weight: normal</string>
          </property>
          <property name="text">
           <string>00:00:00.000</string>
+         </property>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
          <property name="margin">
           <number>0</number>
@@ -5299,13 +5305,13 @@ background: rgba(118, 214, 255, 85)
          </property>
          <property name="minimumSize">
           <size>
-           <width>110</width>
+           <width>120</width>
            <height>30</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>110</width>
+           <width>120</width>
            <height>40</height>
           </size>
          </property>
@@ -5335,6 +5341,9 @@ font-weight: normal</string>
          </property>
          <property name="text">
           <string>00:00:00.000</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
          <property name="margin">
           <number>0</number>
