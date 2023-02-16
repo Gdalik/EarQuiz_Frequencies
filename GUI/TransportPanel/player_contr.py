@@ -22,7 +22,6 @@ class PlayerContr(QMediaPlayer):
         self.mw_view.actionDecrease_Volume.triggered.connect(self.decreaseVolume)
         self.mw_view.AudioDevicesGroup.triggered.connect(self.onAudioDeviceChecked)
         self.mw_view.VolumeSlider.valueChanged.connect(self.applyVolume)
-        self.errorOccurred.connect(self.onError)
         self.playAfterAudioLoaded = False
         self.onceAudioLoaded = False
         self.__positions = []
@@ -81,8 +80,7 @@ class PlayerContr(QMediaPlayer):
         if not self.__positions or cur_positions in self.__positions:
             self.__positions.append(cur_positions)
         else:
-            self.__positions.clear()
-            self.__inf_loop_repos = None
+            self.infLoopClear()
         return len(self.__positions) >= 5
 
     def infLoopClear(self):
@@ -175,8 +173,9 @@ class PlayerContr(QMediaPlayer):
             self.mw_view.AudioDevicesView.selectOutput(self.mw_view.AudioDevicesView.default_name)
         self.onAudioDeviceChecked()
 
-    def onError(self, err):
+    def onError(self, err, string):
         print(err)
+        print(string)
 
     def applyVolume(self, volumeSliderValue):
         linearVolume = QAudio.convertVolume(volumeSliderValue / 100,
