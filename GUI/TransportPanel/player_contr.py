@@ -22,6 +22,7 @@ class PlayerContr(QMediaPlayer):
         self.mw_view.actionDecrease_Volume.triggered.connect(self.decreaseVolume)
         self.mw_view.AudioDevicesGroup.triggered.connect(self.onAudioDeviceChecked)
         self.mw_view.VolumeSlider.valueChanged.connect(self.applyVolume)
+        self.errorOccurred.connect(self.onError)
         self.playAfterAudioLoaded = False
         self.onceAudioLoaded = False
         self.__positions = []
@@ -67,12 +68,12 @@ class PlayerContr(QMediaPlayer):
     def __infLoopResolve(self, position: int or float):
         # This is a workaround to prevent infinite loop due to QMediaPlayer.setPosition behavior.
         inf_loop: bool = self.__infLoopDetect((position, self.position()))
-        print(f'{inf_loop=}')
+        # print(f'{inf_loop=}')
         if inf_loop:
             if self.__inf_loop_repos is None:
                 self.__inf_loop_repos = self.startPos
             self.__inf_loop_repos += 1
-            print(f'{self.__inf_loop_repos=}')
+            # print(f'{self.__inf_loop_repos=}')
             self._setPos(self.__inf_loop_repos)
             self.__infLoopDetect((self.__inf_loop_repos, self.position()))
 
@@ -173,6 +174,9 @@ class PlayerContr(QMediaPlayer):
         if not checked_item:
             self.mw_view.AudioDevicesView.selectOutput(self.mw_view.AudioDevicesView.default_name)
         self.onAudioDeviceChecked()
+
+    def onError(self, err):
+        print(err)
 
     def applyVolume(self, volumeSliderValue):
         linearVolume = QAudio.convertVolume(volumeSliderValue / 100,
