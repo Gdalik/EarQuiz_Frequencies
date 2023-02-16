@@ -77,10 +77,14 @@ class PlayerContr(QMediaPlayer):
             self.__infLoopDetect((self.__inf_loop_repos, self.position()))
 
     def __infLoopDetect(self, cur_positions: tuple):
+        # print(self.__positions)
         if not self.__positions or cur_positions in self.__positions:
             self.__positions.append(cur_positions)
         else:
-            self.infLoopClear()
+            # self.infLoopClear()
+            self.__positions = [cur_positions]
+            self.__inf_loop_repos = cur_positions[0]
+            # print(self.__positions)
         return len(self.__positions) >= 5
 
     def infLoopClear(self):
