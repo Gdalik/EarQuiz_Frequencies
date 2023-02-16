@@ -111,14 +111,14 @@ class PlayerContr(QMediaPlayer):
         self._playLoadedAudio()
 
     def _onEndofMedia(self):
-        self.setPosition(self.mw_contr.CurrentMode.currentAudioStartTime * 1000)
+        self.setPosition(self.startPos)
         if self.mw_view.actionLoop_Playback.isChecked():
             self.play()
 
     def onStopTriggered(self):
         self.stop()
         try:
-            starttime = self.mw_contr.CurrentMode.currentAudioStartTime * 1000
+            starttime = self.startPos
         except AttributeError:
             starttime = 0
         if self.position() != starttime:
