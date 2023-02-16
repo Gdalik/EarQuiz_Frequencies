@@ -49,6 +49,10 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             elif 'TimeEdit' in W.objectName():
                 w_font.setPointSize(11)
             W.setFont(w_font)
+        timelab_fonts = self.Position_Lab.font()
+        timelab_fonts.setPointSize(15)
+        self.Position_Lab.setFont(timelab_fonts)
+        self.Duration_Lab.setFont(timelab_fonts)
         self.NextPatternBut.setMinimumSize(26, 26)
         self.NextPatternBut.setMaximumSize(26, 26)
 
