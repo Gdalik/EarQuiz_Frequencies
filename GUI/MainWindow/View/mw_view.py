@@ -13,6 +13,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self._flags = self.windowFlags()
         self.setDockOptions(self.dockOptions().AnimatedDocks)
         self.setWindowTitle(definitions.app_name)
         self.TransportPanelView = TransportPanelView(self)
@@ -25,6 +26,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setMinimalistView()
         self.actionMinimal.triggered.connect(self.setMinimalistView)
         self.alt_pressed = None
+        self.setFocus()
 
         '''self.progress = QProgressBar(self)
         self.progress.setMaximumWidth(100)
@@ -68,11 +70,13 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             self.menuView.addAction(item)
 
     def setMinimalistView(self):
+        if self.isFullScreen():
+            self.setWindowFlags(self._flags)
+            self.showNormal()
         self.ExScoreInfo.hide()
         self.Eq_Settings.hide()
         self.SupportProject.hide()
         self.TransportPanel.hide()
-        self.showNormal()
         self.set_size(1080, 700)
 
     def set_size(self, width: int, height: int):

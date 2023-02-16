@@ -5,9 +5,8 @@ class UniMode:
         self.view = parent.mw_view
         self.parent = parent
         self.CurrentAudio = None
-        # self.parent.PatternBoxContr.onPatternBoxIndexChanged()
         self.playPause_toggleable = False
-        self.parent.TransportContr.PlayerContr.stop()
+        self.parent.TransportContr.PlayerContr.onStopTriggered()
         self.view.setActionNextExerciseEnabled(False)
         self.enableTimeSettingsChanges(False)
         self.view.EqOnOffLab.hide()
@@ -15,8 +14,21 @@ class UniMode:
         self.setPlayerControls()
 
     @property
-    def proxyCursorPos(self):
+    def currentAudioCursorStartPos(self):
         return 0
+
+    @property
+    def proxyCursorPos(self):   # in sec
+        return self.parent.TransportContr.PlayerContr.position() / 1000 + self.currentAudioCursorStartPos \
+            if self.parent.SourceAudio is not None else 0
+
+    @property
+    def currentAudioStartTime(self):    # in sec
+        return self.parent.SourceRange.starttime if self.parent.SourceRange is not None else 0
+
+    @property
+    def currentAudioEndTime(self):  # in sec
+        return self.parent.SourceRange.endtime if self.parent.SourceRange is not None else 0
 
     def setPlayerControls(self):
         self.view.actionPlayPause.setEnabled(True)

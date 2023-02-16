@@ -8,3 +8,4 @@ class LearnMode(UniMode):
         if self.parent.LastMode.name not in ['Preview', 'Uni']:
             self.parent.PatternBoxContr.onPatternBoxIndexChanged()
         self.view.setActionNextExerciseEnabled(True)
+

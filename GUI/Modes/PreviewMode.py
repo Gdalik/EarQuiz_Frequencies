@@ -13,10 +13,6 @@ class PreviewMode(UniMode):
             self.enableTimeSettingsChanges(True)
         self.updateCurrentAudio()
 
-    @property
-    def proxyCursorPos(self):   # in sec
-        return self.parent.TransportContr.PlayerContr.position() / 1000 if self.parent.SourceAudio is not None else 0
-
     def setPlayerControls(self):
         self.view.actionPlayPause.setEnabled(True)
         self.view.actionStop.setEnabled(True)
