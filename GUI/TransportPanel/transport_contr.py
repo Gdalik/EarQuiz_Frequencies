@@ -154,5 +154,3 @@ class TransportContr(QObject):
                 self.PlayerContr.onStopTriggered()
             else:
                 self.PlayerContr.loopPlayback()
-        else:
-            self.PlayerContr.infLoopClear()
