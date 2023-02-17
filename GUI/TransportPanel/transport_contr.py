@@ -117,6 +117,8 @@ class TransportContr(QObject):
         self.parent.setInitSourceRangeView()
         self.setInitCropRegionView()
         self.TransportView.AudioSliderView.Cursor.show()
+        self.CursorBeingDragged = False
+        self.CropRegionBeingChanged = False
 
     def onSourceRangeChanged(self):
         self.TransportView.AudioSliderView.CropRegion.setValues(self.SourceRange.starttime,
@@ -147,7 +149,7 @@ class TransportContr(QObject):
         if self.CropRegionBeingChanged or self.parent.CurrentMode.name != 'Preview':
             return
         pos = self.PlayerContr.position() / 1000    # ms -> s
-        if pos < self.SourceRange.starttime or pos > self.SourceRange.endtime:
+        if pos < int(self.SourceRange.starttime) or pos > self.SourceRange.endtime:
             if not self.parent.mw_view.actionLoop_Playback.isChecked():
                 self.PlayerContr.onStopTriggered()
             else:

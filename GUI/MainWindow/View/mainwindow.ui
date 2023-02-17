@@ -653,7 +653,7 @@ font-weight: bold</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">QPushButton{color: blue; font-weight: bold; vertical-align: top}</string>
+          <string notr="true">QPushButton{color: blue; font-weight: bold;}</string>
          </property>
          <property name="text">
           <string>&gt;</string>

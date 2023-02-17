@@ -54,31 +54,26 @@ class PlayerContr(QMediaPlayer):
         except AttributeError:
             return 0
 
-    def _setPos(self, position: int or float):
-        self.blockSignals(True)
-        self.setPosition(position)
-        self.blockSignals(False)
-
     def loopPlayback(self):
         position = self.startPos
-        self._setPos(position)
-        self.__infLoopResolve(position)
+        self.setPosition(position)
+        # self.__infLoopResolve(position)
 
     def __infLoopResolve(self, position: int or float):
         # This is a workaround to prevent infinite loop due to QMediaPlayer.setPosition behavior.
         inf_loop: bool = self.__infLoopDetect((position, self.position()))
-        # print(f'{inf_loop=}')
+        print(f'{inf_loop=}')
         if inf_loop:
             if self.__inf_loop_repos is None:
                 self.__inf_loop_repos = self.startPos
             self.__inf_loop_repos += 1
             # print(f'{self.__inf_loop_repos=}')
-            self._setPos(self.__inf_loop_repos)
+            self.setPosition(self.__inf_loop_repos)
             self.__infLoopDetect((self.__inf_loop_repos, self.position()))
 
     def __infLoopDetect(self, cur_positions: tuple):
-        # print(self.__positions)
-        if not self.__positions or cur_positions in self.__positions:
+        print(self.__positions)
+        if cur_positions in self.__positions:
             self.__positions.append(cur_positions)
         else:
             # self.infLoopClear()
