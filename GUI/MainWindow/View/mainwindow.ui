@@ -631,7 +631,7 @@ font-weight: bold</string>
          </property>
         </widget>
        </item>
-       <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
         <widget class="QPushButton" name="NextPatternBut">
          <property name="minimumSize">
           <size>
@@ -653,7 +653,7 @@ font-weight: bold</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">QPushButton{color: blue; font-weight: bold}</string>
+          <string notr="true">QPushButton{color: blue; font-weight: bold; vertical-align: top}</string>
          </property>
          <property name="text">
           <string>&gt;</string>
