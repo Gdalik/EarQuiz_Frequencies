@@ -19,7 +19,10 @@ class UniMode:
 
     @property
     def proxyCursorPos(self):   # in sec
-        return self.parent.TransportContr.PlayerContr.position() / 1000 + self.currentAudioCursorStartPos \
+        player_pos = self.parent.TransportContr.PlayerContr.position()
+        if player_pos == 0:
+            return self.currentAudioStartTime
+        return player_pos / 1000 + self.currentAudioCursorStartPos \
             if self.parent.SourceAudio is not None else 0
 
     @property

@@ -123,12 +123,14 @@ class TransportContr(QObject):
                                                                 self.SourceRange.endtime)
         self.TransportView.CropRegionTstr.setValues(self.SourceRange.starttime,
                                                                 self.SourceRange.endtime)
+        self.TransportView.setSlicesNum(self.SourceRange.slices_num)
 
     def onSliceLenChanged(self, value):
         if self.SourceRange is None:
             return
         self.SourceRange.slice_length = value
         self.TransportView.SliceLenSpin.setValue(self.SourceRange.slice_length)
+        self.TransportView.setSlicesNum(self.SourceRange.slices_num)
 
     def setInitCropRegionView(self):
         self.onSourceRangeChanged()

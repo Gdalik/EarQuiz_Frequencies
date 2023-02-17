@@ -13,6 +13,7 @@ class TransportPanelView:
         self.Duration_Lab = mw_view.Duration_Lab
         self.Position_Lab = mw_view.Position_Lab
         self.SliceLenSpin = mw_view.SliceLenSpin
+        self.SlicesNum_Lab = mw_view.SlicesNum_Lab
         self.StartTimeEdit = mw_view.StartTimeEdit
         self.EndTimeEdit = mw_view.EndTimeEdit
         self.StartPointBut = mw_view.StartPointBut
@@ -26,6 +27,9 @@ class TransportPanelView:
     def setHeader(self, audio_name='No audio'):
         self.mw_view.TransportPanel.setWindowTitle(f'Transport Panel: {audio_name}')
 
+    def setSlicesNum(self, value: int):
+        self.SlicesNum_Lab.setText(f'Number of Slices: {value}')
+
     def noSongState(self):
         self.setHeader()
         self.AudioSliderView.SliceRegion.hide()
@@ -35,3 +39,4 @@ class TransportPanelView:
         zero_time_str = hhmmss(0)
         self.Position_Lab.setText(zero_time_str)
         self.Duration_Lab.setText(zero_time_str)
+        self.setSlicesNum(0)

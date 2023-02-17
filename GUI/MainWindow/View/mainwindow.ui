@@ -631,7 +631,7 @@ font-weight: bold</string>
          </property>
         </widget>
        </item>
-       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+       <item alignment="Qt::AlignHCenter|Qt::AlignTop">
         <widget class="QPushButton" name="NextPatternBut">
          <property name="minimumSize">
           <size>
@@ -4645,7 +4645,7 @@ font-weight: bold</string>
   <widget class="QDockWidget" name="TransportPanel">
    <property name="minimumSize">
     <size>
-     <width>943</width>
+     <width>1054</width>
      <height>125</height>
     </size>
    </property>
@@ -4728,7 +4728,7 @@ font-weight: normal</string>
           <bool>false</bool>
          </property>
          <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
          </property>
          <property name="margin">
           <number>0</number>
@@ -5221,26 +5221,26 @@ background: rgba(118, 214, 255, 85)
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="SliceLenLay">
+        <layout class="QVBoxLayout" name="verticalLayout_6">
          <property name="rightMargin">
           <number>0</number>
          </property>
          <item>
-          <widget class="QLabel" name="SliceLenLab">
-           <property name="maximumSize">
-            <size>
-             <width>80</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Slice Length:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <layout class="QHBoxLayout" name="horizontalLayout_10">
-           <item alignment="Qt::AlignLeft">
+           <item>
+            <widget class="QLabel" name="SliceLenLab">
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Slice Length:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QSpinBox" name="SliceLenSpin">
              <property name="minimumSize">
               <size>
@@ -5262,12 +5262,12 @@ background: rgba(118, 214, 255, 85)
              </property>
             </widget>
            </item>
-           <item alignment="Qt::AlignLeft">
+           <item>
             <widget class="QLabel" name="secLab">
              <property name="maximumSize">
               <size>
                <width>30</width>
-               <height>16777215</height>
+               <height>20</height>
               </size>
              </property>
              <property name="text">
@@ -5285,13 +5285,20 @@ background: rgba(118, 214, 255, 85)
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>0</width>
-               <height>20</height>
+               <width>13</width>
+               <height>13</height>
               </size>
              </property>
             </spacer>
            </item>
           </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="SlicesNum_Lab">
+           <property name="text">
+            <string>Number of Slices:</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -5343,7 +5350,7 @@ font-weight: normal</string>
           <string>00:00:00.000</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
          </property>
          <property name="margin">
           <number>0</number>
