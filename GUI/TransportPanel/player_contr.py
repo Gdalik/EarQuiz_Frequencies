@@ -12,18 +12,21 @@ class PlayerContr(QMediaPlayer):
         self.mw_view = self.mw_contr.mw_view
         self.TransportView = parent.TransportView
         self.PlayerView = self.TransportView.PlayerView
+        self._setupAudioOutput()
+        self._connectSignals()
+        self.playAfterAudioLoaded = False
+        self.onceAudioLoaded = False
+
+    def _connectSignals(self):
         self.mediaStatusChanged.connect(self.onPlayerStatusChanged)
         self.playbackStateChanged.connect(self.onPlaybackStateChanged)
         MediaDevices.audioOutputsChanged.connect(self.onAudioOutputsChanged)
-        self._setupAudioOutput()
         self.mw_view.actionPlayPause.triggered.connect(self.onPlayPause_triggered)
         self.mw_view.actionStop.triggered.connect(self.onStopTriggered)
         self.mw_view.actionIncrease_Volume.triggered.connect(self.increaseVolume)
         self.mw_view.actionDecrease_Volume.triggered.connect(self.decreaseVolume)
         self.mw_view.AudioDevicesGroup.triggered.connect(self.onAudioDeviceChecked)
         self.mw_view.VolumeSlider.valueChanged.connect(self.applyVolume)
-        self.playAfterAudioLoaded = False
-        self.onceAudioLoaded = False
 
     def loadCurrentAudio(self, play_after=True):
         self.setSource(QUrl())
@@ -53,8 +56,7 @@ class PlayerContr(QMediaPlayer):
             return 0
 
     def loopPlayback(self):
-        position = self.startPos
-        self.setPosition(position)
+        self.setPosition(self.startPos)
 
     def sourceAudioData(self):
         def hzTokHz(value: int or float):

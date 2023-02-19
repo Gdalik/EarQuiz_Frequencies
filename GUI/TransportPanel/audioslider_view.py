@@ -34,7 +34,6 @@ class AudioSliderView:
 
     def initCropRegion(self):
         self.CropRegion = CropRegion(0, 0)
-        # self.CropRegion.setBounds([0, self.data_arr.size])
         self.parent.addItem(self.CropRegion)
 
     def initSliceRegion(self):
@@ -51,9 +50,6 @@ class AudioSliderView:
         self.hline.setData([])
         self._hline_draw()
         self.ViewBox.setLimits(xMin=0, xMax=self.data_arr.size, yMin=-1, yMax=1)
-        bounds = [0, self.data_arr.size]
-        #self.CropRegion.setBounds(bounds)
-        self.Cursor.setBounds(bounds)
 
     def _hline_draw(self):
         self.hline = self.parent.plot(self.data_arr)
@@ -84,22 +80,24 @@ class CropRegion(pg.LinearRegionItem):
     def __init__(self, a_pos: int or float, b_pos: int or float):
         super().__init__(pen=pg.mkPen('k'), hoverPen=pg.mkPen('blue', width=3), swapMode='block')
         self.setValues(a_pos, b_pos)
-        self.setBrush(pg.mkBrush(color='w'))
-        self.setHoverBrush(pg.mkBrush(color='w'))
+        brush = pg.mkBrush(color='w')
+        self.setBrush(brush)
+        self.setHoverBrush(brush)
         self.hide()
 
     def setValues(self, a_pos, b_pos):
         # print(f'{a_pos=} {b_pos=}')
         self.blockSignals(True)
-        self.setRegion((a_pos * 1000, b_pos * 1000))
+        self.setRegion((int(a_pos * 1000), int(b_pos * 1000)))
         self.blockSignals(False)
 
 class SliceRegion(pg.LinearRegionItem):
     def __init__(self, a_pos: int or float, b_pos: int or float):
-        self.brushColor = QColor(0, 255, 255, 65)
-        super().__init__(pen=pg.mkPen(self.brushColor, width=0), swapMode='block', movable=False)
-        self.setBrush(pg.mkBrush(self.brushColor))
-        self.setHoverBrush(pg.mkBrush(self.brushColor))
+        brushColor = QColor(0, 255, 255, 65)
+        super().__init__(pen=pg.mkPen(brushColor, width=0), swapMode='block', movable=False)
+        brush = pg.mkBrush(brushColor)
+        self.setBrush(brush)
+        self.setHoverBrush(brush)
         self.setValues(a_pos, b_pos)
         self.hide()
 

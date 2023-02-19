@@ -6,9 +6,10 @@ class PatternBoxContr(object):
         self.EQPatterns = EQPatterns()
         self.mw_contr = mw_contr
         self.mw_view = mw_contr.mw_view
+        self.mw_view.PatternBoxView.loadItems(self.getPatternNames())
+        self.onPatternBoxIndexChanged()
         self.mw_view.PatternBox.currentIndexChanged.connect(self.onPatternBoxIndexChanged)
         self.mw_view.NextPatternBut.clicked.connect(self.onNextPatternBut_clicked)
-        self.mw_view.PatternBoxView.loadItems(self.getPatternNames())
         self._nextPatternButEnable()
 
     def onPatternBoxIndexChanged(self, index=None):

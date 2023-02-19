@@ -6,6 +6,7 @@ from GUI.PatternBox.patternbox_view import PatternBoxView
 from GUI.EQ.eq_view import EqView
 from GUI.EQSettings.eqset_view import EQSetView
 from GUI.MainWindow.View.audiodevices_view import AudioDevicesView
+from GUI.Misc.error_message import error_message
 import definitions
 
 
@@ -98,3 +99,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         super(MainWindowView, self).mousePressEvent(event)
         if event.button() == Qt.MouseButton.LeftButton:
             self.setFocus()
+
+    def error_msg(self, message: str):
+        error_message(self, message)

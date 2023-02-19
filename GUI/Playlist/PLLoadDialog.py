@@ -28,7 +28,11 @@ class PLLoadChecker(QRunnable):
     def kill(self):
         self._killed = True
 
+
 class PLProcDialog(QDialog):
+    threadpool: QThreadPool
+    process_check_run: PLLoadChecker
+
     def __init__(self, paths: list):
         super().__init__()
         self.setWindowFlags(Qt.WindowType.SplashScreen)
@@ -37,7 +41,9 @@ class PLProcDialog(QDialog):
         self.buttonBox = QDialogButtonBox(QDialogButtonBox.StandardButton.Cancel)
         self.buttonBox.rejected.connect(self.reject)
         self.layout = QVBoxLayout()
-        self.layout.addWidget(QLabel("Loading audiofiles..."))
+        self.label = QLabel("Loading audiofiles...")
+        self.label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.layout.addWidget(self.label)
         self.layout.addWidget(self.buttonBox)
         self.setLayout(self.layout)
         self.return_dict = Manager().dict()
@@ -47,12 +53,13 @@ class PLProcDialog(QDialog):
     def start_process(self):
         self.process.start()
         self.process_check_run = PLLoadChecker(self.process)
-        self.process_check_run.signals.finished.connect(self.on_finished)
+        self.process_check_run.signals.finished.connect(self.on_finished, type=Qt.ConnectionType.SingleShotConnection)
         self.threadpool = QThreadPool()
         self.threadpool.setMaxThreadCount(1)
         self.threadpool.start(self.process_check_run)
 
     def on_finished(self):
+        print('Loading files finished')
         self.accept()
 
     def reject(self):

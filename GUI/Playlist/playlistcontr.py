@@ -37,7 +37,7 @@ class PlaylistContr(QObject):
         pl_audio_adding_dialog = PLProcDialog(paths)
         paths = pl_audio_adding_dialog.return_dict['Paths'] if pl_audio_adding_dialog.exec() else []
         if 'Errors' in pl_audio_adding_dialog.return_dict:
-            self.error_msg(';\n'.join(pl_audio_adding_dialog.return_dict['Errors']))
+            self.mw_view.error_msg(';\n'.join(pl_audio_adding_dialog.return_dict['Errors']))
 
         if not paths:
             app.restoreOverrideCursor()

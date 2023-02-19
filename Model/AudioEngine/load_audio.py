@@ -12,54 +12,75 @@ from Utilities.exceptions import InterruptedException
 
 
 class AudioChunk(PreviewAudioCrop):
-    def __init__(self, audiofile: AudioFile, starttime: int or float, endtime: int or float,
+    def __init__(self, audiofile_path: str, starttime: int or float, endtime: int or float,
                  slice_length=15, norm_level=None, callback=None):
-        self.source_length = audiofile.frames / audiofile.samplerate
+        self.audiofile_path = audiofile_path
+        self.audiofile = AudioFile(self.audiofile_path)
+        self.source_length = self.audiofile.frames / self.audiofile.samplerate
         if self.source_length < 30:
             raise ValueError('Audio file length cannot be less than 30 sec')
         super().__init__(audiofile_length=self.source_length,
                          starttime=starttime, endtime=endtime, slice_length=slice_length)
-        self.audiofile = audiofile
-        self.samplerate = audiofile.samplerate
+        self.samplerate = int(self.audiofile.samplerate)
         self.norm_level = norm_level
         self.norm_proc = None
         self.cropped = self.cropped_normalized = self.cropped_norm_split = \
             self.cycle = self.cycle_id_gen = self.cycle_id = None
         self.callback = callback
-        self.reading_stopped = None
-        self._reset()
+        self.user_stopped = None
+        self._reset()  # self.audiofile is closed during self._read_and_crop(), called from self.reset()
 
-    def _callback_out(self, arg: dict):
-        if self.callback is not None:
-            self.callback(arg)
+    def _callback_out(self, arg: dict, callback=None):
+        _callback = callback or self.callback
+        if _callback is not None:
+            _callback(arg)
 
-    def _read_and_crop(self):
-        self.reading_stopped = False
+    def _read_and_crop(self, callback=None):
+        self._open_audiofile()  # makes no effect if audiofile is already opened
+        self.user_stopped = False
         self.cropped = np.empty((self.audiofile.num_channels, 0))
         output = {'State': 'Reading / cropping audiofile', 'Percent': 0}
-        # self._callback_out(output)
+        self._callback_out(output, callback=callback)
         self.audiofile.seek(int(self.sec2fr(self.starttime)))
         chunk_length_fr = int(self.sec2fr(self.chunk_length))
         divider = find_divider(chunk_length_fr, Min=5)
+        # print(f'{divider=}')
         while self.cropped[0].size != chunk_length_fr:
-            try:
-                self._callback_out(output)
-            except InterruptedException:
-                self._stop_reading()
-                return
             ch = self.audiofile.read(int(chunk_length_fr / divider))
             self.cropped = np.concatenate((self.cropped, ch), axis=1)
             output['Percent'] = int(self.cropped[0].size / chunk_length_fr * 100)
-        output.clear()
+            # print(f'{self.cropped[0].size=} {chunk_length_fr=}')
+            try:
+                self._callback_out(output, callback=callback)
+            except InterruptedException:
+                self._stop()
+                return
+        # output.clear()
+        self._close_audiofile()
 
-    def _stop_reading(self):
-        self.reading_stopped = True
+    def _open_audiofile(self):
+        if not self.audiofile.closed:
+            return self.audiofile
+        self.audiofile = AudioFile(self.audiofile_path)
+        return self.audiofile
+
+    def _close_audiofile(self):
+        if self.audiofile.closed:
+            return
+        self.audiofile.close()
+
+    def _stop(self):
+        print('Process stopped by user!')
+        self.user_stopped = True
         self.cropped = self.cropped_normalized = self.cropped_norm_split = self.cycle = \
             self.cycle_id_gen = self.cycle_id = None
+        self._close_audiofile()
 
-    def _reset(self):
+    def _reset(self, callback=None):
         a = time.time()
-        self._read_and_crop()
+        self._read_and_crop(callback=callback)
+        if self.user_stopped:
+            return
         self._refresh_old_values()
         self.cycle = self.cycle_id_gen = self.cycle_id = None
         if self.norm_level is None:
@@ -89,13 +110,17 @@ class AudioChunk(PreviewAudioCrop):
     def sec2fr(self, sec: int or float):
         return int(self.samplerate * sec)
 
-    def normalize(self, head_level: int or float, callback=None):
-        self.callback = callback or self.callback
+    def normalize(self, norm_level=None, callback=None):
+        _callback = callback or self.callback
+        head_level = norm_level or self.norm_level or 0
         delta = head_level - self.max_level
         gain = Gain(delta)
         self.norm_proc = ChunkedProc(self.cropped, self.samplerate, gain,
-                                     proc_name='Normalizing audio', callback=self.callback)
+                                     proc_name='Normalizing audio', callback=_callback)
         self.cropped_normalized = self.norm_proc.call()
+        if self.cropped_normalized is None and self.norm_proc.stopped:
+            self._stop()
+            return None
         self.split()
         if self.cycle_id_gen is not None:
             self.cycle_id = next(self.cycle_id_gen)
@@ -132,7 +157,6 @@ class AudioChunk(PreviewAudioCrop):
         return StartTime, EndTime
 
     def update(self, callback=None):
-        self.callback = callback or self.callback
         if not self._old_values:
             return
         reset_cond1 = self._old_values['starttime'] != self.starttime
@@ -140,7 +164,7 @@ class AudioChunk(PreviewAudioCrop):
                       (self._old_values['slices_num'] != self.slices_num or self._old_values['slice_length']
                        != self.slice_length)
         if reset_cond1 or reset_cond2:
-            self._reset()
+            self._reset(callback=callback)
         elif self._old_values['slice_length'] != self.slice_length:
             self._reslice()
         else:

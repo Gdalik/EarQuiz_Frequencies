@@ -1,3 +1,6 @@
+from Model.audiodrill_gen import AudioDrillGen
+
+
 class UniMode:
     def __init__(self, parent):     # parent: MainWindowContr
         self.TimeSettingsChangesEnabled = None
@@ -51,3 +54,7 @@ class UniMode:
         self.view.TransportPanelView.AudioSliderView.CropRegion.setMovable(arg)
         self.view.TransportPanelView.CropRegionTstr.setChangesEnabled(arg)
         self.TimeSettingsChangesEnabled = arg
+
+    def pushBackToPreview(self):
+        if self.parent.ADGen is None:
+            self.parent.mw_view.actionPreview_Mode.toggle()

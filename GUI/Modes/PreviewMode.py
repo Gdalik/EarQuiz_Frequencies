@@ -7,7 +7,7 @@ class PreviewMode(UniMode):
         self.name = 'Preview'
         self.view.AudiofileRBut.setChecked(True)
         self.playPause_toggleable = True
-        self.parent.PatternBoxContr.onPatternBoxIndexChanged()
+        self.parent.EQContr.resetEQ()
         self.view.TransportPanel.show()
         if self.parent.SourceAudio is not None:
             self.enableTimeSettingsChanges(True)

@@ -101,6 +101,10 @@ class EqView:
             self._filterSetEnabled(F, True)
         return Filters
 
+    def freezeEQ(self):
+        for F in self.Filters:
+            self._filterSetEnabled(F, False)
+
     def filterHandle(self, freq: int, boost_cut: str, blockSignals=False):      # boost_cut: '+'/'-'
         return self._filterHandle(self.getFilter(freq), boost_cut, blockSignals=blockSignals)
 

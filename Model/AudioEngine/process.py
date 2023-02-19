@@ -1,3 +1,5 @@
+import time
+
 from pedalboard import PeakFilter, Pedalboard
 from Model.calc import proc_unproc_len, rand_buffer, find_divider
 import numpy as np
@@ -50,18 +52,19 @@ class ChunkedProc:
 
         self.stopped = False
         output = np.empty((len(self.source), 0))
-        chunks = np.hsplit(self.source, find_divider(self.source[0].size, min=4))
+        chunks = np.hsplit(self.source, find_divider(self.source[0].size, Min=4))
+        callback_out()
         for ind, chunk in enumerate([*chunks]):
-            try:
-                callback_out()
-            except InterruptedException:
-                self._stop()
-                return
             processed = self.DSP.process(chunk, self.samplerate)
             while processed.size != chunk.size:  # Solving possible buffering issues (see Pedalboard docs).
                 processed = self.DSP.process(chunk, self.samplerate, buffer_size=rand_buffer(), reset=True)
             output = np.concatenate((output, processed), axis=1)
             self.out_stat['Percent'] = int((ind + 1) / len(chunks) * 100)
+            try:
+                callback_out()
+            except InterruptedException:
+                self._stop()
+                return None
         return output
 
     def _stop(self):

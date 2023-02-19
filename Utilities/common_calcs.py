@@ -38,3 +38,6 @@ def ms2samp(ms: int or float, samplerate=44100):
 
 def samp2ms(samples: int, samplerate=44100):
     return samples / samplerate * 1000
+
+def round_s(secs: int or float):
+    return round(secs * 1000) / 1000

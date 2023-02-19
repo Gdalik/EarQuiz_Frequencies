@@ -1,4 +1,5 @@
 from PyQt6.QtCore import pyqtSignal, QObject
+from Utilities.common_calcs import round_s
 
 
 class PreviewAudioCrop(QObject):
@@ -59,7 +60,8 @@ class PreviewAudioCrop(QObject):
 
     @property
     def slices_num(self):
-        return int(self.chunk_length // self.slice_length)
+        # print(f'No rounding slices num: {(self.endtime - self.starttime) // self.slice_length}')
+        return int(round_s(self.chunk_length) // self.slice_length)
 
     @property
     def range(self):

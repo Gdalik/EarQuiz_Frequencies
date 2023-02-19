@@ -14,42 +14,48 @@ EQ2_freq = [32, 40, 50, 63, 80, 100, 125, 160, 200, 250, 315, 400, 500, 630, 800
 
 
 class AudioDrillGen:
-    def __init__(self, freq_options: list, boost_cut='+-', DualBandMode=False, audio_source=pinknoise_path,
+    def __init__(self, freq_options: list, boost_cut='+-', DualBandMode=False, audio_source_path=pinknoise_path,
                  starttime=0, endtime=None, drill_length=15,
-                 gain_depth=12, Q=4.32, order='asc', boost_cut_priority=1, disableAdjacent=1, inf_cycle=True, proc_t_perc=40, callback=None):
+                 gain_depth=12, Q=4.32, order='asc', boost_cut_priority=1, disableAdjacent=1, inf_cycle=True,
+                 proc_t_perc=40, callback=None):
         # order: 'asc', 'desc', 'shuffle', 'random'
         # boost_cut: '+', '-', '+-'
         # boost_cut_priority 1 (Each Band Boosted, then Cut) / 2 (All Bands Boosted, then All Bands Cut) -- ignored in random mode
         # disableAdjacent -- actual for DualBandMode
-        # self.order, self.boost_cut_priority, self.Q, self.gain_depth are dynamically adjustable
+        # self.order, self.boost_cut_priority, self.Q, self.proc_t_perc are dynamically adjustable
+        # with another EQ_Pattern on the same audio source use self.resetExGen
 
-        self.freq_options = freq_options
-        self.boost_cut = boost_cut
-        self.audio_source = AudioFile(audio_source)
+        with AudioFile(audio_source_path) as af:
+            self.af_frames = af.frames
+            self.af_samplerate = af.samplerate
+            self.af_num_channels = af.num_channels
         self._gain_depth = abs(gain_depth)
-        headroom = -3 if DualBandMode else 0
-        self.audiochunk = AudioChunk(self.audio_source,
+        self._DualBandMode = DualBandMode
+        self.audiochunk = AudioChunk(audio_source_path,
                                      starttime=starttime,
-                                     endtime=endtime or self.audio_source.frames / self.audio_source.samplerate,
-                                     slice_length=drill_length, norm_level=self.gain_depth()/-2 + headroom, callback=callback)
-        if self.audiochunk.reading_stopped:
+                                     endtime=endtime or self.af_frames / self.af_samplerate,
+                                     slice_length=drill_length, norm_level=self.gain_headroom, callback=callback)
+        if self.audiochunk.user_stopped:
             raise InterruptedException
         self._Q = Q
         self._order = order
         self._boost_cut_priority = boost_cut_priority
         self.proc_t_perc = proc_t_perc
         self._exercise_gen = ExerciseGenerator(freq_options, boost_cut, DualBandMode, order,
-                                               boost_cut_priority=boost_cut_priority, disableAdjacent=disableAdjacent, inf_cycle=inf_cycle)
+                                               boost_cut_priority=boost_cut_priority, disableAdjacent=disableAdjacent,
+                                               inf_cycle=inf_cycle)
         self._last_freq = None
 
     def gain_depth(self):
         return self._gain_depth
 
-    def setGain_depth(self, value: int, callback=None):
-        old_value = self._gain_depth
+    def setGain_depth(self, value: int, normalize_audio=True, callback=None):
+        if value == self._gain_depth:
+            return
         self._gain_depth = abs(value)
-        if old_value != self._gain_depth:
-            self.audiochunk.normalize(self._gain_depth*-1 - 1, callback=callback)
+        self.audiochunk.norm_level = self.gain_headroom
+        if normalize_audio:
+            self.audiochunk.normalize(callback=callback)
 
     @property
     def Q(self):
@@ -62,6 +68,11 @@ class AudioDrillGen:
     @property
     def order(self):
         return self._order
+
+    @property
+    def gain_headroom(self):
+        headroom = -3 if self._DualBandMode else 0
+        return self.gain_depth()/-2 + headroom
 
     @order.setter
     def order(self, arg: str):
@@ -83,7 +94,7 @@ class AudioDrillGen:
         freq = self._freq_out(force_freq)
         audio = self._audio_out(fromStart)
         if audio_path:
-            with AudioFile(audio_path, 'w', self.audio_source.samplerate, self.audio_source.num_channels) as o:
+            with AudioFile(audio_path, 'w', self.af_samplerate, self.af_num_channels) as o:
                 o.write(audio)
         return freq, audio
 
@@ -104,3 +115,11 @@ class AudioDrillGen:
         self._exercise_gen.seqGen(self._last_freq)
         if self._last_freq is not None:
             self._exercise_gen.seqOut()
+
+    def resetExGen(self, freq_options, boost_cut='+-', DualBandMode=False, order='asc',
+                                               boost_cut_priority=1, disableAdjacent=1, inf_cycle=True):
+        self._exercise_gen = ExerciseGenerator(freq_options=freq_options, boost_cut=boost_cut,
+                                               DualBandMode=DualBandMode, order=order,
+                                               boost_cut_priority=boost_cut_priority, disableAdjacent=disableAdjacent,
+                                               inf_cycle=inf_cycle)
+        self._DualBandMode = DualBandMode

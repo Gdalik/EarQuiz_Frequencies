@@ -6,6 +6,9 @@ class LearnMode(UniMode):
         super().__init__(parent)
         self.name = 'Learn'
         if self.parent.LastMode.name not in ['Preview', 'Uni']:
-            self.parent.PatternBoxContr.onPatternBoxIndexChanged()
+            self.parent.EQContr.resetEQ()
         self.view.setActionNextExerciseEnabled(True)
+        self.parent.setAudioDrillGen()
+        self.pushBackToPreview()
+        print(self.parent.ADGen)
 
