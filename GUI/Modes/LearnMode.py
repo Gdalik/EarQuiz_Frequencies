@@ -10,5 +10,4 @@ class LearnMode(UniMode):
         self.view.setActionNextExerciseEnabled(True)
         self.parent.setAudioDrillGen()
         self.pushBackToPreview()
-        print(self.parent.ADGen)
 

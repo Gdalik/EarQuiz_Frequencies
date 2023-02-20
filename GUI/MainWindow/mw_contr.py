@@ -146,8 +146,7 @@ class MainWindowContr(QObject):
         self.ADGen = None
         if self.CurrentMode.name != 'Preview':
             self.mw_view.actionPreview_Mode.toggle()
-        else:
-            self.CurrentMode.updateCurrentAudio()
+        self.CurrentMode.updateCurrentAudio()
         self.TransportContr.PlayerContr.loadCurrentAudio()
 
     def setInitSourceRangeView(self):
