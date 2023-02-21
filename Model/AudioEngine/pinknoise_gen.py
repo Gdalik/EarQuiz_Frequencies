@@ -1,4 +1,5 @@
 #   Part of the code below was taken from: https://www.socsci.ru.nl/wilberth/python/noise.html
+#   with minor modifications to fit the current project needs.
 #   Copyright (C) 2012-2023 Wilbert van Ham, Stichting Katholieke Universiteit, KVK 41055629, Nijmegen
 #   License: General Public License version 3 or later.
 
