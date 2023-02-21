@@ -1,3 +1,8 @@
+#   Part of the code below was taken from: https://www.socsci.ru.nl/wilberth/python/noise.html
+#   Copyright (C) 2012-2023 Wilbert van Ham, Stichting Katholieke Universiteit, KVK 41055629, Nijmegen
+#   License: General Public License version 3 or later.
+
+
 import numpy as np
 
 

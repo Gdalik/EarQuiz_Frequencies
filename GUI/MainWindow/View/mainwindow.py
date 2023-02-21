@@ -2855,5 +2855,8 @@ class Ui_MainWindow(object):
         self.actionNext_Exercise.setShortcut(_translate("MainWindow", "Ctrl+Return"))
         self.actionLoop_Playback.setText(_translate("MainWindow", "Loop Playback"))
         self.actionOnline_Help.setText(_translate("MainWindow", "Online Help"))
+
+
+# noinspection PyUnresolvedReferences
 from playlistview import PlaylistView
 from pyqtgraph import PlotWidget
