@@ -1,5 +1,5 @@
-#   Part of the code below was taken from: https://www.socsci.ru.nl/wilberth/python/noise.html
-#   with minor modifications to fit the current project needs.
+#   The 'spectrum_noise' and 'pink_spectrum' functions were taken from:
+#   https://www.socsci.ru.nl/wilberth/python/noise.html
 #   Copyright (C) 2012-2023 Wilbert van Ham, Stichting Katholieke Universiteit, KVK 41055629, Nijmegen
 #   License: General Public License version 3 or later.
 
@@ -42,6 +42,6 @@ def pink_spectrum(f, f_min=0, f_max=np.inf, att=np.log10(2.0) * 10):
 
 def generate_pinknoise(length_s=30):
     pn = spectrum_noise(lambda x: pink_spectrum(x, 20, 20000), samples=44100 * length_s)
-    pn = pn / max(abs(pn)) * 0.8
-    pn.resize((1, 44100*length_s))
+    pn = pn / max(abs(pn)) * 0.8    # adjusting gain level
+    pn.resize((1, 44100 * length_s))    # resizing/reshaping array to fit pedalboard requirements
     return pn
