@@ -39,8 +39,8 @@ class MainWindowContr(QObject):
         self.EQSetContr = EQSetContr(self)
         self.PlaylistContr = PlaylistContr(self)
         self.PatternBoxContr = PatternBoxContr(self)
-        self.setNoAudio()
         self.TransportContr = TransportContr(self)
+        self.setNoAudio()
         self.setFileMenuActions()
         self.setModesActions()
         self.setModesButtons()
@@ -118,16 +118,22 @@ class MainWindowContr(QObject):
             self.CurrentMode = LearnMode(self)
         elif self.modesActionGroup.checkedAction() == self.mw_view.actionTest_Mode:
             self.CurrentMode = TestMode(self)
+        self._pushBackToPreview()
         self.LastMode = self.CurrentMode
+
+    def _pushBackToPreview(self):
+        if self.ADGen is None and self.CurrentMode.name != 'Preview':
+            self.mw_view.actionPreview_Mode.setChecked(True)
 
     def setNoAudio(self):
         self.SourceAudio = None
         self.ADGen = None
         self.disconnectSourceRangeSig()
         self.SourceRange = None
+        self.TransportContr.PlayerContr.clearSource()
         self.mw_view.TransportPanelView.noSongState()
-        self.mw_view.actionPlayPause.setEnabled(False)
-        self.mw_view.actionStop.setEnabled(False)
+        '''self.mw_view.actionPlayPause.setEnabled(False)
+        self.mw_view.actionStop.setEnabled(False)'''
 
     def setPlaybackButtons(self):
         self.mw_view.MW_PlayPause.setDefaultAction(self.mw_view.actionPlayPause)
@@ -173,6 +179,7 @@ class MainWindowContr(QObject):
         app.quit()
 
     def setAudioDrillGen(self):
+        print(self.SourceAudio)
         if self.ADGen is None and self.SourceAudio is not None:
             EQP = self.EQContr.EQpattern
             SA = self.SourceAudio

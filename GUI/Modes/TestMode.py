@@ -9,4 +9,3 @@ class TestMode(UniMode):
         self.view.setActionNextExerciseEnabled(True)
         self.view.menuEQ_Bands_Playback_Order.setEnabled(False)
         self.parent.setAudioDrillGen()
-        self.pushBackToPreview()

@@ -55,6 +55,3 @@ class UniMode:
         self.view.TransportPanelView.CropRegionTstr.setChangesEnabled(arg)
         self.TimeSettingsChangesEnabled = arg
 
-    def pushBackToPreview(self):
-        if self.parent.ADGen is None:
-            self.parent.mw_view.actionPreview_Mode.toggle()

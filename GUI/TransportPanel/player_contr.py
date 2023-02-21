@@ -29,10 +29,13 @@ class PlayerContr(QMediaPlayer):
         self.mw_view.VolumeSlider.valueChanged.connect(self.applyVolume)
 
     def loadCurrentAudio(self, play_after=True):
-        self.setSource(QUrl())
+        self.clearSource()
         self.setSource(QUrl.fromLocalFile(self.parent.currentAudio))
         self.playAfterAudioLoaded = play_after
         self.onceAudioLoaded = True
+
+    def clearSource(self):
+        self.setSource(QUrl())
 
     def loadMetaData(self):
         if not self.metaData():

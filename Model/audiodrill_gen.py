@@ -1,5 +1,5 @@
 import pathlib
-from definitions import ROOT_DIR
+from definitions import ROOT_DIR, pinknoise
 from Model.AudioEngine.load_audio import AudioChunk
 from pedalboard.io import AudioFile
 from Model.exercise_gen import ExerciseGenerator
@@ -7,14 +7,13 @@ from Model.AudioEngine.process import eq_proc
 from Utilities.exceptions import InterruptedException
 
 
-pinknoise_path = str(pathlib.PurePath(ROOT_DIR, 'Model', 'Data', 'pink_noise.wav'))
 EQ1_freq = [31, 63, 125, 250, 500, 1000, 2000, 4000, 8000, 16000]
 EQ2_freq = [32, 40, 50, 63, 80, 100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500,
             3150, 4000, 5000, 6300, 8000, 10000, 12500, 16000]
 
 
 class AudioDrillGen:
-    def __init__(self, freq_options: list, boost_cut='+-', DualBandMode=False, audio_source_path=pinknoise_path,
+    def __init__(self, freq_options: list, boost_cut='+-', DualBandMode=False, audio_source_path='pinknoise',
                  starttime=0, endtime=None, drill_length=15,
                  gain_depth=12, Q=4.32, order='asc', boost_cut_priority=1, disableAdjacent=1, inf_cycle=True,
                  proc_t_perc=40, callback=None):
@@ -25,10 +24,15 @@ class AudioDrillGen:
         # self.order, self.boost_cut_priority, self.Q, self.proc_t_perc are dynamically adjustable
         # with another EQ_Pattern on the same audio source use self.resetExGen
 
-        with AudioFile(audio_source_path) as af:
-            self.af_frames = af.frames
-            self.af_samplerate = af.samplerate
-            self.af_num_channels = af.num_channels
+        if audio_source_path == 'pinknoise':
+            self.af_frames = 44100 * 30
+            self.af_samplerate = 44100
+            self.af_num_channels = 1
+        else:
+            with AudioFile(audio_source_path) as af:
+                self.af_frames = af.frames
+                self.af_samplerate = af.samplerate
+                self.af_num_channels = af.num_channels
         self._gain_depth = abs(gain_depth)
         self._DualBandMode = DualBandMode
         self.audiochunk = AudioChunk(audio_source_path,

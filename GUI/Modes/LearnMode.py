@@ -9,5 +9,4 @@ class LearnMode(UniMode):
             self.parent.EQContr.resetEQ()
         self.view.setActionNextExerciseEnabled(True)
         self.parent.setAudioDrillGen()
-        self.pushBackToPreview()
 

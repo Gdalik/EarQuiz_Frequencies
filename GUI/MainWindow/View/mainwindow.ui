@@ -4580,6 +4580,7 @@ font-weight: bold</string>
     <addaction name="actionAbout"/>
     <addaction name="separator"/>
     <addaction name="actionVideo_Tutorial"/>
+    <addaction name="actionOnline_Help"/>
    </widget>
    <widget class="QMenu" name="menuWindow">
     <property name="title">
@@ -5655,13 +5656,13 @@ font-weight: normal</string>
    <property name="minimumSize">
     <size>
      <width>256</width>
-     <height>60</height>
+     <height>150</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
      <width>260</width>
-     <height>60</height>
+     <height>150</height>
     </size>
    </property>
    <property name="allowedAreas">
@@ -5673,7 +5674,24 @@ font-weight: normal</string>
    <attribute name="dockWidgetArea">
     <number>2</number>
    </attribute>
-   <widget class="QWidget" name="dockWidgetContents_4"/>
+   <widget class="QWidget" name="dockWidgetContents_4">
+    <layout class="QVBoxLayout" name="verticalLayout_7">
+     <item>
+      <widget class="QGroupBox" name="ShareAppBox">
+       <property name="title">
+        <string>Share</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="DonateBox">
+       <property name="title">
+        <string>Donate</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <action name="actionOpen">
    <property name="text">
@@ -5956,6 +5974,11 @@ font-weight: normal</string>
    </property>
    <property name="iconVisibleInMenu">
     <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionOnline_Help">
+   <property name="text">
+    <string>Online Help</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

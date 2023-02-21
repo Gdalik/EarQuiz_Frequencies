@@ -1,3 +1,5 @@
+import contextlib
+
 from PyQt6.QtCore import QObject, Qt, QRunnable, pyqtSignal, pyqtSlot, QThreadPool
 from PyQt6.QtWidgets import QProgressBar, QDialog, QDialogButtonBox, QLabel, QVBoxLayout
 from Utilities.exceptions import InterruptedException
@@ -15,6 +17,8 @@ class TrackedProcRun(QRunnable):
 
     def __init__(self, process, args: list, kwargs=None):
         super().__init__()
+        with contextlib.suppress(TypeError):
+            self.signals.disconnect()
         self.process = process
         self.args = args
         self.kwargs = kwargs if kwargs is not None else {}
@@ -73,11 +77,12 @@ class ProcTrackControl(QDialog):
         self.tracked_proc_run.signals.progress.connect(lambda x: self.updateProg(x),
                                                        type=Qt.ConnectionType.UniqueConnection)
         self.tracked_proc_run.signals.finished.connect(self.on_finished, type=Qt.ConnectionType.SingleShotConnection)
-        self.tracked_proc_run.signals.error.connect(lambda x: self.on_error(x))
+        self.tracked_proc_run.signals.error.connect(lambda x: self.on_error(x), type=Qt.ConnectionType.UniqueConnection)
         self.threadpool.setMaxThreadCount(1)
         self.threadpool.start(self.tracked_proc_run)
 
     def updateProg(self, values):
+        print(f'upd prog: {values}')
         if not values:
             return
         percent_str = f"\n{values['Percent']}%" if platform.system() == 'Darwin' else ""

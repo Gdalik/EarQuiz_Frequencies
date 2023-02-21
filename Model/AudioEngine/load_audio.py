@@ -9,19 +9,25 @@ from pedalboard.io import AudioFile
 from copy import copy
 import itertools
 from Utilities.exceptions import InterruptedException
+from definitions import pinknoise
 
 
 class AudioChunk(PreviewAudioCrop):
     def __init__(self, audiofile_path: str, starttime: int or float, endtime: int or float,
                  slice_length=15, norm_level=None, callback=None):
         self.audiofile_path = audiofile_path
-        self.audiofile = AudioFile(self.audiofile_path)
-        self.source_length = self.audiofile.frames / self.audiofile.samplerate
+        if self.audiofile_path == 'pinknoise':
+            self.audiofile = None
+            self.source_length = 30
+            self.samplerate = 44100
+        else:
+            self.audiofile = AudioFile(self.audiofile_path)
+            self.source_length = self.audiofile.frames / self.audiofile.samplerate
+            self.samplerate = int(self.audiofile.samplerate)
         if self.source_length < 30:
             raise ValueError('Audio file length cannot be less than 30 sec')
         super().__init__(audiofile_length=self.source_length,
                          starttime=starttime, endtime=endtime, slice_length=slice_length)
-        self.samplerate = int(self.audiofile.samplerate)
         self.norm_level = norm_level
         self.norm_proc = None
         self.cropped = self.cropped_normalized = self.cropped_norm_split = \
@@ -36,6 +42,9 @@ class AudioChunk(PreviewAudioCrop):
             _callback(arg)
 
     def _read_and_crop(self, callback=None):
+        if self.audiofile_path == 'pinknoise':
+            self.cropped = pinknoise
+            return
         self._open_audiofile()  # makes no effect if audiofile is already opened
         self.user_stopped = False
         self.cropped = np.empty((self.audiofile.num_channels, 0))
@@ -59,13 +68,13 @@ class AudioChunk(PreviewAudioCrop):
         self._close_audiofile()
 
     def _open_audiofile(self):
-        if not self.audiofile.closed:
+        if self.audiofile is None or not self.audiofile.closed:
             return self.audiofile
         self.audiofile = AudioFile(self.audiofile_path)
         return self.audiofile
 
     def _close_audiofile(self):
-        if self.audiofile.closed:
+        if self.audiofile is None or self.audiofile.closed:
             return
         self.audiofile.close()
 
@@ -111,7 +120,7 @@ class AudioChunk(PreviewAudioCrop):
         return int(self.samplerate * sec)
 
     def normalize(self, norm_level=None, callback=None):
-        _callback = callback or self.callback
+        _callback = callback or self.callback if self.audiofile is not None else None
         head_level = norm_level or self.norm_level or 0
         delta = head_level - self.max_level
         gain = Gain(delta)
