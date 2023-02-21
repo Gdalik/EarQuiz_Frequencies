@@ -84,6 +84,7 @@ class PlayerContr(QMediaPlayer):
         if self.onceAudioLoaded:
             self.parent.onLoadSourceAudio()
             self._refreshAudioOutput_mac()
+            self.mw_contr.hashAudioFile()
             self.onceAudioLoaded = False
         self._playLoadedAudio()
 

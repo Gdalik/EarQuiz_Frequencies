@@ -20,6 +20,7 @@ from PyQt6.QtCore import QObject
 from PyQt6.QtGui import QActionGroup
 import platform
 from Model.calc import optimal_range_length
+from filehash import FileHash
 
 
 class MainWindowContr(QObject):
@@ -29,6 +30,7 @@ class MainWindowContr(QObject):
     SourceAudio: PlSong or None
     SourceRange: PreviewAudioCrop or None
     ADGen: AudioDrillGen or None
+    LoadedFileHash: str or None
 
     def __init__(self):
         super().__init__()
@@ -128,12 +130,22 @@ class MainWindowContr(QObject):
     def setNoAudio(self):
         self.SourceAudio = None
         self.ADGen = None
+        self.LoadedFileHash = None
         self.disconnectSourceRangeSig()
         self.SourceRange = None
         self.TransportContr.PlayerContr.clearSource()
         self.mw_view.TransportPanelView.noSongState()
         '''self.mw_view.actionPlayPause.setEnabled(False)
         self.mw_view.actionStop.setEnabled(False)'''
+
+    def hashAudioFile(self, refresh=True):
+        if self.SourceAudio is None:
+            return
+        md5hasher = FileHash('md5')
+        hash = md5hasher.hash_file(self.SourceAudio.path)
+        if refresh:
+            self.LoadedFileHash = hash
+        return hash
 
     def setPlaybackButtons(self):
         self.mw_view.MW_PlayPause.setDefaultAction(self.mw_view.actionPlayPause)
@@ -149,10 +161,14 @@ class MainWindowContr(QObject):
         if Song.duration < 30 or not Song.exists:
             return
         self.SourceAudio = Song
-        self.ADGen = None
         if self.CurrentMode.name != 'Preview':
             self.mw_view.actionPreview_Mode.toggle()
-        self.CurrentMode.updateCurrentAudio()
+        else:
+            self.CurrentMode.updateCurrentAudio()
+        if self.LoadedFileHash is not None and self.LoadedFileHash == self.hashAudioFile(refresh=False):
+            self.TransportContr.PlayerContr.play()
+            return
+        self.ADGen = None
         self.TransportContr.PlayerContr.loadCurrentAudio()
 
     def setInitSourceRangeView(self):
@@ -180,7 +196,7 @@ class MainWindowContr(QObject):
 
     def setAudioDrillGen(self):
         print(self.SourceAudio)
-        if self.ADGen is None and self.SourceAudio is not None:
+        if self.ADGen is None and self.SourceAudio is not None and self.LoadedFileHash:
             EQP = self.EQContr.EQpattern
             SA = self.SourceAudio
             SR = self.SourceRange
