@@ -10,6 +10,7 @@ from copy import copy
 import itertools
 from Utilities.exceptions import InterruptedException
 from definitions import pinknoise
+from pathlib import Path
 
 
 class AudioChunk(PreviewAudioCrop):
@@ -23,6 +24,8 @@ class AudioChunk(PreviewAudioCrop):
         else:
             self.audiofile = AudioFile(self.audiofile_path)
             self.source_length = self.audiofile.frames / self.audiofile.samplerate
+            if Path(audiofile_path).suffix == '.mp3':
+                self.source_length -= 1
             self.samplerate = int(self.audiofile.samplerate)
         if self.source_length < 30:
             raise ValueError('Audio file length cannot be less than 30 sec')
@@ -104,7 +107,8 @@ class AudioChunk(PreviewAudioCrop):
     def input_db_array(self):
         chunk = self.cropped
         chunk_abs = np.absolute(chunk)
-        return 20 * np.emath.log10(chunk_abs)
+        with np.errstate(divide='ignore'):
+            return 20 * np.emath.log10(chunk_abs)
 
     @property
     def max_level(self):
@@ -115,7 +119,8 @@ class AudioChunk(PreviewAudioCrop):
     @property
     def rms_level(self):
         rms_ar = np.sqrt(np.mean(self.cropped ** 2))
-        return 20 * math.log10(rms_ar)
+        with np.errstate(divide='ignore'):
+            return 20 * math.log10(rms_ar)
 
     def sec2fr(self, sec: int or float):
         return int(self.samplerate * sec)

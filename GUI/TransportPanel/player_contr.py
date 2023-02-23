@@ -20,6 +20,7 @@ class PlayerContr(QMediaPlayer):
     def _connectSignals(self):
         self.mediaStatusChanged.connect(self.onPlayerStatusChanged)
         self.playbackStateChanged.connect(self.onPlaybackStateChanged)
+        self.errorOccurred.connect(self.onError)
         MediaDevices.audioOutputsChanged.connect(self.onAudioOutputsChanged)
         self.mw_view.actionPlayPause.triggered.connect(self.onPlayPause_triggered)
         self.mw_view.actionStop.triggered.connect(self.onStopTriggered)
@@ -149,6 +150,8 @@ class PlayerContr(QMediaPlayer):
         self.onAudioDeviceChecked()
 
     def onError(self, err, string):
+        self.mw_contr.SourceAudio.canLoad = False
+        self.mw_contr.setNoAudio()
         print(err)
         print(string)
 

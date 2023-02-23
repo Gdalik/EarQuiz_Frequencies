@@ -166,6 +166,7 @@ class MainWindowContr(QObject):
         else:
             self.mw_view.actionPreview_Mode.toggle()
         if self.LoadedFileHash is not None and self.LoadedFileHash == self.hashAudioFile(refresh=False):
+            self.TransportContr.PlayerContr.onStopTriggered()
             self.TransportContr.PlayerContr.play()
             return
         self.ADGen = None
