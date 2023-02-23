@@ -1,6 +1,7 @@
 from PyQt6.QtCore import QObject, Qt
 from GUI.TransportPanel.player_contr import PlayerContr
 from Utilities.common_calcs import hhmmss
+import math
 
 
 class TransportContr(QObject):
@@ -100,8 +101,8 @@ class TransportContr(QObject):
 
     def _resetSourceRange(self, _range: list or tuple):
         self.SourceRange.blockSignals(True)
-        self.SourceRange.starttime = _range[0]
-        self.SourceRange.endtime = _range[1]
+        self.SourceRange.starttime = int(_range[0] * 1000) / 1000
+        self.SourceRange.endtime = math.ceil(_range[1] * 1000) / 1000
         self.SourceRange.blockSignals(False)
         self.onSourceRangeChanged()
 

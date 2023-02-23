@@ -12,7 +12,7 @@ def rand_buffer():
     return 32*math.pow(2, random.randint(4, 8))
 
 
-def find_divider(x: int, Min=10):
+def find_divider(x: int, Min=2):
     div = Min
     while x % div != 0:
         div += 1

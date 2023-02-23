@@ -161,10 +161,10 @@ class MainWindowContr(QObject):
         if Song.duration < 30 or not Song.exists:
             return
         self.SourceAudio = Song
-        if self.CurrentMode.name != 'Preview':
-            self.mw_view.actionPreview_Mode.toggle()
-        else:
+        if self.CurrentMode.name == 'Preview':
             self.CurrentMode.updateCurrentAudio()
+        else:
+            self.mw_view.actionPreview_Mode.toggle()
         if self.LoadedFileHash is not None and self.LoadedFileHash == self.hashAudioFile(refresh=False):
             self.TransportContr.PlayerContr.play()
             return

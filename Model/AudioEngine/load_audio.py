@@ -52,7 +52,8 @@ class AudioChunk(PreviewAudioCrop):
         self._callback_out(output, callback=callback)
         self.audiofile.seek(int(self.sec2fr(self.starttime)))
         chunk_length_fr = int(self.sec2fr(self.chunk_length))
-        divider = find_divider(chunk_length_fr, Min=5)
+        min_div = self.chunk_length // 300 if self.chunk_length >= 600 else 2
+        divider = find_divider(chunk_length_fr, Min=min_div)
         # print(f'{divider=}')
         while self.cropped[0].size != chunk_length_fr:
             ch = self.audiofile.read(int(chunk_length_fr / divider))

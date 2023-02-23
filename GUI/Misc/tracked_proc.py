@@ -24,6 +24,7 @@ class TrackedProcRun(QRunnable):
         self.kwargs = kwargs if kwargs is not None else {}
         self._killed = False
         self.return_obj = None
+        self._current_proc_name = ''
 
     @pyqtSlot()
     def run(self):
@@ -33,7 +34,7 @@ class TrackedProcRun(QRunnable):
         except InterruptedException:
             return
         except Exception as e:
-            self.signals.error.emit(str(e))
+            self.signals.error.emit(f'Error {self._current_proc_name.lower()}! {e}')
             return
         self.return_obj = proc
         self.signals.finished.emit()
@@ -41,6 +42,8 @@ class TrackedProcRun(QRunnable):
     def callback(self, values: dict):
         if self._killed:
             raise InterruptedException('Process aborted by user!')
+        if 'State' in values:
+            self._current_proc_name = values['State']
         self.signals.progress.emit(values)
 
     def kill(self):
@@ -82,7 +85,7 @@ class ProcTrackControl(QDialog):
         self.threadpool.start(self.tracked_proc_run)
 
     def updateProg(self, values):
-        print(f'upd prog: {values}')
+        # print(f'upd prog: {values}')
         if not values:
             return
         percent_str = f"\n{values['Percent']}%" if platform.system() == 'Darwin' else ""
