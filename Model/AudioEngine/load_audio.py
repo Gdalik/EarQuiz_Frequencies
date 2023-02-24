@@ -10,7 +10,6 @@ from copy import copy
 import itertools
 from Utilities.exceptions import InterruptedException
 from definitions import pinknoise
-from pathlib import Path
 
 
 class AudioChunk(PreviewAudioCrop):
@@ -24,8 +23,6 @@ class AudioChunk(PreviewAudioCrop):
         else:
             self.audiofile = AudioFile(self.audiofile_path)
             self.source_length = self.audiofile.frames / self.audiofile.samplerate
-            if Path(audiofile_path).suffix == '.mp3':
-                self.source_length -= 1
             self.samplerate = int(self.audiofile.samplerate)
         if self.source_length < 30:
             raise ValueError('Audio file length cannot be less than 30 sec')
