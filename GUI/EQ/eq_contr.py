@@ -17,9 +17,10 @@ class EQContr(QObject):
     def onSliderDragged(self, value):
         self.EQ_view.case_DisableAdjacentFiltersModeOn(value, self.EQpattern['ActiveFreqRange'])
         if self.parent.CurrentMode.name in ['Uni', 'Preview'] and value != 0 and self.parent.SourceAudio:
-            self.parent.mw_view.actionLearn_Mode.toggle()
+            self.parent.mw_view.actionLearn_Mode.setChecked(True)
         self._checkSourceAudio()
-        print(self.freqAccepted)
+        if self.parent.CurrentMode.name == 'Learn' and self.freqAccepted:
+            self.parent.CurrentMode.nextDrill()
 
     def _checkSourceAudio(self):
         if not self.parent.SourceAudio:

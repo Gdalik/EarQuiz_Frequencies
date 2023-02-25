@@ -116,11 +116,13 @@ class TransportContr(QObject):
         self.TransportView.AudioSliderView.setNewDataLength(duration_s)
         if not self.parent.CurrentMode.TimeSettingsChangesEnabled:
             self.parent.CurrentMode.enableTimeSettingsChanges(True)
-        self.parent.setInitSourceRangeView()
-        self.setInitCropRegionView()
-        self.TransportView.AudioSliderView.Cursor.show()
+        if self.parent.SourceAudio != self.parent.LastSourceAudio:
+            self.parent.setInitSourceRangeView()
+            self.setInitCropRegionView()
+            self.TransportView.AudioSliderView.Cursor.show()
         self.CursorBeingDragged = False
         self.CropRegionBeingChanged = False
+        self.parent.LastSourceAudio = self.parent.SourceAudio
 
     def onSourceRangeChanged(self):
         self.TransportView.AudioSliderView.CropRegion.setValues(self.SourceRange.starttime,

@@ -1,4 +1,5 @@
 from Model.audiodrill_gen import AudioDrillGen
+from Model.audiodrill_gen import create_temp_wavefile
 
 
 class UniMode:
@@ -7,6 +8,7 @@ class UniMode:
         self.name = 'Uni'
         self.view = parent.mw_view
         self.parent = parent
+        self.parent.CurrentMode = self
         self.CurrentAudio = None
         self.playPause_toggleable = False
         self.parent.TransportContr.PlayerContr.onStopTriggered()
@@ -17,24 +19,35 @@ class UniMode:
         self.setPlayerControls()
 
     @property
-    def currentAudioCursorStartPos(self):
-        return 0
+    def currentAudioCursorStartPos(self):   # in sec
+        if self.parent.ADGen is None or self.parent.ADGen.audiochunk.currentSliceRange is None:
+            return self.sourceRangeStartTime or 0
+        return self.parent.ADGen.audiochunk.currentSliceRange[0]
 
     @property
     def proxyCursorPos(self):   # in sec
         player_pos = self.parent.TransportContr.PlayerContr.position()
         if player_pos == 0:
-            return self.currentAudioStartTime
+            zero_start = self.sourceRangeStartTime or 0
+            return zero_start + self.currentAudioStartTime
         return player_pos / 1000 + self.currentAudioCursorStartPos \
             if self.parent.SourceAudio is not None else 0
 
     @property
+    def sourceRangeStartTime(self):
+        return self.parent.SourceRange.starttime if self.parent.SourceRange else None
+
+    @property
+    def sourceRangeEndTime(self):
+        return self.parent.SourceRange.endtimeif if self.parent.SourceRange else None
+
+    @property
     def currentAudioStartTime(self):    # in sec
-        return self.parent.SourceRange.starttime if self.parent.SourceRange is not None else 0
+        return self.sourceRangeStartTime or 0
 
     @property
     def currentAudioEndTime(self):  # in sec
-        return self.parent.SourceRange.endtime if self.parent.SourceRange is not None else 0
+        return self.parent.SourceRange.endtime or 0
 
     def setPlayerControls(self):
         self.view.actionPlayPause.setEnabled(True)
@@ -47,11 +60,17 @@ class UniMode:
         self.view.actionShuffle_Playback.setEnabled(False)
 
     def updateCurrentAudio(self):
-        pass
+        self.CurrentAudio = create_temp_wavefile()
 
     def enableTimeSettingsChanges(self, arg: bool):
         self.view.TransportPanelView.AudioSliderView.Cursor.setMovable(arg)
         self.view.TransportPanelView.AudioSliderView.CropRegion.setMovable(arg)
         self.view.TransportPanelView.CropRegionTstr.setChangesEnabled(arg)
         self.TimeSettingsChangesEnabled = arg
+
+    def nextDrill(self):
+        pass
+
+    def playbackStoppedEnded(self):
+        pass
 

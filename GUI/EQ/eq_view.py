@@ -142,6 +142,16 @@ class EqView:
         self.rangeSetEnabled(20, 20000, False)
         self.rangeSetEnabled(freq1, freq2, True)
 
+    def setHandles(self, values: int or tuple, blockSignals=True):
+        def freq_bc(_freq: int, _values: int or tuple):
+            values_l = [values] if isinstance(values, int) else list(values)
+            for v in values_l:
+                if _freq == abs(v):
+                    return '+' if v > 0 else '-'
+            return '0'
+        for F in self.Filters:
+            self.filterHandle(F.freq, freq_bc(F.freq, values), blockSignals=blockSignals)
+
     def sortedFilters(self):
         filter_list = self.Filters
         filter_list.sort(key=lambda F: F.freq)

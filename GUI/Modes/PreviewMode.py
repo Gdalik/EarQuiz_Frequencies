@@ -11,7 +11,8 @@ class PreviewMode(UniMode):
         self.view.TransportPanel.show()
         if self.parent.SourceAudio is not None:
             self.enableTimeSettingsChanges(True)
-        self.updateCurrentAudio()
+        if self.updateCurrentAudio():
+            self.parent.TransportContr.PlayerContr.loadCurrentAudio()
 
     def setPlayerControls(self):
         self.view.actionPlayPause.setEnabled(True)
@@ -24,4 +25,10 @@ class PreviewMode(UniMode):
         self.view.actionShuffle_Playback.setEnabled(True)
 
     def updateCurrentAudio(self):
+        old_value = self.CurrentAudio
         self.CurrentAudio = self.parent.SourceAudio.path if self.parent.SourceAudio else None
+        return self.CurrentAudio != old_value
+
+    @property
+    def currentAudioCursorStartPos(self):
+        return 0

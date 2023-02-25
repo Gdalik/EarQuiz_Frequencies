@@ -1,15 +1,21 @@
-import pathlib
-from definitions import ROOT_DIR, pinknoise
 from Model.AudioEngine.load_audio import AudioChunk
 from pedalboard.io import AudioFile
 from Model.exercise_gen import ExerciseGenerator
 from Model.AudioEngine.process import eq_proc
 from Utilities.exceptions import InterruptedException
-
+from tempfile import NamedTemporaryFile
+from definitions import TEMP_AUDIO_DIR
+from pathlib import Path
 
 EQ1_freq = [31, 63, 125, 250, 500, 1000, 2000, 4000, 8000, 16000]
 EQ2_freq = [32, 40, 50, 63, 80, 100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500,
             3150, 4000, 5000, 6300, 8000, 10000, 12500, 16000]
+
+
+def create_temp_wavefile():
+    Path(TEMP_AUDIO_DIR).mkdir(parents=True, exist_ok=True)
+    with NamedTemporaryFile(mode="w+b", suffix='.wav', delete=False, dir=TEMP_AUDIO_DIR) as f:
+        return f.name
 
 
 class AudioDrillGen:

@@ -50,9 +50,11 @@ class MainWindowContr(QObject):
         self.setBoostCutOrderAG()
         self.setPlaybackButtons()
         self.setShufflePBMode()
-        self.mw_view.NextExercise.setDefaultAction(self.mw_view.actionNext_Exercise)
         self.CurrentMode = self.LastMode = UniMode(self)
+        self.mw_view.NextExercise.setDefaultAction(self.mw_view.actionNext_Exercise)
+        self.mw_view.actionNext_Exercise.triggered.connect(self.onNextExerciseTriggered)
         self.mw_view.actionClose.triggered.connect(self.onCloseTriggered)
+        self.LastSourceAudio = None
         self.mw_view.show()
 
     def setFileMenuActions(self):
@@ -96,6 +98,10 @@ class MainWindowContr(QObject):
         if self.ADGen is None:
             return
         self.ADGen.boost_cut_priority = self.boostCutPriority
+
+    def onNextExerciseTriggered(self):
+        if self.CurrentMode is not None:
+            self.CurrentMode.nextDrill()
 
     @property
     def learnFreqOrder(self):
@@ -164,7 +170,7 @@ class MainWindowContr(QObject):
         if self.CurrentMode.name == 'Preview':
             self.CurrentMode.updateCurrentAudio()
         else:
-            self.mw_view.actionPreview_Mode.toggle()
+            self.mw_view.actionPreview_Mode.setChecked(True)
         if self.LoadedFileHash is not None and self.LoadedFileHash == self.hashAudioFile(refresh=False):
             self.TransportContr.PlayerContr.onStopTriggered()
             self.TransportContr.PlayerContr.play()
@@ -203,7 +209,7 @@ class MainWindowContr(QObject):
             SR = self.SourceRange
             ADG = ProcTrackControl(AudioDrillGen, args=[self.EQContr.getAvailableFreq()],
                                    kwargs={'boost_cut': EQP['EQ_boost_cut'],
-                                           'DualBandMode': EQP['EQ_boost_cut'],
+                                           'DualBandMode': EQP['DualBandMode'],
                                            'audio_source_path': SA.path,
                                            'starttime': SR.starttime,
                                            'endtime': SR.endtime,
