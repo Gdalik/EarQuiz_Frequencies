@@ -98,6 +98,7 @@ class PlayerContr(QMediaPlayer):
         self.mw_contr.CurrentMode.playbackStoppedEnded()
 
     def onStopTriggered(self):
+        print(f'onStopTriggered {self.mw_contr.CurrentMode.name=}')
         self.stop()
         try:
             starttime = self.startPos

@@ -12,12 +12,18 @@ class LearnMode(UniMode):
             self.parent.EQContr.resetEQ()
         self.view.setActionNextExerciseEnabled(True)
         self.parent.setAudioDrillGen()
-        self.nextDrill(fromStart=True)
+        self.nextDrill(fromStart=False)
         self.blockPlaybackStoppedEnded(False)
 
     @property
     def currentAudioStartTime(self):
         return 0
+
+    @property
+    def currentAudioCursorStartPos(self):   # in sec
+        if self.parent.ADGen is None or self.parent.ADGen.audiochunk.currentSliceRange is None:
+            return self.sourceRangeStartTime or 0
+        return self.parent.ADGen.audiochunk.currentSliceRange[0]
 
     @property
     def proxyCursorPos(self):   # in sec
@@ -30,13 +36,14 @@ class LearnMode(UniMode):
         self.updateCurrentAudio()
         eq_values = self.parent.EQContr.getEQValues()
         force_freq = eq_values or None
-        print(f'{fromStart=}')
         return self.parent.ADGen.output(audio_path=self.CurrentAudio, force_freq=force_freq, fromStart=fromStart)[0]
 
     def nextDrill(self, fromStart=False):
         if self.parent.ADGen is None:
             return
-        self.parent.TransportContr.PlayerContr.onStopTriggered()
+        player = self.parent.TransportContr.PlayerContr
+        if player.playbackState() == player.PlaybackState.PlayingState:
+            self.parent.TransportContr.PlayerContr.onStopTriggered()
         self.currentDrillFreq = self.generateDrill(fromStart=fromStart)
         self.parent.mw_view.EQView.setHandles(self.currentDrillFreq, blockSignals=True)
         self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=True)

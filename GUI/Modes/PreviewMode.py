@@ -14,6 +14,21 @@ class PreviewMode(UniMode):
         if self.updateCurrentAudio():
             self.parent.TransportContr.PlayerContr.loadCurrentAudio()
 
+    @property
+    def proxyCursorPos(self):   # in sec
+        player_pos = self.parent.TransportContr.PlayerContr.position()
+        if player_pos == 0:
+            return self.sourceRangeStartTime or 0
+        return player_pos / 1000 if self.parent.SourceAudio is not None else 0
+
+    @property
+    def currentAudioStartTime(self):    # in sec
+        return self.sourceRangeStartTime or 0
+
+    @property
+    def currentAudioEndTime(self):  # in sec
+        return self.parent.SourceRange.endtime or 0
+
     def setPlayerControls(self):
         self.view.actionPlayPause.setEnabled(True)
         self.view.actionStop.setEnabled(True)
@@ -29,6 +44,3 @@ class PreviewMode(UniMode):
         self.CurrentAudio = self.parent.SourceAudio.path if self.parent.SourceAudio else None
         return self.CurrentAudio != old_value
 
-    @property
-    def currentAudioCursorStartPos(self):
-        return 0

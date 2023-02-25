@@ -20,34 +20,27 @@ class UniMode:
 
     @property
     def currentAudioCursorStartPos(self):   # in sec
-        if self.parent.ADGen is None or self.parent.ADGen.audiochunk.currentSliceRange is None:
-            return self.sourceRangeStartTime or 0
-        return self.parent.ADGen.audiochunk.currentSliceRange[0]
+        return 0
 
     @property
     def proxyCursorPos(self):   # in sec
-        player_pos = self.parent.TransportContr.PlayerContr.position()
-        if player_pos == 0:
-            zero_start = self.sourceRangeStartTime or 0
-            return zero_start + self.currentAudioStartTime
-        return player_pos / 1000 + self.currentAudioCursorStartPos \
-            if self.parent.SourceAudio is not None else 0
+        return 0
 
     @property
-    def sourceRangeStartTime(self):
+    def sourceRangeStartTime(self):     # in sec
         return self.parent.SourceRange.starttime if self.parent.SourceRange else None
 
     @property
-    def sourceRangeEndTime(self):
-        return self.parent.SourceRange.endtimeif if self.parent.SourceRange else None
+    def sourceRangeEndTime(self):   # in sec
+        return self.parent.SourceRange.endtime if self.parent.SourceRange else None
 
     @property
     def currentAudioStartTime(self):    # in sec
-        return self.sourceRangeStartTime or 0
+        return 0
 
     @property
     def currentAudioEndTime(self):  # in sec
-        return self.parent.SourceRange.endtime or 0
+        return 0
 
     def setPlayerControls(self):
         self.view.actionPlayPause.setEnabled(True)

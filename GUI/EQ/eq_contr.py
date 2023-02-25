@@ -18,9 +18,9 @@ class EQContr(QObject):
         self.EQ_view.case_DisableAdjacentFiltersModeOn(value, self.EQpattern['ActiveFreqRange'])
         if self.parent.CurrentMode.name in ['Uni', 'Preview'] and value != 0 and self.parent.SourceAudio:
             self.parent.mw_view.actionLearn_Mode.setChecked(True)
-        self._checkSourceAudio()
-        if self.parent.CurrentMode.name == 'Learn' and self.freqAccepted:
+        elif self.parent.CurrentMode.name == 'Learn' and self.freqAccepted:
             self.parent.CurrentMode.nextDrill()
+        self._checkSourceAudio()
 
     def _checkSourceAudio(self):
         if not self.parent.SourceAudio:
