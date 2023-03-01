@@ -1,6 +1,5 @@
-import copy
-
-from definitions import app
+import shutil
+from definitions import app, TEMP_AUDIO_DIR
 from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.EQ.eq_contr import EQContr
@@ -75,6 +74,7 @@ class MainWindowContr(QObject):
         self.mw_view.actionPreview_Mode.toggled.connect(self.setCurrentMode)
         self.mw_view.actionLearn_Mode.toggled.connect(self.setCurrentMode)
         self.mw_view.actionTest_Mode.toggled.connect(self.setCurrentMode)
+        self.modesActionGroup.triggered.connect(self.onmodesActionGroupTriggered)
 
     def setLearnFreqOrderAG(self):
         self.LearnFreqOrderActionGroup = QActionGroup(self)
@@ -103,6 +103,10 @@ class MainWindowContr(QObject):
         if self.CurrentMode is not None:
             self.CurrentMode.nextDrill()
 
+    def onmodesActionGroupTriggered(self):
+        player = self.TransportContr.PlayerContr
+        player.onStopTriggered(checkPlaybackState=True)
+
     @property
     def learnFreqOrder(self):
         if self.LearnFreqOrderActionGroup.checkedAction() == self.mw_view.actionAscendingEQ:
@@ -120,6 +124,7 @@ class MainWindowContr(QObject):
             return 2
 
     def setCurrentMode(self):
+        self.CurrentMode.cleanTempAudio()
         if self.modesActionGroup.checkedAction() == self.mw_view.actionPreview_Mode:
             self.CurrentMode = PreviewMode(self)
         elif self.modesActionGroup.checkedAction() == self.mw_view.actionLearn_Mode:
@@ -202,7 +207,7 @@ class MainWindowContr(QObject):
         app.quit()
 
     def setAudioDrillGen(self):
-        print(self.SourceAudio)
+        # print(self.SourceAudio)
         if self.ADGen is None and self.SourceAudio is not None and self.LoadedFileHash:
             EQP = self.EQContr.EQpattern
             SA = self.SourceAudio

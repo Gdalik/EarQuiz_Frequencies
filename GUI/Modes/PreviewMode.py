@@ -9,6 +9,7 @@ class PreviewMode(UniMode):
         self.playPause_toggleable = True
         self.parent.EQContr.resetEQ()
         self.view.TransportPanel.show()
+        self.view.TransportPanelView.AudioSliderView.SliceRegion.hide()
         if self.parent.SourceAudio is not None:
             self.enableTimeSettingsChanges(True)
         if self.updateCurrentAudio():

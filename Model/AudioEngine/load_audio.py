@@ -1,5 +1,6 @@
 import math
 import time
+from pathlib import Path
 from Model.AudioEngine.process import ChunkedProc
 from Model.calc import find_divider
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
@@ -31,7 +32,7 @@ class AudioChunk(PreviewAudioCrop):
         self.norm_level = norm_level
         self.norm_proc = None
         self.cropped = self.cropped_normalized = self.cropped_norm_split = \
-            self.cycle = self.cycle_id_gen = self.cycle_id = None
+            self.cycle = self.cycle_id_gen = self.cycle_id = self.current_slice = None
         self.callback = callback
         self.user_stopped = None
         self._reset()  # self.audiofile is closed during self._read_and_crop(), called from self.reset()
@@ -45,12 +46,17 @@ class AudioChunk(PreviewAudioCrop):
         if self.audiofile_path == 'pinknoise':
             self.cropped = pinknoise
             return
+        # print(f'read_and_crop {self.audiofile_path=}')
         self._open_audiofile()  # makes no effect if audiofile is already opened
         self.user_stopped = False
         self.cropped = np.empty((self.audiofile.num_channels, 0))
         output = {'State': 'Reading / cropping audiofile', 'Percent': 0}
         self._callback_out(output, callback=callback)
-        self.audiofile.seek(int(self.sec2fr(self.starttime)))
+        if self.starttime > 0:
+            if Path(self.audiofile_path).suffix == '.flac':
+                self.audiofile.read(int(self.sec2fr(self.starttime)))
+            else:
+                self.audiofile.seek(int(self.sec2fr(self.starttime)))
         chunk_length_fr = int(self.sec2fr(self.chunk_length))
         min_div = self.chunk_length // 300 if self.chunk_length >= 600 else 2
         divider = find_divider(chunk_length_fr, Min=min_div)
@@ -125,6 +131,7 @@ class AudioChunk(PreviewAudioCrop):
     def normalize(self, norm_level=None, callback=None):
         _callback = callback or self.callback if self.audiofile is not None else None
         head_level = norm_level or self.norm_level or 0
+        print(f'{head_level=}')
         delta = head_level - self.max_level
         gain = Gain(delta)
         self.norm_proc = ChunkedProc(self.cropped, self.samplerate, gain,
@@ -153,7 +160,8 @@ class AudioChunk(PreviewAudioCrop):
             self.cycle = itertools.cycle(self.cropped_norm_split)
             self.cycle_id_gen = itertools.cycle(range(len(self.cropped_norm_split)))
         self.cycle_id = next(self.cycle_id_gen)
-        return next(self.cycle)
+        self.current_slice = next(self.cycle)
+        return self.current_slice
 
     def _reslice(self):
         self.split()

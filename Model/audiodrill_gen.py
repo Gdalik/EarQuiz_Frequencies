@@ -81,7 +81,7 @@ class AudioDrillGen:
 
     @property
     def gain_headroom(self):
-        headroom = -3 if self._DualBandMode else 0
+        headroom = -3 if self._DualBandMode else -1
         return self.gain_depth()/-2 + headroom
 
     @order.setter
@@ -101,8 +101,8 @@ class AudioDrillGen:
         self._on_EQ_order_change()
 
     def output(self, force_freq=None, fromStart=False, audio_path=None):
-        freq = self._freq_out(force_freq)
-        audio = self._audio_out(fromStart)
+        freq = self._freq_out(force_freq=force_freq)
+        audio = self._audio_out(fromStart=fromStart)
         if audio_path:
             with AudioFile(audio_path, 'w', self.af_samplerate, self.af_num_channels) as o:
                 o.write(audio)
@@ -112,12 +112,14 @@ class AudioDrillGen:
         self._last_freq = self._exercise_gen.seqOut(force_freq)
         return self._last_freq
 
-    def _audio_out(self, fromStart=False):
+    def _audio_out(self, renderCurrent=False, fromStart=False):
         if isinstance(self._last_freq, tuple):
             freq1, freq2 = self._last_freq
         else:
             freq1, freq2 = self._last_freq, None
-        return eq_proc(self.audiochunk.slice_iter(refresh=fromStart), self.audiochunk.samplerate, freq1, freq2=freq2,
+        source = self.audiochunk.slice_iter(refresh=fromStart) \
+            if not renderCurrent or self.audiochunk.current_slice is None else self.audiochunk.current_slice
+        return eq_proc(source, self.audiochunk.samplerate, freq1, freq2=freq2,
                        gain_depth=self.gain_depth(), Q=self.Q, proc_t_perc=self.proc_t_perc)
 
     def _on_EQ_order_change(self):

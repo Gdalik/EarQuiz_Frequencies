@@ -23,7 +23,7 @@ class ExerciseGenerator:
 
     def seqGen(self, start_freq=None):
         self.cycle = None
-        print(f'{self.DualBandMode=}')
+        # print(f'{self.DualBandMode=}')
         return self._dualBandSeqGen(start_freq) if self.DualBandMode else self._singleBandSeqGen(start_freq)
 
     def seqOut(self, start_freq=None):
@@ -81,7 +81,14 @@ class ExerciseGenerator:
             startfrom = '+' if crop_tuple(start_freq) > 0 else '-'
             source_seq = self._make_dual_boostcut_seq(source_seq, startfrom=startfrom)
         self.full_sequence = source_seq
-        if isinstance(start_freq, tuple):
+
+        if isinstance(start_freq, int) and self.order == 'shuffle':
+            for f in self.full_sequence:
+                if start_freq in f:
+                    self.full_sequence.remove(f)
+                    self.full_sequence.insert(0, f)
+                    break
+        elif isinstance(start_freq, tuple):
             try:
                 self.full_sequence.remove(start_freq)
             except ValueError:

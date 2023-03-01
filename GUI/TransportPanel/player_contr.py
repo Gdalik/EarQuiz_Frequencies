@@ -32,8 +32,8 @@ class PlayerContr(QMediaPlayer):
     def loadCurrentAudio(self, play_after=True):
         self.clearSource()
         self.setSource(QUrl.fromLocalFile(self.parent.currentAudio))
-        print(f'{self.mw_contr.CurrentMode}')
-        print(f'loadCurrentAudio: {self.parent.currentAudio}')
+        # print(f'{self.mw_contr.CurrentMode}')
+        # print(f'loadCurrentAudio: {self.parent.currentAudio}')
         self.playAfterAudioLoaded = play_after
         self.onceAudioLoaded = True
 
@@ -97,8 +97,10 @@ class PlayerContr(QMediaPlayer):
             self.play()
         self.mw_contr.CurrentMode.playbackStoppedEnded()
 
-    def onStopTriggered(self):
-        print(f'onStopTriggered {self.mw_contr.CurrentMode.name=}')
+    def onStopTriggered(self, checkPlaybackState=False):
+        # print(f'onStopTriggered {self.mw_contr.CurrentMode.name=}')
+        if checkPlaybackState and self.playbackState() != self.PlaybackState.PlayingState:
+            return
         self.stop()
         try:
             starttime = self.startPos
@@ -133,6 +135,7 @@ class PlayerContr(QMediaPlayer):
         if state == self.PlaybackState.PlayingState:
             if self.mw_contr.CurrentMode.playPause_toggleable:
                 self.PlayerView.setPlayPause2Pause()
+            self.mw_contr.CurrentMode.oncePlayingStarted()
         elif state in (self.PlaybackState.PausedState, self.PlaybackState.StoppedState):
             self.PlayerView.setPlayPause2Play()
         if state == self.PlaybackState.StoppedState:

@@ -1,9 +1,14 @@
 from PyQt6.QtGui import QIcon
-from definitions import app, app_name
+from definitions import app, app_name, TEMP_AUDIO_DIR
 from GUI.MainWindow.mw_contr import MainWindowContr
 from PyQt6.QtCore import QDir
 from tendo.singleton import SingleInstance
 from multiprocessing import freeze_support
+import shutil
+
+
+def onAppAboutToQuit():
+    shutil.rmtree(TEMP_AUDIO_DIR, ignore_errors=True)
 
 
 if __name__ == '__main__':
@@ -13,6 +18,7 @@ if __name__ == '__main__':
     app.setWindowIcon(QIcon("icons:/Logo/EarQuiz_Icon.png"))
     app.setApplicationDisplayName(app_name)
     app.setApplicationName(app_name)
+    shutil.rmtree(TEMP_AUDIO_DIR, ignore_errors=True)
     mw = MainWindowContr()
+    app.aboutToQuit.connect(onAppAboutToQuit)
     app.exec()
-

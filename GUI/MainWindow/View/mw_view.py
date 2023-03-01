@@ -102,3 +102,12 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def error_msg(self, message: str):
         error_message(self, message)
+
+    def setEQStateIndicatorOn(self, arg: bool):
+        self.EqOnOffLab.setVisible(True)
+        if arg:
+            self.EqOnOffLab.setText('EQ On')
+            self.EqOnOffLab.setStyleSheet('color: green; font-weight: bold')
+        else:
+            self.EqOnOffLab.setText('EQ Off')
+            self.EqOnOffLab.setStyleSheet('color: gray; font-weight: bold')

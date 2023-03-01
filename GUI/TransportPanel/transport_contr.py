@@ -2,6 +2,7 @@ from PyQt6.QtCore import QObject, Qt
 from GUI.TransportPanel.player_contr import PlayerContr
 from Utilities.common_calcs import hhmmss
 import math
+from Model.calc import proc_unproc_len
 
 
 class TransportContr(QObject):
@@ -148,6 +149,17 @@ class TransportContr(QObject):
             self.TransportView.AudioSliderView.Cursor.update_pos(CursorPos)
             self.TransportView.Position_Lab.setText(hhmmss(CursorPos))
         self._checkPlaybackRange()
+        if self.PlayerContr.playbackState() == self.PlayerContr.PlaybackState.PlayingState:
+            self.parent.CurrentMode.whilePlaying()
+
+    def eqStateOnOff(self):
+        if self.parent.CurrentMode.name not in ('Learn', 'Test') or self.parent.ADGen is None:
+            return False
+        slice_len = self.parent.ADGen.audiochunk.slice_length
+        proc_unproc = proc_unproc_len(slice_len, self.parent.ADGen.proc_t_perc)
+        eq_range = (proc_unproc[1], proc_unproc[0] + proc_unproc[1])
+        pos_s = self.PlayerContr.position() / 1000
+        return eq_range[0] <= pos_s <= eq_range[1]
 
     def _checkPlaybackRange(self):
         if self.CropRegionBeingChanged or self.parent.CurrentMode.name != 'Preview':

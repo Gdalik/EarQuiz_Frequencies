@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from PyQt6.QtWidgets import QSlider, QLabel
 from Utilities.common_calcs import findAdjacentEl
+import re
 
 
 class EqView:
@@ -13,8 +14,9 @@ class EqView:
                            'height: 5px; width: 10px; margin: 0px -5px}'
         self.disabledHandleStyle = '.QSlider::handle:vertical{background: white; ' \
                                    'border: 2px solid rgb(191, 191, 191); height: 5px; width: 10px; margin: 0px -5px}'
-        self.basicSliderStyle = '.QSlider::groove:vertical{border: 1px solid #262626; ' \
-                                'background: rgb(191, 191, 191); width: 5px; margin: 0 12px;}'+self.handleStyle
+        self.basicSliderStyleNoHandle = '.QSlider::groove:vertical{border: 1px solid #262626; ' \
+                                'background: rgb(191, 191, 191); width: 5px; margin: 0 12px;}'
+        self.basicSliderStyle = self.basicSliderStyleNoHandle + self.handleStyle
         self.disabledSliderStyle = self.basicSliderStyle + self.disabledHandleStyle
         self._DisableAdjacentFiltersMode = False
         self.currentEQ = None
@@ -41,18 +43,20 @@ class EqView:
         self.currentEQ = EQ
         self.Filters = self.makeFilters()
 
-    def highlight_right_Filter(self, freq: int, mode: str):    # mode: 'full'/'half+'/'half-'
-        green_slider_settings = '{margin: 0 12px; background: green; width: 5px;border: 1px solid #262626}'
-        F = self.getFilter(freq)
-        slider_style = F.Slider.styleSheet()
-        handle_style = self.disabledHandleStyle if self.disabledHandleStyle in slider_style else self.handleStyle
-        if mode == 'half+':
-            slider_style += f'.QSlider::sub-page:vertical{green_slider_settings}'
-        elif mode == 'half-':
-            slider_style += f'.QSlider::add-page:vertical{green_slider_settings}'
-        else:
-            slider_style = f'.QSlider::groove:vertical{green_slider_settings}{handle_style}'
+    def highlight_right_Filter(self, freq: int, highlightHandle=False):
+        F = self.getFilter(abs(freq))
+        _slider_style = F.Slider.styleSheet()
+        norm_handle_style = self.disabledHandleStyle if self.disabledHandleStyle in _slider_style else self.handleStyle
+        green_slider_set = '.QSlider::groove:vertical{margin: 0 12px; background: green; ' \
+                                'width: 5px;border: 1px solid #262626}'
+        green_handle_style = '.QSlider::handle:vertical{background: white; border: 2px solid green; ' \
+                           'height: 5px; width: 10px; margin: 0px -5px}'
+        handle_style = green_handle_style if highlightHandle else norm_handle_style
+        slider_style = f'{handle_style}{green_slider_set}'
         F.Slider.setStyleSheet(slider_style)
+        labtext = F.Label.text()
+        if not labtext.endswith(')'):
+            F.Label.setText(f'{labtext}\n(+)') if freq > 0 else F.Label.setText(f'{labtext}\n(-)')
         F.Label.setStyleSheet('color: green; font-weight: bold')
         return F
 
@@ -68,18 +72,21 @@ class EqView:
         LabelList = [self.TabWidget.findChild(QLabel, f'{SliderName}_Lab') for SliderName in map(QSlider.objectName, SliderList)]
         return [self.Filter(getEQ(El), getfreq(El), *El) for El in zip(SliderList, LabelList)]
 
-    def resetFilterStyle(self, freq: int):
-        return self._resetFilterStyle(self.getFilter(freq))
+    def resetFilterStyle(self, freq: int, enabled=True):
+        return self._resetFilterStyle(self.getFilter(freq), enabled=enabled)
 
-    def _resetFilterStyle(self, F: Filter):
-        sliderStyle = self.disabledSliderStyle if F.PermDisabled else self.basicSliderStyle
+    def _resetFilterStyle(self, F: Filter, enabled=True):
+        sliderStyle = self.disabledSliderStyle if F.PermDisabled or not enabled else self.basicSliderStyle
         F.Slider.setStyleSheet(sliderStyle)
         F.Label.setStyleSheet('')
+        labtext = F.Label.text()
+        if labtext.endswith(')'):
+            F.Label.setText(labtext.removesuffix('\n(+)').removesuffix('\n(-)'))
         return F
 
-    def resetEQStyle(self):
+    def resetEQStyle(self, enabled=True):
         for Filter in self.Filters:
-            self._resetFilterStyle(Filter)
+            self._resetFilterStyle(Filter, enabled=enabled)
         return self.Filters
 
     def resetEQ(self, mode: str):  # mode: '+', '-', '+-'

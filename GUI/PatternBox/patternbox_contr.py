@@ -1,3 +1,5 @@
+import contextlib
+
 from Model.eq_patterns import EQPatterns
 
 
@@ -17,6 +19,24 @@ class PatternBoxContr(object):
         self.mw_contr.EQContr.setEQMode(mode_num=index + 1)
         self._nextPatternButEnable()
         self.mw_contr.EQSetContr.refreshSet()
+        self._setExGenToPattern()
+        with contextlib.suppress(AttributeError):
+            self.mw_contr.CurrentMode.nextDrill(fromStart=True, play_after=True)
+
+    def _setExGenToPattern(self):
+        if not hasattr(self.mw_contr, 'SourceAudio') or self.mw_contr.SourceAudio is None:
+            return
+        if not hasattr(self.mw_contr, 'ADGen') or self.mw_contr.ADGen is None:
+            return
+        eq_pattern = self.mw_contr.EQContr.EQpattern
+        self.mw_contr.ADGen.resetExGen(self.mw_contr.EQContr.getAvailableFreq(),
+                                       boost_cut=eq_pattern['EQ_boost_cut'],
+                                       DualBandMode=eq_pattern['DualBandMode'],
+                                       order=self.mw_contr.learnFreqOrder,
+                                       boost_cut_priority=self.mw_contr.boostCutPriority,
+                                       disableAdjacent=eq_pattern['DisableAdjacentFiltersMode'],
+                                       inf_cycle=True)
+
 
     def onNextPatternBut_clicked(self):
         PBindex = self.mw_view.PatternBox.currentIndex()
