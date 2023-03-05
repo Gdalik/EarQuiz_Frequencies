@@ -67,8 +67,8 @@ class ExerciseGenerator:
                 return x
             return abs_source(x, max(abs(x[0]), abs(x[1]))) if self.order == 'desc' else abs_source(x, min(abs(x[0]), abs(x[1])))
         self._genSourceSequence()
-        start_freq = self._source_sequence[0] if start_freq is None else start_freq
-        source_seq = self._source_seq_reorder(abs(crop_tuple(start_freq)))
+        _start_freq = self._source_sequence[0] if start_freq is None else start_freq
+        source_seq = self._source_seq_reorder(abs(crop_tuple(_start_freq)))
         source_seq = list(itertools.combinations(source_seq, 2))
         if self.order == 'shuffle':
             rand = random.Random()
@@ -78,22 +78,22 @@ class ExerciseGenerator:
         if self.boost_cut == '-':
             source_seq = list(map(lambda x: (x[0]*-1, x[1]*-1), source_seq))
         elif self.boost_cut == '+-':
-            startfrom = '+' if crop_tuple(start_freq) > 0 else '-'
+            startfrom = '+' if crop_tuple(_start_freq) > 0 else '-'
             source_seq = self._make_dual_boostcut_seq(source_seq, startfrom=startfrom)
         self.full_sequence = source_seq
 
-        if isinstance(start_freq, int) and self.order == 'shuffle':
+        if isinstance(_start_freq, int) and start_freq is not None and self.order == 'shuffle':
             for f in self.full_sequence:
-                if start_freq in f:
+                if _start_freq in f:
                     self.full_sequence.remove(f)
                     self.full_sequence.insert(0, f)
                     break
-        elif isinstance(start_freq, tuple):
+        elif isinstance(_start_freq, tuple):
             try:
-                self.full_sequence.remove(start_freq)
+                self.full_sequence.remove(_start_freq)
             except ValueError:
-                self.full_sequence.remove((start_freq[1], start_freq[0]))
-            self.full_sequence.insert(0, start_freq)
+                self.full_sequence.remove((_start_freq[1], _start_freq[0]))
+            self.full_sequence.insert(0, _start_freq)
         return source_seq
 
     def _make_single_boostcut_seq(self, source_seq: list, startfrom='+'):

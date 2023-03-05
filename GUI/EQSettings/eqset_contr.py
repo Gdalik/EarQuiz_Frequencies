@@ -1,7 +1,11 @@
 import json
 from pathlib import PurePath
+
+
 import definitions
+import copy
 from Utilities.Q_extract import Qextr
+from GUI.Misc.tracked_proc import ProcTrackControl
 
 
 class EQSetContr:   # parent: MainWindowContr
@@ -40,3 +44,21 @@ class EQSetContr:   # parent: MainWindowContr
 
     def on_ResetClicked(self):
         self.EQSetView.update(self.EQpattern['Gain_depth'], self.EQpattern['BW_Q'])
+
+    def setGainDepth(self, value: int):
+        if self.parent.ADGen is None:
+            return
+        print(f'setGainDepth {value=}')
+        old_ADGen_gain_depth = self.parent.ADGen.gain_depth()
+        ADG_gain_upd = ProcTrackControl(self.parent.ADGen.setGain_depth, args=[value])
+        if not ADG_gain_upd.exec():
+            self.parent.ADGen.setGain_depth(old_ADGen_gain_depth, normalize_audio=False)
+            self.EQSetView.update_gain_depth(self.parent.ADGen.gain_depth())
+            return False
+        return True
+
+    def updADGenQ(self):
+        if self.parent.ADGen is None:
+            return
+        self.parent.ADGen.Q = Qextr(self.EQSetView.BWBox.currentText())
+

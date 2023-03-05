@@ -65,7 +65,7 @@ class ProcTrackControl(QDialog):
         self.buttonBox = QDialogButtonBox(QDialogButtonBox.StandardButton.Cancel)
         self.buttonBox.rejected.connect(self.reject)
         self.layout = QVBoxLayout()
-        self.label = QLabel("")
+        self.label = QLabel("Please wait...")
         self.progbar = QProgressBar()
         self.progbar.setValue(0)
         self.progbar.setMinimum(0)
@@ -88,6 +88,9 @@ class ProcTrackControl(QDialog):
         # print(f'upd prog: {values}')
         if not values:
             return
+        if self.isHidden() and values['Percent'] != 100:
+            # self.show()
+            pass
         percent_str = f"\n{values['Percent']}%" if platform.system() == 'Darwin' else ""
         self.label.setText(f"{values['State']}:{percent_str}")
         self.progbar.setValue(values['Percent'])

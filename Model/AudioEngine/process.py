@@ -49,7 +49,6 @@ class ChunkedProc:
         def callback_out():
             if self.callback is not None:
                 self.callback(self.out_stat)
-
         self.stopped = False
         output = np.empty((len(self.source), 0))
         chunks = np.hsplit(self.source, find_divider(self.source[0].size, Min=4))

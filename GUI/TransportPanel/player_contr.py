@@ -1,3 +1,5 @@
+import time
+
 from PyQt6.QtCore import QUrl
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData, QAudio
 from definitions import MediaDevices
@@ -30,10 +32,13 @@ class PlayerContr(QMediaPlayer):
         self.mw_view.VolumeSlider.valueChanged.connect(self.applyVolume)
 
     def loadCurrentAudio(self, play_after=True):
+        AudioToLoad = QUrl.fromLocalFile(self.parent.currentAudio)
+        if self.source() == AudioToLoad:
+            return
         self.clearSource()
-        self.setSource(QUrl.fromLocalFile(self.parent.currentAudio))
+        self.setSource(AudioToLoad)
         # print(f'{self.mw_contr.CurrentMode}')
-        # print(f'loadCurrentAudio: {self.parent.currentAudio}')
+        print(f'loadCurrentAudio: {self.parent.currentAudio}')
         self.playAfterAudioLoaded = play_after
         self.onceAudioLoaded = True
 
@@ -87,7 +92,9 @@ class PlayerContr(QMediaPlayer):
         if self.onceAudioLoaded:
             self.parent.onLoadSourceAudio()
             self._refreshAudioOutput_mac()
-            self.mw_contr.hashAudioFile()
+            self.mw_contr.LoadedFilePath = self.parent.currentAudio
+            if self.mw_contr.CurrentMode.name == 'Preview':
+                self.mw_contr.hashAudioFile()
             self.onceAudioLoaded = False
         self._playLoadedAudio()
 
@@ -96,6 +103,12 @@ class PlayerContr(QMediaPlayer):
         if self.mw_view.actionLoop_Playback.isChecked():
             self.play()
         self.mw_contr.CurrentMode.playbackStoppedEnded()
+
+    def onPlayTriggered(self):
+        if self.playbackState() == self.PlaybackState.PlayingState:
+            return
+        self.parent.updAudioToEqSettings()
+        self.play()
 
     def onStopTriggered(self, checkPlaybackState=False):
         # print(f'onStopTriggered {self.mw_contr.CurrentMode.name=}')
@@ -128,7 +141,7 @@ class PlayerContr(QMediaPlayer):
 
     def _playLoadedAudio(self):
         if self.playAfterAudioLoaded:
-            self.play()
+            self.onPlayTriggered()
             self.playAfterAudioLoaded = False
 
     def onPlaybackStateChanged(self, state):
@@ -145,7 +158,7 @@ class PlayerContr(QMediaPlayer):
         if self.playbackState() == self.PlaybackState.PlayingState and self.mw_contr.CurrentMode.playPause_toggleable:
             self.pause()
         else:
-            self.play()
+            self.onPlayTriggered()
 
     def onAudioDeviceChecked(self):
         selected_out = self.mw_view.AudioDevicesView.selectedOutput()

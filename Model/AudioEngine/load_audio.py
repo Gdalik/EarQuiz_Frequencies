@@ -11,6 +11,7 @@ from copy import copy
 import itertools
 from Utilities.exceptions import InterruptedException
 from definitions import pinknoise
+import copy
 
 
 class AudioChunk(PreviewAudioCrop):
@@ -28,7 +29,7 @@ class AudioChunk(PreviewAudioCrop):
         if self.source_length < 30:
             raise ValueError('Audio file length cannot be less than 30 sec')
         super().__init__(audiofile_length=self.source_length,
-                         starttime=starttime, endtime=endtime, slice_length=slice_length)
+                         starttime=starttime, endtime=endtime, slice_length=slice_length, strictMode=True)
         self.norm_level = norm_level
         self.norm_proc = None
         self.cropped = self.cropped_normalized = self.cropped_norm_split = \
@@ -131,15 +132,20 @@ class AudioChunk(PreviewAudioCrop):
     def normalize(self, norm_level=None, callback=None):
         _callback = callback or self.callback if self.audiofile is not None else None
         head_level = norm_level or self.norm_level or 0
-        print(f'{head_level=}')
         delta = head_level - self.max_level
         gain = Gain(delta)
+        self.old_cropped_normalized = copy.copy(self.cropped_normalized)
         self.norm_proc = ChunkedProc(self.cropped, self.samplerate, gain,
                                      proc_name='Normalizing audio', callback=_callback)
         self.cropped_normalized = self.norm_proc.call()
-        if self.cropped_normalized is None and self.norm_proc.stopped:
-            self._stop()
-            return None
+        if self.norm_proc.stopped and self.cropped_normalized is None:
+            if self.old_cropped_normalized is None:
+                self._stop()
+                return None
+            else:
+                self.cropped_normalized = self.old_cropped_normalized
+                print('Normalization reverted')
+
         self.split()
         if self.cycle_id_gen is not None:
             self.cycle_id = next(self.cycle_id_gen)
@@ -176,18 +182,26 @@ class AudioChunk(PreviewAudioCrop):
         EndTime = self.starttime + self.slice_length * (self.cycle_id + 1)
         return StartTime, EndTime
 
-    def update(self, callback=None):
+    def checkActionNeeded(self):
         if not self._old_values:
-            return
+            return None
         reset_cond1 = self._old_values['starttime'] != self.starttime
         reset_cond2 = self._old_values['chunk_length'] != self.chunk_length and \
                       (self._old_values['slices_num'] != self.slices_num or self._old_values['slice_length']
                        != self.slice_length)
         if reset_cond1 or reset_cond2:
-            self._reset(callback=callback)
+            return 'reset'
         elif self._old_values['slice_length'] != self.slice_length:
-            self._reslice()
+            return 'reslice'
         else:
+            return 'refresh_old_values'
+
+    def update(self, mode: str, callback=None):
+        if mode == 'reset':
+            self._reset(callback=callback)
+        elif mode == 'reslice':
+            self._reslice()
+        elif mode == 'refresh_old_values':
             self._refresh_old_values()
 
     def _refresh_old_values(self):

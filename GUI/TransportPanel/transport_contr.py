@@ -139,6 +139,28 @@ class TransportContr(QObject):
         self.TransportView.SliceLenSpin.setValue(self.SourceRange.slice_length)
         self.TransportView.setSlicesNum(self.SourceRange.slices_num)
 
+    def updAudioToEqSettings(self, refreshAfter=True):
+        if self.parent.CurrentMode.name not in ('Learn', 'Test') or not self.parent.eqSetChanged:
+            return
+        refresh_needed = False
+        if self.parent.gainDepthChanged and \
+                self.parent.EQSetContr.setGainDepth(self.parent.EQSetContr.EQSetView.GainRangeSpin.value()):
+            refresh_needed = True
+        if self.parent.qChanged:
+            # print('qChanged')
+            self.parent.EQSetContr.updADGenQ()
+            refresh_needed = True
+        if refresh_needed and refreshAfter:
+            self.refreshAudio()
+        return refresh_needed
+
+    def refreshAudio(self):
+        if self.parent.CurrentMode.name not in ('Learn', 'Test') or self.parent.ADGen is None:
+            return
+        self.parent.CurrentMode.updateCurrentAudio()
+        self.parent.ADGen.refresh_audio(filepath=self.parent.CurrentMode.CurrentAudio)
+        self.PlayerContr.loadCurrentAudio(play_after=False)
+
     def setInitCropRegionView(self):
         self.onSourceRangeChanged()
         self.TransportView.AudioSliderView.CropRegion.show()

@@ -1,6 +1,28 @@
 import math
 
 
+def expected_results(eq_mode: int, DualBand: bool):     # eq_mode 1 -- 1-octave; eq_mode 2 -- 1/3-octave EQ
+    exp_res = (40, 40)
+    if eq_mode == 1 and not DualBand:
+        exp_res = (85, 95)
+    elif eq_mode == 2 and not DualBand:
+        exp_res = (75, 90)
+    elif eq_mode == 1 and DualBand:
+        exp_res = (70, 85)
+    elif eq_mode == 2 and DualBand:
+        exp_res = (65, 80)
+    return exp_res
+
+
+def passed_failed(user_score: int or float, exp_res: tuple, fail_line=5):
+    if user_score < exp_res[0] - fail_line:
+        return 'failed'
+    elif exp_res[0] - fail_line <= user_score <= exp_res[1]:
+        return 'passed'
+    else:
+        return 'passed+'
+
+
 class ScoreCalculator:
     def __init__(self):
         self.CurrentRightAnswer = None
@@ -52,4 +74,4 @@ class ScoreCalculator:
 
     @property
     def totalScore(self):
-        return round(sum(x[2] for x in self.ScoreList))
+        return math.ceil(sum(x[2] for x in self.ScoreList))

@@ -81,7 +81,9 @@ class AudioDrillGen:
 
     @property
     def gain_headroom(self):
-        headroom = -3 if self._DualBandMode else -1
+        headroom = -4 if self._DualBandMode else -1
+        if self.gain_depth() < abs(headroom):
+            headroom = self.gain_depth() * -1
         return self.gain_depth()/-2 + headroom
 
     @order.setter
@@ -107,6 +109,16 @@ class AudioDrillGen:
             with AudioFile(audio_path, 'w', self.af_samplerate, self.af_num_channels) as o:
                 o.write(audio)
         return freq, audio
+
+    def refresh_audio(self, filepath=None):
+        if self._last_freq is None:
+            return
+        audio = self._audio_out(renderCurrent=True, fromStart=False)
+        if filepath is None:
+            return audio
+        with AudioFile(filepath, 'w', self.af_samplerate, self.af_num_channels) as o:
+            o.write(audio)
+        return filepath
 
     def _freq_out(self, force_freq=None):
         self._last_freq = self._exercise_gen.seqOut(force_freq)

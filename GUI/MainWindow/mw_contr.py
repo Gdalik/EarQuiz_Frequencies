@@ -1,3 +1,4 @@
+import contextlib
 import shutil
 from definitions import app, TEMP_AUDIO_DIR
 from typing import Union
@@ -20,6 +21,7 @@ from PyQt6.QtGui import QActionGroup
 import platform
 from Model.calc import optimal_range_length
 from filehash import FileHash
+from Utilities.Q_extract import Qextr
 
 
 class MainWindowContr(QObject):
@@ -30,6 +32,7 @@ class MainWindowContr(QObject):
     SourceRange: PreviewAudioCrop or None
     ADGen: AudioDrillGen or None
     LoadedFileHash: str or None
+    LoadedFilePath: str or None
 
     def __init__(self):
         super().__init__()
@@ -142,6 +145,7 @@ class MainWindowContr(QObject):
         self.SourceAudio = None
         self.ADGen = None
         self.LoadedFileHash = None
+        self.LoadedFilePath = None
         self.disconnectSourceRangeSig()
         self.SourceRange = None
         self.TransportContr.PlayerContr.clearSource()
@@ -149,13 +153,12 @@ class MainWindowContr(QObject):
         '''self.mw_view.actionPlayPause.setEnabled(False)
         self.mw_view.actionStop.setEnabled(False)'''
 
-    def hashAudioFile(self, refresh=True):
+    def hashAudioFile(self):
         if self.SourceAudio is None:
             return
         md5hasher = FileHash('md5')
         hash = md5hasher.hash_file(self.SourceAudio.path)
-        if refresh:
-            self.LoadedFileHash = hash
+        self.LoadedFileHash = hash
         return hash
 
     def setPlaybackButtons(self):
@@ -176,7 +179,8 @@ class MainWindowContr(QObject):
             self.CurrentMode.updateCurrentAudio()
         else:
             self.mw_view.actionPreview_Mode.setChecked(True)
-        if self.LoadedFileHash is not None and self.LoadedFileHash == self.hashAudioFile(refresh=False):
+
+        if self.LoadedFilePath is not None and Song.path == self.LoadedFilePath:
             self.TransportContr.PlayerContr.onStopTriggered()
             self.TransportContr.PlayerContr.play()
             return
@@ -209,21 +213,70 @@ class MainWindowContr(QObject):
     def setAudioDrillGen(self):
         # print(self.SourceAudio)
         if self.ADGen is None and self.SourceAudio is not None and self.LoadedFileHash:
-            EQP = self.EQContr.EQpattern
-            SA = self.SourceAudio
-            SR = self.SourceRange
-            ADG = ProcTrackControl(AudioDrillGen, args=[self.EQContr.getAvailableFreq()],
-                                   kwargs={'boost_cut': EQP['EQ_boost_cut'],
-                                           'DualBandMode': EQP['DualBandMode'],
-                                           'audio_source_path': SA.path,
-                                           'starttime': SR.starttime,
-                                           'endtime': SR.endtime,
-                                           'drill_length': SR.slice_length,
-                                           'order': self.learnFreqOrder,
-                                           'boost_cut_priority': self.boostCutPriority,
-                                           'disableAdjacent': EQP['DisableAdjacentFiltersMode']})
-            print(ADG)
-            ADG.exec()
-            self.ADGen = ADG.return_obj or None
-            if ADG.error:
-                self.mw_view.error_msg(ADG.error)
+            self._createADGen()
+        elif self.ADGen is not None:
+            self._adjustADGenCropRange()
+        self._adjustADGenOrderToMode()
+
+    def _createADGen(self):
+        EQP = self.EQContr.EQpattern
+        SR = self.SourceRange
+        SA = self.SourceAudio
+        ADG = ProcTrackControl(AudioDrillGen, args=[self.EQContr.getAvailableFreq()],
+                               kwargs={'boost_cut': EQP['EQ_boost_cut'],
+                                       'DualBandMode': EQP['DualBandMode'],
+                                       'audio_source_path': SA.path,
+                                       'starttime': SR.starttime,
+                                       'endtime': SR.endtime,
+                                       'drill_length': SR.slice_length,
+                                       'gain_depth': self.EQSetContr.EQSetView.GainRangeSpin.value(),
+                                       'Q': Qextr(self.EQSetContr.EQSetView.BWBox.currentText()),
+                                       'order': self.learnFreqOrder,
+                                       'boost_cut_priority': self.boostCutPriority,
+                                       'disableAdjacent': EQP['DisableAdjacentFiltersMode']})
+        ADG.exec()
+        self.ADGen = ADG.return_obj or None
+        if ADG.error:
+            self.mw_view.error_msg(ADG.error)
+
+    def _adjustADGenCropRange(self):
+        SR = self.SourceRange
+        # print(f'{self.SourceRange.starttime=} {self.SourceRange.endtime=}')
+        self.ADGen.audiochunk.setStrictModeActive(True)
+        self.ADGen.audiochunk.starttime = SR.starttime
+        self.ADGen.audiochunk.endtime = SR.endtime
+        self.ADGen.audiochunk.slice_length = SR.slice_length
+        self.ADGen.audiochunk.setStrictModeActive(False)
+        action = self.ADGen.audiochunk.checkActionNeeded()
+        if action is None:
+            return
+        if action == 'reset':
+            ADG_upd = ProcTrackControl(self.ADGen.audiochunk.update, args=[action])
+            if not ADG_upd.exec():
+                self.ADGen = None
+            if ADG_upd.error:
+                self.mw_view.error_msg(ADG_upd.error)
+                self.ADGen = None
+        else:
+            self.ADGen.audiochunk.update(mode=action)
+
+    def _adjustADGenOrderToMode(self):
+        if self.ADGen is None:
+            return
+        if self.CurrentMode.name == 'Learn':
+            self.ADGen.order = self.learnFreqOrder
+        elif self.CurrentMode.name == 'Test':
+            self.ADGen.order = 'random'
+
+    @property
+    def gainDepthChanged(self):
+        return self.EQSetContr.EQSetView.GainRangeSpin.value() != self.ADGen.gain_depth() \
+            if self.ADGen is not None else False
+
+    @property
+    def qChanged(self):
+        return Qextr(self.EQSetContr.EQSetView.BWBox.currentText()) != self.ADGen.Q if self.ADGen is not None else False
+
+    @property
+    def eqSetChanged(self):
+        return bool(self.gainDepthChanged or self.qChanged)
