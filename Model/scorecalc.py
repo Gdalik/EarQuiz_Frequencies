@@ -74,4 +74,4 @@ class ScoreCalculator:
 
     @property
     def totalScore(self):
-        return math.ceil(sum(x[2] for x in self.ScoreList))
+        return math.ceil(sum(x[2] for x in self.ScoreList)) if self.ScoreList else 0

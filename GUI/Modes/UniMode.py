@@ -20,6 +20,7 @@ class UniMode:
         self.view.menuEQ_Bands_Playback_Order.setEnabled(True)
         self.setPlayerControls()
         self.view.SliceLenSpin.setEnabled(True)
+        self.view.EQSetView.setEnabled(True)
 
     @property
     def currentAudioCursorStartPos(self):   # in sec

@@ -61,7 +61,7 @@ class LearnMode(UniMode):
         if self._playbackStoppedEndedBlocked:
             return
         self.parent.EQContr.resetEQ()
-        self.view.Eq_Settings.setEnabled(True)
+        self.view.EQSetView.setEnabled(True)
         # self.view.PatternBoxView.setEnabled(True)
 
     def blockPlaybackStoppedEnded(self, arg: bool):
@@ -70,7 +70,7 @@ class LearnMode(UniMode):
     def oncePlayingStarted(self):
         if not self.parent.EQContr.frozen:
             self.parent.EQContr.freezeEQ()
-        self.view.Eq_Settings.setEnabled(False)
+        self.view.EQSetView.setEnabled(False)
         # self.view.PatternBoxView.setEnabled(False)
         if not self._checkSliders():
             self.view.EQView.setHandles(self.currentDrillFreq, blockSignals=True)

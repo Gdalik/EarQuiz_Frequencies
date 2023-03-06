@@ -3,6 +3,7 @@ class EQSetView:
         self.mw_view = mw_view
         self.GainRangeSpin = self.mw_view.GainRangeSpin
         self.BWBox = self.mw_view.BWBox
+        self.ResetBut = self.mw_view.ResetEQBut
 
     def refreshBWQList(self, items: list):
         self.BWBox.clear()
@@ -22,4 +23,9 @@ class EQSetView:
         self.BWBox.blockSignals(True)
         self.BWBox.setCurrentText(BW)
         self.BWBox.blockSignals(False)
+
+    def setEnabled(self, arg: bool):
+        self.BWBox.setEnabled(arg)
+        self.GainRangeSpin.setEnabled(arg)
+        self.ResetBut.setEnabled(arg)
 

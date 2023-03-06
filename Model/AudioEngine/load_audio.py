@@ -1,6 +1,9 @@
 import math
 import time
 from pathlib import Path
+
+import numpy
+
 from Model.AudioEngine.process import ChunkedProc
 from Model.calc import find_divider
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
@@ -27,6 +30,7 @@ class AudioChunk(PreviewAudioCrop):
             self.source_length = self.audiofile.frames / self.audiofile.samplerate
             self.samplerate = int(self.audiofile.samplerate)
         if self.source_length < 30:
+            self._close_audiofile()
             raise ValueError('Audio file length cannot be less than 30 sec')
         super().__init__(audiofile_length=self.source_length,
                          starttime=starttime, endtime=endtime, slice_length=slice_length, strictMode=True)
@@ -108,17 +112,8 @@ class AudioChunk(PreviewAudioCrop):
         print(f'Processing time = {time.time() - a}')
 
     @property
-    def input_db_array(self):
-        chunk = self.cropped
-        chunk_abs = np.absolute(chunk)
-        with np.errstate(divide='ignore'):
-            return 20 * np.emath.log10(chunk_abs)
-
-    @property
     def max_level(self):
-        db_ar = self.input_db_array
-        max_ch_values = [max(Ch) for Ch in db_ar]
-        return max(max_ch_values)
+        return 20 * np.emath.log10(max(numpy.max(np.absolute(self.cropped), axis=1)))
 
     @property
     def rms_level(self):
@@ -132,7 +127,9 @@ class AudioChunk(PreviewAudioCrop):
     def normalize(self, norm_level=None, callback=None):
         _callback = callback or self.callback if self.audiofile is not None else None
         head_level = norm_level or self.norm_level or 0
+        self._callback_out({'State': 'Analyzing amplitude levels', 'Percent': 0}, callback=_callback)
         delta = head_level - self.max_level
+        self._callback_out({'State': 'Analyzing amplitude levels', 'Percent': 100}, callback=_callback)
         gain = Gain(delta)
         self.old_cropped_normalized = copy.copy(self.cropped_normalized)
         self.norm_proc = ChunkedProc(self.cropped, self.samplerate, gain,

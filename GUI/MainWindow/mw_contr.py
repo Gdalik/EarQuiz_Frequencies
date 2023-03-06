@@ -142,7 +142,7 @@ class MainWindowContr(QObject):
             self.mw_view.actionPreview_Mode.setChecked(True)
 
     def setNoAudio(self):
-        self.SourceAudio = None
+        self.SourceAudio = self.LastSourceAudio = None
         self.ADGen = None
         self.LoadedFileHash = None
         self.LoadedFilePath = None
@@ -184,6 +184,8 @@ class MainWindowContr(QObject):
             self.TransportContr.PlayerContr.onStopTriggered()
             self.TransportContr.PlayerContr.play()
             return
+        if self.SourceAudio == self.LastSourceAudio:
+            return
         self.ADGen = None
         self.TransportContr.PlayerContr.loadCurrentAudio()
 
@@ -200,8 +202,10 @@ class MainWindowContr(QObject):
         if reset:
             self.SourceRange = PreviewAudioCrop(duration, 0, opt_length, slice_length)
         elif self.SourceRange is not None:
+            self.SourceRange.setStrictModeActive(True)
             self.SourceRange.starttime = 0
             self.SourceRange.endtime = opt_length
+            self.SourceRange.setStrictModeActive(False)
 
     def disconnectSourceRangeSig(self):
         if hasattr(self, 'SourceRange') and self.SourceRange is not None:
@@ -214,9 +218,10 @@ class MainWindowContr(QObject):
         # print(self.SourceAudio)
         if self.ADGen is None and self.SourceAudio is not None and self.LoadedFileHash:
             self._createADGen()
+            self._adjustADGenOrderToMode()
         elif self.ADGen is not None:
             self._adjustADGenCropRange()
-        self._adjustADGenOrderToMode()
+            self.PatternBoxContr.setExGenToPattern()
 
     def _createADGen(self):
         EQP = self.EQContr.EQpattern

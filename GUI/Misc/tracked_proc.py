@@ -65,7 +65,7 @@ class ProcTrackControl(QDialog):
         self.buttonBox = QDialogButtonBox(QDialogButtonBox.StandardButton.Cancel)
         self.buttonBox.rejected.connect(self.reject)
         self.layout = QVBoxLayout()
-        self.label = QLabel("Please wait...")
+        self.label = QLabel("")
         self.progbar = QProgressBar()
         self.progbar.setValue(0)
         self.progbar.setMinimum(0)
