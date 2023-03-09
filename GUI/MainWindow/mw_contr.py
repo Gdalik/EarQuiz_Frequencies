@@ -37,6 +37,7 @@ class MainWindowContr(QObject):
     def __init__(self):
         super().__init__()
         self.mw_view = MainWindowView()
+        self.CurrentAudio = None
         if platform.system() == 'Windows':
             self.mw_view.win_os_settings()
         self.EQContr = EQContr(self)

@@ -1,5 +1,4 @@
 import contextlib
-
 from Model.audiodrill_gen import create_temp_wavefile
 from pathlib import Path
 from definitions import TEMP_AUDIO_DIR
@@ -12,7 +11,6 @@ class UniMode:
         self.view = parent.mw_view
         self.parent = parent
         self.parent.CurrentMode = self
-        self.CurrentAudio = None
         self.playPause_toggleable = False
         self.view.setActionNextExerciseEnabled(False)
         self.enableTimeSettingsChanges(False)
@@ -57,8 +55,9 @@ class UniMode:
         self.view.actionShuffle_Playback.setEnabled(False)
 
     def updateCurrentAudio(self):
-        self.cleanTempAudio()
-        self.CurrentAudio = create_temp_wavefile()
+        # self.parent.LoadedFilePath = self.parent.CurrentAudio
+        # self.cleanTempAudio()
+        self.parent.CurrentAudio = create_temp_wavefile()
 
     def enableTimeSettingsChanges(self, arg: bool):
         self.view.TransportPanelView.AudioSliderView.Cursor.setMovable(arg)
@@ -82,8 +81,9 @@ class UniMode:
         pass
 
     def cleanTempAudio(self):
-        with contextlib.suppress(AttributeError):
-            if self.CurrentAudio is not None and Path(self.CurrentAudio).parent == Path(TEMP_AUDIO_DIR):
-                Path(self.CurrentAudio).unlink(missing_ok=True)
+        with contextlib.suppress(AttributeError, PermissionError):
+            # print(f'{self.parent.LoadedFilePath=}')
+            if self.parent.LoadedFilePath is not None and Path(self.parent.LoadedFilePath).parent == Path(TEMP_AUDIO_DIR):
+                Path(self.parent.LoadedFilePath).unlink(missing_ok=True)
 
 

@@ -32,13 +32,13 @@ class PlayerContr(QMediaPlayer):
         self.mw_view.VolumeSlider.valueChanged.connect(self.applyVolume)
 
     def loadCurrentAudio(self, play_after=True):
-        AudioToLoad = QUrl.fromLocalFile(self.parent.currentAudio)
+        AudioToLoad = QUrl.fromLocalFile(self.mw_contr.CurrentAudio)
         if self.source() == AudioToLoad:
             return
         self.clearSource()
         self.setSource(AudioToLoad)
         # print(f'{self.mw_contr.CurrentMode}')
-        print(f'loadCurrentAudio: {self.parent.currentAudio}')
+        print(f'loadCurrentAudio: {self.mw_contr.CurrentAudio}')
         self.playAfterAudioLoaded = play_after
         self.onceAudioLoaded = True
 
@@ -90,9 +90,10 @@ class PlayerContr(QMediaPlayer):
 
     def _onLoadedMedia(self):
         if self.onceAudioLoaded:
+            self.mw_contr.CurrentMode.cleanTempAudio()
             self.parent.onLoadSourceAudio()
             self._refreshAudioOutput_mac()
-            self.mw_contr.LoadedFilePath = self.parent.currentAudio
+            self.mw_contr.LoadedFilePath = self.mw_contr.CurrentAudio
             if self.mw_contr.CurrentMode.name == 'Preview':
                 self.mw_contr.hashAudioFile()
             self.onceAudioLoaded = False

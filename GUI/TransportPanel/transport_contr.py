@@ -22,10 +22,6 @@ class TransportContr(QObject):
     def SourceRange(self):
         return self.parent.SourceRange
 
-    @property
-    def currentAudio(self):
-        return self.parent.CurrentMode.CurrentAudio
-
     def _setCropRegionActions(self):
         self.TransportView.AudioSliderView.CropRegion.sigRegionChanged.connect(self.onCropRegionChanged)
         self.TransportView.AudioSliderView.CropRegion.sigRegionChangeFinished.connect(self.onCropRegionChangeFinished)
@@ -158,7 +154,7 @@ class TransportContr(QObject):
         if self.parent.CurrentMode.name not in ('Learn', 'Test') or self.parent.ADGen is None:
             return
         self.parent.CurrentMode.updateCurrentAudio()
-        self.parent.ADGen.refresh_audio(filepath=self.parent.CurrentMode.CurrentAudio)
+        self.parent.ADGen.refresh_audio(filepath=self.parent.CurrentAudio)
         self.PlayerContr.loadCurrentAudio(play_after=False)
 
     def setInitCropRegionView(self):

@@ -41,7 +41,7 @@ class PreviewMode(UniMode):
         self.view.actionShuffle_Playback.setEnabled(True)
 
     def updateCurrentAudio(self):
-        old_value = self.CurrentAudio
-        self.CurrentAudio = self.parent.SourceAudio.path if self.parent.SourceAudio else None
-        return self.CurrentAudio != old_value
+        old_value = self.parent.CurrentAudio
+        self.parent.CurrentAudio = self.parent.SourceAudio.path if self.parent.SourceAudio else None
+        return self.parent.CurrentAudio != old_value
 

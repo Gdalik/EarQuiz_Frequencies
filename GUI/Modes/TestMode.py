@@ -43,7 +43,7 @@ class TestMode(UniMode):
             return
         self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False)
         self.updateCurrentAudio()
-        return self.parent.ADGen.output(audio_path=self.CurrentAudio, force_freq=None, fromStart=fromStart)[0]
+        return self.parent.ADGen.output(audio_path=self.parent.CurrentAudio, force_freq=None, fromStart=fromStart)[0]
 
     def nextDrill(self, fromStart=False, play_after=True):
         if self.parent.ADGen is None:
