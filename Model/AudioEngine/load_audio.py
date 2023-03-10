@@ -113,7 +113,8 @@ class AudioChunk(PreviewAudioCrop):
 
     @property
     def max_level(self):
-        return 20 * np.emath.log10(max(numpy.max(np.absolute(self.cropped), axis=1)))
+        with np.errstate(divide='ignore'):
+            return 20 * np.emath.log10(max(numpy.max(np.absolute(self.cropped), axis=1)))
 
     @property
     def rms_level(self):

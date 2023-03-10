@@ -12,9 +12,11 @@ class LearnMode(UniMode):
         if self.parent.LastMode.name not in ['Preview', 'Uni']:
             self.parent.EQContr.resetEQ()
         self.view.setActionNextExerciseEnabled(True)
+        self.view.TransportPanelView.AudioSliderView.Cursor.hide()
         self.parent.setAudioDrillGen()
         self.nextDrill(fromStart=True)
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
+        self.view.TransportPanelView.AudioSliderView.Cursor.show()
         self.blockPlaybackStoppedEnded(False)
         self._playing_started = None
 

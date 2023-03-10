@@ -18,8 +18,8 @@ class PreviewMode(UniMode):
     @property
     def proxyCursorPos(self):   # in sec
         player_pos = self.parent.TransportContr.PlayerContr.position()
-        if player_pos == 0:
-            return self.sourceRangeStartTime or 0
+        if self.sourceRangeStartTime is not None and player_pos / 1000 < self.sourceRangeStartTime:
+            return self.sourceRangeStartTime
         return player_pos / 1000 if self.parent.SourceAudio is not None else 0
 
     @property

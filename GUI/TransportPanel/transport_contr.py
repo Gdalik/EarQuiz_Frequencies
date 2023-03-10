@@ -162,7 +162,7 @@ class TransportContr(QObject):
         self.onSourceRangeChanged()
         self.TransportView.AudioSliderView.CropRegion.show()
 
-    def onPlaybackPosChanged(self):
+    def onPlaybackPosChanged(self, pos):
         if not self.CursorBeingDragged:
             CursorPos = self.parent.CurrentMode.proxyCursorPos
             self.TransportView.AudioSliderView.Cursor.update_pos(CursorPos)
