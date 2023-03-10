@@ -82,7 +82,7 @@ class UniMode:
 
     def cleanTempAudio(self):
         with contextlib.suppress(AttributeError, PermissionError):
-            # print(f'{self.parent.LoadedFilePath=}')
+            print(f'{self.parent.LoadedFilePath=}')
             if self.parent.LoadedFilePath is not None and Path(self.parent.LoadedFilePath).parent == Path(TEMP_AUDIO_DIR):
                 Path(self.parent.LoadedFilePath).unlink(missing_ok=True)
 

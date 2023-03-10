@@ -57,11 +57,11 @@ class AudioChunk(PreviewAudioCrop):
         self.cropped = np.empty((self.audiofile.num_channels, 0))
         output = {'State': 'Reading / cropping audiofile', 'Percent': 0}
         self._callback_out(output, callback=callback)
-        if self.starttime > 0:
+        '''if self.starttime > 0:
             if Path(self.audiofile_path).suffix == '.flac':
                 self.audiofile.read(int(self.sec2fr(self.starttime)))
-            else:
-                self.audiofile.seek(int(self.sec2fr(self.starttime)))
+            else:'''
+        self.audiofile.seek(int(self.sec2fr(self.starttime)))
         chunk_length_fr = int(self.sec2fr(self.chunk_length))
         min_div = self.chunk_length // 300 if self.chunk_length >= 600 else 2
         divider = find_divider(chunk_length_fr, Min=min_div)
