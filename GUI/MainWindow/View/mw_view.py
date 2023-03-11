@@ -43,7 +43,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             # print(f'{W.objectName()}:{w_fontsize}')
             if w_fontsize < 10:
                 w_font.setPointSize(10)
-            elif w_fontsize >= 18:
+            elif w_fontsize >= 16:
                 w_font.setPointSize(w_fontsize - 4)
             elif 'TimeEdit' in W.objectName():
                 w_font.setPointSize(11)
