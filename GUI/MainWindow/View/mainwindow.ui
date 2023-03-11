@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1098</width>
+    <width>1119</width>
     <height>736</height>
    </rect>
   </property>
@@ -313,15 +313,21 @@ background: rgba(118, 214, 255, 85)
       </property>
       <item>
        <widget class="QGroupBox" name="ModeButtonsGroupBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>281</width>
           <height>79</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>16777215</width>
+          <width>281</width>
           <height>79</height>
          </size>
         </property>
@@ -437,6 +443,18 @@ background: rgba(118, 214, 255, 85)
         <property name="enabled">
          <bool>true</bool>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>35</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>35</width>
+          <height>35</height>
+         </size>
+        </property>
         <property name="styleSheet">
          <string notr="true">QToolButton{
 border: None;
@@ -464,6 +482,18 @@ background: rgba(118, 214, 255, 85)
       </item>
       <item>
        <widget class="QToolButton" name="MW_Stop">
+        <property name="minimumSize">
+         <size>
+          <width>35</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>35</width>
+          <height>35</height>
+         </size>
+        </property>
         <property name="styleSheet">
          <string notr="true">QToolButton{
 border: None;
@@ -492,6 +522,12 @@ background: rgba(118, 214, 255, 85)
       <item>
        <widget class="QToolButton" name="NextExercise">
         <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
          <size>
           <width>30</width>
           <height>30</height>
@@ -537,11 +573,11 @@ background: rgba(118, 214, 255, 85);
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
+         <enum>QSizePolicy::Expanding</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>20</width>
+          <width>40</width>
           <height>20</height>
          </size>
         </property>
@@ -549,9 +585,15 @@ background: rgba(118, 214, 255, 85);
       </item>
       <item>
        <widget class="QLabel" name="EqOnOffLab">
+        <property name="minimumSize">
+         <size>
+          <width>64</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
-          <width>16777215</width>
+          <width>64</width>
           <height>30</height>
          </size>
         </property>
@@ -4548,7 +4590,7 @@ font-weight: bold</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1098</width>
+     <width>1119</width>
      <height>22</height>
     </rect>
    </property>
@@ -5388,13 +5430,13 @@ font-weight: normal</string>
   <widget class="QDockWidget" name="ExScoreInfo">
    <property name="minimumSize">
     <size>
-     <width>250</width>
+     <width>280</width>
      <height>250</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>250</width>
+     <width>280</width>
      <height>250</height>
     </size>
    </property>
@@ -5419,7 +5461,7 @@ font-weight: normal</string>
       <widget class="QLabel" name="ExerciseNLab">
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="text">
@@ -5437,7 +5479,7 @@ font-weight: normal</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="acceptDrops">
@@ -5446,17 +5488,23 @@ font-weight: normal</string>
        <property name="text">
         <string>Your answer:</string>
        </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="CorAnswerLab">
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>Correct answer:</string>
+        <string>Right answer:</string>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -5464,7 +5512,7 @@ font-weight: normal</string>
       <widget class="QLabel" name="AnswerScoreLab">
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="text">
@@ -5476,7 +5524,7 @@ font-weight: normal</string>
       <widget class="QLabel" name="TotalScoreLab">
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="text">
@@ -5488,7 +5536,7 @@ font-weight: normal</string>
       <widget class="QLabel" name="TestStatusLab">
        <property name="font">
         <font>
-         <pointsize>18</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="text">
@@ -5505,13 +5553,13 @@ font-weight: normal</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>260</width>
+     <width>280</width>
      <height>150</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>260</width>
+     <width>280</width>
      <height>150</height>
     </size>
    </property>
@@ -5655,13 +5703,13 @@ font-weight: normal</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>256</width>
+     <width>280</width>
      <height>150</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>260</width>
+     <width>280</width>
      <height>150</height>
     </size>
    </property>

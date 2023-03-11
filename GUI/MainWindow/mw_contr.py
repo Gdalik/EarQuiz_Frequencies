@@ -1,12 +1,11 @@
-import contextlib
-import shutil
-from definitions import app, TEMP_AUDIO_DIR
+from definitions import app
 from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.EQ.eq_contr import EQContr
 from GUI.EQSettings.eqset_contr import EQSetContr
 from GUI.PatternBox.patternbox_contr import PatternBoxContr
 from GUI.Playlist.playlistcontr import PlaylistContr
+from GUI.ExScoreInfo.exscoreinfo_contr import ExScoreInfoContr
 from GUI.Modes.PreviewMode import PreviewMode
 from GUI.Modes.LearnMode import LearnMode
 from GUI.Modes.TestMode import TestMode
@@ -45,6 +44,7 @@ class MainWindowContr(QObject):
         self.PlaylistContr = PlaylistContr(self)
         self.PatternBoxContr = PatternBoxContr(self)
         self.TransportContr = TransportContr(self)
+        self.ExScore = ExScoreInfoContr(self)
         self.setNoAudio()
         self.setFileMenuActions()
         self.setModesActions()
@@ -71,13 +71,15 @@ class MainWindowContr(QObject):
 
     def setModesActions(self):
         self.modesActionGroup = QActionGroup(self)
+        self.modesActionGroup.setExclusive(True)
         self.modesActionGroup.addAction(self.mw_view.actionPreview_Mode)
         self.modesActionGroup.addAction(self.mw_view.actionLearn_Mode)
         self.modesActionGroup.addAction(self.mw_view.actionTest_Mode)
-        self.modesActionGroup.setExclusive(True)
+        self.modesActionGroup.addAction(self.mw_view.actionUni_Mode)
         self.mw_view.actionPreview_Mode.toggled.connect(self.setCurrentMode)
         self.mw_view.actionLearn_Mode.toggled.connect(self.setCurrentMode)
         self.mw_view.actionTest_Mode.toggled.connect(self.setCurrentMode)
+        self.mw_view.actionUni_Mode.toggled.connect(self.setCurrentMode)
         self.modesActionGroup.triggered.connect(self.onmodesActionGroupTriggered)
 
     def setLearnFreqOrderAG(self):
@@ -135,8 +137,17 @@ class MainWindowContr(QObject):
             self.CurrentMode = LearnMode(self)
         elif self.modesActionGroup.checkedAction() == self.mw_view.actionTest_Mode:
             self.CurrentMode = TestMode(self)
+        elif self.modesActionGroup.checkedAction() == self.mw_view.actionUni_Mode:
+            self.CurrentMode = UniMode(self)
         self._pushBackToPreview()
         self.LastMode = self.CurrentMode
+
+    def endTest(self):
+        if self.CurrentMode.name != 'Test':
+            return
+        self.CurrentAudio = None
+        self.TransportContr.PlayerContr.clearSource()
+        self.mw_view.actionUni_Mode.setChecked(True)
 
     def _pushBackToPreview(self):
         if self.ADGen is None and self.CurrentMode.name != 'Preview':

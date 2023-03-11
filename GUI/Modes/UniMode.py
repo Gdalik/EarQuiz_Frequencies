@@ -13,12 +13,17 @@ class UniMode:
         self.parent.CurrentMode = self
         self.playPause_toggleable = False
         self.view.setActionNextExerciseEnabled(False)
+        self.view.NextExercise.setVisible(False)
         self.enableTimeSettingsChanges(False)
         self.view.EqOnOffLab.hide()
         self.view.menuEQ_Bands_Playback_Order.setEnabled(True)
         self.setPlayerControls()
         self.view.SliceLenSpin.setEnabled(True)
         self.view.EQSetView.setEnabled(True)
+        self.view.TransportPanelView.AudioSliderView.SliceRegion.hide()
+        self.parent.ExScore.showTestStatus()
+        if self.sourceRangeStartTime is not None:
+            self.view.TransportPanelView.AudioSliderView.Cursor.update_pos(self.sourceRangeStartTime)
 
     @property
     def currentAudioCursorStartPos(self):   # in sec
@@ -78,6 +83,12 @@ class UniMode:
         pass
 
     def whilePlaying(self):
+        pass
+
+    def acceptAnswer(self):
+        pass
+
+    def restart_test(self):
         pass
 
     def cleanTempAudio(self):

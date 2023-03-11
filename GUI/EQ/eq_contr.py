@@ -24,6 +24,10 @@ class EQContr(QObject):
             self.parent.mw_view.actionLearn_Mode.setChecked(True)
         elif self.parent.CurrentMode.name == 'Learn' and self.freqAccepted:
             self.parent.CurrentMode.nextDrill()
+        elif self.parent.CurrentMode.name == 'Test' and self.freqAccepted:
+            self.parent.CurrentMode.acceptAnswer()
+            if self.parent.ExScore.test_status != 'in progress':
+                self.parent.endTest()
         self._checkSourceAudio()
 
     def _checkSourceAudio(self):

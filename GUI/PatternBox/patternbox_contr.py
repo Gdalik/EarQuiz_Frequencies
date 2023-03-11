@@ -21,6 +21,8 @@ class PatternBoxContr(object):
         self.mw_contr.EQSetContr.refreshSet()
         self.setExGenToPattern()
         with contextlib.suppress(AttributeError):
+            if self.mw_contr.CurrentMode.name == 'Test':
+                self.mw_contr.CurrentMode.restart_test()
             self.mw_contr.CurrentMode.nextDrill(fromStart=True, play_after=True)
 
     def setExGenToPattern(self):

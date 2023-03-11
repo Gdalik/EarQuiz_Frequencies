@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy
 
 from Model.AudioEngine.process import ChunkedProc
-from Model.calc import find_divider
+from Model.calc import find_divider, minimize_divider
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 import numpy as np
 from pedalboard import Gain
@@ -51,32 +51,22 @@ class AudioChunk(PreviewAudioCrop):
         if self.audiofile_path == 'pinknoise':
             self.cropped = pinknoise
             return
-        # print(f'read_and_crop {self.audiofile_path=}')
         self._open_audiofile()  # makes no effect if audiofile is already opened
         self.user_stopped = False
         self.cropped = np.empty((self.audiofile.num_channels, 0))
         output = {'State': 'Reading / cropping audiofile', 'Percent': 0}
         self._callback_out(output, callback=callback)
-        '''if self.starttime > 0:
-            if Path(self.audiofile_path).suffix == '.flac':
-                self.audiofile.read(int(self.sec2fr(self.starttime)))
-            else:'''
         self.audiofile.seek(int(self.sec2fr(self.starttime)))
-        chunk_length_fr = int(self.sec2fr(self.chunk_length))
-        min_div = self.chunk_length // 300 if self.chunk_length >= 600 else 2
-        divider = find_divider(chunk_length_fr, Min=min_div)
-        # print(f'{divider=}')
-        while self.cropped[0].size != chunk_length_fr:
-            ch = self.audiofile.read(int(chunk_length_fr / divider))
+        divider = self._find_rc_divider()
+        while self.cropped[0].size != self.chunk_length_fr:
+            ch = self.audiofile.read(int(self.chunk_length_fr / divider))
             self.cropped = np.concatenate((self.cropped, ch), axis=1)
-            output['Percent'] = int(self.cropped[0].size / chunk_length_fr * 100)
-            # print(f'{self.cropped[0].size=} {chunk_length_fr=}')
+            output['Percent'] = int(self.cropped[0].size / self.chunk_length_fr * 100)
             try:
                 self._callback_out(output, callback=callback)
             except InterruptedException:
                 self._stop()
                 return
-        # output.clear()
         self._close_audiofile()
 
     def _open_audiofile(self):
@@ -84,6 +74,14 @@ class AudioChunk(PreviewAudioCrop):
             return self.audiofile
         self.audiofile = AudioFile(self.audiofile_path)
         return self.audiofile
+
+    def _find_rc_divider(self, max_div=100):
+        min_div = self.chunk_length // 300 if self.chunk_length >= 600 else 2
+        return minimize_divider(self.chunk_length_fr, min_div=min_div, max_div=max_div)
+
+    @property
+    def chunk_length_fr(self):
+        return int(self.sec2fr(self.chunk_length))
 
     def _close_audiofile(self):
         if self.audiofile is None or self.audiofile.closed:

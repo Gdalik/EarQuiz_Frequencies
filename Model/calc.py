@@ -19,5 +19,13 @@ def find_divider(x: int, Min=2):
     return div
 
 
+def minimize_divider(arr_length, min_div=2, max_div=100):
+    divider = find_divider(arr_length, Min=min_div)
+    while divider > max_div and min_div > 2:
+        divider = find_divider(arr_length, Min=min_div)
+        min_div -= 1
+    return divider
+
+
 def optimal_range_length(total_length: int or float, slice_length: int or float, num_slices=10):
     return min(total_length // slice_length, num_slices) * slice_length

@@ -1,4 +1,5 @@
-from PyQt6.QtWidgets import QMainWindow, QWidget, QSizePolicy
+from PyQt6.QtWidgets import QMainWindow, QWidget, QSizePolicy, QToolButton
+from PyQt6.QtGui import QAction
 from PyQt6.QtCore import Qt
 from GUI.MainWindow.View.mainwindow import Ui_MainWindow
 from GUI.TransportPanel.transport_view import TransportPanelView
@@ -26,15 +27,12 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.status = self.statusBar()
         self.setMinimalistView()
         self.actionMinimal.triggered.connect(self.setMinimalistView)
+        self.setUniActBut()
         self.alt_pressed = None
         self.setFocus()
 
-        '''self.progress = QProgressBar(self)
-        self.progress.setMaximumWidth(100)
-        self.progress.setAlignment(Qt.AlignmentFlag.AlignLeft)
-        self.progress.setTextVisible(True)
-        self.status.addWidget(self.progress)
-        self.progress.hide()'''
+        '''
+        self.status.addWidget(self.progress)'''
 
     def win_os_settings(self):
         widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + \
@@ -74,6 +72,15 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         for item in DockActions:
             self.menuView.addAction(item)
 
+    def setUniActBut(self):
+        self.actionUni_Mode = QAction(parent=self)
+        self.actionUni_Mode.setCheckable(True)
+        self.UniBut = QToolButton(parent=self.ModeButtonsGroupBox)
+        self.UniBut.setVisible(False)
+        self.UniBut.setCheckable(True)
+        self.UniBut.setDefaultAction(self.actionUni_Mode)
+        self.buttonGroup.addButton(self.UniBut)
+
     def setMinimalistView(self):
         if self.isFullScreen():
             self.setWindowFlags(self._flags)
@@ -93,7 +100,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def setActionNextExerciseEnabled(self, arg):
         self.actionNext_Exercise.setEnabled(arg)
         self.actionNext_Exercise.setVisible(arg)
-        self.NextExercise.setVisible(arg)
+        # self.NextExercise.setVisible(arg)
 
     def mousePressEvent(self, event):
         super(MainWindowView, self).mousePressEvent(event)

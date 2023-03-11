@@ -1,5 +1,4 @@
 from GUI.Modes.UniMode import UniMode
-from GUI.ExScoreInfo.exscoreinfo_contr import ExScoreInfoContr
 
 
 class TestMode(UniMode):
@@ -9,19 +8,21 @@ class TestMode(UniMode):
         super().__init__(parent)
         self.name = 'Test'
         self.currentDrillFreq = None
-        self.ExScore = ExScoreInfoContr(parent)
         self.view.SliceLenSpin.setEnabled(False)
         self.view.EQSetView.setEnabled(False)
         self.view.menuEQ_Bands_Playback_Order.setEnabled(False)
         if self.parent.LastMode.name not in ['Preview', 'Uni']:
             self.parent.EQContr.resetEQ()
         self.view.setActionNextExerciseEnabled(False)
+        self.view.NextExercise.setVisible(True)
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
+        self.parent.CurrentMode.restart_test()
         self.parent.setAudioDrillGen()
         self.nextDrill(fromStart=True)
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
         self.view.ExScoreInfo.show()
         self.view.TransportPanelView.AudioSliderView.Cursor.show()
+        self.parent.ExScore.showTestStatus()
         self.blockPlaybackStoppedEnded(False)
         self._playing_started = None
 
@@ -51,11 +52,21 @@ class TestMode(UniMode):
         if self.parent.ADGen is None:
             return
         self.parent.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
+        self.view.setActionNextExerciseEnabled(False)
+        self.parent.EQContr.resetEQ()
         self.currentDrillFreq = self.generateDrill(fromStart=fromStart)
         print(f'{self.currentDrillFreq=}')
         self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=play_after)
         self.updateSliceRegion()
-        self.ExScore.nextEx()
+        self.parent.ExScore.nextEx()
+
+    def acceptAnswer(self):
+        eq_values = self.parent.EQContr.getEQValues()
+        self.parent.ExScore.onAnswerAccepted(RightAnswer=self.currentDrillFreq, UserAnswer=eq_values)
+        self.parent.EQContr.freezeEQ()
+        self.parent.EQContr.highlightEQFreq(self.currentDrillFreq)
+        self.view.setActionNextExerciseEnabled(self.parent.ExScore.test_status == 'in progress')
+        self.parent.ExScore.showTestStatus()
 
     def updateSliceRegion(self):
         if self.parent.ADGen is None:
@@ -76,3 +87,6 @@ class TestMode(UniMode):
 
     def whilePlaying(self):
         self.view.setEQStateIndicatorOn(self.parent.TransportContr.eqStateOnOff())
+
+    def restart_test(self):
+        self.parent.ExScore.refresh()
