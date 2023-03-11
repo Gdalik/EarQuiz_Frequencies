@@ -31,7 +31,7 @@ class TransportContr(QObject):
         self.TransportView.EndPointBut.clicked.connect(self.onEndPointButClicked)
         self.TransportView.RangeToStart.clicked.connect(self.onRangeToStartClicked)
         self.TransportView.RangeToEnd.clicked.connect(self.onRangeToEndClicked)
-        self.TransportView.ClearRangeBut.clicked.connect(lambda x: self.parent.setOptimalSourceRange(reset=False))
+        self.TransportView.ClearRangeBut.clicked.connect(self.onClearRangeButClicked)
 
     def _setCursorActions(self):
         self.TransportView.AudioSliderView.Cursor.sigPositionChanged.connect(self.onCursorPositionChanged)
@@ -95,6 +95,10 @@ class TransportContr(QObject):
 
     def onRangeToEndClicked(self):
         self.SourceRange.endtime = self.SourceRange.source_length
+
+    def onClearRangeButClicked(self):
+        self.parent.setOptimalSourceRange(reset=False)
+        self._checkPlaybackRange()
 
     def _resetSourceRange(self, _range: list or tuple):
         self.SourceRange.blockSignals(True)
