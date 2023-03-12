@@ -142,8 +142,8 @@ class PlayerContr(QMediaPlayer):
 
     def _playLoadedAudio(self):
         if self.playAfterAudioLoaded:
-            self.onPlayTriggered()
             self._checkPreviewStartTime()
+            self.onPlayTriggered()
             self.playAfterAudioLoaded = False
 
     def _checkPreviewStartTime(self):
