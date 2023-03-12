@@ -1,7 +1,7 @@
 import time
 
 from pedalboard import PeakFilter, Pedalboard
-from Model.calc import proc_unproc_len, rand_buffer, find_divider, minimize_divider
+from Model.calc import proc_unproc_len, rand_buffer, find_divider, optimize_divider
 import numpy as np
 from Utilities.exceptions import InterruptedException
 
@@ -52,7 +52,7 @@ class ChunkedProc:
         self.stopped = False
         output = np.empty((len(self.source), 0))
         min_div = self.source[0].size // (300 * self.samplerate) if self.source[0].size >= 600 * self.samplerate else 2
-        divider = minimize_divider(self.source[0].size, min_div=min_div)
+        divider = optimize_divider(self.source[0].size, ref_div=min_div)
         chunks = np.hsplit(self.source, divider)
         callback_out()
         for ind, chunk in enumerate([*chunks]):

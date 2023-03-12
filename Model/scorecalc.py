@@ -70,7 +70,7 @@ class ScoreCalculator:
     @property
     def next_ex_num(self):
         count = len(self.ScoreList)
-        return f'{count + 1}/10' if count < 10 else ''
+        return count + 1 if count < 10 else 0
 
     @property
     def totalScore(self):

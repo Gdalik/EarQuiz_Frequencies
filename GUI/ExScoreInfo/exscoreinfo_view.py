@@ -25,7 +25,7 @@ class ExScoreInfoView:
         self.TestStatus.setText(self.TestStatus_t)
 
     def showExNum(self, value):
-        self.ExNum.setText(f'{self.ExNum_t} {value}')
+        self.ExNum.setText(f'{self.ExNum_t} <b>{value}</b>/10') if value else ''
 
     def showUserAnsw(self, value):
         self.UserAnsw.setText(f'{self.UserAnsw_t} {self.answerString(value)}')
@@ -34,11 +34,11 @@ class ExScoreInfoView:
         self.CorAnsw.setText(f'{self.CorAnsw_t} {self.answerString(value)}')
 
     def showAnswScore(self, value: int or float or None):
-        shown_value = f'{value} out of 10' if value is not None else ''
+        shown_value = f'<b>{value}</b>/10' if value is not None else ''
         self.AnswScore.setText(f'{self.AnswScore_t} {shown_value}')
 
     def showTotalScore(self, value: int or float, underlined=False):
-        text = f'{self.TotalScore_t} {value} out of 100'
+        text = f'{self.TotalScore_t} <b>{value}</b>/100'
         text = f'<u>{text}</u>' if underlined else text
         self.TotalScore.setText(text)
 

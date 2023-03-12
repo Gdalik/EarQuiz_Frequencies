@@ -19,11 +19,11 @@ def find_divider(x: int, Min=2):
     return div
 
 
-def minimize_divider(arr_length, min_div=2, max_div=100):
-    divider = find_divider(arr_length, Min=min_div)
-    while divider > max_div and min_div > 2:
-        divider = find_divider(arr_length, Min=min_div)
-        min_div -= 1
+def optimize_divider(arr_length, ref_div=2, max_div=100):
+    divider = find_divider(arr_length, Min=ref_div)
+    while divider > max_div and ref_div > 2:
+        divider = find_divider(arr_length, Min=ref_div)
+        ref_div -= 1
     return divider
 
 

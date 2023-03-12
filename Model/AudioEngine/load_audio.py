@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy
 
 from Model.AudioEngine.process import ChunkedProc
-from Model.calc import find_divider, minimize_divider
+from Model.calc import find_divider, optimize_divider
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 import numpy as np
 from pedalboard import Gain
@@ -77,7 +77,7 @@ class AudioChunk(PreviewAudioCrop):
 
     def _find_rc_divider(self, max_div=100):
         min_div = self.chunk_length // 300 if self.chunk_length >= 600 else 2
-        return minimize_divider(self.chunk_length_fr, min_div=min_div, max_div=max_div)
+        return optimize_divider(self.chunk_length_fr, ref_div=min_div, max_div=max_div)
 
     @property
     def chunk_length_fr(self):
