@@ -142,8 +142,15 @@ class PlayerContr(QMediaPlayer):
 
     def _playLoadedAudio(self):
         if self.playAfterAudioLoaded:
+            self._checkPreviewStartTime()
             self.onPlayTriggered()
             self.playAfterAudioLoaded = False
+
+    def _checkPreviewStartTime(self):
+        curMode = self.mw_contr.CurrentMode
+        starttime = curMode.currentAudioStartTime * 1000
+        if curMode.name == 'Preview' and self.position() != starttime:
+            self.setPosition(starttime)
 
     def onPlaybackStateChanged(self, state):
         if state == self.PlaybackState.PlayingState:
