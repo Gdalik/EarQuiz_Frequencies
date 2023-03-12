@@ -1,3 +1,6 @@
+from Utilities.freq2str import freqString
+
+
 class ExScoreInfoView:
     ExNum_t = 'Exercise:'
     UserAnsw_t = 'Your answer:'
@@ -28,10 +31,10 @@ class ExScoreInfoView:
         self.ExNum.setText(f'{self.ExNum_t} <b>{value}</b>/10') if value else ''
 
     def showUserAnsw(self, value):
-        self.UserAnsw.setText(f'{self.UserAnsw_t} {self.answerString(value)}')
+        self.UserAnsw.setText(f'{self.UserAnsw_t} {freqString(value)}')
 
     def showCorAnsw(self, value):
-        self.CorAnsw.setText(f'{self.CorAnsw_t} {self.answerString(value)}')
+        self.CorAnsw.setText(f'{self.CorAnsw_t} {freqString(value)}')
 
     def showAnswScore(self, value: int or float or None):
         shown_value = f'<b>{value}</b>/10' if value is not None else ''
@@ -48,22 +51,6 @@ class ExScoreInfoView:
         elif 'failed' in status or 'canceled' in status:
             status = self.colorStr(status, 'red')
         self.TestStatus.setText(f'{self.TestStatus_t} {status}')
-
-    @staticmethod
-    def answerString(answer: int or tuple):
-        def hzTokHz(value: int):
-            if value >= 1000:
-                return f'{value / 1000}kHz' if value % 1000 != 0 else f'{int(value / 1000)}kHz'
-            else:
-                return f'{value}Hz'
-
-        def bc(value: int):
-            return '(+)' if value > 0 else '(-)'
-
-        def valueToStr(value: int):
-            return f'{hzTokHz(abs(value))}{bc(value)}'
-
-        return valueToStr(answer) if isinstance(answer, int) else ', '.join([valueToStr(v) for v in answer])
 
     @staticmethod
     def colorStr(text: str, color):

@@ -55,7 +55,6 @@ class TestMode(UniMode):
         self.view.setActionNextExerciseEnabled(False)
         self.parent.EQContr.resetEQ()
         self.currentDrillFreq = self.generateDrill(fromStart=fromStart)
-        print(f'{self.currentDrillFreq=}')
         self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=play_after)
         self.updateSliceRegion()
         self.parent.ExScore.nextEx()
