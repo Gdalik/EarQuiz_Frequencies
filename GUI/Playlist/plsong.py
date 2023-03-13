@@ -1,4 +1,3 @@
-# from urllib.parse import urlparse
 from dataclasses import dataclass
 from pedalboard.io import AudioFile
 from Utilities.common_calcs import mmss
@@ -6,7 +5,7 @@ from pathlib import PurePath, Path
 from functools import cached_property
 
 
-@dataclass
+@dataclass(eq=False)
 class PlSong:
     inputPath: str
 

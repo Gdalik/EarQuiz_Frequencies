@@ -28,6 +28,7 @@ class PlaylistContr(QObject):
         self.MinusFilesBut.clicked.connect(self.removeTracks)
         self.PlusFilesBut.clicked.connect(lambda x: self.openFiles(mode='files'))
         self.PlaylistView.doubleClicked.connect(self.onDoubleClicked)
+        # self.playlistModel.layoutChanged.connect(lambda x: print('PL Changed!'))
 
     def addTracks(self, URLs: list, index=-1):
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)

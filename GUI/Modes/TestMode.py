@@ -4,7 +4,6 @@ from GUI.Modes.UniMode import UniMode
 class TestMode(UniMode):
     _playbackStoppedEndedBlocked: bool
     def __init__(self, parent):     # parent: MainWindowContr
-        self.blockPlaybackStoppedEnded(True)
         super().__init__(parent)
         self.name = 'Test'
         self.currentDrillFreq = None
@@ -21,25 +20,9 @@ class TestMode(UniMode):
         self.nextDrill(fromStart=True)
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
         self.view.ExScoreInfo.show()
-        self.view.TransportPanelView.AudioSliderView.Cursor.show()
         self.parent.ExScore.showTestStatus()
-        self.blockPlaybackStoppedEnded(False)
         self._playing_started = None
-
-    @property
-    def currentAudioStartTime(self):
-        return 0
-
-    @property
-    def currentAudioCursorStartPos(self):   # in sec
-        if self.parent.ADGen is None or self.parent.ADGen.audiochunk.currentSliceRange is None:
-            return self.sourceRangeStartTime or 0
-        return self.parent.ADGen.audiochunk.currentSliceRange[0]
-
-    @property
-    def proxyCursorPos(self):   # in sec
-        return self.parent.TransportContr.PlayerContr.position() / 1000 + self.currentAudioCursorStartPos \
-            if self.parent.SourceAudio is not None else 0
+        self.showAudioCursor()
 
     def generateDrill(self, fromStart=False):
         if self.parent.ADGen is None:
@@ -56,7 +39,6 @@ class TestMode(UniMode):
         self.parent.EQContr.resetEQ()
         self.currentDrillFreq = self.generateDrill(fromStart=fromStart)
         self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=play_after)
-        self.updateSliceRegion()
         self.parent.ExScore.nextEx()
 
     def acceptAnswer(self):
@@ -72,20 +54,6 @@ class TestMode(UniMode):
             return
         slicerange = self.parent.ADGen.audiochunk.currentSliceRange
         self.view.TransportPanelView.AudioSliderView.SliceRegion.setValues(slicerange[0], slicerange[1])
-
-    def playbackStoppedEnded(self):
-        if self._playbackStoppedEndedBlocked:
-            return
-        self.view.EqOnOffLab.setVisible(False)
-
-    def blockPlaybackStoppedEnded(self, arg: bool):
-        self._playbackStoppedEndedBlocked = arg
-
-    def oncePlayingStarted(self):
-        self.view.EqOnOffLab.setVisible(True)
-
-    def whilePlaying(self):
-        self.view.setEQStateIndicatorOn(self.parent.TransportContr.eqStateOnOff())
 
     def restart_test(self):
         self.parent.ExScore.refresh()

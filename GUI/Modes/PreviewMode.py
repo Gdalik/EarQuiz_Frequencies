@@ -45,3 +45,9 @@ class PreviewMode(UniMode):
         self.parent.CurrentAudio = self.parent.SourceAudio.path if self.parent.SourceAudio else None
         return self.parent.CurrentAudio != old_value
 
+    def oncePlayingStarted(self):
+        pass
+
+    def whilePlaying(self):
+        pass
+

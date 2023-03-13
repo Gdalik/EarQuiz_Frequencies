@@ -45,6 +45,7 @@ class MainWindowContr(QObject):
         self.PatternBoxContr = PatternBoxContr(self)
         self.TransportContr = TransportContr(self)
         self.ExScore = ExScoreInfoContr(self)
+        self.CurrentMode = self.LastMode = UniMode(self)
         self.setNoAudio()
         self.setFileMenuActions()
         self.setModesActions()
@@ -53,7 +54,6 @@ class MainWindowContr(QObject):
         self.setBoostCutOrderAG()
         self.setPlaybackButtons()
         self.setShufflePBMode()
-        self.CurrentMode = self.LastMode = UniMode(self)
         self.mw_view.NextExercise.setDefaultAction(self.mw_view.actionNext_Exercise)
         self.mw_view.actionNext_Exercise.triggered.connect(self.onNextExerciseTriggered)
         self.mw_view.actionClose.triggered.connect(self.onCloseTriggered)
@@ -98,7 +98,7 @@ class MainWindowContr(QObject):
     def onLearnFreqOrderActionChanged(self):
         if self.ADGen is None:
             return
-        self.ADGen.order = self.learnFreqOrder
+        self.ADGen.order = self.freqOrder
 
     def onBoostCutOrderActionChanged(self):
         if self.ADGen is None:
@@ -114,7 +114,9 @@ class MainWindowContr(QObject):
         player.onStopTriggered(checkPlaybackState=True)
 
     @property
-    def learnFreqOrder(self):
+    def freqOrder(self):
+        if self.CurrentMode.name == 'Test':
+            return 'random'
         if self.LearnFreqOrderActionGroup.checkedAction() == self.mw_view.actionAscendingEQ:
             return 'asc'
         if self.LearnFreqOrderActionGroup.checkedAction() == self.mw_view.actionDescendingEQ:
@@ -138,16 +140,16 @@ class MainWindowContr(QObject):
         elif self.modesActionGroup.checkedAction() == self.mw_view.actionTest_Mode:
             self.CurrentMode = TestMode(self)
         elif self.modesActionGroup.checkedAction() == self.mw_view.actionUni_Mode:
-            self.CurrentMode = UniMode(self)
+            self.CurrentMode = UniMode(self, contrEnabled=self.LastMode.name != 'Test')
         self._pushBackToPreview()
         self.LastMode = self.CurrentMode
 
     def endTest(self):
         if self.CurrentMode.name != 'Test':
             return
-        self.CurrentAudio = None
-        self.TransportContr.PlayerContr.clearSource()
         self.mw_view.actionUni_Mode.setChecked(True)
+        self.mw_view.ExScoreInfo.show()
+        self.mw_view.SupportProject.show()
 
     def _pushBackToPreview(self):
         if self.ADGen is None and self.CurrentMode.name != 'Preview':
@@ -156,14 +158,14 @@ class MainWindowContr(QObject):
     def setNoAudio(self):
         self.SourceAudio = self.LastSourceAudio = None
         self.ADGen = None
+        self.CurrentAudio = None
         self.LoadedFileHash = None
-        self.LoadedFilePath = None
         self.disconnectSourceRangeSig()
         self.SourceRange = None
         self.TransportContr.PlayerContr.clearSource()
+        self.CurrentMode.cleanTempAudio()
+        self.LoadedFilePath = None
         self.mw_view.TransportPanelView.noSongState()
-        '''self.mw_view.actionPlayPause.setEnabled(False)
-        self.mw_view.actionStop.setEnabled(False)'''
 
     def hashAudioFile(self):
         if self.SourceAudio is None:
@@ -182,6 +184,7 @@ class MainWindowContr(QObject):
         self.mw_view.ShufflePlaybackBut.setDefaultAction(self.mw_view.actionShuffle_Playback)
 
     def load_song(self, Song: PlSong):
+        print(f'{Song.__hash__=}')
         if hasattr(Song, 'file_properties'):
             Song.__delattr__('file_properties')
         if Song.duration < 30 or not Song.exists:
@@ -248,7 +251,7 @@ class MainWindowContr(QObject):
                                        'drill_length': SR.slice_length,
                                        'gain_depth': self.EQSetContr.EQSetView.GainRangeSpin.value(),
                                        'Q': Qextr(self.EQSetContr.EQSetView.BWBox.currentText()),
-                                       'order': self.learnFreqOrder,
+                                       'order': self.freqOrder,
                                        'boost_cut_priority': self.boostCutPriority,
                                        'disableAdjacent': EQP['DisableAdjacentFiltersMode']})
         ADG.exec()
@@ -280,10 +283,7 @@ class MainWindowContr(QObject):
     def _adjustADGenOrderToMode(self):
         if self.ADGen is None:
             return
-        if self.CurrentMode.name == 'Learn':
-            self.ADGen.order = self.learnFreqOrder
-        elif self.CurrentMode.name == 'Test':
-            self.ADGen.order = 'random'
+        self.ADGen.order = self.freqOrder
 
     @property
     def gainDepthChanged(self):

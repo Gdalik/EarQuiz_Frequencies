@@ -9,7 +9,7 @@ class LearnMode(UniMode):
         self.name = 'Learn'
         self.currentDrillFreq = None
         self.view.SliceLenSpin.setEnabled(False)
-        if self.parent.LastMode.name not in ['Preview', 'Uni']:
+        if self.parent.LastMode.name not in ['Preview']:
             self.parent.EQContr.resetEQ()
         self.view.setActionNextExerciseEnabled(True)
         self.view.NextExercise.setVisible(True)
@@ -17,24 +17,9 @@ class LearnMode(UniMode):
         self.parent.setAudioDrillGen()
         self.nextDrill(fromStart=True)
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
-        self.view.TransportPanelView.AudioSliderView.Cursor.show()
+        self.showAudioCursor()
         self.blockPlaybackStoppedEnded(False)
         self._playing_started = None
-
-    @property
-    def currentAudioStartTime(self):
-        return 0
-
-    @property
-    def currentAudioCursorStartPos(self):   # in sec
-        if self.parent.ADGen is None or self.parent.ADGen.audiochunk.currentSliceRange is None:
-            return self.sourceRangeStartTime or 0
-        return self.parent.ADGen.audiochunk.currentSliceRange[0]
-
-    @property
-    def proxyCursorPos(self):   # in sec
-        return self.parent.TransportContr.PlayerContr.position() / 1000 + self.currentAudioCursorStartPos \
-            if self.parent.SourceAudio is not None else 0
 
     def generateDrill(self, fromStart=False):
         if self.parent.ADGen is None:
@@ -50,9 +35,7 @@ class LearnMode(UniMode):
             return
         self.parent.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
         self.currentDrillFreq = self.generateDrill(fromStart=fromStart)
-        # self.view.EQView.setHandles(self.currentDrillFreq, blockSignals=True)
         self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=play_after)
-        self.updateSliceRegion()
 
     def updateSliceRegion(self):
         if self.parent.ADGen is None:
@@ -71,6 +54,7 @@ class LearnMode(UniMode):
         self._playbackStoppedEndedBlocked = arg
 
     def oncePlayingStarted(self):
+        super(LearnMode, self).oncePlayingStarted()
         if not self.parent.EQContr.frozen:
             self.parent.EQContr.freezeEQ()
         self.view.EQSetView.setEnabled(False)

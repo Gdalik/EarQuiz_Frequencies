@@ -31,7 +31,7 @@ class PatternBoxContr(object):
         if not hasattr(self.mw_contr, 'ADGen') or self.mw_contr.ADGen is None:
             return
         eq_pattern = self.mw_contr.EQContr.EQpattern
-        exgen_order = self.mw_contr.learnFreqOrder if self.mw_contr.CurrentMode.name != 'Test' else 'random'
+        exgen_order = self.mw_contr.freqOrder
         self.mw_contr.ADGen.resetExGen(self.mw_contr.EQContr.getAvailableFreq(),
                                        boost_cut=eq_pattern['EQ_boost_cut'],
                                        DualBandMode=eq_pattern['DualBandMode'],

@@ -176,7 +176,7 @@ class TransportContr(QObject):
             self.parent.CurrentMode.whilePlaying()
 
     def eqStateOnOff(self):
-        if self.parent.CurrentMode.name not in ('Learn', 'Test') or self.parent.ADGen is None:
+        if self.parent.CurrentMode.name == 'Preview' or self.parent.ADGen is None:
             return False
         slice_len = self.parent.ADGen.audiochunk.slice_length
         proc_unproc = proc_unproc_len(slice_len, self.parent.ADGen.proc_t_perc)
