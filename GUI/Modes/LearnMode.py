@@ -16,6 +16,7 @@ class LearnMode(UniMode):
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
         self.parent.setAudioDrillGen()
         self.nextDrill(fromStart=True)
+        self.updateSliceRegion()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
         self.showAudioCursor()
         self.blockPlaybackStoppedEnded(False)

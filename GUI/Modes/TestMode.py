@@ -18,6 +18,7 @@ class TestMode(UniMode):
         self.parent.CurrentMode.restart_test()
         self.parent.setAudioDrillGen()
         self.nextDrill(fromStart=True)
+        self.updateSliceRegion()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
         self.view.ExScoreInfo.show()
         self.parent.ExScore.showTestStatus()
