@@ -38,8 +38,8 @@ class PlayerContr(QMediaPlayer):
         self.setSource(AudioToLoad)
         # print(f'{self.mw_contr.CurrentMode}')
         print(f'loadCurrentAudio: {self.mw_contr.CurrentAudio}')
-        self.playAfterAudioLoaded = play_after
         self.onceAudioLoaded = True
+        self.playAfterAudioLoaded = play_after
 
     def clearSource(self):
         self.setSource(QUrl())
@@ -111,8 +111,8 @@ class PlayerContr(QMediaPlayer):
     def onPlayTriggered(self):
         if self.playbackState() == self.PlaybackState.PlayingState:
             return
-        self.parent.updAudioToEqSettings()
-        self.play()
+        if not self.parent.updAudioToEqSettings(play_after=True):
+            self.play()
 
     def onStopTriggered(self, checkPlaybackState=False):
         # print(f'onStopTriggered {self.mw_contr.CurrentMode.name=}')

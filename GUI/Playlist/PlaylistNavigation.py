@@ -34,9 +34,9 @@ class PlNavi:
             if self.playlistdata[-1] != self._currentSong else None
 
     def _nextShuffle(self):
-        if len(self.playedSongs) == 0:
+        if not self.playlistdata:
             return None
-        if self._currentSong.path != self.playedSongs[-1].path:
+        if len(self.playedSongs) > 0 and self._currentSong.path != self.playedSongs[-1].path:
             for ind, S in enumerate(self.playedSongs):
                 if S.path == self._currentSong.path:
                     return self.playedSongs[ind + 1]
@@ -66,9 +66,8 @@ class PlNavi:
         self.updCurrentSongId()
         if Song is None:
             return
-        if Song.path not in self.playedSong_paths:
+        if Song.path not in self.playedSong_paths and Song.path in self.playlist_paths:
             self.playedSongs.append(Song)
-        print(f'{self.playedSongs}')
 
     def currentSong(self):
         return self._currentSong
