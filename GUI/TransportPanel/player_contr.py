@@ -98,6 +98,7 @@ class PlayerContr(QMediaPlayer):
                 if self.mw_contr.LoadedFilePath in self.PlModel.nonLoadedSong_paths:
                     self.PlModel.nonLoadedSong_paths.remove(self.mw_contr.LoadedFilePath)
                     self.PlModel.updCanLoadData()
+            self.checkPreviewStartTime()
             self.onceAudioLoaded = False
         self._playLoadedAudio()
 
@@ -144,7 +145,6 @@ class PlayerContr(QMediaPlayer):
 
     def _playLoadedAudio(self):
         if self.playAfterAudioLoaded:
-            self.checkPreviewStartTime()
             self.onPlayTriggered()
             self.playAfterAudioLoaded = False
 
