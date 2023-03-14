@@ -15,8 +15,7 @@ class PreviewMode(UniMode):
             self.enableTimeSettingsChanges(True)
         if self.updateCurrentAudio():
             self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview)
-        if not self.parent.playAudioOnPreview:
-            self.parent.TransportContr.TransportView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)
+        self.ensureGoToRangeStart()
         self.parent.playAudioOnPreview = False
 
     @property
@@ -55,4 +54,9 @@ class PreviewMode(UniMode):
 
     def whilePlaying(self):
         pass
+
+    def ensureGoToRangeStart(self):
+        if not self.parent.playAudioOnPreview:
+            self.parent.TransportContr.TransportView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)
+            self.parent.TransportContr.PlayerContr.checkPreviewStartTime()
 
