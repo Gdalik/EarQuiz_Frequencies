@@ -276,11 +276,17 @@ background: rgba(118, 214, 255, 85)
          <property name="sizeAdjustPolicy">
           <enum>QAbstractScrollArea::AdjustToContents</enum>
          </property>
+         <property name="autoScroll">
+          <bool>true</bool>
+         </property>
          <property name="dragEnabled">
           <bool>true</bool>
          </property>
          <property name="dragDropMode">
           <enum>QAbstractItemView::DragDrop</enum>
+         </property>
+         <property name="verticalScrollMode">
+          <enum>QAbstractItemView::ScrollPerItem</enum>
          </property>
         </widget>
        </item>
@@ -4655,6 +4661,7 @@ font-weight: bold</string>
     <addaction name="actionStop"/>
     <addaction name="actionPrevious_Track"/>
     <addaction name="actionNext_Track"/>
+    <addaction name="actionSkip_Unavailable_Tracks"/>
     <addaction name="separator"/>
     <addaction name="actionShuffle_Playback"/>
     <addaction name="actionLoop_Playback"/>
@@ -6027,6 +6034,17 @@ font-weight: normal</string>
   <action name="actionOnline_Help">
    <property name="text">
     <string>Online Help</string>
+   </property>
+  </action>
+  <action name="actionSkip_Unavailable_Tracks">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Skip Unavailable Tracks</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

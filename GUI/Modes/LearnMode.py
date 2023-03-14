@@ -18,6 +18,7 @@ class LearnMode(UniMode):
         self.nextDrill(fromStart=True)
         self.updateSliceRegion()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
+        self.parent.ExScore.view.init_texts(onlyLastExcInfo=True)
         self.showAudioCursor()
         self.blockPlaybackStoppedEnded(False)
         self._playing_started = None

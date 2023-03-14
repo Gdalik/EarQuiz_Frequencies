@@ -10,10 +10,14 @@ class PreviewMode(UniMode):
         self.parent.EQContr.resetEQ()
         self.view.TransportPanel.show()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.hide()
+        self.parent.ExScore.view.init_texts(onlyLastExcInfo=True)
         if self.parent.SourceAudio is not None:
             self.enableTimeSettingsChanges(True)
         if self.updateCurrentAudio():
-            self.parent.TransportContr.PlayerContr.loadCurrentAudio()
+            self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview)
+        if not self.parent.playAudioOnPreview:
+            self.parent.TransportContr.TransportView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)
+        self.parent.playAudioOnPreview = False
 
     @property
     def proxyCursorPos(self):   # in sec
@@ -35,9 +39,10 @@ class PreviewMode(UniMode):
         self.view.actionStop.setEnabled(True)
         self.view.actionPrevious_Track.setEnabled(True)
         self.view.actionNext_Track.setEnabled(True)
+        self.view.actionSkip_Unavailable_Tracks.setEnabled(True)
         self.view.actionLoop_Playback.setEnabled(True)
         self.view.actionLoop_Playback.setChecked(True)
-        self.view.actionShuffle_Playback.setChecked(False)
+        self.view.actionShuffle_Playback.setChecked(self.parent.PlaylistContr.PlNavi.shuffle())
         self.view.actionShuffle_Playback.setEnabled(True)
 
     def updateCurrentAudio(self):

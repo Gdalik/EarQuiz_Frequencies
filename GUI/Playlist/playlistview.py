@@ -1,3 +1,5 @@
+import contextlib
+
 from PyQt6.QtWidgets import QTableView, QAbstractItemView, QHeaderView
 from PyQt6.QtGui import QPainter, QDrag, QColor
 from PyQt6.QtCore import Qt, pyqtSignal, QObject, QMimeData, QUrl, QItemSelection, QItemSelectionModel, QModelIndex
@@ -99,13 +101,14 @@ class PlaylistView(QTableView):
         action = drag.exec(Qt.DropAction.CopyAction) if self.mw_view.alt_pressed \
             else drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.MoveAction)
         self.signals.dragDropFromPLFinished.emit(action)
-        # mimeData.clear()
 
     def selectRows(self, first: int, last: int, scrolling=True):
         selection = QItemSelection()
         selection.select(self.Model.index(first, 0),
                          self.Model.index(last, 0))
         self.selectionModel().select(selection, QItemSelectionModel.SelectionFlag.SelectCurrent |
+                                     QItemSelectionModel.SelectionFlag.ClearAndSelect |
                                      QItemSelectionModel.SelectionFlag.Rows)
         if scrolling:
-            self.scrollTo(self.Model.index(first, 0))
+            self.scrollTo(self.model().mapFromSource(self.Model.index(first, 0)),
+                          hint=QAbstractItemView.ScrollHint.EnsureVisible)

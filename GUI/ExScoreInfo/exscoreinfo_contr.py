@@ -29,9 +29,9 @@ class ExScoreInfoContr:
         er = ER(eq_type, eq_pattern['DualBandMode'])
         return PF(self.CurTest.totalScore, er)
 
-    def refresh(self):
+    def refresh(self, onlyLastExcInfo=False):
         self.CurTest = SC()
-        self.view.init_texts()
+        self.view.init_texts(onlyLastExcInfo=onlyLastExcInfo)
 
     def nextEx(self):
         self.view.showExNum(self.CurTest.next_ex_num)

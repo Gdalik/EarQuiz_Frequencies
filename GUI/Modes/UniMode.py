@@ -13,6 +13,7 @@ class UniMode:
         self.parent = parent
         self.parent.CurrentMode = self
         self.playPause_toggleable = False
+        self.parent.TransportContr.CursorBeingDragged = False
         self.view.setActionNextExerciseEnabled(False)
         self.view.NextExercise.setVisible(False)
         self.enableTimeSettingsChanges(False)
@@ -55,6 +56,7 @@ class UniMode:
         self.view.actionStop.setEnabled(True)
         self.view.actionPrevious_Track.setEnabled(False)
         self.view.actionNext_Track.setEnabled(False)
+        self.view.actionSkip_Unavailable_Tracks.setEnabled(False)
         self.view.actionLoop_Playback.setEnabled(False)
         self.view.actionLoop_Playback.setChecked(False)
         self.view.actionShuffle_Playback.setChecked(False)
@@ -94,7 +96,8 @@ class UniMode:
     def cleanTempAudio(self):
         with contextlib.suppress(AttributeError, PermissionError):
             print(f'{self.parent.LoadedFilePath=}')
-            if self.parent.LoadedFilePath is not None and Path(self.parent.LoadedFilePath).parent == Path(TEMP_AUDIO_DIR):
+            if self.parent.LoadedFilePath is not None \
+                    and Path(self.parent.LoadedFilePath).parent == Path(TEMP_AUDIO_DIR):
                 Path(self.parent.LoadedFilePath).unlink(missing_ok=True)
 
     def showAudioCursor(self):
@@ -103,6 +106,3 @@ class UniMode:
 
     def updateSliceRegion(self):
         pass
-
-
-

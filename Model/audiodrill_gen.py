@@ -81,10 +81,13 @@ class AudioDrillGen:
 
     @property
     def gain_headroom(self):
-        headroom = -4 if self._DualBandMode else -1
+        headroom = -3 if self._DualBandMode else 0
         if self.gain_depth() < abs(headroom):
             headroom = self.gain_depth() * -1
-        return self.gain_depth()/-2 + headroom
+        # k = min(2.0, 18 / self.gain_depth()) * -1
+        k = -1
+        print(f'headroom: {self.gain_depth() / k + headroom}')
+        return self.gain_depth() / k + headroom
 
     @order.setter
     def order(self, arg: str):

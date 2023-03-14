@@ -1,6 +1,7 @@
 from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilterProxyModel
 from GUI.Playlist.plsong import PlSong
 from GUI.Playlist.PLLoadDialog import PLProcDialog
+from GUI.Playlist.PlaylistNavigation import PlNavi
 from GUI.Misc.error_message import error_message
 from PyQt6.QtCore import QObject, Qt, QModelIndex, QUrl
 from PyQt6.QtWidgets import QFileDialog, QWidget
@@ -19,6 +20,7 @@ class PlaylistContr(QObject):
         self.playlistModel = PlaylistModel(playlistdata=self.playlistData)
         self.proxyModel = PLSortFilterProxyModel(self)
         self.PlaylistView.setModel(self.proxyModel)
+        self.PlNavi = PlNavi(self.playlistModel.playlistdata, shuffle=self.mw_view.actionShuffle_Playback.isChecked())
         self.selModel = self.PlaylistView.selectionModel()
         self.selModel.selectionChanged.connect(self.PlaylistView.onSelectionChanged)
         self.SearchAudio.textChanged.connect(self.proxyModel.setFilter)
@@ -28,7 +30,10 @@ class PlaylistContr(QObject):
         self.MinusFilesBut.clicked.connect(self.removeTracks)
         self.PlusFilesBut.clicked.connect(lambda x: self.openFiles(mode='files'))
         self.PlaylistView.doubleClicked.connect(self.onDoubleClicked)
-        # self.playlistModel.layoutChanged.connect(lambda x: print('PL Changed!'))
+        self.playlistModel.layoutChanged.connect(lambda x: self.PlNavi.dataSync(self.playlistModel.playlistdata))
+        self.mw_view.actionPrevious_Track.triggered.connect(self.onPreviousTrack_trig)
+        self.mw_view.actionNext_Track.triggered.connect(self.onNextTrack_trig)
+        self.mw_view.actionShuffle_Playback.triggered.connect(self.onShufflePlayback_trig)
 
     def addTracks(self, URLs: list, index=-1):
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)
@@ -47,6 +52,7 @@ class PlaylistContr(QObject):
         _index = len(self.playlistModel.playlistdata) if index == -1 else index
         self.playlistModel.layoutAboutToBeChanged.emit()
         self.playlistModel.playlistdata[_index:_index] = tracklist
+        self.playlistModel.updCanLoadData(changeLayout=False)
         self.playlistModel.layoutChanged.emit()
         if len(self.playlistModel.playlistdata) != len(paths):
             self.PlaylistView.selectRows(_index, _index + len(paths) - 1)
@@ -93,6 +99,49 @@ class PlaylistContr(QObject):
         source_ind = self.proxyModel.mapToSource(index).row()
         song2load = self.playlistModel.playlistdata[source_ind]
         self.mw_contr.load_song(song2load)
+
+    def onPreviousTrack_trig(self):
+        prev_song = self.PlNavi.prev()
+        _currentSong = self.PlNavi.currentSong()
+        if self.mw_view.actionSkip_Unavailable_Tracks.isChecked():
+            while prev_song is not None and not prev_song.available:
+                self.PlNavi.setCurrentSong(prev_song)
+                prev_song = self.PlNavi.prev()
+                if prev_song == self.PlNavi.currentSong():
+                    self.PlNavi.setCurrentSong(_currentSong)
+                    return
+        if prev_song is not None:
+            self.mw_contr.load_song(prev_song)
+            self.selectCurrentSong()
+
+    def onNextTrack_trig(self):
+        next_song = self.PlNavi.next()
+        _currentSong = self.PlNavi.currentSong()
+        if self.mw_view.actionSkip_Unavailable_Tracks.isChecked():
+            while next_song is not None and not next_song.available:
+                self.PlNavi.setCurrentSong(next_song)
+                next_song = self.PlNavi.next()
+        self.PlNavi.setCurrentSong(_currentSong)
+        if next_song is not None:
+            self.mw_contr.load_song(next_song)
+            self.selectCurrentSong()
+
+    def selectCurrentSong(self):
+        if self.PlNavi.currentSong() is None:
+            return
+        abs_ind = 0
+        try:
+            abs_ind = self.playlistModel.playlistdata.index(self.PlNavi.currentSong())
+        except ValueError:
+            for ind, S in enumerate(self.playlistModel.playlistdata):
+                if self.PlNavi.currentSong().path == S.path:
+                    abs_ind = ind
+                    break
+        rel_ind = self.proxyModel.mapFromSource(self.playlistModel.index(abs_ind, 0, QModelIndex())).row()
+        self.PlaylistView.selectRows(rel_ind, rel_ind, scrolling=True)
+
+    def onShufflePlayback_trig(self):
+        self.PlNavi.setShuffle(self.mw_view.actionShuffle_Playback.isChecked())
 
     @staticmethod
     def _setFileDialogToFileMode(dialog: QFileDialog):

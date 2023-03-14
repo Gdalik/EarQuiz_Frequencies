@@ -1,5 +1,3 @@
-import time
-
 from PyQt6.QtCore import QUrl
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData, QAudio
 from definitions import MediaDevices
@@ -18,6 +16,7 @@ class PlayerContr(QMediaPlayer):
         self._connectSignals()
         self.playAfterAudioLoaded = False
         self.onceAudioLoaded = False
+        self.PlModel = self.mw_contr.PlaylistContr.playlistModel
 
     def _connectSignals(self):
         self.mediaStatusChanged.connect(self.onPlayerStatusChanged)
@@ -96,6 +95,9 @@ class PlayerContr(QMediaPlayer):
             self.mw_contr.LoadedFilePath = self.mw_contr.CurrentAudio
             if self.mw_contr.CurrentMode.name == 'Preview':
                 self.mw_contr.hashAudioFile()
+                if self.mw_contr.LoadedFilePath in self.PlModel.nonLoadedSong_paths:
+                    self.PlModel.nonLoadedSong_paths.remove(self.mw_contr.LoadedFilePath)
+                    self.PlModel.updCanLoadData()
             self.onceAudioLoaded = False
         self._playLoadedAudio()
 
@@ -182,7 +184,8 @@ class PlayerContr(QMediaPlayer):
         self.onAudioDeviceChecked()
 
     def onError(self, err, string):
-        self.mw_contr.SourceAudio.canLoad = False
+        self.PlModel.nonLoadedSong_paths.add(self.mw_contr.SourceAudio.path)
+        self.PlModel.updCanLoadData()
         self.mw_contr.setNoAudio()
         print(err)
         print(string)

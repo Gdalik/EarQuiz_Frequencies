@@ -50,7 +50,7 @@ class ScoreCalculator:
         rem_error_w = min([0, 0.33, 0.66, 1], key=lambda x: abs(x - rem_error))
         error = int(error) + rem_error_w
         boost_cut_error = 2 if abs(A) / A != abs(U) / U else 0
-        return round(max_score - error - boost_cut_error, 2)
+        return max(round(max_score - error - boost_cut_error, 2), 0)
 
     def _dualBand_count(self):
         score_list = []

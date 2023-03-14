@@ -41,6 +41,7 @@ class MainWindowContr(QObject):
             self.mw_view.win_os_settings()
         self.EQContr = EQContr(self)
         self.EQSetContr = EQSetContr(self)
+        self.setShufflePBMode()
         self.PlaylistContr = PlaylistContr(self)
         self.PatternBoxContr = PatternBoxContr(self)
         self.TransportContr = TransportContr(self)
@@ -53,12 +54,12 @@ class MainWindowContr(QObject):
         self.setLearnFreqOrderAG()
         self.setBoostCutOrderAG()
         self.setPlaybackButtons()
-        self.setShufflePBMode()
         self.mw_view.NextExercise.setDefaultAction(self.mw_view.actionNext_Exercise)
         self.mw_view.actionNext_Exercise.triggered.connect(self.onNextExerciseTriggered)
         self.mw_view.actionClose.triggered.connect(self.onCloseTriggered)
         self.LastSourceAudio = None
         self.mw_view.show()
+        self.playAudioOnPreview = False
 
     def setFileMenuActions(self):
         self.mw_view.actionOpen.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='files'))
@@ -149,7 +150,8 @@ class MainWindowContr(QObject):
             return
         self.mw_view.actionUni_Mode.setChecked(True)
         self.mw_view.ExScoreInfo.show()
-        self.mw_view.SupportProject.show()
+        if 'passed' in self.ExScore.test_status:
+            self.mw_view.SupportProject.show()
 
     def _pushBackToPreview(self):
         if self.ADGen is None and self.CurrentMode.name != 'Preview':
@@ -184,15 +186,16 @@ class MainWindowContr(QObject):
         self.mw_view.ShufflePlaybackBut.setDefaultAction(self.mw_view.actionShuffle_Playback)
 
     def load_song(self, Song: PlSong):
-        print(f'{Song.__hash__=}')
         if hasattr(Song, 'file_properties'):
             Song.__delattr__('file_properties')
         if Song.duration < 30 or not Song.exists:
             return
         self.SourceAudio = Song
+        self.PlaylistContr.PlNavi.setCurrentSong(Song)
         if self.CurrentMode.name == 'Preview':
             self.CurrentMode.updateCurrentAudio()
         else:
+            self.playAudioOnPreview = True
             self.mw_view.actionPreview_Mode.setChecked(True)
 
         if self.LoadedFilePath is not None and Song.path == self.LoadedFilePath:
@@ -271,6 +274,7 @@ class MainWindowContr(QObject):
         if action is None:
             return
         if action == 'reset':
+            self.ADGen.setGain_depth(self.EQSetContr.EQSetView.GainRangeSpin.value(), normalize_audio=False)
             ADG_upd = ProcTrackControl(self.ADGen.audiochunk.update, args=[action])
             if not ADG_upd.exec():
                 self.ADGen = None

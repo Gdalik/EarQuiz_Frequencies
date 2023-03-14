@@ -15,7 +15,7 @@ class TestMode(UniMode):
         self.view.setActionNextExerciseEnabled(False)
         self.view.NextExercise.setVisible(True)
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
-        self.parent.CurrentMode.restart_test()
+        self.restart_test()
         self.parent.setAudioDrillGen()
         self.nextDrill(fromStart=True)
         self.updateSliceRegion()

@@ -19,11 +19,13 @@ class ExScoreInfoView:
         self.TestStatus = mw_view.TestStatusLab
         self.init_texts()
 
-    def init_texts(self):
+    def init_texts(self, onlyLastExcInfo=False):
         self.ExNum.setText(self.ExNum_t)
         self.UserAnsw.setText(self.UserAnsw_t)
         self.CorAnsw.setText(self.CorAnsw_t)
         self.AnswScore.setText(self.AnswScore_t)
+        if onlyLastExcInfo:
+            return
         self.TotalScore.setText(self.TotalScore_t)
         self.TestStatus.setText(self.TestStatus_t)
 

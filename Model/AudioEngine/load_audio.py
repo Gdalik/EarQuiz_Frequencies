@@ -144,9 +144,10 @@ class AudioChunk(PreviewAudioCrop):
 
         self.split()
         if self.cycle_id_gen is not None:
-            self.cycle_id = next(self.cycle_id_gen)
+            if self.cycle_id is None:
+                self.cycle_id = next(self.cycle_id_gen)
             self.cycle = None
-            for _ in range(self.cycle_id):
+            for _ in range(self.cycle_id + 1):
                 self.slice_iter()
         return self.cropped_normalized
 

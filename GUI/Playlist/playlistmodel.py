@@ -4,7 +4,6 @@ from GUI.Playlist.plsong import PlSong
 from pathlib import Path
 from Utilities.urlcheck import validUrls
 
-
 PlaylistData = []
 
 
@@ -12,6 +11,7 @@ class PlaylistModel(QtCore.QAbstractTableModel):
     def __init__(self, playlistdata=None):
         super().__init__()
         self.playlistdata = playlistdata or []
+        self.nonLoadedSong_paths = set()
         self.CurName = None
         self.MimeTypes = 'text/uri-list'
         self.filtered = False
@@ -63,6 +63,7 @@ class PlaylistModel(QtCore.QAbstractTableModel):
 
         for r in range(rows_count):
             CurData = PlSong(str(Path(urls[r].toLocalFile()).absolute()))
+            CurData.canLoad = CurData.path not in self.nonLoadedSong_paths
             self.setData(self.index(row + r, 0, parent), CurData)
 
         return True
@@ -106,6 +107,14 @@ class PlaylistModel(QtCore.QAbstractTableModel):
     def headerData(self, section, orientation, role):
         if role == Qt.ItemDataRole.DisplayRole and orientation == Qt.Orientation.Horizontal:
             return ['Filename', 'Duration', 'Folder Path'][section]
+
+    def updCanLoadData(self, changeLayout=True):
+        if changeLayout:
+            self.layoutAboutToBeChanged.emit()
+        for S in self.playlistdata:
+            S.canLoad = S.path not in self.nonLoadedSong_paths
+        if changeLayout:
+            self.layoutChanged.emit()
 
 
 class PLSortFilterProxyModel(QSortFilterProxyModel):
