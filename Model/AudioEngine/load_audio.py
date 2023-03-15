@@ -34,7 +34,7 @@ class AudioChunk(PreviewAudioCrop):
             raise ValueError('Audio file length cannot be less than 30 sec')
         super().__init__(audiofile_length=self.source_length,
                          starttime=starttime, endtime=endtime, slice_length=slice_length, strictMode=True)
-        self.norm_level = norm_level
+        self.norm_level = self.last_norm_level = norm_level
         self.norm_proc = None
         self.cropped = self.cropped_normalized = self.cropped_norm_split = \
             self.cycle = self.cycle_id_gen = self.cycle_id = self.current_slice = None
@@ -140,6 +140,7 @@ class AudioChunk(PreviewAudioCrop):
                 return None
             else:
                 self.cropped_normalized = self.old_cropped_normalized
+                head_level = self.last_norm_level
                 print('Normalization reverted')
 
         self.split()
@@ -149,6 +150,7 @@ class AudioChunk(PreviewAudioCrop):
             self.cycle = None
             for _ in range(self.cycle_id + 1):
                 self.slice_iter()
+        self.last_norm_level = head_level
         return self.cropped_normalized
 
     def split(self):

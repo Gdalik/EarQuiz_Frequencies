@@ -139,12 +139,13 @@ class TransportContr(QObject):
         self.TransportView.SliceLenSpin.setValue(self.SourceRange.slice_length)
         self.TransportView.setSlicesNum(self.SourceRange.slices_num)
 
-    def updAudioToEqSettings(self, refreshAfter=True, play_after=False):
+    def updAudioToEqSettings(self, refreshAfter=True, play_after=False, raiseInterruptedException=True):
         if self.parent.CurrentMode.name not in ('Learn', 'Test') or not self.parent.eqSetChanged:
             return
         refresh_needed = False
-        if self.parent.gainDepthChanged and \
-                self.parent.EQSetContr.setGainDepth(self.parent.EQSetContr.EQSetView.GainRangeSpin.value()):
+        if self.parent.normHeadroomChanged and \
+                self.parent.EQSetContr.setGainDepth(self.parent.EQSetContr.EQSetView.GainRangeSpin.value(),
+                                                    raiseInterruptedException=raiseInterruptedException):
             refresh_needed = True
         if self.parent.qChanged:
             # print('qChanged')

@@ -60,7 +60,8 @@ class AudioDrillGen:
         return self._gain_depth
 
     def setGain_depth(self, value: int, normalize_audio=True, callback=None):
-        if value == self._gain_depth:
+        if value == self._gain_depth and \
+                self.audiochunk.last_norm_level == self.gain_headroom_calc(value, self._DualBandMode):
             return
         self._gain_depth = abs(value)
         self.audiochunk.norm_level = self.gain_headroom
@@ -81,13 +82,15 @@ class AudioDrillGen:
 
     @property
     def gain_headroom(self):
-        headroom = -3 if self._DualBandMode else 0
-        if self.gain_depth() < abs(headroom):
-            headroom = self.gain_depth() * -1
-        # k = min(2.0, 18 / self.gain_depth()) * -1
+        return self.gain_headroom_calc(self.gain_depth(), self._DualBandMode)
+
+    @staticmethod
+    def gain_headroom_calc(gain_depth: int, DualBandMode: bool):
+        headroom = -3 if DualBandMode else 0
+        if gain_depth < abs(headroom):
+            headroom = gain_depth * -1
         k = -1
-        print(f'headroom: {self.gain_depth() / k + headroom}')
-        return self.gain_depth() / k + headroom
+        return gain_depth / k + headroom
 
     @order.setter
     def order(self, arg: str):

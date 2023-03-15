@@ -38,11 +38,15 @@ class PreviewMode(UniMode):
         self.view.actionStop.setEnabled(True)
         self.view.actionPrevious_Track.setEnabled(True)
         self.view.actionNext_Track.setEnabled(True)
-        self.view.actionSkip_Unavailable_Tracks.setEnabled(True)
+        self.view.actionPrevious_Track.setVisible(True)
+        self.view.actionNext_Track.setVisible(True)
+        self.view.actionSkip_Unavailable_Tracks.setVisible(True)
         self.view.actionLoop_Playback.setEnabled(True)
         self.view.actionLoop_Playback.setChecked(True)
+        self.view.actionLoop_Playback.setVisible(True)
         self.view.actionShuffle_Playback.setChecked(self.parent.PlaylistContr.PlNavi.shuffle())
         self.view.actionShuffle_Playback.setEnabled(True)
+        self.view.actionShuffle_Playback.setVisible(True)
 
     def updateCurrentAudio(self):
         old_value = self.parent.CurrentAudio

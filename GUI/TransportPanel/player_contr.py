@@ -40,6 +40,7 @@ class PlayerContr(QMediaPlayer):
         print(f'loadCurrentAudio: {self.mw_contr.CurrentAudio}')
         self.onceAudioLoaded = True
         self.playAfterAudioLoaded = play_after
+        self.mw_contr.PatternBoxContr.patternBoxChangeAudioInProg = False
 
     def clearSource(self):
         self.setSource(QUrl())
@@ -107,11 +108,14 @@ class PlayerContr(QMediaPlayer):
         if self.mw_view.actionLoop_Playback.isChecked():
             self.play()
         self.mw_contr.CurrentMode.playbackStoppedEnded()
+        # TODO: Add continuous playback in Learn mode. Add stop at the end of frequencies cycle option.
+        '''if self.mw_contr.CurrentMode.name == 'Learn':
+            self.mw_contr.CurrentMode.nextDrill()'''
 
     def onPlayTriggered(self):
         if self.playbackState() == self.PlaybackState.PlayingState:
             return
-        if not self.parent.updAudioToEqSettings(play_after=True):
+        if not self.parent.updAudioToEqSettings(play_after=True, raiseInterruptedException=False):
             self.play()
 
     def onStopTriggered(self, checkPlaybackState=False):

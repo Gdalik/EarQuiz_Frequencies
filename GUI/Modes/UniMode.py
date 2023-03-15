@@ -18,7 +18,7 @@ class UniMode:
         self.view.NextExercise.setVisible(False)
         self.enableTimeSettingsChanges(False)
         self.view.EqOnOffLab.hide()
-        self.view.menuEQ_Bands_Playback_Order.setEnabled(contrEnabled)
+        self.setEQBandsOrderMenuVisible(contrEnabled)
         self.setPlayerControls()
         self.view.SliceLenSpin.setEnabled(contrEnabled)
         self.view.EQSetView.setEnabled(contrEnabled)
@@ -55,12 +55,14 @@ class UniMode:
         self.view.actionPlayPause.setEnabled(True)
         self.view.actionStop.setEnabled(True)
         self.view.actionPrevious_Track.setEnabled(False)
+        self.view.actionPrevious_Track.setVisible(False)
         self.view.actionNext_Track.setEnabled(False)
-        self.view.actionSkip_Unavailable_Tracks.setEnabled(False)
-        self.view.actionLoop_Playback.setEnabled(False)
+        self.view.actionNext_Track.setVisible(False)
+        self.view.actionSkip_Unavailable_Tracks.setVisible(False)
+        self.view.actionLoop_Playback.setVisible(False)
         self.view.actionLoop_Playback.setChecked(False)
         self.view.actionShuffle_Playback.setChecked(False)
-        self.view.actionShuffle_Playback.setEnabled(False)
+        self.view.actionShuffle_Playback.setVisible(False)
 
     def updateCurrentAudio(self):
         self.parent.CurrentAudio = create_temp_wavefile()
@@ -79,6 +81,9 @@ class UniMode:
 
     def playbackStoppedEnded(self):
         self.view.EqOnOffLab.setVisible(False)
+
+    def playbackEnded(self):
+        pass
 
     def oncePlayingStarted(self):
         self.view.EqOnOffLab.setVisible(True)
@@ -106,3 +111,7 @@ class UniMode:
 
     def updateSliceRegion(self):
         pass
+
+    def setEQBandsOrderMenuVisible(self, arg: bool):
+        for item in self.view.menuEQ_Bands_Playback_Order.children():
+            item.setVisible(arg)

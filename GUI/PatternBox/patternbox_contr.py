@@ -1,5 +1,5 @@
 import contextlib
-
+from Utilities.exceptions import InterruptedException
 from Model.eq_patterns import EQPatterns
 
 
@@ -23,7 +23,11 @@ class PatternBoxContr(object):
         with contextlib.suppress(AttributeError):
             if self.mw_contr.CurrentMode.name == 'Test':
                 self.mw_contr.CurrentMode.restart_test()
-            self.mw_contr.CurrentMode.nextDrill(fromStart=True, play_after=True)
+            try:
+                self.mw_contr.CurrentMode.nextDrill(fromStart=True, play_after=True)
+            except InterruptedException:
+                self.mw_view.actionPreview_Mode.setChecked(True)
+        self.lastPatternBoxText = self.mw_view.PatternBox.currentText()
 
     def setExGenToPattern(self):
         if not hasattr(self.mw_contr, 'SourceAudio') or self.mw_contr.SourceAudio is None:

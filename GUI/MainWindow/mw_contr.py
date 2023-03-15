@@ -21,6 +21,7 @@ import platform
 from Model.calc import optimal_range_length
 from filehash import FileHash
 from Utilities.Q_extract import Qextr
+from Utilities.exceptions import InterruptedException
 
 
 class MainWindowContr(QObject):
@@ -134,14 +135,17 @@ class MainWindowContr(QObject):
 
     def setCurrentMode(self):
         self.CurrentMode.cleanTempAudio()
-        if self.modesActionGroup.checkedAction() == self.mw_view.actionPreview_Mode:
-            self.CurrentMode = PreviewMode(self)
-        elif self.modesActionGroup.checkedAction() == self.mw_view.actionLearn_Mode:
-            self.CurrentMode = LearnMode(self)
-        elif self.modesActionGroup.checkedAction() == self.mw_view.actionTest_Mode:
-            self.CurrentMode = TestMode(self)
-        elif self.modesActionGroup.checkedAction() == self.mw_view.actionUni_Mode:
-            self.CurrentMode = UniMode(self, contrEnabled=self.LastMode.name != 'Test')
+        try:
+            if self.modesActionGroup.checkedAction() == self.mw_view.actionPreview_Mode:
+                self.CurrentMode = PreviewMode(self)
+            elif self.modesActionGroup.checkedAction() == self.mw_view.actionLearn_Mode:
+                self.CurrentMode = LearnMode(self)
+            elif self.modesActionGroup.checkedAction() == self.mw_view.actionTest_Mode:
+                self.CurrentMode = TestMode(self)
+            elif self.modesActionGroup.checkedAction() == self.mw_view.actionUni_Mode:
+                self.CurrentMode = UniMode(self, contrEnabled=self.LastMode.name != 'Test')
+        except InterruptedException:
+            self.mw_view.actionPreview_Mode.setChecked(True)
         self._pushBackToPreview()
         self.LastMode = self.CurrentMode
 
@@ -290,8 +294,11 @@ class MainWindowContr(QObject):
         self.ADGen.order = self.freqOrder
 
     @property
-    def gainDepthChanged(self):
-        return self.EQSetContr.EQSetView.GainRangeSpin.value() != self.ADGen.gain_depth() \
+    def normHeadroomChanged(self):
+        gain_range_gui = self.EQSetContr.EQSetView.GainRangeSpin.value()
+        DualBand_pattern = self.EQContr.EQpattern['DualBandMode']
+        print(f'{self.ADGen.gain_headroom_calc(gain_range_gui, DualBand_pattern)=} {self.ADGen.audiochunk.last_norm_level=}')
+        return self.ADGen.gain_headroom_calc(gain_range_gui, DualBand_pattern) != self.ADGen.audiochunk.last_norm_level \
             if self.ADGen is not None else False
 
     @property
@@ -300,4 +307,4 @@ class MainWindowContr(QObject):
 
     @property
     def eqSetChanged(self):
-        return bool(self.gainDepthChanged or self.qChanged)
+        return bool(self.normHeadroomChanged or self.qChanged)
