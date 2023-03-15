@@ -53,7 +53,9 @@ class TransportContr(QObject):
     def onCursorPositionChanged(self, pos):
         self.CursorBeingDragged = True
         position = pos.x()
-        self.TransportView.Position_Lab.setText(hhmmss(position / 1000))
+        self.TransportView.setPositionLabValue(position / 1000)
+        if self.SourceRange is None:
+            return
         range_start = self.SourceRange.starttime * 1000
         range_end = self.SourceRange.endtime * 1000
         if position < range_start:
@@ -113,7 +115,7 @@ class TransportContr(QObject):
         self.TransportView.setHeader(self.PlayerContr.sourceAudioData())
         # duration_s = self.PlayerContr.duration() / 1000
         duration_s = self.parent.SourceAudio.duration
-        self.TransportView.Duration_Lab.setText(hhmmss(duration_s))
+        self.TransportView.setDurationLabValue(duration_s)
         self.TransportView.AudioSliderView.setNewDataLength(duration_s)
         if not self.parent.CurrentMode.TimeSettingsChangesEnabled:
             self.parent.CurrentMode.enableTimeSettingsChanges(True)
@@ -171,7 +173,7 @@ class TransportContr(QObject):
         if not self.CursorBeingDragged:
             CursorPos = self.parent.CurrentMode.proxyCursorPos
             self.TransportView.AudioSliderView.Cursor.update_pos(CursorPos)
-            self.TransportView.Position_Lab.setText(hhmmss(CursorPos))
+            self.TransportView.setPositionLabValue(CursorPos)
         self._checkPlaybackRange()
         if self.PlayerContr.playbackState() == self.PlayerContr.PlaybackState.PlayingState:
             self.parent.CurrentMode.whilePlaying()

@@ -27,7 +27,6 @@ class PatternBoxContr(object):
                 self.mw_contr.CurrentMode.nextDrill(fromStart=True, play_after=True)
             except InterruptedException:
                 self.mw_view.actionPreview_Mode.setChecked(True)
-        self.lastPatternBoxText = self.mw_view.PatternBox.currentText()
 
     def setExGenToPattern(self):
         if not hasattr(self.mw_contr, 'SourceAudio') or self.mw_contr.SourceAudio is None:
@@ -44,7 +43,6 @@ class PatternBoxContr(object):
                                        disableAdjacent=eq_pattern['DisableAdjacentFiltersMode'],
                                        inf_cycle=True)
 
-
     def onNextPatternBut_clicked(self):
         PBindex = self.mw_view.PatternBox.currentIndex()
         max_index = self.mw_view.PatternBox.count() - 1
@@ -52,7 +50,8 @@ class PatternBoxContr(object):
         self.mw_view.PatternBox.setCurrentIndex(index)
 
     def _nextPatternButEnable(self):
-        self.mw_view.NextPatternBut.setEnabled(self.mw_view.PatternBox.currentIndex() < self.mw_view.PatternBox.count() - 1)
+        self.mw_view.NextPatternBut.setEnabled(self.mw_view.PatternBox.currentIndex() <
+                                               self.mw_view.PatternBox.count() - 1)
 
     def getPatternNames(self):
         return [mode['Name'] for mode in self.EQPatterns.List]

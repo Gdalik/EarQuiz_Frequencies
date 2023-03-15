@@ -8,7 +8,7 @@ AudioMimes = ['audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-a
 PLMimes = ['audio/x-mpegurl', 'application/pls+xml', 'application/xspf+xml']
 
 
-def pathsResolve(Paths: list, return_dict: dict):
+def pathsResolve(Paths: list[str], return_dict: dict):
     def make_error_list(msg):
         errors.append(str(msg))
     paths = []
@@ -32,13 +32,13 @@ def filesFromDir(dirpath: Path):
     return [str(el) for el in dir_content if el.is_file()]
 
 
-def filePathsFilter(paths: list):
+def filePathsFilter(paths: list[str]):
     MimeTypes = AudioMimes + PLMimes
     return [path for path in paths if
             mimetypes.guess_type(path)[0] in MimeTypes and not Path(path).name.startswith('.')]
 
 
-def expandPlayLists(paths: list, callback=None):
+def expandPlayLists(paths: list[str], callback=None):
     paths_expanded = []
     for path in paths:
         if mimetypes.guess_type(path)[0] in PLMimes:

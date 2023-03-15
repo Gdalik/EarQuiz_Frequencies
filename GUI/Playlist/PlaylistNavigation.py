@@ -3,7 +3,7 @@ import random
 
 
 class PlNavi:
-    def __init__(self, playlistdata: list, currentSong=None, shuffle=False):
+    def __init__(self, playlistdata: list[PlSong], currentSong=None, shuffle=False):
         self.playlistdata = playlistdata
         self._currentSong = currentSong
         self._currentSongId = None

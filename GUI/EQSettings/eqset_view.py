@@ -5,7 +5,7 @@ class EQSetView:
         self.BWBox = self.mw_view.BWBox
         self.ResetBut = self.mw_view.ResetEQBut
 
-    def refreshBWQList(self, items: list):
+    def refreshBWQList(self, items: list[str]):
         self.BWBox.clear()
         for item in items:
             self.BWBox.addItem(item)

@@ -1,3 +1,5 @@
+import sys
+
 from PyQt6.QtWidgets import QMainWindow, QWidget, QSizePolicy, QToolButton
 from PyQt6.QtGui import QAction
 from PyQt6.QtCore import Qt
@@ -12,6 +14,8 @@ import definitions
 
 
 class MainWindowView(QMainWindow, Ui_MainWindow):
+    actionUni_Mode: QAction
+    UniBut: QToolButton
     def __init__(self):
         super().__init__()
         self.setupUi(self)

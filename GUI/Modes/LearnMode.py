@@ -9,7 +9,7 @@ class LearnMode(UniMode):
         self.name = 'Learn'
         self.currentDrillFreq = None
         self.view.SliceLenSpin.setEnabled(False)
-        if self.parent.LastMode.name not in ['Preview']:
+        if self.parent.LastMode.name not in ['Preview', 'Uni']:
             self.parent.EQContr.resetEQ()
         self.view.setActionNextExerciseEnabled(True)
         self.view.NextExercise.setVisible(True)
@@ -23,20 +23,23 @@ class LearnMode(UniMode):
         self.blockPlaybackStoppedEnded(False)
         self._playing_started = None
 
-    def generateDrill(self, fromStart=False):
+    def generateDrill(self, fromStart=False, raiseInterruptedException=True):
         if self.parent.ADGen is None:
             return
-        self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False)
+        self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False,
+                                                        raiseInterruptedException=raiseInterruptedException)
         self.updateCurrentAudio()
         eq_values = self.parent.EQContr.getEQValues()
         force_freq = eq_values or None
-        return self.parent.ADGen.output(audio_path=self.parent.CurrentAudio, force_freq=force_freq, fromStart=fromStart)[0]
+        return self.parent.ADGen.output(audio_path=self.parent.CurrentAudio,
+                                        force_freq=force_freq, fromStart=fromStart)[0]
 
-    def nextDrill(self, fromStart=False, play_after=True):
+    def nextDrill(self, fromStart=False, play_after=True, raiseInterruptedException=True):
         if self.parent.ADGen is None:
             return
         self.parent.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
-        self.currentDrillFreq = self.generateDrill(fromStart=fromStart)
+        self.currentDrillFreq = self.generateDrill(fromStart=fromStart,
+                                                   raiseInterruptedException=raiseInterruptedException)
         self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=play_after)
 
     def updateSliceRegion(self):

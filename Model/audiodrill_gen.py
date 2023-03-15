@@ -19,7 +19,7 @@ def create_temp_wavefile():
 
 
 class AudioDrillGen:
-    def __init__(self, freq_options: list, boost_cut='+-', DualBandMode=False, audio_source_path='pinknoise',
+    def __init__(self, freq_options: list[int], boost_cut='+-', DualBandMode=False, audio_source_path='pinknoise',
                  starttime=0, endtime=None, drill_length=15,
                  gain_depth=12, Q=4.32, order='asc', boost_cut_priority=1, disableAdjacent=1, inf_cycle=True,
                  proc_t_perc=40, callback=None):

@@ -4,7 +4,7 @@ class PatternBoxView:
         self.Widget = mw_view.PatternBox
         self.NextButton = mw_view.NextPatternBut
 
-    def loadItems(self, mode_names: list):
+    def loadItems(self, mode_names: list[str]):
         for ind, N in enumerate(mode_names):
             self.Widget.addItem(f'{ind + 1}. {N}')
 

@@ -1,3 +1,4 @@
+import contextlib
 from definitions import app
 from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
@@ -10,6 +11,7 @@ from GUI.Modes.PreviewMode import PreviewMode
 from GUI.Modes.LearnMode import LearnMode
 from GUI.Modes.TestMode import TestMode
 from GUI.Modes.UniMode import UniMode
+from GUI.Modes.audiosource_modes import PinkNoiseMode, AudioFileMode
 from GUI.Playlist.plsong import PlSong
 from GUI.TransportPanel.transport_contr import TransportContr
 from GUI.Misc.tracked_proc import ProcTrackControl
@@ -33,13 +35,16 @@ class MainWindowContr(QObject):
     ADGen: AudioDrillGen or None
     LoadedFileHash: str or None
     LoadedFilePath: str or None
+    CurrentSourceMode: PinkNoiseMode or AudioFileMode
 
     def __init__(self):
         super().__init__()
         self.mw_view = MainWindowView()
-        self.CurrentAudio = None
         if platform.system() == 'Windows':
             self.mw_view.win_os_settings()
+        self.CurrentAudio = None
+        self.LoadedFilePath = None
+        self.LastSourceAudio = None
         self.EQContr = EQContr(self)
         self.EQSetContr = EQSetContr(self)
         self.setShufflePBMode()
@@ -48,6 +53,7 @@ class MainWindowContr(QObject):
         self.TransportContr = TransportContr(self)
         self.ExScore = ExScoreInfoContr(self)
         self.CurrentMode = self.LastMode = UniMode(self)
+        self.CurrentSourceMode = PinkNoiseMode(self)
         self.setNoAudio()
         self.setFileMenuActions()
         self.setModesActions()
@@ -58,8 +64,8 @@ class MainWindowContr(QObject):
         self.mw_view.NextExercise.setDefaultAction(self.mw_view.actionNext_Exercise)
         self.mw_view.actionNext_Exercise.triggered.connect(self.onNextExerciseTriggered)
         self.mw_view.actionClose.triggered.connect(self.onCloseTriggered)
-        self.LastSourceAudio = None
         self.mw_view.show()
+        self.setSourceButtons()
         self.playAudioOnPreview = False
 
     def setFileMenuActions(self):
@@ -70,6 +76,17 @@ class MainWindowContr(QObject):
         self.mw_view.PreviewBut.setDefaultAction(self.mw_view.actionPreview_Mode)
         self.mw_view.LearnBut.setDefaultAction(self.mw_view.actionLearn_Mode)
         self.mw_view.TestBut.setDefaultAction(self.mw_view.actionTest_Mode)
+
+    def setSourceButtons(self):
+        self.mw_view.PinkNoiseRBut.toggled.connect(self.setAudioSourceMode)
+        self.mw_view.AudiofileRBut.toggled.connect(self.setAudioSourceMode)
+        self.mw_view.PinkNoiseRBut.setChecked(True)
+
+    def setAudioSourceMode(self):
+        if self.mw_view.PinkNoiseRBut.isChecked():
+            self.CurrentSourceMode = PinkNoiseMode(self)
+        elif self.mw_view.AudiofileRBut.isChecked():
+            self.CurrentSourceMode = AudioFileMode(self)
 
     def setModesActions(self):
         self.modesActionGroup = QActionGroup(self)
@@ -109,7 +126,7 @@ class MainWindowContr(QObject):
 
     def onNextExerciseTriggered(self):
         if self.CurrentMode is not None:
-            self.CurrentMode.nextDrill()
+            self.CurrentMode.nextDrill(raiseInterruptedException=False)
 
     def onmodesActionGroupTriggered(self):
         player = self.TransportContr.PlayerContr
@@ -158,20 +175,22 @@ class MainWindowContr(QObject):
             self.mw_view.SupportProject.show()
 
     def _pushBackToPreview(self):
-        if self.ADGen is None and self.CurrentMode.name != 'Preview':
+        if self.ADGen is None and self.CurrentSourceMode.name != 'Pinknoise' \
+                and self.CurrentMode.name not in ('Preview', 'Uni'):
             self.mw_view.actionPreview_Mode.setChecked(True)
 
     def setNoAudio(self):
+        self.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
         self.SourceAudio = self.LastSourceAudio = None
         self.ADGen = None
         self.CurrentAudio = None
         self.LoadedFileHash = None
         self.disconnectSourceRangeSig()
-        self.SourceRange = None
         self.TransportContr.PlayerContr.clearSource()
         self.CurrentMode.cleanTempAudio()
         self.LoadedFilePath = None
         self.mw_view.TransportPanelView.noSongState()
+        self.SourceRange = None
 
     def hashAudioFile(self):
         if self.SourceAudio is None:
@@ -211,6 +230,16 @@ class MainWindowContr(QObject):
         self.ADGen = None
         self.TransportContr.PlayerContr.loadCurrentAudio()
 
+    def load_pinknoise(self):
+        self.SourceAudio = PlSong('pinknoise')
+        self.TransportContr.TransportView.setHeader('Pink noise')
+        dur = self.SourceAudio.duration
+        self.SourceRange = PreviewAudioCrop(dur, 0, dur, self.TransportContr.TransportView.SliceLenSpin.value())
+        self.TransportContr.setInitCropRegionView()
+        self.TransportContr.TransportView.setDurationLabValue(dur)
+        self.TransportContr.TransportView.AudioSliderView.setNewDataLength(dur)
+        # self.setAudioDrillGen()
+
     def setInitSourceRangeView(self):
         self.disconnectSourceRangeSig()
         self.setOptimalSourceRange()
@@ -230,15 +259,16 @@ class MainWindowContr(QObject):
             self.SourceRange.setStrictModeActive(False)
 
     def disconnectSourceRangeSig(self):
-        if hasattr(self, 'SourceRange') and self.SourceRange is not None:
+        with contextlib.suppress(AttributeError, TypeError):
             self.SourceRange.rangeChanged.disconnect(self.TransportContr.onSourceRangeChanged)
 
     def onCloseTriggered(self):
+        # self.setNoAudio()
         app.quit()
 
     def setAudioDrillGen(self):
         # print(self.SourceAudio)
-        if self.ADGen is None and self.SourceAudio is not None and self.LoadedFileHash:
+        if self.ADGen is None and self.SourceAudio is not None and (self.SourceAudio.name == 'pinknoise' or self.LoadedFileHash):
             self._createADGen()
             self._adjustADGenOrderToMode()
         elif self.ADGen is not None:
@@ -297,7 +327,7 @@ class MainWindowContr(QObject):
     def normHeadroomChanged(self):
         gain_range_gui = self.EQSetContr.EQSetView.GainRangeSpin.value()
         DualBand_pattern = self.EQContr.EQpattern['DualBandMode']
-        print(f'{self.ADGen.gain_headroom_calc(gain_range_gui, DualBand_pattern)=} {self.ADGen.audiochunk.last_norm_level=}')
+        # print(f'{self.ADGen.gain_headroom_calc(gain_range_gui, DualBand_pattern)=} {self.ADGen.audiochunk.last_norm_level=}')
         return self.ADGen.gain_headroom_calc(gain_range_gui, DualBand_pattern) != self.ADGen.audiochunk.last_norm_level \
             if self.ADGen is not None else False
 

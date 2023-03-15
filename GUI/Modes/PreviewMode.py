@@ -5,7 +5,6 @@ class PreviewMode(UniMode):
     def __init__(self, parent):     # parent: MainWindowContr
         super().__init__(parent)
         self.name = 'Preview'
-        self.view.AudiofileRBut.setChecked(True)
         self.playPause_toggleable = True
         self.parent.EQContr.resetEQ()
         self.view.TransportPanel.show()
@@ -60,5 +59,5 @@ class PreviewMode(UniMode):
         pass
 
     def ensureGotoStart(self):
-        if not self.parent.playAudioOnPreview:
+        if not self.parent.playAudioOnPreview and self.currentAudioStartTime is not None:
             self.view.TransportPanelView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)

@@ -37,10 +37,9 @@ class PlayerContr(QMediaPlayer):
         self.clearSource()
         self.setSource(AudioToLoad)
         # print(f'{self.mw_contr.CurrentMode}')
-        print(f'loadCurrentAudio: {self.mw_contr.CurrentAudio}')
+        # print(f'loadCurrentAudio: {self.mw_contr.CurrentAudio}')
         self.onceAudioLoaded = True
         self.playAfterAudioLoaded = play_after
-        self.mw_contr.PatternBoxContr.patternBoxChangeAudioInProg = False
 
     def clearSource(self):
         self.setSource(QUrl())
@@ -74,8 +73,8 @@ class PlayerContr(QMediaPlayer):
             res = value / 1000
             return int(res) if value % 1000 == 0 else round(res, 1)
 
-        metadata = self.loadMetaData()
         SourceAudio = self.mw_contr.SourceAudio
+        metadata = self.loadMetaData() if SourceAudio.name != 'pinknoise' else ''
         displ_data = [f'"{SourceAudio.name}"']
         if metadata:
             displ_data.append(f'({metadata})')

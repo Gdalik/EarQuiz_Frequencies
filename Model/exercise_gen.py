@@ -5,7 +5,7 @@ from Utilities.common_calcs import findAdjacentEl as findAdj
 
 
 class ExerciseGenerator:
-    def __init__(self, freq_options: list, boost_cut: str, DualBandMode: bool, order: str, boost_cut_priority=1,
+    def __init__(self, freq_options: list[int], boost_cut: str, DualBandMode: bool, order: str, boost_cut_priority=1,
                  disableAdjacent=1, inf_cycle=True):
         # order: 'asc', 'desc', 'shuffle', 'random'
         # boost_cut_priority 1 (Each Band Boosted, then Cut) / 2 (All Bands Boosted, then All Bands Cut)
@@ -96,7 +96,7 @@ class ExerciseGenerator:
             self.full_sequence.insert(0, _start_freq)
         return source_seq
 
-    def _make_single_boostcut_seq(self, source_seq: list, startfrom='+'):
+    def _make_single_boostcut_seq(self, source_seq: list[int], startfrom='+'):
         k = -1 if startfrom == '-' else 1
         if self.boost_cut_priority == 1:
             bc_cycle = itertools.cycle([k, k * -1])
@@ -106,7 +106,7 @@ class ExerciseGenerator:
             source_seq = [x * k for x in source_seq] + [x * k * -1 for x in source_seq]
         return source_seq
 
-    def _make_dual_boostcut_seq(self, source_seq: list, startfrom='+'):
+    def _make_dual_boostcut_seq(self, source_seq: list[int], startfrom='+'):
         def applyPattern(el: tuple, pattern: tuple):
             return el[0] * pattern[0], el[1] * pattern[1]
         k = -1 if startfrom == '-' else 1

@@ -33,7 +33,7 @@ class TestMode(UniMode):
         self.updateCurrentAudio()
         return self.parent.ADGen.output(audio_path=self.parent.CurrentAudio, force_freq=None, fromStart=fromStart)[0]
 
-    def nextDrill(self, fromStart=False, play_after=True):
+    def nextDrill(self, fromStart=False, play_after=True, **kwargs):
         if self.parent.ADGen is None:
             return
         self.parent.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)

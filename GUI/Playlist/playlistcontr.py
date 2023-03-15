@@ -35,7 +35,7 @@ class PlaylistContr(QObject):
         self.mw_view.actionNext_Track.triggered.connect(self.onNextTrack_trig)
         self.mw_view.actionShuffle_Playback.triggered.connect(self.onShufflePlayback_trig)
 
-    def addTracks(self, URLs: list, index=-1):
+    def addTracks(self, URLs: list[QUrl], index=-1):
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)
 
         paths = [url.toLocalFile() for url in URLs]
@@ -96,6 +96,7 @@ class PlaylistContr(QObject):
             self.addTracks(filenames, index)
 
     def onDoubleClicked(self, index):
+        self.mw_view.AudiofileRBut.setChecked(True)
         source_ind = self.proxyModel.mapToSource(index).row()
         song2load = self.playlistModel.playlistdata[source_ind]
         self.mw_contr.load_song(song2load)

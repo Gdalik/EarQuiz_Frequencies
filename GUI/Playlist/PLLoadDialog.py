@@ -33,7 +33,7 @@ class PLProcDialog(QDialog):
     threadpool: QThreadPool
     process_check_run: PLLoadChecker
 
-    def __init__(self, paths: list):
+    def __init__(self, paths: list[str]):
         super().__init__()
         self.setWindowFlags(Qt.WindowType.SplashScreen)
         self.paths = paths
@@ -59,7 +59,7 @@ class PLProcDialog(QDialog):
         self.threadpool.start(self.process_check_run)
 
     def on_finished(self):
-        print('Loading files finished')
+        # print('Loading files finished')
         self.accept()
 
     def reject(self):

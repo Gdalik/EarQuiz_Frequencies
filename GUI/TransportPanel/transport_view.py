@@ -40,3 +40,9 @@ class TransportPanelView:
         self.Position_Lab.setText(zero_time_str)
         self.Duration_Lab.setText(zero_time_str)
         self.setSlicesNum(0)
+
+    def setDurationLabValue(self, value: int or float):  # value in sec
+        self.Duration_Lab.setText(hhmmss(value))
+
+    def setPositionLabValue(self, value: int or float):  # value in sec
+        self.Position_Lab.setText(hhmmss(value))
