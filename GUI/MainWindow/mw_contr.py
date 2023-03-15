@@ -263,7 +263,6 @@ class MainWindowContr(QObject):
             self.SourceRange.rangeChanged.disconnect(self.TransportContr.onSourceRangeChanged)
 
     def onCloseTriggered(self):
-        # self.setNoAudio()
         app.quit()
 
     def setAudioDrillGen(self):

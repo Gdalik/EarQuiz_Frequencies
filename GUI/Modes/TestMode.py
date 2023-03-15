@@ -59,3 +59,4 @@ class TestMode(UniMode):
 
     def restart_test(self):
         self.parent.ExScore.refresh()
+        self.parent.ExScore.showTestStatus()

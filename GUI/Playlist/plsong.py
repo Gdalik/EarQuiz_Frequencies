@@ -82,7 +82,7 @@ class PlSong:
     @property
     def _default_dict(self):
         if self.name == 'pinknoise':
-            return {'duration': 30, 'num_channels': 1, 'samplerate': 44100}
+            return {'duration': 30, 'num_channels': 'Mono', 'samplerate': 44100}
         else:
             return {'duration': False, 'num_channels': None, 'samplerate': None}
 
