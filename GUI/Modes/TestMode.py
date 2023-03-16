@@ -1,10 +1,10 @@
 from GUI.Modes.UniMode import UniMode
-from PyQt6.QtWidgets import QMenu
 
 
 class TestMode(UniMode):
     _playbackStoppedEndedBlocked: bool
-    def __init__(self, parent):     # parent: MainWindowContr
+
+    def __init__(self, parent):  # parent: MainWindowContr
         super().__init__(parent)
         self.name = 'Test'
         self.currentDrillFreq = None
@@ -23,7 +23,6 @@ class TestMode(UniMode):
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
         self.view.ExScoreInfo.show()
         self.parent.ExScore.showTestStatus()
-        self._playing_started = None
         self.showAudioCursor()
 
     def generateDrill(self, fromStart=False):

@@ -82,11 +82,17 @@ class MainWindowContr(QObject):
         self.mw_view.AudiofileRBut.toggled.connect(self.setAudioSourceMode)
         self.mw_view.PinkNoiseRBut.setChecked(True)
 
-    def setAudioSourceMode(self):
+    def setAudioSourceMode(self, value):
+        if not value:
+            return
         if self.mw_view.PinkNoiseRBut.isChecked():
             self.CurrentSourceMode = PinkNoiseMode(self)
         elif self.mw_view.AudiofileRBut.isChecked():
             self.CurrentSourceMode = AudioFileMode(self)
+        if self.mw_view.actionPreview_Mode.isChecked():
+            self.CurrentMode = PreviewMode(self)
+        else:
+            self.mw_view.actionPreview_Mode.setChecked(True)
 
     def setModesActions(self):
         self.modesActionGroup = QActionGroup(self)
@@ -150,7 +156,9 @@ class MainWindowContr(QObject):
         if self.BoostCutOrderActionGroup.checkedAction() == self.mw_view.actionAll_Bands_Boosted_then_All_Bands_Cut:
             return 2
 
-    def setCurrentMode(self):
+    def setCurrentMode(self, value):
+        if not value:
+            return
         self.CurrentMode.cleanTempAudio()
         try:
             if self.modesActionGroup.checkedAction() == self.mw_view.actionPreview_Mode:
@@ -209,6 +217,8 @@ class MainWindowContr(QObject):
         self.mw_view.ShufflePlaybackBut.setDefaultAction(self.mw_view.actionShuffle_Playback)
 
     def load_song(self, Song: PlSong):
+        if self.CurrentSourceMode.name != 'Audiofile':
+            return
         if hasattr(Song, 'file_properties'):
             Song.__delattr__('file_properties')
         if Song.duration < 30 or not Song.exists:

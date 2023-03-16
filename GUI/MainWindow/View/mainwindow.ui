@@ -5043,7 +5043,7 @@ border-radius: 4px;
               </size>
              </property>
              <property name="toolTip">
-              <string>Click to set starting point to cursor position</string>
+              <string>Set starting point to cursor position (enabled in Preview mode for loaded audiofile only)</string>
              </property>
              <property name="statusTip">
               <string/>
@@ -5107,7 +5107,7 @@ color: green;
            <item>
             <widget class="QPushButton" name="RangeToStart">
              <property name="toolTip">
-              <string>Click to set starting point to beginning of audiofile</string>
+              <string>Set starting point to beginning of audiofile (enabled in Preview mode for loaded audiofile only)</string>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{
@@ -5147,7 +5147,7 @@ color: green;
               </size>
              </property>
              <property name="toolTip">
-              <string>Click to set ending point to cursor position</string>
+              <string>Set ending point to cursor position (enabled in Preview mode for loaded audiofile only)</string>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{
@@ -5205,7 +5205,7 @@ color: green;
            <item>
             <widget class="QPushButton" name="RangeToEnd">
              <property name="toolTip">
-              <string>Click to set ending point to end of audiofile</string>
+              <string>Set ending point to end of audiofile (enabled in Preview mode for loaded audiofile only)</string>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{
@@ -5245,7 +5245,7 @@ color: green;
           </size>
          </property>
          <property name="toolTip">
-          <string>Reset starting/ending points</string>
+          <string>Reset starting/ending points (enabled in Preview mode for loaded audiofile only)</string>
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton{

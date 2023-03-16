@@ -93,7 +93,7 @@ class PlayerContr(QMediaPlayer):
             self.parent.onLoadSourceAudio()
             self._refreshAudioOutput_mac()
             self.mw_contr.LoadedFilePath = self.mw_contr.CurrentAudio
-            if self.mw_contr.CurrentMode.name == 'Preview':
+            if self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.CurrentSourceMode.name == 'Audiofile':
                 self.mw_contr.hashAudioFile()
                 if self.mw_contr.LoadedFilePath in self.PlModel.nonLoadedSong_paths:
                     self.PlModel.nonLoadedSong_paths.remove(self.mw_contr.LoadedFilePath)

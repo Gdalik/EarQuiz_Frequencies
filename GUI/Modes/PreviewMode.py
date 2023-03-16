@@ -3,12 +3,14 @@ from GUI.Modes.UniMode import UniMode
 
 class PreviewMode(UniMode):
     def __init__(self, parent):     # parent: MainWindowContr
-        super().__init__(parent)
+        super().__init__(parent, setPlayerContr=False)
         self.name = 'Preview'
-        self.playPause_toggleable = True
         self.parent.EQContr.resetEQ()
-        self.view.TransportPanel.show()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.hide()
+        if not self.isAudioSourceMode():
+            return
+        self.setPlayerControls()
+        self.playPause_toggleable = True
         self.parent.ExScore.view.init_texts(onlyLastExcInfo=True)
         if self.parent.SourceAudio is not None:
             self.enableTimeSettingsChanges(True)
@@ -56,6 +58,9 @@ class PreviewMode(UniMode):
         self.parent.CurrentAudio = self.parent.SourceAudio.path if self.parent.SourceAudio else None
         return self.parent.CurrentAudio != old_value
 
+    def nextDrill(self, **kwargs):
+        pass
+
     def oncePlayingStarted(self):
         pass
 
@@ -65,3 +70,23 @@ class PreviewMode(UniMode):
     def ensureGotoStart(self):
         if not self.parent.playAudioOnPreview and self.currentAudioStartTime is not None:
             self.view.TransportPanelView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)
+
+    def isAudioSourceMode(self):
+        if self.parent.CurrentSourceMode.name == 'Audiofile':
+            return True
+        self.enableTimeSettingsChanges(False)
+        self.view.actionPlayPause.setEnabled(False)
+        self.view.actionStop.setEnabled(False)
+        self.view.actionPrevious_Track.setVisible(False)
+        self.view.actionNext_Track.setVisible(False)
+        self.view.actionSkip_Unavailable_Tracks.setVisible(False)
+        self.view.actionLoop_Playback.setVisible(False)
+        self.view.actionShuffle_Playback.setChecked(False)
+        self.view.actionShuffle_Playback.setEnabled(False)
+        self.view.actionShuffle_Playback.setVisible(False)
+        self.view.LoopButton.setVisible(False)
+        self.view.Player_SkipBackw.setVisible(False)
+        self.view.Player_SkipForw.setVisible(False)
+        self.view.TransportPanelView.AudioSliderView.Cursor.hide()
+        self.view.TransportPanelView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)
+        return False

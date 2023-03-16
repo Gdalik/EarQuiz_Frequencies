@@ -109,7 +109,7 @@ class TransportContr(QObject):
         self.onSourceRangeChanged()
 
     def onLoadSourceAudio(self):
-        if self.parent.CurrentMode.name != 'Preview':
+        if self.parent.CurrentMode.name != 'Preview' or self.parent.CurrentSourceMode.name != 'Audiofile':
             return
         self.TransportView.setHeader(self.PlayerContr.sourceAudioData())
         # duration_s = self.PlayerContr.duration() / 1000

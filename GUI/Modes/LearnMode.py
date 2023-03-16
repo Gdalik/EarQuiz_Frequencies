@@ -2,9 +2,9 @@ from GUI.Modes.UniMode import UniMode
 
 
 class LearnMode(UniMode):
-    _playbackStoppedEndedBlocked: bool
+    # _playbackStoppedEndedBlocked: bool
     def __init__(self, parent):     # parent: MainWindowContr
-        self.blockPlaybackStoppedEnded(True)
+        # self.blockPlaybackStoppedEnded(True)
         super().__init__(parent)
         self.name = 'Learn'
         self.currentDrillFreq = None
@@ -20,8 +20,7 @@ class LearnMode(UniMode):
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
         self.parent.ExScore.view.init_texts(onlyLastExcInfo=True)
         self.showAudioCursor()
-        self.blockPlaybackStoppedEnded(False)
-        self._playing_started = None
+        # self.blockPlaybackStoppedEnded(False)
 
     def generateDrill(self, fromStart=False, raiseInterruptedException=True):
         if self.parent.ADGen is None:
@@ -49,21 +48,20 @@ class LearnMode(UniMode):
         self.view.TransportPanelView.AudioSliderView.SliceRegion.setValues(slicerange[0], slicerange[1])
 
     def playbackStoppedEnded(self):
-        if self._playbackStoppedEndedBlocked:
-            return
+        '''if self._playbackStoppedEndedBlocked:
+            return'''
         self.parent.EQContr.resetEQ()
         self.view.EQSetView.setEnabled(True)
         # self.view.PatternBoxView.setEnabled(True)
 
-    def blockPlaybackStoppedEnded(self, arg: bool):
-        self._playbackStoppedEndedBlocked = arg
+    '''def blockPlaybackStoppedEnded(self, arg: bool):
+        self._playbackStoppedEndedBlocked = arg'''
 
     def oncePlayingStarted(self):
         super(LearnMode, self).oncePlayingStarted()
         if not self.parent.EQContr.frozen:
             self.parent.EQContr.freezeEQ()
         self.view.EQSetView.setEnabled(False)
-        # self.view.PatternBoxView.setEnabled(False)
         if not self._checkSliders():
             self.view.EQView.setHandles(self.currentDrillFreq, blockSignals=True)
 
@@ -82,5 +80,4 @@ class LearnMode(UniMode):
             slider_freq = set(slider_freq)
         if isinstance(current_freq, tuple):
             current_freq = set(current_freq)
-        # print(f'{current_freq=} {slider_freq=}')
         return slider_freq == current_freq

@@ -1,4 +1,6 @@
 import contextlib
+import time
+
 from Model.audiodrill_gen import create_temp_wavefile
 from pathlib import Path
 from definitions import TEMP_AUDIO_DIR
@@ -6,7 +8,7 @@ from PyQt6.QtCore import QTimer
 
 
 class UniMode:
-    def __init__(self, parent, contrEnabled=True):     # parent: MainWindowContr
+    def __init__(self, parent, contrEnabled=True, setPlayerContr=True):     # parent: MainWindowContr
         self.TimeSettingsChangesEnabled = None
         self.name = 'Uni'
         self.view = parent.mw_view
@@ -14,12 +16,15 @@ class UniMode:
         self.parent.CurrentMode = self
         self.playPause_toggleable = False
         self.parent.TransportContr.CursorBeingDragged = False
+        # True CursorBeingDragged value, caused by previous Audio Cursor position change, may result in further
+        # glitches.
         self.view.setActionNextExerciseEnabled(False)
         self.view.NextExercise.setVisible(False)
         self.enableTimeSettingsChanges(False)
         self.view.EqOnOffLab.hide()
         self.setEQBandsOrderMenuVisible(contrEnabled)
-        self.setPlayerControls()
+        if setPlayerContr:
+            self.setPlayerControls()
         self.view.SliceLenSpin.setEnabled(contrEnabled)
         self.view.EQSetView.setEnabled(contrEnabled)
         self.parent.ExScore.showTestStatus()
@@ -79,8 +84,10 @@ class UniMode:
     def generateDrill(self, **kwargs):
         pass
 
-    def nextDrill(self, **kwargs):
-        pass
+    def nextDrill(self, **kwargs):      # The case when test is complete, and user changes EQ pattern
+        self.parent.TransportContr.PlayerContr.clearSource()
+        self.cleanTempAudio()
+        self.parent.ExScore.refresh(onlyLastExcInfo=True)
 
     def playbackStoppedEnded(self):
         self.view.EqOnOffLab.setVisible(False)
