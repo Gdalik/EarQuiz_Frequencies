@@ -46,6 +46,10 @@ class PreviewMode(UniMode):
         self.view.actionShuffle_Playback.setChecked(self.parent.PlaylistContr.PlNavi.shuffle())
         self.view.actionShuffle_Playback.setEnabled(True)
         self.view.actionShuffle_Playback.setVisible(True)
+        self.view.LoopButton.setVisible(True)
+        self.view.Player_SkipBackw.setVisible(True)
+        self.view.Player_SkipForw.setVisible(True)
+
 
     def updateCurrentAudio(self):
         old_value = self.parent.CurrentAudio

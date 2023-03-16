@@ -7,6 +7,7 @@ import platform
 
 
 app_name = 'EarQuiz Frequencies'
+version = '0.1.0'
 ROOT_DIR = os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
 app = QApplication(sys.argv)
 MediaDevices = QMediaDevices()
