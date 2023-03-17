@@ -526,7 +526,7 @@ background: rgba(118, 214, 255, 85)
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="NextExercise">
+       <widget class="QToolButton" name="NextExample">
         <property name="minimumSize">
          <size>
           <width>30</width>
@@ -540,7 +540,7 @@ background: rgba(118, 214, 255, 85)
          </size>
         </property>
         <property name="toolTip">
-         <string>Next Exercise</string>
+         <string>Next Example</string>
         </property>
         <property name="statusTip">
          <string/>
@@ -559,7 +559,7 @@ background: rgba(118, 214, 255, 85);
 }</string>
         </property>
         <property name="text">
-         <string>Next Exercise</string>
+         <string>Next Example</string>
         </property>
         <property name="icon">
          <iconset>
@@ -763,7 +763,7 @@ font-weight: bold</string>
        <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -1725,6 +1725,33 @@ font-weight: bold</string>
             </spacer>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignRight">
+         <widget class="QToolButton" name="EQSettings_But1">
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+border: None;
+}
+
+QToolButton:checked{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../../Icons/Misc/Settings.png</normaloff>../../Icons/Misc/Settings.png</iconset>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
          </widget>
         </item>
        </layout>
@@ -4588,6 +4615,30 @@ font-weight: bold</string>
           </layout>
          </widget>
         </item>
+        <item alignment="Qt::AlignRight">
+         <widget class="QToolButton" name="EQSettings_But2">
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+border: None;
+}
+
+QToolButton:checked{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../../Icons/Misc/Settings.png</normaloff>../../Icons/Misc/Settings.png</iconset>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -4659,7 +4710,7 @@ font-weight: bold</string>
     <addaction name="actionLearn_Mode"/>
     <addaction name="actionTest_Mode"/>
     <addaction name="separator"/>
-    <addaction name="actionNext_Exercise"/>
+    <addaction name="actionNext_Example"/>
     <addaction name="actionPlayPause"/>
     <addaction name="actionStop"/>
     <addaction name="actionPrevious_Track"/>
@@ -4698,7 +4749,7 @@ font-weight: bold</string>
   <widget class="QDockWidget" name="TransportPanel">
    <property name="minimumSize">
     <size>
-     <width>1054</width>
+     <width>1082</width>
      <height>125</height>
     </size>
    </property>
@@ -4956,13 +5007,13 @@ border-radius: 4px;
            </property>
            <property name="minimumSize">
             <size>
-             <width>60</width>
+             <width>100</width>
              <height>18</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>60</width>
+             <width>100</width>
              <height>18</height>
             </size>
            </property>
@@ -5107,7 +5158,7 @@ color: green;
            <item>
             <widget class="QPushButton" name="RangeToStart">
              <property name="toolTip">
-              <string>Set starting point to beginning of audiofile (enabled in Preview mode for loaded audiofile only)</string>
+              <string>Set starting point to beginning of loaded audiofile (enabled in Preview mode only)</string>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{
@@ -5205,7 +5256,7 @@ color: green;
            <item>
             <widget class="QPushButton" name="RangeToEnd">
              <property name="toolTip">
-              <string>Set ending point to end of audiofile (enabled in Preview mode for loaded audiofile only)</string>
+              <string>Set ending point to end of loaded audiofile (enabled in Preview mode only)</string>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{
@@ -5468,14 +5519,14 @@ font-weight: normal</string>
    <widget class="QWidget" name="dockWidgetContents_3">
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QLabel" name="ExerciseNLab">
+      <widget class="QLabel" name="ExampleNLab">
        <property name="font">
         <font>
          <pointsize>16</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>Exercise:</string>
+        <string>Example:</string>
        </property>
       </widget>
      </item>
@@ -6003,13 +6054,13 @@ font-weight: normal</string>
     <string>Open Folder...</string>
    </property>
   </action>
-  <action name="actionNext_Exercise">
+  <action name="actionNext_Example">
    <property name="icon">
     <iconset>
      <normaloff>../../Icons/Player/arrow-right_gray.png</normaloff>../../Icons/Player/arrow-right_gray.png</iconset>
    </property>
    <property name="text">
-    <string>Next Exercise</string>
+    <string>Next Example</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Return</string>

@@ -276,7 +276,7 @@ background: rgba(118, 214, 255, 85)
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="NextExercise">
+       <widget class="QToolButton" name="NextExample">
         <property name="minimumSize">
          <size>
           <width>30</width>
@@ -284,7 +284,7 @@ background: rgba(118, 214, 255, 85)
          </size>
         </property>
         <property name="toolTip">
-         <string>Next Exercise</string>
+         <string>Next Example</string>
         </property>
         <property name="statusTip">
          <string/>
@@ -303,7 +303,7 @@ background: rgba(118, 214, 255, 85);
 }</string>
         </property>
         <property name="text">
-         <string>Next Exercise</string>
+         <string>Next Example</string>
         </property>
         <property name="icon">
          <iconset>
@@ -4543,7 +4543,7 @@ background: rgba(118, 214, 255, 85)
     <addaction name="actionLearn_Mode"/>
     <addaction name="actionTest_Mode"/>
     <addaction name="separator"/>
-    <addaction name="actionNext_Exercise"/>
+    <addaction name="actionNext_Example"/>
     <addaction name="actionPlay"/>
     <addaction name="actionStop"/>
     <addaction name="actionPrevious_Track"/>
@@ -5324,14 +5324,14 @@ background: rgba(118, 214, 255, 85)
    <widget class="QWidget" name="dockWidgetContents_3">
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QLabel" name="ExerciseNLab">
+      <widget class="QLabel" name="ExampleNLab">
        <property name="font">
         <font>
          <pointsize>18</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>Exercise:</string>
+        <string>Example:</string>
        </property>
       </widget>
      </item>
@@ -5799,9 +5799,9 @@ background: rgba(118, 214, 255, 85)
     <string>Open Folder...</string>
    </property>
   </action>
-  <action name="actionNext_Exercise">
+  <action name="actionNext_Example">
    <property name="text">
-    <string>Next Exercise</string>
+    <string>Next Example</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Return</string>

@@ -11,8 +11,8 @@ class LearnMode(UniMode):
         self.view.SliceLenSpin.setEnabled(False)
         if self.parent.LastMode.name not in ['Preview', 'Uni']:
             self.parent.EQContr.resetEQ()
-        self.view.setActionNextExerciseEnabled(True)
-        self.view.NextExercise.setVisible(True)
+        self.view.setActionNextExampleEnabled(True)
+        self.view.NextExample.setVisible(True)
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
         self.parent.setAudioDrillGen()
         self.nextDrill(fromStart=True)

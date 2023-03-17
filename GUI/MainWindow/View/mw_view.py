@@ -1,5 +1,3 @@
-import sys
-
 from PyQt6.QtWidgets import QMainWindow, QWidget, QSizePolicy, QToolButton
 from PyQt6.QtGui import QAction
 from PyQt6.QtCore import Qt
@@ -16,6 +14,7 @@ import definitions
 class MainWindowView(QMainWindow, Ui_MainWindow):
     actionUni_Mode: QAction
     UniBut: QToolButton
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -75,6 +74,15 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         DockActions = self.createPopupMenu().actions()
         for item in DockActions:
             self.menuView.addAction(item)
+            if item.text() == 'EQ Settings':
+                self._setUpEQSettingsButtons(item)
+
+    def _setUpEQSettingsButtons(self, action: QAction):
+        icon = self.EQSettings_But1.icon()
+        action.setIconVisibleInMenu(False)
+        action.setIcon(icon)
+        self.EQSettings_But1.setDefaultAction(action)
+        self.EQSettings_But2.setDefaultAction(action)
 
     def setUniActBut(self):
         self.actionUni_Mode = QAction(parent=self)
@@ -101,10 +109,10 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setMinimumSize(width, height)
         self.setMaximumSize(16777215, 16777215)
 
-    def setActionNextExerciseEnabled(self, arg):
-        self.actionNext_Exercise.setEnabled(arg)
-        self.actionNext_Exercise.setVisible(arg)
-        # self.NextExercise.setVisible(arg)
+    def setActionNextExampleEnabled(self, arg):
+        self.actionNext_Example.setEnabled(arg)
+        self.actionNext_Example.setVisible(arg)
+        # self.NextExample.setVisible(arg)
 
     def mousePressEvent(self, event):
         super(MainWindowView, self).mousePressEvent(event)

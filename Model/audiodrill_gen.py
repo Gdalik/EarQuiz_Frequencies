@@ -1,6 +1,6 @@
 from Model.AudioEngine.load_audio import AudioChunk
 from pedalboard.io import AudioFile
-from Model.exercise_gen import ExerciseGenerator
+from Model.exercise_gen import ExampleGenerator
 from Model.AudioEngine.process import eq_proc
 from Utilities.exceptions import InterruptedException
 from tempfile import NamedTemporaryFile
@@ -51,7 +51,7 @@ class AudioDrillGen:
         self._order = order
         self._boost_cut_priority = boost_cut_priority
         self.proc_t_perc = proc_t_perc
-        self._exercise_gen = ExerciseGenerator(freq_options, boost_cut, DualBandMode, order,
+        self._exercise_gen = ExampleGenerator(freq_options, boost_cut, DualBandMode, order,
                                                boost_cut_priority=boost_cut_priority, disableAdjacent=disableAdjacent,
                                                inf_cycle=inf_cycle)
         self._last_freq = None
@@ -148,7 +148,7 @@ class AudioDrillGen:
 
     def resetExGen(self, freq_options, boost_cut='+-', DualBandMode=False, order='asc',
                                                boost_cut_priority=1, disableAdjacent=1, inf_cycle=True):
-        self._exercise_gen = ExerciseGenerator(freq_options=freq_options, boost_cut=boost_cut,
+        self._exercise_gen = ExampleGenerator(freq_options=freq_options, boost_cut=boost_cut,
                                                DualBandMode=DualBandMode, order=order,
                                                boost_cut_priority=boost_cut_priority, disableAdjacent=disableAdjacent,
                                                inf_cycle=inf_cycle)

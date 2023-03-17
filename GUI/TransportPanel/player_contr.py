@@ -141,6 +141,7 @@ class PlayerContr(QMediaPlayer):
 
     def _setupAudioOutput(self, anyplatform=False):
         self.audioOutput = QAudioOutput()
+        self.audioOutput.volumeChanged.connect(self.PlayerView.upd_VolumeLab)
         if platform.system() == 'Windows' or anyplatform:
             self.audioOutput.setDevice(self.mw_view.AudioDevicesView.selectedOutput())
             self.setAudioOutput(self.audioOutput)
@@ -160,6 +161,7 @@ class PlayerContr(QMediaPlayer):
             self.setPosition(starttime)
 
     def onPlaybackStateChanged(self, state):
+        self.mw_view.status.showMessage(self.PlayerView.pb_state2str(state))
         if state == self.PlaybackState.PlayingState:
             if self.mw_contr.CurrentMode.playPause_toggleable:
                 self.PlayerView.setPlayPause2Pause()

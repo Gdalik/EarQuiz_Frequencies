@@ -1,4 +1,3 @@
-from PyQt6.QtWidgets import QWidget
 from GUI.TransportPanel.audioslider_view import AudioSliderView
 from GUI.TransportPanel.player_view import PlayerView
 from GUI.TransportPanel.cropregiontimestr import CropRegionTimestr

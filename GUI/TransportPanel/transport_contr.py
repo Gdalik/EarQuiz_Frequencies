@@ -103,8 +103,12 @@ class TransportContr(QObject):
 
     def _resetSourceRange(self, _range: list or tuple):
         self.SourceRange.blockSignals(True)
-        self.SourceRange.starttime = int(_range[0] * 1000) / 1000
-        self.SourceRange.endtime = math.ceil(_range[1] * 1000) / 1000
+        slices_num = self.SourceRange.slices_num
+        k = 1000
+        self.SourceRange.starttime = int(_range[0] * k) / k
+        self.SourceRange.endtime = int(_range[1] * k) / k
+        if self.SourceRange.slices_num < slices_num:    # Rounding error correction to maintain same number of slices
+            self.SourceRange.endtime += 1 / k
         self.SourceRange.blockSignals(False)
         self.onSourceRangeChanged()
 

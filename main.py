@@ -1,3 +1,4 @@
+import time
 from PyQt6.QtGui import QIcon
 from definitions import app, app_name, TEMP_AUDIO_DIR
 from GUI.MainWindow.mw_contr import MainWindowContr
@@ -18,11 +19,14 @@ if __name__ == '__main__':
     me = SingleInstance()
     StartLogo = StartScreen()
     StartLogo.show()
+    time_a = time.time()
     app.setWindowIcon(QIcon("icons:/Logo/EarQuiz_Icon.png"))
     app.setApplicationDisplayName(app_name)
     app.setApplicationName(app_name)
     shutil.rmtree(TEMP_AUDIO_DIR, ignore_errors=True)
     mw = MainWindowContr()
     app.aboutToQuit.connect(onAppAboutToQuit)
-    QTimer.singleShot(3000, StartLogo.hide)
+    time_diff = time.time() - time_a
+    show_time = max(0, int(2000 - time_diff * 1000))
+    QTimer.singleShot(show_time, StartLogo.hide)
     app.exec()

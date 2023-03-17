@@ -18,8 +18,8 @@ class UniMode:
         self.parent.TransportContr.CursorBeingDragged = False
         # True CursorBeingDragged value, caused by previous Audio Cursor position change, may result in further
         # glitches.
-        self.view.setActionNextExerciseEnabled(False)
-        self.view.NextExercise.setVisible(False)
+        self.view.setActionNextExampleEnabled(False)
+        self.view.NextExample.setVisible(False)
         self.enableTimeSettingsChanges(False)
         self.view.EqOnOffLab.hide()
         self.setEQBandsOrderMenuVisible(contrEnabled)

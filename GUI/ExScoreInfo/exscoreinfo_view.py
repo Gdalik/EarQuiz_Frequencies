@@ -2,7 +2,7 @@ from Utilities.freq2str import freqString
 
 
 class ExScoreInfoView:
-    ExNum_t = 'Exercise:'
+    ExNum_t = 'Example:'
     UserAnsw_t = 'Your answer:'
     CorAnsw_t = 'Right answer:'
     AnswScore_t = 'Answer score:'
@@ -11,7 +11,7 @@ class ExScoreInfoView:
 
     def __init__(self, mw_view):
         self.mw_view = mw_view
-        self.ExNum = mw_view.ExerciseNLab
+        self.ExNum = mw_view.ExampleNLab
         self.UserAnsw = mw_view.UserAnswerLab
         self.CorAnsw = mw_view.CorAnswerLab
         self.AnswScore = mw_view.AnswerScoreLab

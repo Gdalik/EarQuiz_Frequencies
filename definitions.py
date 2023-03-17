@@ -19,3 +19,6 @@ elif platform.system() == 'Windows':
     DATA_DIR = os.path.normpath(os.path.join(os.path.expandvars('%AppData%'), 'EarQuiz', 'Frequencies'))
 TEMP_AUDIO_DIR = os.path.normpath(os.path.join(DATA_DIR, 'temp_audio'))
 os.makedirs(DATA_DIR, exist_ok=True)
+
+SineWaveCalibrationFilename = '1kHz 10kHz 100Hz 15kHz 40Hz Sinus Tones.wav'
+SineWaveCalibrationPath = os.path.normpath(os.path.join(DATA_DIR, 'Audio', SineWaveCalibrationFilename))

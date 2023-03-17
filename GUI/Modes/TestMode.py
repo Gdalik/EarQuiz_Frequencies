@@ -13,8 +13,8 @@ class TestMode(UniMode):
         self.setEQBandsOrderMenuVisible(False)
         if self.parent.LastMode.name not in ['Preview', 'Uni']:
             self.parent.EQContr.resetEQ()
-        self.view.setActionNextExerciseEnabled(False)
-        self.view.NextExercise.setVisible(True)
+        self.view.setActionNextExampleEnabled(False)
+        self.view.NextExample.setVisible(True)
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
         self.restart_test()
         self.parent.setAudioDrillGen()
@@ -36,7 +36,7 @@ class TestMode(UniMode):
         if self.parent.ADGen is None:
             return
         self.parent.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
-        self.view.setActionNextExerciseEnabled(False)
+        self.view.setActionNextExampleEnabled(False)
         self.parent.EQContr.resetEQ()
         self.currentDrillFreq = self.generateDrill(fromStart=fromStart)
         self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=play_after)
@@ -47,7 +47,7 @@ class TestMode(UniMode):
         self.parent.ExScore.onAnswerAccepted(RightAnswer=self.currentDrillFreq, UserAnswer=eq_values)
         self.parent.EQContr.freezeEQ()
         self.parent.EQContr.highlightEQFreq(self.currentDrillFreq)
-        self.view.setActionNextExerciseEnabled(self.parent.ExScore.test_status == 'in progress')
+        self.view.setActionNextExampleEnabled(self.parent.ExScore.test_status == 'in progress')
         self.parent.ExScore.showTestStatus()
 
     def updateSliceRegion(self):

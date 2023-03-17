@@ -4,7 +4,7 @@ import itertools
 from Utilities.common_calcs import findAdjacentEl as findAdj
 
 
-class ExerciseGenerator:
+class ExampleGenerator:
     def __init__(self, freq_options: list[int], boost_cut: str, DualBandMode: bool, order: str, boost_cut_priority=1,
                  disableAdjacent=1, inf_cycle=True):
         # order: 'asc', 'desc', 'shuffle', 'random'

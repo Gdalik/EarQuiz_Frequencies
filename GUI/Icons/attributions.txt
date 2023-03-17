@@ -7,3 +7,4 @@ Player Icons:
 https://iconarchive.com/icons/oxygen-icons.org/oxygen/authors.txt
 <a href="https://www.flaticon.com/free-icons/random" title="random icons">Random icons created by mavadee - Flaticon</a>
 Image by <a href="https://www.freepik.com/free-vector/flat-design-arrow-collection_5940015.htm#query=blue%20arrow&position=2&from_view=keyword">Freepik</a>
+<a href="https://www.flaticon.com/free-icons/settings" title="settings icons">Settings icons created by Freepik - Flaticon</a>

@@ -1,16 +1,20 @@
 from PyQt6.QtCore import QSize
 from PyQt6.QtGui import QIcon
+import math
 
 
 class PlayerView:
     def __init__(self, mw_view):
         self.mw_view = mw_view
-        self.upd_VolumeLab()
-        self.mw_view.VolumeSlider.valueChanged.connect(self.upd_VolumeLab)
         self.setPlayerButtons()
 
-    def upd_VolumeLab(self):
-        self.mw_view.VolumePerc.setText(f'{self.mw_view.VolumeSlider.value()}%')
+    def upd_VolumeLab(self, value: float):
+        try:
+            level_db = f'{round(20 * math.log10(value), 1)}dB'
+        except ValueError:
+            level_db = '-inf'
+
+        self.mw_view.VolumePerc.setText(f'{self.mw_view.VolumeSlider.value()}% ({level_db})')
 
     def setPlayerButtons(self):
         self.mw_view.Player_PlayPause.setDefaultAction(self.mw_view.actionPlayPause)
@@ -33,3 +37,8 @@ class PlayerView:
         icon.addFile(u"icons:/Player/Actions-media-playback-pause-icon.png", QSize(32, 32),
                      QIcon.Mode.Normal, QIcon.State.Off)
         self.mw_view.actionPlayPause.setIcon(icon)
+
+    @staticmethod
+    def pb_state2str(state):
+        _state = str(state).split('.')[1].replace('State', '')
+        return f'Playback state: {_state}'

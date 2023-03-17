@@ -1,5 +1,5 @@
 import contextlib
-from definitions import app
+from definitions import app, SineWaveCalibrationFilename
 from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.EQ.eq_contr import EQContr
@@ -61,11 +61,12 @@ class MainWindowContr(QObject):
         self.setLearnFreqOrderAG()
         self.setBoostCutOrderAG()
         self.setPlaybackButtons()
-        self.mw_view.NextExercise.setDefaultAction(self.mw_view.actionNext_Exercise)
-        self.mw_view.actionNext_Exercise.triggered.connect(self.onNextExerciseTriggered)
+        self.mw_view.NextExample.setDefaultAction(self.mw_view.actionNext_Example)
+        self.mw_view.actionNext_Example.triggered.connect(self.onNextExampleTriggered)
         self.mw_view.actionClose.triggered.connect(self.onCloseTriggered)
         self.mw_view.show()
         self.setSourceButtons()
+        self.mw_view.VolumeSlider.setValue(60)
         self.playAudioOnPreview = False
 
     def setFileMenuActions(self):
@@ -130,7 +131,7 @@ class MainWindowContr(QObject):
             return
         self.ADGen.boost_cut_priority = self.boostCutPriority
 
-    def onNextExerciseTriggered(self):
+    def onNextExampleTriggered(self):
         if self.CurrentMode is not None:
             self.CurrentMode.nextDrill(raiseInterruptedException=False)
 
@@ -257,16 +258,27 @@ class MainWindowContr(QObject):
         self.SourceRange.rangeChanged.connect(self.TransportContr.onSourceRangeChanged)
 
     def setOptimalSourceRange(self, reset=True):
-        duration = self.SourceAudio.duration
-        slice_length = self.mw_view.SliceLenSpin.value()
-        opt_length = optimal_range_length(duration, slice_length)
+        range_params = self._getSourceRangeParameters(reset=reset)
         if reset:
-            self.SourceRange = PreviewAudioCrop(duration, 0, opt_length, slice_length)
+            self.SourceRange = PreviewAudioCrop(self.SourceAudio.duration, range_params[0], range_params[1],
+                                                range_params[2])
         elif self.SourceRange is not None:
             self.SourceRange.setStrictModeActive(True)
             self.SourceRange.starttime = 0
-            self.SourceRange.endtime = opt_length
+            self.SourceRange.endtime = range_params[1]
             self.SourceRange.setStrictModeActive(False)
+        self.mw_view.TransportPanelView.SliceLenSpin.setValue(range_params[2])
+
+    def _getSourceRangeParameters(self, reset=True):
+        if self.SourceAudio.name == SineWaveCalibrationFilename:
+            slice_length = 10
+        elif reset:
+            slice_length = self.CurrentSourceMode.default_slice_length
+        else:
+            slice_length = self.mw_view.TransportPanelView.SliceLenSpin.value()
+        duration = self.SourceAudio.duration
+        opt_length = optimal_range_length(duration, slice_length)
+        return (0, opt_length, slice_length)
 
     def disconnectSourceRangeSig(self):
         with contextlib.suppress(AttributeError, TypeError):
