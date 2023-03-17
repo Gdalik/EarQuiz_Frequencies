@@ -185,6 +185,7 @@ class PlayerContr(QMediaPlayer):
         selected_out = self.mw_view.AudioDevicesView.selectedOutput()
         if selected_out != self.audioOutput.device():
             self.audioOutput.setDevice(selected_out)
+            self._translatePBStateToStatusBar(self.playbackState())
 
     def onAudioOutputsChanged(self):
         checked_item = self.mw_view.AudioDevicesGroup.checkedAction()
