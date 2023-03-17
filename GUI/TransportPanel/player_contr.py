@@ -161,7 +161,7 @@ class PlayerContr(QMediaPlayer):
             self.setPosition(starttime)
 
     def onPlaybackStateChanged(self, state):
-        self.mw_view.status.showMessage(self.PlayerView.pb_state2str(state))
+        self._translatePBStateToStatusBar(state)
         if state == self.PlaybackState.PlayingState:
             if self.mw_contr.CurrentMode.playPause_toggleable:
                 self.PlayerView.setPlayPause2Pause()
@@ -170,6 +170,10 @@ class PlayerContr(QMediaPlayer):
             self.PlayerView.setPlayPause2Play()
         if state == self.PlaybackState.StoppedState:
             self.mw_contr.CurrentMode.playbackStoppedEnded()
+
+    def _translatePBStateToStatusBar(self, state):
+        source = 'Pink noise' if self.mw_contr.SourceAudio.name == 'pinknoise' else self.mw_contr.SourceAudio.name
+        self.mw_view.status.showMessage(f'{source}: {self.PlayerView.pb_state2str(state)}')
 
     def onPlayPause_triggered(self):
         if self.playbackState() == self.PlaybackState.PlayingState and self.mw_contr.CurrentMode.playPause_toggleable:

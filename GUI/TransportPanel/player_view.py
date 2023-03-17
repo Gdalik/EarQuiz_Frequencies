@@ -40,5 +40,4 @@ class PlayerView:
 
     @staticmethod
     def pb_state2str(state):
-        _state = str(state).split('.')[1].replace('State', '')
-        return f'Playback state: {_state}'
+        return str(state).split('.')[1].replace('State', '')

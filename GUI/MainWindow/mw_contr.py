@@ -200,6 +200,7 @@ class MainWindowContr(QObject):
         self.LoadedFilePath = None
         self.mw_view.TransportPanelView.noSongState()
         self.SourceRange = None
+        self.mw_view.statusbar.clearMessage()
 
     def hashAudioFile(self):
         if self.SourceAudio is None:
