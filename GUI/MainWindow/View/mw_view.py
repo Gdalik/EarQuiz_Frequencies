@@ -13,6 +13,7 @@ import definitions
 
 class MainWindowView(QMainWindow, Ui_MainWindow):
     actionUni_Mode: QAction
+    actionTransportPanelView: QAction
     UniBut: QToolButton
 
     def __init__(self):
@@ -30,6 +31,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.status = self.statusBar()
         self.setMinimalistView()
         self.actionMinimal.triggered.connect(self.setMinimalistView)
+        self.TransportPanelViewBut.clicked.connect(self.onTransportPanelViewBut_clicked)
         self.setUniActBut()
         self.alt_pressed = None
         self.setFocus()
@@ -76,6 +78,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             self.menuView.addAction(item)
             if item.text() == 'EQ Settings':
                 self._setUpEQSettingsButtons(item)
+            elif 'Transport Panel' in item.text():
+                self._setUpActionTransportPanelView(item)
 
     def _setUpEQSettingsButtons(self, action: QAction):
         icon = self.EQSettings_But1.icon()
@@ -83,6 +87,11 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         action.setIcon(icon)
         self.EQSettings_But1.setDefaultAction(action)
         self.EQSettings_But2.setDefaultAction(action)
+
+    def _setUpActionTransportPanelView(self, action):
+        self.actionTransportPanelView = action
+        self.actionTransportPanelView.toggled.connect(self.onActionTransportPanelViewToggled)
+        self.onActionTransportPanelViewToggled()
 
     def setUniActBut(self):
         self.actionUni_Mode = QAction(parent=self)
@@ -130,3 +139,12 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         else:
             self.EqOnOffLab.setText('EQ Off')
             self.EqOnOffLab.setStyleSheet('color: gray; font-weight: bold')
+
+    def onActionTransportPanelViewToggled(self):
+        if self.actionTransportPanelView.isChecked():
+            self.TransportPanelViewBut.setText('Hide Transport Panel')
+        else:
+            self.TransportPanelViewBut.setText('Show Transport Panel')
+
+    def onTransportPanelViewBut_clicked(self):
+        self.TransportPanel.show() if 'Show' in self.TransportPanelViewBut.text() else self.TransportPanel.hide()
