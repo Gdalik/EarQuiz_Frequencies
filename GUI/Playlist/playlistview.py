@@ -9,6 +9,7 @@ from Utilities.urlcheck import validUrls
 class PL_Signals(QObject):
     urlsDropped = pyqtSignal(list, int)
     dragDropFromPLFinished = pyqtSignal(Qt.DropAction)
+    keyPressed = pyqtSignal(int)
 
 class PlaylistView(QTableView):
     signals = PL_Signals()
@@ -101,6 +102,10 @@ class PlaylistView(QTableView):
         action = drag.exec(Qt.DropAction.CopyAction) if self.mw_view.alt_pressed \
             else drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.MoveAction)
         self.signals.dragDropFromPLFinished.emit(action)
+
+    def keyPressEvent(self, e):
+        super(PlaylistView, self).keyPressEvent(e)
+        self.signals.keyPressed.emit(e.key())
 
     def selectRows(self, first: int, last: int, scrolling=True):
         selection = QItemSelection()

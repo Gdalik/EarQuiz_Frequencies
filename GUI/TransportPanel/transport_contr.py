@@ -170,6 +170,7 @@ class TransportContr(QObject):
 
     def setInitCropRegionView(self):
         self.onSourceRangeChanged()
+        self.onSliceLenChanged(self.SourceRange.slice_length)
         self.TransportView.AudioSliderView.CropRegion.show()
 
     def onPlaybackPosChanged(self, pos):

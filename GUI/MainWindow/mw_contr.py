@@ -15,6 +15,7 @@ from GUI.Modes.audiosource_modes import PinkNoiseMode, AudioFileMode
 from GUI.Playlist.plsong import PlSong
 from GUI.TransportPanel.transport_contr import TransportContr
 from GUI.Misc.tracked_proc import ProcTrackControl
+from GUI.FileMaker.audiofilemaker import AudioFileMaker
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.audiodrill_gen import AudioDrillGen
 from PyQt6.QtCore import QObject
@@ -51,6 +52,7 @@ class MainWindowContr(QObject):
         self.PlaylistContr = PlaylistContr(self)
         self.PatternBoxContr = PatternBoxContr(self)
         self.TransportContr = TransportContr(self)
+        self.FileMaker = AudioFileMaker(self)
         self.ExScore = ExScoreInfoContr(self)
         self.CurrentMode = self.LastMode = UniMode(self)
         self.CurrentSourceMode = PinkNoiseMode(self)
@@ -72,6 +74,8 @@ class MainWindowContr(QObject):
     def setFileMenuActions(self):
         self.mw_view.actionOpen.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='files'))
         self.mw_view.actionOpen_Folder.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='folder'))
+        self.mw_view.actionMake_and_Open_Calibration_Sine_Wave_File.triggered.connect\
+            (self.FileMaker.makeAndImportCalibrationSineTones)
 
     def setModesButtons(self):
         self.mw_view.PreviewBut.setDefaultAction(self.mw_view.actionPreview_Mode)
@@ -257,6 +261,7 @@ class MainWindowContr(QObject):
         self.setOptimalSourceRange()
         self.mw_view.TransportPanelView.CropRegionTstr.noAudioState(False)
         self.SourceRange.rangeChanged.connect(self.TransportContr.onSourceRangeChanged)
+        self.SourceRange.sliceLengthChanged.connect(self.TransportContr.onSliceLenChanged)
 
     def setOptimalSourceRange(self, reset=True):
         range_params = self._getSourceRangeParameters(reset=reset)
@@ -268,7 +273,8 @@ class MainWindowContr(QObject):
             self.SourceRange.starttime = 0
             self.SourceRange.endtime = range_params[1]
             self.SourceRange.setStrictModeActive(False)
-        self.mw_view.TransportPanelView.SliceLenSpin.setValue(range_params[2])
+        # self.mw_view.TransportPanelView.SliceLenSpin.setValue(range_params[2])
+        self.SourceRange.slice_length = range_params[2]
 
     def _getSourceRangeParameters(self, reset=True):
         if self.SourceAudio.name == SineWaveCalibrationFilename:
@@ -278,12 +284,14 @@ class MainWindowContr(QObject):
         else:
             slice_length = self.mw_view.TransportPanelView.SliceLenSpin.value()
         duration = self.SourceAudio.duration
+        slice_length = int(min(duration, slice_length))
         opt_length = optimal_range_length(duration, slice_length)
         return (0, opt_length, slice_length)
 
     def disconnectSourceRangeSig(self):
         with contextlib.suppress(AttributeError, TypeError):
             self.SourceRange.rangeChanged.disconnect(self.TransportContr.onSourceRangeChanged)
+            self.SourceRange.sliceLengthChanged.disconnect(self.TransportContr.onSliceLenChanged)
 
     def onCloseTriggered(self):
         app.quit()

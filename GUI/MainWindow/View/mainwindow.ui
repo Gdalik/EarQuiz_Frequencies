@@ -4725,6 +4725,7 @@ background: rgba(118, 214, 255, 85)
     <addaction name="actionOpen_Folder"/>
     <addaction name="actionSave_Playlist"/>
     <addaction name="separator"/>
+    <addaction name="actionMake_and_Open_Calibration_Sine_Wave_File"/>
     <addaction name="actionMake_Learning_Files"/>
     <addaction name="actionMake_Test_Files"/>
     <addaction name="separator"/>
@@ -6165,6 +6166,11 @@ font-weight: normal</string>
    </property>
    <property name="text">
     <string>Skip Unavailable Tracks</string>
+   </property>
+  </action>
+  <action name="actionMake_and_Open_Calibration_Sine_Wave_File">
+   <property name="text">
+    <string>Make and Open Calibration Sine Waves File</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

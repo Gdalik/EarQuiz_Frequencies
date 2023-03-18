@@ -5,6 +5,7 @@ class PreviewAudioCrop(QObject):
     min_slice_length = 10
     max_slice_length = 30
     rangeChanged = pyqtSignal()
+    sliceLengthChanged = pyqtSignal(int)
 
     def __init__(self, audiofile_length: int or float, starttime: int or float, endtime: int or float,
                  slice_length=15, strictMode=False):
@@ -55,6 +56,7 @@ class PreviewAudioCrop(QObject):
         # print(f'{old_value=} {self._starttime=}')
         if old_value != self._endtime:
             self.rangeChanged.emit()
+        self.slice_length = self.slice_length
 
     @property
     def slice_length(self):
@@ -62,10 +64,13 @@ class PreviewAudioCrop(QObject):
 
     @slice_length.setter
     def slice_length(self, value):
+        old_value = self._slice_length
         if self._strictMode:
             self._slice_length = value
         self._slice_length = min(value, self.chunk_length, self.max_slice_length)
         self._slice_length = max(self._slice_length, self.min_slice_length)
+        if old_value != self._slice_length:
+            self.sliceLengthChanged.emit(self._slice_length)
 
     @property
     def chunk_length(self):

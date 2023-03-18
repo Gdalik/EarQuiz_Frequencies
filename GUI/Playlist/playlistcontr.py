@@ -1,3 +1,5 @@
+import contextlib
+
 from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilterProxyModel
 from GUI.Playlist.plsong import PlSong
 from GUI.Playlist.PLLoadDialog import PLProcDialog
@@ -38,6 +40,7 @@ class PlaylistContr(QObject):
         self.mw_view.actionPrevious_Track.triggered.connect(self.onPreviousTrack_trig)
         self.mw_view.actionNext_Track.triggered.connect(self.onNextTrack_trig)
         self.mw_view.actionShuffle_Playback.triggered.connect(self.onShufflePlayback_trig)
+        self.PlaylistView.signals.keyPressed.connect(self.onKeyPressed)
 
     def addTracks(self, URLs: list[QUrl], index=-1):
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)
@@ -100,6 +103,16 @@ class PlaylistContr(QObject):
             self.addTracks(filenames, index)
 
     def onDoubleClicked(self, index):
+        self.loadSongFromIndex(index)
+
+    def onKeyPressed(self, key: int):
+        if key in (Qt.Key.Key_Return, Qt.Key.Key_Enter):
+            with contextlib.suppress(IndexError):
+                self.loadSongFromIndex(self.PlaylistView.selectedIndexes()[0])
+        elif key in (Qt.Key.Key_Backspace, Qt.Key.Key_Delete):
+            self.removeTracks()
+
+    def loadSongFromIndex(self, index):
         self.mw_view.AudiofileRBut.setChecked(True)
         source_ind = self.proxyModel.mapToSource(index).row()
         song2load = self.playlistModel.playlistdata[source_ind]
