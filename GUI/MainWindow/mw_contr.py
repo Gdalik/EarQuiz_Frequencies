@@ -1,5 +1,5 @@
 import contextlib
-from definitions import app, SineWaveCalibrationFilename
+from definitions import app, SineWaveCalibrationFilename, MinAudioDuration
 from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.EQ.eq_contr import EQContr
@@ -223,7 +223,7 @@ class MainWindowContr(QObject):
             return
         if hasattr(Song, 'file_properties'):
             Song.__delattr__('file_properties')
-        if Song.duration < 30 or not Song.exists:
+        if Song.duration < MinAudioDuration or not Song.exists:
             return
         self.SourceAudio = Song
         self.PlaylistContr.PlNavi.setCurrentSong(Song)

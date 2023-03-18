@@ -112,3 +112,8 @@ class PlaylistView(QTableView):
         if scrolling:
             self.scrollTo(self.model().mapFromSource(self.Model.index(first, 0)),
                           hint=QAbstractItemView.ScrollHint.EnsureVisible)
+
+    def PlStatsLabUpd(self):
+        value = len(self.Model.playlistdata)
+        tr = 'track' if value == 1 else 'tracks'
+        self.mw_view.PL_Stats_Lab.setText(f'Total: {value} {tr}')

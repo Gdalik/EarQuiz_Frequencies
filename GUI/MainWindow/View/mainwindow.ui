@@ -4382,6 +4382,9 @@ background: rgba(118, 214, 255, 85)
            <bold>true</bold>
           </font>
          </property>
+         <property name="toolTip">
+          <string>Next Equalization Pattern</string>
+         </property>
          <property name="styleSheet">
           <string notr="true">QPushButton{color: blue; font-weight: bold;}</string>
          </property>
@@ -4809,7 +4812,7 @@ background: rgba(118, 214, 255, 85)
   <widget class="QDockWidget" name="TransportPanel">
    <property name="minimumSize">
     <size>
-     <width>1082</width>
+     <width>1087</width>
      <height>125</height>
     </size>
    </property>
@@ -5094,6 +5097,9 @@ border-radius: 4px;
            </property>
            <property name="value">
             <number>75</number>
+           </property>
+           <property name="tracking">
+            <bool>true</bool>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>

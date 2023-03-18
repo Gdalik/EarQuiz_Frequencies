@@ -20,5 +20,8 @@ elif platform.system() == 'Windows':
 TEMP_AUDIO_DIR = os.path.normpath(os.path.join(DATA_DIR, 'temp_audio'))
 os.makedirs(DATA_DIR, exist_ok=True)
 
+MinAudioDuration = 10   # in sec
+PinknoiseLength = 30    # in sec
+
 SineWaveCalibrationFilename = '1kHz 10kHz 100Hz 15kHz 40Hz Sinus Tones.wav'
 SineWaveCalibrationPath = os.path.normpath(os.path.join(DATA_DIR, 'Audio', SineWaveCalibrationFilename))

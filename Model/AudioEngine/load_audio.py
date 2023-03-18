@@ -10,7 +10,7 @@ from pedalboard.io import AudioFile
 from copy import copy
 import itertools
 from Utilities.exceptions import InterruptedException
-from definitions import pinknoise
+from definitions import pinknoise, MinAudioDuration, PinknoiseLength
 import copy
 
 
@@ -32,7 +32,7 @@ class AudioChunk(PreviewAudioCrop):
 
     def _init_pinknoise(self):
         self.audiofile = None
-        self.source_length = 30
+        self.source_length = PinknoiseLength
         self.samplerate = 44100
 
     def _init_audiofile(self):
@@ -47,9 +47,9 @@ class AudioChunk(PreviewAudioCrop):
             self._init_audiofile()
 
     def _check_source_length(self):
-        if self.source_length < 30:
+        if self.source_length < MinAudioDuration:
             self._close_audiofile()
-            raise ValueError('Audio file length cannot be less than 30 sec')
+            raise ValueError(f'Audio file length cannot be less than {MinAudioDuration} sec')
 
     def _callback_out(self, arg: dict, callback=None):
         _callback = callback or self.callback

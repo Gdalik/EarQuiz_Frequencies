@@ -1,5 +1,4 @@
 from PyQt6.QtCore import pyqtSignal, QObject
-from Utilities.common_calcs import round_s
 
 
 class PreviewAudioCrop(QObject):
@@ -8,7 +7,7 @@ class PreviewAudioCrop(QObject):
     rangeChanged = pyqtSignal()
 
     def __init__(self, audiofile_length: int or float, starttime: int or float, endtime: int or float,
-                 slice_length=15, strictMode = False):
+                 slice_length=15, strictMode=False):
         super().__init__()
         self.source_length = audiofile_length
         self._strictMode = strictMode

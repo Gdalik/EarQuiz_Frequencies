@@ -3,6 +3,7 @@ from pedalboard.io import AudioFile
 from Utilities.common_calcs import mmss
 from pathlib import PurePath, Path
 from functools import cached_property
+from definitions import MinAudioDuration
 
 
 @dataclass(eq=False)
@@ -77,7 +78,7 @@ class PlSong:
 
     @property
     def available(self):
-        return bool(self.exists and self.duration >= 30 and self.canLoad)
+        return bool(self.exists and self.duration >= MinAudioDuration and self.canLoad)
 
     @property
     def _default_dict(self):

@@ -22,6 +22,10 @@ class PlaylistContr(QObject):
         self.PlaylistView.setModel(self.proxyModel)
         self.PlNavi = PlNavi(self.playlistModel.playlistdata, shuffle=self.mw_view.actionShuffle_Playback.isChecked())
         self.selModel = self.PlaylistView.selectionModel()
+        self._setUpActions()
+        self.PlaylistView.PlStatsLabUpd()
+
+    def _setUpActions(self):
         self.selModel.selectionChanged.connect(self.PlaylistView.onSelectionChanged)
         self.SearchAudio.textChanged.connect(self.proxyModel.setFilter)
         self.PlaylistView.signals.urlsDropped.connect(self.addTracks)
@@ -30,7 +34,7 @@ class PlaylistContr(QObject):
         self.MinusFilesBut.clicked.connect(self.removeTracks)
         self.PlusFilesBut.clicked.connect(lambda x: self.openFiles(mode='files'))
         self.PlaylistView.doubleClicked.connect(self.onDoubleClicked)
-        self.playlistModel.layoutChanged.connect(lambda x: self.PlNavi.dataSync(self.playlistModel.playlistdata))
+        self.playlistModel.layoutChanged.connect(self.onLayoutChanged)
         self.mw_view.actionPrevious_Track.triggered.connect(self.onPreviousTrack_trig)
         self.mw_view.actionNext_Track.triggered.connect(self.onNextTrack_trig)
         self.mw_view.actionShuffle_Playback.triggered.connect(self.onShufflePlayback_trig)
@@ -143,6 +147,10 @@ class PlaylistContr(QObject):
 
     def onShufflePlayback_trig(self):
         self.PlNavi.setShuffle(self.mw_view.actionShuffle_Playback.isChecked())
+
+    def onLayoutChanged(self):
+        self.PlNavi.dataSync(self.playlistModel.playlistdata)
+        self.PlaylistView.PlStatsLabUpd()
 
     @staticmethod
     def _setFileDialogToFileMode(dialog: QFileDialog):
