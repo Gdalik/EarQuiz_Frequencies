@@ -41,7 +41,7 @@ class PLProcDialog(QDialog):
         self.buttonBox = QDialogButtonBox(QDialogButtonBox.StandardButton.Cancel)
         self.buttonBox.rejected.connect(self.reject)
         self.layout = QVBoxLayout()
-        self.label = QLabel("Loading audiofiles...")
+        self.label = QLabel("Adding audiofile(s) to playlist...")
         self.label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.layout.addWidget(self.label)
         self.layout.addWidget(self.buttonBox)
