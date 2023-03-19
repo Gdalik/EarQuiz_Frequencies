@@ -258,13 +258,17 @@ class MainWindowContr(QObject):
 
     def setInitSourceRangeView(self):
         self.disconnectSourceRangeSig()
-        self.setOptimalSourceRange()
+        self.autoSetSourceRange()
         self.mw_view.TransportPanelView.CropRegionTstr.noAudioState(False)
         self.SourceRange.rangeChanged.connect(self.TransportContr.onSourceRangeChanged)
         self.SourceRange.sliceLengthChanged.connect(self.TransportContr.onSliceLenChanged)
 
+    def autoSetSourceRange(self, reset=True):
+        # TODO: Load Source Range + Slice length options if stored
+        self.setOptimalSourceRange(reset)
+
     def setOptimalSourceRange(self, reset=True):
-        range_params = self._getSourceRangeParameters(reset=reset)
+        range_params = self._getOptSourceRangeParameters(reset=reset)
         if reset:
             self.SourceRange = PreviewAudioCrop(self.SourceAudio.duration, range_params[0], range_params[1],
                                                 range_params[2])
@@ -273,17 +277,16 @@ class MainWindowContr(QObject):
             self.SourceRange.starttime = 0
             self.SourceRange.endtime = range_params[1]
             self.SourceRange.setStrictModeActive(False)
-        # self.mw_view.TransportPanelView.SliceLenSpin.setValue(range_params[2])
         self.SourceRange.slice_length = range_params[2]
 
-    def _getSourceRangeParameters(self, reset=True):
+    def _getOptSourceRangeParameters(self, reset=True):
+        duration = self.SourceAudio.duration
         if self.SourceAudio.name == SineWaveCalibrationFilename:
             slice_length = 10
         elif reset:
             slice_length = self.CurrentSourceMode.default_slice_length
         else:
             slice_length = self.mw_view.TransportPanelView.SliceLenSpin.value()
-        duration = self.SourceAudio.duration
         slice_length = int(min(duration, slice_length))
         opt_length = optimal_range_length(duration, slice_length)
         return (0, opt_length, slice_length)

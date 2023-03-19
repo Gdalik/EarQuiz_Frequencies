@@ -98,7 +98,7 @@ class TransportContr(QObject):
         self.SourceRange.endtime = self.SourceRange.source_length
 
     def onClearRangeButClicked(self):
-        self.parent.setOptimalSourceRange(reset=False)
+        self.parent.autoSetSourceRange(reset=False)
         self._checkPlaybackRange()
 
     def _resetSourceRange(self, _range: list or tuple):
