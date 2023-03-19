@@ -1,6 +1,4 @@
 import contextlib
-import time
-
 import numpy as np
 from pedalboard.io import AudioFile
 from definitions import SineWaveCalibrationPath
@@ -17,7 +15,7 @@ def sine_gen(freq: int, length_s=5, samplerate=44100):
     return signal
 
 
-def silence_gen(length_s=1, samplerate=44100):
+def silence_gen(length_s=1.0, samplerate=44100):
     return np.zeros((1, int(samplerate * length_s)))
 
 
