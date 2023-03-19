@@ -1,5 +1,5 @@
 import contextlib
-from definitions import app, SineWaveCalibrationFilename, MinAudioDuration
+from definitions import app, SineWaveCalibrationFilename
 from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.EQ.eq_contr import EQContr
@@ -14,14 +14,15 @@ from GUI.Modes.UniMode import UniMode
 from GUI.Modes.audiosource_modes import PinkNoiseMode, AudioFileMode
 from GUI.Playlist.plsong import PlSong
 from GUI.TransportPanel.transport_contr import TransportContr
-from GUI.Misc.tracked_proc import ProcTrackControl
 from GUI.FileMaker.audiofilemaker import AudioFileMaker
+from GUI.MainWindow.Contr.audio_loader import AudioLoad
+from GUI.MainWindow.Contr.adgen_contr import ADGenContr
+from GUI.MainWindow.Contr.sourcerange_contr import SourceRangeContr
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.audiodrill_gen import AudioDrillGen
 from PyQt6.QtCore import QObject
 from PyQt6.QtGui import QActionGroup
 import platform
-from Model.calc import optimal_range_length
 from filehash import FileHash
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
@@ -55,8 +56,11 @@ class MainWindowContr(QObject):
         self.FileMaker = AudioFileMaker(self)
         self.ExScore = ExScoreInfoContr(self)
         self.CurrentMode = self.LastMode = UniMode(self)
+        self.AL = AudioLoad(self)
         self.CurrentSourceMode = PinkNoiseMode(self)
-        self.setNoAudio()
+        self.SRC = SourceRangeContr(self)
+        self.AL.setNoAudio()
+        self.ADGC = ADGenContr(self)
         self.setFileMenuActions()
         self.setModesActions()
         self.setModesButtons()
@@ -195,20 +199,6 @@ class MainWindowContr(QObject):
                 and self.CurrentMode.name not in ('Preview', 'Uni'):
             self.mw_view.actionPreview_Mode.setChecked(True)
 
-    def setNoAudio(self):
-        self.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
-        self.SourceAudio = self.LastSourceAudio = None
-        self.ADGen = None
-        self.CurrentAudio = None
-        self.LoadedFileHash = None
-        self.disconnectSourceRangeSig()
-        self.TransportContr.PlayerContr.clearSource()
-        self.CurrentMode.cleanTempAudio()
-        self.LoadedFilePath = None
-        self.mw_view.TransportPanelView.noSongState()
-        self.SourceRange = None
-        self.mw_view.statusbar.clearMessage()
-
     def hashAudioFile(self):
         if self.SourceAudio is None:
             return
@@ -225,139 +215,8 @@ class MainWindowContr(QObject):
         self.mw_view.actionShuffle_Playback.setChecked(False)
         self.mw_view.ShufflePlaybackBut.setDefaultAction(self.mw_view.actionShuffle_Playback)
 
-    def load_song(self, Song: PlSong):
-        if self.CurrentSourceMode.name != 'Audiofile':
-            return
-        if hasattr(Song, 'file_properties'):
-            Song.__delattr__('file_properties')
-        if Song.duration < MinAudioDuration or not Song.exists:
-            return
-        self.SourceAudio = Song
-        self.PlaylistContr.PlNavi.setCurrentSong(Song)
-        if self.CurrentMode.name == 'Preview':
-            self.CurrentMode.updateCurrentAudio()
-        else:
-            self.playAudioOnPreview = True
-            self.mw_view.actionPreview_Mode.setChecked(True)
-
-        if self.LoadedFilePath is not None and Song.path == self.LoadedFilePath:
-            self.TransportContr.PlayerContr.onStopTriggered()
-            self.TransportContr.PlayerContr.play()
-            return
-        if self.SourceAudio == self.LastSourceAudio:
-            return
-        self.ADGen = None
-        self.TransportContr.PlayerContr.loadCurrentAudio()
-
-    def load_pinknoise(self):
-        self.SourceAudio = PlSong('pinknoise')
-        self.TransportContr.TransportView.setHeader('Pink noise')
-        dur = self.SourceAudio.duration
-        self.SourceRange = PreviewAudioCrop(dur, 0, dur, self.TransportContr.TransportView.SliceLenSpin.value())
-        self.TransportContr.setInitCropRegionView()
-        self.TransportContr.TransportView.setDurationLabValue(dur)
-        self.TransportContr.TransportView.AudioSliderView.setNewDataLength(dur)
-        # self.setAudioDrillGen()
-
-    def setInitSourceRangeView(self):
-        self.disconnectSourceRangeSig()
-        self.autoSetSourceRange()
-        self.mw_view.TransportPanelView.CropRegionTstr.noAudioState(False)
-        self.SourceRange.rangeChanged.connect(self.TransportContr.onSourceRangeChanged)
-        self.SourceRange.sliceLengthChanged.connect(self.TransportContr.onSliceLenChanged)
-
-    def autoSetSourceRange(self, reset=True):
-        # TODO: Load Source Range + Slice length options if stored
-        self.setOptimalSourceRange(reset)
-
-    def setOptimalSourceRange(self, reset=True):
-        range_params = self._getOptSourceRangeParameters(reset=reset)
-        if reset:
-            self.SourceRange = PreviewAudioCrop(self.SourceAudio.duration, range_params[0], range_params[1],
-                                                range_params[2])
-        elif self.SourceRange is not None:
-            self.SourceRange.setStrictModeActive(True)
-            self.SourceRange.starttime = 0
-            self.SourceRange.endtime = range_params[1]
-            self.SourceRange.setStrictModeActive(False)
-        self.SourceRange.slice_length = range_params[2]
-
-    def _getOptSourceRangeParameters(self, reset=True):
-        duration = self.SourceAudio.duration
-        if self.SourceAudio.name == SineWaveCalibrationFilename:
-            slice_length = 10
-        elif reset:
-            slice_length = self.CurrentSourceMode.default_slice_length
-        else:
-            slice_length = self.mw_view.TransportPanelView.SliceLenSpin.value()
-        slice_length = int(min(duration, slice_length))
-        opt_length = optimal_range_length(duration, slice_length)
-        return (0, opt_length, slice_length)
-
-    def disconnectSourceRangeSig(self):
-        with contextlib.suppress(AttributeError, TypeError):
-            self.SourceRange.rangeChanged.disconnect(self.TransportContr.onSourceRangeChanged)
-            self.SourceRange.sliceLengthChanged.disconnect(self.TransportContr.onSliceLenChanged)
-
     def onCloseTriggered(self):
         app.quit()
-
-    def setAudioDrillGen(self):
-        # print(self.SourceAudio)
-        if self.ADGen is None and self.SourceAudio is not None and (self.SourceAudio.name == 'pinknoise' or self.LoadedFileHash):
-            self._createADGen()
-            self._adjustADGenOrderToMode()
-        elif self.ADGen is not None:
-            self._adjustADGenCropRange()
-            self.PatternBoxContr.setExGenToPattern()
-
-    def _createADGen(self):
-        EQP = self.EQContr.EQpattern
-        SR = self.SourceRange
-        SA = self.SourceAudio
-        ADG = ProcTrackControl(AudioDrillGen, args=[self.EQContr.getAvailableFreq()],
-                               kwargs={'boost_cut': EQP['EQ_boost_cut'],
-                                       'DualBandMode': EQP['DualBandMode'],
-                                       'audio_source_path': SA.path,
-                                       'starttime': SR.starttime,
-                                       'endtime': SR.endtime,
-                                       'drill_length': SR.slice_length,
-                                       'gain_depth': self.EQSetContr.EQSetView.GainRangeSpin.value(),
-                                       'Q': Qextr(self.EQSetContr.EQSetView.BWBox.currentText()),
-                                       'order': self.freqOrder,
-                                       'boost_cut_priority': self.boostCutPriority,
-                                       'disableAdjacent': EQP['DisableAdjacentFiltersMode']})
-        ADG.exec()
-        self.ADGen = ADG.return_obj or None
-        if ADG.error:
-            self.mw_view.error_msg(ADG.error)
-
-    def _adjustADGenCropRange(self):
-        SR = self.SourceRange
-        # print(f'{self.SourceRange.starttime=} {self.SourceRange.endtime=}')
-        self.ADGen.audiochunk.setStrictModeActive(True)
-        self.ADGen.audiochunk.starttime = SR.starttime
-        self.ADGen.audiochunk.endtime = SR.endtime
-        self.ADGen.audiochunk.slice_length = SR.slice_length
-        self.ADGen.audiochunk.setStrictModeActive(False)
-        action = self.ADGen.audiochunk.checkActionNeeded()
-        if action is None:
-            return
-        if action == 'reset':
-            self.ADGen.setGain_depth(self.EQSetContr.EQSetView.GainRangeSpin.value(), normalize_audio=False)
-            ADG_upd = ProcTrackControl(self.ADGen.audiochunk.update, args=[action])
-            if not ADG_upd.exec():
-                self.ADGen = None
-            if ADG_upd.error:
-                self.mw_view.error_msg(ADG_upd.error)
-                self.ADGen = None
-        else:
-            self.ADGen.audiochunk.update(mode=action)
-
-    def _adjustADGenOrderToMode(self):
-        if self.ADGen is None:
-            return
-        self.ADGen.order = self.freqOrder
 
     @property
     def normHeadroomChanged(self):

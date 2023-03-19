@@ -116,7 +116,7 @@ class PlaylistContr(QObject):
         self.mw_view.AudiofileRBut.setChecked(True)
         source_ind = self.proxyModel.mapToSource(index).row()
         song2load = self.playlistModel.playlistdata[source_ind]
-        self.mw_contr.load_song(song2load)
+        self.mw_contr.AL.load_song(song2load)
 
     def onPreviousTrack_trig(self):
         prev_song = self.PlNavi.prev()
@@ -129,7 +129,7 @@ class PlaylistContr(QObject):
                     self.PlNavi.setCurrentSong(_currentSong)
                     return
         if prev_song is not None:
-            self.mw_contr.load_song(prev_song)
+            self.mw_contr.AL.load_song(prev_song)
             self.selectCurrentSong()
 
     def onNextTrack_trig(self):
@@ -141,7 +141,7 @@ class PlaylistContr(QObject):
                 next_song = self.PlNavi.next()
         self.PlNavi.setCurrentSong(_currentSong)
         if next_song is not None:
-            self.mw_contr.load_song(next_song)
+            self.mw_contr.AL.load_song(next_song)
             self.selectCurrentSong()
 
     def selectCurrentSong(self):

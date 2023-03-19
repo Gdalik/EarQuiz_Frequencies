@@ -98,7 +98,7 @@ class TransportContr(QObject):
         self.SourceRange.endtime = self.SourceRange.source_length
 
     def onClearRangeButClicked(self):
-        self.parent.autoSetSourceRange(reset=False)
+        self.parent.SRC.autoSetSourceRange(reset=False)
         self._checkPlaybackRange()
 
     def _resetSourceRange(self, _range: list or tuple):
@@ -123,7 +123,7 @@ class TransportContr(QObject):
         if not self.parent.CurrentMode.TimeSettingsChangesEnabled:
             self.parent.CurrentMode.enableTimeSettingsChanges(True)
         if self.parent.SourceAudio != self.parent.LastSourceAudio:
-            self.parent.setInitSourceRangeView()
+            self.parent.SRC.setInitSourceRangeView()
             self.setInitCropRegionView()
             self.TransportView.AudioSliderView.Cursor.show()
         self.CursorBeingDragged = False

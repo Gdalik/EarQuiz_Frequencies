@@ -1,3 +1,5 @@
+import contextlib
+
 default_pn_slice_length = 10
 default_audio_slice_length = 12
 
@@ -7,10 +9,11 @@ class PinkNoiseMode:
         self.parent = parent
         self.name = 'Pinknoise'
         self.view = parent.mw_view
-        self.parent.setNoAudio()
+        with contextlib.suppress(AttributeError):
+            self.parent.AL.setNoAudio()
         self.default_slice_length = default_pn_slice_length
         self.parent.TransportContr.TransportView.SliceLenSpin.setValue(default_pn_slice_length)
-        self.parent.load_pinknoise()
+        self.parent.AL.load_pinknoise()
 
 
 class AudioFileMode:
@@ -18,7 +21,8 @@ class AudioFileMode:
         self.parent = parent
         self.name = 'Audiofile'
         self.view = parent.mw_view
-        self.parent.setNoAudio()
+        with contextlib.suppress(AttributeError):
+            self.parent.AL.setNoAudio()
         self.default_slice_length = default_audio_slice_length
         self.parent.TransportContr.TransportView.SliceLenSpin.setValue(default_audio_slice_length)
         self.view.TransportPanel.show()

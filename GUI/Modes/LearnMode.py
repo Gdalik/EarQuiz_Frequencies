@@ -14,7 +14,7 @@ class LearnMode(UniMode):
         self.view.setActionNextExampleEnabled(True)
         self.view.NextExample.setVisible(True)
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
-        self.parent.setAudioDrillGen()
+        self.parent.ADGC.setAudioDrillGen()
         self.nextDrill(fromStart=True)
         self.updateSliceRegion()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()

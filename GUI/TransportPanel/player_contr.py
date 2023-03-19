@@ -196,7 +196,7 @@ class PlayerContr(QMediaPlayer):
     def onError(self, err, string):
         self.PlModel.nonLoadedSong_paths.add(self.mw_contr.SourceAudio.path)
         self.PlModel.updCanLoadData()
-        self.mw_contr.setNoAudio()
+        self.mw_contr.AL.setNoAudio()
         print(err)
         print(string)
 

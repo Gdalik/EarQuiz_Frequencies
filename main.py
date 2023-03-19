@@ -1,7 +1,7 @@
 import time
 from PyQt6.QtGui import QIcon
 from definitions import app, app_name, TEMP_AUDIO_DIR
-from GUI.MainWindow.mw_contr import MainWindowContr
+from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.StartScreen import StartScreen
 from PyQt6.QtCore import QDir, QTimer
 from tendo.singleton import SingleInstance
