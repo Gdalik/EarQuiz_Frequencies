@@ -1,5 +1,6 @@
 from Utilities.common_calcs import hhmmss, get_sec
 from PyQt6.QtCore import QTime
+from PyQt6.QtWidgets import QPushButton
 
 
 class CropRegionTimestr:
@@ -32,10 +33,22 @@ class CropRegionTimestr:
         self.EndTimeEdit.setReadOnly(arg)
 
     def setChangesEnabled(self, arg: bool):
-        self.parent.StartPointBut.setEnabled(arg)
-        self.parent.EndPointBut.setEnabled(arg)
-        self.parent.RangeToStart.setEnabled(arg)
-        self.parent.RangeToEnd.setEnabled(arg)
+        self.setStartEndButEnabled(self.parent.StartPointBut, arg)
+        self.setStartEndButEnabled(self.parent.EndPointBut, arg)
+        self.setStartEndButEnabled(self.parent.RangeToStart, arg)
+        self.setStartEndButEnabled(self.parent.RangeToEnd, arg)
         self.parent.ClearRangeBut.setEnabled(arg)
         self.setReadOnly(not arg)
+
+    @staticmethod
+    def setStartEndButEnabled(button: QPushButton, arg: bool):
+        if arg:
+            style = 'QPushButton{border: none; color: blue}' \
+                    '\nQPushButton:hover{font-weight: bold;}' \
+                    '\nQPushButton:pressed{color: green;}'
+        else:
+            style = 'QPushButton{border: none; color: black}'
+        button.setStyleSheet(style)
+        button.setEnabled(arg)
+
 

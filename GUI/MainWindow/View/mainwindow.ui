@@ -4811,9 +4811,15 @@ background: rgba(118, 214, 255, 85)
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QDockWidget" name="TransportPanel">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="minimumSize">
     <size>
-     <width>1087</width>
+     <width>1000</width>
      <height>125</height>
     </size>
    </property>
@@ -4822,6 +4828,9 @@ background: rgba(118, 214, 255, 85)
      <width>524287</width>
      <height>125</height>
     </size>
+   </property>
+   <property name="toolTip">
+    <string>Save slice length as default for current type of audio source</string>
    </property>
    <property name="statusTip">
     <string/>
@@ -5446,21 +5455,46 @@ background: rgba(118, 214, 255, 85)
              </property>
             </widget>
            </item>
-           <item>
-            <spacer name="horizontalSpacer_14">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+           <item alignment="Qt::AlignLeft">
+            <widget class="QPushButton" name="SaveSliceLengthAsDefault">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
              </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::MinimumExpanding</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
+             <property name="maximumSize">
               <size>
-               <width>13</width>
-               <height>13</height>
+               <width>16</width>
+               <height>16777215</height>
               </size>
              </property>
-            </spacer>
+             <property name="toolTip">
+              <string>Save slice length as default for current type of audio source</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+border: None;
+}
+
+QPushButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+
+QPushButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../../Icons/Misc/star.png</normaloff>../../Icons/Misc/star.png</iconset>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -5472,6 +5506,19 @@ background: rgba(118, 214, 255, 85)
           </widget>
          </item>
         </layout>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_14">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>5</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
        <item>
         <widget class="QLabel" name="Duration_Lab">
