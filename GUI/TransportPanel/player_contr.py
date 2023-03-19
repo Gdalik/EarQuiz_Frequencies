@@ -141,7 +141,7 @@ class PlayerContr(QMediaPlayer):
 
     def _setupAudioOutput(self, anyplatform=False):
         self.audioOutput = QAudioOutput()
-        self.audioOutput.volumeChanged.connect(self.PlayerView.upd_VolumeLab)
+        self.audioOutput.volumeChanged.connect(self.PlayerView.upd_VolumeLevelLab)
         if platform.system() == 'Windows' or anyplatform:
             self.audioOutput.setDevice(self.mw_view.AudioDevicesView.selectedOutput())
             self.setAudioOutput(self.audioOutput)

@@ -5123,7 +5123,7 @@ border-radius: 4px;
           </widget>
          </item>
          <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-          <widget class="QLabel" name="VolumePerc">
+          <widget class="QLabel" name="VolumeLevelLab">
            <property name="text">
             <string>75%</string>
            </property>

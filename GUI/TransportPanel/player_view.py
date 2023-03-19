@@ -8,13 +8,13 @@ class PlayerView:
         self.mw_view = mw_view
         self.setPlayerButtons()
 
-    def upd_VolumeLab(self, value: float):
+    def upd_VolumeLevelLab(self, value: float):
         try:
             level_db = round(20 * math.log10(value), 1)
         except ValueError:
             level_db = '-∞'
 
-        self.mw_view.VolumePerc.setText(f'{self.mw_view.VolumeSlider.value()}% ({level_db}dB)')
+        self.mw_view.VolumeLevelLab.setText(f'{self.mw_view.VolumeSlider.value()}% ({level_db}dB)')
 
     def setPlayerButtons(self):
         self.mw_view.Player_PlayPause.setDefaultAction(self.mw_view.actionPlayPause)
