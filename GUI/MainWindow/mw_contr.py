@@ -63,8 +63,7 @@ class MainWindowContr(QObject):
         self.setLearnFreqOrderAG()
         self.setBoostCutOrderAG()
         self.setPlaybackButtons()
-        self.mw_view.NextExample.setDefaultAction(self.mw_view.actionNext_Example)
-        self.mw_view.actionNext_Example.triggered.connect(self.onNextExampleTriggered)
+        self.setNextExampleBut()
         self.mw_view.actionClose.triggered.connect(self.onCloseTriggered)
         self.mw_view.show()
         self.setSourceButtons()
@@ -134,6 +133,10 @@ class MainWindowContr(QObject):
         if self.ADGen is None:
             return
         self.ADGen.boost_cut_priority = self.boostCutPriority
+
+    def setNextExampleBut(self):
+        self.mw_view.NextExample.setDefaultAction(self.mw_view.actionNext_Example)
+        self.mw_view.actionNext_Example.triggered.connect(self.onNextExampleTriggered)
 
     def onNextExampleTriggered(self):
         if self.CurrentMode is not None:
