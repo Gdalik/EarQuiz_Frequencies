@@ -137,14 +137,24 @@ class AudioChunk(PreviewAudioCrop):
         head_level = norm_level or self.norm_level or 0
         if not resetAudio and self.last_norm_level == head_level and self.cropped_normalized is not None:
             return
-        self._callback_out({'State': 'Analyzing amplitude levels', 'Percent': 0}, callback=_callback)
+        self._callback_out({'State': 'Normalizing audio', 'Percent': 0}, callback=_callback)
         delta = head_level - self.max_level
-        self._callback_out({'State': 'Analyzing amplitude levels', 'Percent': 100}, callback=_callback)
-        gain = Gain(delta)
+        self._callback_out({'State': 'Normalizing audio', 'Percent': 50}, callback=_callback)
+        self.cropped_normalized = self.cropped * 10 ** (delta / 20)
+        # time.sleep(5)
+        self._callback_out({'State': 'Normalizing audio', 'Percent': 100}, callback=_callback)
+        print(f'{self.cropped_normalized=}')
+        '''gain = Gain(delta)
         self.old_cropped_normalized = copy.copy(self.cropped_normalized)
+        a = time.time()
         self.norm_proc = ChunkedProc(self.cropped, self.samplerate, gain,
                                      proc_name='Normalizing audio', callback=_callback)
         self.cropped_normalized = self.norm_proc.call()
+        print(f'Norm time {time.time() - a}')
+        a = time.time()
+        alt_norm = self.cropped * 10 ** (delta / 20)
+        print(f'{self.cropped_normalized=} {alt_norm=}')
+        print(f'Alt norm time {time.time() - a}')
         if self.norm_proc.stopped and self.cropped_normalized is None:
             if self.old_cropped_normalized is None:
                 self._stop()
@@ -152,7 +162,7 @@ class AudioChunk(PreviewAudioCrop):
             else:
                 self.cropped_normalized = self.old_cropped_normalized
                 head_level = self.last_norm_level
-                # print('Normalization reverted')
+                # print('Normalization reverted')'''
 
         self.split()
         self._restore_current_audio_slice_cycle()

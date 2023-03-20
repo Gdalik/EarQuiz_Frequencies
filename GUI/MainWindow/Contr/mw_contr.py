@@ -195,8 +195,7 @@ class MainWindowContr(QObject):
             self.mw_view.SupportProject.show()
 
     def _pushBackToPreview(self):
-        if self.ADGen is None and self.CurrentSourceMode.name == 'Audiofile' \
-                and self.CurrentMode.name not in ('Preview', 'Uni'):
+        if self.ADGen is None and self.CurrentMode.name not in ('Preview', 'Uni'):
             self.mw_view.actionPreview_Mode.setChecked(True)
 
     def hashAudioFile(self):

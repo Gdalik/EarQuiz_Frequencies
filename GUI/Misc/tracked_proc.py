@@ -17,8 +17,6 @@ class TrackedProcRun(QRunnable):
 
     def __init__(self, process, args: list, kwargs=None):
         super().__init__()
-        with contextlib.suppress(TypeError):
-            self.signals.disconnect()
         self.process = process
         self.args = args
         self.kwargs = kwargs if kwargs is not None else {}
@@ -77,20 +75,16 @@ class ProcTrackControl(QDialog):
         self.setLayout(self.layout)
 
     def startProc(self):
-        self.tracked_proc_run.signals.progress.connect(lambda x: self.updateProg(x),
+        self.tracked_proc_run.signals.progress.connect(self.updateProg,
                                                        type=Qt.ConnectionType.UniqueConnection)
         self.tracked_proc_run.signals.finished.connect(self.on_finished, type=Qt.ConnectionType.SingleShotConnection)
-        self.tracked_proc_run.signals.error.connect(lambda x: self.on_error(x), type=Qt.ConnectionType.UniqueConnection)
+        self.tracked_proc_run.signals.error.connect(self.on_error, type=Qt.ConnectionType.UniqueConnection)
         self.threadpool.setMaxThreadCount(1)
         self.threadpool.start(self.tracked_proc_run)
 
     def updateProg(self, values):
-        # print(f'upd prog: {values}')
         if not values:
             return
-        if self.isHidden() and values['Percent'] != 100:
-            # self.show()
-            pass
         percent_str = f"\n{values['Percent']}%" if platform.system() == 'Darwin' else ""
         self.label.setText(f"{values['State']}:{percent_str}")
         self.progbar.setValue(values['Percent'])
