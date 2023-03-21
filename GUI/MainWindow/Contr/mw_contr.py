@@ -1,5 +1,4 @@
-import contextlib
-from definitions import app, SineWaveCalibrationFilename
+from definitions import app
 from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.EQ.eq_contr import EQContr

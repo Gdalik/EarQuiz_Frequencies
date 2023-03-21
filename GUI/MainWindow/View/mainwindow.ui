@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1111</width>
-    <height>738</height>
+    <height>730</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -451,6 +451,19 @@ font-weight: bold</string>
         <string>EQ1</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <spacer name="EQ1_VSpacer1">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
          <widget class="QFrame" name="EQ1_frame">
           <property name="sizePolicy">
@@ -1401,6 +1414,19 @@ font-weight: bold</string>
            </item>
           </layout>
          </widget>
+        </item>
+        <item>
+         <spacer name="EQ1_VSpacer2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item alignment="Qt::AlignRight">
          <widget class="QToolButton" name="EQSettings_But1">
@@ -4296,7 +4322,7 @@ background: rgba(118, 214, 255, 85)
           </layout>
          </widget>
         </item>
-        <item alignment="Qt::AlignRight">
+        <item alignment="Qt::AlignRight|Qt::AlignVCenter">
          <widget class="QToolButton" name="EQSettings_But2">
           <property name="styleSheet">
            <string notr="true">QToolButton{
@@ -4726,7 +4752,7 @@ background: rgba(118, 214, 255, 85)
      <x>0</x>
      <y>0</y>
      <width>1111</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -4831,7 +4857,7 @@ background: rgba(118, 214, 255, 85)
    </property>
    <property name="minimumSize">
     <size>
-     <width>1000</width>
+     <width>1095</width>
      <height>125</height>
     </size>
    </property>
