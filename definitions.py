@@ -25,3 +25,5 @@ PinknoiseLength = 30    # in sec
 
 SineWaveCalibrationFilename = '1kHz__10kHz__100Hz__15kHz__40Hz Sinus Tones.wav'
 SineWaveCalibrationPath = os.path.normpath(os.path.join(DATA_DIR, 'Audio', SineWaveCalibrationFilename))
+
+SourceRangeLib_DIR = os.path.normpath(os.path.join(DATA_DIR, 'SourceRangeLib'))

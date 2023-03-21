@@ -34,8 +34,6 @@ class MainWindowContr(QObject):
     SourceAudio: PlSong or None
     SourceRange: PreviewAudioCrop or None
     ADGen: AudioDrillGen or None
-    LoadedFileHash: str or None
-    LoadedFilePath: str or None
     CurrentSourceMode: PinkNoiseMode or AudioFileMode
 
     def __init__(self):
@@ -44,6 +42,7 @@ class MainWindowContr(QObject):
         if platform.system() == 'Windows':
             self.mw_view.win_os_settings()
         self.CurrentAudio = None
+        self.LoadedFileHash = None
         self.LoadedFilePath = None
         self.LastSourceAudio = None
         self.EQContr = EQContr(self)
@@ -56,8 +55,8 @@ class MainWindowContr(QObject):
         self.ExScore = ExScoreInfoContr(self)
         self.CurrentMode = self.LastMode = UniMode(self)
         self.AL = AudioLoad(self)
-        self.CurrentSourceMode = PinkNoiseMode(self)
         self.SRC = SourceRangeContr(self)
+        self.CurrentSourceMode = PinkNoiseMode(self)
         self.AL.setNoAudio()
         self.ADGC = ADGenContr(self)
         self.setFileMenuActions()
@@ -67,7 +66,8 @@ class MainWindowContr(QObject):
         self.setBoostCutOrderAG()
         self.setPlaybackButtons()
         self.setNextExampleBut()
-        self.mw_view.actionClose.triggered.connect(self.onCloseTriggered)
+        self.mw_view.actionClose.triggered.connect(self.onActionCloseTriggered)
+        self.mw_view.signals.appClose.connect(self.onAppClose)
         self.mw_view.show()
         self.setSourceButtons()
         self.mw_view.VolumeSlider.setValue(60)
@@ -213,8 +213,11 @@ class MainWindowContr(QObject):
         self.mw_view.actionShuffle_Playback.setChecked(False)
         self.mw_view.ShufflePlaybackBut.setDefaultAction(self.mw_view.actionShuffle_Playback)
 
-    def onCloseTriggered(self):
+    def onActionCloseTriggered(self):
         app.quit()
+
+    def onAppClose(self):
+        self.SRC.savePrevSourceAudioRange()
 
     @property
     def normHeadroomChanged(self):

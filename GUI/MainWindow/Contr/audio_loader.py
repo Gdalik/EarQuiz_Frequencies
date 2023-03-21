@@ -17,6 +17,7 @@ class AudioLoad:
             Song.__delattr__('file_properties')
         if Song.duration < MinAudioDuration or not Song.exists:
             return
+        self.parent.SRC.savePrevSourceAudioRange()
         self.parent.SourceAudio = Song
         self.parent.PlaylistContr.PlNavi.setCurrentSong(Song)
         if self.parent.CurrentMode.name == 'Preview':
@@ -48,6 +49,7 @@ class AudioLoad:
 
     def setNoAudio(self):
         self.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
+        # self.savePrevSourceAudioRange()
         self.parent.SourceAudio = self.parent.LastSourceAudio = None
         self.parent.ADGen = None
         self.parent.CurrentAudio = None

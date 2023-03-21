@@ -9,6 +9,7 @@ class PinkNoiseMode:
         self.parent = parent
         self.name = 'Pinknoise'
         self.view = parent.mw_view
+        self.parent.SRC.savePrevSourceAudioRange()
         with contextlib.suppress(AttributeError):
             self.parent.AL.setNoAudio()
         self.default_slice_length = default_pn_slice_length

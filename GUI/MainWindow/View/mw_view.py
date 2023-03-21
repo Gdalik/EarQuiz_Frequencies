@@ -1,6 +1,8 @@
+import platform
+
 from PyQt6.QtWidgets import QMainWindow, QWidget, QSizePolicy, QToolButton
 from PyQt6.QtGui import QAction
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QObject, pyqtSignal
 from GUI.MainWindow.View.mainwindow import Ui_MainWindow
 from GUI.TransportPanel.transport_view import TransportPanelView
 from GUI.PatternBox.patternbox_view import PatternBoxView
@@ -11,10 +13,15 @@ from GUI.Misc.error_message import error_message
 import definitions
 
 
+class MW_Signals(QObject):
+    appClose = pyqtSignal()
+
+
 class MainWindowView(QMainWindow, Ui_MainWindow):
     actionUni_Mode: QAction
     actionTransportPanelView: QAction
     UniBut: QToolButton
+    signals = MW_Signals()
 
     def __init__(self):
         super().__init__()
@@ -143,7 +150,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def onActionTransportPanelViewToggled(self):
         if self.actionTransportPanelView.isChecked():
             self.TransportPanelViewBut.setText('Hide Transport Panel')
-            if not self.isFullScreen():
+            if platform.system() == 'Windows' and not self.isFullScreen():
                 self.resize(1111, 720)
         else:
             self.TransportPanelViewBut.setText('Show Transport Panel')
@@ -152,3 +159,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def onTransportPanelViewBut_clicked(self):
         self.TransportPanel.show() if 'Show' in self.TransportPanelViewBut.text() else self.TransportPanel.hide()
+
+    def closeEvent(self, ev):
+        self.signals.appClose.emit()
+        super(MainWindowView, self).closeEvent(ev)
