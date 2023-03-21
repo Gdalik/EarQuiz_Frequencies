@@ -25,7 +25,10 @@ class SourceRangeManager:
         filepath = filepath.absolute()
         with open(filepath) as f:
             content = json.loads(f.read())
-            return *content['Range'], content['SliceLength']
+            try:
+                return *content['Range'], content['SliceLength']
+            except KeyError:
+                return None
 
     @staticmethod
     def _filename(filehash: str):
