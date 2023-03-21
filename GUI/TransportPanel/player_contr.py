@@ -36,8 +36,6 @@ class PlayerContr(QMediaPlayer):
             return
         self.clearSource()
         self.setSource(AudioToLoad)
-        # print(f'{self.mw_contr.CurrentMode}')
-        # print(f'loadCurrentAudio: {self.mw_contr.CurrentAudio}')
         self.onceAudioLoaded = True
         self.playAfterAudioLoaded = play_after
 
@@ -119,7 +117,6 @@ class PlayerContr(QMediaPlayer):
             self.play()
 
     def onStopTriggered(self, checkPlaybackState=False):
-        # print(f'onStopTriggered {self.mw_contr.CurrentMode.name=}')
         if checkPlaybackState and self.playbackState() != self.PlaybackState.PlayingState:
             return
         self.stop()
@@ -173,6 +170,8 @@ class PlayerContr(QMediaPlayer):
             self.mw_contr.CurrentMode.playbackStoppedEnded()
 
     def _translatePBStateToStatusBar(self, state):
+        if self.mw_contr.SourceAudio is None:
+            return
         source = 'Pink noise' if self.mw_contr.SourceAudio.name == 'pinknoise' else self.mw_contr.SourceAudio.name
         self.mw_view.status.showMessage(f'{source}: {self.PlayerView.pb_state2str(state)}')
 

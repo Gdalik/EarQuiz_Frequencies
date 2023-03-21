@@ -96,7 +96,6 @@ class AudioChunk(PreviewAudioCrop):
         self.audiofile.close()
 
     def _stop(self):
-        # print('Process stopped by user!')
         self.user_stopped = True
         self.cropped = self.cropped_normalized = self.cropped_norm_split = self.cycle = \
             self.cycle_id_gen = self.cycle_id = None
@@ -114,7 +113,6 @@ class AudioChunk(PreviewAudioCrop):
             self.split()
         else:
             self.normalize(norm_level=self.norm_level, resetAudio=True)
-        # print(f'Processing time = {time.time() - a}')
 
     @property
     def max_level(self):
@@ -157,7 +155,6 @@ class AudioChunk(PreviewAudioCrop):
     def split(self):
         target_length_fr = int(self.sec2fr(self.slice_length * self.slices_num))
         cropped_norm_adj = self.cropped_normalized[:, :target_length_fr]
-        # print(f'{target_length_fr=} ; {self.cropped_normalized[0].size=} ; {cropped_norm_adj[0].size=}')
         self.cropped_norm_split = np.hsplit(cropped_norm_adj, self.slices_num)
         return self.cropped_norm_split
 

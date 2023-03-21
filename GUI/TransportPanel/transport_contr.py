@@ -153,7 +153,6 @@ class TransportContr(QObject):
                                                     raiseInterruptedException=raiseInterruptedException):
             refresh_needed = True
         if self.parent.qChanged:
-            # print('qChanged')
             self.parent.EQSetContr.updADGenQ()
             refresh_needed = True
         if refresh_needed and refreshAfter:

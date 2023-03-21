@@ -23,7 +23,6 @@ class ExampleGenerator:
 
     def seqGen(self, start_freq=None):
         self.cycle = None
-        # print(f'{self.DualBandMode=}')
         return self._dualBandSeqGen(start_freq) if self.DualBandMode else self._singleBandSeqGen(start_freq)
 
     def seqOut(self, start_freq=None):

@@ -37,7 +37,6 @@ class PreviewAudioCrop(QObject):
         else:
             self._starttime = max(value, 0)
             self._starttime = min(self._starttime, self.endtime - self.slice_length)
-        # print(f'{old_value=} {self._starttime=}')
         if old_value != self._starttime:
             self.rangeChanged.emit()
 
@@ -53,7 +52,6 @@ class PreviewAudioCrop(QObject):
         else:
             self._endtime = max(self.starttime + self.slice_length, value)
             self._endtime = min(self._endtime, self.source_length)
-        # print(f'{old_value=} {self._starttime=}')
         if old_value != self._endtime:
             self.rangeChanged.emit()
         self.slice_length = self.slice_length
@@ -78,8 +76,6 @@ class PreviewAudioCrop(QObject):
 
     @property
     def slices_num(self):
-        # print(f'No rounding slices num: {(self.endtime - self.starttime) // self.slice_length}')
-        # return int(round_s(self.chunk_length) // self.slice_length)
         return int(self.chunk_length // self.slice_length)
 
     @property

@@ -86,7 +86,6 @@ class CropRegion(pg.LinearRegionItem):
         self.hide()
 
     def setValues(self, a_pos, b_pos):
-        # print(f'{a_pos=} {b_pos=}')
         self.blockSignals(True)
         self.setRegion((int(a_pos * 1000), int(b_pos * 1000)))
         self.blockSignals(False)

@@ -223,7 +223,6 @@ class MainWindowContr(QObject):
     def normHeadroomChanged(self):
         gain_range_gui = self.EQSetContr.EQSetView.GainRangeSpin.value()
         DualBand_pattern = self.EQContr.EQpattern['DualBandMode']
-        # print(f'{self.ADGen.gain_headroom_calc(gain_range_gui, DualBand_pattern)=} {self.ADGen.audiochunk.last_norm_level=}')
         return self.ADGen.gain_headroom_calc(gain_range_gui, DualBand_pattern) != self.ADGen.audiochunk.last_norm_level \
             if self.ADGen is not None else False
 

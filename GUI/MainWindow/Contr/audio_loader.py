@@ -49,7 +49,6 @@ class AudioLoad:
 
     def setNoAudio(self):
         self.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
-        # self.savePrevSourceAudioRange()
         self.parent.SourceAudio = self.parent.LastSourceAudio = None
         self.parent.ADGen = None
         self.parent.CurrentAudio = None

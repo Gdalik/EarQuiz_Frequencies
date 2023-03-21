@@ -46,7 +46,6 @@ class EQSetContr:   # parent: MainWindowContr
     def setGainDepth(self, value: int, raiseInterruptedException=True):
         if self.parent.ADGen is None:
             return
-        # print(f'setGainDepth {value=}')
         old_ADGen_gain_depth = self.parent.ADGen.gain_depth()
         ADG_gain_upd = ProcTrackControl(self.parent.ADGen.setGain_depth, args=[value])
         if not ADG_gain_upd.exec():

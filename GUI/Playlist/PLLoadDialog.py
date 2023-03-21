@@ -59,7 +59,6 @@ class PLProcDialog(QDialog):
         self.threadpool.start(self.process_check_run)
 
     def on_finished(self):
-        # print('Loading files finished')
         self.accept()
 
     def reject(self):

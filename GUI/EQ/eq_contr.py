@@ -43,7 +43,6 @@ class EQContr(QObject):
         self.blockOnSliderDragged(False)
         self.EQ_view.rangeCrop(*self.EQpattern['ActiveFreqRange'])
         self.EQ_view.disableAdjacentFiltersMode(self.EQpattern.get('DisableAdjacentFiltersMode', False))
-        # print(self.getAvailableFreq())
         self.frozen = False
 
     def getAvailableFreq(self):
@@ -51,7 +50,6 @@ class EQContr(QObject):
                 if self.EQpattern['ActiveFreqRange'][0] <= F.freq <= self.EQpattern['ActiveFreqRange'][1]]
 
     def resetEQ(self):
-        # print('resetEQ')
         self.setEQMode(self.parent.mw_view.PatternBox.currentIndex() + 1)
 
     def freezeEQ(self):
