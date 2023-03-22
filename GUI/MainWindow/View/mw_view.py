@@ -29,7 +29,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self._flags = self.windowFlags()
         self.setDockOptions(self.dockOptions().AnimatedDocks)
         self.setWindowTitle(definitions.app_name)
-        self.TransportPanelView = TransportPanelView(self)
         self.PatternBoxView = PatternBoxView(self)
         self.EQView = EqView(self)
         self.EQSetView = EQSetView(self)
@@ -38,7 +37,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.status = self.statusBar()
         self.setMinimalistView()
         self.actionMinimal.triggered.connect(self.setMinimalistView)
-        self.TransportPanelViewBut.clicked.connect(self.onTransportPanelViewBut_clicked)
+        self.TransportPanelView = TransportPanelView(self)
         self.setUniActBut()
         self.alt_pressed = None
         self.setFocus()
@@ -127,7 +126,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def setActionNextExampleEnabled(self, arg):
         self.actionNext_Example.setEnabled(arg)
         self.actionNext_Example.setVisible(arg)
-        # self.NextExample.setVisible(arg)
 
     def mousePressEvent(self, event):
         super(MainWindowView, self).mousePressEvent(event)
@@ -150,11 +148,11 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         if self.actionTransportPanelView.isChecked():
             self.TransportPanelViewBut.setText('Hide Transport Panel')
             if platform.system() == 'Windows' and not self.isFullScreen():
-                self.resize(1111, 720)
+                self.resize(1000, 720)
         else:
             self.TransportPanelViewBut.setText('Show Transport Panel')
             if not self.isFullScreen():
-                self.resize(1111, 700)
+                self.resize(1000, 700)
 
     def onTransportPanelViewBut_clicked(self):
         self.TransportPanel.show() if 'Show' in self.TransportPanelViewBut.text() else self.TransportPanel.hide()

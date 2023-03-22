@@ -2,17 +2,14 @@ from GUI.Modes.UniMode import UniMode
 
 
 class LearnMode(UniMode):
-    # _playbackStoppedEndedBlocked: bool
     def __init__(self, parent):     # parent: MainWindowContr
-        # self.blockPlaybackStoppedEnded(True)
         super().__init__(parent)
         self.name = 'Learn'
         self.currentDrillFreq = None
         self.view.SliceLenSpin.setEnabled(False)
         if self.parent.LastMode.name not in ['Preview', 'Uni']:
             self.parent.EQContr.resetEQ()
-        self.view.setActionNextExampleEnabled(True)
-        self.view.NextExample.setVisible(True)
+        self.setControls()
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
         self.parent.ADGC.setAudioDrillGen()
         self.nextDrill(fromStart=True)
@@ -20,7 +17,12 @@ class LearnMode(UniMode):
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
         self.parent.ExScore.view.init_texts(onlyLastExcInfo=True)
         self.showAudioCursor()
-        # self.blockPlaybackStoppedEnded(False)
+
+    def setControls(self):
+        self.view.setActionNextExampleEnabled(True)
+        self.view.NextExample.setVisible(True)
+        self.view.actionSequential_Playback.setVisible(True)
+        self.view.SequencePlayBut.setVisible(True)
 
     def generateDrill(self, fromStart=False, raiseInterruptedException=True):
         if self.parent.ADGen is None:
@@ -48,14 +50,12 @@ class LearnMode(UniMode):
         self.view.TransportPanelView.AudioSliderView.SliceRegion.setValues(slicerange[0], slicerange[1])
 
     def playbackStoppedEnded(self):
-        '''if self._playbackStoppedEndedBlocked:
-            return'''
         self.parent.EQContr.resetEQ()
         self.view.EQSetView.setEnabled(True)
-        # self.view.PatternBoxView.setEnabled(True)
 
-    '''def blockPlaybackStoppedEnded(self, arg: bool):
-        self._playbackStoppedEndedBlocked = arg'''
+    def playbackEnded(self):
+        if self.parent.mw_view.actionSequential_Playback.isChecked():
+            self.nextDrill()
 
     def oncePlayingStarted(self):
         super(LearnMode, self).oncePlayingStarted()

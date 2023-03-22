@@ -2,6 +2,7 @@
 <a href="https://www.flaticon.com/free-icons/minus" title="minus icons">Minus icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/failure" title="failure icons">Failure icons created by Icon mania - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/around" title="around icons">Around icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/lifecycle" title="lifecycle icons">Lifecycle icons created by Freepik - Flaticon</a>
 
 Player Icons:
 https://iconarchive.com/icons/oxygen-icons.org/oxygen/authors.txt

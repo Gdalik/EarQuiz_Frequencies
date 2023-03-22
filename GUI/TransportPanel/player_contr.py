@@ -106,6 +106,7 @@ class PlayerContr(QMediaPlayer):
         if self.mw_view.actionLoop_Playback.isChecked():
             self.play()
         self.mw_contr.CurrentMode.playbackStoppedEnded()
+        self.mw_contr.CurrentMode.playbackEnded()
         # TODO: Add continuous playback in Learn mode. Add stop at the end of frequencies cycle option.
         '''if self.mw_contr.CurrentMode.name == 'Learn':
             self.mw_contr.CurrentMode.nextDrill()'''

@@ -7,6 +7,7 @@ class PreviewMode(UniMode):
         self.name = 'Preview'
         self.parent.EQContr.resetEQ()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.hide()
+        self.hideSequentialPlayContr()
         if not self.isAudioSourceMode():
             return
         self.setPlayerControls()
@@ -52,6 +53,9 @@ class PreviewMode(UniMode):
         self.view.Player_SkipBackw.setVisible(True)
         self.view.Player_SkipForw.setVisible(True)
 
+    def hideSequentialPlayContr(self):
+        self.view.actionSequential_Playback.setVisible(False)
+        self.view.SequencePlayBut.setVisible(False)
 
     def updateCurrentAudio(self):
         old_value = self.parent.CurrentAudio

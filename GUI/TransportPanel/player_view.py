@@ -22,6 +22,7 @@ class PlayerView:
         self.mw_view.Player_SkipBackw.setDefaultAction(self.mw_view.actionPrevious_Track)
         self.mw_view.Player_SkipForw.setDefaultAction(self.mw_view.actionNext_Track)
         self.mw_view.LoopButton.setDefaultAction(self.mw_view.actionLoop_Playback)
+        self.mw_view.SequencePlayBut.setDefaultAction(self.mw_view.actionSequential_Playback)
         self.setPlayPause2Play()
 
     def setPlayPause2Play(self):
