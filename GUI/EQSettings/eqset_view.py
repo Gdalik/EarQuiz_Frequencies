@@ -4,6 +4,7 @@ class EQSetView:
         self.GainRangeSpin = self.mw_view.GainRangeSpin
         self.BWBox = self.mw_view.BWBox
         self.ResetBut = self.mw_view.ResetEQBut
+        self.mw_view.LockEQSettingsBut.setDefaultAction(self.mw_view.actionLockEQSettings)
 
     def refreshBWQList(self, items: list[str]):
         self.BWBox.clear()

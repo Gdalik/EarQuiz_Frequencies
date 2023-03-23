@@ -23,6 +23,8 @@ class LearnMode(UniMode):
         self.view.NextExample.setVisible(True)
         self.view.actionSequential_Playback.setVisible(True)
         self.view.SequencePlayBut.setVisible(True)
+        self.view.actionLoop_Sequence.setVisible(True)
+        self.view.onActionSequentialPlaybackTriggered()
 
     def generateDrill(self, fromStart=False, raiseInterruptedException=True):
         if self.parent.ADGen is None:
@@ -55,6 +57,9 @@ class LearnMode(UniMode):
 
     def playbackEnded(self):
         if self.parent.mw_view.actionSequential_Playback.isChecked():
+            if not self.parent.mw_view.actionLoop_Sequence.isChecked() and \
+                    self.parent.ADGen.exercise_gen.isLastItemInSeq:
+                return
             self.nextDrill()
 
     def oncePlayingStarted(self):

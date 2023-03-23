@@ -3,7 +3,6 @@ from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData, QAudi
 from definitions import MediaDevices
 import platform
 
-
 class PlayerContr(QMediaPlayer):
     def __init__(self, parent):  # parent: TransportContr
         super().__init__()
@@ -107,9 +106,6 @@ class PlayerContr(QMediaPlayer):
             self.play()
         self.mw_contr.CurrentMode.playbackStoppedEnded()
         self.mw_contr.CurrentMode.playbackEnded()
-        # TODO: Add continuous playback in Learn mode. Add stop at the end of frequencies cycle option.
-        '''if self.mw_contr.CurrentMode.name == 'Learn':
-            self.mw_contr.CurrentMode.nextDrill()'''
 
     def onPlayTriggered(self):
         if self.playbackState() == self.PlaybackState.PlayingState:

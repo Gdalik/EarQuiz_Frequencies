@@ -20,6 +20,11 @@ class ExampleGenerator:
         self._lastRandomChoice = None
         self.cycle = None
         self.inf_cycle = inf_cycle if order != 'random' else True
+        self._isLastItemInSeq = None
+
+    @property
+    def isLastItemInSeq(self):
+        return self._isLastItemInSeq
 
     def seqGen(self, start_freq=None):
         self.cycle = None
@@ -35,6 +40,7 @@ class ExampleGenerator:
             self.cycle = itertools.cycle(self.full_sequence)
             first_run = True
         output = next(self.cycle)
+        self._isLastItemInSeq = (output == self.full_sequence[-1])
         if not self.inf_cycle and output == self.full_sequence[0] and not first_run:
             raise StopIteration
         return output
@@ -64,7 +70,8 @@ class ExampleGenerator:
         def crop_tuple(x):
             if not isinstance(x, tuple):
                 return x
-            return abs_source(x, max(abs(x[0]), abs(x[1]))) if self.order == 'desc' else abs_source(x, min(abs(x[0]), abs(x[1])))
+            return abs_source(x, max(abs(x[0]), abs(x[1]))) if self.order == 'desc' \
+                else abs_source(x, min(abs(x[0]), abs(x[1])))
         self._genSourceSequence()
         _start_freq = self._source_sequence[0] if start_freq is None else start_freq
         source_seq = self._source_seq_reorder(abs(crop_tuple(_start_freq)))

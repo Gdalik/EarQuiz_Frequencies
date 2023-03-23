@@ -102,7 +102,6 @@ class AudioChunk(PreviewAudioCrop):
         self._close_audiofile()
 
     def _reset(self, callback=None):
-        a = time.time()
         self._read_and_crop(callback=callback)
         if self.user_stopped:
             return

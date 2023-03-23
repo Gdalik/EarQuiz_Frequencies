@@ -73,6 +73,7 @@ class UniMode:
         self.view.Player_SkipForw.setVisible(False)
         self.view.actionSequential_Playback.setVisible(False)
         self.view.SequencePlayBut.setVisible(False)
+        self.view.actionLoop_Sequence.setVisible(False)
 
     def updateCurrentAudio(self):
         self.parent.CurrentAudio = create_temp_wavefile()

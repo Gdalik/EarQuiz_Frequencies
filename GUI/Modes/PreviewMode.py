@@ -8,11 +8,11 @@ class PreviewMode(UniMode):
         self.parent.EQContr.resetEQ()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.hide()
         self.hideSequentialPlayContr()
+        self.parent.ExScore.view.init_texts(onlyLastExcInfo=True)
         if not self.isAudioSourceMode():
             return
         self.setPlayerControls()
         self.playPause_toggleable = True
-        self.parent.ExScore.view.init_texts(onlyLastExcInfo=True)
         if self.parent.SourceAudio is not None:
             self.enableTimeSettingsChanges(True)
         if self.updateCurrentAudio():
@@ -56,6 +56,7 @@ class PreviewMode(UniMode):
     def hideSequentialPlayContr(self):
         self.view.actionSequential_Playback.setVisible(False)
         self.view.SequencePlayBut.setVisible(False)
+        self.view.actionLoop_Sequence.setVisible(False)
 
     def updateCurrentAudio(self):
         old_value = self.parent.CurrentAudio

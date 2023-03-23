@@ -18,7 +18,8 @@ class PatternBoxContr(object):
         index = self.mw_view.PatternBox.currentIndex() if index is None else index
         self.mw_contr.EQContr.setEQMode(mode_num=index + 1)
         self._nextPatternButEnable()
-        self.mw_contr.EQSetContr.refreshSet()
+        if not self.mw_view.actionLockEQSettings.isChecked():
+          self.mw_contr.EQSetContr.refreshSet()
         self.setExGenToPattern()
         with contextlib.suppress(AttributeError):
             if self.mw_contr.CurrentMode.name == 'Test':

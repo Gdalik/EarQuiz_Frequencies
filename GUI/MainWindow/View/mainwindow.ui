@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1138</width>
-    <height>736</height>
+    <width>1100</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -4751,7 +4751,7 @@ background: rgba(118, 214, 255, 85)
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1138</width>
+     <width>1100</width>
      <height>22</height>
     </rect>
    </property>
@@ -4822,6 +4822,7 @@ background: rgba(118, 214, 255, 85)
     <addaction name="actionShuffle_Playback"/>
     <addaction name="actionLoop_Playback"/>
     <addaction name="actionSequential_Playback"/>
+    <addaction name="actionLoop_Sequence"/>
     <addaction name="separator"/>
     <addaction name="menuEQ_Bands_Playback_Order"/>
     <addaction name="separator"/>
@@ -4858,13 +4859,13 @@ background: rgba(118, 214, 255, 85)
    </property>
    <property name="minimumSize">
     <size>
-     <width>1100</width>
+     <width>1138</width>
      <height>125</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>16777215</width>
+     <width>524287</width>
      <height>125</height>
     </size>
    </property>
@@ -5827,8 +5828,8 @@ font-weight: normal</string>
     <number>2</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_2">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_8">
+     <item>
       <layout class="QHBoxLayout" name="GainDepthLayout">
        <item>
         <spacer name="horizontalSpacer_11">
@@ -5902,7 +5903,7 @@ font-weight: normal</string>
        </item>
       </layout>
      </item>
-     <item row="1" column="0">
+     <item>
       <layout class="QHBoxLayout" name="BWLayout">
        <item alignment="Qt::AlignRight">
         <widget class="QLabel" name="BWLab">
@@ -5923,18 +5924,46 @@ font-weight: normal</string>
        </item>
       </layout>
      </item>
-     <item row="2" column="0" alignment="Qt::AlignHCenter">
-      <widget class="QPushButton" name="ResetEQBut">
-       <property name="maximumSize">
-        <size>
-         <width>75</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Reset</string>
-       </property>
-      </widget>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QPushButton" name="ResetEQBut">
+         <property name="maximumSize">
+          <size>
+           <width>75</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Reset</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="LockEQSettingsBut">
+         <property name="styleSheet">
+          <string notr="true">border: None</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../../Icons/Misc/unlock.png</normaloff>
+           <normalon>../../Icons/Misc/padlock.png</normalon>../../Icons/Misc/unlock.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>18</width>
+           <height>18</height>
+          </size>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
@@ -6304,6 +6333,30 @@ font-weight: normal</string>
    </property>
    <property name="iconVisibleInMenu">
     <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionLoop_Sequence">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Loop Sequence</string>
+   </property>
+  </action>
+  <action name="actionLockEQSettings">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Icons/Misc/unlock.png</normaloff>
+     <normalon>../../Icons/Misc/padlock.png</normalon>../../Icons/Misc/unlock.png</iconset>
+   </property>
+   <property name="text">
+    <string>actionLockEQSettings</string>
+   </property>
+   <property name="toolTip">
+    <string>(Un)Lock EQ Settings</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

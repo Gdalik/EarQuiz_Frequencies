@@ -10,3 +10,4 @@ https://iconarchive.com/icons/oxygen-icons.org/oxygen/authors.txt
 Image by <a href="https://www.freepik.com/free-vector/flat-design-arrow-collection_5940015.htm#query=blue%20arrow&position=2&from_view=keyword">Freepik</a>
 <a href="https://www.flaticon.com/free-icons/settings" title="settings icons">Settings icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/star" title="star icons">Star icons created by Taufik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/lock" title="lock icons">Lock icons created by Maxim Basinski Premium - Flaticon</a>

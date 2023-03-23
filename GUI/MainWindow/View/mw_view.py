@@ -1,5 +1,4 @@
 import platform
-
 from PyQt6.QtWidgets import QMainWindow, QWidget, QSizePolicy, QToolButton
 from PyQt6.QtGui import QAction
 from PyQt6.QtCore import Qt, QObject, pyqtSignal
@@ -37,6 +36,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.status = self.statusBar()
         self.setMinimalistView()
         self.actionMinimal.triggered.connect(self.setMinimalistView)
+        self.actionSequential_Playback.triggered.connect(self.onActionSequentialPlaybackTriggered)
         self.TransportPanelView = TransportPanelView(self)
         self.setUniActBut()
         self.alt_pressed = None
@@ -160,3 +160,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def closeEvent(self, ev):
         self.signals.appClose.emit()
         super(MainWindowView, self).closeEvent(ev)
+
+    def onActionSequentialPlaybackTriggered(self):
+        self.actionLoop_Sequence.setEnabled(self.actionSequential_Playback.isChecked())

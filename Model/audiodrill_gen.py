@@ -51,9 +51,9 @@ class AudioDrillGen:
         self._order = order
         self._boost_cut_priority = boost_cut_priority
         self.proc_t_perc = proc_t_perc
-        self._exercise_gen = ExampleGenerator(freq_options, boost_cut, DualBandMode, order,
-                                               boost_cut_priority=boost_cut_priority, disableAdjacent=disableAdjacent,
-                                               inf_cycle=inf_cycle)
+        self.exercise_gen = ExampleGenerator(freq_options, boost_cut, DualBandMode, order,
+                                             boost_cut_priority=boost_cut_priority, disableAdjacent=disableAdjacent,
+                                             inf_cycle=inf_cycle)
         self._last_freq = None
 
     def gain_depth(self):
@@ -95,7 +95,7 @@ class AudioDrillGen:
     @order.setter
     def order(self, arg: str):
         self._order = arg
-        self._exercise_gen.order = arg
+        self.exercise_gen.order = arg
         self._on_EQ_order_change()
 
     @property
@@ -105,7 +105,7 @@ class AudioDrillGen:
     @boost_cut_priority.setter
     def boost_cut_priority(self, value: int):
         self._boost_cut_priority = value
-        self._exercise_gen.boost_cut_priority = value
+        self.exercise_gen.boost_cut_priority = value
         self._on_EQ_order_change()
 
     def output(self, force_freq=None, fromStart=False, audio_path=None):
@@ -127,7 +127,7 @@ class AudioDrillGen:
         return filepath
 
     def _freq_out(self, force_freq=None):
-        self._last_freq = self._exercise_gen.seqOut(force_freq)
+        self._last_freq = self.exercise_gen.seqOut(force_freq)
         return self._last_freq
 
     def _audio_out(self, renderCurrent=False, fromStart=False):
@@ -141,15 +141,15 @@ class AudioDrillGen:
                        gain_depth=self.gain_depth(), Q=self.Q, proc_t_perc=self.proc_t_perc)
 
     def _on_EQ_order_change(self):
-        self._exercise_gen.inf_cycle = True
-        self._exercise_gen.seqGen(self._last_freq)
+        self.exercise_gen.inf_cycle = True
+        self.exercise_gen.seqGen(self._last_freq)
         if self._last_freq is not None:
-            self._exercise_gen.seqOut()
+            self.exercise_gen.seqOut()
 
     def resetExGen(self, freq_options, boost_cut='+-', DualBandMode=False, order='asc',
                                                boost_cut_priority=1, disableAdjacent=1, inf_cycle=True):
-        self._exercise_gen = ExampleGenerator(freq_options=freq_options, boost_cut=boost_cut,
-                                               DualBandMode=DualBandMode, order=order,
-                                               boost_cut_priority=boost_cut_priority, disableAdjacent=disableAdjacent,
-                                               inf_cycle=inf_cycle)
+        self.exercise_gen = ExampleGenerator(freq_options=freq_options, boost_cut=boost_cut,
+                                             DualBandMode=DualBandMode, order=order,
+                                             boost_cut_priority=boost_cut_priority, disableAdjacent=disableAdjacent,
+                                             inf_cycle=inf_cycle)
         self._DualBandMode = DualBandMode
