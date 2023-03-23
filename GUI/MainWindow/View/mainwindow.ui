@@ -6356,7 +6356,7 @@ font-weight: normal</string>
     <string>actionLockEQSettings</string>
    </property>
    <property name="toolTip">
-    <string>(Un)Lock EQ Settings</string>
+    <string>(Un)Lock EQ Settings: EQ Pattern changes do not affect EQ Settings when locked.</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>
