@@ -10,7 +10,7 @@ class AudioLoad:
         self.mw_view = self.parent.mw_view
         self.TransportContr = self.parent.TransportContr
 
-    def load_song(self, Song: PlSong):
+    def load_song(self, Song: PlSong, forcePlayAfter=False):
         if self.parent.CurrentSourceMode.name != 'Audiofile':
             return
         if hasattr(Song, 'file_properties'):
@@ -18,25 +18,25 @@ class AudioLoad:
         if Song.duration < MinAudioDuration or not Song.exists:
             return
         self.parent.SRC.savePrevSourceAudioRange()
+        reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)
         self.parent.SourceAudio = Song
         self.parent.PlaylistContr.PlNavi.setCurrentSong(Song)
+        self.parent.playAudioOnPreview = True if reloaded_same \
+            else self.mw_view.actionStartPlayingAfterLoading.isChecked()
         if self.parent.CurrentMode.name == 'Preview':
             self.parent.CurrentMode.updateCurrentAudio()
+        elif self.mw_view.actionPreview_Mode.isChecked():
+            self.parent.CurrentMode = PreviewMode(self.parent)
         else:
-            self.parent.playAudioOnPreview = True
-            if self.mw_view.actionPreview_Mode.isChecked():
-                self.parent.CurrentMode = PreviewMode(self.parent)
-            else:
-                self.mw_view.actionPreview_Mode.setChecked(True)
-
-        if self.parent.LoadedFilePath is not None and Song.path == self.parent.LoadedFilePath:
+            self.mw_view.actionPreview_Mode.setChecked(True)
+        if reloaded_same:
             self.TransportContr.PlayerContr.onStopTriggered()
             self.TransportContr.PlayerContr.play()
             return
         if self.parent.SourceAudio == self.parent.LastSourceAudio:
             return
         self.parent.ADGen = None
-        self.TransportContr.PlayerContr.loadCurrentAudio()
+        self.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview or forcePlayAfter)
 
     def load_pinknoise(self):
         self.parent.SourceAudio = PlSong('pinknoise')

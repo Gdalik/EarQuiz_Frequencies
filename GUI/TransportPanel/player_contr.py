@@ -110,7 +110,16 @@ class PlayerContr(QMediaPlayer):
     def onPlayTriggered(self):
         if self.playbackState() == self.PlaybackState.PlayingState:
             return
-        if not self.parent.updAudioToEqSettings(play_after=True, raiseInterruptedException=False):
+        noPreviewSource = (self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.SourceAudio is None)
+        if noPreviewSource and self.mw_contr.PlaylistContr.PlNavi.currentSongInside() is not None:
+            self.mw_contr.PlaylistContr.loadAndSelectSong(self.mw_contr.PlaylistContr.PlNavi.currentSongInside(),
+                                                          forcePlayAfter=True)
+        elif noPreviewSource and self.mw_contr.PlaylistContr.PlNavi.firstAvailable() is not None:
+            self.mw_contr.PlaylistContr.loadAndSelectSong(self.mw_contr.PlaylistContr.PlNavi.firstAvailable(),
+                                                          forcePlayAfter=True)
+        elif noPreviewSource and self.mw_contr.PlaylistContr.PlNavi.firstAvailable() is None:
+            self.mw_contr.PlaylistContr.openFiles()
+        elif not self.parent.updAudioToEqSettings(play_after=True, raiseInterruptedException=False):
             self.play()
 
     def onStopTriggered(self, checkPlaybackState=False):

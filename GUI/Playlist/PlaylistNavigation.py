@@ -22,6 +22,13 @@ class PlNavi:
         self.playlistdata = newPlData
         self.playedSongs = [S for S in self.playedSongs if S in self.playlistdata]
 
+    def firstAvailable(self):
+        if not self.playlistdata:
+            return None
+        for S in self.playlistdata:
+            if S.available:
+                return S
+
     def next(self):
         if not self.playlistdata or self._currentSong is None:
             return None
@@ -71,6 +78,9 @@ class PlNavi:
 
     def currentSong(self):
         return self._currentSong
+
+    def currentSongInside(self):
+        return self._currentSong if self._currentSong in self.playlistdata else None
 
     def currentSongId(self):
         return self._currentSongId

@@ -4817,6 +4817,7 @@ background: rgba(118, 214, 255, 85)
     <addaction name="actionStop"/>
     <addaction name="actionPrevious_Track"/>
     <addaction name="actionNext_Track"/>
+    <addaction name="actionStartPlayingAfterLoading"/>
     <addaction name="actionSkip_Unavailable_Tracks"/>
     <addaction name="separator"/>
     <addaction name="actionShuffle_Playback"/>
@@ -5934,6 +5935,9 @@ font-weight: normal</string>
            <height>16777215</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Reset to current EQ pattern settings</string>
+         </property>
          <property name="text">
           <string>Reset</string>
          </property>
@@ -6347,6 +6351,9 @@ font-weight: normal</string>
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normaloff>../../Icons/Misc/unlock.png</normaloff>
@@ -6357,6 +6364,20 @@ font-weight: normal</string>
    </property>
    <property name="toolTip">
     <string>(Un)Lock EQ Settings: EQ Pattern changes do not affect EQ Settings when locked.</string>
+   </property>
+  </action>
+  <action name="actionStartPlayingAfterLoading">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Start Playing After Loading Track in Preview Mode</string>
+   </property>
+   <property name="toolTip">
+    <string>Start playing after loading track in Preview mode (Autoplay)</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>
