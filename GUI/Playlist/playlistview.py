@@ -23,6 +23,7 @@ class PlaylistView(QTableView):
         self.setHeader()
         self.setShowGrid(False)
         self.selectedItems = []
+        self.MouseButtonPressed = None
 
     @property
     def Model(self):
@@ -81,18 +82,15 @@ class PlaylistView(QTableView):
     def checkDroppedMimeData(self, data):
         return data.hasUrls() and data.objectName() != 'FromPlaylist'
 
-    '''def onSelectionChanged(self):
-        rows = self.selectionModel().selectedRows()
-        self.mw_view.actionConvert_Selected_Files.setEnabled(len(rows) != 0)
-        self.selectedItems = []
-        for row in rows:
-            cur_row = self.model().mapToSource(row).row()
-            self.selectedItems.append(self.Model.playlistdata[cur_row])
-        return self.selectedItems'''
+    def mousePressEvent(self, e) -> None:
+        super(PlaylistView, self).mousePressEvent(e)
+        self.MouseButtonPressed = e.button()
 
     def mouseMoveEvent(self, event):
         super(PlaylistView, self).mouseMoveEvent(event)
         if not self.selectionModel().selectedRows():
+            return
+        if self.MouseButtonPressed != Qt.MouseButton.LeftButton:
             return
         drag = QDrag(self)
         mimeData = QMimeData()

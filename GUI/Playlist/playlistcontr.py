@@ -115,6 +115,8 @@ class PlaylistContr(QObject):
             self.addTracks(filenames, index)
 
     def onDoubleClicked(self, index):
+        if self.PlaylistView.MouseButtonPressed != Qt.MouseButton.LeftButton:
+            return
         self.loadSongFromIndex(index)
 
     def onKeyPressed(self, key: int):
