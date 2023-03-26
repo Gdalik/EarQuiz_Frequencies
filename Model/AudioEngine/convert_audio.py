@@ -26,7 +26,7 @@ def avoid_same_name(audiofile_path: str):
             name_noext = f"{name_noext[:-len(f'{digit_end}')]}{int(digit_end) + 1}"
         else:
             name_noext = f"{name_noext}__1"
-        result = Path(name_noext).with_suffix(result.suffix)
+        result = Path(name_noext + result.suffix)
     return str(result)
 
 
@@ -48,7 +48,7 @@ def convert_audio(audiofile_path: str, source_samplerate: int or float, audio_fo
         input_af = AudioFile(audiofile_path, 'r')
     else:
         input_af = AudioFile(audiofile_path, 'r').resampled_to(target_samplerate)
-        output_path = Path(f"{output_path.with_suffix('')} - Resampled").with_suffix(out_ext)
+        output_path = Path(f"{output_path.with_suffix('')} - Resampled{out_ext}")
     output_path = Path(avoid_same_name(str(output_path)))
     result = None
     out_stat = {'State': f'Converting "{Path(audiofile_path).name}" to "{output_path.name}"', 'Percent': 0}
