@@ -28,7 +28,7 @@ class PlaylistContr(QObject):
         self.PlaylistView.PlStatsLabUpd()
 
     def _setUpActions(self):
-        self.selModel.selectionChanged.connect(self.PlaylistView.onSelectionChanged)
+        self.selModel.selectionChanged.connect(self.onSelectionChanged)
         self.SearchAudio.textChanged.connect(self.proxyModel.setFilter)
         self.PlaylistView.signals.urlsDropped.connect(self.addTracks)
         self.PlaylistView.signals.dragDropFromPLFinished.connect(self.ondragDropFromPLFinished)
@@ -63,7 +63,8 @@ class PlaylistContr(QObject):
         self.playlistModel.layoutChanged.emit()
         if len(self.playlistModel.playlistdata) != len(paths):
             self.PlaylistView.selectRows(_index, _index + len(paths) - 1)
-            self.PlaylistView.onSelectionChanged()  # onSelectionChanged signal is not emitted after layoutChange
+            # self.PlaylistView.onSelectionChanged()  # onSelectionChanged signal is not emitted after layoutChange
+            self.onSelectionChanged()  # onSelectionChanged signal is not emitted after layoutChange
         app.restoreOverrideCursor()
 
     def removeTracks(self):
@@ -87,6 +88,17 @@ class PlaylistContr(QObject):
                                           len(self.selModel.selectedRows()), QModelIndex())
             self.PlaylistView.selectRows(self.playlistModel.lastInsertedRows[0],
                                          self.playlistModel.lastInsertedRows[-1])
+
+    def onSelectionChanged(self):
+        rows = self.PlaylistView.selectionModel().selectedRows()
+        self.mw_view.actionConvert_Selected_Files.setEnabled(len(rows) != 0)
+        self.PlaylistView.selectedItems = []
+        self.playlistModel.SelectedRows = []
+        for row in rows:
+            cur_row = self.PlaylistView.model().mapToSource(row).row()
+            self.playlistModel.SelectedRows.append(cur_row)
+            self.PlaylistView.selectedItems.append(self.PlaylistView.Model.playlistdata[cur_row])
+        return zip(self.playlistModel.SelectedRows, self.PlaylistView.selectedItems)
 
     def error_msg(self, message: str):
         error_message(self.mw_view, message)

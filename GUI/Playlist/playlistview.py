@@ -81,13 +81,14 @@ class PlaylistView(QTableView):
     def checkDroppedMimeData(self, data):
         return data.hasUrls() and data.objectName() != 'FromPlaylist'
 
-    def onSelectionChanged(self):
+    '''def onSelectionChanged(self):
         rows = self.selectionModel().selectedRows()
+        self.mw_view.actionConvert_Selected_Files.setEnabled(len(rows) != 0)
         self.selectedItems = []
         for row in rows:
             cur_row = self.model().mapToSource(row).row()
             self.selectedItems.append(self.Model.playlistdata[cur_row])
-        return self.selectedItems
+        return self.selectedItems'''
 
     def mouseMoveEvent(self, event):
         super(PlaylistView, self).mouseMoveEvent(event)

@@ -37,7 +37,7 @@ class PlSong:
             return return_dict
         try:
             with AudioFile(self.path) as f:
-                return_dict['duration'] = f.frames / f.samplerate
+                return_dict['duration'] = f.duration
                 num_channels = f.num_channels
                 if num_channels == 1:
                     num_channels = 'Mono'
@@ -78,7 +78,7 @@ class PlSong:
 
     @property
     def available(self):
-        return bool(self.exists and self.duration >= MinAudioDuration and self.canLoad)
+        return bool(self.exists and self.duration >= MinAudioDuration and self.canLoad and self.samplerate >= 44100)
 
     @property
     def _default_dict(self):

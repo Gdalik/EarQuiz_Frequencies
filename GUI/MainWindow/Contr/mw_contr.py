@@ -66,7 +66,6 @@ class MainWindowContr(QObject):
         self.setBoostCutOrderAG()
         self.setPlaybackButtons()
         self.setNextExampleBut()
-        self.mw_view.actionClose.triggered.connect(self.onActionCloseTriggered)
         self.mw_view.signals.appClose.connect(self.onAppClose)
         self.mw_view.show()
         self.setSourceButtons()
@@ -78,6 +77,8 @@ class MainWindowContr(QObject):
         self.mw_view.actionOpen_Folder.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='folder'))
         self.mw_view.actionMake_and_Open_Calibration_Sine_Wave_File.triggered.connect\
             (self.FileMaker.makeAndImportCalibrationSineTones)
+        self.mw_view.actionConvert_Selected_Files.triggered.connect(self.FileMaker.onActionConvertFilesTriggered)
+        self.mw_view.actionClose.triggered.connect(self.onActionCloseTriggered)
 
     def setModesButtons(self):
         self.mw_view.PreviewBut.setDefaultAction(self.mw_view.actionPreview_Mode)

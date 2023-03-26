@@ -31,19 +31,19 @@ class AudioDrillGen:
         # with another EQ_Pattern on the same audio source use self.resetExGen
 
         if audio_source_path == 'pinknoise':
-            self.af_frames = 44100 * 30
+            self.af_duration = 30
             self.af_samplerate = 44100
             self.af_num_channels = 1
         else:
             with AudioFile(audio_source_path) as af:
-                self.af_frames = af.frames
+                self.af_duration = af.duration
                 self.af_samplerate = af.samplerate
                 self.af_num_channels = af.num_channels
         self._gain_depth = abs(gain_depth)
         self._DualBandMode = DualBandMode
         self.audiochunk = AudioChunk(audio_source_path,
                                      starttime=starttime,
-                                     endtime=endtime or self.af_frames / self.af_samplerate,
+                                     endtime=endtime or self.af_duration,
                                      slice_length=drill_length, norm_level=self.gain_headroom, callback=callback)
         if self.audiochunk.user_stopped:
             raise InterruptedException

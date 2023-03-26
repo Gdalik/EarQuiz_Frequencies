@@ -35,7 +35,7 @@ class AudioChunk(PreviewAudioCrop):
 
     def _init_audiofile(self):
         self.audiofile = AudioFile(self.audiofile_path)
-        self.source_length = self.audiofile.frames / self.audiofile.samplerate
+        self.source_length = self.audiofile.duration
         self.samplerate = int(self.audiofile.samplerate)
 
     def _init_audiosource(self):
@@ -64,9 +64,10 @@ class AudioChunk(PreviewAudioCrop):
         output = {'State': 'Reading / cropping audiofile', 'Percent': 0}
         self._callback_out(output, callback=callback)
         self.audiofile.seek(int(self.sec2fr(self.starttime)))
-        divider = self._find_rc_divider()
-        while self.cropped[0].size != self.chunk_length_fr:
-            ch = self.audiofile.read(int(self.chunk_length_fr / divider))
+        read_ch_samples = int(self.chunk_length_fr / self._find_rc_divider()) if self.audiofile.exact_duration_known \
+            else int(self.samplerate)
+        while self.cropped[0].size < self.chunk_length_fr:
+            ch = self.audiofile.read(read_ch_samples)
             self.cropped = np.concatenate((self.cropped, ch), axis=1)
             output['Percent'] = int(self.cropped[0].size / self.chunk_length_fr * 100)
             try:
@@ -74,6 +75,8 @@ class AudioChunk(PreviewAudioCrop):
             except InterruptedException:
                 self._stop()
                 return
+            if self.audiofile.tell() == self.audiofile.frames:
+                break   # to avoid infinite loop for some 'broken' MP3 files
         self._close_audiofile()
 
     def _open_audiofile(self):

@@ -1,0 +1,33 @@
+<RCC>
+  <qresource prefix="AddRemove">
+    <file>Icons/AddRemove/clear.png</file>
+    <file>Icons/AddRemove/minus.png</file>
+    <file>Icons/AddRemove/plus.png</file>
+  </qresource>
+  <qresource prefix="Misc">
+    <file>Icons/Misc/padlock.png</file>
+    <file>Icons/Misc/Settings.png</file>
+    <file>Icons/Misc/star.png</file>
+    <file>Icons/Misc/unlock.png</file>
+  </qresource>
+  <qresource prefix="Player">
+    <file>Icons/Player/Actions-media-playback-pause-icon.png</file>
+    <file>Icons/Player/Actions-media-playback-start-icon.png</file>
+    <file>Icons/Player/Actions-media-playback-stop-icon.png</file>
+    <file>Icons/Player/Actions-media-seek-backward-icon.png</file>
+    <file>Icons/Player/Actions-media-seek-forward-icon.png</file>
+    <file>Icons/Player/Actions-media-skip-backward-icon.png</file>
+    <file>Icons/Player/Actions-media-skip-forward-icon.png</file>
+    <file>Icons/Player/arrow-right_gray.png</file>
+    <file>Icons/Player/music-note-with-loop-circular-arrows-around-blue.png</file>
+    <file>Icons/Player/music-note-with-loop-circular-arrows-around.png</file>
+    <file>Icons/Player/sequence - black.png</file>
+    <file>Icons/Player/sequence - blue.png</file>
+    <file>Icons/Player/shuffle_black.png</file>
+    <file>Icons/Player/shuffle_blue.png</file>
+  </qresource>
+  <qresource prefix="Logo">
+    <file>Icons/Logo/EarQuiz_Icon.png</file>
+    <file>Icons/Logo/EarQuiz_Splash.png</file>
+  </qresource>
+</RCC>

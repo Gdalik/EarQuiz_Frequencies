@@ -27,3 +27,6 @@ SineWaveCalibrationFilename = '1kHz__10kHz__100Hz__15kHz__40Hz Sinus Tones.wav'
 SineWaveCalibrationPath = os.path.normpath(os.path.join(DATA_DIR, 'Audio', SineWaveCalibrationFilename))
 
 SourceRangeLib_DIR = os.path.normpath(os.path.join(DATA_DIR, 'SourceRangeLib'))
+
+supported_bitrates_mp3 = (32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320)
+supported_bitrates_ogg = (64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 500)

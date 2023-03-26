@@ -15,7 +15,7 @@ class AudioLoad:
             return
         if hasattr(Song, 'file_properties'):
             Song.__delattr__('file_properties')
-        if Song.duration < MinAudioDuration or not Song.exists:
+        if Song.duration < MinAudioDuration or not Song.exists or Song.samplerate < 44100:
             return
         self.parent.SRC.savePrevSourceAudioRange()
         reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)

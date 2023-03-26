@@ -216,8 +216,8 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../Icons/AddRemove/plus.png</normaloff>../../Icons/AddRemove/plus.png</iconset>
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/AddRemove/Icons/AddRemove/plus.png</normaloff>:/AddRemove/Icons/AddRemove/plus.png</iconset>
            </property>
           </widget>
          </item>
@@ -240,8 +240,8 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../Icons/AddRemove/minus.png</normaloff>../../Icons/AddRemove/minus.png</iconset>
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/AddRemove/Icons/AddRemove/minus.png</normaloff>:/AddRemove/Icons/AddRemove/minus.png</iconset>
            </property>
           </widget>
          </item>
@@ -289,9 +289,9 @@ border-radius: 4px;
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../Icons/Player/shuffle_black.png</normaloff>
-             <normalon>../../Icons/Player/shuffle_blue.png</normalon>../../Icons/Player/shuffle_black.png</iconset>
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/shuffle_black.png</normaloff>
+             <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -330,8 +330,8 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../Icons/AddRemove/clear.png</normaloff>../../Icons/AddRemove/clear.png</iconset>
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/AddRemove/Icons/AddRemove/clear.png</normaloff>:/AddRemove/Icons/AddRemove/clear.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -611,8 +611,8 @@ background: rgba(118, 214, 255, 85)
          <string>...</string>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>../../Icons/Player/Actions-media-playback-start-icon.png</normaloff>../../Icons/Player/Actions-media-playback-start-icon.png</iconset>
+         <iconset resource="../../icons.qrc">
+          <normaloff>:/Player/Icons/Player/Actions-media-playback-start-icon.png</normaloff>:/Player/Icons/Player/Actions-media-playback-start-icon.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -650,8 +650,8 @@ background: rgba(118, 214, 255, 85)
          <string>...</string>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>../../Icons/Player/Actions-media-playback-stop-icon.png</normaloff>../../Icons/Player/Actions-media-playback-stop-icon.png</iconset>
+         <iconset resource="../../icons.qrc">
+          <normaloff>:/Player/Icons/Player/Actions-media-playback-stop-icon.png</normaloff>:/Player/Icons/Player/Actions-media-playback-stop-icon.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -698,8 +698,8 @@ background: rgba(118, 214, 255, 85);
          <string>Next Example</string>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>../../Icons/Player/arrow-right_gray.png</normaloff>../../Icons/Player/arrow-right_gray.png</iconset>
+         <iconset resource="../../icons.qrc">
+          <normaloff>:/Player/Icons/Player/arrow-right_gray.png</normaloff>:/Player/Icons/Player/arrow-right_gray.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -1826,11 +1826,11 @@ background: rgba(118, 214, 255, 85)
 }</string>
           </property>
           <property name="text">
-           <string>...</string>
+           <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>../../Icons/Misc/Settings.png</normaloff>../../Icons/Misc/Settings.png</iconset>
+           <iconset resource="../../icons.qrc">
+            <normaloff>:/Misc/Icons/Misc/Settings.png</normaloff>:/Misc/Icons/Misc/Settings.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -4720,11 +4720,11 @@ background: rgba(118, 214, 255, 85)
 }</string>
           </property>
           <property name="text">
-           <string>...</string>
+           <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>../../Icons/Misc/Settings.png</normaloff>../../Icons/Misc/Settings.png</iconset>
+           <iconset resource="../../icons.qrc">
+            <normaloff>:/Misc/Icons/Misc/Settings.png</normaloff>:/Misc/Icons/Misc/Settings.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -4766,6 +4766,8 @@ background: rgba(118, 214, 255, 85)
     <addaction name="actionMake_and_Open_Calibration_Sine_Wave_File"/>
     <addaction name="actionMake_Learning_Files"/>
     <addaction name="actionMake_Test_Files"/>
+    <addaction name="separator"/>
+    <addaction name="actionConvert_Selected_Files"/>
     <addaction name="separator"/>
     <addaction name="actionClose"/>
    </widget>
@@ -4971,8 +4973,8 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../Icons/Player/Actions-media-skip-backward-icon.png</normaloff>../../Icons/Player/Actions-media-skip-backward-icon.png</iconset>
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/Actions-media-skip-backward-icon.png</normaloff>:/Player/Icons/Player/Actions-media-skip-backward-icon.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -4998,8 +5000,8 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../Icons/Player/Actions-media-playback-start-icon.png</normaloff>../../Icons/Player/Actions-media-playback-start-icon.png</iconset>
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/Actions-media-playback-start-icon.png</normaloff>:/Player/Icons/Player/Actions-media-playback-start-icon.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -5025,8 +5027,8 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../Icons/Player/Actions-media-playback-stop-icon.png</normaloff>../../Icons/Player/Actions-media-playback-stop-icon.png</iconset>
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/Actions-media-playback-stop-icon.png</normaloff>:/Player/Icons/Player/Actions-media-playback-stop-icon.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -5052,8 +5054,8 @@ background: rgba(118, 214, 255, 85)
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../Icons/Player/Actions-media-skip-forward-icon.png</normaloff>../../Icons/Player/Actions-media-skip-forward-icon.png</iconset>
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/Actions-media-skip-forward-icon.png</normaloff>:/Player/Icons/Player/Actions-media-skip-forward-icon.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -5082,9 +5084,9 @@ border-radius: 4px;
             <string/>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../Icons/Player/music-note-with-loop-circular-arrows-around.png</normaloff>
-             <normalon>../../Icons/Player/music-note-with-loop-circular-arrows-around-blue.png</normalon>../../Icons/Player/music-note-with-loop-circular-arrows-around.png</iconset>
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png</normaloff>
+             <normalon>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around-blue.png</normalon>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -5116,9 +5118,9 @@ border-radius: 4px;
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>../../Icons/Player/sequence - black.png</normaloff>
-             <normalon>../../Icons/Player/sequence - blue.png</normalon>../../Icons/Player/sequence - black.png</iconset>
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/sequence - black.png</normaloff>
+             <normalon>:/Player/Icons/Player/sequence - blue.png</normalon>:/Player/Icons/Player/sequence - black.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -5460,8 +5462,8 @@ background: rgba(118, 214, 255, 85)
           <string/>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>../../Icons/AddRemove/clear.png</normaloff>../../Icons/AddRemove/clear.png</iconset>
+          <iconset resource="../../icons.qrc">
+           <normaloff>:/AddRemove/Icons/AddRemove/clear.png</normaloff>:/AddRemove/Icons/AddRemove/clear.png</iconset>
          </property>
         </widget>
        </item>
@@ -5563,8 +5565,8 @@ background: rgba(118, 214, 255, 85)
               <string/>
              </property>
              <property name="icon">
-              <iconset>
-               <normaloff>../../Icons/Misc/star.png</normaloff>../../Icons/Misc/star.png</iconset>
+              <iconset resource="../../icons.qrc">
+               <normaloff>:/Misc/Icons/Misc/star.png</normaloff>:/Misc/Icons/Misc/star.png</iconset>
              </property>
             </widget>
            </item>
@@ -5952,9 +5954,9 @@ font-weight: normal</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset>
-           <normaloff>../../Icons/Misc/unlock.png</normaloff>
-           <normalon>../../Icons/Misc/padlock.png</normalon>../../Icons/Misc/unlock.png</iconset>
+          <iconset resource="../../icons.qrc">
+           <normaloff>:/Misc/Icons/Misc/unlock.png</normaloff>
+           <normalon>:/Misc/Icons/Misc/padlock.png</normalon>:/Misc/Icons/Misc/unlock.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -6115,8 +6117,8 @@ font-weight: normal</string>
   </action>
   <action name="actionStop">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Icons/Player/Actions-media-playback-stop-icon.png</normaloff>../../Icons/Player/Actions-media-playback-stop-icon.png</iconset>
+    <iconset resource="../../icons.qrc">
+     <normaloff>:/Player/Icons/Player/Actions-media-playback-stop-icon.png</normaloff>:/Player/Icons/Player/Actions-media-playback-stop-icon.png</iconset>
    </property>
    <property name="text">
     <string>Stop</string>
@@ -6127,8 +6129,8 @@ font-weight: normal</string>
   </action>
   <action name="actionPrevious_Track">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Icons/Player/Actions-media-skip-backward-icon.png</normaloff>../../Icons/Player/Actions-media-skip-backward-icon.png</iconset>
+    <iconset resource="../../icons.qrc">
+     <normaloff>:/Player/Icons/Player/Actions-media-skip-backward-icon.png</normaloff>:/Player/Icons/Player/Actions-media-skip-backward-icon.png</iconset>
    </property>
    <property name="text">
     <string>Previous Track</string>
@@ -6139,8 +6141,8 @@ font-weight: normal</string>
   </action>
   <action name="actionNext_Track">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Icons/Player/Actions-media-skip-forward-icon.png</normaloff>../../Icons/Player/Actions-media-skip-forward-icon.png</iconset>
+    <iconset resource="../../icons.qrc">
+     <normaloff>:/Player/Icons/Player/Actions-media-skip-forward-icon.png</normaloff>:/Player/Icons/Player/Actions-media-skip-forward-icon.png</iconset>
    </property>
    <property name="text">
     <string>Next Track</string>
@@ -6255,9 +6257,9 @@ font-weight: normal</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Icons/Player/shuffle_black.png</normaloff>
-     <normalon>../../Icons/Player/shuffle_blue.png</normalon>../../Icons/Player/shuffle_black.png</iconset>
+    <iconset resource="../../icons.qrc">
+     <normaloff>:/Player/Icons/Player/shuffle_black.png</normaloff>
+     <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
    </property>
    <property name="text">
     <string>Shuffle Playback</string>
@@ -6273,8 +6275,8 @@ font-weight: normal</string>
   </action>
   <action name="actionNext_Example">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Icons/Player/arrow-right_gray.png</normaloff>../../Icons/Player/arrow-right_gray.png</iconset>
+    <iconset resource="../../icons.qrc">
+     <normaloff>:/Player/Icons/Player/arrow-right_gray.png</normaloff>:/Player/Icons/Player/arrow-right_gray.png</iconset>
    </property>
    <property name="text">
     <string>Next Example</string>
@@ -6291,9 +6293,9 @@ font-weight: normal</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Icons/Player/music-note-with-loop-circular-arrows-around.png</normaloff>
-     <normalon>../../Icons/Player/music-note-with-loop-circular-arrows-around-blue.png</normalon>../../Icons/Player/music-note-with-loop-circular-arrows-around.png</iconset>
+    <iconset resource="../../icons.qrc">
+     <normaloff>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png</normaloff>
+     <normalon>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around-blue.png</normalon>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png</iconset>
    </property>
    <property name="text">
     <string>Loop Playback</string>
@@ -6328,9 +6330,9 @@ font-weight: normal</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Icons/Player/sequence - black.png</normaloff>
-     <normalon>../../Icons/Player/sequence - blue.png</normalon>../../Icons/Player/sequence - black.png</iconset>
+    <iconset resource="../../icons.qrc">
+     <normaloff>:/Player/Icons/Player/sequence - black.png</normaloff>
+     <normalon>:/Player/Icons/Player/sequence - blue.png</normalon>:/Player/Icons/Player/sequence - black.png</iconset>
    </property>
    <property name="text">
     <string>Sequential Playback</string>
@@ -6355,9 +6357,9 @@ font-weight: normal</string>
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Icons/Misc/unlock.png</normaloff>
-     <normalon>../../Icons/Misc/padlock.png</normalon>../../Icons/Misc/unlock.png</iconset>
+    <iconset resource="../../icons.qrc">
+     <normaloff>:/Misc/Icons/Misc/unlock.png</normaloff>
+     <normalon>:/Misc/Icons/Misc/padlock.png</normalon>:/Misc/Icons/Misc/unlock.png</iconset>
    </property>
    <property name="text">
     <string>actionLockEQSettings</string>
@@ -6380,6 +6382,14 @@ font-weight: normal</string>
     <string>Start playing after loading track in Preview mode (Autoplay)</string>
    </property>
   </action>
+  <action name="actionConvert_Selected_Files">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Convert Selected Files...</string>
+   </property>
+  </action>
   <zorder>Eq_Settings</zorder>
   <zorder>TransportPanel</zorder>
   <zorder>ExScoreInfo</zorder>
@@ -6398,7 +6408,9 @@ font-weight: normal</string>
    <header location="global">playlistview</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../../icons.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup"/>

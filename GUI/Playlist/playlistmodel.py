@@ -1,8 +1,9 @@
 from PyQt6 import QtCore, QtGui
-from PyQt6.QtCore import Qt, QSortFilterProxyModel
+from PyQt6.QtCore import Qt, QSortFilterProxyModel, QModelIndex
 from GUI.Playlist.plsong import PlSong
 from pathlib import Path
 from Utilities.urlcheck import validUrls
+import copy
 
 PlaylistData = []
 
@@ -15,6 +16,7 @@ class PlaylistModel(QtCore.QAbstractTableModel):
         self.CurName = None
         self.MimeTypes = 'text/uri-list'
         self.filtered = False
+        self.SelectedRows = []
         self.lastInsertedRows = []
 
     def data(self, index, role: int):
@@ -47,12 +49,6 @@ class PlaylistModel(QtCore.QAbstractTableModel):
     def dropMimeData(self, data, action, row, column, parent):
         if self.canDropMimeData(data, action, row, column, parent) is False:
             return False
-
-        '''if action == Qt.DropAction.IgnoreAction:
-            return True
-        if action != Qt.DropAction.MoveAction:
-            return False'''
-
         if row == -1:
             row = len(self.playlistdata)
         urls = validUrls(data.urls())
@@ -91,15 +87,16 @@ class PlaylistModel(QtCore.QAbstractTableModel):
         self.endInsertRows()
         return True
 
-    def removeRows(self, row, count, parent):
+    def removeRows(self, row: int, count: int, parent=QModelIndex()) -> bool:
         if parent.isValid():
             return False
         if row < 0:
             return False
-        self.beginRemoveRows(parent, row, row + count - 1)
-        for _ in range(row, row + count):
-            self.playlistdata.pop(row)
-        self.endRemoveRows()
+        self.SelectedRows.sort()
+        for R in reversed(self.SelectedRows):
+            self.beginRemoveRows(parent, R, R)
+            self.playlistdata.pop(R)
+            self.endRemoveRows()
         if row < self.lastInsertedRows[0]:
             self.lastInsertedRows = list(map(lambda x: x - count, self.lastInsertedRows))
         return True

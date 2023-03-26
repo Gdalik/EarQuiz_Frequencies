@@ -28,14 +28,14 @@ class PlayerView:
     def setPlayPause2Play(self):
         self.mw_view.actionPlayPause.setText("Play")
         icon = QIcon()
-        icon.addFile(u"icons:Player/Actions-media-playback-start-icon.png", QSize(32, 32),
+        icon.addFile(u":Player/Icons/Player/Actions-media-playback-start-icon.png", QSize(32, 32),
                      QIcon.Mode.Normal, QIcon.State.Off)
         self.mw_view.actionPlayPause.setIcon(icon)
 
     def setPlayPause2Pause(self):
         self.mw_view.actionPlayPause.setText("Pause")
         icon = QIcon()
-        icon.addFile(u"icons:/Player/Actions-media-playback-pause-icon.png", QSize(32, 32),
+        icon.addFile(u":Player/Icons/Player/Actions-media-playback-pause-icon.png", QSize(32, 32),
                      QIcon.Mode.Normal, QIcon.State.Off)
         self.mw_view.actionPlayPause.setIcon(icon)
 
