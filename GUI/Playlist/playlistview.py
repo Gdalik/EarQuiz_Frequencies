@@ -1,5 +1,3 @@
-import contextlib
-
 from PyQt6.QtWidgets import QTableView, QAbstractItemView, QHeaderView
 from PyQt6.QtGui import QPainter, QDrag, QColor
 from PyQt6.QtCore import Qt, pyqtSignal, QObject, QMimeData, QUrl, QItemSelection, QItemSelectionModel, QModelIndex
@@ -110,7 +108,8 @@ class PlaylistView(QTableView):
         selection = QItemSelection()
         selection.select(self.Model.index(first, 0),
                          self.Model.index(last, 0))
-        self.selectionModel().select(selection, QItemSelectionModel.SelectionFlag.SelectCurrent |
+        self.selectionModel().select(self.model().mapSelectionFromSource(selection),
+                                     QItemSelectionModel.SelectionFlag.SelectCurrent |
                                      QItemSelectionModel.SelectionFlag.ClearAndSelect |
                                      QItemSelectionModel.SelectionFlag.Rows)
         if scrolling:

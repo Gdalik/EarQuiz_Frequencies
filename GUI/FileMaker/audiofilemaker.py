@@ -36,6 +36,7 @@ class AudioFileMaker:
         self.parent.mw_view.PlaylistView.clearSelection()
         pl_model = self.parent.PlaylistContr.playlistModel
         selection = QItemSelection()
+        proxy_model = self.parent.PlaylistContr.proxyModel
         pl_model.layoutAboutToBeChanged.emit()
         for ind, P in enumerate(proc_list):
             ins_ind = P.track_ind + ind + 1
@@ -44,5 +45,5 @@ class AudioFileMaker:
                              pl_model.index(ins_ind, 0))
         pl_model.updCanLoadData(changeLayout=False)
         pl_model.layoutChanged.emit()
-        self.parent.mw_view.PlaylistView.selectionModel().select(selection, QItemSelectionModel.SelectionFlag.Select |
+        self.parent.mw_view.PlaylistView.selectionModel().select(proxy_model.mapSelectionFromSource(selection), QItemSelectionModel.SelectionFlag.Select |
                                                                  QItemSelectionModel.SelectionFlag.Rows)
