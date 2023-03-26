@@ -51,7 +51,7 @@ def convert_audio(audiofile_path: str, source_samplerate: int or float, audio_fo
         output_path = Path(f"{output_path.with_suffix('')} - Resampled").with_suffix(out_ext)
     output_path = Path(avoid_same_name(str(output_path)))
     result = None
-    out_stat = {'State': f'Converting "{Path(audiofile_path).name}" to "{output_path.name}"', 'Percent': 0}
+    out_stat = {'State': f'Converting "{Path(audiofile_path).name}" to "{output_path.name}":', 'Percent': 0}
     callback_out()
     with input_af as in_f:
         with AudioFile(str(output_path), 'w', target_samplerate, in_f.num_channels) as out_f:
