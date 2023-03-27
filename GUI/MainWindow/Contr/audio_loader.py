@@ -59,4 +59,5 @@ class AudioLoad:
         self.parent.LoadedFilePath = None
         self.mw_view.TransportPanelView.noSongState()
         self.parent.SourceRange = None
+        self.parent.setMakeAudioActionsEnabled(False)
         self.mw_view.statusbar.clearMessage()

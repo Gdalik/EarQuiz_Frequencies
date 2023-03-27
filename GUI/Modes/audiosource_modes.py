@@ -14,6 +14,7 @@ class PinkNoiseMode:
             self.parent.AL.setNoAudio()
         self.default_slice_length = default_pn_slice_length
         self.parent.TransportContr.TransportView.SliceLenSpin.setValue(default_pn_slice_length)
+        self.parent.setMakeAudioActionsEnabled(True)
         self.parent.AL.load_pinknoise()
 
 

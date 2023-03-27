@@ -1,6 +1,5 @@
 from PyQt6.QtCore import QObject, Qt
 from GUI.TransportPanel.player_contr import PlayerContr
-import math
 from Model.calc import proc_unproc_len
 
 
@@ -129,6 +128,7 @@ class TransportContr(QObject):
         self.CursorBeingDragged = False
         self.CropRegionBeingChanged = False
         self.parent.LastSourceAudio = self.parent.SourceAudio
+        self.parent.setMakeAudioActionsEnabled(True)
 
     def onSourceRangeChanged(self):
         self.TransportView.AudioSliderView.CropRegion.setValues(self.SourceRange.starttime,

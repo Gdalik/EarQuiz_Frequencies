@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_ConvertToWAV_AIFF_Dialog(object):
     def setupUi(self, ConvertToWAV_AIFF_Dialog):
         ConvertToWAV_AIFF_Dialog.setObjectName("ConvertToWAV_AIFF_Dialog")
-        ConvertToWAV_AIFF_Dialog.setWindowModality(QtCore.Qt.WindowModality.ApplicationModal)
+        ConvertToWAV_AIFF_Dialog.setWindowModality(QtCore.Qt.WindowModality.NonModal)
         ConvertToWAV_AIFF_Dialog.resize(495, 240)
         ConvertToWAV_AIFF_Dialog.setMinimumSize(QtCore.QSize(495, 240))
         ConvertToWAV_AIFF_Dialog.setMaximumSize(QtCore.QSize(495, 240))
@@ -74,5 +74,5 @@ class Ui_ConvertToWAV_AIFF_Dialog(object):
         self.SameAsOriginalBut.setText(_translate("ConvertToWAV_AIFF_Dialog", "Same as original"))
         self.SR441But.setText(_translate("ConvertToWAV_AIFF_Dialog", "44100 Hz"))
         self.SR48But.setText(_translate("ConvertToWAV_AIFF_Dialog", "48000 Hz"))
-        self.DivisibleBut.setText(_translate("ConvertToWAV_AIFF_Dialog", "44100 Hz or 48000 Hz \n"
+        self.DivisibleBut.setText(_translate("ConvertToWAV_AIFF_Dialog", "auto choose 44100 Hz or 48000 Hz \n"
 " (downsample to multiple where original is higher)"))

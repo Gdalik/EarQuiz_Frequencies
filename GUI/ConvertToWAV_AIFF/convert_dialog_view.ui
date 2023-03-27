@@ -3,7 +3,7 @@
  <class>ConvertToWAV_AIFF_Dialog</class>
  <widget class="QDialog" name="ConvertToWAV_AIFF_Dialog">
   <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
@@ -96,7 +96,7 @@
            </size>
           </property>
           <property name="text">
-           <string>44100 Hz or 48000 Hz 
+           <string>auto choose 44100 Hz or 48000 Hz 
  (downsample to multiple where original is higher)</string>
           </property>
          </widget>

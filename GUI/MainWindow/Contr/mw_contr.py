@@ -77,6 +77,8 @@ class MainWindowContr(QObject):
         self.mw_view.actionOpen_Folder.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='folder'))
         self.mw_view.actionMake_and_Open_Calibration_Sine_Wave_File.triggered.connect\
             (self.FileMaker.makeAndImportCalibrationSineTones)
+        self.mw_view.actionMake_Test_Files.triggered.connect(self.FileMaker.onActionMakeTestFilesTrig)
+        self.mw_view.actionMake_Learning_Files.triggered.connect(self.FileMaker.onActionMakeLearningFilesTrig)
         self.mw_view.actionConvert_Selected_Files.triggered.connect(self.FileMaker.onActionConvertFilesTriggered)
         self.mw_view.actionClose.triggered.connect(self.onActionCloseTriggered)
 
@@ -213,6 +215,10 @@ class MainWindowContr(QObject):
     def setShufflePBMode(self):
         self.mw_view.actionShuffle_Playback.setChecked(False)
         self.mw_view.ShufflePlaybackBut.setDefaultAction(self.mw_view.actionShuffle_Playback)
+
+    def setMakeAudioActionsEnabled(self, arg: bool):
+        self.mw_view.actionMake_Learning_Files.setEnabled(arg)
+        self.mw_view.actionMake_Test_Files.setEnabled(arg)
 
     def onActionCloseTriggered(self):
         app.quit()

@@ -1,6 +1,7 @@
 from Model.AudioEngine.sine_wav_gen import generateCalibrationSineTones
 from Model.AudioEngine.convert_audio import convert_audio
 from GUI.ConvertToWAV_AIFF.convert_dialog_contr import ConvertFilesDialogContr
+from GUI.MakeLearnTestFiles.make_learn_test_dialog_contr import MakeLearnTestDialogContr
 from GUI.Misc.tracked_proc import ProcTrackControl
 from PyQt6.QtCore import QUrl, QItemSelection, QItemSelectionModel
 from GUI.Playlist.plsong import PlSong
@@ -47,3 +48,15 @@ class AudioFileMaker:
         pl_model.layoutChanged.emit()
         self.parent.mw_view.PlaylistView.selectionModel().select(proxy_model.mapSelectionFromSource(selection), QItemSelectionModel.SelectionFlag.Select |
                                                                  QItemSelectionModel.SelectionFlag.Rows)
+
+    def onActionMakeTestFilesTrig(self):
+        Dialog = MakeLearnTestDialogContr()
+        Dialog.TestBut.setChecked(True)
+        if not Dialog.exec():
+            return
+
+    def onActionMakeLearningFilesTrig(self):
+        Dialog = MakeLearnTestDialogContr()
+        Dialog.LearnBut.setChecked(True)
+        if not Dialog.exec():
+            return
