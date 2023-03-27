@@ -6,7 +6,8 @@ from GUI.ConvertToWAV_AIFF.convert_dialog_view import Ui_ConvertToWAV_AIFF_Dialo
 class ConvertFilesDialogContr(QDialog, Ui_ConvertToWAV_AIFF_Dialog):
     def __init__(self):
         super().__init__()
-        Flags = Qt.WindowType(Qt.WindowType.CustomizeWindowHint | Qt.WindowType.WindowTitleHint)
+        Flags = Qt.WindowType(Qt.WindowType.CustomizeWindowHint | Qt.WindowType.WindowTitleHint |
+                              Qt.WindowType.WindowCloseButtonHint)
         self.setWindowFlags(Flags)
         self.setupUi(self)
         self.buttonBox.button(QDialogButtonBox.StandardButton.Ok).setText('Convert')

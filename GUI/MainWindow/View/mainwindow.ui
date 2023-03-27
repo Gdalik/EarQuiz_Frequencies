@@ -385,6 +385,9 @@ background: rgba(118, 214, 255, 85)
          <property name="dragEnabled">
           <bool>true</bool>
          </property>
+         <property name="dragDropOverwriteMode">
+          <bool>false</bool>
+         </property>
          <property name="dragDropMode">
           <enum>QAbstractItemView::DragDrop</enum>
          </property>
@@ -4752,7 +4755,7 @@ background: rgba(118, 214, 255, 85)
      <x>0</x>
      <y>0</y>
      <width>1100</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
