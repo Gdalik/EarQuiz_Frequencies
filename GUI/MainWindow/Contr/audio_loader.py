@@ -1,5 +1,5 @@
 from GUI.Playlist.plsong import PlSong
-from definitions import MinAudioDuration
+from Model.globals import MinAudioDuration
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from GUI.Modes.PreviewMode import PreviewMode
 

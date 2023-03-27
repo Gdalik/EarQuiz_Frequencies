@@ -8,7 +8,7 @@ from pedalboard.io import AudioFile
 from copy import copy
 import itertools
 from Utilities.exceptions import InterruptedException
-from definitions import pinknoise, MinAudioDuration, PinknoiseLength
+from Model.globals import pinknoise, MinAudioDuration, PinknoiseLength
 import copy
 
 

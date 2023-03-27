@@ -86,8 +86,9 @@ class PlaylistContr(QObject):
         if action == Qt.DropAction.MoveAction and self.PlaylistView.selectedIndexes():
             self.playlistModel.removeRows(self.selModel.selectedRows()[0].row(),
                                           len(self.selModel.selectedRows()), QModelIndex())
-            self.PlaylistView.selectRows(self.playlistModel.lastInsertedRows[0],
-                                         self.playlistModel.lastInsertedRows[-1])
+            if len(self.playlistModel.lastInsertedRows) != 0:
+                self.PlaylistView.selectRows(self.playlistModel.lastInsertedRows[0],
+                                             self.playlistModel.lastInsertedRows[-1])
 
     def onSelectionChanged(self):
         rows = self.PlaylistView.selectionModel().selectedRows()

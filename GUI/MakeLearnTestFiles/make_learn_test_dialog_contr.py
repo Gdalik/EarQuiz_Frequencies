@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QDialog, QDialogButtonBox
 from PyQt6.QtCore import Qt
 from GUI.MakeLearnTestFiles.make_learn_test_dialog_view import Ui_MakeLearnTest_Dialog
-from definitions import supported_bitrates_ogg, supported_bitrates_mp3
+from Model.globals import supported_bitrates_mp3, supported_bitrates_ogg
 
 
 class MakeLearnTestDialogContr(QDialog, Ui_MakeLearnTest_Dialog):

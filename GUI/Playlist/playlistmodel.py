@@ -23,7 +23,9 @@ class PlaylistModel(QtCore.QAbstractTableModel):
         CurData = self.playlistdata[index.row()]
         if role == Qt.ItemDataRole.DisplayRole:
             return [CurData.name, CurData.duration_str, CurData.dirPath][index.column()]
-        if role == Qt.ItemDataRole.ForegroundRole and not CurData.available:
+        if role == Qt.ItemDataRole.ForegroundRole and not CurData.exists:
+            return QtGui.QColor('red')
+        elif role == Qt.ItemDataRole.ForegroundRole and not CurData.available:
             return QtGui.QColor('gray')
 
     def rowCount(self, index):
@@ -97,7 +99,7 @@ class PlaylistModel(QtCore.QAbstractTableModel):
             self.beginRemoveRows(parent, R, R)
             self.playlistdata.pop(R)
             self.endRemoveRows()
-        if row < self.lastInsertedRows[0]:
+        if len(self.lastInsertedRows) != 0 and row < self.lastInsertedRows[0]:
             self.lastInsertedRows = list(map(lambda x: x - count, self.lastInsertedRows))
         return True
 

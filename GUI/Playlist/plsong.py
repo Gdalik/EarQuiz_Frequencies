@@ -3,7 +3,7 @@ from pedalboard.io import AudioFile
 from Utilities.common_calcs import mmss
 from pathlib import PurePath, Path
 from functools import cached_property
-from definitions import MinAudioDuration
+from Model.globals import MinAudioDuration
 
 
 @dataclass(eq=False)
