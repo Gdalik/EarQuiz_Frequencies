@@ -25,7 +25,7 @@ def generateCalibrationSineTones():
     cs = np.concatenate((sil_half, sine_gen(1000), sil, sine_gen(10000), sil, sine_gen(100), sil,
                          sine_gen(15000), sil, sine_gen(40), sil_half), axis=1)
     cs = cs * 0.2
-    Path.mkdir(Path(SineWaveCalibrationPath).parent, exist_ok=True)
+    Path.mkdir(Path(SineWaveCalibrationPath).parent, parents=True, exist_ok=True)
     with contextlib.suppress(Exception):
         with AudioFile(SineWaveCalibrationPath, 'w', 44100, 1) as f:
             f.write(cs)

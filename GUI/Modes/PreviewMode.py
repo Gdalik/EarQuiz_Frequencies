@@ -75,6 +75,7 @@ class PreviewMode(UniMode):
     def ensureGotoStart(self):
         if not self.parent.playAudioOnPreview and self.currentAudioStartTime is not None:
             self.view.TransportPanelView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)
+            self.parent.TransportContr.CursorBeingDragged = False
 
     def isAudioSourceMode(self):
         if self.parent.CurrentSourceMode.name == 'Audiofile':
@@ -94,4 +95,5 @@ class PreviewMode(UniMode):
         self.view.Player_SkipForw.setVisible(False)
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
         self.view.TransportPanelView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)
+        self.parent.TransportContr.CursorBeingDragged = False
         return False

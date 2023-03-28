@@ -50,13 +50,13 @@ class AudioFileMaker:
                                                                  QItemSelectionModel.SelectionFlag.Rows)
 
     def onActionMakeTestFilesTrig(self):
-        Dialog = MakeLearnTestDialogContr()
+        Dialog = MakeLearnTestDialogContr(self.parent)
         Dialog.TestBut.setChecked(True)
         if not Dialog.exec():
             return
 
     def onActionMakeLearningFilesTrig(self):
-        Dialog = MakeLearnTestDialogContr()
+        Dialog = MakeLearnTestDialogContr(self.parent)
         Dialog.LearnBut.setChecked(True)
         if not Dialog.exec():
             return

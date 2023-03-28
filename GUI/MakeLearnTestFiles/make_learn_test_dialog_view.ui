@@ -116,7 +116,7 @@
            <widget class="QLineEdit" name="ExerciseNameLine"/>
           </item>
           <item>
-           <widget class="QCheckBox" name="UseFolderAsNameBut">
+           <widget class="QCheckBox" name="UseAsFolderNameBut">
             <property name="text">
              <string>Use as Folder Name</string>
             </property>
@@ -126,9 +126,9 @@
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="UsePrefixAsNameBut">
+           <widget class="QCheckBox" name="UseAsPrefixNameBut">
             <property name="text">
-             <string>Use as Prefix of Files</string>
+             <string>Use as Prefix of Filenames</string>
             </property>
             <property name="checked">
              <bool>true</bool>
