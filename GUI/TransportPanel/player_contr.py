@@ -163,6 +163,7 @@ class PlayerContr(QMediaPlayer):
         starttime = curMode.currentAudioStartTime * 1000
         if self.position() != starttime:
             self.setPosition(starttime)
+        curMode.ensureCursorGotoStart()
 
     def onPlaybackStateChanged(self, state):
         self._translatePBStateToStatusBar(state)

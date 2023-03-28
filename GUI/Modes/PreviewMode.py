@@ -18,7 +18,6 @@ class PreviewMode(UniMode):
         if self.updateCurrentAudio():
             self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview)
         self.parent.playAudioOnPreview = False
-        self.ensureGotoStart()
 
     @property
     def proxyCursorPos(self):   # in sec
@@ -72,7 +71,7 @@ class PreviewMode(UniMode):
     def whilePlaying(self):
         pass
 
-    def ensureGotoStart(self):
+    def ensureCursorGotoStart(self):
         if not self.parent.playAudioOnPreview and self.currentAudioStartTime is not None:
             self.view.TransportPanelView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)
             self.parent.TransportContr.CursorBeingDragged = False
