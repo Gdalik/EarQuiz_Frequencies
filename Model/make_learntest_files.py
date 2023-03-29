@@ -7,7 +7,8 @@ from Utilities.exceptions import InterruptedException
 
 def makeLearnFiles(audiosource: str, output_dir: str, freq_options: list[int], filename_prefix='', extension='.wav',
                    bitrate=None, boost_cut='+-', DualBandMode=False, starttime=0, endtime=None, drill_length=15,
-                   gain_depth=12, Q=4.32, disableAdjacent=1, proc_t_perc=40, cropped=None, callback=None):
+                   gain_depth=12, Q=4.32, disableAdjacent=1, proc_t_perc=40,
+                   cropped=None, cropped_normalized=None, callback=None):
     def callback_out(out_stat: dict):
         if callback is not None:
             callback(out_stat)
@@ -16,7 +17,7 @@ def makeLearnFiles(audiosource: str, output_dir: str, freq_options: list[int], f
     ADGen = AudioDrillGen(freq_options, audio_source_path=audiosource, boost_cut=boost_cut, DualBandMode=DualBandMode,
                           starttime=starttime, endtime=endtime, drill_length=drill_length, gain_depth=gain_depth, Q=Q,
                           disableAdjacent=disableAdjacent, proc_t_perc=proc_t_perc, order='asc', inf_cycle=False,
-                          cropped=cropped,
+                          cropped=cropped, cropped_normalized=cropped_normalized,
                           callback=callback)
     count = 0
     filename = ''
@@ -41,7 +42,8 @@ def makeLearnFiles(audiosource: str, output_dir: str, freq_options: list[int], f
 
 def makeTestFiles(audiosource: str, output_dir: str, freq_options: list[int], filename_prefix='', extension='.wav',
                   bitrate=None, boost_cut='+-', DualBandMode=False, starttime=0, endtime=None, drill_length=15,
-                  gain_depth=12, Q=4.32, disableAdjacent=1, proc_t_perc=40, cropped=None, callback=None):
+                  gain_depth=12, Q=4.32, disableAdjacent=1, proc_t_perc=40,
+                  cropped=None, cropped_normalized=None, callback=None):
     def callback_out(out_stat: dict):
         if callback is not None:
             callback(out_stat)
@@ -57,7 +59,8 @@ def makeTestFiles(audiosource: str, output_dir: str, freq_options: list[int], fi
     Path.mkdir(Path(output_dir), parents=True, exist_ok=True)
     ADGen = AudioDrillGen(freq_options, audio_source_path=audiosource, boost_cut=boost_cut, DualBandMode=DualBandMode,
                           starttime=starttime, endtime=endtime, drill_length=drill_length, gain_depth=gain_depth, Q=Q,
-                          disableAdjacent=disableAdjacent, proc_t_perc=proc_t_perc, order='random', cropped=cropped,
+                          disableAdjacent=disableAdjacent, proc_t_perc=proc_t_perc, order='random',
+                          cropped=cropped, cropped_normalized=cropped_normalized,
                           callback=callback)
     filename = ''
     answers = []

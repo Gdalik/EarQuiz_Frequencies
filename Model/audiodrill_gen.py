@@ -20,7 +20,7 @@ def create_temp_wavefile():
 
 class AudioDrillGen:
     def __init__(self, freq_options: list[int], boost_cut='+-', DualBandMode=False,
-                 audio_source_path='pinknoise', cropped=None,
+                 audio_source_path='pinknoise', cropped=None, cropped_normalized=None,
                  starttime=0, endtime=None, drill_length=15,
                  gain_depth=12, Q=4.32, order='asc', boost_cut_priority=1, disableAdjacent=1, inf_cycle=True,
                  proc_t_perc=40, callback=None):
@@ -42,7 +42,7 @@ class AudioDrillGen:
                 self.af_num_channels = af.num_channels
         self._gain_depth = abs(gain_depth)
         self._DualBandMode = DualBandMode
-        self.audiochunk = AudioChunk(audio_source_path, cropped=cropped,
+        self.audiochunk = AudioChunk(audio_source_path, cropped=cropped, cropped_normalized=cropped_normalized,
                                      starttime=starttime,
                                      endtime=endtime or self.af_duration,
                                      slice_length=drill_length, norm_level=self.gain_headroom, callback=callback)
@@ -60,9 +60,11 @@ class AudioDrillGen:
     def gain_depth(self):
         return self._gain_depth
 
+    def normalizationNeeded(self):
+        return self.audiochunk.last_norm_level != self.gain_headroom_calc(self._gain_depth, self._DualBandMode)
+
     def setGain_depth(self, value: int, normalize_audio=True, callback=None):
-        if value == self._gain_depth and \
-                self.audiochunk.last_norm_level == self.gain_headroom_calc(value, self._DualBandMode):
+        if value == self._gain_depth and not self.normalizationNeeded():
             return
         self._gain_depth = abs(value)
         self.audiochunk.norm_level = self.gain_headroom

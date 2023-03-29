@@ -7,10 +7,11 @@ from GUI.Misc.tracked_proc import ProcTrackControl
 from PyQt6.QtCore import QUrl, QItemSelection, QItemSelectionModel
 from GUI.Playlist.plsong import PlSong
 from Utilities.Q_extract import Qextr
+from Utilities.exceptions import InterruptedException
 
 
 class AudioFileMaker:
-    def __init__(self, parent):     # parent -- MainWindowContr
+    def __init__(self, parent):  # parent -- MainWindowContr
         self.parent = parent
 
     def makeAndImportCalibrationSineTones(self):
@@ -30,6 +31,7 @@ class AudioFileMaker:
             cur_row = self.parent.mw_view.PlaylistView.selectionModel().selectedRows()[ind]
             Proc.track_ind = self.parent.mw_view.PlaylistView.model().mapToSource(cur_row).row()
             if not Proc.exec():
+                self.parent.isErrorInProcess(Proc)
                 break
             if Proc.return_obj is not None:
                 proc_list.append(Proc)
@@ -48,7 +50,8 @@ class AudioFileMaker:
                              pl_model.index(ins_ind, 0))
         pl_model.updCanLoadData(changeLayout=False)
         pl_model.layoutChanged.emit()
-        self.parent.mw_view.PlaylistView.selectionModel().select(proxy_model.mapSelectionFromSource(selection), QItemSelectionModel.SelectionFlag.Select |
+        self.parent.mw_view.PlaylistView.selectionModel().select(proxy_model.mapSelectionFromSource(selection),
+                                                                 QItemSelectionModel.SelectionFlag.Select |
                                                                  QItemSelectionModel.SelectionFlag.Rows)
 
     def onActionMakeTestFilesTrig(self):
@@ -71,22 +74,36 @@ class AudioFileMaker:
         self.parent.ADGC.setAudioDrillGen(resetExGen=False)
         if self.parent.ADGen is None:
             return
+        try:
+            self._checkAudioNormalization()
+        except InterruptedException:
+            return
         cropped = self.parent.ADGen.audiochunk.cropped
+        cropped_normalized = self.parent.ADGen.audiochunk.cropped_normalized
         Proc = ProcTrackControl(action, args=[SA.path, Dialog.ExerciseFolderLine.text(),
-                                                     self.parent.EQContr.getAvailableFreq()],
-                               kwargs={'cropped': cropped,
-                                       'filename_prefix': Dialog.prefix,
-                                       'extension': Dialog.format,
-                                       'bitrate': Dialog.bitrate,
-                                       'boost_cut': EQP['EQ_boost_cut'],
-                                       'DualBandMode': EQP['DualBandMode'],
-                                       'starttime': SR.starttime,
-                                       'endtime': SR.endtime,
-                                       'drill_length': SR.slice_length,
-                                       'gain_depth': self.parent.EQSetContr.EQSetView.GainRangeSpin.value(),
-                                       'Q': Qextr(self.parent.EQSetContr.EQSetView.BWBox.currentText()),
-                                       'disableAdjacent': EQP['DisableAdjacentFiltersMode']})
+                                              self.parent.EQContr.getAvailableFreq()],
+                                kwargs={'cropped': cropped,
+                                        'cropped_normalized': cropped_normalized,
+                                        'filename_prefix': Dialog.prefix,
+                                        'extension': Dialog.extension,
+                                        'bitrate': Dialog.bitrate,
+                                        'boost_cut': EQP['EQ_boost_cut'],
+                                        'DualBandMode': EQP['DualBandMode'],
+                                        'starttime': SR.starttime,
+                                        'endtime': SR.endtime,
+                                        'drill_length': SR.slice_length,
+                                        'gain_depth': self.parent.EQSetContr.EQSetView.GainRangeSpin.value(),
+                                        'Q': Qextr(self.parent.EQSetContr.EQSetView.BWBox.currentText()),
+                                        'disableAdjacent': EQP['DisableAdjacentFiltersMode']})
         Proc.exec()
+        self.parent.isErrorInProcess(Proc)
 
-
-
+    def _checkAudioNormalization(self):
+        if self.parent.CurrentMode.name == 'Preview':
+            Proc = ProcTrackControl(self.parent.ADGen.setGain_depth,
+                                    args=[self.parent.EQSetContr.EQSetView.GainRangeSpin.value()])
+            if not Proc.exec():
+                self.parent.isErrorInProcess(Proc)
+                raise InterruptedException
+        else:
+            self.parent.TransportContr.updAudioToEqSettings(play_after=False, raiseInterruptedException=True)

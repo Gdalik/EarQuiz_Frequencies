@@ -86,7 +86,7 @@ class MakeLearnTestDialogContr(QDialog, Ui_MakeLearnTest_Dialog):
             else self.parent_path
 
     @property
-    def format(self):
+    def extension(self):
         if self.WaveButt.isChecked():
             return '.wav'
         if self.AiffButt.isChecked():

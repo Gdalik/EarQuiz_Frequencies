@@ -34,9 +34,9 @@ class ADGenContr:
                                        'boost_cut_priority': self.parent.boostCutPriority,
                                        'disableAdjacent': EQP['DisableAdjacentFiltersMode']})
         ADG.exec()
+        self.parent.isErrorInProcess(ADG)
         self.parent.ADGen = ADG.return_obj or None
-        if ADG.error:
-            self.parent.mw_view.error_msg(ADG.error)
+        self.parent.isErrorInProcess(ADG)
 
     def _adjustADGenCropRange(self):
         SR = self.parent.SourceRange

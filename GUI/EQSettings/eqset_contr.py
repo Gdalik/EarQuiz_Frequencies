@@ -49,6 +49,7 @@ class EQSetContr:   # parent: MainWindowContr
         old_ADGen_gain_depth = self.parent.ADGen.gain_depth()
         ADG_gain_upd = ProcTrackControl(self.parent.ADGen.setGain_depth, args=[value])
         if not ADG_gain_upd.exec():
+            self.parent.isErrorInProcess(ADG_gain_upd)
             self.parent.ADGen.setGain_depth(old_ADGen_gain_depth, normalize_audio=False)
             if raiseInterruptedException:
                 raise InterruptedException

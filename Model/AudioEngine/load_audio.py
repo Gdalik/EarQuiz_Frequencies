@@ -1,4 +1,6 @@
 import math
+import time
+
 import numpy
 from Model.calc import optimize_divider
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
@@ -13,7 +15,7 @@ import copy
 
 class AudioChunk(PreviewAudioCrop):
     def __init__(self, audiofile_path: str, starttime: int or float, endtime: int or float,
-                 slice_length=15, norm_level=None, cropped=None, callback=None):
+                 slice_length=15, norm_level=None, cropped=None, cropped_normalized=None, callback=None):
         self.audiofile_path = audiofile_path
         self._init_audiosource()
         self._check_source_length()
@@ -22,11 +24,13 @@ class AudioChunk(PreviewAudioCrop):
         self.norm_level = self.last_norm_level = norm_level
         self.norm_proc = None
         self.cropped = cropped
-        self.cropped_normalized = self.old_cropped_normalized = self.cropped_norm_split = \
+        self.cropped_normalized = self.old_cropped_normalized = cropped_normalized
+        self.cropped_norm_split = \
             self.cycle = self.cycle_id_gen = self.cycle_id = self.current_slice = None
         self.callback = callback
         self.user_stopped = None
-        self._reset(readcrop=(self.cropped is None))  # self.audiofile is closed during self._read_and_crop(), called from self.reset()
+        self._reset(readcrop=(self.cropped is None), normalize=(self.cropped_normalized is None))
+        # self.audiofile is closed during self._read_and_crop(), called from self.reset()
 
     def _init_pinknoise(self):
         self.audiofile = None
@@ -104,7 +108,7 @@ class AudioChunk(PreviewAudioCrop):
             self.cycle_id_gen = self.cycle_id = None
         self._close_audiofile()
 
-    def _reset(self, readcrop=True, callback=None):
+    def _reset(self, readcrop=True, normalize=True, callback=None):
         if readcrop:
             self._read_and_crop(callback=callback)
             if self.user_stopped:
@@ -113,6 +117,8 @@ class AudioChunk(PreviewAudioCrop):
         self.cycle = self.cycle_id_gen = self.cycle_id = None
         if self.norm_level is None:
             self.cropped_normalized = copy(self.cropped)
+            self.split()
+        elif not normalize:
             self.split()
         else:
             self.normalize(norm_level=self.norm_level, resetAudio=True)

@@ -17,6 +17,7 @@ from GUI.FileMaker.audiofilemaker import AudioFileMaker
 from GUI.MainWindow.Contr.audio_loader import AudioLoad
 from GUI.MainWindow.Contr.adgen_contr import ADGenContr
 from GUI.MainWindow.Contr.sourcerange_contr import SourceRangeContr
+from GUI.Misc.tracked_proc import ProcTrackControl
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.audiodrill_gen import AudioDrillGen
 from PyQt6.QtCore import QObject
@@ -75,7 +76,7 @@ class MainWindowContr(QObject):
     def setFileMenuActions(self):
         self.mw_view.actionOpen.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='files'))
         self.mw_view.actionOpen_Folder.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='folder'))
-        self.mw_view.actionMake_and_Open_Calibration_Sine_Wave_File.triggered.connect\
+        self.mw_view.actionMake_and_Open_Calibration_Sine_Wave_File.triggered.connect \
             (self.FileMaker.makeAndImportCalibrationSineTones)
         self.mw_view.actionMake_Test_Files.triggered.connect(self.FileMaker.onActionMakeTestFilesTrig)
         self.mw_view.actionMake_Learning_Files.triggered.connect(self.FileMaker.onActionMakeLearningFilesTrig)
@@ -188,6 +189,12 @@ class MainWindowContr(QObject):
         self._pushBackToPreview()
         self.LastMode = self.CurrentMode
 
+    def isErrorInProcess(self, process: ProcTrackControl):
+        if process.error is not None:
+            self.mw_view.error_msg(process.error)
+            return True
+        return False
+
     def endTest(self):
         if self.CurrentMode.name != 'Test':
             return
@@ -204,9 +211,9 @@ class MainWindowContr(QObject):
         if self.SourceAudio is None:
             return
         md5hasher = FileHash('md5')
-        hash = md5hasher.hash_file(self.SourceAudio.path)
-        self.LoadedFileHash = hash
-        return hash
+        _hash = md5hasher.hash_file(self.SourceAudio.path)
+        self.LoadedFileHash = _hash
+        return _hash
 
     def setPlaybackButtons(self):
         self.mw_view.MW_PlayPause.setDefaultAction(self.mw_view.actionPlayPause)
@@ -220,7 +227,8 @@ class MainWindowContr(QObject):
         self.mw_view.actionMake_Learning_Files.setEnabled(arg)
         self.mw_view.actionMake_Test_Files.setEnabled(arg)
 
-    def onActionCloseTriggered(self):
+    @staticmethod
+    def onActionCloseTriggered():
         app.quit()
 
     def onAppClose(self):

@@ -37,6 +37,7 @@ class PlayerContr(QMediaPlayer):
         self.setSource(AudioToLoad)
         self.onceAudioLoaded = True
         self.playAfterAudioLoaded = play_after
+        self.mw_contr.playAudioOnPreview = False
 
     def clearSource(self):
         self.setSource(QUrl())
