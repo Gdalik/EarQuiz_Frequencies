@@ -25,6 +25,8 @@ class AudioFileMaker:
             return
         proc_list = []
         for ind, S in enumerate(self.parent.mw_view.PlaylistView.selectedItems):
+            if not S.exists or not S.samplerate or not S.duration:
+                continue
             Proc = ProcTrackControl(convert_audio, [S.path, S.samplerate],
                                     {'target_samplerate_mode': Dialog.target_samplerate_mode,
                                      'audio_format': Dialog.audio_format})
@@ -38,6 +40,8 @@ class AudioFileMaker:
         self._addConvertedFilesToPlaylist(proc_list)
 
     def _addConvertedFilesToPlaylist(self, proc_list):
+        if len(proc_list) == 0:
+            return
         self.parent.mw_view.PlaylistView.clearSelection()
         pl_model = self.parent.PlaylistContr.playlistModel
         selection = QItemSelection()
