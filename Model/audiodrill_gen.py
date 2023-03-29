@@ -19,7 +19,8 @@ def create_temp_wavefile():
 
 
 class AudioDrillGen:
-    def __init__(self, freq_options: list[int], boost_cut='+-', DualBandMode=False, audio_source_path='pinknoise',
+    def __init__(self, freq_options: list[int], boost_cut='+-', DualBandMode=False,
+                 audio_source_path='pinknoise', cropped=None,
                  starttime=0, endtime=None, drill_length=15,
                  gain_depth=12, Q=4.32, order='asc', boost_cut_priority=1, disableAdjacent=1, inf_cycle=True,
                  proc_t_perc=40, callback=None):
@@ -41,7 +42,7 @@ class AudioDrillGen:
                 self.af_num_channels = af.num_channels
         self._gain_depth = abs(gain_depth)
         self._DualBandMode = DualBandMode
-        self.audiochunk = AudioChunk(audio_source_path,
+        self.audiochunk = AudioChunk(audio_source_path, cropped=cropped,
                                      starttime=starttime,
                                      endtime=endtime or self.af_duration,
                                      slice_length=drill_length, norm_level=self.gain_headroom, callback=callback)

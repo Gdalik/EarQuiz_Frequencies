@@ -73,7 +73,7 @@ class MakeLearnTestDialogContr(QDialog, Ui_MakeLearnTest_Dialog):
     def avoid_same_dirpath(dirpath: str):
         result = Path(dirpath)
         while result.exists():
-            digit_end = re.search(r'\d+$', dirpath)
+            digit_end = re.search(r'\d+$', str(result))
             if digit_end is not None:
                 digit_end = int(digit_end.group())
                 result = Path(f'{str(result)[:-len(str(digit_end))]}{digit_end + 1}')
@@ -85,3 +85,28 @@ class MakeLearnTestDialogContr(QDialog, Ui_MakeLearnTest_Dialog):
     def excPath(self):
         return str(Path(self.parent_path, self.ExerciseNameLine.text())) if self.UseAsFolderNameBut.isChecked() \
             else self.parent_path
+
+    @property
+    def format(self):
+        if self.WaveButt.isChecked():
+            return '.wav'
+        if self.AiffButt.isChecked():
+            return '.aiff'
+        if self.FlacBut.isChecked():
+            return '.flac'
+        if self.Mp3But.isChecked():
+            return '.mp3'
+        if self.OggBut.isChecked():
+            return '.ogg'
+
+    @property
+    def prefix(self):
+        return self.ExerciseNameLine.text() if self.UseAsPrefixNameBut.isChecked() else ''
+
+    @property
+    def bitrate(self):
+        return (
+            float(re.match(r'\d+', self.BitrateCombo.currentText()).group())
+            if self.BitrateCombo.currentText()
+            else None
+        )

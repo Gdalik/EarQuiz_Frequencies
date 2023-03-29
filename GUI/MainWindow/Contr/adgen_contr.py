@@ -7,14 +7,15 @@ class ADGenContr:
     def __init__(self, parent):     # parent: MainWindowContr
         self.parent = parent
 
-    def setAudioDrillGen(self):
+    def setAudioDrillGen(self, resetExGen=True):
         if self.parent.ADGen is None and self.parent.SourceAudio is not None \
                 and (self.parent.SourceAudio.name == 'pinknoise' or self.parent.LoadedFileHash):
             self._createADGen()
             self._adjustADGenOrderToMode()
         elif self.parent.ADGen is not None:
             self._adjustADGenCropRange()
-            self.parent.PatternBoxContr.setExGenToPattern()
+            if resetExGen:
+                self.parent.PatternBoxContr.setExGenToPattern()
 
     def _createADGen(self):
         EQP = self.parent.EQContr.EQpattern

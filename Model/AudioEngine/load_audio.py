@@ -1,5 +1,4 @@
 import math
-import time
 import numpy
 from Model.calc import optimize_divider
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
@@ -14,7 +13,7 @@ import copy
 
 class AudioChunk(PreviewAudioCrop):
     def __init__(self, audiofile_path: str, starttime: int or float, endtime: int or float,
-                 slice_length=15, norm_level=None, callback=None):
+                 slice_length=15, norm_level=None, cropped=None, callback=None):
         self.audiofile_path = audiofile_path
         self._init_audiosource()
         self._check_source_length()
@@ -22,11 +21,12 @@ class AudioChunk(PreviewAudioCrop):
                          starttime=starttime, endtime=endtime, slice_length=slice_length, strictMode=True)
         self.norm_level = self.last_norm_level = norm_level
         self.norm_proc = None
-        self.cropped = self.cropped_normalized = self.old_cropped_normalized = self.cropped_norm_split = \
+        self.cropped = cropped
+        self.cropped_normalized = self.old_cropped_normalized = self.cropped_norm_split = \
             self.cycle = self.cycle_id_gen = self.cycle_id = self.current_slice = None
         self.callback = callback
         self.user_stopped = None
-        self._reset()  # self.audiofile is closed during self._read_and_crop(), called from self.reset()
+        self._reset(readcrop=(self.cropped is None))  # self.audiofile is closed during self._read_and_crop(), called from self.reset()
 
     def _init_pinknoise(self):
         self.audiofile = None
@@ -104,10 +104,11 @@ class AudioChunk(PreviewAudioCrop):
             self.cycle_id_gen = self.cycle_id = None
         self._close_audiofile()
 
-    def _reset(self, callback=None):
-        self._read_and_crop(callback=callback)
-        if self.user_stopped:
-            return
+    def _reset(self, readcrop=True, callback=None):
+        if readcrop:
+            self._read_and_crop(callback=callback)
+            if self.user_stopped:
+                return
         self._refresh_old_values()
         self.cycle = self.cycle_id_gen = self.cycle_id = None
         if self.norm_level is None:

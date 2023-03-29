@@ -1,10 +1,12 @@
 from Model.AudioEngine.sine_wav_gen import generateCalibrationSineTones
 from Model.AudioEngine.convert_audio import convert_audio
+from Model.make_learntest_files import makeLearnFiles, makeTestFiles
 from GUI.ConvertToWAV_AIFF.convert_dialog_contr import ConvertFilesDialogContr
 from GUI.MakeLearnTestFiles.make_learn_test_dialog_contr import MakeLearnTestDialogContr
 from GUI.Misc.tracked_proc import ProcTrackControl
 from PyQt6.QtCore import QUrl, QItemSelection, QItemSelectionModel
 from GUI.Playlist.plsong import PlSong
+from Utilities.Q_extract import Qextr
 
 
 class AudioFileMaker:
@@ -52,11 +54,39 @@ class AudioFileMaker:
     def onActionMakeTestFilesTrig(self):
         Dialog = MakeLearnTestDialogContr(self.parent)
         Dialog.TestBut.setChecked(True)
-        if not Dialog.exec():
-            return
+        if Dialog.exec():
+            self._makeLearnTestFiles(Dialog)
 
     def onActionMakeLearningFilesTrig(self):
         Dialog = MakeLearnTestDialogContr(self.parent)
         Dialog.LearnBut.setChecked(True)
-        if not Dialog.exec():
+        if Dialog.exec():
+            self._makeLearnTestFiles(Dialog)
+
+    def _makeLearnTestFiles(self, Dialog):
+        action = makeLearnFiles if Dialog.LearnBut.isChecked() else makeTestFiles
+        EQP = self.parent.EQContr.EQpattern
+        SR = self.parent.SourceRange
+        SA = self.parent.SourceAudio
+        self.parent.ADGC.setAudioDrillGen(resetExGen=False)
+        if self.parent.ADGen is None:
             return
+        cropped = self.parent.ADGen.audiochunk.cropped
+        Proc = ProcTrackControl(action, args=[SA.path, Dialog.ExerciseFolderLine.text(),
+                                                     self.parent.EQContr.getAvailableFreq()],
+                               kwargs={'cropped': cropped,
+                                       'filename_prefix': Dialog.prefix,
+                                       'format': Dialog.format,
+                                       'bitrate': Dialog.bitrate,
+                                       'boost_cut': EQP['EQ_boost_cut'],
+                                       'DualBandMode': EQP['DualBandMode'],
+                                       'starttime': SR.starttime,
+                                       'endtime': SR.endtime,
+                                       'drill_length': SR.slice_length,
+                                       'gain_depth': self.parent.EQSetContr.EQSetView.GainRangeSpin.value(),
+                                       'Q': Qextr(self.parent.EQSetContr.EQSetView.BWBox.currentText()),
+                                       'disableAdjacent': EQP['DisableAdjacentFiltersMode']})
+        Proc.exec()
+
+
+

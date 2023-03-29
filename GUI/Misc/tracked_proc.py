@@ -102,4 +102,5 @@ class ProcTrackControl(QDialog):
 
     def on_error(self, msg: str):
         self.error = msg
+        print(self.error)
         self.reject()
