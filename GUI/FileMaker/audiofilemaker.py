@@ -76,7 +76,7 @@ class AudioFileMaker:
                                                      self.parent.EQContr.getAvailableFreq()],
                                kwargs={'cropped': cropped,
                                        'filename_prefix': Dialog.prefix,
-                                       'format': Dialog.format,
+                                       'extension': Dialog.format,
                                        'bitrate': Dialog.bitrate,
                                        'boost_cut': EQP['EQ_boost_cut'],
                                        'DualBandMode': EQP['DualBandMode'],

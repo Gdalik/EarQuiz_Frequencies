@@ -33,7 +33,6 @@ class MakeLearnTestDialogContr(QDialog, Ui_MakeLearnTest_Dialog):
         self.ChangeFolderBut.clicked.connect(self.onChangeFolderBut_clicked)
         self.ExerciseNameLine.setText(self.generateExcName())
 
-
     def setBitrateComboEnabled(self, arg: bool):
         self.BitrateLab.setEnabled(arg)
         self.BitrateCombo.setEnabled(arg)
