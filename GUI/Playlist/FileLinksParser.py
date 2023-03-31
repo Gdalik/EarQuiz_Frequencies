@@ -4,7 +4,8 @@ from urllib import parse
 import re
 from xspf_lib import Playlist
 
-AudioMimes = ['audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg']
+AudioMimes = ['audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg',
+              'application/ogg']
 PLMimes = ['audio/x-mpegurl', 'application/pls+xml', 'application/xspf+xml']
 
 
