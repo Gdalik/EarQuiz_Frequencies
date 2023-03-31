@@ -23,6 +23,8 @@ class MakeLearnTestDialogContr(QDialog, Ui_MakeLearnTest_Dialog):
         self.FlacBut.toggled.connect(self.onLosslessFormatToggled)
         self.Mp3But.toggled.connect(self.onLossyFormatToggled)
         self.OggBut.toggled.connect(self.onLossyFormatToggled)
+        self.LearnBut.toggled.connect(self.onLearnTestModeToggled)
+        self.TestBut.toggled.connect(self.onLearnTestModeToggled)
         self.UseAsFolderNameBut.setChecked(True)
         self.UseAsPrefixNameBut.setChecked(True)
         self.parent_path = EXERCISE_DIR
@@ -61,6 +63,11 @@ class MakeLearnTestDialogContr(QDialog, Ui_MakeLearnTest_Dialog):
         for br in bitrates:
             self.BitrateCombo.addItem(f'{br}kbps')
         self.BitrateCombo.setCurrentText('320kbps')
+
+    def onLearnTestModeToggled(self, value):
+        if not value:
+            return
+        self.EnumLearningExBut.setEnabled(self.LearnBut.isChecked())
 
     def generateExcName(self):
         return self.avoid_same_dirpath(str(Path(self.ExerciseFolderLine.text(), 'Exercise1')))[1]

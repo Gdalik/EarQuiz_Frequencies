@@ -7,8 +7,8 @@ from Utilities.exceptions import InterruptedException
 
 def makeLearnFiles(audiosource: str, output_dir: str, freq_options: list[int], filename_prefix='', extension='.wav',
                    bitrate=None, boost_cut='+-', DualBandMode=False, starttime=0, endtime=None, drill_length=15,
-                   gain_depth=12, Q=4.32, disableAdjacent=1, proc_t_perc=40,
-                   cropped=None, cropped_normalized=None, callback=None):
+                   order='asc', gain_depth=12, Q=4.32, disableAdjacent=1, proc_t_perc=40,
+                   cropped=None, cropped_normalized=None, enumerate_examples=False, callback=None):
     def callback_out(out_stat: dict):
         if callback is not None:
             callback(out_stat)
@@ -16,7 +16,7 @@ def makeLearnFiles(audiosource: str, output_dir: str, freq_options: list[int], f
     Path.mkdir(Path(output_dir), parents=True, exist_ok=True)
     ADGen = AudioDrillGen(freq_options, audio_source_path=audiosource, boost_cut=boost_cut, DualBandMode=DualBandMode,
                           starttime=starttime, endtime=endtime, drill_length=drill_length, gain_depth=gain_depth, Q=Q,
-                          disableAdjacent=disableAdjacent, proc_t_perc=proc_t_perc, order='asc', inf_cycle=False,
+                          disableAdjacent=disableAdjacent, proc_t_perc=proc_t_perc, order=order, inf_cycle=False,
                           cropped=cropped, cropped_normalized=cropped_normalized,
                           callback=callback)
     count = 0
@@ -24,8 +24,10 @@ def makeLearnFiles(audiosource: str, output_dir: str, freq_options: list[int], f
     while True:
         try:
             freq, audio = ADGen.output()
-            prefix = f'{filename_prefix}__' if filename_prefix else ''
-            filename = f'{prefix}{freqString(freq)}{extension}'
+            prefix = f'{filename_prefix}' if filename_prefix else ''
+            ex_num = f'{count + 1}' if enumerate_examples else ''
+            full_prefix = f"{'.'.join([el for el in [prefix, ex_num] if el])}__" if prefix or ex_num else ''
+            filename = f'{full_prefix}{freqString(freq)}{extension}'
             filepath = str(Path(output_dir, filename))
             callback_out({'State': f'Exporting "{filename}"',
                           'Percent': int(count / len(ADGen.exercise_gen.full_sequence) * 100)})

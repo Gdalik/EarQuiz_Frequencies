@@ -84,21 +84,24 @@ class AudioFileMaker:
             return
         cropped = self.parent.ADGen.audiochunk.cropped
         cropped_normalized = self.parent.ADGen.audiochunk.cropped_normalized
+        kwargs = {'cropped': cropped,
+         'cropped_normalized': cropped_normalized,
+         'filename_prefix': Dialog.prefix,
+         'extension': Dialog.extension,
+         'bitrate': Dialog.bitrate,
+         'boost_cut': EQP['EQ_boost_cut'],
+         'DualBandMode': EQP['DualBandMode'],
+         'starttime': SR.starttime,
+         'endtime': SR.endtime,
+         'drill_length': SR.slice_length,
+         'gain_depth': self.parent.EQSetContr.EQSetView.GainRangeSpin.value(),
+         'Q': Qextr(self.parent.EQSetContr.EQSetView.BWBox.currentText()),
+         'disableAdjacent': EQP['DisableAdjacentFiltersMode']}
+        if Dialog.LearnBut.isChecked():
+            kwargs['order'] = self.parent.freqOrder
+            kwargs['enumerate_examples'] = Dialog.EnumLearningExBut.isChecked()
         Proc = ProcTrackControl(action, args=[SA.path, Dialog.ExerciseFolderLine.text(),
-                                              self.parent.EQContr.getAvailableFreq()],
-                                kwargs={'cropped': cropped,
-                                        'cropped_normalized': cropped_normalized,
-                                        'filename_prefix': Dialog.prefix,
-                                        'extension': Dialog.extension,
-                                        'bitrate': Dialog.bitrate,
-                                        'boost_cut': EQP['EQ_boost_cut'],
-                                        'DualBandMode': EQP['DualBandMode'],
-                                        'starttime': SR.starttime,
-                                        'endtime': SR.endtime,
-                                        'drill_length': SR.slice_length,
-                                        'gain_depth': self.parent.EQSetContr.EQSetView.GainRangeSpin.value(),
-                                        'Q': Qextr(self.parent.EQSetContr.EQSetView.BWBox.currentText()),
-                                        'disableAdjacent': EQP['DisableAdjacentFiltersMode']})
+                                              self.parent.EQContr.getAvailableFreq()], kwargs=kwargs)
         Proc.exec()
         self.parent.isErrorInProcess(Proc)
 

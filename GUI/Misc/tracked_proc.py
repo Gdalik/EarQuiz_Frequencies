@@ -1,4 +1,5 @@
 import contextlib
+import time
 
 from PyQt6.QtCore import QObject, Qt, QRunnable, pyqtSignal, pyqtSlot, QThreadPool
 from PyQt6.QtWidgets import QProgressBar, QDialog, QDialogButtonBox, QLabel, QVBoxLayout
