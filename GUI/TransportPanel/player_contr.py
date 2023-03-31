@@ -1,6 +1,8 @@
 from PyQt6.QtCore import QUrl
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData, QAudio
+from PyQt6.QtWidgets import QMessageBox
 from definitions import MediaDevices
+from GUI.Misc.error_message import reformat_message
 import platform
 
 class PlayerContr(QMediaPlayer):
@@ -202,11 +204,19 @@ class PlayerContr(QMediaPlayer):
         self.onAudioDeviceChecked()
 
     def onError(self, err, string):
-        self.PlModel.nonLoadedSong_paths.add(self.mw_contr.SourceAudio.path)
+        sourcefile = self.mw_contr.SourceAudio
+        self.PlModel.nonLoadedSong_paths.add(sourcefile.path)
         self.PlModel.updCanLoadData()
         self.mw_contr.AL.setNoAudio()
-        print(err)
-        print(string)
+        message = f'{err}: {string}'
+        if err == self.Error.FormatError:
+            message = f'The file "{sourcefile.name}" seems to be in a wrong format. Do you want to reformat it?'
+            if sourcefile.name.endswith('.ogg'):
+                message = f'OGG file format is not supported by the current audio playback backend. Do you want to reformat "{sourcefile.name}"?'
+            if reformat_message(self.mw_view, msg=message) == QMessageBox.StandardButton.Yes:
+                self.mw_contr.FileMaker.onActionConvertFilesTriggered()
+            return
+        self.mw_view.error_msg(message)
 
     def applyVolume(self, volumeSliderValue):
         linearVolume = QAudio.convertVolume(volumeSliderValue / 100,

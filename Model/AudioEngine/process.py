@@ -56,16 +56,16 @@ def _pb_process(audio_sample: np.ndarray, chain: Pedalboard, samplerate: int or 
 def eqGainCurveGen(value1: int or float, value2: int or float, duration_fr: int, trans_len_fr: int):
     start = np.linspace(value1, value2, trans_len_fr)
     end = np.linspace(value2, value1, trans_len_fr)
-    hold = np.ndarray(duration_fr - trans_len_fr * 2)
-    hold.fill(value2)
-    return np.concatenate((start, hold, end))
+    body = np.ndarray(duration_fr - trans_len_fr * 2)
+    body.fill(value2)
+    return np.concatenate((start, body, end))
 
 
 def fadeInCurveGen(duration_fr: int, fade_in_len_fr: int):
     start = np.linspace(0, 1, fade_in_len_fr)
-    hold = np.ndarray(duration_fr - fade_in_len_fr)
-    hold.fill(1)
-    return np.concatenate((start, hold))
+    body = np.ndarray(duration_fr - fade_in_len_fr)
+    body.fill(1)
+    return np.concatenate((start, body))
 
 
 def fadeOutCurveGen(duration_fr: int, fade_out_len_fr: int):

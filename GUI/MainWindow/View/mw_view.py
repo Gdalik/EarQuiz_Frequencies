@@ -135,6 +135,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def error_msg(self, message: str):
         error_message(self, message)
 
+
     def setEQStateIndicatorOn(self, arg: bool):
         self.EqOnOffLab.setVisible(True)
         if arg:

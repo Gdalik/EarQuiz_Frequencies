@@ -3,14 +3,12 @@ import platform
 import subprocess
 import os
 from PyQt6.QtWidgets import QMessageBox
-from PyQt6.QtCore import Qt
 
 
 def SuccessDialog(mw, filespath: str, mode_name='Learning'):
     msg = QMessageBox(mw)
-    msg.setWindowModality(Qt.WindowModality.ApplicationModal)
     msg.setText(f'{mode_name} files successfully created in "{filespath}"!')
-    msg.setStandardButtons(QMessageBox.StandardButton.Open | QMessageBox.StandardButton.Ok)
+    msg.setStandardButtons(QMessageBox.StandardButton.Open | QMessageBox.StandardButton.Close)
     manager = 'Explorer' if platform.system() == 'Windows' else 'Finder'
     msg.button(QMessageBox.StandardButton.Open).setText(f'Show in {manager}')
     btn = msg.exec()
