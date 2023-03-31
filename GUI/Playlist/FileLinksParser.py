@@ -3,7 +3,12 @@ import mimetypes
 from urllib import parse
 import re
 from xspf_lib import Playlist
+import platform
 
+
+if platform.system() == 'Windows':
+    mimetypes.add_type('application/pls+xml', '.pls')
+    mimetypes.add_type('application/xspf+xml', '.xspf')
 AudioMimes = ['audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg',
               'application/ogg']
 PLMimes = ['audio/x-mpegurl', 'application/pls+xml', 'application/xspf+xml']
