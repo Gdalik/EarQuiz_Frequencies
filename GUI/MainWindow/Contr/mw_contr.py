@@ -134,7 +134,7 @@ class MainWindowContr(QObject):
     def onLearnFreqOrderActionChanged(self):
         if self.ADGen is None:
             return
-        self.ADGen.order = self.freqOrder
+        self.ADGen.order = self.freqOrder()
 
     def onBoostCutOrderActionChanged(self):
         if self.ADGen is None:
@@ -153,9 +153,8 @@ class MainWindowContr(QObject):
         player = self.TransportContr.PlayerContr
         player.onStopTriggered(checkPlaybackState=True)
 
-    @property
-    def freqOrder(self):
-        if self.CurrentMode.name == 'Test':
+    def freqOrder(self, audioFileGeneratorMode=False):
+        if self.CurrentMode.name == 'Test' and not audioFileGeneratorMode:
             return 'random'
         if self.LearnFreqOrderActionGroup.checkedAction() == self.mw_view.actionAscendingEQ:
             return 'asc'

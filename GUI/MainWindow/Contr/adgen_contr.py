@@ -30,7 +30,7 @@ class ADGenContr:
                                        'drill_length': SR.slice_length,
                                        'gain_depth': self.parent.EQSetContr.EQSetView.GainRangeSpin.value(),
                                        'Q': Qextr(self.parent.EQSetContr.EQSetView.BWBox.currentText()),
-                                       'order': self.parent.freqOrder,
+                                       'order': self.parent.freqOrder(),
                                        'boost_cut_priority': self.parent.boostCutPriority,
                                        'disableAdjacent': EQP['DisableAdjacentFiltersMode']})
         ADG.exec()
@@ -63,4 +63,4 @@ class ADGenContr:
     def _adjustADGenOrderToMode(self):
         if self.parent.ADGen is None:
             return
-        self.parent.ADGen.order = self.parent.freqOrder
+        self.parent.ADGen.order = self.parent.freqOrder()

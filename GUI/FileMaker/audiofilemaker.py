@@ -8,6 +8,7 @@ from PyQt6.QtCore import QUrl, QItemSelection, QItemSelectionModel
 from GUI.Playlist.plsong import PlSong
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
+from GUI.FileMaker.FileCreationSuccessDialog import SuccessDialog
 
 
 class AudioFileMaker:
@@ -98,12 +99,15 @@ class AudioFileMaker:
          'Q': Qextr(self.parent.EQSetContr.EQSetView.BWBox.currentText()),
          'disableAdjacent': EQP['DisableAdjacentFiltersMode']}
         if Dialog.LearnBut.isChecked():
-            kwargs['order'] = self.parent.freqOrder
+            kwargs['order'] = self.parent.freqOrder(audioFileGeneratorMode=True)
             kwargs['enumerate_examples'] = Dialog.EnumLearningExBut.isChecked()
         Proc = ProcTrackControl(action, args=[SA.path, Dialog.ExerciseFolderLine.text(),
                                               self.parent.EQContr.getAvailableFreq()], kwargs=kwargs)
-        Proc.exec()
-        self.parent.isErrorInProcess(Proc)
+        if not Proc.exec():
+            self.parent.isErrorInProcess(Proc)
+            return
+        SuccessDialog(self.parent.mw_view, Dialog.ExerciseFolderLine.text(),
+                      mode_name='Learning' if Dialog.LearnBut.isChecked() else 'Test')
 
     def _checkAudioNormalization(self):
         if self.parent.CurrentMode.name == 'Preview':

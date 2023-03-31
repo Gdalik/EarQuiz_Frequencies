@@ -385,9 +385,6 @@ background: rgba(118, 214, 255, 85)
          <property name="dragEnabled">
           <bool>true</bool>
          </property>
-         <property name="dragDropOverwriteMode">
-          <bool>false</bool>
-         </property>
          <property name="dragDropMode">
           <enum>QAbstractItemView::DragDrop</enum>
          </property>
@@ -4755,7 +4752,7 @@ background: rgba(118, 214, 255, 85)
      <x>0</x>
      <y>0</y>
      <width>1100</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -4804,7 +4801,7 @@ background: rgba(118, 214, 255, 85)
     </property>
     <widget class="QMenu" name="menuEQ_Bands_Playback_Order">
      <property name="title">
-      <string>EQ Bands Playback Order</string>
+      <string>EQ Bands Playback Order in Learn Mode</string>
      </property>
      <addaction name="actionAscendingEQ"/>
      <addaction name="actionDescendingEQ"/>

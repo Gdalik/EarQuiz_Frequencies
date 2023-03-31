@@ -22,7 +22,7 @@ class UniMode:
         self.view.NextExample.setVisible(False)
         self.enableTimeSettingsChanges(False)
         self.view.EqOnOffLab.hide()
-        self.setEQBandsOrderMenuVisible(contrEnabled)
+        self.setEQBandsOrderMenuEnabled(contrEnabled)
         if setPlayerContr:
             self.setPlayerControls()
         self.view.SliceLenSpin.setEnabled(contrEnabled)
@@ -126,6 +126,7 @@ class UniMode:
     def updateSliceRegion(self):
         pass
 
-    def setEQBandsOrderMenuVisible(self, arg: bool):
-        for item in self.view.menuEQ_Bands_Playback_Order.children():
-            item.setVisible(arg)
+    def setEQBandsOrderMenuEnabled(self, arg: bool):
+        self.view.menuEQ_Bands_Playback_Order.setEnabled(arg)
+        '''for item in self.view.menuEQ_Bands_Playback_Order.children():
+            item.setVisible(arg)'''

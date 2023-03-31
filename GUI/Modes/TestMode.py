@@ -10,7 +10,6 @@ class TestMode(UniMode):
         self.currentDrillFreq = None
         self.view.SliceLenSpin.setEnabled(False)
         self.view.EQSetView.setEnabled(False)
-        self.setEQBandsOrderMenuVisible(False)
         if self.parent.LastMode.name not in ['Preview', 'Uni']:
             self.parent.EQContr.resetEQ()
         self.view.setActionNextExampleEnabled(False)
