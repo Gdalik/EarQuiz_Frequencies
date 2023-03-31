@@ -20,6 +20,3 @@ def SuccessDialog(mw, filespath: str, mode_name='Learning'):
                 subprocess.run(["open", filespath])
         elif platform.system() == 'Windows':
             os.startfile(filespath)
-            '''filebrowser_path = os.path.join(os.getenv('WINDIR'), 'explorer.exe')
-            video_win_path = rf'{filespath}'
-            cmd = [filebrowser_path, '/select,', video_win_path]'''
