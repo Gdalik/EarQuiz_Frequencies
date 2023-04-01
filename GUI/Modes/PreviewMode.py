@@ -88,6 +88,7 @@ class PreviewMode(UniMode):
         self.view.actionNext_Track.setVisible(False)
         self.view.actionSkip_Unavailable_Tracks.setVisible(False)
         self.view.actionLoop_Playback.setVisible(False)
+        self.view.actionRepeat_Playlist.setVisible(False)
         self.view.actionShuffle_Playback.setChecked(False)
         self.view.actionShuffle_Playback.setEnabled(False)
         self.view.actionShuffle_Playback.setVisible(False)
