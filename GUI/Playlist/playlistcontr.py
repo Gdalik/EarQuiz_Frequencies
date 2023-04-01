@@ -7,7 +7,7 @@ from GUI.Playlist.PlaylistNavigation import PlNavi
 from GUI.Misc.error_message import error_message
 from PyQt6.QtCore import QObject, Qt, QModelIndex, QUrl
 from PyQt6.QtWidgets import QFileDialog, QWidget
-from definitions import app
+from definitions import app, USER_DOCS_DIR
 
 
 class PlaylistContr(QObject):
@@ -111,6 +111,7 @@ class PlaylistContr(QObject):
             self._setFileDialogToFileMode(dialog)
         else:
             self._setFileDialogToFolderMode(dialog)
+        dialog.setDirectory(USER_DOCS_DIR)
         if dialog.exec():
             filenames = list(map(QUrl.fromLocalFile, dialog.selectedFiles()))
             index = self.PlaylistView.selectedIndexes()[0].row() if self.PlaylistView.selectedIndexes() else -1
