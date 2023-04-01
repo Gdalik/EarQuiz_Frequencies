@@ -64,7 +64,7 @@ def files_from_PL(pl_path: str, callback=None):
     err_mess = f'Error occurred while parsing "{pl_path}": '
     if mime == 'application/xspf+xml':
         try:
-            pl_urls = parseUrlsFromXSPF(pl_path)
+            pl_links = parseLinksFromXSPF(pl_path)
         except Exception as e:
             cb(f'{err_mess}{e}')
             return []
@@ -75,25 +75,24 @@ def files_from_PL(pl_path: str, callback=None):
         except Exception as e:
             cb(f'{err_mess}{e}')
             return []
-        pl_urls = pl_lines if mime not in ('application/pls+xml') else list(map(parseUrlFrom_PLS, pl_lines))
+        pl_links = pl_lines if mime not in ('application/pls+xml') else list(map(parseLinkFrom_PLS, pl_lines))
     else:
         return []
-    return urlsToExistingFiles(pl_urls, Path(pl_path).parent)
+    return linksToExistingFiles(pl_links, Path(pl_path).parent)
 
 
-def parseUrlFrom_PLS(line: str):
+def parseLinkFrom_PLS(line: str):
     return re.sub('File\d+=', '', line, count=1)
 
 
-def parseUrlsFromXSPF(filepath: str):
+def parseLinksFromXSPF(filepath: str):
     return [track.location[0] for track in Playlist.parse(filepath).data]
 
 
-def urlsToExistingFiles(urls: list, current_dir):
+def linksToExistingFiles(links: list, current_dir):
     files = []
-    for url in urls:
-        path = parse.urlparse(request.url2pathname(url)).path
-        print(path)
+    for link in links:
+        path = parse.urlparse(link).path if parse.urlparse(link).scheme in ('file', 'http', 'https') else link
         abs_path = path if Path(path).is_absolute() \
             else str(PurePath.joinpath(current_dir, PureWindowsPath(path).as_posix()))
         if Path(abs_path).is_file():
