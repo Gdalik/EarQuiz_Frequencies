@@ -4,7 +4,7 @@ import numpy as np
 
 
 def eq_proc(cur_sample, samplerate: int, freq1: int or float, freq2=None,
-            gain_depth=12, Q=1.41, proc_t_perc=40, eq_transition_len_s=0.05, fade_inout_len_s=0.005):
+            gain_depth=12, Q=1.41, proc_t_perc=40, eq_transition_len_s=0.035, fade_inout_len_s=0.005):
     def sec2fr(sec: int or float):
         return int(samplerate * sec)
     pre_eq, to_eq, post_eq = _eq_audio_parts(cur_sample, samplerate, proc_t_perc=proc_t_perc)

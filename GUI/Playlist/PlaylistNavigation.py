@@ -89,7 +89,7 @@ class PlNavi:
         if Song.path not in self.playedSong_paths and Song.path in self.playlist_paths:
             self.playedSongs.append(Song)
 
-    # returns current / available / random / first song depending on conditions:
+    # returns current / available / random / first song depending on conditions. Used when no audio is loaded.
     def thisSong(self, availableOnly=True, avoidCurrent=False):
         if not self.playlistdata:
             return None

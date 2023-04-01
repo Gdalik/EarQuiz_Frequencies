@@ -185,6 +185,7 @@ class PlaylistContr(QObject):
     def onLayoutChanged(self):
         self.PlNavi.dataSync(self.playlistModel.playlistdata)
         self.PlaylistView.PlStatsLabUpd()
+        self.mw_view.menuExport_Playlist.setEnabled(len(self.playlistModel.playlistdata) > 0)
 
     def onRepeatPlaylist_trig(self):
         self.PlNavi.setRepeatPlaylist(self.mw_view.actionRepeat_Playlist.isChecked())

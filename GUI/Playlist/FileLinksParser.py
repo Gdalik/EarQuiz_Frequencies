@@ -74,7 +74,7 @@ def files_from_PL(pl_path: str, callback=None):
         except Exception as e:
             cb(f'{err_mess}{e}')
             return []
-        pl_urls = pl_lines if mime != 'application/pls+xml' else list(map(parseUrlFrom_PLS, pl_lines))
+        pl_urls = pl_lines if mime not in ('application/pls+xml') else list(map(parseUrlFrom_PLS, pl_lines))
     else:
         return []
     return urlsToExistingFiles(pl_urls, Path(pl_path).parent)

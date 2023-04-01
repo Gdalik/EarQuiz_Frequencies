@@ -26,6 +26,7 @@ import platform
 from filehash import FileHash
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
+from GUI.FileMaker.make_playlist import exportPlaylist, exportPlaylistWithRelPaths
 
 
 class MainWindowContr(QObject):
@@ -82,6 +83,11 @@ class MainWindowContr(QObject):
         self.mw_view.actionMake_Learning_Files.triggered.connect(self.FileMaker.onActionMakeLearningFilesTrig)
         self.mw_view.actionConvert_Selected_Files.triggered.connect(self.FileMaker.onActionConvertFilesTriggered)
         self.mw_view.actionClose.triggered.connect(self.onActionCloseTriggered)
+        self.mw_view.actionExportPlaylistAbsolute.triggered.connect\
+            (lambda x: exportPlaylist(self.mw_view, self.PlaylistContr.playlistModel.playlistdata))
+        self.mw_view.actionExportPlaylistRelative.triggered.connect\
+            (lambda x: exportPlaylistWithRelPaths(self.mw_view, self.PlaylistContr.playlistModel.playlistdata))
+        self.mw_view.menuExport_Playlist.setEnabled(len(self.PlaylistContr.playlistModel.playlistdata) > 0)
 
     def setModesButtons(self):
         self.mw_view.PreviewBut.setDefaultAction(self.mw_view.actionPreview_Mode)

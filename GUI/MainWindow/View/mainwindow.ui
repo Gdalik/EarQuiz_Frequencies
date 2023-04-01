@@ -4759,9 +4759,16 @@ background: rgba(118, 214, 255, 85)
     <property name="title">
      <string>File</string>
     </property>
+    <widget class="QMenu" name="menuExport_Playlist">
+     <property name="title">
+      <string>Export Playlist...</string>
+     </property>
+     <addaction name="actionExportPlaylistAbsolute"/>
+     <addaction name="actionExportPlaylistRelative"/>
+    </widget>
     <addaction name="actionOpen"/>
     <addaction name="actionOpen_Folder"/>
-    <addaction name="actionSave_Playlist"/>
+    <addaction name="menuExport_Playlist"/>
     <addaction name="separator"/>
     <addaction name="actionMake_and_Open_Calibration_Sine_Wave_File"/>
     <addaction name="actionMake_Learning_Files"/>
@@ -6031,14 +6038,6 @@ font-weight: normal</string>
     <string>Ctrl+O</string>
    </property>
   </action>
-  <action name="actionSave_Playlist">
-   <property name="text">
-    <string>Save Playlist...</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+S</string>
-   </property>
-  </action>
   <action name="actionClose">
    <property name="text">
     <string>Close</string>
@@ -6401,6 +6400,19 @@ font-weight: normal</string>
    </property>
    <property name="text">
     <string>Repeat Playlist</string>
+   </property>
+  </action>
+  <action name="actionExportPlaylistRelative">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Export Using Relative Paths for Subfolders...</string>
+   </property>
+  </action>
+  <action name="actionExportPlaylistAbsolute">
+   <property name="text">
+    <string>Export with Absolute Paths...</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>
