@@ -1,6 +1,6 @@
 from pathlib import Path, PureWindowsPath, PurePath
 import mimetypes
-from urllib import parse
+from urllib import parse, request
 import re
 from xspf_lib import Playlist
 import platform
@@ -91,7 +91,8 @@ def parseUrlsFromXSPF(filepath: str):
 def urlsToExistingFiles(urls: list, current_dir):
     files = []
     for url in urls:
-        path = parse.urlparse(url).path
+        # path = parse(url).path
+        path = request.url2pathname(url)
         abs_path = path if Path(path).is_absolute() \
             else str(PurePath.joinpath(current_dir, PureWindowsPath(path).as_posix()))
         if Path(abs_path).is_file():
