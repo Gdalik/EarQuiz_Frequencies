@@ -92,9 +92,19 @@ def parseLinksFromXSPF(filepath: str):
 def linksToExistingFiles(links: list, current_dir):
     files = []
     for link in links:
-        path = parse.urlparse(link).path if parse.urlparse(link).scheme in ('file', 'http', 'https') else link
+        path = parse.urlparse(link).path if isURL(link) else link
         abs_path = path if Path(path).is_absolute() \
             else str(PurePath.joinpath(current_dir, PureWindowsPath(path).as_posix()))
         if Path(abs_path).is_file():
             files.append(abs_path)
     return files
+
+def isURL(arg: str):
+    scheme = parse.urlparse(arg).scheme
+    if scheme in ('file', 'http', 'https', 'ftp'):
+        return True
+    elif scheme == '':
+        return False
+    else:
+        return None
+
