@@ -45,6 +45,8 @@ class PreviewMode(UniMode):
         self.view.actionLoop_Playback.setEnabled(True)
         self.view.actionLoop_Playback.setChecked(True)
         self.view.actionLoop_Playback.setVisible(True)
+        self.view.actionRepeat_Playlist.setVisible(True)
+        self.view.actionRepeat_Playlist.setChecked(self.parent.PlaylistContr.PlNavi.repeat_playlist())
         self.view.actionShuffle_Playback.setChecked(self.parent.PlaylistContr.PlNavi.shuffle())
         self.view.actionShuffle_Playback.setEnabled(True)
         self.view.actionShuffle_Playback.setVisible(True)

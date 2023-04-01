@@ -114,14 +114,12 @@ class PlayerContr(QMediaPlayer):
         if self.playbackState() == self.PlaybackState.PlayingState:
             return
         noPreviewSource = (self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.SourceAudio is None)
-        if noPreviewSource and self.mw_contr.PlaylistContr.PlNavi.currentSongInside() is not None:
-            self.mw_contr.PlaylistContr.loadAndSelectSong(self.mw_contr.PlaylistContr.PlNavi.currentSongInside(),
-                                                          forcePlayAfter=True)
-        elif noPreviewSource and self.mw_contr.PlaylistContr.PlNavi.firstAvailable() is not None:
-            self.mw_contr.PlaylistContr.loadAndSelectSong(self.mw_contr.PlaylistContr.PlNavi.firstAvailable(),
-                                                          forcePlayAfter=True)
-        elif noPreviewSource and self.mw_contr.PlaylistContr.PlNavi.firstAvailable() is None:
-            self.mw_contr.PlaylistContr.openFiles()
+        if noPreviewSource:
+            this_song = self.mw_contr.PlaylistContr.PlNavi.thisSong(availableOnly=self.mw_view.actionSkip_Unavailable_Tracks.isChecked())
+            if this_song is not None:
+                self.mw_contr.PlaylistContr.loadAndSelectSong(this_song, forcePlayAfter=True)
+            elif not self.PlModel.playlistdata:
+                self.mw_contr.PlaylistContr.openFiles()
         elif not self.parent.updAudioToEqSettings(play_after=True, raiseInterruptedException=False):
             self.play()
 

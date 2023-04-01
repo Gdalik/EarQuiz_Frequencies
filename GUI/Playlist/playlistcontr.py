@@ -40,6 +40,7 @@ class PlaylistContr(QObject):
         self.mw_view.actionPrevious_Track.triggered.connect(self.onPreviousTrack_trig)
         self.mw_view.actionNext_Track.triggered.connect(self.onNextTrack_trig)
         self.mw_view.actionShuffle_Playback.triggered.connect(self.onShufflePlayback_trig)
+        self.mw_view.actionRepeat_Playlist.triggered.connect(self.onRepeatPlaylist_trig)
         self.PlaylistView.signals.keyPressed.connect(self.onKeyPressed)
 
     def addTracks(self, URLs: list[QUrl], index=-1):
@@ -154,9 +155,12 @@ class PlaylistContr(QObject):
         next_song = self.PlNavi.next()
         _currentSong = self.PlNavi.currentSong()
         if self.mw_view.actionSkip_Unavailable_Tracks.isChecked():
-            while next_song is not None and not next_song.available:
-                self.PlNavi.setCurrentSong(next_song)
-                next_song = self.PlNavi.next()
+            if any(S.available for S in self.playlistModel.playlistdata):
+                while next_song is not None and not next_song.available:
+                    self.PlNavi.setCurrentSong(next_song)
+                    next_song = self.PlNavi.next()
+            else:
+                next_song = None
         self.PlNavi.setCurrentSong(_currentSong)
         if next_song is not None:
             self.loadAndSelectSong(next_song)
@@ -181,6 +185,9 @@ class PlaylistContr(QObject):
     def onLayoutChanged(self):
         self.PlNavi.dataSync(self.playlistModel.playlistdata)
         self.PlaylistView.PlStatsLabUpd()
+
+    def onRepeatPlaylist_trig(self):
+        self.PlNavi.setRepeatPlaylist(self.mw_view.actionRepeat_Playlist.isChecked())
 
     @staticmethod
     def _setFileDialogToFileMode(dialog: QFileDialog):

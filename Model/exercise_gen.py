@@ -143,7 +143,7 @@ class ExampleGenerator:
 
     def _genDescSeq(self):
         self._source_sequence = copy.copy(self.freq_options)
-        self._source_sequence.reverse()
+        self._source_sequence.sort(reverse=True)
         return self._source_sequence
 
     def _genRandNoRepeatSeq(self):

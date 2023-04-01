@@ -4819,11 +4819,13 @@ background: rgba(118, 214, 255, 85)
     <addaction name="actionStop"/>
     <addaction name="actionPrevious_Track"/>
     <addaction name="actionNext_Track"/>
+    <addaction name="separator"/>
     <addaction name="actionStartPlayingAfterLoading"/>
     <addaction name="actionSkip_Unavailable_Tracks"/>
     <addaction name="separator"/>
     <addaction name="actionShuffle_Playback"/>
     <addaction name="actionLoop_Playback"/>
+    <addaction name="actionRepeat_Playlist"/>
     <addaction name="actionSequential_Playback"/>
     <addaction name="actionLoop_Sequence"/>
     <addaction name="separator"/>
@@ -6388,6 +6390,17 @@ font-weight: normal</string>
    </property>
    <property name="text">
     <string>Convert Selected Files...</string>
+   </property>
+  </action>
+  <action name="actionRepeat_Playlist">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Repeat Playlist</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>
