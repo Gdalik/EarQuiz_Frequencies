@@ -6030,7 +6030,13 @@ font-weight: normal</string>
        <item>
         <widget class="QToolButton" name="LockEQSettingsBut">
          <property name="styleSheet">
-          <string notr="true">border: None</string>
+          <string notr="true">QToolButton{
+border: None;
+}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}</string>
          </property>
          <property name="text">
           <string/>
