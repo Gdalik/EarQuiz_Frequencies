@@ -3,6 +3,7 @@ from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData, QAudi
 from PyQt6.QtWidgets import QMessageBox
 from definitions import MediaDevices
 from GUI.Misc.error_message import reformat_message
+from pathlib import Path
 import platform
 
 class PlayerContr(QMediaPlayer):
@@ -190,7 +191,7 @@ class PlayerContr(QMediaPlayer):
         if self.mw_contr.SourceAudio is None:
             self.mw_view.status.clearMessage()
             return
-        source = 'Pink noise' if self.mw_contr.SourceAudio.name == 'pinknoise' else self.mw_contr.SourceAudio.name
+        source = 'Pink noise' if self.mw_contr.SourceAudio.name == 'pinknoise' else self.mw_contr.LastSourceAudio.name
         self.mw_view.status.showMessage(f'{source}: {self.PlayerView.pb_state2str(state)}')
 
     def onPlayPause_triggered(self):
