@@ -11,3 +11,7 @@ Image by <a href="https://www.freepik.com/free-vector/flat-design-arrow-collecti
 <a href="https://www.flaticon.com/free-icons/settings" title="settings icons">Settings icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/star" title="star icons">Star icons created by Taufik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/lock" title="lock icons">Lock icons created by Maxim Basinski Premium - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/right-arrowhead" title="right arrowhead icons">Right arrowhead icons created by NajmunNahar - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/left-arrow" title="left arrow icons">Left arrow icons created by NajmunNahar - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Pixel perfect - Flaticon</a>

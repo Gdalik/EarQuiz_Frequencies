@@ -19,6 +19,8 @@ class AudioLoad:
             return
         self.parent.SRC.savePrevSourceAudioRange()
         reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)
+        if not reloaded_same:
+            self.removeCurrentStateFromSource()
         self.parent.SourceAudio = Song
         self.parent.PlaylistContr.PlNavi.setCurrentSong(Song)
         self.parent.playAudioOnPreview = True if reloaded_same \
@@ -49,6 +51,7 @@ class AudioLoad:
 
     def setNoAudio(self):
         self.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
+        self.removeCurrentStateFromSource()
         self.parent.SourceAudio = self.parent.LastSourceAudio = None
         self.parent.ADGen = None
         self.parent.CurrentAudio = None
@@ -61,3 +64,9 @@ class AudioLoad:
         self.parent.SourceRange = None
         self.parent.setMakeAudioActionsEnabled(False)
         self.mw_view.statusbar.clearMessage()
+
+    def removeCurrentStateFromSource(self):
+        if self.parent.SourceAudio is not None and self.parent.SourceAudio.name != 'pinknoise':
+            self.parent.PlaylistContr.playlistModel.layoutAboutToBeChanged.emit()
+            self.parent.SourceAudio.isCurrent = False
+            self.parent.PlaylistContr.playlistModel.layoutChanged.emit()

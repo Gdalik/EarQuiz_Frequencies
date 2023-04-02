@@ -42,6 +42,9 @@ class PlaylistContr(QObject):
         self.mw_view.actionShuffle_Playback.triggered.connect(self.onShufflePlayback_trig)
         self.mw_view.actionRepeat_Playlist.triggered.connect(self.onRepeatPlaylist_trig)
         self.PlaylistView.signals.keyPressed.connect(self.onKeyPressed)
+        self.onPlFullEmpty()
+        self.mw_view.PreviewNextBut.clicked.connect(self.onPreviewNextBut_clicked)
+        self.mw_view.PreviewPreviousBut.clicked.connect(self.onPreviewPreviousBut_clicked)
 
     def addTracks(self, URLs: list[QUrl], index=-1):
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)
@@ -166,6 +169,20 @@ class PlaylistContr(QObject):
         if next_song is not None:
             self.loadAndSelectSong(next_song)
 
+    def onPreviewNextBut_clicked(self):
+        _next = self.PlNavi.next()
+        if _next is None or _next == self.mw_contr.SourceAudio:
+            return
+        self.mw_view.actionPreview_Mode.setChecked(True)
+        self.onNextTrack_trig()
+
+    def onPreviewPreviousBut_clicked(self):
+        _prev = self.PlNavi.prev()
+        if _prev is None or _prev == self.mw_contr.SourceAudio:
+            return
+        self.mw_view.actionPreview_Mode.setChecked(True)
+        self.onPreviousTrack_trig()
+
     def selectCurrentSong(self):
         if self.PlNavi.currentSong() is None:
             return
@@ -186,7 +203,14 @@ class PlaylistContr(QObject):
     def onLayoutChanged(self):
         self.PlNavi.dataSync(self.playlistModel.playlistdata)
         self.PlaylistView.PlStatsLabUpd()
-        self.mw_view.menuExport_Playlist.setEnabled(len(self.playlistModel.playlistdata) > 0)
+        self.onPlFullEmpty()
+
+    def onPlFullEmpty(self):
+        pl_not_empty = len(self.playlistModel.playlistdata) > 0
+        self.mw_view.menuExport_Playlist.setEnabled(pl_not_empty)
+        PreviewNextPrevButEnabled = pl_not_empty if self.mw_view.AudiofileRBut.isChecked() else False
+        self.mw_view.PreviewPreviousBut.setEnabled(PreviewNextPrevButEnabled)
+        self.mw_view.PreviewNextBut.setEnabled(PreviewNextPrevButEnabled)
 
     def onRepeatPlaylist_trig(self):
         self.PlNavi.setRepeatPlaylist(self.mw_view.actionRepeat_Playlist.isChecked())

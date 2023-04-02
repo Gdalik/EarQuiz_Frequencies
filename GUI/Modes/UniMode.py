@@ -1,6 +1,4 @@
 import contextlib
-import time
-
 from Model.audiodrill_gen import create_temp_wavefile
 from pathlib import Path
 from definitions import TEMP_AUDIO_DIR
@@ -68,10 +66,10 @@ class UniMode:
         self.view.actionSkip_Unavailable_Tracks.setVisible(False)
         self.view.actionLoop_Playback.setVisible(False)
         self.view.actionLoop_Playback.setChecked(False)
-        self.view.actionRepeat_Playlist.setVisible(False)
-        self.view.actionRepeat_Playlist.setChecked(False)
-        self.view.actionShuffle_Playback.setChecked(False)
-        self.view.actionShuffle_Playback.setVisible(False)
+        self.view.actionShuffle_Playback.setVisible(True)
+        self.parent.PlaylistContr.onPlFullEmpty()
+        '''self.view.PreviewPreviousBut.setEnabled(True)
+        self.view.PreviewNextBut.setEnabled(True)'''
         self.view.LoopButton.setVisible(False)
         self.view.Player_SkipBackw.setVisible(False)
         self.view.Player_SkipForw.setVisible(False)
@@ -130,5 +128,3 @@ class UniMode:
 
     def setEQBandsOrderMenuEnabled(self, arg: bool):
         self.view.menuEQ_Bands_Playback_Order.setEnabled(arg)
-        '''for item in self.view.menuEQ_Bands_Playback_Order.children():
-            item.setVisible(arg)'''

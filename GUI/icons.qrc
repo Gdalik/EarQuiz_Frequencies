@@ -12,11 +12,14 @@
   </qresource>
   <qresource prefix="Player">
     <file>Icons/Player/Actions-media-playback-pause-icon.png</file>
+    <file>Icons/Player/left-arrow-playlist.png</file>
+    <file>Icons/Player/right-arrow-playlist.png</file>
     <file>Icons/Player/Actions-media-playback-start-icon.png</file>
     <file>Icons/Player/Actions-media-playback-stop-icon.png</file>
     <file>Icons/Player/Actions-media-seek-backward-icon.png</file>
     <file>Icons/Player/Actions-media-seek-forward-icon.png</file>
     <file>Icons/Player/Actions-media-skip-backward-icon.png</file>
+    <file>Icons/Player/CurrentSong.png</file>
     <file>Icons/Player/Actions-media-skip-forward-icon.png</file>
     <file>Icons/Player/arrow-right_gray.png</file>
     <file>Icons/Player/music-note-with-loop-circular-arrows-around-blue.png</file>

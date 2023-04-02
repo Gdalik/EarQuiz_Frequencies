@@ -90,18 +90,27 @@ class PlayerContr(QMediaPlayer):
     def _onLoadedMedia(self):
         if self.onceAudioLoaded:
             self.mw_contr.CurrentMode.cleanTempAudio()
-            # self.parent.onLoadSourceAudio()
             self._refreshAudioOutput_mac()
-            self.mw_contr.LoadedFilePath = self.mw_contr.CurrentAudio
-            if self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.CurrentSourceMode.name == 'Audiofile':
-                self.mw_contr.hashAudioFile()
-                if self.mw_contr.LoadedFilePath in self.PlModel.nonLoadedSong_paths:
-                    self.PlModel.nonLoadedSong_paths.remove(self.mw_contr.LoadedFilePath)
-                    self.PlModel.updCanLoadData()
+            self._hashAndRefreshLoadedAudioData()
             self.parent.onLoadSourceAudio()
             self.checkPreviewStartTime()
+            self._setCurrentStateToSource()
             self.onceAudioLoaded = False
         self._playLoadedAudio()
+
+    def _hashAndRefreshLoadedAudioData(self):
+        self.mw_contr.LoadedFilePath = self.mw_contr.CurrentAudio
+        if self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.CurrentSourceMode.name == 'Audiofile':
+            self.mw_contr.hashAudioFile()
+            if self.mw_contr.LoadedFilePath in self.PlModel.nonLoadedSong_paths:
+                self.PlModel.nonLoadedSong_paths.remove(self.mw_contr.LoadedFilePath)
+                self.PlModel.updCanLoadData()
+
+    def _setCurrentStateToSource(self):
+        self.mw_contr.PlaylistContr.playlistModel.layoutAboutToBeChanged.emit()
+        self.mw_contr.SourceAudio.isCurrent = True
+        self.mw_contr.PlaylistContr.playlistModel.layoutChanged.emit()
+        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loaded')
 
     def _onEndofMedia(self):
         self.setPosition(self.startPos)
@@ -179,6 +188,7 @@ class PlayerContr(QMediaPlayer):
 
     def _translatePBStateToStatusBar(self, state):
         if self.mw_contr.SourceAudio is None:
+            self.mw_view.status.clearMessage()
             return
         source = 'Pink noise' if self.mw_contr.SourceAudio.name == 'pinknoise' else self.mw_contr.SourceAudio.name
         self.mw_view.status.showMessage(f'{source}: {self.PlayerView.pb_state2str(state)}')

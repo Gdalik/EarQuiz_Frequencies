@@ -259,6 +259,78 @@ background: rgba(118, 214, 255, 85)
           </spacer>
          </item>
          <item>
+          <widget class="QToolButton" name="PreviewPreviousBut">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Load and preview previous track</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{
+border: None;
+}
+
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/left-arrow-playlist.png</normaloff>:/Player/Icons/Player/left-arrow-playlist.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>18</width>
+             <height>18</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="PreviewNextBut">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Load and preview next track</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{
+border: None;
+}
+
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/right-arrow-playlist.png</normaloff>:/Player/Icons/Player/right-arrow-playlist.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>18</width>
+             <height>18</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QToolButton" name="ShufflePlaybackBut">
            <property name="minimumSize">
             <size>
@@ -823,7 +895,7 @@ font-weight: bold</string>
        <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -1819,7 +1891,10 @@ font-weight: bold</string>
            <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:checked{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -4713,7 +4788,10 @@ background: rgba(118, 214, 255, 85)
            <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:checked{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -5558,11 +5636,6 @@ background: rgba(118, 214, 255, 85)
              <property name="styleSheet">
               <string notr="true">QPushButton{
 border: None;
-}
-
-QPushButton:hover{
-background: rgba(192, 192, 192, 128);
-border-radius: 4px;
 }
 
 QPushButton:pressed{

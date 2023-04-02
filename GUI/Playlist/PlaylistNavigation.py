@@ -6,7 +6,7 @@ class PlNavi:
     def __init__(self, playlistdata: list[PlSong], currentSong=None, shuffle=False, repeat_playlist=True):
         self.playlistdata = playlistdata
         self._currentSong = currentSong
-        self._currentSongId = None
+        self._currentSongId = self._currentSongIdPS = None
         self._shuffle = shuffle
         self._repeat_playlist = repeat_playlist
         self.playedSongs = []
@@ -28,7 +28,7 @@ class PlNavi:
             return None
         if self.shuffle():
             shuffled = self._getShuffled()
-            if shuffled.available:
+            if shuffled is not None and shuffled.available:
                 return shuffled
         for S in self.playlistdata:
             if S.available:
@@ -77,6 +77,10 @@ class PlNavi:
     def _prevShuffle(self):
         if len(self.playedSongs) == 0:
             return None
+        if self.currentSong() not in self.playedSongs:
+            curSong_id = self.currentSongIdPS() or 0
+            prevSong_id = min(max(curSong_id - 1, 0), len(self.playedSongs) - 1)
+            return self.playedSongs[prevSong_id]
         for ind, S in enumerate(self.playedSongs):
             if S.path == self._currentSong.path:
                 return self.playedSongs[max(ind - 1, 0)]
@@ -110,10 +114,15 @@ class PlNavi:
     def currentSongId(self):
         return self._currentSongId
 
+    def currentSongIdPS(self):
+        return self._currentSongIdPS
+
     def updCurrentSongId(self):
         self._currentSongId = self.playlistdata.index(self._currentSong) if self._currentSong in self.playlistdata \
             else None
-        return self._currentSongId
+        self._currentSongIdPS = self.playedSongs.index(self._currentSong) if self._currentSong in self.playedSongs \
+            else None
+        return self._currentSongId, self._currentSongIdPS
 
     def _getShuffled(self):
         if not self.playlistdata:

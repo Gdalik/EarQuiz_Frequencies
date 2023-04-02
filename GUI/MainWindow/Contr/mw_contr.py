@@ -87,7 +87,6 @@ class MainWindowContr(QObject):
             (lambda x: exportPlaylist(self.mw_view, self.PlaylistContr.playlistModel.playlistdata))
         self.mw_view.actionExportPlaylistRelative.triggered.connect\
             (lambda x: exportPlaylistWithRelPaths(self.mw_view, self.PlaylistContr.playlistModel.playlistdata))
-        self.mw_view.menuExport_Playlist.setEnabled(len(self.PlaylistContr.playlistModel.playlistdata) > 0)
 
     def setModesButtons(self):
         self.mw_view.PreviewBut.setDefaultAction(self.mw_view.actionPreview_Mode)

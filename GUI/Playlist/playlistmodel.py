@@ -1,5 +1,6 @@
 from PyQt6 import QtCore, QtGui
 from PyQt6.QtCore import Qt, QSortFilterProxyModel, QModelIndex
+from PyQt6.QtGui import QImage
 from GUI.Playlist.plsong import PlSong
 from pathlib import Path
 from Utilities.urlcheck import validUrls
@@ -30,6 +31,12 @@ class PlaylistModel(QtCore.QAbstractTableModel):
                 return QtGui.QColor('gray')
         if role == Qt.ItemDataRole.BackgroundRole and index.row() % 2 == 0:
             return QtGui.QColor('ghostwhite')
+        if (
+            role == Qt.ItemDataRole.DecorationRole
+            and index.column() == 0
+            and CurData.isCurrent
+        ):
+            return QImage(':/Player/Icons/Player/CurrentSong.png')
 
     def rowCount(self, index):
         return len(self.playlistdata)

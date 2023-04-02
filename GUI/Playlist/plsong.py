@@ -87,3 +87,11 @@ class PlSong:
         else:
             return {'duration': False, 'num_channels': None, 'samplerate': None}
 
+    @property
+    def isCurrent(self):
+        return self._isCurrent if hasattr(self, '_isCurrent') else False
+
+    @isCurrent.setter
+    def isCurrent(self, arg: bool):
+        self._isCurrent = arg
+

@@ -7,9 +7,11 @@ import platform
 
 app_name = 'EarQuiz Frequencies'
 version = '0.1.0'
-ROOT_DIR = os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
+
 app = QApplication(sys.argv)
 MediaDevices = QMediaDevices()
+
+ROOT_DIR = os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = ''
 if platform.system() == 'Darwin':
     DATA_DIR = os.path.expanduser('~/Library/Application Support/EarQuiz/Frequencies')

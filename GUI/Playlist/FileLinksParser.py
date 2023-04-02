@@ -1,7 +1,6 @@
 from pathlib import Path, PureWindowsPath, PurePath
 import mimetypes
-from urllib import request, parse
-from PyQt6.QtCore import QUrl
+from urllib import parse
 import re
 from xspf_lib import Playlist
 import platform
@@ -75,7 +74,7 @@ def files_from_PL(pl_path: str, callback=None):
         except Exception as e:
             cb(f'{err_mess}{e}')
             return []
-        pl_links = pl_lines if mime not in ('application/pls+xml') else list(map(parseLinkFrom_PLS, pl_lines))
+        pl_links = pl_lines if mime not in ('application/pls+xml', ) else list(map(parseLinkFrom_PLS, pl_lines))
     else:
         return []
     return linksToExistingFiles(pl_links, Path(pl_path).parent)
@@ -98,6 +97,7 @@ def linksToExistingFiles(links: list, current_dir):
         if Path(abs_path).is_file():
             files.append(abs_path)
     return files
+
 
 def isURL(arg: str):
     scheme = parse.urlparse(arg).scheme
