@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1140</width>
+    <width>1100</width>
     <height>665</height>
    </rect>
   </property>
@@ -184,6 +184,9 @@
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <item>
@@ -5024,8 +5027,8 @@ background: rgba(118, 214, 255, 85)
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1140</width>
-     <height>21</height>
+     <width>1100</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -5956,13 +5959,13 @@ font-weight: normal</string>
   <widget class="QDockWidget" name="ExScoreInfo">
    <property name="minimumSize">
     <size>
-     <width>280</width>
+     <width>275</width>
      <height>250</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>280</width>
+     <width>275</width>
      <height>250</height>
     </size>
    </property>
@@ -6108,7 +6111,7 @@ font-weight: normal</string>
        <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
-         <height>15</height>
+         <height>20</height>
         </size>
        </property>
       </spacer>
@@ -6122,13 +6125,13 @@ font-weight: normal</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>280</width>
+     <width>275</width>
      <height>150</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>280</width>
+     <width>275</width>
      <height>150</height>
     </size>
    </property>
@@ -6309,13 +6312,13 @@ border-radius: 4px;
    </property>
    <property name="minimumSize">
     <size>
-     <width>280</width>
+     <width>275</width>
      <height>150</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>280</width>
+     <width>275</width>
      <height>150</height>
     </size>
    </property>
