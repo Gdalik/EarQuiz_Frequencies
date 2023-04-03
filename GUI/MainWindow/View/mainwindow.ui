@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1140</width>
-    <height>690</height>
+    <height>728</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>1100</width>
-    <height>690</height>
+    <height>685</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -441,13 +441,13 @@ background: rgba(118, 214, 255, 85);
        <widget class="QLabel" name="EqOnOffLab">
         <property name="minimumSize">
          <size>
-          <width>64</width>
+          <width>70</width>
           <height>30</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>64</width>
+          <width>70</width>
           <height>30</height>
          </size>
         </property>
@@ -467,8 +467,14 @@ font-weight: bold</string>
         <property name="text">
          <string>EQ Off</string>
         </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="indent">
+         <number>-1</number>
         </property>
        </widget>
       </item>

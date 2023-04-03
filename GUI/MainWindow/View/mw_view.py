@@ -148,11 +148,11 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         if self.actionTransportPanelView.isChecked():
             self.TransportPanelViewBut.setText('Hide Transport Panel')
             if platform.system() == 'Windows' and not self.isFullScreen() and not self.isMaximized():
-                self.resize(1000, 690)
+                self.resize(1000, 685)
         else:
             self.TransportPanelViewBut.setText('Show Transport Panel')
             if not self.isFullScreen() and not self.isMaximized():
-                self.resize(1000, 690)
+                self.resize(1000, 685)
 
     def onTransportPanelViewBut_clicked(self):
         self.TransportPanel.show() if 'Show' in self.TransportPanelViewBut.text() else self.TransportPanel.hide()
