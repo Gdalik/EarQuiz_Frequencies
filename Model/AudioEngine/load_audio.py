@@ -1,6 +1,5 @@
 import math
-import time
-
+from PyQt6.QtCore import QObject, pyqtSignal
 import numpy
 from Model.calc import optimize_divider
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
@@ -13,7 +12,13 @@ from Model.globals import pinknoise, MinAudioDuration, PinknoiseLength
 import copy
 
 
-class AudioChunk(PreviewAudioCrop):
+class AudioChunkSignals(QObject):
+    audioNormalized = pyqtSignal(float)
+
+
+class AudioChunk(PreviewAudioCrop, QObject):
+    signals = AudioChunkSignals()
+
     def __init__(self, audiofile_path: str, starttime: int or float, endtime: int or float,
                  slice_length=15, norm_level=None, cropped=None, cropped_normalized=None, callback=None):
         self.audiofile_path = audiofile_path
@@ -30,7 +35,6 @@ class AudioChunk(PreviewAudioCrop):
         self.callback = callback
         self.user_stopped = None
         self._reset(readcrop=(self.cropped is None), normalize=(self.cropped_normalized is None))
-        # self.audiofile is closed during self._read_and_crop(), called from self.reset()
 
     def _init_pinknoise(self):
         self.audiofile = None

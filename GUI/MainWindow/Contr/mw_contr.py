@@ -23,7 +23,7 @@ from Model.audiodrill_gen import AudioDrillGen
 from PyQt6.QtCore import QObject
 from PyQt6.QtGui import QActionGroup
 import platform
-from filehash import FileHash
+from Model.file_hash import filehash
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
 from GUI.FileMaker.make_playlist import exportPlaylist, exportPlaylistWithRelPaths
@@ -214,8 +214,7 @@ class MainWindowContr(QObject):
     def hashAudioFile(self):
         if self.SourceAudio is None:
             return
-        md5hasher = FileHash('md5')
-        _hash = md5hasher.hash_file(self.SourceAudio.path)
+        _hash = filehash(self.SourceAudio.path)
         self.LoadedFileHash = _hash
         return _hash
 

@@ -9,7 +9,7 @@ class AudioDevicesView(QObject):
         super().__init__()
         self.mw = parent
         self.audio_devices = MediaDevices
-        self.default_name = 'Default System Device'
+        self.default_name = 'System Sound Output Device'
         self.mw.AudioDevicesGroup = QActionGroup(self)
         self.setAudioDeviceActions()
         self.audio_devices.audioOutputsChanged.connect(self.updateAudioDeviceActions)

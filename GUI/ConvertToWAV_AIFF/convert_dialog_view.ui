@@ -9,19 +9,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>495</width>
+    <width>505</width>
     <height>240</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>495</width>
+    <width>505</width>
     <height>240</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>495</width>
+    <width>505</width>
     <height>240</height>
    </size>
   </property>
@@ -96,8 +96,8 @@
            </size>
           </property>
           <property name="text">
-           <string>auto choose 44100 Hz or 48000 Hz 
- (downsample to multiple where original is higher)</string>
+           <string>auto choose 44100 Hz or 48000 Hz (downsample to 
+multiple where original samplerate is higher)</string>
           </property>
          </widget>
         </item>

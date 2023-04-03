@@ -4,4 +4,3 @@ numpy~=1.24.2
 xspf-lib~=0.2.0
 PyQt6~=6.4.2
 tendo~=0.3.0
-filehash~=0.2.dev1

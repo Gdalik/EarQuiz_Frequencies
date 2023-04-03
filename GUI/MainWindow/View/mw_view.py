@@ -9,6 +9,7 @@ from GUI.EQ.eq_view import EqView
 from GUI.EQSettings.eqset_view import EQSetView
 from GUI.MainWindow.View.audiodevices_view import AudioDevicesView
 from GUI.Misc.error_message import error_message
+from GUI.MainWindow.View.StatusBar import StatusBar
 import definitions
 
 
@@ -33,7 +34,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.EQSetView = EQSetView(self)
         self.setViewMenuActions()
         self.AudioDevicesView = AudioDevicesView(self)
-        self.status = self.statusBar()
+        self.status = StatusBar(self)
         self.setMinimalistView()
         self.actionMinimal.triggered.connect(self.setMinimalistView)
         self.actionSequential_Playback.triggered.connect(self.onActionSequentialPlaybackTriggered)
@@ -41,9 +42,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setUniActBut()
         self.alt_pressed = None
         self.setFocus()
-
-        '''
-        self.status.addWidget(self.progress)'''
 
     def win_os_settings(self):
         widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + \

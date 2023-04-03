@@ -4949,7 +4949,7 @@ background: rgba(118, 214, 255, 85)
    </property>
    <property name="minimumSize">
     <size>
-     <width>1138</width>
+     <width>1140</width>
      <height>125</height>
     </size>
    </property>

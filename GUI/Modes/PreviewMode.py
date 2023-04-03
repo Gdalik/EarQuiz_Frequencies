@@ -9,6 +9,7 @@ class PreviewMode(UniMode):
         self.view.TransportPanelView.AudioSliderView.SliceRegion.hide()
         self.hideSequentialPlayContr()
         self.parent.ExScore.view.init_texts(onlyLastExcInfo=True)
+        self.view.status.clearNormalization()
         if not self.isAudioSourceMode():
             return
         self.setPlayerControls()
