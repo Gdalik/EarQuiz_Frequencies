@@ -13,7 +13,7 @@ import copy
 
 
 class AudioChunkSignals(QObject):
-    audioNormalized = pyqtSignal(float)
+    showNormalizationLevel = pyqtSignal(float)
 
 
 class AudioChunk(PreviewAudioCrop, QObject):

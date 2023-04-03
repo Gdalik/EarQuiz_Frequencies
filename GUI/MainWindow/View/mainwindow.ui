@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1100</width>
-    <height>720</height>
+    <height>705</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>1100</width>
-    <height>720</height>
+    <height>705</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -138,372 +138,6 @@
           </size>
          </property>
         </spacer>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="0" rowspan="3">
-     <widget class="QGroupBox" name="SourceBox">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>255</width>
-        <height>550</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="title">
-       <string>Audio source:</string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
-       <item>
-        <widget class="QRadioButton" name="PinkNoiseRBut">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>25</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Pink Noise</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="AudiofileRBut">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>25</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Audiofile (Playlist):</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="AddPlusRemoveAudioLay">
-         <property name="rightMargin">
-          <number>5</number>
-         </property>
-         <item>
-          <widget class="QToolButton" name="PlusFilesBut">
-           <property name="toolTip">
-            <string>Add tracks</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton{
-border: None;
-}
-
-QToolButton:pressed{
-border: 1px inset gray;
-background: rgba(118, 214, 255, 85)
-}</string>
-           </property>
-           <property name="text">
-            <string>...</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../icons.qrc">
-             <normaloff>:/AddRemove/Icons/AddRemove/plus.png</normaloff>:/AddRemove/Icons/AddRemove/plus.png</iconset>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="MinusFilesBut">
-           <property name="toolTip">
-            <string>Remove tracks</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton{
-border: None;
-}
-
-QToolButton:pressed{
-border: 1px inset gray;
-background: rgba(118, 214, 255, 85)
-}</string>
-           </property>
-           <property name="text">
-            <string>...</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../icons.qrc">
-             <normaloff>:/AddRemove/Icons/AddRemove/minus.png</normaloff>:/AddRemove/Icons/AddRemove/minus.png</iconset>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_12">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QToolButton" name="PreviewPreviousBut">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="toolTip">
-            <string>Load and preview previous track</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton{
-border: None;
-}
-
-QToolButton:pressed{
-border: 1px inset gray;
-background: rgba(118, 214, 255, 85)
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../../icons.qrc">
-             <normaloff>:/Player/Icons/Player/left-arrow-playlist.png</normaloff>:/Player/Icons/Player/left-arrow-playlist.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>18</width>
-             <height>18</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="PreviewNextBut">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="toolTip">
-            <string>Load and preview next track</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton{
-border: None;
-}
-
-QToolButton:pressed{
-border: 1px inset gray;
-background: rgba(118, 214, 255, 85)
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../../icons.qrc">
-             <normaloff>:/Player/Icons/Player/right-arrow-playlist.png</normaloff>:/Player/Icons/Player/right-arrow-playlist.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>18</width>
-             <height>18</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="ShufflePlaybackBut">
-           <property name="minimumSize">
-            <size>
-             <width>21</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="toolTip">
-            <string>Shuffle playback mode</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton{border: none;}
-QToolButton:hover{
-background: rgba(192, 192, 192, 128);
-border-radius: 4px;
-}
-QToolButton:checked{
-border-radius: 4px;
-}</string>
-           </property>
-           <property name="text">
-            <string>...</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../icons.qrc">
-             <normaloff>:/Player/Icons/Player/shuffle_black.png</normaloff>
-             <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_15">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item alignment="Qt::AlignRight">
-          <widget class="QToolButton" name="ClearFilesBut">
-           <property name="toolTip">
-            <string>Clear playlist</string>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QToolButton{
-border: None;
-}
-
-QToolButton:pressed{
-border: 1px inset gray;
-background: rgba(118, 214, 255, 85)
-}</string>
-           </property>
-           <property name="text">
-            <string>...</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../icons.qrc">
-             <normaloff>:/AddRemove/Icons/AddRemove/clear.png</normaloff>:/AddRemove/Icons/AddRemove/clear.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="SearchAudio">
-         <property name="minimumSize">
-          <size>
-           <width>230</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="inputMask">
-          <string/>
-         </property>
-         <property name="placeholderText">
-          <string>Search</string>
-         </property>
-         <property name="clearButtonEnabled">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="PlaylistView" name="PlaylistView">
-         <property name="minimumSize">
-          <size>
-           <width>230</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="acceptDrops">
-          <bool>true</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="sizeAdjustPolicy">
-          <enum>QAbstractScrollArea::AdjustToContents</enum>
-         </property>
-         <property name="autoScroll">
-          <bool>true</bool>
-         </property>
-         <property name="dragEnabled">
-          <bool>true</bool>
-         </property>
-         <property name="dragDropMode">
-          <enum>QAbstractItemView::DragDrop</enum>
-         </property>
-         <property name="verticalScrollMode">
-          <enum>QAbstractItemView::ScrollPerItem</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="SourceBoxFootLay">
-         <item>
-          <widget class="QLabel" name="PL_Stats_Lab">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Total: 99999 tracks</string>
-           </property>
-           <property name="scaledContents">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="TransportPanelViewBut">
-           <property name="minimumSize">
-            <size>
-             <width>110</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>9</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Show Transport Panel</string>
-           </property>
-           <property name="checkable">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
       </layout>
      </widget>
@@ -864,13 +498,13 @@ font-weight: bold</string>
       <property name="minimumSize">
        <size>
         <width>535</width>
-        <height>380</height>
+        <height>375</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
         <width>535</width>
-        <height>380</height>
+        <height>375</height>
        </size>
       </property>
       <property name="sizeIncrement">
@@ -895,7 +529,7 @@ font-weight: bold</string>
        <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -948,6 +582,12 @@ font-weight: bold</string>
            <enum>QFrame::Sunken</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="topMargin">
+            <number>5</number>
+           </property>
+           <property name="bottomMargin">
+            <number>5</number>
+           </property>
            <item>
             <spacer name="horizontalSpacer">
              <property name="orientation">
@@ -966,6 +606,9 @@ font-weight: bold</string>
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band1">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ1_31">
                <property name="minimumSize">
@@ -1031,7 +674,7 @@ font-weight: bold</string>
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ1_31_Lab">
                <property name="minimumSize">
                 <size>
@@ -1057,6 +700,9 @@ font-weight: bold</string>
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ1_63">
                <property name="minimumSize">
@@ -1119,7 +765,7 @@ font-weight: bold</string>
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ1_63_Lab">
                <property name="minimumSize">
                 <size>
@@ -1145,6 +791,9 @@ font-weight: bold</string>
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ1_125">
                <property name="minimumSize">
@@ -1207,7 +856,7 @@ font-weight: bold</string>
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ1_125_Lab">
                <property name="minimumSize">
                 <size>
@@ -1233,6 +882,9 @@ font-weight: bold</string>
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ1_250">
                <property name="minimumSize">
@@ -1295,7 +947,7 @@ font-weight: bold</string>
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ1_250_Lab">
                <property name="minimumSize">
                 <size>
@@ -1321,6 +973,9 @@ font-weight: bold</string>
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band5">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ1_500">
                <property name="minimumSize">
@@ -1383,7 +1038,7 @@ font-weight: bold</string>
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ1_500_Lab">
                <property name="minimumSize">
                 <size>
@@ -1409,6 +1064,9 @@ font-weight: bold</string>
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band6">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ1_1000">
                <property name="minimumSize">
@@ -1477,7 +1135,7 @@ font-weight: bold</string>
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ1_1000_Lab">
                <property name="minimumSize">
                 <size>
@@ -1503,6 +1161,9 @@ font-weight: bold</string>
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band7">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ1_2000">
                <property name="minimumSize">
@@ -1565,7 +1226,7 @@ font-weight: bold</string>
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ1_2000_Lab">
                <property name="minimumSize">
                 <size>
@@ -1591,6 +1252,9 @@ font-weight: bold</string>
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band8">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ1_4000">
                <property name="minimumSize">
@@ -1653,7 +1317,7 @@ font-weight: bold</string>
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ1_4000_Lab">
                <property name="minimumSize">
                 <size>
@@ -1679,6 +1343,9 @@ font-weight: bold</string>
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band9">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ1_8000">
                <property name="minimumSize">
@@ -1741,7 +1408,7 @@ font-weight: bold</string>
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ1_8000_Lab">
                <property name="minimumSize">
                 <size>
@@ -1767,6 +1434,9 @@ font-weight: bold</string>
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band10">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ1_16000">
                <property name="minimumSize">
@@ -1829,7 +1499,7 @@ font-weight: bold</string>
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ1_16000_Lab">
                <property name="minimumSize">
                 <size>
@@ -1887,6 +1557,18 @@ font-weight: bold</string>
         </item>
         <item alignment="Qt::AlignRight">
          <widget class="QToolButton" name="EQSettings_But1">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">QToolButton{
 border: None;
@@ -1928,7 +1610,7 @@ background: rgba(118, 214, 255, 85)
         <string>EQ2</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
-        <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+        <item>
          <widget class="QFrame" name="EQ2_frame1">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1955,6 +1637,15 @@ background: rgba(118, 214, 255, 85)
            <enum>QFrame::Sunken</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="sizeConstraint">
+            <enum>QLayout::SetDefaultConstraint</enum>
+           </property>
+           <property name="topMargin">
+            <number>5</number>
+           </property>
+           <property name="bottomMargin">
+            <number>11</number>
+           </property>
            <item>
             <spacer name="horizontalSpacer_3">
              <property name="orientation">
@@ -1972,7 +1663,10 @@ background: rgba(118, 214, 255, 85)
             </spacer>
            </item>
            <item>
-            <layout class="QVBoxLayout" name="Band1_2">
+            <layout class="QVBoxLayout" name="Band1_2" stretch="0,0">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_25">
                <property name="enabled">
@@ -1981,13 +1675,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -2038,7 +1732,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_25_Lab">
                <property name="enabled">
                 <bool>false</bool>
@@ -2067,18 +1761,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band2_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_50">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -2129,7 +1826,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_50_Lab">
                <property name="minimumSize">
                 <size>
@@ -2155,18 +1852,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band3_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_100">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -2217,7 +1917,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_100_Lab">
                <property name="minimumSize">
                 <size>
@@ -2243,18 +1943,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band4_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_200">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -2305,7 +2008,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_200_Lab">
                <property name="minimumSize">
                 <size>
@@ -2331,18 +2034,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band5_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_400">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -2393,7 +2099,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_400_Lab">
                <property name="minimumSize">
                 <size>
@@ -2419,18 +2125,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band6_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_800">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="sizeIncrement">
@@ -2488,7 +2197,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_800_Lab">
                <property name="minimumSize">
                 <size>
@@ -2514,18 +2223,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band7_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_1600">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -2576,7 +2288,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_1600_Lab">
                <property name="minimumSize">
                 <size>
@@ -2602,18 +2314,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band8_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_3150">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -2664,7 +2379,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_3150_Lab">
                <property name="minimumSize">
                 <size>
@@ -2690,18 +2405,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band9_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_6300">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -2752,7 +2470,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_6300_Lab">
                <property name="minimumSize">
                 <size>
@@ -2778,18 +2496,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band10_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_12500">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -2840,7 +2561,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_12500_Lab">
                <property name="minimumSize">
                 <size>
@@ -2883,7 +2604,7 @@ background: rgba(118, 214, 255, 85)
           </layout>
          </widget>
         </item>
-        <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+        <item>
          <widget class="QFrame" name="EQ2_frame2">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2910,6 +2631,12 @@ background: rgba(118, 214, 255, 85)
            <enum>QFrame::Sunken</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="topMargin">
+            <number>5</number>
+           </property>
+           <property name="bottomMargin">
+            <number>11</number>
+           </property>
            <item>
             <spacer name="horizontalSpacer_5">
              <property name="orientation">
@@ -2928,18 +2655,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band1_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_32">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -2990,7 +2720,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_32_Lab">
                <property name="minimumSize">
                 <size>
@@ -3016,18 +2746,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band2_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_63">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -3078,7 +2811,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_63_Lab">
                <property name="minimumSize">
                 <size>
@@ -3104,18 +2837,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band3_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_125">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -3166,7 +2902,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_125_Lab">
                <property name="minimumSize">
                 <size>
@@ -3192,18 +2928,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band4_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_250">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -3254,7 +2993,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_250_Lab">
                <property name="minimumSize">
                 <size>
@@ -3280,18 +3019,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band5_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_500">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -3342,7 +3084,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_500_Lab">
                <property name="minimumSize">
                 <size>
@@ -3368,18 +3110,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band6_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_1000">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="sizeIncrement">
@@ -3436,7 +3181,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_1000_Lab">
                <property name="minimumSize">
                 <size>
@@ -3462,18 +3207,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band7_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_2000">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -3524,7 +3272,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_2000_Lab">
                <property name="minimumSize">
                 <size>
@@ -3550,18 +3298,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band8_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_4000">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -3612,7 +3363,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_4000_Lab">
                <property name="minimumSize">
                 <size>
@@ -3638,18 +3389,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band9_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_8000">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -3700,7 +3454,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_8000_Lab">
                <property name="minimumSize">
                 <size>
@@ -3726,18 +3480,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band10_3">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_16000">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -3788,7 +3545,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_16000_Lab">
                <property name="minimumSize">
                 <size>
@@ -3831,7 +3588,7 @@ background: rgba(118, 214, 255, 85)
           </layout>
          </widget>
         </item>
-        <item alignment="Qt::AlignHCenter|Qt::AlignBottom">
+        <item>
          <widget class="QFrame" name="EQ2_frame3">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -3858,6 +3615,12 @@ background: rgba(118, 214, 255, 85)
            <enum>QFrame::Sunken</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <property name="topMargin">
+            <number>5</number>
+           </property>
+           <property name="bottomMargin">
+            <number>11</number>
+           </property>
            <item>
             <spacer name="horizontalSpacer_9">
              <property name="orientation">
@@ -3876,18 +3639,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band1_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_40">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -3938,7 +3704,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_40_Lab">
                <property name="minimumSize">
                 <size>
@@ -3964,18 +3730,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band2_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_80">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -4026,7 +3795,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_80_Lab">
                <property name="minimumSize">
                 <size>
@@ -4052,18 +3821,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band3_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_160">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -4114,7 +3886,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_160_Lab">
                <property name="minimumSize">
                 <size>
@@ -4140,18 +3912,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band4_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_315">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -4202,7 +3977,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_315_Lab">
                <property name="minimumSize">
                 <size>
@@ -4228,18 +4003,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band5_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_630">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -4290,7 +4068,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_630_Lab">
                <property name="minimumSize">
                 <size>
@@ -4316,18 +4094,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band6_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_1250">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="sizeIncrement">
@@ -4384,7 +4165,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_1250_Lab">
                <property name="minimumSize">
                 <size>
@@ -4410,18 +4191,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band7_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_2500">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -4472,7 +4256,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_2500_Lab">
                <property name="minimumSize">
                 <size>
@@ -4498,18 +4282,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band8_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_5000">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -4560,7 +4347,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_5000_Lab">
                <property name="minimumSize">
                 <size>
@@ -4586,18 +4373,21 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band9_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_10000">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -4648,7 +4438,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_10000_Lab">
                <property name="minimumSize">
                 <size>
@@ -4674,6 +4464,9 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <layout class="QVBoxLayout" name="Band10_4">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item alignment="Qt::AlignHCenter">
               <widget class="QSlider" name="EQ2_20000">
                <property name="enabled">
@@ -4682,13 +4475,13 @@ background: rgba(118, 214, 255, 85)
                <property name="minimumSize">
                 <size>
                  <width>0</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
                  <width>16777215</width>
-                 <height>65</height>
+                 <height>60</height>
                 </size>
                </property>
                <property name="font">
@@ -4736,7 +4529,7 @@ background: rgba(118, 214, 255, 85)
                </property>
               </widget>
              </item>
-             <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
               <widget class="QLabel" name="EQ2_20000_Lab">
                <property name="enabled">
                 <bool>false</bool>
@@ -4782,8 +4575,20 @@ background: rgba(118, 214, 255, 85)
           </layout>
          </widget>
         </item>
-        <item alignment="Qt::AlignRight|Qt::AlignVCenter">
+        <item alignment="Qt::AlignRight">
          <widget class="QToolButton" name="EQSettings_But2">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>20</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">QToolButton{
 border: None;
@@ -4820,6 +4625,372 @@ background: rgba(118, 214, 255, 85)
         </item>
        </layout>
       </widget>
+     </widget>
+    </item>
+    <item row="0" column="0" rowspan="3">
+     <widget class="QGroupBox" name="SourceBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>255</width>
+        <height>535</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>Audio source:</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QRadioButton" name="PinkNoiseRBut">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Pink Noise</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="AudiofileRBut">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Audiofile (Playlist):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="AddPlusRemoveAudioLay">
+         <property name="rightMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="PlusFilesBut">
+           <property name="toolTip">
+            <string>Add tracks</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{
+border: None;
+}
+
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/AddRemove/Icons/AddRemove/plus.png</normaloff>:/AddRemove/Icons/AddRemove/plus.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="MinusFilesBut">
+           <property name="toolTip">
+            <string>Remove tracks</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{
+border: None;
+}
+
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/AddRemove/Icons/AddRemove/minus.png</normaloff>:/AddRemove/Icons/AddRemove/minus.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_12">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="PreviewPreviousBut">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Load and preview previous track</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{
+border: None;
+}
+
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/left-arrow-playlist.png</normaloff>:/Player/Icons/Player/left-arrow-playlist.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>18</width>
+             <height>18</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="PreviewNextBut">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Load and preview next track</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{
+border: None;
+}
+
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/right-arrow-playlist.png</normaloff>:/Player/Icons/Player/right-arrow-playlist.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>18</width>
+             <height>18</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="ShufflePlaybackBut">
+           <property name="minimumSize">
+            <size>
+             <width>21</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Shuffle playback mode</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{border: none;}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+QToolButton:checked{
+border-radius: 4px;
+}</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/shuffle_black.png</normaloff>
+             <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_15">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item alignment="Qt::AlignRight">
+          <widget class="QToolButton" name="ClearFilesBut">
+           <property name="toolTip">
+            <string>Clear playlist</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{
+border: None;
+}
+
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/AddRemove/Icons/AddRemove/clear.png</normaloff>:/AddRemove/Icons/AddRemove/clear.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="SearchAudio">
+         <property name="minimumSize">
+          <size>
+           <width>230</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="inputMask">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Search</string>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="PlaylistView" name="PlaylistView">
+         <property name="minimumSize">
+          <size>
+           <width>230</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="acceptDrops">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QAbstractScrollArea::AdjustToContents</enum>
+         </property>
+         <property name="autoScroll">
+          <bool>true</bool>
+         </property>
+         <property name="dragEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="dragDropMode">
+          <enum>QAbstractItemView::DragDrop</enum>
+         </property>
+         <property name="verticalScrollMode">
+          <enum>QAbstractItemView::ScrollPerItem</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="SourceBoxFootLay">
+         <item>
+          <widget class="QLabel" name="PL_Stats_Lab">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Total: 99999 tracks</string>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="TransportPanelViewBut">
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Show Transport Panel</string>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>

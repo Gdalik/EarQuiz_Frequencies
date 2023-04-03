@@ -140,7 +140,7 @@ class AudioDrillGen:
             freq1, freq2 = self._last_freq, None
         source = self.audiochunk.slice_iter(refresh=fromStart) \
             if not renderCurrent or self.audiochunk.current_slice is None else self.audiochunk.current_slice
-        self.audiochunk.signals.audioNormalized.emit(self.gain_headroom)
+        self.audiochunk.signals.showNormalizationLevel.emit(self.gain_headroom)
         return eq_proc(source, self.audiochunk.samplerate, freq1, freq2=freq2,
                        gain_depth=self.gain_depth(), Q=self.Q, proc_t_perc=self.proc_t_perc)
 

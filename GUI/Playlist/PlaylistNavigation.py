@@ -56,9 +56,9 @@ class PlNavi:
     def _nextShuffle(self):
         if len(self.playlistdata) == 0:
             return None
-        if len(self.playedSongs) > 0 and self.currentSong_path != self.playedSongs[-1].path:
+        if len(self.playedSongs) > 0 and self.currentSong() != self.playedSongs[-1]:
             for ind, S in enumerate(self.playedSongs):
-                if S.path == self.currentSong_path:
+                if S == self.currentSong():
                     return self.playedSongs[ind + 1]
         return self._getShuffled()
 
