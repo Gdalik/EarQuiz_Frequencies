@@ -15,6 +15,7 @@ class PlaylistModel(QtCore.QAbstractTableModel):
         self.playlistdata = playlistdata or []
         self.nonLoadedSong_paths = set()
         self.CurName = None
+        self.currentSong = None
         self.MimeTypes = 'text/uri-list'
         self.filtered = False
         self.SelectedRows = []
@@ -34,7 +35,7 @@ class PlaylistModel(QtCore.QAbstractTableModel):
         if (
             role == Qt.ItemDataRole.DecorationRole
             and index.column() == 0
-            and CurData.isCurrent
+            and self.currentSong ==CurData
         ):
             return QImage(':/Player/Icons/Player/CurrentSong.png')
 
@@ -63,18 +64,24 @@ class PlaylistModel(QtCore.QAbstractTableModel):
             return False
         if row == -1:
             row = len(self.playlistdata)
-        urls = validUrls(data.urls())
+        # urls = validUrls(data.urls())
+        urls = data.urls()
         if not urls:
             return False
+        selected_songs = [self.playlistdata[ind] for ind in self.SelectedRows]
         rows_count = len(urls)
         self.insertRows(row, rows_count, parent)
-
         for r in range(rows_count):
-            CurData = PlSong(str(Path(urls[r].toLocalFile()).absolute()))
-            CurData.canLoad = CurData.path not in self.nonLoadedSong_paths
+            CurData = next(self.plSongsYielder(selected_songs, str(Path(urls[r].toLocalFile()).absolute())))
             self.setData(self.index(row + r, 0, parent), CurData)
 
         return True
+
+    @staticmethod
+    def plSongsYielder(song_list: list[PlSong], song_path: str):
+        for ind, S in enumerate(song_list):
+            if S.path == song_path:
+                yield song_list.pop(ind)
 
     def supportedDropActions(self):
         return Qt.DropAction.MoveAction
@@ -90,8 +97,8 @@ class PlaylistModel(QtCore.QAbstractTableModel):
             return False
         if row < 0:
             return False
-        self.beginInsertRows(parent, row, row + count - 1)
         self.lastInsertedRows.clear()
+        self.beginInsertRows(parent, row, row + count - 1)
         for i in range(count):
             row_ind = row + i
             self.playlistdata.insert(row_ind, PlSong(''))

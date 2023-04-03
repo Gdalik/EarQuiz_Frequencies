@@ -10,32 +10,42 @@ class AudioLoad:
         self.mw_view = self.parent.mw_view
         self.TransportContr = self.parent.TransportContr
 
-    def load_song(self, Song: PlSong, forcePlayAfter=False):
+    def _songCanBeLoaded(self, Song: PlSong):
         if self.parent.CurrentSourceMode.name != 'Audiofile':
-            return
+            return False
         if hasattr(Song, 'file_properties'):
             Song.__delattr__('file_properties')
-        if Song.duration < MinAudioDuration or not Song.exists or Song.samplerate < 44100:
-            return
-        self.parent.SRC.savePrevSourceAudioRange()
-        reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)
-        if not reloaded_same:
-            self.removeCurrentStateFromSource()
-        self.parent.SourceAudio = Song
-        self.parent.PlaylistContr.PlNavi.setCurrentSong(Song)
-        self.parent.playAudioOnPreview = True if reloaded_same \
-            else self.mw_view.actionStartPlayingAfterLoading.isChecked()
+        return bool(
+            Song.duration >= MinAudioDuration
+            and Song.exists
+            and Song.samplerate >= 44100
+        )
+
+    def _switchToPreview(self):
         if self.parent.CurrentMode.name == 'Preview':
             self.parent.CurrentMode.updateCurrentAudio()
         elif self.mw_view.actionPreview_Mode.isChecked():
             self.parent.CurrentMode = PreviewMode(self.parent)
         else:
             self.mw_view.actionPreview_Mode.setChecked(True)
-        if reloaded_same:
+
+    def load_song(self, Song: PlSong, forcePlayAfter=False):
+        if not self._songCanBeLoaded(Song):
+            return
+        reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)
+        reloaded_same_path = (self.parent.SourceAudio is not None and self.parent.SourceAudio.path == Song.path)
+        if not reloaded_same_path:
+            self.parent.SRC.savePrevSourceAudioRange()
+        self.parent.SourceAudio = Song
+        self.parent.PlaylistContr.PlNavi.setCurrentSong(Song)
+        self.parent.playAudioOnPreview = True if reloaded_same \
+            else self.mw_view.actionStartPlayingAfterLoading.isChecked()
+        self._switchToPreview()
+        if reloaded_same_path:
+            if not reloaded_same:
+                self.TransportContr.PlayerContr.setCurrentSongToPlaylistModel()
             self.TransportContr.PlayerContr.onStopTriggered()
             self.TransportContr.PlayerContr.play()
-            return
-        if self.parent.SourceAudio == self.parent.LastSourceAudio:
             return
         self.parent.ADGen = None
         self.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview or forcePlayAfter)
@@ -51,7 +61,6 @@ class AudioLoad:
 
     def setNoAudio(self):
         self.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
-        self.removeCurrentStateFromSource()
         self.parent.SourceAudio = self.parent.LastSourceAudio = None
         self.parent.ADGen = None
         self.parent.CurrentAudio = None
@@ -64,9 +73,3 @@ class AudioLoad:
         self.parent.SourceRange = None
         self.parent.setMakeAudioActionsEnabled(False)
         self.mw_view.statusbar.clearMessage()
-
-    def removeCurrentStateFromSource(self):
-        if self.parent.SourceAudio is not None and self.parent.SourceAudio.name != 'pinknoise':
-            self.parent.PlaylistContr.playlistModel.layoutAboutToBeChanged.emit()
-            self.parent.SourceAudio.isCurrent = False
-            self.parent.PlaylistContr.playlistModel.layoutChanged.emit()

@@ -3,7 +3,6 @@ from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData, QAudi
 from PyQt6.QtWidgets import QMessageBox
 from definitions import MediaDevices
 from GUI.Misc.error_message import reformat_message
-from pathlib import Path
 import platform
 
 class PlayerContr(QMediaPlayer):
@@ -95,7 +94,8 @@ class PlayerContr(QMediaPlayer):
             self._hashAndRefreshLoadedAudioData()
             self.parent.onLoadSourceAudio()
             self.checkPreviewStartTime()
-            self._setCurrentStateToSource()
+            self.setCurrentSongToPlaylistModel()
+            self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loaded')
             self.onceAudioLoaded = False
         self._playLoadedAudio()
 
@@ -107,11 +107,10 @@ class PlayerContr(QMediaPlayer):
                 self.PlModel.nonLoadedSong_paths.remove(self.mw_contr.LoadedFilePath)
                 self.PlModel.updCanLoadData()
 
-    def _setCurrentStateToSource(self):
+    def setCurrentSongToPlaylistModel(self):
         self.mw_contr.PlaylistContr.playlistModel.layoutAboutToBeChanged.emit()
-        self.mw_contr.SourceAudio.isCurrent = True
+        self.mw_contr.PlaylistContr.playlistModel.currentSong = self.mw_contr.SourceAudio
         self.mw_contr.PlaylistContr.playlistModel.layoutChanged.emit()
-        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loaded')
 
     def _onEndofMedia(self):
         self.setPosition(self.startPos)
@@ -125,7 +124,7 @@ class PlayerContr(QMediaPlayer):
             return
         noPreviewSource = (self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.SourceAudio is None)
         if noPreviewSource:
-            this_song = self.mw_contr.PlaylistContr.PlNavi.thisSong(availableOnly=self.mw_view.actionSkip_Unavailable_Tracks.isChecked())
+            this_song = self.mw_contr.PlaylistContr.PlNavi.findCurrentSong(availableOnly=self.mw_view.actionSkip_Unavailable_Tracks.isChecked())
             if this_song is not None:
                 self.mw_contr.PlaylistContr.loadAndSelectSong(this_song, forcePlayAfter=True)
             elif not self.PlModel.playlistdata:

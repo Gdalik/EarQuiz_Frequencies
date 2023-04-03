@@ -144,6 +144,8 @@ class PlaylistContr(QObject):
 
     def onPreviousTrack_trig(self):
         prev_song = self.PlNavi.prev()
+        if prev_song is None:
+            return
         _currentSong = self.PlNavi.currentSong()
         if self.mw_view.actionSkip_Unavailable_Tracks.isChecked():
             while prev_song is not None and not prev_song.available:
@@ -157,6 +159,8 @@ class PlaylistContr(QObject):
 
     def onNextTrack_trig(self):
         next_song = self.PlNavi.next()
+        if next_song is None:
+            return
         _currentSong = self.PlNavi.currentSong()
         if self.mw_view.actionSkip_Unavailable_Tracks.isChecked():
             if any(S.available for S in self.playlistModel.playlistdata):
@@ -171,14 +175,14 @@ class PlaylistContr(QObject):
 
     def onPreviewNextBut_clicked(self):
         _next = self.PlNavi.next()
-        if _next is None or _next == self.mw_contr.SourceAudio:
+        if _next is None or (_next == self.mw_contr.SourceAudio and self.mw_contr.CurrentMode.name != 'Preview'):
             return
         self.mw_view.actionPreview_Mode.setChecked(True)
         self.onNextTrack_trig()
 
     def onPreviewPreviousBut_clicked(self):
         _prev = self.PlNavi.prev()
-        if _prev is None or _prev == self.mw_contr.SourceAudio:
+        if _prev is None or (_prev == self.mw_contr.SourceAudio and self.mw_contr.CurrentMode.name != 'Preview'):
             return
         self.mw_view.actionPreview_Mode.setChecked(True)
         self.onPreviousTrack_trig()
