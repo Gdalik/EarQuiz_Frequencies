@@ -146,13 +146,14 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             self.EqOnOffLab.setStyleSheet('color: gray; font-weight: bold')
 
     def onActionTransportPanelViewToggled(self):
+
         if self.actionTransportPanelView.isChecked():
             self.TransportPanelViewBut.setText('Hide Transport Panel')
-            if platform.system() == 'Windows' and not self.isFullScreen():
+            if platform.system() == 'Windows' and not self.isFullScreen() and not self.isMaximized():
                 self.resize(1000, 720)
         else:
             self.TransportPanelViewBut.setText('Show Transport Panel')
-            if not self.isFullScreen():
+            if not self.isFullScreen() and not self.isMaximized():
                 self.resize(1000, 700)
 
     def onTransportPanelViewBut_clicked(self):
