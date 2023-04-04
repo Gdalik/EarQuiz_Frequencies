@@ -142,6 +142,16 @@ class PlaylistContr(QObject):
         self.mw_contr.AL.load_song(Song, forcePlayAfter=forcePlayAfter)
         self.selectCurrentSong()
 
+    def setCurrentSongToPlaylistModel(self):
+        rows = []
+        if self.playlistModel.currentSong in self.playlistModel.playlistdata:
+            rows.append(self.playlistModel.playlistdata.index(self.playlistModel.currentSong))
+        self.playlistModel.currentSong = self.mw_contr.SourceAudio
+        rows.append(self.playlistModel.playlistdata.index(self.mw_contr.SourceAudio))
+        rows.sort()
+        self.playlistModel.dataChanged.emit(self.playlistModel.index(rows[0], 0),
+                                            self.playlistModel.index(rows[-1], 0))
+
     def onPreviousTrack_trig(self):
         prev_song = self.PlNavi.prev()
         if prev_song is None:
