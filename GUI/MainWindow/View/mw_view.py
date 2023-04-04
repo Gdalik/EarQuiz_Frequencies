@@ -51,7 +51,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             w_fontsize = w_font.pointSize()
             if w_fontsize >= 16:
                 w_font.setPointSize(w_fontsize - 4)
-            elif w_fontsize >= 14:
+            elif w_fontsize >= 11:
                 w_font.setPointSize(w_fontsize - 2)
             elif 'TimeEdit' in W.objectName():
                 w_font.setPointSize(11)
@@ -113,13 +113,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.Eq_Settings.hide()
         self.SupportProject.hide()
         self.TransportPanel.hide()
-        self.set_size(1080, 700)
-
-    def set_size(self, width: int, height: int):
-        self.setFixedSize(width, height)
-        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
-        self.setMinimumSize(width, height)
-        self.setMaximumSize(16777215, 16777215)
+        self.resize(1000, 630)
 
     def setActionNextExampleEnabled(self, arg):
         self.actionNext_Example.setEnabled(arg)
@@ -145,14 +139,14 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def onActionTransportPanelViewToggled(self):
 
+        opt_height = 725
         if self.actionTransportPanelView.isChecked():
             self.TransportPanelViewBut.setText('Hide Transport Panel')
-            if platform.system() == 'Windows' and not self.isFullScreen() and not self.isMaximized():
-                self.resize(1000, 660)
+            if platform.system() == 'Windows' and not self.isFullScreen() and not self.isMaximized() \
+                    and self.height() < opt_height:
+                self.resize(self.width(), opt_height)
         else:
             self.TransportPanelViewBut.setText('Show Transport Panel')
-            if not self.isFullScreen() and not self.isMaximized():
-                self.resize(1000, 660)
 
     def onTransportPanelViewBut_clicked(self):
         self.TransportPanel.show() if 'Show' in self.TransportPanelViewBut.text() else self.TransportPanel.hide()

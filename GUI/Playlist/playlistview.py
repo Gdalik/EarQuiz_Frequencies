@@ -14,7 +14,9 @@ class PlaylistView(QTableView):
 
     def __init__(self, parent):
         super().__init__()
+        # print(parent.parent().parent())
         self.mw_view = parent.parent().parent()
+        print(self.mw_view)
         self._placeholder_text = "Add new tracks by pressing '+'\n or directly drag the items here"
         self.setDragDrop()
         self.setSelect()
@@ -96,8 +98,9 @@ class PlaylistView(QTableView):
         paths = [QUrl.fromLocalFile(item.path) for item in self.selectedItems]
         mimeData.setUrls(paths)
         drag.setMimeData(mimeData)
-        action = drag.exec(Qt.DropAction.CopyAction) if self.mw_view.alt_pressed \
-            else drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.MoveAction)
+        # TODO add signal!
+        '''action = drag.exec(Qt.DropAction.CopyAction) if self.mw_view.alt_pressed \
+            else drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.MoveAction)'''
         self.signals.dragDropFromPLFinished.emit(action)
 
     def keyPressEvent(self, e):
@@ -119,4 +122,5 @@ class PlaylistView(QTableView):
     def PlStatsLabUpd(self):
         value = len(self.Model.playlistdata)
         tr = 'track' if value == 1 else 'tracks'
-        self.mw_view.PL_Stats_Lab.setText(f'Total: {value} {tr}')
+        # TODO: add signal!
+        # self.mw_view.PL_Stats_Lab.setText(f'Total: {value} {tr}')
