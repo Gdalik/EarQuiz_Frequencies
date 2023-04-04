@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1140</width>
-    <height>675</height>
+    <height>660</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>1100</width>
-    <height>675</height>
+    <height>660</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -316,7 +316,10 @@
          <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -331,8 +334,8 @@ background: rgba(118, 214, 255, 85)
         </property>
         <property name="iconSize">
          <size>
-          <width>30</width>
-          <height>30</height>
+          <width>28</width>
+          <height>28</height>
          </size>
         </property>
        </widget>
@@ -355,7 +358,10 @@ background: rgba(118, 214, 255, 85)
          <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -370,8 +376,8 @@ background: rgba(118, 214, 255, 85)
         </property>
         <property name="iconSize">
          <size>
-          <width>30</width>
-          <height>30</height>
+          <width>28</width>
+          <height>28</height>
          </size>
         </property>
        </widget>
@@ -513,7 +519,7 @@ font-weight: bold</string>
       <property name="minimumSize">
        <size>
         <width>535</width>
-        <height>375</height>
+        <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
@@ -4706,7 +4712,10 @@ background: rgba(118, 214, 255, 85)
             <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -4730,7 +4739,10 @@ background: rgba(118, 214, 255, 85)
             <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -4773,7 +4785,10 @@ background: rgba(118, 214, 255, 85)
             <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -4809,7 +4824,10 @@ background: rgba(118, 214, 255, 85)
             <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -4892,7 +4910,10 @@ border-radius: 4px;
             <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -5028,7 +5049,7 @@ background: rgba(118, 214, 255, 85)
      <x>0</x>
      <y>0</y>
      <width>1140</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -5246,7 +5267,7 @@ font-weight: normal</string>
        <item>
         <layout class="QHBoxLayout" name="PlayerLay">
          <property name="spacing">
-          <number>-1</number>
+          <number>6</number>
          </property>
          <item>
           <spacer name="horizontalSpacer_17">
@@ -5273,7 +5294,10 @@ font-weight: normal</string>
             <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -5288,8 +5312,8 @@ background: rgba(118, 214, 255, 85)
            </property>
            <property name="iconSize">
             <size>
-             <width>30</width>
-             <height>30</height>
+             <width>28</width>
+             <height>28</height>
             </size>
            </property>
           </widget>
@@ -5300,7 +5324,10 @@ background: rgba(118, 214, 255, 85)
             <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -5315,8 +5342,8 @@ background: rgba(118, 214, 255, 85)
            </property>
            <property name="iconSize">
             <size>
-             <width>30</width>
-             <height>30</height>
+             <width>28</width>
+             <height>28</height>
             </size>
            </property>
           </widget>
@@ -5327,7 +5354,10 @@ background: rgba(118, 214, 255, 85)
             <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -5342,8 +5372,8 @@ background: rgba(118, 214, 255, 85)
            </property>
            <property name="iconSize">
             <size>
-             <width>30</width>
-             <height>30</height>
+             <width>28</width>
+             <height>28</height>
             </size>
            </property>
           </widget>
@@ -5354,7 +5384,10 @@ background: rgba(118, 214, 255, 85)
             <string notr="true">QToolButton{
 border: None;
 }
-
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -5369,8 +5402,8 @@ background: rgba(118, 214, 255, 85)
            </property>
            <property name="iconSize">
             <size>
-             <width>30</width>
-             <height>30</height>
+             <width>28</width>
+             <height>28</height>
             </size>
            </property>
           </widget>
@@ -5400,8 +5433,8 @@ border-radius: 4px;
            </property>
            <property name="iconSize">
             <size>
-             <width>30</width>
-             <height>30</height>
+             <width>28</width>
+             <height>28</height>
             </size>
            </property>
            <property name="checkable">
@@ -5434,8 +5467,8 @@ border-radius: 4px;
            </property>
            <property name="iconSize">
             <size>
-             <width>30</width>
-             <height>30</height>
+             <width>28</width>
+             <height>28</height>
             </size>
            </property>
            <property name="checkable">
@@ -5540,7 +5573,7 @@ border-radius: 4px;
            </property>
           </widget>
          </item>
-         <item alignment="Qt::AlignHCenter">
+         <item alignment="Qt::AlignHCenter|Qt::AlignTop">
           <widget class="QLabel" name="VolumeLevelLab">
            <property name="minimumSize">
             <size>
@@ -5557,19 +5590,6 @@ border-radius: 4px;
             <string>75%</string>
            </property>
           </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </item>
@@ -5597,7 +5617,7 @@ border-radius: 4px;
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_8">
            <property name="spacing">
-            <number>-1</number>
+            <number>6</number>
            </property>
            <property name="bottomMargin">
             <number>0</number>
@@ -5613,7 +5633,7 @@ border-radius: 4px;
              <property name="maximumSize">
               <size>
                <width>50</width>
-               <height>12</height>
+               <height>15</height>
               </size>
              </property>
              <property name="font">
@@ -5708,7 +5728,13 @@ color: green;
             <widget class="QPushButton" name="RangeToStart">
              <property name="minimumSize">
               <size>
-               <width>20</width>
+               <width>25</width>
+               <height>15</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>25</width>
                <height>15</height>
               </size>
              </property>
@@ -5744,7 +5770,7 @@ color: green;
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_9">
            <property name="spacing">
-            <number>-1</number>
+            <number>6</number>
            </property>
            <item>
             <widget class="QPushButton" name="EndPointBut">
@@ -5757,7 +5783,7 @@ color: green;
              <property name="maximumSize">
               <size>
                <width>50</width>
-               <height>12</height>
+               <height>15</height>
               </size>
              </property>
              <property name="font">
@@ -5843,7 +5869,13 @@ color: green;
             <widget class="QPushButton" name="RangeToEnd">
              <property name="minimumSize">
               <size>
-               <width>20</width>
+               <width>25</width>
+               <height>15</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>25</width>
                <height>15</height>
               </size>
              </property>
@@ -5882,8 +5914,8 @@ color: green;
         <widget class="QPushButton" name="ClearRangeBut">
          <property name="minimumSize">
           <size>
-           <width>0</width>
-           <height>0</height>
+           <width>25</width>
+           <height>25</height>
           </size>
          </property>
          <property name="maximumSize">
@@ -5899,7 +5931,10 @@ color: green;
           <string notr="true">QPushButton{
 border: None;
 }
-
+QPushButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QPushButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -5941,7 +5976,7 @@ background: rgba(118, 214, 255, 85)
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="0,0,0,0">
            <property name="spacing">
-            <number>-1</number>
+            <number>6</number>
            </property>
            <property name="topMargin">
             <number>0</number>
@@ -5959,7 +5994,7 @@ background: rgba(118, 214, 255, 85)
              </property>
              <property name="maximumSize">
               <size>
-               <width>80</width>
+               <width>85</width>
                <height>20</height>
               </size>
              </property>
@@ -6023,7 +6058,7 @@ background: rgba(118, 214, 255, 85)
               </font>
              </property>
              <property name="text">
-              <string>sec</string>
+              <string> sec</string>
              </property>
             </widget>
            </item>
@@ -6034,6 +6069,12 @@ background: rgba(118, 214, 255, 85)
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>16</width>
+               <height>0</height>
+              </size>
              </property>
              <property name="maximumSize">
               <size>
@@ -6048,7 +6089,10 @@ background: rgba(118, 214, 255, 85)
               <string notr="true">QPushButton{
 border: None;
 }
-
+QPushButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
 QPushButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85)
@@ -6083,6 +6127,9 @@ background: rgba(118, 214, 255, 85)
         <spacer name="horizontalSpacer_14">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -6178,13 +6225,13 @@ font-weight: normal</string>
    <property name="minimumSize">
     <size>
      <width>275</width>
-     <height>225</height>
+     <height>215</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
      <width>275</width>
-     <height>225</height>
+     <height>215</height>
     </size>
    </property>
    <property name="contextMenuPolicy">
@@ -6329,7 +6376,7 @@ font-weight: normal</string>
        <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
-         <height>5</height>
+         <height>3</height>
         </size>
        </property>
       </spacer>

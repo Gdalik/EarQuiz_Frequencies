@@ -36,7 +36,8 @@ class ADGenContr:
         ADG.exec()
         self.parent.isErrorInProcess(ADG)
         self.parent.ADGen = ADG.return_obj or None
-        self.parent.ADGen.audiochunk.signals.showNormalizationLevel.connect(self.parent.mw_view.status.showNormalization)
+        if self.parent.ADGen is not None:
+            self.parent.ADGen.audiochunk.signals.showNormalizationLevel.connect(self.parent.mw_view.status.showNormalization)
         self.parent.isErrorInProcess(ADG)
 
     def _adjustADGenCropRange(self):

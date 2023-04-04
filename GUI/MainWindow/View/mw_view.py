@@ -49,15 +49,15 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         for W in widget_list:
             w_font = W.font()
             w_fontsize = w_font.pointSize()
-            if w_fontsize < 10:
-                w_font.setPointSize(10)
-            elif w_fontsize >= 16:
+            if w_fontsize >= 16:
                 w_font.setPointSize(w_fontsize - 4)
+            elif w_fontsize >= 14:
+                w_font.setPointSize(w_fontsize - 2)
             elif 'TimeEdit' in W.objectName():
                 w_font.setPointSize(11)
             W.setFont(w_font)
         timelab_fonts = self.Position_Lab.font()
-        timelab_fonts.setPointSize(15)
+        timelab_fonts.setPointSize(14)
         self.Position_Lab.setFont(timelab_fonts)
         self.Duration_Lab.setFont(timelab_fonts)
         self.NextPatternBut.setMinimumSize(26, 26)
@@ -148,11 +148,11 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         if self.actionTransportPanelView.isChecked():
             self.TransportPanelViewBut.setText('Hide Transport Panel')
             if platform.system() == 'Windows' and not self.isFullScreen() and not self.isMaximized():
-                self.resize(1000, 690)
+                self.resize(1000, 660)
         else:
             self.TransportPanelViewBut.setText('Show Transport Panel')
             if not self.isFullScreen() and not self.isMaximized():
-                self.resize(1000, 690)
+                self.resize(1000, 660)
 
     def onTransportPanelViewBut_clicked(self):
         self.TransportPanel.show() if 'Show' in self.TransportPanelViewBut.text() else self.TransportPanel.hide()
