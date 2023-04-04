@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1140</width>
-    <height>690</height>
+    <height>675</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>1100</width>
-    <height>690</height>
+    <height>675</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -331,8 +331,8 @@ background: rgba(118, 214, 255, 85)
         </property>
         <property name="iconSize">
          <size>
-          <width>32</width>
-          <height>32</height>
+          <width>30</width>
+          <height>30</height>
          </size>
         </property>
        </widget>
@@ -370,8 +370,8 @@ background: rgba(118, 214, 255, 85)
         </property>
         <property name="iconSize">
          <size>
-          <width>32</width>
-          <height>32</height>
+          <width>30</width>
+          <height>30</height>
          </size>
         </property>
        </widget>
@@ -5147,14 +5147,14 @@ background: rgba(118, 214, 255, 85)
    </property>
    <property name="minimumSize">
     <size>
-     <width>1140</width>
-     <height>125</height>
+     <width>1094</width>
+     <height>110</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
      <width>524287</width>
-     <height>125</height>
+     <height>110</height>
     </size>
    </property>
    <property name="toolTip">
@@ -5182,6 +5182,9 @@ background: rgba(118, 214, 255, 85)
     <layout class="QVBoxLayout" name="verticalLayout_5">
      <item>
       <layout class="QHBoxLayout" name="TransportLay">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QLabel" name="Position_Lab">
          <property name="sizePolicy">
@@ -5192,19 +5195,19 @@ background: rgba(118, 214, 255, 85)
          </property>
          <property name="minimumSize">
           <size>
-           <width>120</width>
-           <height>30</height>
+           <width>110</width>
+           <height>35</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>120</width>
-           <height>40</height>
+           <width>110</width>
+           <height>35</height>
           </size>
          </property>
          <property name="font">
           <font>
-           <pointsize>18</pointsize>
+           <pointsize>16</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <kerning>true</kerning>
@@ -5242,8 +5245,30 @@ font-weight: normal</string>
        </item>
        <item>
         <layout class="QHBoxLayout" name="PlayerLay">
+         <property name="spacing">
+          <number>-1</number>
+         </property>
+         <item>
+          <spacer name="horizontalSpacer_17">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>5</width>
+             <height>15</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item>
           <widget class="QToolButton" name="Player_SkipBackw">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="styleSheet">
             <string notr="true">QToolButton{
 border: None;
@@ -5263,8 +5288,8 @@ background: rgba(118, 214, 255, 85)
            </property>
            <property name="iconSize">
             <size>
-             <width>32</width>
-             <height>32</height>
+             <width>30</width>
+             <height>30</height>
             </size>
            </property>
           </widget>
@@ -5290,8 +5315,8 @@ background: rgba(118, 214, 255, 85)
            </property>
            <property name="iconSize">
             <size>
-             <width>32</width>
-             <height>32</height>
+             <width>30</width>
+             <height>30</height>
             </size>
            </property>
           </widget>
@@ -5317,8 +5342,8 @@ background: rgba(118, 214, 255, 85)
            </property>
            <property name="iconSize">
             <size>
-             <width>32</width>
-             <height>32</height>
+             <width>30</width>
+             <height>30</height>
             </size>
            </property>
           </widget>
@@ -5344,8 +5369,8 @@ background: rgba(118, 214, 255, 85)
            </property>
            <property name="iconSize">
             <size>
-             <width>32</width>
-             <height>32</height>
+             <width>30</width>
+             <height>30</height>
             </size>
            </property>
           </widget>
@@ -5375,8 +5400,8 @@ border-radius: 4px;
            </property>
            <property name="iconSize">
             <size>
-             <width>32</width>
-             <height>32</height>
+             <width>30</width>
+             <height>30</height>
             </size>
            </property>
            <property name="checkable">
@@ -5409,8 +5434,8 @@ border-radius: 4px;
            </property>
            <property name="iconSize">
             <size>
-             <width>32</width>
-             <height>32</height>
+             <width>30</width>
+             <height>30</height>
             </size>
            </property>
            <property name="checkable">
@@ -5418,18 +5443,52 @@ border-radius: 4px;
            </property>
           </widget>
          </item>
+         <item>
+          <spacer name="horizontalSpacer_18">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>5</width>
+             <height>15</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="Line" name="line_3">
+           <property name="minimumSize">
+            <size>
+             <width>16</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item>
         <layout class="QVBoxLayout" name="VolLay">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QLabel" name="VolumeLab">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>Volume:</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignVCenter">
           <widget class="QSlider" name="VolumeSlider">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -5481,8 +5540,19 @@ border-radius: 4px;
            </property>
           </widget>
          </item>
-         <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+         <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="VolumeLevelLab">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>17</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>75%</string>
            </property>
@@ -5505,21 +5575,39 @@ border-radius: 4px;
        </item>
        <item>
         <widget class="Line" name="line">
+         <property name="minimumSize">
+          <size>
+           <width>16</width>
+           <height>22</height>
+          </size>
+         </property>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="StartEndLay">
+        <layout class="QVBoxLayout" name="StartEndLay" stretch="0,0">
+         <property name="spacing">
+          <number>7</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_8">
-           <item alignment="Qt::AlignVCenter">
+           <property name="spacing">
+            <number>-1</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
             <widget class="QPushButton" name="StartPointBut">
              <property name="minimumSize">
               <size>
-               <width>50</width>
-               <height>12</height>
+               <width>35</width>
+               <height>15</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -5527,6 +5615,11 @@ border-radius: 4px;
                <width>50</width>
                <height>12</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
              </property>
              <property name="toolTip">
               <string>Set starting point to cursor position (enabled in Preview mode for loaded audiofile only)</string>
@@ -5553,24 +5646,45 @@ color: green;
              </property>
             </widget>
            </item>
-           <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
+           <item>
             <widget class="QTimeEdit" name="StartTimeEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>10</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
                <width>105</width>
-               <height>24</height>
+               <height>20</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>105</width>
-               <height>24</height>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="sizeIncrement">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="baseSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
               </size>
              </property>
              <property name="font">
               <font>
-               <pointsize>13</pointsize>
+               <pointsize>12</pointsize>
               </font>
+             </property>
+             <property name="frame">
+              <bool>true</bool>
              </property>
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -5592,6 +5706,17 @@ color: green;
            </item>
            <item>
             <widget class="QPushButton" name="RangeToStart">
+             <property name="minimumSize">
+              <size>
+               <width>20</width>
+               <height>15</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="toolTip">
               <string>Set starting point to beginning of loaded audiofile (enabled in Preview mode only)</string>
              </property>
@@ -5618,12 +5743,15 @@ color: green;
          </item>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_9">
-           <item alignment="Qt::AlignVCenter">
+           <property name="spacing">
+            <number>-1</number>
+           </property>
+           <item>
             <widget class="QPushButton" name="EndPointBut">
              <property name="minimumSize">
               <size>
-               <width>50</width>
-               <height>12</height>
+               <width>35</width>
+               <height>15</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -5631,6 +5759,11 @@ color: green;
                <width>50</width>
                <height>12</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
              </property>
              <property name="toolTip">
               <string>Set ending point to cursor position (enabled in Preview mode for loaded audiofile only)</string>
@@ -5654,24 +5787,42 @@ color: green;
              </property>
             </widget>
            </item>
-           <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
+           <item>
             <widget class="QTimeEdit" name="EndTimeEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>10</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
                <width>105</width>
-               <height>24</height>
+               <height>20</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>105</width>
-               <height>24</height>
+               <height>30</height>
               </size>
              </property>
              <property name="font">
               <font>
-               <pointsize>13</pointsize>
+               <pointsize>12</pointsize>
               </font>
+             </property>
+             <property name="wrapping">
+              <bool>false</bool>
+             </property>
+             <property name="accelerated">
+              <bool>false</bool>
+             </property>
+             <property name="correctionMode">
+              <enum>QAbstractSpinBox::CorrectToPreviousValue</enum>
+             </property>
+             <property name="showGroupSeparator" stdset="0">
+              <bool>false</bool>
              </property>
              <property name="maximumTime">
               <time>
@@ -5690,6 +5841,17 @@ color: green;
            </item>
            <item>
             <widget class="QPushButton" name="RangeToEnd">
+             <property name="minimumSize">
+              <size>
+               <width>20</width>
+               <height>15</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="toolTip">
               <string>Set ending point to end of loaded audiofile (enabled in Preview mode only)</string>
              </property>
@@ -5754,6 +5916,12 @@ background: rgba(118, 214, 255, 85)
        </item>
        <item>
         <widget class="Line" name="line_2">
+         <property name="minimumSize">
+          <size>
+           <width>16</width>
+           <height>22</height>
+          </size>
+         </property>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -5761,18 +5929,44 @@ background: rgba(118, 214, 255, 85)
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_6">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <property name="rightMargin">
           <number>0</number>
          </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="0,0,0,0">
+           <property name="spacing">
+            <number>-1</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item>
             <widget class="QLabel" name="SliceLenLab">
+             <property name="minimumSize">
+              <size>
+               <width>85</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>80</width>
                <height>20</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
              </property>
              <property name="text">
               <string>Slice Length:</string>
@@ -5783,15 +5977,23 @@ background: rgba(118, 214, 255, 85)
             <widget class="QSpinBox" name="SliceLenSpin">
              <property name="minimumSize">
               <size>
-               <width>42</width>
-               <height>0</height>
+               <width>40</width>
+               <height>20</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>42</width>
+               <width>16777215</width>
                <height>16777215</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::UpDownArrows</enum>
              </property>
              <property name="minimum">
               <number>10</number>
@@ -5803,11 +6005,22 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item>
             <widget class="QLabel" name="secLab">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>30</width>
                <height>20</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
              </property>
              <property name="text">
               <string>sec</string>
@@ -5854,6 +6067,11 @@ background: rgba(118, 214, 255, 85)
          </item>
          <item>
           <widget class="QLabel" name="SlicesNum_Lab">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="text">
             <string>Number of Slices:</string>
            </property>
@@ -5869,7 +6087,7 @@ background: rgba(118, 214, 255, 85)
          <property name="sizeHint" stdset="0">
           <size>
            <width>5</width>
-           <height>20</height>
+           <height>15</height>
           </size>
          </property>
         </spacer>
@@ -5884,19 +6102,19 @@ background: rgba(118, 214, 255, 85)
          </property>
          <property name="minimumSize">
           <size>
-           <width>120</width>
-           <height>30</height>
+           <width>110</width>
+           <height>35</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>120</width>
-           <height>40</height>
+           <width>110</width>
+           <height>35</height>
           </size>
          </property>
          <property name="font">
           <font>
-           <pointsize>18</pointsize>
+           <pointsize>16</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <kerning>true</kerning>
@@ -6111,7 +6329,7 @@ font-weight: normal</string>
        <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
-         <height>12</height>
+         <height>5</height>
         </size>
        </property>
       </spacer>
