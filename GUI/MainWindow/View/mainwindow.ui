@@ -5960,13 +5960,13 @@ font-weight: normal</string>
    <property name="minimumSize">
     <size>
      <width>275</width>
-     <height>233</height>
+     <height>225</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
      <width>275</width>
-     <height>233</height>
+     <height>225</height>
     </size>
    </property>
    <property name="contextMenuPolicy">
@@ -6111,7 +6111,7 @@ font-weight: normal</string>
        <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
-         <height>20</height>
+         <height>12</height>
         </size>
        </property>
       </spacer>
@@ -6313,13 +6313,13 @@ border-radius: 4px;
    <property name="minimumSize">
     <size>
      <width>275</width>
-     <height>135</height>
+     <height>140</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
      <width>275</width>
-     <height>135</height>
+     <height>140</height>
     </size>
    </property>
    <property name="allowedAreas">
