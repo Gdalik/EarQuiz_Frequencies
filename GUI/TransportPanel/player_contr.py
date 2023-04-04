@@ -96,7 +96,6 @@ class PlayerContr(QMediaPlayer):
             self._hashAndRefreshLoadedAudioData()
             self.parent.onLoadSourceAudio()
             self.checkPreviewStartTime()
-            self.setCurrentSongToPlaylistModel()
             self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loaded')
             self.onceAudioLoaded = False
         self._playLoadedAudio()
@@ -108,11 +107,6 @@ class PlayerContr(QMediaPlayer):
             if self.mw_contr.LoadedFilePath in self.PlModel.nonLoadedSong_paths:
                 self.PlModel.nonLoadedSong_paths.remove(self.mw_contr.LoadedFilePath)
                 self.PlModel.updCanLoadData()
-
-    def setCurrentSongToPlaylistModel(self):
-        self.mw_contr.PlaylistContr.playlistModel.layoutAboutToBeChanged.emit()
-        self.mw_contr.PlaylistContr.playlistModel.currentSong = self.mw_contr.SourceAudio
-        self.mw_contr.PlaylistContr.playlistModel.layoutChanged.emit()
 
     def _onEndofMedia(self):
         self.setPosition(self.startPos)

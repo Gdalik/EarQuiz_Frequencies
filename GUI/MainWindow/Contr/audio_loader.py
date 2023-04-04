@@ -43,11 +43,12 @@ class AudioLoad:
         self._switchToPreview()
         if reloaded_same_path:
             if not reloaded_same:
-                self.TransportContr.PlayerContr.setCurrentSongToPlaylistModel()
+                self.parent.PlaylistContr.setCurrentSongToPlaylistModel()
             self.TransportContr.PlayerContr.onStopTriggered()
             self.TransportContr.PlayerContr.play()
             return
         self.parent.ADGen = None
+        self.parent.PlaylistContr.setCurrentSongToPlaylistModel()
         self.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview or forcePlayAfter)
 
     def load_pinknoise(self):
