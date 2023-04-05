@@ -1,11 +1,15 @@
 from dataclasses import dataclass, field
 from PyQt6.QtWidgets import QSlider, QLabel
+from PyQt6.QtCore import QEvent, QObject
+from PyQt6.QtGui import QMouseEvent, QWheelEvent
+
 from Utilities.common_calcs import findAdjacentEl
 import re
 
 
-class EqView:
+class EqView(QObject):
     def __init__(self, mw_view):
+        super().__init__()
         self.mw_view = mw_view
         self.TabWidget = mw_view.EQtabWidget
         self.TabWidget.setTabText(0, '10-Band Equalizer')
@@ -21,6 +25,7 @@ class EqView:
         self._DisableAdjacentFiltersMode = False
         self.currentEQ = None
         self.Filters = None
+        self._disableSliderWheel()
 
     @dataclass
     class Filter:
@@ -32,6 +37,13 @@ class EqView:
         @property
         def PermDisabled(self):
             return self.freq < 30 or self.freq > 16000
+
+    def eventFilter(self, obj, event):
+        return event.type() == QWheelEvent.Type.Wheel
+
+    def _disableSliderWheel(self):
+        for S in list(self.TabWidget.findChildren(QSlider)):
+            S.installEventFilter(self)
 
     def setCurrentEQ(self, EQ: str):    # 'EQ1' (10-band) / 'EQ2' (30-band)
         if EQ == 'EQ1':

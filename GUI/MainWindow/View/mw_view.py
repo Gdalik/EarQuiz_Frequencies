@@ -1,6 +1,6 @@
 import platform
-from PyQt6.QtWidgets import QMainWindow, QWidget, QSizePolicy, QToolButton
-from PyQt6.QtGui import QAction
+from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton, QSlider
+from PyQt6.QtGui import QAction, QWheelEvent
 from PyQt6.QtCore import Qt, QObject, pyqtSignal
 from GUI.MainWindow.View.mainwindow import Ui_MainWindow
 from GUI.TransportPanel.transport_view import TransportPanelView
@@ -103,7 +103,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.UniBut.setVisible(False)
         self.UniBut.setCheckable(True)
         self.UniBut.setDefaultAction(self.actionUni_Mode)
-        self.buttonGroup.addButton(self.UniBut)
+        self.ModeButtonGroup.addButton(self.UniBut)
 
     def setMinimalistView(self):
         if self.isFullScreen() or self.isMaximized():

@@ -15,8 +15,8 @@ class PlaylistView(QTableView):
     def __init__(self, parent):
         super().__init__()
         # print(parent.parent().parent())
-        self.mw_view = parent.parent().parent()
-        print(self.mw_view)
+        # self.mw_view = parent.parent().parent()
+        # print(self.mw_view)
         self._placeholder_text = "Add new tracks by pressing '+'\n or directly drag the items here"
         self.setDragDrop()
         self.setSelect()

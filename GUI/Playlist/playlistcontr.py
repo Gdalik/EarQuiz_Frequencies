@@ -16,7 +16,7 @@ class PlaylistContr(QObject):
         super().__init__()
         self.mw_view = parent.mw_view
         self.mw_contr = parent
-        for W in self.mw_view.SourceBox.findChildren(QWidget):
+        for W in self.mw_view.AudioSource.findChildren(QWidget):
             self.__setattr__(W.objectName(), W)
         self.playlistData = PlaylistData
         self.playlistModel = PlaylistModel(playlistdata=self.playlistData)
