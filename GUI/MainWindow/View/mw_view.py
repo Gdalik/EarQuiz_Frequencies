@@ -106,14 +106,17 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.buttonGroup.addButton(self.UniBut)
 
     def setMinimalistView(self):
-        if self.isFullScreen():
+        if self.isFullScreen() or self.isMaximized():
             self.setWindowFlags(self._flags)
             self.showNormal()
         self.ExScoreInfo.hide()
         self.Eq_Settings.hide()
         self.SupportProject.hide()
         self.TransportPanel.hide()
-        self.resize(1000, 630)
+        av_geom = definitions.app.primaryScreen().availableGeometry()
+        width = min(1100, av_geom.width() - 10)
+        height = min(700, av_geom.height() - 30)
+        self.resize(width, height)
 
     def setActionNextExampleEnabled(self, arg):
         self.actionNext_Example.setEnabled(arg)
