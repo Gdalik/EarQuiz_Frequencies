@@ -4562,6 +4562,10 @@ border-radius: 4px;
 QPushButton:pressed{
 color: green;
 background: rgba(118, 214, 255, 85);
+}
+
+QPushButton:disabled {
+color: gray;
 }</string>
              </property>
              <property name="text">
@@ -6008,7 +6012,7 @@ font-weight: normal</string>
     <bool>false</bool>
    </property>
    <property name="allowedAreas">
-    <set>Qt::BottomDockWidgetArea|Qt::RightDockWidgetArea</set>
+    <set>Qt::BottomDockWidgetArea|Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle">
     <string>EQ Settings</string>
@@ -6192,7 +6196,7 @@ border-radius: 4px;
     </size>
    </property>
    <property name="allowedAreas">
-    <set>Qt::BottomDockWidgetArea|Qt::RightDockWidgetArea</set>
+    <set>Qt::BottomDockWidgetArea|Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle">
     <string>Support the App</string>
