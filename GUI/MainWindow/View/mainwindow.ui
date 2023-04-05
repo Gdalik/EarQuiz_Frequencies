@@ -5988,7 +5988,7 @@ font-weight: normal</string>
    </property>
    <property name="maximumSize">
     <size>
-     <width>275</width>
+     <width>16777215</width>
      <height>150</height>
     </size>
    </property>
@@ -6181,7 +6181,7 @@ border-radius: 4px;
    </property>
    <property name="maximumSize">
     <size>
-     <width>275</width>
+     <width>16777215</width>
      <height>140</height>
     </size>
    </property>
