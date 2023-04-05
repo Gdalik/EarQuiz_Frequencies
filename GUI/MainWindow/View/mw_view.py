@@ -65,12 +65,14 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         super(MainWindowView, self).keyPressEvent(event)
         if event.key() == Qt.Key.Key_Alt:
             self.alt_pressed = True
+            self.PlaylistView.alt_pressed = True
         event.accept()
 
     def keyReleaseEvent(self, event):
         super(MainWindowView, self).keyReleaseEvent(event)
         if event.key() == Qt.Key.Key_Alt:
             self.alt_pressed = False
+            self.PlaylistView.alt_pressed = False
         event.accept()
 
     def setViewMenuActions(self):

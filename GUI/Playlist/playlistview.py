@@ -24,6 +24,7 @@ class PlaylistView(QTableView):
         self.setShowGrid(False)
         self.selectedItems = []
         self.MouseButtonPressed = None
+        self.alt_pressed = None
 
     @property
     def Model(self):
@@ -98,9 +99,8 @@ class PlaylistView(QTableView):
         paths = [QUrl.fromLocalFile(item.path) for item in self.selectedItems]
         mimeData.setUrls(paths)
         drag.setMimeData(mimeData)
-        # TODO add signal!
-        '''action = drag.exec(Qt.DropAction.CopyAction) if self.mw_view.alt_pressed \
-            else drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.MoveAction)'''
+        action = drag.exec(Qt.DropAction.CopyAction) if self.alt_pressed \
+            else drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.MoveAction)
         self.signals.dragDropFromPLFinished.emit(action)
 
     def keyPressEvent(self, e):
