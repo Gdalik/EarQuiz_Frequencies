@@ -37,6 +37,7 @@ class TestMode(UniMode):
         self.parent.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
         self.view.setActionNextExampleEnabled(False)
         self.parent.EQContr.resetEQ()
+        self.showProcessingSourceMessage()
         self.currentDrillFreq = self.generateDrill(fromStart=fromStart)
         self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=play_after)
         self.parent.ExScore.nextEx()

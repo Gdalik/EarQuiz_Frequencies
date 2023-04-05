@@ -29,6 +29,7 @@ class LearnMode(UniMode):
     def generateDrill(self, fromStart=False, raiseInterruptedException=True):
         if self.parent.ADGen is None:
             return
+        self.showProcessingSourceMessage()
         self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False,
                                                         raiseInterruptedException=raiseInterruptedException)
         self.updateCurrentAudio()
