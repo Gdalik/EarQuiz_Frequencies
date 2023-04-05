@@ -11,5 +11,5 @@ class StartScreen(QSplashScreen):
         logo = QPixmap(":/Logo/Icons/Logo/EarQuiz_Splash.png")
         self.setPixmap(logo)
         self.showMessage(f'Version {version}', Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignBottom,
-                         color=QColor('blue'))
+                         color=QColor('magenta'))
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)

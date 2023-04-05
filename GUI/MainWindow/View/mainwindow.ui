@@ -84,7 +84,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-31</y>
          <width>559</width>
          <height>543</height>
         </rect>
@@ -498,7 +498,7 @@ font-weight: bold</string>
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="tabsClosable">
            <bool>false</bool>
@@ -6988,7 +6988,7 @@ background: rgba(118, 214, 255, 85)
     <string>actionLockEQSettings</string>
    </property>
    <property name="toolTip">
-    <string>(Un)Lock EQ Settings: EQ Pattern changes do not affect EQ Settings when locked.</string>
+    <string>(Un)Lock EQ Settings: EQ Pattern changes do not affect EQ Settings when locked</string>
    </property>
   </action>
   <action name="actionStartPlayingAfterLoading">
