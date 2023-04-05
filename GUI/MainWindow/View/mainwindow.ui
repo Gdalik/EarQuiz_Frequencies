@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1035</width>
+    <width>1155</width>
     <height>718</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -36,12 +36,15 @@
   </property>
   <property name="baseSize">
    <size>
-    <width>1000</width>
-    <height>630</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -82,548 +85,12 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>761</width>
+         <width>559</width>
          <height>543</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="1">
-         <widget class="QGroupBox" name="PatternGroupBox">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>66</height>
-           </size>
-          </property>
-          <property name="baseSize">
-           <size>
-            <width>520</width>
-            <height>65</height>
-           </size>
-          </property>
-          <property name="title">
-           <string>Equalization Pattern (difficulty ranked)</string>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_6">
-           <item alignment="Qt::AlignLeft">
-            <widget class="QComboBox" name="PatternBox">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="baseSize">
-              <size>
-               <width>445</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">font-weight: normal;</string>
-             </property>
-             <property name="currentIndex">
-              <number>-1</number>
-             </property>
-            </widget>
-           </item>
-           <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-            <widget class="QPushButton" name="NextPatternBut">
-             <property name="minimumSize">
-              <size>
-               <width>26</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>26</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>13</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="toolTip">
-              <string>Next Equalization Pattern</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{color: blue; font-weight: bold;}</string>
-             </property>
-             <property name="text">
-              <string>&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_16">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Expanding</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="0" column="0" rowspan="3">
-         <widget class="QGroupBox" name="SourceBox">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="baseSize">
-           <size>
-            <width>255</width>
-            <height>525</height>
-           </size>
-          </property>
-          <property name="title">
-           <string>Audio source:</string>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_4">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_11">
-             <item>
-              <widget class="QRadioButton" name="PinkNoiseRBut">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Pink Noise</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QToolButton" name="TransportPanelViewBut">
-               <property name="minimumSize">
-                <size>
-                 <width>100</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>9</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>Transport Panel</string>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="AudiofileRBut">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Audiofile (Playlist):</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="AddPlusRemoveAudioLay">
-             <property name="rightMargin">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QToolButton" name="PlusFilesBut">
-               <property name="toolTip">
-                <string>Add tracks</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QToolButton{
-border: None;
-}
-QToolButton:hover{
-background: rgba(192, 192, 192, 128);
-border-radius: 4px;
-}
-QToolButton:pressed{
-border: 1px inset gray;
-background: rgba(118, 214, 255, 85)
-}</string>
-               </property>
-               <property name="text">
-                <string>...</string>
-               </property>
-               <property name="icon">
-                <iconset resource="../../icons.qrc">
-                 <normaloff>:/AddRemove/Icons/AddRemove/plus.png</normaloff>:/AddRemove/Icons/AddRemove/plus.png</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QToolButton" name="MinusFilesBut">
-               <property name="toolTip">
-                <string>Remove tracks</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QToolButton{
-border: None;
-}
-QToolButton:hover{
-background: rgba(192, 192, 192, 128);
-border-radius: 4px;
-}
-QToolButton:pressed{
-border: 1px inset gray;
-background: rgba(118, 214, 255, 85)
-}</string>
-               </property>
-               <property name="text">
-                <string>...</string>
-               </property>
-               <property name="icon">
-                <iconset resource="../../icons.qrc">
-                 <normaloff>:/AddRemove/Icons/AddRemove/minus.png</normaloff>:/AddRemove/Icons/AddRemove/minus.png</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_12">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item>
-              <widget class="QToolButton" name="PreviewPreviousBut">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>26</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string>Load and preview previous track</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QToolButton{
-border: None;
-}
-QToolButton:hover{
-background: rgba(192, 192, 192, 128);
-border-radius: 4px;
-}
-QToolButton:pressed{
-border: 1px inset gray;
-background: rgba(118, 214, 255, 85)
-}</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="../../icons.qrc">
-                 <normaloff>:/Player/Icons/Player/left-arrow-playlist.png</normaloff>:/Player/Icons/Player/left-arrow-playlist.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>18</width>
-                 <height>18</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QToolButton" name="PreviewNextBut">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>26</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string>Load and preview next track</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QToolButton{
-border: None;
-}
-QToolButton:hover{
-background: rgba(192, 192, 192, 128);
-border-radius: 4px;
-}
-QToolButton:pressed{
-border: 1px inset gray;
-background: rgba(118, 214, 255, 85)
-}</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="../../icons.qrc">
-                 <normaloff>:/Player/Icons/Player/right-arrow-playlist.png</normaloff>:/Player/Icons/Player/right-arrow-playlist.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>18</width>
-                 <height>18</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QToolButton" name="ShufflePlaybackBut">
-               <property name="minimumSize">
-                <size>
-                 <width>21</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>26</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string>Shuffle playback mode</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QToolButton{border: none;}
-QToolButton:hover{
-background: rgba(192, 192, 192, 128);
-border-radius: 4px;
-}
-QToolButton:checked{
-border-radius: 4px;
-}</string>
-               </property>
-               <property name="text">
-                <string>...</string>
-               </property>
-               <property name="icon">
-                <iconset resource="../../icons.qrc">
-                 <normaloff>:/Player/Icons/Player/shuffle_black.png</normaloff>
-                 <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
-               </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_15">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item alignment="Qt::AlignRight">
-              <widget class="QToolButton" name="ClearFilesBut">
-               <property name="toolTip">
-                <string>Clear playlist</string>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QToolButton{
-border: None;
-}
-QToolButton:hover{
-background: rgba(192, 192, 192, 128);
-border-radius: 4px;
-}
-QToolButton:pressed{
-border: 1px inset gray;
-background: rgba(118, 214, 255, 85)
-}</string>
-               </property>
-               <property name="text">
-                <string>...</string>
-               </property>
-               <property name="icon">
-                <iconset resource="../../icons.qrc">
-                 <normaloff>:/AddRemove/Icons/AddRemove/clear.png</normaloff>:/AddRemove/Icons/AddRemove/clear.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="SearchAudio">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="baseSize">
-              <size>
-               <width>230</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="inputMask">
-              <string/>
-             </property>
-             <property name="placeholderText">
-              <string>Search</string>
-             </property>
-             <property name="clearButtonEnabled">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="PlaylistView" name="PlaylistView">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="baseSize">
-              <size>
-               <width>230</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="acceptDrops">
-              <bool>true</bool>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="sizeAdjustPolicy">
-              <enum>QAbstractScrollArea::AdjustToContents</enum>
-             </property>
-             <property name="autoScroll">
-              <bool>true</bool>
-             </property>
-             <property name="dragEnabled">
-              <bool>true</bool>
-             </property>
-             <property name="dragDropMode">
-              <enum>QAbstractItemView::DragDrop</enum>
-             </property>
-             <property name="verticalScrollMode">
-              <enum>QAbstractItemView::ScrollPerItem</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="SourceBoxFootLay">
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>10</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="PL_Stats_Lab">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>Total: 99999 tracks</string>
-               </property>
-               <property name="scaledContents">
-                <bool>false</bool>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="1" column="1">
+        <item row="1" column="0">
          <layout class="QHBoxLayout" name="HeadLayout">
           <property name="spacing">
            <number>6</number>
@@ -978,7 +445,7 @@ font-weight: bold</string>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>40</width>
+              <width>10</width>
               <height>0</height>
              </size>
             </property>
@@ -986,13 +453,13 @@ font-weight: bold</string>
           </item>
          </layout>
         </item>
-        <item row="2" column="1">
+        <item row="2" column="0">
          <widget class="QTabWidget" name="EQtabWidget">
           <property name="enabled">
            <bool>true</bool>
           </property>
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -1018,7 +485,7 @@ font-weight: bold</string>
           <property name="baseSize">
            <size>
             <width>0</width>
-            <height>390</height>
+            <height>0</height>
            </size>
           </property>
           <property name="autoFillBackground">
@@ -1091,19 +558,6 @@ background: rgba(118, 214, 255, 85)
                <bool>false</bool>
               </property>
              </widget>
-            </item>
-            <item>
-             <spacer name="EQ1_VSpacer1">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
-             </spacer>
             </item>
             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
              <widget class="QFrame" name="EQ1_frame">
@@ -1202,7 +656,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="value">
                     <number>0</number>
@@ -1293,7 +747,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -1381,7 +835,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -1469,7 +923,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -1557,7 +1011,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -1651,7 +1105,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -1739,7 +1193,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -1827,7 +1281,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -1915,7 +1369,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -2003,7 +1457,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -2233,7 +1687,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -2324,7 +1778,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -2412,7 +1866,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -2500,7 +1954,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -2588,7 +2042,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -2682,7 +2136,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -2770,7 +2224,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -2858,7 +2312,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -2946,7 +2400,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -3034,7 +2488,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -3190,7 +2644,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -3278,7 +2732,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -3366,7 +2820,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -3454,7 +2908,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -3542,7 +2996,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -3636,7 +3090,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -3724,7 +3178,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -3812,7 +3266,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -3900,7 +3354,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -3988,7 +3442,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -4144,7 +3598,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -4232,7 +3686,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -4320,7 +3774,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -4408,7 +3862,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -4496,7 +3950,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -4590,7 +4044,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -4678,7 +4132,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -4766,7 +4220,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -4854,7 +4308,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -4945,7 +4399,7 @@ background: rgba(118, 214, 255, 85)
                     <number>1</number>
                    </property>
                    <property name="pageStep">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <property name="tracking">
                     <bool>true</bool>
@@ -5011,6 +4465,115 @@ background: rgba(118, 214, 255, 85)
           </widget>
          </widget>
         </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="PatternGroupBox">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>535</width>
+            <height>67</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>520</width>
+            <height>65</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>Equalization Pattern (difficulty ranked)</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item alignment="Qt::AlignLeft">
+            <widget class="QComboBox" name="PatternBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="baseSize">
+              <size>
+               <width>445</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">font-weight: normal;</string>
+             </property>
+             <property name="currentIndex">
+              <number>-1</number>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+            <widget class="QPushButton" name="NextPatternBut">
+             <property name="minimumSize">
+              <size>
+               <width>26</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>26</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>13</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Next Equalization Pattern</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{color: blue; font-weight: bold;}</string>
+             </property>
+             <property name="text">
+              <string>&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_16">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Expanding</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -5022,8 +4585,8 @@ background: rgba(118, 214, 255, 85)
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1035</width>
-     <height>21</height>
+     <width>1155</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -5142,14 +4705,14 @@ background: rgba(118, 214, 255, 85)
    </property>
    <property name="minimumSize">
     <size>
-     <width>1041</width>
-     <height>110</height>
+     <width>1155</width>
+     <height>115</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
      <width>524287</width>
-     <height>110</height>
+     <height>115</height>
     </size>
    </property>
    <property name="baseSize">
@@ -5184,7 +4747,7 @@ background: rgba(118, 214, 255, 85)
      <item>
       <layout class="QHBoxLayout" name="TransportLay">
        <property name="spacing">
-        <number>0</number>
+        <number>-1</number>
        </property>
        <item>
         <widget class="QLabel" name="Position_Lab">
@@ -5258,19 +4821,6 @@ font-weight: normal</string>
             <size>
              <width>5</width>
              <height>15</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_19">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>5</width>
-             <height>0</height>
             </size>
            </property>
           </spacer>
@@ -5596,7 +5146,7 @@ border-radius: 4px;
            </property>
           </widget>
          </item>
-         <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+         <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="VolumeLevelLab">
            <property name="minimumSize">
             <size>
@@ -5632,30 +5182,30 @@ border-radius: 4px;
        <item>
         <layout class="QVBoxLayout" name="StartEndLay" stretch="0,0">
          <property name="spacing">
-          <number>7</number>
+          <number>0</number>
          </property>
          <property name="topMargin">
           <number>0</number>
          </property>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <layout class="QHBoxLayout" name="StartHLay">
            <property name="spacing">
             <number>6</number>
            </property>
            <property name="bottomMargin">
             <number>0</number>
            </property>
-           <item>
+           <item alignment="Qt::AlignRight">
             <widget class="QPushButton" name="StartPointBut">
              <property name="minimumSize">
               <size>
-               <width>35</width>
+               <width>25</width>
                <height>15</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>35</width>
                <height>15</height>
               </size>
              </property>
@@ -5791,21 +5341,21 @@ color: green;
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_9">
+          <layout class="QHBoxLayout" name="EndHLay">
            <property name="spacing">
             <number>6</number>
            </property>
-           <item>
+           <item alignment="Qt::AlignRight">
             <widget class="QPushButton" name="EndPointBut">
              <property name="minimumSize">
               <size>
-               <width>35</width>
+               <width>25</width>
                <height>15</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>50</width>
+               <width>35</width>
                <height>15</height>
               </size>
              </property>
@@ -5986,7 +5536,7 @@ background: rgba(118, 214, 255, 85)
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_6">
+        <layout class="QVBoxLayout" name="SliceLay">
          <property name="spacing">
           <number>0</number>
          </property>
@@ -5997,7 +5547,7 @@ background: rgba(118, 214, 255, 85)
           <number>0</number>
          </property>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="0,0,0,0">
+          <layout class="QHBoxLayout" name="SliceLenHLay" stretch="0,0,0,0">
            <property name="spacing">
             <number>6</number>
            </property>
@@ -6236,7 +5786,7 @@ font-weight: normal</string>
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>15</height>
+         <height>12</height>
         </size>
        </property>
       </widget>
@@ -6246,21 +5796,21 @@ font-weight: normal</string>
   </widget>
   <widget class="QDockWidget" name="ExScoreInfo">
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
    <property name="minimumSize">
     <size>
-     <width>250</width>
-     <height>0</height>
+     <width>275</width>
+     <height>210</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>275</width>
-     <height>215</height>
+     <width>524287</width>
+     <height>210</height>
     </size>
    </property>
    <property name="sizeIncrement">
@@ -6271,14 +5821,17 @@ font-weight: normal</string>
    </property>
    <property name="baseSize">
     <size>
-     <width>275</width>
-     <height>215</height>
+     <width>0</width>
+     <height>0</height>
     </size>
    </property>
    <property name="contextMenuPolicy">
     <enum>Qt::NoContextMenu</enum>
    </property>
    <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="floating">
     <bool>false</bool>
    </property>
    <property name="allowedAreas">
@@ -6406,22 +5959,6 @@ font-weight: normal</string>
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="verticalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>3</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
     </layout>
    </widget>
   </widget>
@@ -6431,8 +5968,8 @@ font-weight: normal</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>149</width>
-     <height>121</height>
+     <width>201</width>
+     <height>150</height>
     </size>
    </property>
    <property name="maximumSize">
@@ -6443,8 +5980,8 @@ font-weight: normal</string>
    </property>
    <property name="baseSize">
     <size>
-     <width>275</width>
-     <height>150</height>
+     <width>0</width>
+     <height>0</height>
     </size>
    </property>
    <property name="contextMenuPolicy">
@@ -6624,8 +6161,8 @@ border-radius: 4px;
    </property>
    <property name="minimumSize">
     <size>
-     <width>0</width>
-     <height>0</height>
+     <width>87</width>
+     <height>97</height>
     </size>
    </property>
    <property name="maximumSize">
@@ -6636,8 +6173,8 @@ border-radius: 4px;
    </property>
    <property name="baseSize">
     <size>
-     <width>275</width>
-     <height>140</height>
+     <width>0</width>
+     <height>0</height>
     </size>
    </property>
    <property name="allowedAreas">
@@ -6663,6 +6200,453 @@ border-radius: 4px;
        <property name="title">
         <string>Donate</string>
        </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="AudioSource">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>253</width>
+     <height>307</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetMovable</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_5">
+    <layout class="QVBoxLayout" name="verticalLayout_10">
+     <item>
+      <widget class="QGroupBox" name="SourceBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>255</width>
+         <height>525</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>Audio source:</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <item>
+           <widget class="QRadioButton" name="PinkNoiseRBut">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Pink Noise</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="TransportPanelViewBut">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Transport Panel</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="AudiofileRBut">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Audiofile (Playlist):</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="AddPlusRemoveAudioLay">
+          <property name="rightMargin">
+           <number>5</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="PlusFilesBut">
+            <property name="toolTip">
+             <string>Add tracks</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QToolButton{
+border: None;
+}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../icons.qrc">
+              <normaloff>:/AddRemove/Icons/AddRemove/plus.png</normaloff>:/AddRemove/Icons/AddRemove/plus.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="MinusFilesBut">
+            <property name="toolTip">
+             <string>Remove tracks</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QToolButton{
+border: None;
+}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../icons.qrc">
+              <normaloff>:/AddRemove/Icons/AddRemove/minus.png</normaloff>:/AddRemove/Icons/AddRemove/minus.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_12">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="PreviewPreviousBut">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>26</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Load and preview previous track</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QToolButton{
+border: None;
+}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../icons.qrc">
+              <normaloff>:/Player/Icons/Player/left-arrow-playlist.png</normaloff>:/Player/Icons/Player/left-arrow-playlist.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>18</width>
+              <height>18</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="PreviewNextBut">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>26</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Load and preview next track</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QToolButton{
+border: None;
+}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../icons.qrc">
+              <normaloff>:/Player/Icons/Player/right-arrow-playlist.png</normaloff>:/Player/Icons/Player/right-arrow-playlist.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>18</width>
+              <height>18</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="ShufflePlaybackBut">
+            <property name="minimumSize">
+             <size>
+              <width>21</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>26</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Shuffle playback mode</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QToolButton{border: none;}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+QToolButton:checked{
+border-radius: 4px;
+}</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../icons.qrc">
+              <normaloff>:/Player/Icons/Player/shuffle_black.png</normaloff>
+              <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_15">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item alignment="Qt::AlignRight">
+           <widget class="QToolButton" name="ClearFilesBut">
+            <property name="toolTip">
+             <string>Clear playlist</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QToolButton{
+border: None;
+}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85)
+}</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../icons.qrc">
+              <normaloff>:/AddRemove/Icons/AddRemove/clear.png</normaloff>:/AddRemove/Icons/AddRemove/clear.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="SearchAudio">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>230</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="inputMask">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>Search</string>
+          </property>
+          <property name="clearButtonEnabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="PlaylistView" name="PlaylistView">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="acceptDrops">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContents</enum>
+          </property>
+          <property name="autoScroll">
+           <bool>true</bool>
+          </property>
+          <property name="dragEnabled">
+           <bool>true</bool>
+          </property>
+          <property name="dragDropMode">
+           <enum>QAbstractItemView::DragDrop</enum>
+          </property>
+          <property name="verticalScrollMode">
+           <enum>QAbstractItemView::ScrollPerItem</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="PL_Stats_Lab">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Total: 99999 tracks</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </item>
     </layout>
@@ -7057,6 +7041,7 @@ border-radius: 4px;
   <zorder>TransportPanel</zorder>
   <zorder>ExScoreInfo</zorder>
   <zorder>SupportProject</zorder>
+  <zorder>AudioSource</zorder>
  </widget>
  <customwidgets>
   <customwidget>
