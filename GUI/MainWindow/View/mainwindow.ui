@@ -84,7 +84,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-16</y>
+         <y>0</y>
          <width>579</width>
          <height>543</height>
         </rect>
@@ -4539,7 +4539,7 @@ background: rgba(118, 214, 255, 85)
              </property>
              <property name="font">
               <font>
-               <pointsize>13</pointsize>
+               <pointsize>16</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -4548,7 +4548,21 @@ background: rgba(118, 214, 255, 85)
               <string>Next Equalization Pattern</string>
              </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton{color: blue; font-weight: bold;}</string>
+              <string notr="true">QPushButton{
+border: none;
+color: blue;
+font-weight: bold;
+}
+
+QPushButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+
+QPushButton:pressed{
+color: green;
+background: rgba(118, 214, 255, 85);
+}</string>
              </property>
              <property name="text">
               <string>&gt;</string>
@@ -7037,7 +7051,7 @@ background: rgba(118, 214, 255, 85)
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="ModeButtonGroup"/>
   <buttongroup name="AudioSourceButtonGroup"/>
+  <buttongroup name="ModeButtonGroup"/>
  </buttongroups>
 </ui>
