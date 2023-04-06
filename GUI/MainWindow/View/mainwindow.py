@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'C:\Users\gdali\PycharmProjects\EarQuiz_Frequencies\GUI\MainWindow\View\mainwindow.ui'
+# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/mainwindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -12,192 +12,57 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1100, 720)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        MainWindow.resize(1155, 718)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QtCore.QSize(1100, 720))
+        MainWindow.setMinimumSize(QtCore.QSize(0, 0))
         MainWindow.setMaximumSize(QtCore.QSize(16777215, 16777215))
         MainWindow.setSizeIncrement(QtCore.QSize(0, 0))
+        MainWindow.setBaseSize(QtCore.QSize(0, 0))
+        MainWindow.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
         MainWindow.setStyleSheet("")
         MainWindow.setAnimated(False)
         MainWindow.setDocumentMode(False)
         MainWindow.setUnifiedTitleAndToolBarOnMac(False)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.PatternGroupBox = QtWidgets.QGroupBox(parent=self.centralwidget)
-        self.PatternGroupBox.setMinimumSize(QtCore.QSize(520, 70))
-        self.PatternGroupBox.setMaximumSize(QtCore.QSize(520, 70))
-        self.PatternGroupBox.setObjectName("PatternGroupBox")
-        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.PatternGroupBox)
-        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.PatternBox = QtWidgets.QComboBox(parent=self.PatternGroupBox)
-        self.PatternBox.setMinimumSize(QtCore.QSize(445, 0))
-        font = QtGui.QFont()
-        font.setBold(False)
-        font.setWeight(50)
-        self.PatternBox.setFont(font)
-        self.PatternBox.setStyleSheet("font-weight: normal;")
-        self.PatternBox.setObjectName("PatternBox")
-        self.horizontalLayout_6.addWidget(self.PatternBox, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
-        self.NextPatternBut = QtWidgets.QPushButton(parent=self.PatternGroupBox)
-        self.NextPatternBut.setMinimumSize(QtCore.QSize(26, 0))
-        self.NextPatternBut.setMaximumSize(QtCore.QSize(26, 16777215))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        font.setWeight(75)
-        self.NextPatternBut.setFont(font)
-        self.NextPatternBut.setStyleSheet("QPushButton{color: blue; font-weight: bold;}")
-        self.NextPatternBut.setObjectName("NextPatternBut")
-        self.horizontalLayout_6.addWidget(self.NextPatternBut, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem)
-        self.gridLayout_2.addWidget(self.PatternGroupBox, 0, 1, 1, 1)
-        self.SourceBox = QtWidgets.QGroupBox(parent=self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.scrollArea = QtWidgets.QScrollArea(parent=self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.SourceBox.sizePolicy().hasHeightForWidth())
-        self.SourceBox.setSizePolicy(sizePolicy)
-        self.SourceBox.setMinimumSize(QtCore.QSize(255, 550))
-        self.SourceBox.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.SourceBox.setObjectName("SourceBox")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.SourceBox)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.PinkNoiseRBut = QtWidgets.QRadioButton(parent=self.SourceBox)
-        self.PinkNoiseRBut.setMinimumSize(QtCore.QSize(0, 25))
-        self.PinkNoiseRBut.setObjectName("PinkNoiseRBut")
-        self.verticalLayout_4.addWidget(self.PinkNoiseRBut)
-        self.AudiofileRBut = QtWidgets.QRadioButton(parent=self.SourceBox)
-        self.AudiofileRBut.setMinimumSize(QtCore.QSize(0, 25))
-        self.AudiofileRBut.setObjectName("AudiofileRBut")
-        self.verticalLayout_4.addWidget(self.AudiofileRBut)
-        self.AddPlusRemoveAudioLay = QtWidgets.QHBoxLayout()
-        self.AddPlusRemoveAudioLay.setContentsMargins(-1, -1, 5, -1)
-        self.AddPlusRemoveAudioLay.setObjectName("AddPlusRemoveAudioLay")
-        self.PlusFilesBut = QtWidgets.QToolButton(parent=self.SourceBox)
-        self.PlusFilesBut.setStyleSheet("QToolButton{\n"
-"border: None;\n"
-"}\n"
-"\n"
-"QToolButton:pressed{\n"
-"border: 1px inset gray;\n"
-"background: rgba(118, 214, 255, 85)\n"
-"}")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/AddRemove/Icons/AddRemove/plus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.PlusFilesBut.setIcon(icon)
-        self.PlusFilesBut.setObjectName("PlusFilesBut")
-        self.AddPlusRemoveAudioLay.addWidget(self.PlusFilesBut)
-        self.MinusFilesBut = QtWidgets.QToolButton(parent=self.SourceBox)
-        self.MinusFilesBut.setStyleSheet("QToolButton{\n"
-"border: None;\n"
-"}\n"
-"\n"
-"QToolButton:pressed{\n"
-"border: 1px inset gray;\n"
-"background: rgba(118, 214, 255, 85)\n"
-"}")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/AddRemove/Icons/AddRemove/minus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.MinusFilesBut.setIcon(icon1)
-        self.MinusFilesBut.setObjectName("MinusFilesBut")
-        self.AddPlusRemoveAudioLay.addWidget(self.MinusFilesBut)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.AddPlusRemoveAudioLay.addItem(spacerItem1)
-        self.ShufflePlaybackBut = QtWidgets.QToolButton(parent=self.SourceBox)
-        self.ShufflePlaybackBut.setMinimumSize(QtCore.QSize(21, 0))
-        self.ShufflePlaybackBut.setMaximumSize(QtCore.QSize(16777215, 26))
-        self.ShufflePlaybackBut.setStyleSheet("QToolButton{border: none;}\n"
-"QToolButton:hover{\n"
-"background: rgba(192, 192, 192, 128);\n"
-"border-radius: 4px;\n"
-"}\n"
-"QToolButton:checked{\n"
-"border-radius: 4px;\n"
-"}")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/shuffle_black.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon2.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/shuffle_blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
-        self.ShufflePlaybackBut.setIcon(icon2)
-        self.ShufflePlaybackBut.setCheckable(True)
-        self.ShufflePlaybackBut.setObjectName("ShufflePlaybackBut")
-        self.AddPlusRemoveAudioLay.addWidget(self.ShufflePlaybackBut)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.AddPlusRemoveAudioLay.addItem(spacerItem2)
-        self.ClearFilesBut = QtWidgets.QToolButton(parent=self.SourceBox)
-        self.ClearFilesBut.setStyleSheet("QToolButton{\n"
-"border: None;\n"
-"}\n"
-"\n"
-"QToolButton:pressed{\n"
-"border: 1px inset gray;\n"
-"background: rgba(118, 214, 255, 85)\n"
-"}")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/AddRemove/Icons/AddRemove/clear.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.ClearFilesBut.setIcon(icon3)
-        self.ClearFilesBut.setIconSize(QtCore.QSize(20, 20))
-        self.ClearFilesBut.setObjectName("ClearFilesBut")
-        self.AddPlusRemoveAudioLay.addWidget(self.ClearFilesBut, 0, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.verticalLayout_4.addLayout(self.AddPlusRemoveAudioLay)
-        self.SearchAudio = QtWidgets.QLineEdit(parent=self.SourceBox)
-        self.SearchAudio.setMinimumSize(QtCore.QSize(230, 0))
-        self.SearchAudio.setInputMask("")
-        self.SearchAudio.setClearButtonEnabled(True)
-        self.SearchAudio.setObjectName("SearchAudio")
-        self.verticalLayout_4.addWidget(self.SearchAudio)
-        self.PlaylistView = PlaylistView(parent=self.SourceBox)
-        self.PlaylistView.setMinimumSize(QtCore.QSize(230, 0))
-        self.PlaylistView.setAcceptDrops(True)
-        self.PlaylistView.setStyleSheet("")
-        self.PlaylistView.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
-        self.PlaylistView.setAutoScroll(True)
-        self.PlaylistView.setDragEnabled(True)
-        self.PlaylistView.setDragDropOverwriteMode(False)
-        self.PlaylistView.setDragDropMode(QtWidgets.QAbstractItemView.DragDropMode.DragDrop)
-        self.PlaylistView.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollMode.ScrollPerItem)
-        self.PlaylistView.setObjectName("PlaylistView")
-        self.verticalLayout_4.addWidget(self.PlaylistView)
-        self.SourceBoxFootLay = QtWidgets.QHBoxLayout()
-        self.SourceBoxFootLay.setObjectName("SourceBoxFootLay")
-        self.PL_Stats_Lab = QtWidgets.QLabel(parent=self.SourceBox)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.PL_Stats_Lab.setFont(font)
-        self.PL_Stats_Lab.setScaledContents(False)
-        self.PL_Stats_Lab.setObjectName("PL_Stats_Lab")
-        self.SourceBoxFootLay.addWidget(self.PL_Stats_Lab)
-        self.TransportPanelViewBut = QtWidgets.QToolButton(parent=self.SourceBox)
-        self.TransportPanelViewBut.setMinimumSize(QtCore.QSize(110, 0))
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        self.TransportPanelViewBut.setFont(font)
-        self.TransportPanelViewBut.setCheckable(False)
-        self.TransportPanelViewBut.setObjectName("TransportPanelViewBut")
-        self.SourceBoxFootLay.addWidget(self.TransportPanelViewBut)
-        self.verticalLayout_4.addLayout(self.SourceBoxFootLay)
-        self.gridLayout_2.addWidget(self.SourceBox, 0, 0, 3, 1)
+        sizePolicy.setHeightForWidth(self.scrollArea.sizePolicy().hasHeightForWidth())
+        self.scrollArea.setSizePolicy(sizePolicy)
+        self.scrollArea.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.scrollArea.setLocale(QtCore.QLocale(QtCore.QLocale.Language.English, QtCore.QLocale.Country.UnitedStates))
+        self.scrollArea.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 579, 543))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
+        self.gridLayout_2.setObjectName("gridLayout_2")
         self.HeadLayout = QtWidgets.QHBoxLayout()
         self.HeadLayout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetNoConstraint)
         self.HeadLayout.setContentsMargins(0, 0, -1, 0)
         self.HeadLayout.setSpacing(6)
         self.HeadLayout.setObjectName("HeadLayout")
-        self.ModeButtonsGroupBox = QtWidgets.QGroupBox(parent=self.centralwidget)
+        self.ModeButtonsGroupBox = QtWidgets.QGroupBox(parent=self.scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.ModeButtonsGroupBox.sizePolicy().hasHeightForWidth())
         self.ModeButtonsGroupBox.setSizePolicy(sizePolicy)
-        self.ModeButtonsGroupBox.setMinimumSize(QtCore.QSize(281, 79))
-        self.ModeButtonsGroupBox.setMaximumSize(QtCore.QSize(281, 79))
+        self.ModeButtonsGroupBox.setMinimumSize(QtCore.QSize(281, 70))
+        self.ModeButtonsGroupBox.setMaximumSize(QtCore.QSize(281, 70))
         self.ModeButtonsGroupBox.setObjectName("ModeButtonsGroupBox")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.ModeButtonsGroupBox)
+        self.horizontalLayout_4.setContentsMargins(-1, 0, -1, 0)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.PreviewBut = QtWidgets.QToolButton(parent=self.ModeButtonsGroupBox)
         self.PreviewBut.setEnabled(True)
@@ -207,10 +72,11 @@ class Ui_MainWindow(object):
         self.PreviewBut.setFont(font)
         self.PreviewBut.setStyleSheet("background-color: rgba(255, 255, 102, 207);")
         self.PreviewBut.setCheckable(True)
+        self.PreviewBut.setAutoRaise(False)
         self.PreviewBut.setObjectName("PreviewBut")
-        self.buttonGroup = QtWidgets.QButtonGroup(MainWindow)
-        self.buttonGroup.setObjectName("buttonGroup")
-        self.buttonGroup.addButton(self.PreviewBut)
+        self.ModeButtonGroup = QtWidgets.QButtonGroup(MainWindow)
+        self.ModeButtonGroup.setObjectName("ModeButtonGroup")
+        self.ModeButtonGroup.addButton(self.PreviewBut)
         self.horizontalLayout_4.addWidget(self.PreviewBut)
         self.LearnBut = QtWidgets.QToolButton(parent=self.ModeButtonsGroupBox)
         self.LearnBut.setMaximumSize(QtCore.QSize(16777215, 30))
@@ -220,7 +86,7 @@ class Ui_MainWindow(object):
         self.LearnBut.setStyleSheet("background-color: rgba(118, 214, 255, 191)")
         self.LearnBut.setCheckable(True)
         self.LearnBut.setObjectName("LearnBut")
-        self.buttonGroup.addButton(self.LearnBut)
+        self.ModeButtonGroup.addButton(self.LearnBut)
         self.horizontalLayout_4.addWidget(self.LearnBut)
         self.TestBut = QtWidgets.QToolButton(parent=self.ModeButtonsGroupBox)
         self.TestBut.setMaximumSize(QtCore.QSize(16777215, 30))
@@ -230,47 +96,53 @@ class Ui_MainWindow(object):
         self.TestBut.setStyleSheet("background-color: rgba(255, 126, 121, 191)")
         self.TestBut.setCheckable(True)
         self.TestBut.setObjectName("TestBut")
-        self.buttonGroup.addButton(self.TestBut)
+        self.ModeButtonGroup.addButton(self.TestBut)
         self.horizontalLayout_4.addWidget(self.TestBut)
         self.HeadLayout.addWidget(self.ModeButtonsGroupBox)
-        spacerItem3 = QtWidgets.QSpacerItem(5, 0, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.HeadLayout.addItem(spacerItem3)
-        self.MW_PlayPause = QtWidgets.QToolButton(parent=self.centralwidget)
+        spacerItem = QtWidgets.QSpacerItem(5, 0, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.HeadLayout.addItem(spacerItem)
+        self.MW_PlayPause = QtWidgets.QToolButton(parent=self.scrollAreaWidgetContents)
         self.MW_PlayPause.setEnabled(True)
         self.MW_PlayPause.setMinimumSize(QtCore.QSize(35, 35))
         self.MW_PlayPause.setMaximumSize(QtCore.QSize(35, 35))
         self.MW_PlayPause.setStyleSheet("QToolButton{\n"
 "border: None;\n"
 "}\n"
-"\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
 "QToolButton:pressed{\n"
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/Actions-media-playback-start-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.MW_PlayPause.setIcon(icon4)
-        self.MW_PlayPause.setIconSize(QtCore.QSize(32, 32))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/Actions-media-playback-start-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.MW_PlayPause.setIcon(icon)
+        self.MW_PlayPause.setIconSize(QtCore.QSize(28, 28))
         self.MW_PlayPause.setObjectName("MW_PlayPause")
         self.HeadLayout.addWidget(self.MW_PlayPause)
-        self.MW_Stop = QtWidgets.QToolButton(parent=self.centralwidget)
+        self.MW_Stop = QtWidgets.QToolButton(parent=self.scrollAreaWidgetContents)
         self.MW_Stop.setMinimumSize(QtCore.QSize(35, 35))
         self.MW_Stop.setMaximumSize(QtCore.QSize(35, 35))
         self.MW_Stop.setStyleSheet("QToolButton{\n"
 "border: None;\n"
 "}\n"
-"\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
 "QToolButton:pressed{\n"
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/Actions-media-playback-stop-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.MW_Stop.setIcon(icon5)
-        self.MW_Stop.setIconSize(QtCore.QSize(32, 32))
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/Actions-media-playback-stop-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.MW_Stop.setIcon(icon1)
+        self.MW_Stop.setIconSize(QtCore.QSize(28, 28))
         self.MW_Stop.setObjectName("MW_Stop")
         self.HeadLayout.addWidget(self.MW_Stop)
-        self.NextExample = QtWidgets.QToolButton(parent=self.centralwidget)
+        self.NextExample = QtWidgets.QToolButton(parent=self.scrollAreaWidgetContents)
         self.NextExample.setMinimumSize(QtCore.QSize(30, 30))
         self.NextExample.setMaximumSize(QtCore.QSize(30, 30))
         self.NextExample.setStatusTip("")
@@ -285,17 +157,17 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85);\n"
 "}")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/arrow-right_gray.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.NextExample.setIcon(icon6)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/arrow-right_gray.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.NextExample.setIcon(icon2)
         self.NextExample.setIconSize(QtCore.QSize(26, 26))
         self.NextExample.setObjectName("NextExample")
         self.HeadLayout.addWidget(self.NextExample)
-        spacerItem4 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.HeadLayout.addItem(spacerItem4)
-        self.EqOnOffLab = QtWidgets.QLabel(parent=self.centralwidget)
-        self.EqOnOffLab.setMinimumSize(QtCore.QSize(64, 30))
-        self.EqOnOffLab.setMaximumSize(QtCore.QSize(64, 30))
+        spacerItem1 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.HeadLayout.addItem(spacerItem1)
+        self.EqOnOffLab = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents)
+        self.EqOnOffLab.setMinimumSize(QtCore.QSize(70, 30))
+        self.EqOnOffLab.setMaximumSize(QtCore.QSize(70, 30))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(20)
@@ -305,23 +177,25 @@ class Ui_MainWindow(object):
         self.EqOnOffLab.setFont(font)
         self.EqOnOffLab.setStyleSheet("color: rgb(115, 115, 115);\n"
 "font-weight: bold")
+        self.EqOnOffLab.setScaledContents(False)
         self.EqOnOffLab.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.EqOnOffLab.setIndent(-1)
         self.EqOnOffLab.setObjectName("EqOnOffLab")
         self.HeadLayout.addWidget(self.EqOnOffLab)
-        spacerItem5 = QtWidgets.QSpacerItem(15, 0, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.HeadLayout.addItem(spacerItem5)
-        self.gridLayout_2.addLayout(self.HeadLayout, 1, 1, 1, 1)
-        self.EQtabWidget = QtWidgets.QTabWidget(parent=self.centralwidget)
+        spacerItem2 = QtWidgets.QSpacerItem(10, 0, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.HeadLayout.addItem(spacerItem2)
+        self.gridLayout_2.addLayout(self.HeadLayout, 1, 0, 1, 1)
+        self.EQtabWidget = QtWidgets.QTabWidget(parent=self.scrollAreaWidgetContents)
         self.EQtabWidget.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.EQtabWidget.sizePolicy().hasHeightForWidth())
         self.EQtabWidget.setSizePolicy(sizePolicy)
-        self.EQtabWidget.setMinimumSize(QtCore.QSize(535, 380))
-        self.EQtabWidget.setMaximumSize(QtCore.QSize(535, 380))
+        self.EQtabWidget.setMinimumSize(QtCore.QSize(535, 0))
+        self.EQtabWidget.setMaximumSize(QtCore.QSize(535, 375))
         self.EQtabWidget.setSizeIncrement(QtCore.QSize(0, 0))
-        self.EQtabWidget.setBaseSize(QtCore.QSize(0, 390))
+        self.EQtabWidget.setBaseSize(QtCore.QSize(0, 0))
         self.EQtabWidget.setAutoFillBackground(False)
         self.EQtabWidget.setStyleSheet("background-color: rgb(240, 240, 240)")
         self.EQtabWidget.setTabPosition(QtWidgets.QTabWidget.TabPosition.North)
@@ -332,24 +206,47 @@ class Ui_MainWindow(object):
         self.EQ1.setObjectName("EQ1")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.EQ1)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem6)
+        self.EQSettings_But1 = QtWidgets.QToolButton(parent=self.EQ1)
+        self.EQSettings_But1.setMinimumSize(QtCore.QSize(0, 20))
+        self.EQSettings_But1.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.EQSettings_But1.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:checked{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.EQSettings_But1.setText("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/Misc/Icons/Misc/Settings.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.EQSettings_But1.setIcon(icon3)
+        self.EQSettings_But1.setIconSize(QtCore.QSize(16, 16))
+        self.EQSettings_But1.setCheckable(True)
+        self.EQSettings_But1.setChecked(False)
+        self.EQSettings_But1.setObjectName("EQSettings_But1")
+        self.verticalLayout_2.addWidget(self.EQSettings_But1, 0, QtCore.Qt.AlignmentFlag.AlignRight)
         self.EQ1_frame = QtWidgets.QFrame(parent=self.EQ1)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.EQ1_frame.sizePolicy().hasHeightForWidth())
         self.EQ1_frame.setSizePolicy(sizePolicy)
-        self.EQ1_frame.setMinimumSize(QtCore.QSize(490, 110))
-        self.EQ1_frame.setMaximumSize(QtCore.QSize(490, 110))
+        self.EQ1_frame.setMinimumSize(QtCore.QSize(490, 115))
+        self.EQ1_frame.setMaximumSize(QtCore.QSize(490, 115))
         self.EQ1_frame.setFrameShape(QtWidgets.QFrame.Shape.Panel)
         self.EQ1_frame.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.EQ1_frame.setObjectName("EQ1_frame")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.EQ1_frame)
+        self.horizontalLayout.setContentsMargins(-1, 5, -1, 5)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem7 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout.addItem(spacerItem7)
+        spacerItem3 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout.addItem(spacerItem3)
         self.Band1 = QtWidgets.QVBoxLayout()
+        self.Band1.setSpacing(0)
         self.Band1.setObjectName("Band1")
         self.EQ1_31 = QtWidgets.QSlider(parent=self.EQ1_frame)
         self.EQ1_31.setMinimumSize(QtCore.QSize(0, 65))
@@ -371,10 +268,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ1_31.setMinimum(-1)
         self.EQ1_31.setMaximum(1)
         self.EQ1_31.setPageStep(1)
@@ -390,9 +284,10 @@ class Ui_MainWindow(object):
         self.EQ1_31_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ1_31_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ1_31_Lab.setObjectName("EQ1_31_Lab")
-        self.Band1.addWidget(self.EQ1_31_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band1.addWidget(self.EQ1_31_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout.addLayout(self.Band1)
         self.Band2 = QtWidgets.QVBoxLayout()
+        self.Band2.setSpacing(0)
         self.Band2.setObjectName("Band2")
         self.EQ1_63 = QtWidgets.QSlider(parent=self.EQ1_frame)
         self.EQ1_63.setMinimumSize(QtCore.QSize(0, 65))
@@ -414,10 +309,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ1_63.setMinimum(-1)
         self.EQ1_63.setMaximum(1)
         self.EQ1_63.setPageStep(1)
@@ -432,9 +324,10 @@ class Ui_MainWindow(object):
         self.EQ1_63_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ1_63_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ1_63_Lab.setObjectName("EQ1_63_Lab")
-        self.Band2.addWidget(self.EQ1_63_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band2.addWidget(self.EQ1_63_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout.addLayout(self.Band2)
         self.Band3 = QtWidgets.QVBoxLayout()
+        self.Band3.setSpacing(0)
         self.Band3.setObjectName("Band3")
         self.EQ1_125 = QtWidgets.QSlider(parent=self.EQ1_frame)
         self.EQ1_125.setMinimumSize(QtCore.QSize(0, 65))
@@ -456,10 +349,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ1_125.setMinimum(-1)
         self.EQ1_125.setMaximum(1)
         self.EQ1_125.setPageStep(1)
@@ -474,9 +364,10 @@ class Ui_MainWindow(object):
         self.EQ1_125_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ1_125_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ1_125_Lab.setObjectName("EQ1_125_Lab")
-        self.Band3.addWidget(self.EQ1_125_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band3.addWidget(self.EQ1_125_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout.addLayout(self.Band3)
         self.Band4 = QtWidgets.QVBoxLayout()
+        self.Band4.setSpacing(0)
         self.Band4.setObjectName("Band4")
         self.EQ1_250 = QtWidgets.QSlider(parent=self.EQ1_frame)
         self.EQ1_250.setMinimumSize(QtCore.QSize(0, 65))
@@ -498,10 +389,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ1_250.setMinimum(-1)
         self.EQ1_250.setMaximum(1)
         self.EQ1_250.setPageStep(1)
@@ -516,9 +404,10 @@ class Ui_MainWindow(object):
         self.EQ1_250_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ1_250_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ1_250_Lab.setObjectName("EQ1_250_Lab")
-        self.Band4.addWidget(self.EQ1_250_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band4.addWidget(self.EQ1_250_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout.addLayout(self.Band4)
         self.Band5 = QtWidgets.QVBoxLayout()
+        self.Band5.setSpacing(0)
         self.Band5.setObjectName("Band5")
         self.EQ1_500 = QtWidgets.QSlider(parent=self.EQ1_frame)
         self.EQ1_500.setMinimumSize(QtCore.QSize(0, 65))
@@ -540,10 +429,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ1_500.setMinimum(-1)
         self.EQ1_500.setMaximum(1)
         self.EQ1_500.setPageStep(1)
@@ -558,9 +444,10 @@ class Ui_MainWindow(object):
         self.EQ1_500_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ1_500_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ1_500_Lab.setObjectName("EQ1_500_Lab")
-        self.Band5.addWidget(self.EQ1_500_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band5.addWidget(self.EQ1_500_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout.addLayout(self.Band5)
         self.Band6 = QtWidgets.QVBoxLayout()
+        self.Band6.setSpacing(0)
         self.Band6.setObjectName("Band6")
         self.EQ1_1000 = QtWidgets.QSlider(parent=self.EQ1_frame)
         self.EQ1_1000.setMinimumSize(QtCore.QSize(0, 65))
@@ -583,10 +470,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ1_1000.setMinimum(-1)
         self.EQ1_1000.setMaximum(1)
         self.EQ1_1000.setPageStep(1)
@@ -601,9 +485,10 @@ class Ui_MainWindow(object):
         self.EQ1_1000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ1_1000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ1_1000_Lab.setObjectName("EQ1_1000_Lab")
-        self.Band6.addWidget(self.EQ1_1000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band6.addWidget(self.EQ1_1000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout.addLayout(self.Band6)
         self.Band7 = QtWidgets.QVBoxLayout()
+        self.Band7.setSpacing(0)
         self.Band7.setObjectName("Band7")
         self.EQ1_2000 = QtWidgets.QSlider(parent=self.EQ1_frame)
         self.EQ1_2000.setMinimumSize(QtCore.QSize(0, 65))
@@ -625,10 +510,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ1_2000.setMinimum(-1)
         self.EQ1_2000.setMaximum(1)
         self.EQ1_2000.setPageStep(1)
@@ -643,9 +525,10 @@ class Ui_MainWindow(object):
         self.EQ1_2000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ1_2000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ1_2000_Lab.setObjectName("EQ1_2000_Lab")
-        self.Band7.addWidget(self.EQ1_2000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band7.addWidget(self.EQ1_2000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout.addLayout(self.Band7)
         self.Band8 = QtWidgets.QVBoxLayout()
+        self.Band8.setSpacing(0)
         self.Band8.setObjectName("Band8")
         self.EQ1_4000 = QtWidgets.QSlider(parent=self.EQ1_frame)
         self.EQ1_4000.setMinimumSize(QtCore.QSize(0, 65))
@@ -667,10 +550,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ1_4000.setMinimum(-1)
         self.EQ1_4000.setMaximum(1)
         self.EQ1_4000.setPageStep(1)
@@ -685,9 +565,10 @@ class Ui_MainWindow(object):
         self.EQ1_4000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ1_4000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ1_4000_Lab.setObjectName("EQ1_4000_Lab")
-        self.Band8.addWidget(self.EQ1_4000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band8.addWidget(self.EQ1_4000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout.addLayout(self.Band8)
         self.Band9 = QtWidgets.QVBoxLayout()
+        self.Band9.setSpacing(0)
         self.Band9.setObjectName("Band9")
         self.EQ1_8000 = QtWidgets.QSlider(parent=self.EQ1_frame)
         self.EQ1_8000.setMinimumSize(QtCore.QSize(0, 65))
@@ -709,10 +590,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ1_8000.setMinimum(-1)
         self.EQ1_8000.setMaximum(1)
         self.EQ1_8000.setPageStep(1)
@@ -727,9 +605,10 @@ class Ui_MainWindow(object):
         self.EQ1_8000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ1_8000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ1_8000_Lab.setObjectName("EQ1_8000_Lab")
-        self.Band9.addWidget(self.EQ1_8000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band9.addWidget(self.EQ1_8000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout.addLayout(self.Band9)
         self.Band10 = QtWidgets.QVBoxLayout()
+        self.Band10.setSpacing(0)
         self.Band10.setObjectName("Band10")
         self.EQ1_16000 = QtWidgets.QSlider(parent=self.EQ1_frame)
         self.EQ1_16000.setMinimumSize(QtCore.QSize(0, 65))
@@ -751,10 +630,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ1_16000.setMinimum(-1)
         self.EQ1_16000.setMaximum(1)
         self.EQ1_16000.setPageStep(1)
@@ -769,36 +645,39 @@ class Ui_MainWindow(object):
         self.EQ1_16000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ1_16000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ1_16000_Lab.setObjectName("EQ1_16000_Lab")
-        self.Band10.addWidget(self.EQ1_16000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band10.addWidget(self.EQ1_16000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout.addLayout(self.Band10)
-        spacerItem8 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout.addItem(spacerItem8)
+        spacerItem4 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout.addItem(spacerItem4)
         self.verticalLayout_2.addWidget(self.EQ1_frame, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        spacerItem9 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem9)
-        self.EQSettings_But1 = QtWidgets.QToolButton(parent=self.EQ1)
-        self.EQSettings_But1.setStyleSheet("QToolButton{\n"
-"border: None;\n"
-"}\n"
-"\n"
-"QToolButton:checked{\n"
-"border: 1px inset gray;\n"
-"background: rgba(118, 214, 255, 85)\n"
-"}")
-        self.EQSettings_But1.setText("")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/Misc/Icons/Misc/Settings.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.EQSettings_But1.setIcon(icon7)
-        self.EQSettings_But1.setIconSize(QtCore.QSize(16, 16))
-        self.EQSettings_But1.setCheckable(True)
-        self.EQSettings_But1.setChecked(False)
-        self.EQSettings_But1.setObjectName("EQSettings_But1")
-        self.verticalLayout_2.addWidget(self.EQSettings_But1, 0, QtCore.Qt.AlignmentFlag.AlignRight)
+        spacerItem5 = QtWidgets.QSpacerItem(0, 0, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem5)
         self.EQtabWidget.addTab(self.EQ1, "")
         self.EQ2 = QtWidgets.QWidget()
         self.EQ2.setObjectName("EQ2")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.EQ2)
         self.verticalLayout.setObjectName("verticalLayout")
+        self.EQSettings_But2 = QtWidgets.QToolButton(parent=self.EQ2)
+        self.EQSettings_But2.setMinimumSize(QtCore.QSize(0, 20))
+        self.EQSettings_But2.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.EQSettings_But2.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:checked{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.EQSettings_But2.setText("")
+        self.EQSettings_But2.setIcon(icon3)
+        self.EQSettings_But2.setIconSize(QtCore.QSize(16, 16))
+        self.EQSettings_But2.setCheckable(True)
+        self.EQSettings_But2.setAutoRaise(False)
+        self.EQSettings_But2.setObjectName("EQSettings_But2")
+        self.verticalLayout.addWidget(self.EQSettings_But2, 0, QtCore.Qt.AlignmentFlag.AlignRight)
         self.EQ2_frame1 = QtWidgets.QFrame(parent=self.EQ2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -811,15 +690,18 @@ class Ui_MainWindow(object):
         self.EQ2_frame1.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.EQ2_frame1.setObjectName("EQ2_frame1")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.EQ2_frame1)
+        self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
+        self.horizontalLayout_2.setContentsMargins(-1, 5, -1, 11)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem10 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem10)
+        spacerItem6 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem6)
         self.Band1_2 = QtWidgets.QVBoxLayout()
+        self.Band1_2.setSpacing(0)
         self.Band1_2.setObjectName("Band1_2")
         self.EQ2_25 = QtWidgets.QSlider(parent=self.EQ2_frame1)
         self.EQ2_25.setEnabled(False)
-        self.EQ2_25.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_25.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_25.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_25.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_25.setFont(font)
@@ -837,10 +719,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_25.setMinimum(-1)
         self.EQ2_25.setMaximum(1)
         self.EQ2_25.setPageStep(1)
@@ -856,13 +735,14 @@ class Ui_MainWindow(object):
         self.EQ2_25_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_25_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_25_Lab.setObjectName("EQ2_25_Lab")
-        self.Band1_2.addWidget(self.EQ2_25_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band1_2.addWidget(self.EQ2_25_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_2.addLayout(self.Band1_2)
         self.Band2_2 = QtWidgets.QVBoxLayout()
+        self.Band2_2.setSpacing(0)
         self.Band2_2.setObjectName("Band2_2")
         self.EQ2_50 = QtWidgets.QSlider(parent=self.EQ2_frame1)
-        self.EQ2_50.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_50.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_50.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_50.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_50.setFont(font)
@@ -880,10 +760,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_50.setMinimum(-1)
         self.EQ2_50.setMaximum(1)
         self.EQ2_50.setPageStep(1)
@@ -898,13 +775,14 @@ class Ui_MainWindow(object):
         self.EQ2_50_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_50_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_50_Lab.setObjectName("EQ2_50_Lab")
-        self.Band2_2.addWidget(self.EQ2_50_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band2_2.addWidget(self.EQ2_50_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_2.addLayout(self.Band2_2)
         self.Band3_2 = QtWidgets.QVBoxLayout()
+        self.Band3_2.setSpacing(0)
         self.Band3_2.setObjectName("Band3_2")
         self.EQ2_100 = QtWidgets.QSlider(parent=self.EQ2_frame1)
-        self.EQ2_100.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_100.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_100.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_100.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_100.setFont(font)
@@ -922,10 +800,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_100.setMinimum(-1)
         self.EQ2_100.setMaximum(1)
         self.EQ2_100.setPageStep(1)
@@ -940,13 +815,14 @@ class Ui_MainWindow(object):
         self.EQ2_100_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_100_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_100_Lab.setObjectName("EQ2_100_Lab")
-        self.Band3_2.addWidget(self.EQ2_100_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band3_2.addWidget(self.EQ2_100_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_2.addLayout(self.Band3_2)
         self.Band4_2 = QtWidgets.QVBoxLayout()
+        self.Band4_2.setSpacing(0)
         self.Band4_2.setObjectName("Band4_2")
         self.EQ2_200 = QtWidgets.QSlider(parent=self.EQ2_frame1)
-        self.EQ2_200.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_200.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_200.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_200.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_200.setFont(font)
@@ -964,10 +840,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_200.setMinimum(-1)
         self.EQ2_200.setMaximum(1)
         self.EQ2_200.setPageStep(1)
@@ -982,13 +855,14 @@ class Ui_MainWindow(object):
         self.EQ2_200_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_200_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_200_Lab.setObjectName("EQ2_200_Lab")
-        self.Band4_2.addWidget(self.EQ2_200_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band4_2.addWidget(self.EQ2_200_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_2.addLayout(self.Band4_2)
         self.Band5_2 = QtWidgets.QVBoxLayout()
+        self.Band5_2.setSpacing(0)
         self.Band5_2.setObjectName("Band5_2")
         self.EQ2_400 = QtWidgets.QSlider(parent=self.EQ2_frame1)
-        self.EQ2_400.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_400.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_400.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_400.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_400.setFont(font)
@@ -1006,10 +880,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_400.setMinimum(-1)
         self.EQ2_400.setMaximum(1)
         self.EQ2_400.setPageStep(1)
@@ -1024,13 +895,14 @@ class Ui_MainWindow(object):
         self.EQ2_400_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_400_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_400_Lab.setObjectName("EQ2_400_Lab")
-        self.Band5_2.addWidget(self.EQ2_400_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band5_2.addWidget(self.EQ2_400_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_2.addLayout(self.Band5_2)
         self.Band6_2 = QtWidgets.QVBoxLayout()
+        self.Band6_2.setSpacing(0)
         self.Band6_2.setObjectName("Band6_2")
         self.EQ2_800 = QtWidgets.QSlider(parent=self.EQ2_frame1)
-        self.EQ2_800.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_800.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_800.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_800.setMaximumSize(QtCore.QSize(16777215, 55))
         self.EQ2_800.setSizeIncrement(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setKerning(True)
@@ -1049,11 +921,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_800.setMinimum(-1)
         self.EQ2_800.setMaximum(1)
         self.EQ2_800.setPageStep(1)
@@ -1068,13 +936,14 @@ class Ui_MainWindow(object):
         self.EQ2_800_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_800_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_800_Lab.setObjectName("EQ2_800_Lab")
-        self.Band6_2.addWidget(self.EQ2_800_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band6_2.addWidget(self.EQ2_800_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_2.addLayout(self.Band6_2)
         self.Band7_2 = QtWidgets.QVBoxLayout()
+        self.Band7_2.setSpacing(0)
         self.Band7_2.setObjectName("Band7_2")
         self.EQ2_1600 = QtWidgets.QSlider(parent=self.EQ2_frame1)
-        self.EQ2_1600.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_1600.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_1600.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_1600.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_1600.setFont(font)
@@ -1092,10 +961,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_1600.setMinimum(-1)
         self.EQ2_1600.setMaximum(1)
         self.EQ2_1600.setPageStep(1)
@@ -1110,13 +976,14 @@ class Ui_MainWindow(object):
         self.EQ2_1600_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_1600_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_1600_Lab.setObjectName("EQ2_1600_Lab")
-        self.Band7_2.addWidget(self.EQ2_1600_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band7_2.addWidget(self.EQ2_1600_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_2.addLayout(self.Band7_2)
         self.Band8_2 = QtWidgets.QVBoxLayout()
+        self.Band8_2.setSpacing(0)
         self.Band8_2.setObjectName("Band8_2")
         self.EQ2_3150 = QtWidgets.QSlider(parent=self.EQ2_frame1)
-        self.EQ2_3150.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_3150.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_3150.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_3150.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_3150.setFont(font)
@@ -1134,10 +1001,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_3150.setMinimum(-1)
         self.EQ2_3150.setMaximum(1)
         self.EQ2_3150.setPageStep(1)
@@ -1152,13 +1016,14 @@ class Ui_MainWindow(object):
         self.EQ2_3150_Lab.setMaximumSize(QtCore.QSize(34, 16777215))
         self.EQ2_3150_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_3150_Lab.setObjectName("EQ2_3150_Lab")
-        self.Band8_2.addWidget(self.EQ2_3150_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band8_2.addWidget(self.EQ2_3150_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_2.addLayout(self.Band8_2)
         self.Band9_2 = QtWidgets.QVBoxLayout()
+        self.Band9_2.setSpacing(0)
         self.Band9_2.setObjectName("Band9_2")
         self.EQ2_6300 = QtWidgets.QSlider(parent=self.EQ2_frame1)
-        self.EQ2_6300.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_6300.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_6300.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_6300.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_6300.setFont(font)
@@ -1176,10 +1041,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_6300.setMinimum(-1)
         self.EQ2_6300.setMaximum(1)
         self.EQ2_6300.setPageStep(1)
@@ -1194,13 +1056,14 @@ class Ui_MainWindow(object):
         self.EQ2_6300_Lab.setMaximumSize(QtCore.QSize(32, 16777215))
         self.EQ2_6300_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_6300_Lab.setObjectName("EQ2_6300_Lab")
-        self.Band9_2.addWidget(self.EQ2_6300_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band9_2.addWidget(self.EQ2_6300_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_2.addLayout(self.Band9_2)
         self.Band10_2 = QtWidgets.QVBoxLayout()
+        self.Band10_2.setSpacing(0)
         self.Band10_2.setObjectName("Band10_2")
         self.EQ2_12500 = QtWidgets.QSlider(parent=self.EQ2_frame1)
-        self.EQ2_12500.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_12500.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_12500.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_12500.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_12500.setFont(font)
@@ -1218,10 +1081,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_12500.setMinimum(-1)
         self.EQ2_12500.setMaximum(1)
         self.EQ2_12500.setPageStep(1)
@@ -1236,11 +1096,11 @@ class Ui_MainWindow(object):
         self.EQ2_12500_Lab.setMaximumSize(QtCore.QSize(34, 16777215))
         self.EQ2_12500_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_12500_Lab.setObjectName("EQ2_12500_Lab")
-        self.Band10_2.addWidget(self.EQ2_12500_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band10_2.addWidget(self.EQ2_12500_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_2.addLayout(self.Band10_2)
-        spacerItem11 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem11)
-        self.verticalLayout.addWidget(self.EQ2_frame1, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        spacerItem7 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem7)
+        self.verticalLayout.addWidget(self.EQ2_frame1)
         self.EQ2_frame2 = QtWidgets.QFrame(parent=self.EQ2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1253,14 +1113,16 @@ class Ui_MainWindow(object):
         self.EQ2_frame2.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.EQ2_frame2.setObjectName("EQ2_frame2")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.EQ2_frame2)
+        self.horizontalLayout_3.setContentsMargins(-1, 5, -1, 11)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        spacerItem12 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem12)
+        spacerItem8 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem8)
         self.Band1_3 = QtWidgets.QVBoxLayout()
+        self.Band1_3.setSpacing(0)
         self.Band1_3.setObjectName("Band1_3")
         self.EQ2_32 = QtWidgets.QSlider(parent=self.EQ2_frame2)
-        self.EQ2_32.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_32.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_32.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_32.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_32.setFont(font)
@@ -1278,10 +1140,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_32.setMinimum(-1)
         self.EQ2_32.setMaximum(1)
         self.EQ2_32.setPageStep(1)
@@ -1296,13 +1155,14 @@ class Ui_MainWindow(object):
         self.EQ2_32_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_32_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_32_Lab.setObjectName("EQ2_32_Lab")
-        self.Band1_3.addWidget(self.EQ2_32_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band1_3.addWidget(self.EQ2_32_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_3.addLayout(self.Band1_3)
         self.Band2_3 = QtWidgets.QVBoxLayout()
+        self.Band2_3.setSpacing(0)
         self.Band2_3.setObjectName("Band2_3")
         self.EQ2_63 = QtWidgets.QSlider(parent=self.EQ2_frame2)
-        self.EQ2_63.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_63.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_63.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_63.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_63.setFont(font)
@@ -1320,10 +1180,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_63.setMinimum(-1)
         self.EQ2_63.setMaximum(1)
         self.EQ2_63.setPageStep(1)
@@ -1338,13 +1195,14 @@ class Ui_MainWindow(object):
         self.EQ2_63_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_63_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_63_Lab.setObjectName("EQ2_63_Lab")
-        self.Band2_3.addWidget(self.EQ2_63_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band2_3.addWidget(self.EQ2_63_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_3.addLayout(self.Band2_3)
         self.Band3_3 = QtWidgets.QVBoxLayout()
+        self.Band3_3.setSpacing(0)
         self.Band3_3.setObjectName("Band3_3")
         self.EQ2_125 = QtWidgets.QSlider(parent=self.EQ2_frame2)
-        self.EQ2_125.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_125.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_125.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_125.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_125.setFont(font)
@@ -1362,10 +1220,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_125.setMinimum(-1)
         self.EQ2_125.setMaximum(1)
         self.EQ2_125.setPageStep(1)
@@ -1380,13 +1235,14 @@ class Ui_MainWindow(object):
         self.EQ2_125_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_125_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_125_Lab.setObjectName("EQ2_125_Lab")
-        self.Band3_3.addWidget(self.EQ2_125_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band3_3.addWidget(self.EQ2_125_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_3.addLayout(self.Band3_3)
         self.Band4_3 = QtWidgets.QVBoxLayout()
+        self.Band4_3.setSpacing(0)
         self.Band4_3.setObjectName("Band4_3")
         self.EQ2_250 = QtWidgets.QSlider(parent=self.EQ2_frame2)
-        self.EQ2_250.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_250.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_250.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_250.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_250.setFont(font)
@@ -1404,10 +1260,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_250.setMinimum(-1)
         self.EQ2_250.setMaximum(1)
         self.EQ2_250.setPageStep(1)
@@ -1422,13 +1275,14 @@ class Ui_MainWindow(object):
         self.EQ2_250_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_250_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_250_Lab.setObjectName("EQ2_250_Lab")
-        self.Band4_3.addWidget(self.EQ2_250_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band4_3.addWidget(self.EQ2_250_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_3.addLayout(self.Band4_3)
         self.Band5_3 = QtWidgets.QVBoxLayout()
+        self.Band5_3.setSpacing(0)
         self.Band5_3.setObjectName("Band5_3")
         self.EQ2_500 = QtWidgets.QSlider(parent=self.EQ2_frame2)
-        self.EQ2_500.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_500.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_500.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_500.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_500.setFont(font)
@@ -1446,10 +1300,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_500.setMinimum(-1)
         self.EQ2_500.setMaximum(1)
         self.EQ2_500.setPageStep(1)
@@ -1464,13 +1315,14 @@ class Ui_MainWindow(object):
         self.EQ2_500_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_500_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_500_Lab.setObjectName("EQ2_500_Lab")
-        self.Band5_3.addWidget(self.EQ2_500_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band5_3.addWidget(self.EQ2_500_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_3.addLayout(self.Band5_3)
         self.Band6_3 = QtWidgets.QVBoxLayout()
+        self.Band6_3.setSpacing(0)
         self.Band6_3.setObjectName("Band6_3")
         self.EQ2_1000 = QtWidgets.QSlider(parent=self.EQ2_frame2)
-        self.EQ2_1000.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_1000.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_1000.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_1000.setMaximumSize(QtCore.QSize(16777215, 55))
         self.EQ2_1000.setSizeIncrement(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setKerning(True)
@@ -1489,10 +1341,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_1000.setMinimum(-1)
         self.EQ2_1000.setMaximum(1)
         self.EQ2_1000.setPageStep(1)
@@ -1507,13 +1356,14 @@ class Ui_MainWindow(object):
         self.EQ2_1000_Lab.setMaximumSize(QtCore.QSize(34, 16777215))
         self.EQ2_1000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_1000_Lab.setObjectName("EQ2_1000_Lab")
-        self.Band6_3.addWidget(self.EQ2_1000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band6_3.addWidget(self.EQ2_1000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_3.addLayout(self.Band6_3)
         self.Band7_3 = QtWidgets.QVBoxLayout()
+        self.Band7_3.setSpacing(0)
         self.Band7_3.setObjectName("Band7_3")
         self.EQ2_2000 = QtWidgets.QSlider(parent=self.EQ2_frame2)
-        self.EQ2_2000.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_2000.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_2000.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_2000.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_2000.setFont(font)
@@ -1531,10 +1381,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_2000.setMinimum(-1)
         self.EQ2_2000.setMaximum(1)
         self.EQ2_2000.setPageStep(1)
@@ -1549,13 +1396,14 @@ class Ui_MainWindow(object):
         self.EQ2_2000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_2000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_2000_Lab.setObjectName("EQ2_2000_Lab")
-        self.Band7_3.addWidget(self.EQ2_2000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band7_3.addWidget(self.EQ2_2000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_3.addLayout(self.Band7_3)
         self.Band8_3 = QtWidgets.QVBoxLayout()
+        self.Band8_3.setSpacing(0)
         self.Band8_3.setObjectName("Band8_3")
         self.EQ2_4000 = QtWidgets.QSlider(parent=self.EQ2_frame2)
-        self.EQ2_4000.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_4000.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_4000.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_4000.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_4000.setFont(font)
@@ -1573,10 +1421,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_4000.setMinimum(-1)
         self.EQ2_4000.setMaximum(1)
         self.EQ2_4000.setPageStep(1)
@@ -1591,13 +1436,14 @@ class Ui_MainWindow(object):
         self.EQ2_4000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_4000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_4000_Lab.setObjectName("EQ2_4000_Lab")
-        self.Band8_3.addWidget(self.EQ2_4000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band8_3.addWidget(self.EQ2_4000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_3.addLayout(self.Band8_3)
         self.Band9_3 = QtWidgets.QVBoxLayout()
+        self.Band9_3.setSpacing(0)
         self.Band9_3.setObjectName("Band9_3")
         self.EQ2_8000 = QtWidgets.QSlider(parent=self.EQ2_frame2)
-        self.EQ2_8000.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_8000.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_8000.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_8000.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_8000.setFont(font)
@@ -1615,10 +1461,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_8000.setMinimum(-1)
         self.EQ2_8000.setMaximum(1)
         self.EQ2_8000.setPageStep(1)
@@ -1633,13 +1476,14 @@ class Ui_MainWindow(object):
         self.EQ2_8000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_8000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_8000_Lab.setObjectName("EQ2_8000_Lab")
-        self.Band9_3.addWidget(self.EQ2_8000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band9_3.addWidget(self.EQ2_8000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_3.addLayout(self.Band9_3)
         self.Band10_3 = QtWidgets.QVBoxLayout()
+        self.Band10_3.setSpacing(0)
         self.Band10_3.setObjectName("Band10_3")
         self.EQ2_16000 = QtWidgets.QSlider(parent=self.EQ2_frame2)
-        self.EQ2_16000.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_16000.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_16000.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_16000.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_16000.setFont(font)
@@ -1657,10 +1501,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_16000.setMinimum(-1)
         self.EQ2_16000.setMaximum(1)
         self.EQ2_16000.setPageStep(1)
@@ -1675,11 +1516,11 @@ class Ui_MainWindow(object):
         self.EQ2_16000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_16000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_16000_Lab.setObjectName("EQ2_16000_Lab")
-        self.Band10_3.addWidget(self.EQ2_16000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band10_3.addWidget(self.EQ2_16000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_3.addLayout(self.Band10_3)
-        spacerItem13 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem13)
-        self.verticalLayout.addWidget(self.EQ2_frame2, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        spacerItem9 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem9)
+        self.verticalLayout.addWidget(self.EQ2_frame2)
         self.EQ2_frame3 = QtWidgets.QFrame(parent=self.EQ2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -1692,14 +1533,16 @@ class Ui_MainWindow(object):
         self.EQ2_frame3.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.EQ2_frame3.setObjectName("EQ2_frame3")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.EQ2_frame3)
+        self.horizontalLayout_5.setContentsMargins(-1, 5, -1, 11)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        spacerItem14 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem14)
+        spacerItem10 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem10)
         self.Band1_4 = QtWidgets.QVBoxLayout()
+        self.Band1_4.setSpacing(0)
         self.Band1_4.setObjectName("Band1_4")
         self.EQ2_40 = QtWidgets.QSlider(parent=self.EQ2_frame3)
-        self.EQ2_40.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_40.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_40.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_40.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_40.setFont(font)
@@ -1717,10 +1560,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_40.setMinimum(-1)
         self.EQ2_40.setMaximum(1)
         self.EQ2_40.setPageStep(1)
@@ -1735,13 +1575,14 @@ class Ui_MainWindow(object):
         self.EQ2_40_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_40_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_40_Lab.setObjectName("EQ2_40_Lab")
-        self.Band1_4.addWidget(self.EQ2_40_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band1_4.addWidget(self.EQ2_40_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_5.addLayout(self.Band1_4)
         self.Band2_4 = QtWidgets.QVBoxLayout()
+        self.Band2_4.setSpacing(0)
         self.Band2_4.setObjectName("Band2_4")
         self.EQ2_80 = QtWidgets.QSlider(parent=self.EQ2_frame3)
-        self.EQ2_80.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_80.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_80.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_80.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_80.setFont(font)
@@ -1759,10 +1600,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_80.setMinimum(-1)
         self.EQ2_80.setMaximum(1)
         self.EQ2_80.setPageStep(1)
@@ -1777,13 +1615,14 @@ class Ui_MainWindow(object):
         self.EQ2_80_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_80_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_80_Lab.setObjectName("EQ2_80_Lab")
-        self.Band2_4.addWidget(self.EQ2_80_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band2_4.addWidget(self.EQ2_80_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_5.addLayout(self.Band2_4)
         self.Band3_4 = QtWidgets.QVBoxLayout()
+        self.Band3_4.setSpacing(0)
         self.Band3_4.setObjectName("Band3_4")
         self.EQ2_160 = QtWidgets.QSlider(parent=self.EQ2_frame3)
-        self.EQ2_160.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_160.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_160.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_160.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_160.setFont(font)
@@ -1801,10 +1640,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_160.setMinimum(-1)
         self.EQ2_160.setMaximum(1)
         self.EQ2_160.setPageStep(1)
@@ -1819,13 +1655,14 @@ class Ui_MainWindow(object):
         self.EQ2_160_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_160_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_160_Lab.setObjectName("EQ2_160_Lab")
-        self.Band3_4.addWidget(self.EQ2_160_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band3_4.addWidget(self.EQ2_160_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_5.addLayout(self.Band3_4)
         self.Band4_4 = QtWidgets.QVBoxLayout()
+        self.Band4_4.setSpacing(0)
         self.Band4_4.setObjectName("Band4_4")
         self.EQ2_315 = QtWidgets.QSlider(parent=self.EQ2_frame3)
-        self.EQ2_315.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_315.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_315.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_315.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_315.setFont(font)
@@ -1843,10 +1680,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_315.setMinimum(-1)
         self.EQ2_315.setMaximum(1)
         self.EQ2_315.setPageStep(1)
@@ -1861,13 +1695,14 @@ class Ui_MainWindow(object):
         self.EQ2_315_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_315_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_315_Lab.setObjectName("EQ2_315_Lab")
-        self.Band4_4.addWidget(self.EQ2_315_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band4_4.addWidget(self.EQ2_315_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_5.addLayout(self.Band4_4)
         self.Band5_4 = QtWidgets.QVBoxLayout()
+        self.Band5_4.setSpacing(0)
         self.Band5_4.setObjectName("Band5_4")
         self.EQ2_630 = QtWidgets.QSlider(parent=self.EQ2_frame3)
-        self.EQ2_630.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_630.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_630.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_630.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_630.setFont(font)
@@ -1885,10 +1720,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_630.setMinimum(-1)
         self.EQ2_630.setMaximum(1)
         self.EQ2_630.setPageStep(1)
@@ -1903,13 +1735,14 @@ class Ui_MainWindow(object):
         self.EQ2_630_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_630_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_630_Lab.setObjectName("EQ2_630_Lab")
-        self.Band5_4.addWidget(self.EQ2_630_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band5_4.addWidget(self.EQ2_630_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_5.addLayout(self.Band5_4)
         self.Band6_4 = QtWidgets.QVBoxLayout()
+        self.Band6_4.setSpacing(0)
         self.Band6_4.setObjectName("Band6_4")
         self.EQ2_1250 = QtWidgets.QSlider(parent=self.EQ2_frame3)
-        self.EQ2_1250.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_1250.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_1250.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_1250.setMaximumSize(QtCore.QSize(16777215, 55))
         self.EQ2_1250.setSizeIncrement(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setKerning(True)
@@ -1928,10 +1761,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_1250.setMinimum(-1)
         self.EQ2_1250.setMaximum(1)
         self.EQ2_1250.setPageStep(1)
@@ -1946,13 +1776,14 @@ class Ui_MainWindow(object):
         self.EQ2_1250_Lab.setMaximumSize(QtCore.QSize(34, 16777215))
         self.EQ2_1250_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_1250_Lab.setObjectName("EQ2_1250_Lab")
-        self.Band6_4.addWidget(self.EQ2_1250_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band6_4.addWidget(self.EQ2_1250_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_5.addLayout(self.Band6_4)
         self.Band7_4 = QtWidgets.QVBoxLayout()
+        self.Band7_4.setSpacing(0)
         self.Band7_4.setObjectName("Band7_4")
         self.EQ2_2500 = QtWidgets.QSlider(parent=self.EQ2_frame3)
-        self.EQ2_2500.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_2500.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_2500.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_2500.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_2500.setFont(font)
@@ -1970,10 +1801,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_2500.setMinimum(-1)
         self.EQ2_2500.setMaximum(1)
         self.EQ2_2500.setPageStep(1)
@@ -1988,13 +1816,14 @@ class Ui_MainWindow(object):
         self.EQ2_2500_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_2500_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_2500_Lab.setObjectName("EQ2_2500_Lab")
-        self.Band7_4.addWidget(self.EQ2_2500_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band7_4.addWidget(self.EQ2_2500_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_5.addLayout(self.Band7_4)
         self.Band8_4 = QtWidgets.QVBoxLayout()
+        self.Band8_4.setSpacing(0)
         self.Band8_4.setObjectName("Band8_4")
         self.EQ2_5000 = QtWidgets.QSlider(parent=self.EQ2_frame3)
-        self.EQ2_5000.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_5000.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_5000.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_5000.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_5000.setFont(font)
@@ -2012,10 +1841,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_5000.setMinimum(-1)
         self.EQ2_5000.setMaximum(1)
         self.EQ2_5000.setPageStep(1)
@@ -2030,13 +1856,14 @@ class Ui_MainWindow(object):
         self.EQ2_5000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_5000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_5000_Lab.setObjectName("EQ2_5000_Lab")
-        self.Band8_4.addWidget(self.EQ2_5000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band8_4.addWidget(self.EQ2_5000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_5.addLayout(self.Band8_4)
         self.Band9_4 = QtWidgets.QVBoxLayout()
+        self.Band9_4.setSpacing(0)
         self.Band9_4.setObjectName("Band9_4")
         self.EQ2_10000 = QtWidgets.QSlider(parent=self.EQ2_frame3)
-        self.EQ2_10000.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_10000.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_10000.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_10000.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_10000.setFont(font)
@@ -2054,10 +1881,7 @@ class Ui_MainWindow(object):
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}\n"
-"\n"
-"\n"
-"")
+"}")
         self.EQ2_10000.setMinimum(-1)
         self.EQ2_10000.setMaximum(1)
         self.EQ2_10000.setPageStep(1)
@@ -2072,14 +1896,15 @@ class Ui_MainWindow(object):
         self.EQ2_10000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_10000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_10000_Lab.setObjectName("EQ2_10000_Lab")
-        self.Band9_4.addWidget(self.EQ2_10000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band9_4.addWidget(self.EQ2_10000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_5.addLayout(self.Band9_4)
         self.Band10_4 = QtWidgets.QVBoxLayout()
+        self.Band10_4.setSpacing(0)
         self.Band10_4.setObjectName("Band10_4")
         self.EQ2_20000 = QtWidgets.QSlider(parent=self.EQ2_frame3)
         self.EQ2_20000.setEnabled(False)
-        self.EQ2_20000.setMinimumSize(QtCore.QSize(0, 65))
-        self.EQ2_20000.setMaximumSize(QtCore.QSize(16777215, 65))
+        self.EQ2_20000.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_20000.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_20000.setFont(font)
@@ -2113,35 +1938,77 @@ class Ui_MainWindow(object):
         self.EQ2_20000_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
         self.EQ2_20000_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.EQ2_20000_Lab.setObjectName("EQ2_20000_Lab")
-        self.Band10_4.addWidget(self.EQ2_20000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.Band10_4.addWidget(self.EQ2_20000_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_5.addLayout(self.Band10_4)
-        spacerItem15 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem15)
-        self.verticalLayout.addWidget(self.EQ2_frame3, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignBottom)
-        self.EQSettings_But2 = QtWidgets.QToolButton(parent=self.EQ2)
-        self.EQSettings_But2.setStyleSheet("QToolButton{\n"
-"border: None;\n"
+        spacerItem11 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem11)
+        self.verticalLayout.addWidget(self.EQ2_frame3)
+        self.EQtabWidget.addTab(self.EQ2, "")
+        self.gridLayout_2.addWidget(self.EQtabWidget, 2, 0, 1, 1)
+        self.PatternGroupBox = QtWidgets.QGroupBox(parent=self.scrollAreaWidgetContents)
+        self.PatternGroupBox.setMinimumSize(QtCore.QSize(0, 0))
+        self.PatternGroupBox.setMaximumSize(QtCore.QSize(535, 67))
+        self.PatternGroupBox.setBaseSize(QtCore.QSize(0, 0))
+        self.PatternGroupBox.setObjectName("PatternGroupBox")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.PatternGroupBox)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.PatternBox = QtWidgets.QComboBox(parent=self.PatternGroupBox)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.PatternBox.sizePolicy().hasHeightForWidth())
+        self.PatternBox.setSizePolicy(sizePolicy)
+        self.PatternBox.setMinimumSize(QtCore.QSize(0, 0))
+        self.PatternBox.setBaseSize(QtCore.QSize(0, 0))
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.PatternBox.setFont(font)
+        self.PatternBox.setStyleSheet("font-weight: normal;")
+        self.PatternBox.setObjectName("PatternBox")
+        self.horizontalLayout_6.addWidget(self.PatternBox, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.NextPatternBut = QtWidgets.QPushButton(parent=self.PatternGroupBox)
+        self.NextPatternBut.setMinimumSize(QtCore.QSize(26, 0))
+        self.NextPatternBut.setMaximumSize(QtCore.QSize(21, 21))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.NextPatternBut.setFont(font)
+        self.NextPatternBut.setStyleSheet("QPushButton{\n"
+"border: none;\n"
+"color: blue;\n"
+"font-weight: bold;\n"
 "}\n"
 "\n"
-"QToolButton:checked{\n"
-"border: 1px inset gray;\n"
-"background: rgba(118, 214, 255, 85)\n"
+"QPushButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"color: green;\n"
+"background: rgba(118, 214, 255, 85);\n"
+"}\n"
+"\n"
+"QPushButton:disabled {\n"
+"color: gray;\n"
 "}")
-        self.EQSettings_But2.setText("")
-        self.EQSettings_But2.setIcon(icon7)
-        self.EQSettings_But2.setIconSize(QtCore.QSize(16, 16))
-        self.EQSettings_But2.setCheckable(True)
-        self.EQSettings_But2.setAutoRaise(False)
-        self.EQSettings_But2.setObjectName("EQSettings_But2")
-        self.verticalLayout.addWidget(self.EQSettings_But2, 0, QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.EQtabWidget.addTab(self.EQ2, "")
-        self.gridLayout_2.addWidget(self.EQtabWidget, 2, 1, 1, 1)
+        self.NextPatternBut.setObjectName("NextPatternBut")
+        self.horizontalLayout_6.addWidget(self.NextPatternBut, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        spacerItem12 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem12)
+        self.gridLayout_2.addWidget(self.PatternGroupBox, 0, 0, 1, 1)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.verticalLayout_9.addWidget(self.scrollArea)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1100, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1155, 22))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(parent=self.menubar)
         self.menuFile.setObjectName("menuFile")
+        self.menuExport_Playlist = QtWidgets.QMenu(parent=self.menuFile)
+        self.menuExport_Playlist.setObjectName("menuExport_Playlist")
         self.menuView = QtWidgets.QMenu(parent=self.menubar)
         self.menuView.setObjectName("menuView")
         self.menuHelp = QtWidgets.QMenu(parent=self.menubar)
@@ -2161,13 +2028,14 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.TransportPanel = QtWidgets.QDockWidget(parent=MainWindow)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.TransportPanel.sizePolicy().hasHeightForWidth())
         self.TransportPanel.setSizePolicy(sizePolicy)
-        self.TransportPanel.setMinimumSize(QtCore.QSize(1138, 125))
-        self.TransportPanel.setMaximumSize(QtCore.QSize(524287, 125))
+        self.TransportPanel.setMinimumSize(QtCore.QSize(0, 115))
+        self.TransportPanel.setMaximumSize(QtCore.QSize(524287, 115))
+        self.TransportPanel.setBaseSize(QtCore.QSize(0, 0))
         self.TransportPanel.setStatusTip("")
         self.TransportPanel.setStyleSheet("")
         self.TransportPanel.setFloating(False)
@@ -2178,6 +2046,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.dockWidgetContents)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.TransportLay = QtWidgets.QHBoxLayout()
+        self.TransportLay.setSpacing(6)
         self.TransportLay.setObjectName("TransportLay")
         self.Position_Lab = QtWidgets.QLabel(parent=self.dockWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -2185,10 +2054,10 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Position_Lab.sizePolicy().hasHeightForWidth())
         self.Position_Lab.setSizePolicy(sizePolicy)
-        self.Position_Lab.setMinimumSize(QtCore.QSize(120, 30))
-        self.Position_Lab.setMaximumSize(QtCore.QSize(120, 40))
+        self.Position_Lab.setMinimumSize(QtCore.QSize(115, 35))
+        self.Position_Lab.setMaximumSize(QtCore.QSize(115, 35))
         font = QtGui.QFont()
-        font.setPointSize(18)
+        font.setPointSize(16)
         font.setBold(False)
         font.setWeight(50)
         font.setKerning(True)
@@ -2203,65 +2072,85 @@ class Ui_MainWindow(object):
         self.Position_Lab.setObjectName("Position_Lab")
         self.TransportLay.addWidget(self.Position_Lab)
         self.PlayerLay = QtWidgets.QHBoxLayout()
+        self.PlayerLay.setSpacing(6)
         self.PlayerLay.setObjectName("PlayerLay")
+        spacerItem13 = QtWidgets.QSpacerItem(5, 15, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.PlayerLay.addItem(spacerItem13)
         self.Player_SkipBackw = QtWidgets.QToolButton(parent=self.dockWidgetContents)
+        self.Player_SkipBackw.setMinimumSize(QtCore.QSize(31, 31))
         self.Player_SkipBackw.setStyleSheet("QToolButton{\n"
 "border: None;\n"
 "}\n"
-"\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
 "QToolButton:pressed{\n"
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/Actions-media-skip-backward-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.Player_SkipBackw.setIcon(icon8)
-        self.Player_SkipBackw.setIconSize(QtCore.QSize(32, 32))
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/Actions-media-skip-backward-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.Player_SkipBackw.setIcon(icon4)
+        self.Player_SkipBackw.setIconSize(QtCore.QSize(28, 28))
         self.Player_SkipBackw.setObjectName("Player_SkipBackw")
         self.PlayerLay.addWidget(self.Player_SkipBackw)
         self.Player_PlayPause = QtWidgets.QToolButton(parent=self.dockWidgetContents)
+        self.Player_PlayPause.setMinimumSize(QtCore.QSize(31, 31))
         self.Player_PlayPause.setStyleSheet("QToolButton{\n"
 "border: None;\n"
 "}\n"
-"\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
 "QToolButton:pressed{\n"
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        self.Player_PlayPause.setIcon(icon4)
-        self.Player_PlayPause.setIconSize(QtCore.QSize(32, 32))
+        self.Player_PlayPause.setIcon(icon)
+        self.Player_PlayPause.setIconSize(QtCore.QSize(28, 28))
         self.Player_PlayPause.setObjectName("Player_PlayPause")
         self.PlayerLay.addWidget(self.Player_PlayPause)
         self.Player_Stop = QtWidgets.QToolButton(parent=self.dockWidgetContents)
+        self.Player_Stop.setMinimumSize(QtCore.QSize(31, 31))
         self.Player_Stop.setStyleSheet("QToolButton{\n"
 "border: None;\n"
 "}\n"
-"\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
 "QToolButton:pressed{\n"
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        self.Player_Stop.setIcon(icon5)
-        self.Player_Stop.setIconSize(QtCore.QSize(32, 32))
+        self.Player_Stop.setIcon(icon1)
+        self.Player_Stop.setIconSize(QtCore.QSize(28, 28))
         self.Player_Stop.setObjectName("Player_Stop")
         self.PlayerLay.addWidget(self.Player_Stop)
         self.Player_SkipForw = QtWidgets.QToolButton(parent=self.dockWidgetContents)
+        self.Player_SkipForw.setMinimumSize(QtCore.QSize(31, 31))
         self.Player_SkipForw.setStyleSheet("QToolButton{\n"
 "border: None;\n"
 "}\n"
-"\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
 "QToolButton:pressed{\n"
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/Actions-media-skip-forward-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.Player_SkipForw.setIcon(icon9)
-        self.Player_SkipForw.setIconSize(QtCore.QSize(32, 32))
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/Actions-media-skip-forward-icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.Player_SkipForw.setIcon(icon5)
+        self.Player_SkipForw.setIconSize(QtCore.QSize(28, 28))
         self.Player_SkipForw.setObjectName("Player_SkipForw")
         self.PlayerLay.addWidget(self.Player_SkipForw)
         self.LoopButton = QtWidgets.QToolButton(parent=self.dockWidgetContents)
         self.LoopButton.setEnabled(True)
+        self.LoopButton.setMinimumSize(QtCore.QSize(31, 31))
         self.LoopButton.setStyleSheet("QToolButton{border: none;}\n"
 "QToolButton:hover{\n"
 "background: rgba(192, 192, 192, 128);\n"
@@ -2271,16 +2160,17 @@ class Ui_MainWindow(object):
 "border-radius: 4px;\n"
 "}")
         self.LoopButton.setText("")
-        icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon10.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/music-note-with-loop-circular-arrows-around-blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
-        self.LoopButton.setIcon(icon10)
-        self.LoopButton.setIconSize(QtCore.QSize(32, 32))
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon6.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/music-note-with-loop-circular-arrows-around-blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        self.LoopButton.setIcon(icon6)
+        self.LoopButton.setIconSize(QtCore.QSize(28, 28))
         self.LoopButton.setCheckable(True)
         self.LoopButton.setChecked(True)
         self.LoopButton.setObjectName("LoopButton")
         self.PlayerLay.addWidget(self.LoopButton)
         self.SequencePlayBut = QtWidgets.QToolButton(parent=self.dockWidgetContents)
+        self.SequencePlayBut.setMinimumSize(QtCore.QSize(31, 31))
         self.SequencePlayBut.setStyleSheet("QToolButton{border: none;}\n"
 "QToolButton:hover{\n"
 "background: rgba(192, 192, 192, 128);\n"
@@ -2289,18 +2179,30 @@ class Ui_MainWindow(object):
 "QToolButton:checked{\n"
 "border-radius: 4px;\n"
 "}")
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/sequence - black.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon11.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/sequence - blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
-        self.SequencePlayBut.setIcon(icon11)
-        self.SequencePlayBut.setIconSize(QtCore.QSize(32, 32))
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/sequence - black.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon7.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/sequence - blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        self.SequencePlayBut.setIcon(icon7)
+        self.SequencePlayBut.setIconSize(QtCore.QSize(28, 28))
         self.SequencePlayBut.setCheckable(True)
         self.SequencePlayBut.setObjectName("SequencePlayBut")
         self.PlayerLay.addWidget(self.SequencePlayBut)
+        spacerItem14 = QtWidgets.QSpacerItem(5, 15, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.PlayerLay.addItem(spacerItem14)
+        self.line_3 = QtWidgets.QFrame(parent=self.dockWidgetContents)
+        self.line_3.setMinimumSize(QtCore.QSize(16, 22))
+        self.line_3.setFrameShape(QtWidgets.QFrame.Shape.VLine)
+        self.line_3.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
+        self.line_3.setObjectName("line_3")
+        self.PlayerLay.addWidget(self.line_3)
         self.TransportLay.addLayout(self.PlayerLay)
         self.VolLay = QtWidgets.QVBoxLayout()
+        self.VolLay.setSpacing(0)
         self.VolLay.setObjectName("VolLay")
         self.VolumeLab = QtWidgets.QLabel(parent=self.dockWidgetContents)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.VolumeLab.setFont(font)
         self.VolumeLab.setObjectName("VolumeLab")
         self.VolLay.addWidget(self.VolumeLab)
         self.VolumeSlider = QtWidgets.QSlider(parent=self.dockWidgetContents)
@@ -2322,25 +2224,35 @@ class Ui_MainWindow(object):
         self.VolumeSlider.setTickPosition(QtWidgets.QSlider.TickPosition.NoTicks)
         self.VolumeSlider.setTickInterval(50)
         self.VolumeSlider.setObjectName("VolumeSlider")
-        self.VolLay.addWidget(self.VolumeSlider)
+        self.VolLay.addWidget(self.VolumeSlider, 0, QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.VolumeLevelLab = QtWidgets.QLabel(parent=self.dockWidgetContents)
+        self.VolumeLevelLab.setMinimumSize(QtCore.QSize(0, 17))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.VolumeLevelLab.setFont(font)
         self.VolumeLevelLab.setObjectName("VolumeLevelLab")
-        self.VolLay.addWidget(self.VolumeLevelLab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
-        spacerItem16 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.VolLay.addItem(spacerItem16)
+        self.VolLay.addWidget(self.VolumeLevelLab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
         self.TransportLay.addLayout(self.VolLay)
         self.line = QtWidgets.QFrame(parent=self.dockWidgetContents)
+        self.line.setMinimumSize(QtCore.QSize(16, 22))
         self.line.setFrameShape(QtWidgets.QFrame.Shape.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line.setObjectName("line")
         self.TransportLay.addWidget(self.line)
         self.StartEndLay = QtWidgets.QVBoxLayout()
+        self.StartEndLay.setContentsMargins(-1, 0, -1, -1)
+        self.StartEndLay.setSpacing(0)
         self.StartEndLay.setObjectName("StartEndLay")
-        self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.StartHLay = QtWidgets.QHBoxLayout()
+        self.StartHLay.setContentsMargins(-1, -1, -1, 0)
+        self.StartHLay.setSpacing(6)
+        self.StartHLay.setObjectName("StartHLay")
         self.StartPointBut = QtWidgets.QPushButton(parent=self.dockWidgetContents)
-        self.StartPointBut.setMinimumSize(QtCore.QSize(50, 12))
-        self.StartPointBut.setMaximumSize(QtCore.QSize(50, 12))
+        self.StartPointBut.setMinimumSize(QtCore.QSize(35, 15))
+        self.StartPointBut.setMaximumSize(QtCore.QSize(35, 15))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.StartPointBut.setFont(font)
         self.StartPointBut.setStatusTip("")
         self.StartPointBut.setStyleSheet("QPushButton{\n"
 "border: none;\n"
@@ -2353,21 +2265,38 @@ class Ui_MainWindow(object):
 "\n"
 "QPushButton:pressed{\n"
 "color: green;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"color: black;\n"
 "}")
         self.StartPointBut.setObjectName("StartPointBut")
-        self.horizontalLayout_8.addWidget(self.StartPointBut, 0, QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.StartHLay.addWidget(self.StartPointBut, 0, QtCore.Qt.AlignmentFlag.AlignRight)
         self.StartTimeEdit = QtWidgets.QTimeEdit(parent=self.dockWidgetContents)
-        self.StartTimeEdit.setMinimumSize(QtCore.QSize(105, 24))
-        self.StartTimeEdit.setMaximumSize(QtCore.QSize(105, 24))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setHeightForWidth(self.StartTimeEdit.sizePolicy().hasHeightForWidth())
+        self.StartTimeEdit.setSizePolicy(sizePolicy)
+        self.StartTimeEdit.setMinimumSize(QtCore.QSize(105, 20))
+        self.StartTimeEdit.setMaximumSize(QtCore.QSize(105, 30))
+        self.StartTimeEdit.setSizeIncrement(QtCore.QSize(0, 0))
+        self.StartTimeEdit.setBaseSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
-        font.setPointSize(13)
+        font.setPointSize(12)
         self.StartTimeEdit.setFont(font)
+        self.StartTimeEdit.setFrame(True)
         self.StartTimeEdit.setButtonSymbols(QtWidgets.QAbstractSpinBox.ButtonSymbols.UpDownArrows)
         self.StartTimeEdit.setMaximumTime(QtCore.QTime(2, 59, 59))
         self.StartTimeEdit.setCurrentSection(QtWidgets.QDateTimeEdit.Section.HourSection)
         self.StartTimeEdit.setObjectName("StartTimeEdit")
-        self.horizontalLayout_8.addWidget(self.StartTimeEdit, 0, QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.StartHLay.addWidget(self.StartTimeEdit)
         self.RangeToStart = QtWidgets.QPushButton(parent=self.dockWidgetContents)
+        self.RangeToStart.setMinimumSize(QtCore.QSize(25, 15))
+        self.RangeToStart.setMaximumSize(QtCore.QSize(25, 15))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.RangeToStart.setFont(font)
         self.RangeToStart.setStyleSheet("QPushButton{\n"
 "border: none;\n"
 "color: blue\n"
@@ -2379,15 +2308,23 @@ class Ui_MainWindow(object):
 "\n"
 "QPushButton:pressed{\n"
 "color: green;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"color: gray;\n"
 "}")
         self.RangeToStart.setObjectName("RangeToStart")
-        self.horizontalLayout_8.addWidget(self.RangeToStart)
-        self.StartEndLay.addLayout(self.horizontalLayout_8)
-        self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
+        self.StartHLay.addWidget(self.RangeToStart)
+        self.StartEndLay.addLayout(self.StartHLay)
+        self.EndHLay = QtWidgets.QHBoxLayout()
+        self.EndHLay.setSpacing(6)
+        self.EndHLay.setObjectName("EndHLay")
         self.EndPointBut = QtWidgets.QPushButton(parent=self.dockWidgetContents)
-        self.EndPointBut.setMinimumSize(QtCore.QSize(50, 12))
-        self.EndPointBut.setMaximumSize(QtCore.QSize(50, 12))
+        self.EndPointBut.setMinimumSize(QtCore.QSize(35, 15))
+        self.EndPointBut.setMaximumSize(QtCore.QSize(35, 15))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.EndPointBut.setFont(font)
         self.EndPointBut.setStyleSheet("QPushButton{\n"
 "border: none;\n"
 "color: blue\n"
@@ -2399,20 +2336,38 @@ class Ui_MainWindow(object):
 "\n"
 "QPushButton:pressed{\n"
 "color: green;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"color: black;\n"
 "}")
         self.EndPointBut.setObjectName("EndPointBut")
-        self.horizontalLayout_9.addWidget(self.EndPointBut, 0, QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.EndHLay.addWidget(self.EndPointBut, 0, QtCore.Qt.AlignmentFlag.AlignRight)
         self.EndTimeEdit = QtWidgets.QTimeEdit(parent=self.dockWidgetContents)
-        self.EndTimeEdit.setMinimumSize(QtCore.QSize(105, 24))
-        self.EndTimeEdit.setMaximumSize(QtCore.QSize(105, 24))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(10)
+        sizePolicy.setHeightForWidth(self.EndTimeEdit.sizePolicy().hasHeightForWidth())
+        self.EndTimeEdit.setSizePolicy(sizePolicy)
+        self.EndTimeEdit.setMinimumSize(QtCore.QSize(105, 20))
+        self.EndTimeEdit.setMaximumSize(QtCore.QSize(105, 30))
         font = QtGui.QFont()
-        font.setPointSize(13)
+        font.setPointSize(12)
         self.EndTimeEdit.setFont(font)
+        self.EndTimeEdit.setWrapping(False)
+        self.EndTimeEdit.setAccelerated(False)
+        self.EndTimeEdit.setCorrectionMode(QtWidgets.QAbstractSpinBox.CorrectionMode.CorrectToPreviousValue)
+        self.EndTimeEdit.setProperty("showGroupSeparator", False)
         self.EndTimeEdit.setMaximumTime(QtCore.QTime(2, 59, 59))
         self.EndTimeEdit.setCurrentSection(QtWidgets.QDateTimeEdit.Section.HourSection)
         self.EndTimeEdit.setObjectName("EndTimeEdit")
-        self.horizontalLayout_9.addWidget(self.EndTimeEdit, 0, QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.EndHLay.addWidget(self.EndTimeEdit)
         self.RangeToEnd = QtWidgets.QPushButton(parent=self.dockWidgetContents)
+        self.RangeToEnd.setMinimumSize(QtCore.QSize(25, 15))
+        self.RangeToEnd.setMaximumSize(QtCore.QSize(25, 15))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.RangeToEnd.setFont(font)
         self.RangeToEnd.setStyleSheet("QPushButton{\n"
 "border: none;\n"
 "color: blue\n"
@@ -2424,94 +2379,121 @@ class Ui_MainWindow(object):
 "\n"
 "QPushButton:pressed{\n"
 "color: green;\n"
+"}\n"
+"\n"
+"QPushButton:disabled{\n"
+"color: gray;\n"
 "}")
         self.RangeToEnd.setObjectName("RangeToEnd")
-        self.horizontalLayout_9.addWidget(self.RangeToEnd)
-        self.StartEndLay.addLayout(self.horizontalLayout_9)
+        self.EndHLay.addWidget(self.RangeToEnd)
+        self.StartEndLay.addLayout(self.EndHLay)
         self.TransportLay.addLayout(self.StartEndLay)
         self.ClearRangeBut = QtWidgets.QPushButton(parent=self.dockWidgetContents)
-        self.ClearRangeBut.setMinimumSize(QtCore.QSize(0, 0))
+        self.ClearRangeBut.setMinimumSize(QtCore.QSize(25, 25))
         self.ClearRangeBut.setMaximumSize(QtCore.QSize(25, 25))
         self.ClearRangeBut.setStyleSheet("QPushButton{\n"
 "border: None;\n"
 "}\n"
-"\n"
+"QPushButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
 "QPushButton:pressed{\n"
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
         self.ClearRangeBut.setText("")
-        self.ClearRangeBut.setIcon(icon3)
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(":/AddRemove/Icons/AddRemove/clear.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.ClearRangeBut.setIcon(icon8)
         self.ClearRangeBut.setObjectName("ClearRangeBut")
         self.TransportLay.addWidget(self.ClearRangeBut)
         self.line_2 = QtWidgets.QFrame(parent=self.dockWidgetContents)
+        self.line_2.setMinimumSize(QtCore.QSize(16, 22))
         self.line_2.setFrameShape(QtWidgets.QFrame.Shape.VLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line_2.setObjectName("line_2")
         self.TransportLay.addWidget(self.line_2)
-        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_6.setContentsMargins(-1, -1, 0, -1)
-        self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.SliceLay = QtWidgets.QVBoxLayout()
+        self.SliceLay.setContentsMargins(-1, -1, 0, 0)
+        self.SliceLay.setSpacing(0)
+        self.SliceLay.setObjectName("SliceLay")
+        self.SliceLenHLay = QtWidgets.QHBoxLayout()
+        self.SliceLenHLay.setContentsMargins(-1, 0, -1, 0)
+        self.SliceLenHLay.setSpacing(6)
+        self.SliceLenHLay.setObjectName("SliceLenHLay")
         self.SliceLenLab = QtWidgets.QLabel(parent=self.dockWidgetContents)
-        self.SliceLenLab.setMaximumSize(QtCore.QSize(80, 20))
+        self.SliceLenLab.setMinimumSize(QtCore.QSize(75, 0))
+        self.SliceLenLab.setMaximumSize(QtCore.QSize(75, 20))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.SliceLenLab.setFont(font)
         self.SliceLenLab.setObjectName("SliceLenLab")
-        self.horizontalLayout_10.addWidget(self.SliceLenLab)
+        self.SliceLenHLay.addWidget(self.SliceLenLab)
         self.SliceLenSpin = QtWidgets.QSpinBox(parent=self.dockWidgetContents)
-        self.SliceLenSpin.setMinimumSize(QtCore.QSize(42, 0))
-        self.SliceLenSpin.setMaximumSize(QtCore.QSize(42, 16777215))
+        self.SliceLenSpin.setMinimumSize(QtCore.QSize(40, 20))
+        self.SliceLenSpin.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.SliceLenSpin.setFont(font)
+        self.SliceLenSpin.setButtonSymbols(QtWidgets.QAbstractSpinBox.ButtonSymbols.UpDownArrows)
         self.SliceLenSpin.setMinimum(10)
         self.SliceLenSpin.setMaximum(30)
         self.SliceLenSpin.setObjectName("SliceLenSpin")
-        self.horizontalLayout_10.addWidget(self.SliceLenSpin)
+        self.SliceLenHLay.addWidget(self.SliceLenSpin)
         self.secLab = QtWidgets.QLabel(parent=self.dockWidgetContents)
+        self.secLab.setMinimumSize(QtCore.QSize(30, 0))
         self.secLab.setMaximumSize(QtCore.QSize(30, 20))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.secLab.setFont(font)
         self.secLab.setObjectName("secLab")
-        self.horizontalLayout_10.addWidget(self.secLab)
+        self.SliceLenHLay.addWidget(self.secLab)
         self.SaveSliceLengthAsDefault = QtWidgets.QPushButton(parent=self.dockWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.SaveSliceLengthAsDefault.sizePolicy().hasHeightForWidth())
         self.SaveSliceLengthAsDefault.setSizePolicy(sizePolicy)
+        self.SaveSliceLengthAsDefault.setMinimumSize(QtCore.QSize(16, 0))
         self.SaveSliceLengthAsDefault.setMaximumSize(QtCore.QSize(16, 16777215))
         self.SaveSliceLengthAsDefault.setStyleSheet("QPushButton{\n"
 "border: None;\n"
 "}\n"
-"\n"
 "QPushButton:hover{\n"
 "background: rgba(192, 192, 192, 128);\n"
 "border-radius: 4px;\n"
 "}\n"
-"\n"
 "QPushButton:pressed{\n"
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
         self.SaveSliceLengthAsDefault.setText("")
-        icon12 = QtGui.QIcon()
-        icon12.addPixmap(QtGui.QPixmap(":/Misc/Icons/Misc/star.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.SaveSliceLengthAsDefault.setIcon(icon12)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(":/Misc/Icons/Misc/star.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.SaveSliceLengthAsDefault.setIcon(icon9)
         self.SaveSliceLengthAsDefault.setObjectName("SaveSliceLengthAsDefault")
-        self.horizontalLayout_10.addWidget(self.SaveSliceLengthAsDefault, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
-        self.verticalLayout_6.addLayout(self.horizontalLayout_10)
+        self.SliceLenHLay.addWidget(self.SaveSliceLengthAsDefault, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.SliceLay.addLayout(self.SliceLenHLay)
         self.SlicesNum_Lab = QtWidgets.QLabel(parent=self.dockWidgetContents)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.SlicesNum_Lab.setFont(font)
         self.SlicesNum_Lab.setObjectName("SlicesNum_Lab")
-        self.verticalLayout_6.addWidget(self.SlicesNum_Lab)
-        self.TransportLay.addLayout(self.verticalLayout_6)
-        spacerItem17 = QtWidgets.QSpacerItem(5, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.TransportLay.addItem(spacerItem17)
+        self.SliceLay.addWidget(self.SlicesNum_Lab)
+        self.TransportLay.addLayout(self.SliceLay)
+        spacerItem15 = QtWidgets.QSpacerItem(5, 15, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.TransportLay.addItem(spacerItem15)
         self.Duration_Lab = QtWidgets.QLabel(parent=self.dockWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Duration_Lab.sizePolicy().hasHeightForWidth())
         self.Duration_Lab.setSizePolicy(sizePolicy)
-        self.Duration_Lab.setMinimumSize(QtCore.QSize(120, 30))
-        self.Duration_Lab.setMaximumSize(QtCore.QSize(120, 40))
+        self.Duration_Lab.setMinimumSize(QtCore.QSize(115, 35))
+        self.Duration_Lab.setMaximumSize(QtCore.QSize(115, 35))
         font = QtGui.QFont()
-        font.setPointSize(18)
+        font.setPointSize(16)
         font.setBold(False)
         font.setWeight(50)
         font.setKerning(True)
@@ -2532,16 +2514,24 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.AudioSlider.sizePolicy().hasHeightForWidth())
         self.AudioSlider.setSizePolicy(sizePolicy)
         self.AudioSlider.setMinimumSize(QtCore.QSize(0, 12))
-        self.AudioSlider.setMaximumSize(QtCore.QSize(16777215, 15))
+        self.AudioSlider.setMaximumSize(QtCore.QSize(16777215, 12))
         self.AudioSlider.setObjectName("AudioSlider")
         self.verticalLayout_5.addWidget(self.AudioSlider)
         self.TransportPanel.setWidget(self.dockWidgetContents)
         MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(8), self.TransportPanel)
         self.ExScoreInfo = QtWidgets.QDockWidget(parent=MainWindow)
-        self.ExScoreInfo.setMinimumSize(QtCore.QSize(280, 250))
-        self.ExScoreInfo.setMaximumSize(QtCore.QSize(280, 250))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ExScoreInfo.sizePolicy().hasHeightForWidth())
+        self.ExScoreInfo.setSizePolicy(sizePolicy)
+        self.ExScoreInfo.setMinimumSize(QtCore.QSize(275, 210))
+        self.ExScoreInfo.setMaximumSize(QtCore.QSize(524287, 210))
+        self.ExScoreInfo.setSizeIncrement(QtCore.QSize(0, 0))
+        self.ExScoreInfo.setBaseSize(QtCore.QSize(0, 0))
         self.ExScoreInfo.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.NoContextMenu)
         self.ExScoreInfo.setAcceptDrops(False)
+        self.ExScoreInfo.setFloating(False)
         self.ExScoreInfo.setAllowedAreas(QtCore.Qt.DockWidgetArea.BottomDockWidgetArea|QtCore.Qt.DockWidgetArea.LeftDockWidgetArea|QtCore.Qt.DockWidgetArea.RightDockWidgetArea)
         self.ExScoreInfo.setObjectName("ExScoreInfo")
         self.dockWidgetContents_3 = QtWidgets.QWidget()
@@ -2552,8 +2542,11 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.ExampleNLab.setFont(font)
+        self.ExampleNLab.setScaledContents(False)
+        self.ExampleNLab.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.ExampleNLab.setWordWrap(False)
         self.ExampleNLab.setObjectName("ExampleNLab")
-        self.verticalLayout_3.addWidget(self.ExampleNLab)
+        self.verticalLayout_3.addWidget(self.ExampleNLab, 0, QtCore.Qt.AlignmentFlag.AlignTop)
         self.UserAnswerLab = QtWidgets.QLabel(parent=self.dockWidgetContents_3)
         self.UserAnswerLab.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
@@ -2562,42 +2555,43 @@ class Ui_MainWindow(object):
         self.UserAnswerLab.setAcceptDrops(False)
         self.UserAnswerLab.setScaledContents(True)
         self.UserAnswerLab.setObjectName("UserAnswerLab")
-        self.verticalLayout_3.addWidget(self.UserAnswerLab)
+        self.verticalLayout_3.addWidget(self.UserAnswerLab, 0, QtCore.Qt.AlignmentFlag.AlignTop)
         self.CorAnswerLab = QtWidgets.QLabel(parent=self.dockWidgetContents_3)
         font = QtGui.QFont()
         font.setPointSize(16)
         self.CorAnswerLab.setFont(font)
         self.CorAnswerLab.setScaledContents(True)
         self.CorAnswerLab.setObjectName("CorAnswerLab")
-        self.verticalLayout_3.addWidget(self.CorAnswerLab)
+        self.verticalLayout_3.addWidget(self.CorAnswerLab, 0, QtCore.Qt.AlignmentFlag.AlignTop)
         self.AnswerScoreLab = QtWidgets.QLabel(parent=self.dockWidgetContents_3)
         font = QtGui.QFont()
         font.setPointSize(16)
         self.AnswerScoreLab.setFont(font)
         self.AnswerScoreLab.setObjectName("AnswerScoreLab")
-        self.verticalLayout_3.addWidget(self.AnswerScoreLab)
+        self.verticalLayout_3.addWidget(self.AnswerScoreLab, 0, QtCore.Qt.AlignmentFlag.AlignTop)
         self.TotalScoreLab = QtWidgets.QLabel(parent=self.dockWidgetContents_3)
         font = QtGui.QFont()
         font.setPointSize(16)
         self.TotalScoreLab.setFont(font)
         self.TotalScoreLab.setObjectName("TotalScoreLab")
-        self.verticalLayout_3.addWidget(self.TotalScoreLab)
+        self.verticalLayout_3.addWidget(self.TotalScoreLab, 0, QtCore.Qt.AlignmentFlag.AlignTop)
         self.TestStatusLab = QtWidgets.QLabel(parent=self.dockWidgetContents_3)
         font = QtGui.QFont()
         font.setPointSize(16)
         self.TestStatusLab.setFont(font)
         self.TestStatusLab.setObjectName("TestStatusLab")
-        self.verticalLayout_3.addWidget(self.TestStatusLab)
+        self.verticalLayout_3.addWidget(self.TestStatusLab, 0, QtCore.Qt.AlignmentFlag.AlignTop)
         self.ExScoreInfo.setWidget(self.dockWidgetContents_3)
         MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(2), self.ExScoreInfo)
         self.Eq_Settings = QtWidgets.QDockWidget(parent=MainWindow)
         self.Eq_Settings.setEnabled(True)
-        self.Eq_Settings.setMinimumSize(QtCore.QSize(280, 150))
-        self.Eq_Settings.setMaximumSize(QtCore.QSize(280, 150))
+        self.Eq_Settings.setMinimumSize(QtCore.QSize(201, 150))
+        self.Eq_Settings.setMaximumSize(QtCore.QSize(524287, 150))
+        self.Eq_Settings.setBaseSize(QtCore.QSize(0, 0))
         self.Eq_Settings.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.NoContextMenu)
         self.Eq_Settings.setAcceptDrops(False)
         self.Eq_Settings.setFloating(False)
-        self.Eq_Settings.setAllowedAreas(QtCore.Qt.DockWidgetArea.BottomDockWidgetArea|QtCore.Qt.DockWidgetArea.RightDockWidgetArea)
+        self.Eq_Settings.setAllowedAreas(QtCore.Qt.DockWidgetArea.BottomDockWidgetArea|QtCore.Qt.DockWidgetArea.LeftDockWidgetArea|QtCore.Qt.DockWidgetArea.RightDockWidgetArea)
         self.Eq_Settings.setObjectName("Eq_Settings")
         self.dockWidgetContents_2 = QtWidgets.QWidget()
         self.dockWidgetContents_2.setObjectName("dockWidgetContents_2")
@@ -2605,8 +2599,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.GainDepthLayout = QtWidgets.QHBoxLayout()
         self.GainDepthLayout.setObjectName("GainDepthLayout")
-        spacerItem18 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.GainDepthLayout.addItem(spacerItem18)
+        spacerItem16 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.GainDepthLayout.addItem(spacerItem16)
         self.GainLab = QtWidgets.QLabel(parent=self.dockWidgetContents_2)
         self.GainLab.setObjectName("GainLab")
         self.GainDepthLayout.addWidget(self.GainLab, 0, QtCore.Qt.AlignmentFlag.AlignRight)
@@ -2644,12 +2638,18 @@ class Ui_MainWindow(object):
         self.ResetEQBut.setObjectName("ResetEQBut")
         self.horizontalLayout_7.addWidget(self.ResetEQBut)
         self.LockEQSettingsBut = QtWidgets.QToolButton(parent=self.dockWidgetContents_2)
-        self.LockEQSettingsBut.setStyleSheet("border: None")
+        self.LockEQSettingsBut.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}")
         self.LockEQSettingsBut.setText("")
-        icon13 = QtGui.QIcon()
-        icon13.addPixmap(QtGui.QPixmap(":/Misc/Icons/Misc/unlock.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon13.addPixmap(QtGui.QPixmap(":/Misc/Icons/Misc/padlock.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
-        self.LockEQSettingsBut.setIcon(icon13)
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap(":/Misc/Icons/Misc/unlock.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon10.addPixmap(QtGui.QPixmap(":/Misc/Icons/Misc/padlock.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        self.LockEQSettingsBut.setIcon(icon10)
         self.LockEQSettingsBut.setIconSize(QtCore.QSize(18, 18))
         self.LockEQSettingsBut.setCheckable(True)
         self.LockEQSettingsBut.setObjectName("LockEQSettingsBut")
@@ -2658,14 +2658,15 @@ class Ui_MainWindow(object):
         self.Eq_Settings.setWidget(self.dockWidgetContents_2)
         MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(2), self.Eq_Settings)
         self.SupportProject = QtWidgets.QDockWidget(parent=MainWindow)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.SupportProject.sizePolicy().hasHeightForWidth())
         self.SupportProject.setSizePolicy(sizePolicy)
-        self.SupportProject.setMinimumSize(QtCore.QSize(280, 150))
-        self.SupportProject.setMaximumSize(QtCore.QSize(280, 150))
-        self.SupportProject.setAllowedAreas(QtCore.Qt.DockWidgetArea.BottomDockWidgetArea|QtCore.Qt.DockWidgetArea.RightDockWidgetArea)
+        self.SupportProject.setMinimumSize(QtCore.QSize(87, 97))
+        self.SupportProject.setMaximumSize(QtCore.QSize(524287, 140))
+        self.SupportProject.setBaseSize(QtCore.QSize(0, 0))
+        self.SupportProject.setAllowedAreas(QtCore.Qt.DockWidgetArea.BottomDockWidgetArea|QtCore.Qt.DockWidgetArea.LeftDockWidgetArea|QtCore.Qt.DockWidgetArea.RightDockWidgetArea)
         self.SupportProject.setObjectName("SupportProject")
         self.dockWidgetContents_4 = QtWidgets.QWidget()
         self.dockWidgetContents_4.setObjectName("dockWidgetContents_4")
@@ -2679,10 +2680,205 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.addWidget(self.DonateBox)
         self.SupportProject.setWidget(self.dockWidgetContents_4)
         MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(2), self.SupportProject)
+        self.AudioSource = QtWidgets.QDockWidget(parent=MainWindow)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.AudioSource.sizePolicy().hasHeightForWidth())
+        self.AudioSource.setSizePolicy(sizePolicy)
+        self.AudioSource.setMinimumSize(QtCore.QSize(253, 307))
+        self.AudioSource.setFeatures(QtWidgets.QDockWidget.DockWidgetFeature.DockWidgetMovable)
+        self.AudioSource.setObjectName("AudioSource")
+        self.dockWidgetContents_5 = QtWidgets.QWidget()
+        self.dockWidgetContents_5.setObjectName("dockWidgetContents_5")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.dockWidgetContents_5)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        self.PinkNoiseRBut = QtWidgets.QRadioButton(parent=self.dockWidgetContents_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.PinkNoiseRBut.sizePolicy().hasHeightForWidth())
+        self.PinkNoiseRBut.setSizePolicy(sizePolicy)
+        self.PinkNoiseRBut.setMinimumSize(QtCore.QSize(0, 25))
+        self.PinkNoiseRBut.setObjectName("PinkNoiseRBut")
+        self.AudioSourceButtonGroup = QtWidgets.QButtonGroup(MainWindow)
+        self.AudioSourceButtonGroup.setObjectName("AudioSourceButtonGroup")
+        self.AudioSourceButtonGroup.addButton(self.PinkNoiseRBut)
+        self.horizontalLayout_11.addWidget(self.PinkNoiseRBut)
+        self.TransportPanelViewBut = QtWidgets.QToolButton(parent=self.dockWidgetContents_5)
+        self.TransportPanelViewBut.setMinimumSize(QtCore.QSize(100, 0))
+        self.TransportPanelViewBut.setMaximumSize(QtCore.QSize(16777215, 25))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        self.TransportPanelViewBut.setFont(font)
+        self.TransportPanelViewBut.setCheckable(True)
+        self.TransportPanelViewBut.setObjectName("TransportPanelViewBut")
+        self.horizontalLayout_11.addWidget(self.TransportPanelViewBut)
+        self.verticalLayout_4.addLayout(self.horizontalLayout_11)
+        self.AudiofileRBut = QtWidgets.QRadioButton(parent=self.dockWidgetContents_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.AudiofileRBut.sizePolicy().hasHeightForWidth())
+        self.AudiofileRBut.setSizePolicy(sizePolicy)
+        self.AudiofileRBut.setMinimumSize(QtCore.QSize(0, 25))
+        self.AudiofileRBut.setObjectName("AudiofileRBut")
+        self.AudioSourceButtonGroup.addButton(self.AudiofileRBut)
+        self.verticalLayout_4.addWidget(self.AudiofileRBut)
+        self.AddPlusRemoveAudioLay = QtWidgets.QHBoxLayout()
+        self.AddPlusRemoveAudioLay.setContentsMargins(-1, -1, 5, -1)
+        self.AddPlusRemoveAudioLay.setObjectName("AddPlusRemoveAudioLay")
+        self.PlusFilesBut = QtWidgets.QToolButton(parent=self.dockWidgetContents_5)
+        self.PlusFilesBut.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap(":/AddRemove/Icons/AddRemove/plus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.PlusFilesBut.setIcon(icon11)
+        self.PlusFilesBut.setObjectName("PlusFilesBut")
+        self.AddPlusRemoveAudioLay.addWidget(self.PlusFilesBut)
+        self.MinusFilesBut = QtWidgets.QToolButton(parent=self.dockWidgetContents_5)
+        self.MinusFilesBut.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap(":/AddRemove/Icons/AddRemove/minus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.MinusFilesBut.setIcon(icon12)
+        self.MinusFilesBut.setObjectName("MinusFilesBut")
+        self.AddPlusRemoveAudioLay.addWidget(self.MinusFilesBut)
+        spacerItem17 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.AddPlusRemoveAudioLay.addItem(spacerItem17)
+        self.PreviewPreviousBut = QtWidgets.QToolButton(parent=self.dockWidgetContents_5)
+        self.PreviewPreviousBut.setMaximumSize(QtCore.QSize(16777215, 26))
+        self.PreviewPreviousBut.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.PreviewPreviousBut.setText("")
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/left-arrow-playlist.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.PreviewPreviousBut.setIcon(icon13)
+        self.PreviewPreviousBut.setIconSize(QtCore.QSize(18, 18))
+        self.PreviewPreviousBut.setObjectName("PreviewPreviousBut")
+        self.AddPlusRemoveAudioLay.addWidget(self.PreviewPreviousBut)
+        self.PreviewNextBut = QtWidgets.QToolButton(parent=self.dockWidgetContents_5)
+        self.PreviewNextBut.setMaximumSize(QtCore.QSize(16777215, 26))
+        self.PreviewNextBut.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.PreviewNextBut.setText("")
+        icon14 = QtGui.QIcon()
+        icon14.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/right-arrow-playlist.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.PreviewNextBut.setIcon(icon14)
+        self.PreviewNextBut.setIconSize(QtCore.QSize(18, 18))
+        self.PreviewNextBut.setObjectName("PreviewNextBut")
+        self.AddPlusRemoveAudioLay.addWidget(self.PreviewNextBut)
+        self.ShufflePlaybackBut = QtWidgets.QToolButton(parent=self.dockWidgetContents_5)
+        self.ShufflePlaybackBut.setMinimumSize(QtCore.QSize(21, 0))
+        self.ShufflePlaybackBut.setMaximumSize(QtCore.QSize(16777215, 26))
+        self.ShufflePlaybackBut.setStyleSheet("QToolButton{border: none;}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:checked{\n"
+"border-radius: 4px;\n"
+"}")
+        icon15 = QtGui.QIcon()
+        icon15.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/shuffle_black.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon15.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/shuffle_blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        self.ShufflePlaybackBut.setIcon(icon15)
+        self.ShufflePlaybackBut.setCheckable(True)
+        self.ShufflePlaybackBut.setObjectName("ShufflePlaybackBut")
+        self.AddPlusRemoveAudioLay.addWidget(self.ShufflePlaybackBut)
+        spacerItem18 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.AddPlusRemoveAudioLay.addItem(spacerItem18)
+        self.ClearFilesBut = QtWidgets.QToolButton(parent=self.dockWidgetContents_5)
+        self.ClearFilesBut.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.ClearFilesBut.setIcon(icon8)
+        self.ClearFilesBut.setIconSize(QtCore.QSize(20, 20))
+        self.ClearFilesBut.setObjectName("ClearFilesBut")
+        self.AddPlusRemoveAudioLay.addWidget(self.ClearFilesBut, 0, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.verticalLayout_4.addLayout(self.AddPlusRemoveAudioLay)
+        self.SearchAudio = QtWidgets.QLineEdit(parent=self.dockWidgetContents_5)
+        self.SearchAudio.setMinimumSize(QtCore.QSize(0, 0))
+        self.SearchAudio.setBaseSize(QtCore.QSize(0, 0))
+        self.SearchAudio.setInputMask("")
+        self.SearchAudio.setClearButtonEnabled(True)
+        self.SearchAudio.setObjectName("SearchAudio")
+        self.verticalLayout_4.addWidget(self.SearchAudio)
+        self.PlaylistView = PlaylistView(parent=self.dockWidgetContents_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Ignored, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.PlaylistView.sizePolicy().hasHeightForWidth())
+        self.PlaylistView.setSizePolicy(sizePolicy)
+        self.PlaylistView.setMinimumSize(QtCore.QSize(0, 0))
+        self.PlaylistView.setBaseSize(QtCore.QSize(0, 0))
+        self.PlaylistView.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.CustomContextMenu)
+        self.PlaylistView.setAcceptDrops(True)
+        self.PlaylistView.setStyleSheet("")
+        self.PlaylistView.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
+        self.PlaylistView.setAutoScroll(True)
+        self.PlaylistView.setDragEnabled(True)
+        self.PlaylistView.setDragDropMode(QtWidgets.QAbstractItemView.DragDropMode.DragDrop)
+        self.PlaylistView.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollMode.ScrollPerItem)
+        self.PlaylistView.setObjectName("PlaylistView")
+        self.verticalLayout_4.addWidget(self.PlaylistView)
+        self.PL_Stats_Lab = QtWidgets.QLabel(parent=self.dockWidgetContents_5)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.PL_Stats_Lab.setFont(font)
+        self.PL_Stats_Lab.setScaledContents(False)
+        self.PL_Stats_Lab.setObjectName("PL_Stats_Lab")
+        self.verticalLayout_4.addWidget(self.PL_Stats_Lab)
+        self.AudioSource.setWidget(self.dockWidgetContents_5)
+        MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(1), self.AudioSource)
         self.actionOpen = QtGui.QAction(parent=MainWindow)
         self.actionOpen.setObjectName("actionOpen")
-        self.actionSave_Playlist = QtGui.QAction(parent=MainWindow)
-        self.actionSave_Playlist.setObjectName("actionSave_Playlist")
         self.actionClose = QtGui.QAction(parent=MainWindow)
         self.actionClose.setObjectName("actionClose")
         self.actionAbout = QtGui.QAction(parent=MainWindow)
@@ -2705,13 +2901,13 @@ class Ui_MainWindow(object):
         self.actionPlayPause = QtGui.QAction(parent=MainWindow)
         self.actionPlayPause.setObjectName("actionPlayPause")
         self.actionStop = QtGui.QAction(parent=MainWindow)
-        self.actionStop.setIcon(icon5)
+        self.actionStop.setIcon(icon1)
         self.actionStop.setObjectName("actionStop")
         self.actionPrevious_Track = QtGui.QAction(parent=MainWindow)
-        self.actionPrevious_Track.setIcon(icon8)
+        self.actionPrevious_Track.setIcon(icon4)
         self.actionPrevious_Track.setObjectName("actionPrevious_Track")
         self.actionNext_Track = QtGui.QAction(parent=MainWindow)
-        self.actionNext_Track.setIcon(icon9)
+        self.actionNext_Track.setIcon(icon5)
         self.actionNext_Track.setObjectName("actionNext_Track")
         self.actionIncrease_Volume = QtGui.QAction(parent=MainWindow)
         self.actionIncrease_Volume.setObjectName("actionIncrease_Volume")
@@ -2750,18 +2946,18 @@ class Ui_MainWindow(object):
         self.actionMake_Test_Files.setObjectName("actionMake_Test_Files")
         self.actionShuffle_Playback = QtGui.QAction(parent=MainWindow)
         self.actionShuffle_Playback.setCheckable(True)
-        self.actionShuffle_Playback.setIcon(icon2)
+        self.actionShuffle_Playback.setIcon(icon15)
         self.actionShuffle_Playback.setIconVisibleInMenu(False)
         self.actionShuffle_Playback.setObjectName("actionShuffle_Playback")
         self.actionOpen_Folder = QtGui.QAction(parent=MainWindow)
         self.actionOpen_Folder.setObjectName("actionOpen_Folder")
         self.actionNext_Example = QtGui.QAction(parent=MainWindow)
-        self.actionNext_Example.setIcon(icon6)
+        self.actionNext_Example.setIcon(icon2)
         self.actionNext_Example.setIconVisibleInMenu(False)
         self.actionNext_Example.setObjectName("actionNext_Example")
         self.actionLoop_Playback = QtGui.QAction(parent=MainWindow)
         self.actionLoop_Playback.setCheckable(True)
-        self.actionLoop_Playback.setIcon(icon10)
+        self.actionLoop_Playback.setIcon(icon6)
         self.actionLoop_Playback.setIconVisibleInMenu(False)
         self.actionLoop_Playback.setObjectName("actionLoop_Playback")
         self.actionOnline_Help = QtGui.QAction(parent=MainWindow)
@@ -2774,7 +2970,7 @@ class Ui_MainWindow(object):
         self.actionMake_and_Open_Calibration_Sine_Wave_File.setObjectName("actionMake_and_Open_Calibration_Sine_Wave_File")
         self.actionSequential_Playback = QtGui.QAction(parent=MainWindow)
         self.actionSequential_Playback.setCheckable(True)
-        self.actionSequential_Playback.setIcon(icon11)
+        self.actionSequential_Playback.setIcon(icon7)
         self.actionSequential_Playback.setIconVisibleInMenu(False)
         self.actionSequential_Playback.setObjectName("actionSequential_Playback")
         self.actionLoop_Sequence = QtGui.QAction(parent=MainWindow)
@@ -2783,7 +2979,7 @@ class Ui_MainWindow(object):
         self.actionLockEQSettings = QtGui.QAction(parent=MainWindow)
         self.actionLockEQSettings.setCheckable(True)
         self.actionLockEQSettings.setChecked(False)
-        self.actionLockEQSettings.setIcon(icon13)
+        self.actionLockEQSettings.setIcon(icon10)
         self.actionLockEQSettings.setObjectName("actionLockEQSettings")
         self.actionStartPlayingAfterLoading = QtGui.QAction(parent=MainWindow)
         self.actionStartPlayingAfterLoading.setCheckable(True)
@@ -2792,13 +2988,37 @@ class Ui_MainWindow(object):
         self.actionConvert_Selected_Files = QtGui.QAction(parent=MainWindow)
         self.actionConvert_Selected_Files.setEnabled(False)
         self.actionConvert_Selected_Files.setObjectName("actionConvert_Selected_Files")
+        self.actionRepeat_Playlist = QtGui.QAction(parent=MainWindow)
+        self.actionRepeat_Playlist.setCheckable(True)
+        self.actionRepeat_Playlist.setChecked(True)
+        self.actionRepeat_Playlist.setObjectName("actionRepeat_Playlist")
+        self.actionExportPlaylistRelative = QtGui.QAction(parent=MainWindow)
+        self.actionExportPlaylistRelative.setCheckable(False)
+        self.actionExportPlaylistRelative.setObjectName("actionExportPlaylistRelative")
+        self.actionExportPlaylistAbsolute = QtGui.QAction(parent=MainWindow)
+        self.actionExportPlaylistAbsolute.setObjectName("actionExportPlaylistAbsolute")
+        self.actionTransport_Panel_view = QtGui.QAction(parent=MainWindow)
+        self.actionTransport_Panel_view.setCheckable(True)
+        self.actionTransport_Panel_view.setObjectName("actionTransport_Panel_view")
+        self.actionEQ_Settings_view = QtGui.QAction(parent=MainWindow)
+        self.actionEQ_Settings_view.setCheckable(True)
+        self.actionEQ_Settings_view.setObjectName("actionEQ_Settings_view")
+        self.actionExercise_Score_Information_view = QtGui.QAction(parent=MainWindow)
+        self.actionExercise_Score_Information_view.setCheckable(True)
+        self.actionExercise_Score_Information_view.setObjectName("actionExercise_Score_Information_view")
+        self.actionSupport_the_App_view = QtGui.QAction(parent=MainWindow)
+        self.actionSupport_the_App_view.setCheckable(True)
+        self.actionSupport_the_App_view.setObjectName("actionSupport_the_App_view")
         self.Eq_Settings.raise_()
         self.TransportPanel.raise_()
         self.ExScoreInfo.raise_()
         self.SupportProject.raise_()
+        self.AudioSource.raise_()
+        self.menuExport_Playlist.addAction(self.actionExportPlaylistAbsolute)
+        self.menuExport_Playlist.addAction(self.actionExportPlaylistRelative)
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionOpen_Folder)
-        self.menuFile.addAction(self.actionSave_Playlist)
+        self.menuFile.addAction(self.menuExport_Playlist.menuAction())
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionMake_and_Open_Calibration_Sine_Wave_File)
         self.menuFile.addAction(self.actionMake_Learning_Files)
@@ -2810,6 +3030,10 @@ class Ui_MainWindow(object):
         self.menuView.addAction(self.actionMinimal)
         self.menuView.addAction(self.actionMaximal)
         self.menuView.addSeparator()
+        self.menuView.addAction(self.actionTransport_Panel_view)
+        self.menuView.addAction(self.actionEQ_Settings_view)
+        self.menuView.addAction(self.actionExercise_Score_Information_view)
+        self.menuView.addAction(self.actionSupport_the_App_view)
         self.menuHelp.addAction(self.actionAbout)
         self.menuHelp.addSeparator()
         self.menuHelp.addAction(self.actionVideo_Tutorial)
@@ -2831,11 +3055,13 @@ class Ui_MainWindow(object):
         self.menuControls.addAction(self.actionStop)
         self.menuControls.addAction(self.actionPrevious_Track)
         self.menuControls.addAction(self.actionNext_Track)
+        self.menuControls.addSeparator()
         self.menuControls.addAction(self.actionStartPlayingAfterLoading)
         self.menuControls.addAction(self.actionSkip_Unavailable_Tracks)
         self.menuControls.addSeparator()
         self.menuControls.addAction(self.actionShuffle_Playback)
         self.menuControls.addAction(self.actionLoop_Playback)
+        self.menuControls.addAction(self.actionRepeat_Playlist)
         self.menuControls.addAction(self.actionSequential_Playback)
         self.menuControls.addAction(self.actionLoop_Sequence)
         self.menuControls.addSeparator()
@@ -2854,31 +3080,24 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.PatternBox.setCurrentIndex(-1)
         self.EQtabWidget.setCurrentIndex(0)
+        self.PatternBox.setCurrentIndex(-1)
         self.BWBox.setCurrentIndex(-1)
+        self.actionTransport_Panel_view.triggered['bool'].connect(self.TransportPanel.setVisible) # type: ignore
+        self.TransportPanel.visibilityChanged['bool'].connect(self.actionTransport_Panel_view.setChecked) # type: ignore
+        self.actionEQ_Settings_view.triggered['bool'].connect(self.Eq_Settings.setVisible) # type: ignore
+        self.Eq_Settings.visibilityChanged['bool'].connect(self.actionEQ_Settings_view.setChecked) # type: ignore
+        self.actionExercise_Score_Information_view.triggered['bool'].connect(self.ExScoreInfo.setVisible) # type: ignore
+        self.ExScoreInfo.visibilityChanged['bool'].connect(self.actionExercise_Score_Information_view.setChecked) # type: ignore
+        self.actionSupport_the_App_view.triggered['bool'].connect(self.SupportProject.setVisible) # type: ignore
+        self.SupportProject.visibilityChanged['bool'].connect(self.actionSupport_the_App_view.setChecked) # type: ignore
+        self.TransportPanelViewBut.toggled['bool'].connect(self.TransportPanel.setVisible) # type: ignore
+        self.TransportPanel.visibilityChanged['bool'].connect(self.TransportPanelViewBut.setChecked) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.PatternGroupBox.setTitle(_translate("MainWindow", "Equalization Pattern (difficulty ranked)"))
-        self.NextPatternBut.setToolTip(_translate("MainWindow", "Next Equalization Pattern"))
-        self.NextPatternBut.setText(_translate("MainWindow", ">"))
-        self.SourceBox.setTitle(_translate("MainWindow", "Audio source:"))
-        self.PinkNoiseRBut.setText(_translate("MainWindow", "Pink Noise"))
-        self.AudiofileRBut.setText(_translate("MainWindow", "Audiofile (Playlist):"))
-        self.PlusFilesBut.setToolTip(_translate("MainWindow", "Add tracks"))
-        self.PlusFilesBut.setText(_translate("MainWindow", "..."))
-        self.MinusFilesBut.setToolTip(_translate("MainWindow", "Remove tracks"))
-        self.MinusFilesBut.setText(_translate("MainWindow", "..."))
-        self.ShufflePlaybackBut.setToolTip(_translate("MainWindow", "Shuffle playback mode"))
-        self.ShufflePlaybackBut.setText(_translate("MainWindow", "..."))
-        self.ClearFilesBut.setToolTip(_translate("MainWindow", "Clear playlist"))
-        self.ClearFilesBut.setText(_translate("MainWindow", "..."))
-        self.SearchAudio.setPlaceholderText(_translate("MainWindow", "Search"))
-        self.PL_Stats_Lab.setText(_translate("MainWindow", "Total: 99999 tracks"))
-        self.TransportPanelViewBut.setText(_translate("MainWindow", "Show Transport Panel"))
         self.ModeButtonsGroupBox.setTitle(_translate("MainWindow", "Mode:"))
         self.PreviewBut.setText(_translate("MainWindow", "Preview"))
         self.LearnBut.setText(_translate("MainWindow", "Learn"))
@@ -2930,12 +3149,16 @@ class Ui_MainWindow(object):
         self.EQ2_10000_Lab.setText(_translate("MainWindow", "10k"))
         self.EQ2_20000_Lab.setText(_translate("MainWindow", "20k"))
         self.EQtabWidget.setTabText(self.EQtabWidget.indexOf(self.EQ2), _translate("MainWindow", "EQ2"))
+        self.PatternGroupBox.setTitle(_translate("MainWindow", "Equalization Pattern (difficulty ranked)"))
+        self.NextPatternBut.setToolTip(_translate("MainWindow", "Next Equalization Pattern"))
+        self.NextPatternBut.setText(_translate("MainWindow", ">"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
+        self.menuExport_Playlist.setTitle(_translate("MainWindow", "Export Playlist..."))
         self.menuView.setTitle(_translate("MainWindow", "View"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.menuWindow.setTitle(_translate("MainWindow", "Window"))
         self.menuControls.setTitle(_translate("MainWindow", "Controls"))
-        self.menuEQ_Bands_Playback_Order.setTitle(_translate("MainWindow", "EQ Bands Playback Order"))
+        self.menuEQ_Bands_Playback_Order.setTitle(_translate("MainWindow", "EQ Bands Playback Order in Learn Mode"))
         self.menuAudio.setTitle(_translate("MainWindow", "Audio"))
         self.menuAudio_Device.setTitle(_translate("MainWindow", "Audio Device"))
         self.TransportPanel.setToolTip(_translate("MainWindow", "Save slice length as default for current type of audio source"))
@@ -2982,10 +3205,24 @@ class Ui_MainWindow(object):
         self.SupportProject.setWindowTitle(_translate("MainWindow", "Support the App"))
         self.ShareAppBox.setTitle(_translate("MainWindow", "Share"))
         self.DonateBox.setTitle(_translate("MainWindow", "Donate"))
+        self.AudioSource.setWindowTitle(_translate("MainWindow", "Audio Source"))
+        self.PinkNoiseRBut.setText(_translate("MainWindow", "Pink Noise"))
+        self.TransportPanelViewBut.setText(_translate("MainWindow", "Transport Panel"))
+        self.AudiofileRBut.setText(_translate("MainWindow", "Audiofile (Playlist):"))
+        self.PlusFilesBut.setToolTip(_translate("MainWindow", "Add tracks"))
+        self.PlusFilesBut.setText(_translate("MainWindow", "..."))
+        self.MinusFilesBut.setToolTip(_translate("MainWindow", "Remove tracks"))
+        self.MinusFilesBut.setText(_translate("MainWindow", "..."))
+        self.PreviewPreviousBut.setToolTip(_translate("MainWindow", "Load and preview previous track"))
+        self.PreviewNextBut.setToolTip(_translate("MainWindow", "Load and preview next track"))
+        self.ShufflePlaybackBut.setToolTip(_translate("MainWindow", "Shuffle playback mode"))
+        self.ShufflePlaybackBut.setText(_translate("MainWindow", "..."))
+        self.ClearFilesBut.setToolTip(_translate("MainWindow", "Clear playlist"))
+        self.ClearFilesBut.setText(_translate("MainWindow", "..."))
+        self.SearchAudio.setPlaceholderText(_translate("MainWindow", "Search"))
+        self.PL_Stats_Lab.setText(_translate("MainWindow", "Total: 99999 tracks"))
         self.actionOpen.setText(_translate("MainWindow", "Open Files..."))
         self.actionOpen.setShortcut(_translate("MainWindow", "Ctrl+O"))
-        self.actionSave_Playlist.setText(_translate("MainWindow", "Save Playlist..."))
-        self.actionSave_Playlist.setShortcut(_translate("MainWindow", "Ctrl+S"))
         self.actionClose.setText(_translate("MainWindow", "Close"))
         self.actionClose.setShortcut(_translate("MainWindow", "Ctrl+W"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
@@ -3036,9 +3273,16 @@ class Ui_MainWindow(object):
         self.actionSequential_Playback.setText(_translate("MainWindow", "Sequential Playback"))
         self.actionLoop_Sequence.setText(_translate("MainWindow", "Loop Sequence"))
         self.actionLockEQSettings.setText(_translate("MainWindow", "actionLockEQSettings"))
-        self.actionLockEQSettings.setToolTip(_translate("MainWindow", "(Un)Lock EQ Settings: EQ Pattern changes do not affect EQ Settings when locked."))
+        self.actionLockEQSettings.setToolTip(_translate("MainWindow", "(Un)Lock EQ Settings: EQ Pattern changes do not affect EQ Settings when locked"))
         self.actionStartPlayingAfterLoading.setText(_translate("MainWindow", "Start Playing After Loading Track in Preview Mode"))
         self.actionStartPlayingAfterLoading.setToolTip(_translate("MainWindow", "Start playing after loading track in Preview mode (Autoplay)"))
         self.actionConvert_Selected_Files.setText(_translate("MainWindow", "Convert Selected Files..."))
+        self.actionRepeat_Playlist.setText(_translate("MainWindow", "Repeat Playlist"))
+        self.actionExportPlaylistRelative.setText(_translate("MainWindow", "Export Using Relative Paths for Subfolders..."))
+        self.actionExportPlaylistAbsolute.setText(_translate("MainWindow", "Export with Absolute Paths..."))
+        self.actionTransport_Panel_view.setText(_translate("MainWindow", "Transport Panel"))
+        self.actionEQ_Settings_view.setText(_translate("MainWindow", "EQ Settings"))
+        self.actionExercise_Score_Information_view.setText(_translate("MainWindow", "Exercise / Score Information"))
+        self.actionSupport_the_App_view.setText(_translate("MainWindow", "Support the App"))
 from playlistview import PlaylistView
 from pyqtgraph import PlotWidget

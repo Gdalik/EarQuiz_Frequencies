@@ -27,6 +27,7 @@ class TestMode(UniMode):
     def generateDrill(self, fromStart=False):
         if self.parent.ADGen is None:
             return
+        self.showProcessingSourceMessage()
         self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False)
         self.updateCurrentAudio()
         return self.parent.ADGen.output(audio_path=self.parent.CurrentAudio, force_freq=None, fromStart=fromStart)[0]
@@ -37,7 +38,6 @@ class TestMode(UniMode):
         self.parent.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
         self.view.setActionNextExampleEnabled(False)
         self.parent.EQContr.resetEQ()
-        self.showProcessingSourceMessage()
         self.currentDrillFreq = self.generateDrill(fromStart=fromStart)
         self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=play_after)
         self.parent.ExScore.nextEx()

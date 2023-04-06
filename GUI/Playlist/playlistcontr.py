@@ -8,6 +8,7 @@ from GUI.Misc.error_message import error_message
 from PyQt6.QtCore import QObject, Qt, QModelIndex, QUrl
 from PyQt6.QtWidgets import QFileDialog, QWidget
 from definitions import app, USER_DOCS_DIR
+from GUI.Playlist.ContextMenu import PLContextMenu
 
 
 class PlaylistContr(QObject):
@@ -25,6 +26,7 @@ class PlaylistContr(QObject):
         self.PlNavi = PlNavi(self.playlistModel.playlistdata, shuffle=self.mw_view.actionShuffle_Playback.isChecked())
         self.selModel = self.PlaylistView.selectionModel()
         self._setUpActions()
+        self.PlaylistView.customContextMenuRequested.connect(self._onCustomContextMenuRequested)
         self.plStatsLabUpd()
 
     def _setUpActions(self):
@@ -45,6 +47,14 @@ class PlaylistContr(QObject):
         self.onPlFullEmpty()
         self.mw_view.PreviewNextBut.clicked.connect(self.onPreviewNextBut_clicked)
         self.mw_view.PreviewPreviousBut.clicked.connect(self.onPreviewPreviousBut_clicked)
+
+    def _onCustomContextMenuRequested(self, pos):
+        contextMenu = PLContextMenu(self)
+        sel_ind = self.PlaylistView.selectedIndexes()
+        contextMenu.actionLoad.triggered.connect(lambda x: self.loadSongFromIndex(sel_ind[0]))
+        contextMenu.actionConvertAudio.triggered.connect(self.mw_contr.FileMaker.onActionConvertFilesTriggered)
+        contextMenu.actionRemove.triggered.connect(self.removeTracks)
+        contextMenu.exec(self.PlaylistView.mapToGlobal(pos))
 
     def addTracks(self, URLs: list[QUrl], index=-1):
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)

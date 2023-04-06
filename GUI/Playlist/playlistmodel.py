@@ -31,7 +31,7 @@ class PlaylistModel(QtCore.QAbstractTableModel):
             elif not CurData.available:
                 return QtGui.QColor('gray')
         if role == Qt.ItemDataRole.BackgroundRole and index.row() % 2 == 0:
-            return QtGui.QColor('ghostwhite')
+            return QtGui.QColor(244, 244, 245)
         if (
             role == Qt.ItemDataRole.DecorationRole
             and index.column() == 0
