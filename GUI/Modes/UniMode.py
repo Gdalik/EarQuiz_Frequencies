@@ -130,5 +130,4 @@ class UniMode:
         self.view.menuEQ_Bands_Playback_Order.setEnabled(arg)
 
     def showProcessingSourceMessage(self):
-        source_name = 'Pink noise' if self.parent.SourceAudio.name == 'pinknoise' else self.parent.SourceAudio.name
-        self.view.status.showMessage(f'{source_name}: Processsing/Loading...')
+        self.view.status.showMessage(f'{self.parent.SourceAudio.name}: Processsing/Loading...')

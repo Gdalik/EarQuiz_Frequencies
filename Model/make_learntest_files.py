@@ -53,8 +53,7 @@ def makeTestFiles(audiosource: str, output_dir: str, freq_options: list[int], fi
     def makeAnswersFile():
         answ_filename = f'{prefix}Answers.txt'
         answ_path = str(Path(output_dir, answ_filename))
-        source = 'Pink noise' if audiosource == 'pinknoise' else Path(audiosource).name
-        answers.insert(0, f'Audio source: {source}\n\n')
+        answers.insert(0, f'Audio source: {Path(audiosource).name}\n\n')
         with open(answ_path, 'w') as tf:
             tf.writelines(answers)
 

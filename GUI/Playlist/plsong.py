@@ -13,7 +13,7 @@ class PlSong:
     @cached_property
     def path(self):
         # return str(Path(urlparse(self.inputPath).path).absolute())
-        if self.inputPath == 'pinknoise':
+        if self.inputPath == 'Pink noise':
             return self.inputPath
         return str(Path(self.inputPath).absolute()) if self.inputPath else ''
 
@@ -28,7 +28,7 @@ class PlSong:
 
     @property
     def exists(self):
-        return True if self.name == 'pinknoise' else Path(self.path).is_file()
+        return True if self.name == 'Pink noise' else Path(self.path).is_file()
 
     @cached_property
     def file_properties(self):
@@ -82,7 +82,7 @@ class PlSong:
 
     @property
     def _default_dict(self):
-        if self.name == 'pinknoise':
+        if self.name == 'Pink noise':
             return {'duration': 30, 'num_channels': 'Mono', 'samplerate': 44100}
         else:
             return {'duration': False, 'num_channels': None, 'samplerate': None}

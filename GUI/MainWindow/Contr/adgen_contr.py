@@ -9,7 +9,7 @@ class ADGenContr:
 
     def setAudioDrillGen(self, resetExGen=True):
         if self.parent.ADGen is None and self.parent.SourceAudio is not None \
-                and (self.parent.SourceAudio.name == 'pinknoise' or self.parent.LoadedFileHash):
+                and (self.parent.SourceAudio.name == 'Pink noise' or self.parent.LoadedFileHash):
             self._createADGen()
             self._adjustADGenOrderToMode()
         elif self.parent.ADGen is not None:

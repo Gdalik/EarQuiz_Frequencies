@@ -14,9 +14,6 @@ class PlaylistView(QTableView):
 
     def __init__(self, parent):
         super().__init__()
-        # print(parent.parent().parent())
-        # self.mw_view = parent.parent().parent()
-        # print(self.mw_view)
         self._placeholder_text = "Add new tracks by pressing '+'\n or directly drag the items here"
         self.setDragDrop()
         self.setSelect()
@@ -78,7 +75,6 @@ class PlaylistView(QTableView):
             valid_urls = validUrls(event.mimeData().urls())
             if valid_urls:
                 self.signals.urlsDropped.emit(valid_urls, self.model().mapToSource(self.currentIndex()).row())
-            # event.mimeData().clear()
 
     def checkDroppedMimeData(self, data):
         return data.hasUrls() and data.objectName() != 'FromPlaylist'
@@ -119,8 +115,6 @@ class PlaylistView(QTableView):
             self.scrollTo(self.model().mapFromSource(self.Model.index(first, 0)),
                           hint=QAbstractItemView.ScrollHint.EnsureVisible)
 
-    def PlStatsLabUpd(self):
-        value = len(self.Model.playlistdata)
-        tr = 'track' if value == 1 else 'tracks'
-        # TODO: add signal!
-        # self.mw_view.PL_Stats_Lab.setText(f'Total: {value} {tr}')
+    def plStatsLabText(self, tracks_num: int):
+        tr = 'track' if tracks_num == 1 else 'tracks'
+        return f'Total: {tracks_num} {tr}'

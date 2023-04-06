@@ -25,7 +25,7 @@ class PlaylistContr(QObject):
         self.PlNavi = PlNavi(self.playlistModel.playlistdata, shuffle=self.mw_view.actionShuffle_Playback.isChecked())
         self.selModel = self.PlaylistView.selectionModel()
         self._setUpActions()
-        self.PlaylistView.PlStatsLabUpd()
+        self.plStatsLabUpd()
 
     def _setUpActions(self):
         self.selModel.selectionChanged.connect(self.onSelectionChanged)
@@ -67,7 +67,6 @@ class PlaylistContr(QObject):
         self.playlistModel.layoutChanged.emit()
         if len(self.playlistModel.playlistdata) != len(paths):
             self.PlaylistView.selectRows(_index, _index + len(paths) - 1)
-            # self.PlaylistView.onSelectionChanged()  # onSelectionChanged signal is not emitted after layoutChange
             self.onSelectionChanged()  # onSelectionChanged signal is not emitted after layoutChange
         app.restoreOverrideCursor()
 
@@ -216,8 +215,11 @@ class PlaylistContr(QObject):
 
     def onLayoutChanged(self):
         self.PlNavi.dataSync(self.playlistModel.playlistdata)
-        self.PlaylistView.PlStatsLabUpd()
+        self.plStatsLabUpd()
         self.onPlFullEmpty()
+
+    def plStatsLabUpd(self):
+        self.mw_view.PL_Stats_Lab.setText(self.PlaylistView.plStatsLabText(self.playlistModel.rowCount(QModelIndex)))
 
     def onPlFullEmpty(self):
         pl_not_empty = len(self.playlistModel.playlistdata) > 0

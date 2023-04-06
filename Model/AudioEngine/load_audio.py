@@ -47,7 +47,7 @@ class AudioChunk(PreviewAudioCrop, QObject):
         self.samplerate = int(self.audiofile.samplerate)
 
     def _init_audiosource(self):
-        if self.audiofile_path == 'pinknoise':
+        if self.audiofile_path == 'Pink noise':
             self._init_pinknoise()
         else:
             self._init_audiofile()
@@ -63,7 +63,7 @@ class AudioChunk(PreviewAudioCrop, QObject):
             _callback(arg)
 
     def _read_and_crop(self, callback=None):
-        if self.audiofile_path == 'pinknoise':
+        if self.audiofile_path == 'Pink noise':
             self.cropped = pinknoise
             return
         self._open_audiofile()  # makes no effect if audiofile is already opened

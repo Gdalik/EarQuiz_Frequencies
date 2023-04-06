@@ -85,8 +85,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>579</width>
-         <height>543</height>
+         <width>599</width>
+         <height>538</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -498,7 +498,7 @@ font-weight: bold</string>
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="tabsClosable">
            <bool>false</bool>
@@ -4533,8 +4533,8 @@ background: rgba(118, 214, 255, 85)
              </property>
              <property name="maximumSize">
               <size>
-               <width>26</width>
-               <height>16777215</height>
+               <width>21</width>
+               <height>21</height>
               </size>
              </property>
              <property name="font">
@@ -4604,7 +4604,7 @@ color: gray;
      <x>0</x>
      <y>0</y>
      <width>1155</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -4637,6 +4637,10 @@ color: gray;
     <addaction name="actionMinimal"/>
     <addaction name="actionMaximal"/>
     <addaction name="separator"/>
+    <addaction name="actionTransport_Panel_view"/>
+    <addaction name="actionEQ_Settings_view"/>
+    <addaction name="actionExercise_Score_Information_view"/>
+    <addaction name="actionSupport_the_App_view"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -4765,7 +4769,7 @@ color: gray;
      <item>
       <layout class="QHBoxLayout" name="TransportLay">
        <property name="spacing">
-        <number>-1</number>
+        <number>6</number>
        </property>
        <item>
         <widget class="QLabel" name="Position_Lab">
@@ -5217,7 +5221,7 @@ border-radius: 4px;
             <widget class="QPushButton" name="StartPointBut">
              <property name="minimumSize">
               <size>
-               <width>25</width>
+               <width>35</width>
                <height>15</height>
               </size>
              </property>
@@ -5250,6 +5254,10 @@ font-weight: bold;
 
 QPushButton:pressed{
 color: green;
+}
+
+QPushButton:disabled{
+color: black;
 }</string>
              </property>
              <property name="text">
@@ -5349,6 +5357,10 @@ font-weight: bold;
 
 QPushButton:pressed{
 color: green;
+}
+
+QPushButton:disabled{
+color: black;
 }</string>
              </property>
              <property name="text">
@@ -5367,7 +5379,7 @@ color: green;
             <widget class="QPushButton" name="EndPointBut">
              <property name="minimumSize">
               <size>
-               <width>25</width>
+               <width>35</width>
                <height>15</height>
               </size>
              </property>
@@ -5397,6 +5409,10 @@ font-weight: bold;
 
 QPushButton:pressed{
 color: green;
+}
+
+QPushButton:disabled{
+color: black;
 }</string>
              </property>
              <property name="text">
@@ -5490,6 +5506,10 @@ font-weight: bold;
 
 QPushButton:pressed{
 color: green;
+}
+
+QPushButton:disabled{
+color: black;
 }</string>
              </property>
              <property name="text">
@@ -5579,13 +5599,13 @@ background: rgba(118, 214, 255, 85)
             <widget class="QLabel" name="SliceLenLab">
              <property name="minimumSize">
               <size>
-               <width>85</width>
+               <width>75</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>85</width>
+               <width>75</width>
                <height>20</height>
               </size>
              </property>
@@ -5992,7 +6012,7 @@ font-weight: normal</string>
    </property>
    <property name="maximumSize">
     <size>
-     <width>16777215</width>
+     <width>524287</width>
      <height>150</height>
     </size>
    </property>
@@ -6185,7 +6205,7 @@ border-radius: 4px;
    </property>
    <property name="maximumSize">
     <size>
-     <width>16777215</width>
+     <width>524287</width>
      <height>140</height>
     </size>
    </property>
@@ -7031,6 +7051,38 @@ background: rgba(118, 214, 255, 85)
     <string>Export with Absolute Paths...</string>
    </property>
   </action>
+  <action name="actionTransport_Panel_view">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Transport Panel</string>
+   </property>
+  </action>
+  <action name="actionEQ_Settings_view">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>EQ Settings</string>
+   </property>
+  </action>
+  <action name="actionExercise_Score_Information_view">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Exercise / Score Information</string>
+   </property>
+  </action>
+  <action name="actionSupport_the_App_view">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Support the App</string>
+   </property>
+  </action>
   <zorder>Eq_Settings</zorder>
   <zorder>TransportPanel</zorder>
   <zorder>ExScoreInfo</zorder>
@@ -7053,7 +7105,168 @@ background: rgba(118, 214, 255, 85)
  <resources>
   <include location="../../icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionTransport_Panel_view</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>TransportPanel</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>577</x>
+     <y>640</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TransportPanel</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionTransport_Panel_view</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>577</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEQ_Settings_view</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>Eq_Settings</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1017</x>
+     <y>309</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Eq_Settings</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionEQ_Settings_view</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1017</x>
+     <y>309</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExercise_Score_Information_view</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>ExScoreInfo</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1017</x>
+     <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ExScoreInfo</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionExercise_Score_Information_view</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1017</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSupport_the_App_view</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>SupportProject</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1017</x>
+     <y>458</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SupportProject</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionSupport_the_App_view</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1017</x>
+     <y>458</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TransportPanelViewBut</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>TransportPanel</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>192</x>
+     <y>65</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>577</x>
+     <y>640</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TransportPanel</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>TransportPanelViewBut</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>577</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>192</x>
+     <y>65</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <buttongroups>
   <buttongroup name="AudioSourceButtonGroup"/>
   <buttongroup name="ModeButtonGroup"/>

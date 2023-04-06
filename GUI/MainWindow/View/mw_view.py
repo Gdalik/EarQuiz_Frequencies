@@ -32,7 +32,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.PatternBoxView = PatternBoxView(self)
         self.EQView = EqView(self)
         self.EQSetView = EQSetView(self)
-        self.setViewMenuActions()
+        self._setUpEQSettingsButtons()
         self.AudioDevicesView = AudioDevicesView(self)
         self.status = StatusBar(self)
         self.setMinimalistView()
@@ -56,6 +56,9 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             elif 'TimeEdit' in W.objectName():
                 w_font.setPointSize(11)
             W.setFont(w_font)
+        NextPatternBut_font = self.NextPatternBut.font()
+        NextPatternBut_font.setPointSize(16)
+        self.NextPatternBut.setFont(NextPatternBut_font)
         timelab_fonts = self.Position_Lab.font()
         timelab_fonts.setPointSize(14)
         self.Position_Lab.setFont(timelab_fonts)
@@ -75,26 +78,12 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             self.PlaylistView.alt_pressed = False
         event.accept()
 
-    def setViewMenuActions(self):
-        DockActions = self.createPopupMenu().actions()
-        for item in DockActions:
-            self.menuView.addAction(item)
-            if item.text() == 'EQ Settings':
-                self._setUpEQSettingsButtons(item)
-            elif 'Transport Panel' in item.text():
-                self._setUpActionTransportPanelView(item)
-
-    def _setUpEQSettingsButtons(self, action: QAction):
+    def _setUpEQSettingsButtons(self):
         icon = self.EQSettings_But1.icon()
-        action.setIconVisibleInMenu(False)
-        action.setIcon(icon)
-        self.EQSettings_But1.setDefaultAction(action)
-        self.EQSettings_But2.setDefaultAction(action)
-
-    def _setUpActionTransportPanelView(self, action):
-        self.actionTransportPanelView = action
-        self.actionTransportPanelView.toggled.connect(self.onActionTransportPanelViewToggled)
-        self.onActionTransportPanelViewToggled()
+        self.actionEQ_Settings_view.setIconVisibleInMenu(False)
+        self.actionEQ_Settings_view.setIcon(icon)
+        self.EQSettings_But1.setDefaultAction(self.actionEQ_Settings_view)
+        self.EQSettings_But2.setDefaultAction(self.actionEQ_Settings_view)
 
     def setUniActBut(self):
         self.actionUni_Mode = QAction(parent=self)
@@ -139,12 +128,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         else:
             self.EqOnOffLab.setText('EQ Off')
             self.EqOnOffLab.setStyleSheet('color: gray; font-weight: bold')
-
-    def onActionTransportPanelViewToggled(self):
-        self.TransportPanelViewBut.setChecked(self.actionTransportPanelView.isChecked())
-
-    def onTransportPanelViewBut_clicked(self):
-        self.TransportPanel.show() if self.TransportPanelViewBut.isChecked() else self.TransportPanel.hide()
 
     def closeEvent(self, ev):
         self.signals.appClose.emit()

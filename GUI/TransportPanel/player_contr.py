@@ -76,7 +76,7 @@ class PlayerContr(QMediaPlayer):
             return int(res) if value % 1000 == 0 else round(res, 1)
 
         SourceAudio = self.mw_contr.SourceAudio
-        metadata = self.loadMetaData() if SourceAudio.name != 'pinknoise' else ''
+        metadata = self.loadMetaData() if SourceAudio.name != 'Pink noise' else ''
         displ_data = [f'"{SourceAudio.name}"']
         if metadata:
             displ_data.append(f'({metadata})')
@@ -186,7 +186,7 @@ class PlayerContr(QMediaPlayer):
         if self.mw_contr.SourceAudio is None:
             self.mw_view.status.clearMessage()
             return
-        source = 'Pink noise' if self.mw_contr.SourceAudio.name == 'pinknoise' else self.mw_contr.LastSourceAudio.name
+        source = 'Pink noise' if self.mw_contr.SourceAudio.name == 'Pink noise' else self.mw_contr.LastSourceAudio.name
         self.mw_view.status.showMessage(f'{source}: {self.PlayerView.pb_state2str(state)}')
 
     def onPlayPause_triggered(self):

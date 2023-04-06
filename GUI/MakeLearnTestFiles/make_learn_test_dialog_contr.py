@@ -15,7 +15,7 @@ class MakeLearnTestDialogContr(QDialog, Ui_MakeLearnTest_Dialog):
         Flags = Qt.WindowType(Qt.WindowType.CustomizeWindowHint | Qt.WindowType.WindowTitleHint |
                               Qt.WindowType.WindowCloseButtonHint)
         self.setWindowFlags(Flags)
-        self.setWindowTitle(f'{self.windowTitle()} (Source: {self.source_name})')
+        self.setWindowTitle(f'{self.windowTitle()} (Source: {self.mw_contr.SourceAudio.name})')
         self.buttonBox.button(QDialogButtonBox.StandardButton.Ok).setText('Make')
         self.WaveButt.setChecked(True)
         self.setBitrateComboEnabled(False)
@@ -35,10 +35,6 @@ class MakeLearnTestDialogContr(QDialog, Ui_MakeLearnTest_Dialog):
         self.UseAsFolderNameBut.toggled.connect(self.onExerciseNameChanged)
         self.ChangeFolderBut.clicked.connect(self.onChangeFolderBut_clicked)
         self.ExerciseNameLine.setText(self.generateExcName())
-
-    @property
-    def source_name(self):
-        return 'Pink noise' if self.mw_contr.SourceAudio.name == 'pinknoise' else self.mw_contr.SourceAudio.name
 
     def setBitrateComboEnabled(self, arg: bool):
         self.BitrateLab.setEnabled(arg)

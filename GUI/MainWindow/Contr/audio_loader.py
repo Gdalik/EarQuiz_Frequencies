@@ -52,7 +52,7 @@ class AudioLoad:
         self.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview or forcePlayAfter)
 
     def load_pinknoise(self):
-        self.parent.SourceAudio = PlSong('pinknoise')
+        self.parent.SourceAudio = PlSong('Pink noise')
         self.TransportContr.TransportView.setHeader('Pink noise')
         dur = self.parent.SourceAudio.duration
         self.parent.SourceRange = PreviewAudioCrop(dur, 0, dur, self.TransportContr.TransportView.SliceLenSpin.value())

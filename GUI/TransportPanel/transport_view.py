@@ -22,15 +22,9 @@ class TransportPanelView:
         self.ClearRangeBut = mw_view.ClearRangeBut
         self.CropRegionTstr = CropRegionTimestr(self)
         self.setHeader()
-        self.viewSetup()
 
     def setHeader(self, audio_name='No audio'):
         self.mw_view.TransportPanel.setWindowTitle(f'Transport Panel: {audio_name}')
-
-    def viewSetup(self):
-        self.mw_view.TransportPanelViewBut.clicked.connect(self.mw_view.onTransportPanelViewBut_clicked)
-        self.mw_view.TransportPanel.setFixedWidth(self.mw_view.width())
-        self.mw_view.TransportPanel.setMaximumWidth(self.mw_view.maximumWidth())
 
     def setSlicesNum(self, value: int):
         self.SlicesNum_Lab.setText(f'Number of Slices: {value}')
