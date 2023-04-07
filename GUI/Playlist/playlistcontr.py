@@ -245,7 +245,7 @@ class PlaylistContr(QObject):
     def _setFileDialogToFileMode(dialog: QFileDialog):
         dialog.setFileMode(QFileDialog.FileMode.ExistingFiles)
         af_ext = '*.wav *.aiff *.mp3 *.flac *.ogg'
-        pl_ext = '*.m3u *.pls *.xspf'
+        pl_ext = '*.m3u *.m3u8 *.pls *.xspf'
         audiofile_filters = f'Audio files ({af_ext})'
         playlist_filters = f'Playlist files ({pl_ext})'
         all_filters = f'All supported ({af_ext} {pl_ext})'

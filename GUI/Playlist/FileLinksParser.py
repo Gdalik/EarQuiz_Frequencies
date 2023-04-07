@@ -11,7 +11,7 @@ if platform.system() == 'Windows':
     mimetypes.add_type('application/xspf+xml', '.xspf')
 AudioMimes = ['audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg',
               'application/ogg']
-PLMimes = ['audio/x-mpegurl', 'application/pls+xml', 'application/xspf+xml']
+PLMimes = ['audio/x-mpegurl', 'audio/mpegurl', 'audio/scpls', 'application/pls+xml', 'application/xspf+xml']
 
 
 def pathsResolve(Paths: list[str], return_dict: dict):
@@ -67,9 +67,10 @@ def files_from_PL(pl_path: str, callback=None):
         except Exception as e:
             cb(f'{err_mess}{e}')
             return []
-    elif mime in ('audio/x-mpegurl', 'application/pls+xml'):
+    elif mime in ('audio/x-mpegurl', 'application/pls+xml', 'audio/mpegurl', 'audio/scpls'):
+        enc = 'utf-8' if Path(pl_path).suffix == '.m3u8' else None
         try:
-            with open(pl_path, 'r') as f:
+            with open(pl_path, 'r', encoding=enc) as f:
                 pl_lines = [line.rstrip() for line in f.readlines()]
         except Exception as e:
             cb(f'{err_mess}{e}')
