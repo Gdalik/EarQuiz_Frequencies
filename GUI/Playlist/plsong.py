@@ -12,7 +12,6 @@ class PlSong:
 
     @cached_property
     def path(self):
-        # return str(Path(urlparse(self.inputPath).path).absolute())
         if self.inputPath == 'Pink noise':
             return self.inputPath
         return str(Path(self.inputPath).absolute()) if self.inputPath else ''

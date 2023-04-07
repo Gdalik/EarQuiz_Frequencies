@@ -48,6 +48,7 @@ class StatusBar(QStatusBar):
 class NormalizationLabel(QLabel):
     def __init__(self, parent, value=0):
         super().__init__()
+        self.hide()
         self.value = value
         self.parent = parent
         self.setFrameShape(QFrame.Shape.StyledPanel)
@@ -60,6 +61,7 @@ class NormalizationLabel(QLabel):
 class EQStateLabel(QLabel):
     def __init__(self, parent, isOn=False):
         super().__init__()
+        self.hide()
         self.parent = parent
         self.isOn = isOn
         self.setFrameShape(QFrame.Shape.StyledPanel)

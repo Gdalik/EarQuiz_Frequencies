@@ -1958,7 +1958,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.PatternBox.sizePolicy().hasHeightForWidth())
         self.PatternBox.setSizePolicy(sizePolicy)
-        self.PatternBox.setMinimumSize(QtCore.QSize(0, 0))
+        self.PatternBox.setMinimumSize(QtCore.QSize(450, 0))
         self.PatternBox.setBaseSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setBold(False)
