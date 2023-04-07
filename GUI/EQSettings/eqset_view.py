@@ -5,6 +5,7 @@ class EQSetView:
         self.BWBox = self.mw_view.BWBox
         self.ResetBut = self.mw_view.ResetEQBut
         self.mw_view.LockEQSettingsBut.setDefaultAction(self.mw_view.actionLockEQSettings)
+        self.mw_view.GainRangeSpin.valueChanged.connect(self.mw_view.status.FreqGainLabel.update)
 
     def refreshBWQList(self, items: list[str]):
         self.BWBox.clear()
@@ -19,6 +20,7 @@ class EQSetView:
         self.GainRangeSpin.blockSignals(True)
         self.GainRangeSpin.setValue(gain_depth)
         self.GainRangeSpin.blockSignals(False)
+        self.mw_view.status.FreqGainLabel.update(gain_depth)
 
     def update_BW(self, BW: str):
         self.BWBox.blockSignals(True)

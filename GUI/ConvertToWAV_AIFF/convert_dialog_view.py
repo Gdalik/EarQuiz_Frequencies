@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'C:\Users\user\PycharmProjects\EarQuiz_Frequencies\GUI\ConvertToWAV_AIFF\convert_dialog_view.ui'
+# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/ConvertToWAV_AIFF/convert_dialog_view.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #

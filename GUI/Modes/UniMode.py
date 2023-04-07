@@ -19,7 +19,7 @@ class UniMode:
         self.view.setActionNextExampleEnabled(False)
         self.view.NextExample.setVisible(False)
         self.enableTimeSettingsChanges(False)
-        self.view.EqOnOffLab.hide()
+        self.hideEQState()
         self.setEQBandsOrderMenuEnabled(contrEnabled)
         if setPlayerContr:
             self.setPlayerControls()
@@ -95,7 +95,7 @@ class UniMode:
         self.parent.ExScore.refresh(onlyLastExcInfo=True)
 
     def playbackStoppedEnded(self):
-        self.view.EqOnOffLab.setVisible(False)
+        self.hideEQState()
 
     def playbackEnded(self):
         pass
@@ -131,3 +131,7 @@ class UniMode:
 
     def showProcessingSourceMessage(self):
         self.view.status.showMessage(f'{self.parent.SourceAudio.name}: Processsing/Loading...')
+
+    def hideEQState(self):
+        self.view.EqOnOffLab.setVisible(False)
+        self.view.status.EQStateLabel.setVisible(False)

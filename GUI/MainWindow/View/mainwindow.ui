@@ -4525,16 +4525,22 @@ background: rgba(118, 214, 255, 85)
            </item>
            <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
             <widget class="QPushButton" name="NextPatternBut">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
-               <width>26</width>
-               <height>0</height>
+               <width>20</width>
+               <height>20</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>21</width>
-               <height>21</height>
+               <width>20</width>
+               <height>20</height>
               </size>
              </property>
              <property name="font">
@@ -4569,7 +4575,17 @@ color: gray;
 }</string>
              </property>
              <property name="text">
-              <string>&gt;</string>
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../icons.qrc">
+               <normaloff>:/AddRemove/Icons/Misc/next-pattern.png</normaloff>:/AddRemove/Icons/Misc/next-pattern.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>14</width>
+               <height>14</height>
+              </size>
              </property>
             </widget>
            </item>
@@ -5653,13 +5669,13 @@ background: rgba(118, 214, 255, 85)
             <widget class="QLabel" name="secLab">
              <property name="minimumSize">
               <size>
-               <width>30</width>
+               <width>22</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>30</width>
+               <width>22</width>
                <height>20</height>
               </size>
              </property>
@@ -6006,7 +6022,7 @@ font-weight: normal</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>201</width>
+     <width>232</width>
      <height>150</height>
     </size>
    </property>
@@ -6060,7 +6076,7 @@ font-weight: normal</string>
        <item alignment="Qt::AlignRight">
         <widget class="QLabel" name="GainLab">
          <property name="text">
-          <string>Gain: (±)</string>
+          <string>Frequency Gain: (±)</string>
          </property>
         </widget>
        </item>

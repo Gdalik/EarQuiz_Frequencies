@@ -55,7 +55,7 @@ class LearnMode(UniMode):
     def playbackStoppedEnded(self):
         self.parent.EQContr.resetEQ()
         self.view.EQSetView.setEnabled(True)
-        self.view.EqOnOffLab.setVisible(False)
+        self.hideEQState()
 
     def playbackEnded(self):
         if self.parent.mw_view.actionSequential_Playback.isChecked():

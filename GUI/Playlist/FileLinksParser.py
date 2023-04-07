@@ -9,9 +9,12 @@ import platform
 if platform.system() == 'Windows':
     mimetypes.add_type('application/pls+xml', '.pls')
     mimetypes.add_type('application/xspf+xml', '.xspf')
-AudioMimes = ['audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg',
-              'application/ogg']
-PLMimes = ['audio/x-mpegurl', 'audio/mpegurl', 'audio/scpls', 'application/pls+xml', 'application/xspf+xml']
+AudioMimes = ('audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg',
+              'application/ogg', )
+m3u_mimes = ('audio/x-mpegurl', 'audio/mpegurl', 'application/x-mpegurl', )
+pls_mimes = ('audio/scpls', 'audio/x-scpls', 'application/pls+xml', )
+xspf_mimes = ('application/xspf+xml', )
+PLMimes = m3u_mimes + pls_mimes + xspf_mimes
 
 
 def pathsResolve(Paths: list[str], return_dict: dict):
@@ -40,13 +43,13 @@ def filesFromDir(dirpath: Path):
 def filePathsFilter(paths: list[str]):
     MimeTypes = AudioMimes + PLMimes
     return [path for path in paths if
-            mimetypes.guess_type(path)[0] in MimeTypes and not Path(path).name.startswith('.')]
+            mimetypes.guess_type(path, strict=False)[0] in MimeTypes and not Path(path).name.startswith('.')]
 
 
 def expandPlayLists(paths: list[str], callback=None):
     paths_expanded = []
     for path in paths:
-        if mimetypes.guess_type(path)[0] in PLMimes:
+        if mimetypes.guess_type(path, strict=False)[0] in PLMimes:
             files = files_from_PL(path, callback)
             paths_expanded.extend(files)
         else:
@@ -59,15 +62,15 @@ def files_from_PL(pl_path: str, callback=None):
         if callback is not None:
             callback(str(arg))
 
-    mime = mimetypes.guess_type(pl_path)[0]
+    mime = mimetypes.guess_type(pl_path, strict=False)[0]
     err_mess = f'Error occurred while parsing "{pl_path}": '
-    if mime == 'application/xspf+xml':
+    if mime in xspf_mimes:
         try:
             pl_links = parseLinksFromXSPF(pl_path)
         except Exception as e:
             cb(f'{err_mess}{e}')
             return []
-    elif mime in ('audio/x-mpegurl', 'application/pls+xml', 'audio/mpegurl', 'audio/scpls'):
+    elif mime in [*m3u_mimes, *pls_mimes]:
         enc = 'utf-8' if Path(pl_path).suffix == '.m3u8' else None
         try:
             with open(pl_path, 'r', encoding=enc) as f:
@@ -75,7 +78,7 @@ def files_from_PL(pl_path: str, callback=None):
         except Exception as e:
             cb(f'{err_mess}{e}')
             return []
-        pl_links = pl_lines if mime not in ('application/pls+xml', ) else list(map(parseLinkFrom_PLS, pl_lines))
+        pl_links = pl_lines if mime not in [*pls_mimes] else list(map(parseLinkFrom_PLS, pl_lines))
     else:
         return []
     return linksToExistingFiles(pl_links, Path(pl_path).parent)

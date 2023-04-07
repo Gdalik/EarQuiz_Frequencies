@@ -29,12 +29,12 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self._flags = self.windowFlags()
         self.setDockOptions(self.dockOptions().AnimatedDocks)
         self.setWindowTitle(definitions.app_name)
+        self.status = StatusBar(self)
         self.PatternBoxView = PatternBoxView(self)
         self.EQView = EqView(self)
         self.EQSetView = EQSetView(self)
         self._setUpEQSettingsButtons()
         self.AudioDevicesView = AudioDevicesView(self)
-        self.status = StatusBar(self)
         self.setMinimalistView()
         self.actionMinimal.triggered.connect(self.setMinimalistView)
         self.actionSequential_Playback.triggered.connect(self.onActionSequentialPlaybackTriggered)
@@ -122,12 +122,14 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def setEQStateIndicatorOn(self, arg: bool):
         self.EqOnOffLab.setVisible(True)
+        self.status.EQStateLabel.setVisible(True)
         if arg:
             self.EqOnOffLab.setText('EQ On')
             self.EqOnOffLab.setStyleSheet('color: green; font-weight: bold')
         else:
             self.EqOnOffLab.setText('EQ Off')
             self.EqOnOffLab.setStyleSheet('color: gray; font-weight: bold')
+        self.status.EQStateLabel.update(isOn=arg)
 
     def closeEvent(self, ev):
         self.signals.appClose.emit()

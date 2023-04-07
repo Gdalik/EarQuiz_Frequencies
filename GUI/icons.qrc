@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="AddRemove">
     <file>Icons/AddRemove/clear.png</file>
+    <file>Icons/Misc/next-pattern.png</file>
     <file>Icons/AddRemove/minus.png</file>
     <file>Icons/AddRemove/plus.png</file>
   </qresource>
