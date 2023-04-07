@@ -1,6 +1,6 @@
 from pathlib import Path, PureWindowsPath, PurePath
 import mimetypes
-from urllib import parse
+from urllib import parse, request
 import re
 from xspf_lib import Playlist
 import platform
@@ -11,7 +11,7 @@ if platform.system() == 'Windows':
     mimetypes.add_type('application/xspf+xml', '.xspf')
 AudioMimes = ('audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg',
               'application/ogg', )
-m3u_mimes = ('audio/x-mpegurl', 'audio/mpegurl', 'application/x-mpegurl', )
+m3u_mimes = ('audio/x-mpegurl', 'audio/mpegurl', 'application/x-mpegurl', 'application/vnd.apple.mpegurl', )
 pls_mimes = ('audio/scpls', 'audio/x-scpls', 'application/pls+xml', )
 xspf_mimes = ('application/xspf+xml', )
 PLMimes = m3u_mimes + pls_mimes + xspf_mimes
@@ -58,9 +58,6 @@ def expandPlayLists(paths: list[str], callback=None):
 
 
 def files_from_PL(pl_path: str, callback=None):
-    def cb(arg):
-        if callback is not None:
-            callback(str(arg))
 
     mime = mimetypes.guess_type(pl_path, strict=False)[0]
     err_mess = f'Error occurred while parsing "{pl_path}": '
@@ -68,7 +65,7 @@ def files_from_PL(pl_path: str, callback=None):
         try:
             pl_links = parseLinksFromXSPF(pl_path)
         except Exception as e:
-            cb(f'{err_mess}{e}')
+            _cb(callback, f'{err_mess}{e}')
             return []
     elif mime in [*m3u_mimes, *pls_mimes]:
         enc = 'utf-8' if Path(pl_path).suffix == '.m3u8' else None
@@ -76,12 +73,12 @@ def files_from_PL(pl_path: str, callback=None):
             with open(pl_path, 'r', encoding=enc) as f:
                 pl_lines = [line.rstrip() for line in f.readlines()]
         except Exception as e:
-            cb(f'{err_mess}{e}')
+            _cb(callback, f'{err_mess}{e}')
             return []
         pl_links = pl_lines if mime not in [*pls_mimes] else list(map(parseLinkFrom_PLS, pl_lines))
     else:
         return []
-    return linksToExistingFiles(pl_links, Path(pl_path).parent)
+    return linksToExistingFiles(pl_links, Path(pl_path).parent, callback=callback)
 
 
 def parseLinkFrom_PLS(line: str):
@@ -92,15 +89,30 @@ def parseLinksFromXSPF(filepath: str):
     return [track.location[0] for track in Playlist.parse(filepath).data]
 
 
-def linksToExistingFiles(links: list, current_dir):
+def linksToExistingFiles(links: list[str], current_dir, callback=None):
     files = []
     for link in links:
-        path = parse.urlparse(link).path if isURL(link) else link
+        link = _windows_file_url_mod(link)
+        try:
+            path = _urlparse_func()(link).path if isURL(link) else link
+        except Exception as e:
+            _cb(callback, f'Cannot parse URL "{link}"! {e}')
+            continue
         abs_path = path if Path(path).is_absolute() \
             else str(PurePath.joinpath(current_dir, PureWindowsPath(path).as_posix()))
         if Path(abs_path).is_file():
             files.append(abs_path)
     return files
+
+
+def _urlparse_func():
+    return request.url2pathname if platform.system() == 'Windows' else parse.urlparse
+
+
+def _windows_file_url_mod(link: str):
+    if platform.system() != 'Windows' or parse.urlparse(link).scheme != 'file':
+        return link
+    return re.sub('file:[/]+', '', link, 1)
 
 
 def isURL(arg: str):
@@ -112,3 +124,7 @@ def isURL(arg: str):
     else:
         return None
 
+
+def _cb(callback, arg):
+    if callback is not None:
+        callback(str(arg))

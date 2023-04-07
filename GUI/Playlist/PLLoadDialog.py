@@ -1,5 +1,5 @@
 from multiprocessing import Process, Manager
-from GUI.Playlist.FileLinksParser import pathsResolve
+from Model.FileLinksParser import pathsResolve
 from PyQt6.QtCore import QObject, Qt, QRunnable, pyqtSignal, pyqtSlot, QThreadPool
 from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QLabel, QVBoxLayout
 
