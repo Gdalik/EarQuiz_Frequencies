@@ -1,5 +1,4 @@
 import contextlib
-
 from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilterProxyModel
 from GUI.Playlist.plsong import PlSong
 from GUI.Playlist.PLLoadDialog import PLProcDialog
@@ -7,8 +6,11 @@ from GUI.Playlist.PlaylistNavigation import PlNavi
 from GUI.Misc.error_message import error_message
 from PyQt6.QtCore import QObject, Qt, QModelIndex, QUrl
 from PyQt6.QtWidgets import QFileDialog, QWidget
-from definitions import app, USER_DOCS_DIR
+from definitions import app, USER_DOCS_DIR, CURRENT_PLAYLIST_PATH
 from GUI.Playlist.ContextMenu import PLContextMenu
+from GUI.FileMaker.make_playlist import saveCurrentPlaylist
+from pathlib import Path
+from Model.FileLinksParser import parseLinksFrom_M3U
 
 
 class PlaylistContr(QObject):
@@ -259,3 +261,17 @@ class PlaylistContr(QObject):
         dialog.setFileMode(QFileDialog.FileMode.Directory)
         dialog.setWindowTitle('Open Folder...')
         return dialog
+
+    def saveCurrentPlaylist(self):
+        saveCurrentPlaylist(self.playlistModel.playlistdata)
+
+    def loadCurrentPlaylist(self):
+        if not Path(CURRENT_PLAYLIST_PATH).is_file():
+            return
+        with contextlib.suppress(Exception):
+            urls = [QUrl.fromLocalFile(link) for link in parseLinksFrom_M3U(CURRENT_PLAYLIST_PATH)]
+            if urls:
+                self.addTracks(urls)
+
+
+

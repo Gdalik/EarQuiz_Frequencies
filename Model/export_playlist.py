@@ -4,7 +4,7 @@ from GUI.Playlist.plsong import PlSong
 
 
 def export_m3u_playlist(playlistdata: list[PlSong], out_fullpath: str, pathmode='absolute', ext='.m3u', encoding=None):
-    ext = '.m3u8' if encoding == 'utf-8' else ext
+    encoding = 'utf-8' if ext == '.m3u8' else encoding
     out_fullpath = f'{out_fullpath}{ext}' if Path(out_fullpath).suffix != ext else out_fullpath
     out_dir = Path(out_fullpath).parent
     pl_paths = playlist_paths(playlistdata, out_dir=out_dir, pathmode=pathmode)

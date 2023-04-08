@@ -18,6 +18,7 @@ from GUI.MainWindow.Contr.audio_loader import AudioLoad
 from GUI.MainWindow.Contr.adgen_contr import ADGenContr
 from GUI.MainWindow.Contr.sourcerange_contr import SourceRangeContr
 from GUI.Misc.tracked_proc import ProcTrackControl
+from GUI.StartScreen import StartLogo
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.audiodrill_gen import AudioDrillGen
 from PyQt6.QtCore import QObject
@@ -73,6 +74,8 @@ class MainWindowContr(QObject):
         self.setSourceButtons()
         self.mw_view.VolumeSlider.setValue(60)
         self.playAudioOnPreview = False
+        StartLogo.hide()
+        self.PlaylistContr.loadCurrentPlaylist()
 
     def setFileMenuActions(self):
         self.mw_view.actionOpen.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='files'))
@@ -236,6 +239,7 @@ class MainWindowContr(QObject):
 
     def onAppClose(self):
         self.SRC.savePrevSourceAudioRange()
+        self.PlaylistContr.saveCurrentPlaylist()
 
     @property
     def normHeadroomChanged(self):
