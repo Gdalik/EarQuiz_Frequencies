@@ -2,7 +2,8 @@ from pathlib import Path, PureWindowsPath, PurePath
 import mimetypes
 from urllib import parse, request
 import re
-from xspf_lib import Playlist
+import xml.etree.ElementTree as ET
+# from xspf_lib import Playlist
 import platform
 
 
@@ -86,7 +87,10 @@ def parseLinkFrom_PLS(line: str):
 
 
 def parseLinksFromXSPF(filepath: str):
-    return [track.location[0] for track in Playlist.parse(filepath).data]
+    root = ET.parse(filepath).getroot()
+    NS = {'xspf': "http://xspf.org/ns/0/"}
+    return [parse.unquote(tr.find('xspf:location', NS).text, encoding='utf-8') for tr in root.find('xspf:trackList', NS).findall('xspf:track', NS)]
+    # return [track.location[0] for track in Playlist.parse(filepath).data]
 
 
 def linksToExistingFiles(links: list[str], current_dir, callback=None):

@@ -16,7 +16,7 @@ def exportPlaylist(mw, playlistdata: list[PlSong], pathmode='absolute'):
     m3u8_mask = 'M3U8 (*.m3u8)'
     formats = f'{m3u_mask};;{m3u8_mask}'
     filename, _format = FileDialog.getSaveFileName(mw, 'Export Playlist As...',
-                                                   PLAYLIST_DIR, filter=formats)
+                                                   PLAYLIST_DIR, filter=formats, initialFilter=m3u8_mask)
     result = False
     if filename and _format in (m3u_mask, m3u8_mask):
         enc = 'utf-8' if _format == m3u8_mask else None
