@@ -56,6 +56,7 @@ class PlaylistContr(QObject):
         contextMenu.actionLoad.triggered.connect(lambda x: self.loadSongFromIndex(sel_ind[0]))
         contextMenu.actionConvertAudio.triggered.connect(self.mw_contr.FileMaker.onActionConvertFilesTriggered)
         contextMenu.actionRemove.triggered.connect(self.removeTracks)
+        contextMenu.actionRemoveUnavailable.triggered.connect(self.removeUnavaliable)
         contextMenu.exec(self.PlaylistView.mapToGlobal(pos))
 
     def addTracks(self, URLs: list[QUrl], index=-1):
@@ -273,5 +274,9 @@ class PlaylistContr(QObject):
             if urls:
                 self.addTracks(urls)
 
-
-
+    def removeUnavaliable(self):
+        new_pl = [S for S in self.playlistModel.playlistdata if S.available]
+        self.playlistModel.layoutAboutToBeChanged.emit()
+        self.playlistModel.playlistdata = new_pl
+        self.playlistModel.layoutChanged.emit()
+        self.onSelectionChanged()
