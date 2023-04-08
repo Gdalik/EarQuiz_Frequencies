@@ -6,11 +6,12 @@ import xml.etree.ElementTree as ET
 import platform
 
 
-if platform.system() == 'Windows':
-    mimetypes.add_type('application/pls+xml', '.pls')
-    mimetypes.add_type('application/xspf+xml', '.xspf')
-AudioMimes = ('audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg',
-              'application/ogg', )
+mimetypes.add_type('audio/x-scpls', '.pls')
+mimetypes.add_type('application/xspf+xml', '.xspf')
+mimetypes.add_type('audio/x-mpegurl', '.m3u')
+mimetypes.add_type('audio/x-mpegurl', '.m3u8')
+mimetypes.add_type('audio/ogg', '.ogg')
+AudioMimes = ('audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg', )
 m3u_mimes = ('audio/x-mpegurl', 'audio/mpegurl', 'application/x-mpegurl', 'application/vnd.apple.mpegurl', )
 pls_mimes = ('audio/scpls', 'audio/x-scpls', 'application/pls+xml', )
 xspf_mimes = ('application/xspf+xml', )
@@ -58,33 +59,35 @@ def expandPlayLists(paths: list[str], callback=None):
 
 
 def files_from_PL(pl_path: str, callback=None):
-
     mime = mimetypes.guess_type(pl_path, strict=False)[0]
     err_mess = f'Error occurred while parsing "{pl_path}": '
-    if mime in xspf_mimes:
-        enc = 'utf-8'
-        try:
+    enc = 'utf-8' if Path(pl_path).suffix in ('.m3u8', '.xspf', ) else None
+    try:
+        if mime in xspf_mimes:
             pl_links = parseLinksFromXSPF(pl_path)
-        except Exception as e:
-            _cb(callback, f'{err_mess}{e}')
+        elif mime in m3u_mimes:
+            pl_links = parseLinksFrom_M3U(pl_path, encoding=enc)
+        elif mime in pls_mimes:
+            pl_links = parseLinksFrom_PLS(pl_path)
+        else:
             return []
-    elif mime in [*m3u_mimes, *pls_mimes]:
-        enc = 'utf-8' if Path(pl_path).suffix == '.m3u8' else None
-        try:
-            with open(pl_path, 'r', encoding=enc) as f:
-                pl_lines = [line.rstrip() for line in f.readlines()]
-        except Exception as e:
-            _cb(callback, f'{err_mess}{e}')
-            return []
-        pl_links = pl_lines if mime not in [*pls_mimes] else list(map(parseLinkFrom_PLS, pl_lines))
-    else:
+    except Exception as e:
+        _cb(callback, f'{err_mess}{e}')
         return []
     pl_links = [parse.unquote(link, encoding=enc) for link in pl_links] if enc is not None else pl_links
     return linksToExistingFiles(pl_links, Path(pl_path).parent, callback=callback)
 
 
-def parseLinkFrom_PLS(line: str):
-    return re.sub('File\d+=', '', line, count=1)
+def parseLinksFrom_M3U(pl_path: str, encoding=None):
+    with open(pl_path, 'r', encoding=encoding) as f:
+        pl_links = [line.rstrip() for line in f.readlines()]
+    return pl_links
+
+
+def parseLinksFrom_PLS(pl_path: str):
+    with open(pl_path, 'r') as f:
+        pl_lines = [re.sub('File\d+=', '', line.rstrip()) for line in f.readlines()]
+    return pl_lines
 
 
 def parseLinksFromXSPF(filepath: str):

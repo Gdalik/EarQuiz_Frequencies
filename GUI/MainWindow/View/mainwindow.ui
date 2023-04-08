@@ -4680,7 +4680,7 @@ color: gray;
     </property>
     <widget class="QMenu" name="menuEQ_Bands_Playback_Order">
      <property name="title">
-      <string>EQ Bands Playback Order in Learn Mode</string>
+      <string>EQ Bands Order in Learn Mode</string>
      </property>
      <addaction name="actionAscendingEQ"/>
      <addaction name="actionDescendingEQ"/>
@@ -4702,8 +4702,8 @@ color: gray;
     <addaction name="actionStartPlayingAfterLoading"/>
     <addaction name="actionSkip_Unavailable_Tracks"/>
     <addaction name="separator"/>
-    <addaction name="actionShuffle_Playback"/>
     <addaction name="actionLoop_Playback"/>
+    <addaction name="actionShuffle_Playback"/>
     <addaction name="actionRepeat_Playlist"/>
     <addaction name="actionSequential_Playback"/>
     <addaction name="actionLoop_Sequence"/>
@@ -6918,7 +6918,10 @@ background: rgba(118, 214, 255, 85)
      <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
    </property>
    <property name="text">
-    <string>Shuffle Playback</string>
+    <string>Shuffle Playback (of Playlist Tracks)</string>
+   </property>
+   <property name="toolTip">
+    <string>Shuffle Playback of Playlist Tracks</string>
    </property>
    <property name="iconVisibleInMenu">
     <bool>false</bool>
@@ -6954,7 +6957,7 @@ background: rgba(118, 214, 255, 85)
      <normalon>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around-blue.png</normalon>:/Player/Icons/Player/music-note-with-loop-circular-arrows-around.png</iconset>
    </property>
    <property name="text">
-    <string>Loop Playback</string>
+    <string>Loop Playback (of Current Track Range)</string>
    </property>
    <property name="iconVisibleInMenu">
     <bool>false</bool>
@@ -6991,7 +6994,7 @@ background: rgba(118, 214, 255, 85)
      <normalon>:/Player/Icons/Player/sequence - blue.png</normalon>:/Player/Icons/Player/sequence - black.png</iconset>
    </property>
    <property name="text">
-    <string>Sequential Playback</string>
+    <string>Sequential Playback (of Learning Examples)</string>
    </property>
    <property name="iconVisibleInMenu">
     <bool>false</bool>
@@ -7002,7 +7005,7 @@ background: rgba(118, 214, 255, 85)
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Loop Sequence</string>
+    <string>Loop Sequence (of EQ Bands)</string>
    </property>
   </action>
   <action name="actionLockEQSettings">

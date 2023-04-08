@@ -66,10 +66,7 @@ class UniMode:
         self.view.actionSkip_Unavailable_Tracks.setVisible(False)
         self.view.actionLoop_Playback.setVisible(False)
         self.view.actionLoop_Playback.setChecked(False)
-        self.view.actionShuffle_Playback.setVisible(True)
         self.parent.PlaylistContr.onPlFullEmpty()
-        '''self.view.PreviewPreviousBut.setEnabled(True)
-        self.view.PreviewNextBut.setEnabled(True)'''
         self.view.LoopButton.setVisible(False)
         self.view.Player_SkipBackw.setVisible(False)
         self.view.Player_SkipForw.setVisible(False)
