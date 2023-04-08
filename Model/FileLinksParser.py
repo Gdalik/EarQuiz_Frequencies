@@ -3,7 +3,6 @@ import mimetypes
 from urllib import parse, request
 import re
 import xml.etree.ElementTree as ET
-# from xspf_lib import Playlist
 import platform
 
 
@@ -63,6 +62,7 @@ def files_from_PL(pl_path: str, callback=None):
     mime = mimetypes.guess_type(pl_path, strict=False)[0]
     err_mess = f'Error occurred while parsing "{pl_path}": '
     if mime in xspf_mimes:
+        enc = 'utf-8'
         try:
             pl_links = parseLinksFromXSPF(pl_path)
         except Exception as e:
@@ -79,6 +79,7 @@ def files_from_PL(pl_path: str, callback=None):
         pl_links = pl_lines if mime not in [*pls_mimes] else list(map(parseLinkFrom_PLS, pl_lines))
     else:
         return []
+    pl_links = [parse.unquote(link, encoding=enc) for link in pl_links] if enc is not None else pl_links
     return linksToExistingFiles(pl_links, Path(pl_path).parent, callback=callback)
 
 
@@ -89,8 +90,7 @@ def parseLinkFrom_PLS(line: str):
 def parseLinksFromXSPF(filepath: str):
     root = ET.parse(filepath).getroot()
     NS = {'xspf': "http://xspf.org/ns/0/"}
-    return [parse.unquote(tr.find('xspf:location', NS).text, encoding='utf-8') for tr in root.find('xspf:trackList', NS).findall('xspf:track', NS)]
-    # return [track.location[0] for track in Playlist.parse(filepath).data]
+    return [tr.find('xspf:location', NS).text for tr in root.find('xspf:trackList', NS).findall('xspf:track', NS)]
 
 
 def linksToExistingFiles(links: list[str], current_dir, callback=None):
