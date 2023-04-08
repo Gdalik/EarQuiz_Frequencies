@@ -26,5 +26,3 @@ def playlist_paths(playlistdata: list[PlSong], out_dir=None, pathmode='absolute'
                 _path = str(Path(P.path).absolute().relative_to(out_dir))
             pl_paths.append(_path)
     return pl_paths
-
-
