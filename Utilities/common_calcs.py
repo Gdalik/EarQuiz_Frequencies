@@ -24,7 +24,7 @@ def hhmmss(secs, string=True):
     secs, ms = divmod(ms, 1000)
     mins, secs = divmod(secs, 60)
     hours, mins = divmod(mins, 60)
-    return '%02d:%02d:%02d.%03d' % (hours, mins, secs, ms) if string else (hours, mins, secs, ms)
+    return '%02d:%02d:%02d.%03d' % (hours, mins, secs, ms) if string else (int(hours), int(mins), int(secs), int(ms))
 
 
 def get_sec(time_str):

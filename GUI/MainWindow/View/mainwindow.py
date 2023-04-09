@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/mainwindow.ui'
+# Form implementation generated from reading ui file 'D:\PyCharm Projects\EarQuiz Frequencies\GUI\MainWindow\View\mainwindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -43,7 +43,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 579, 543))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 599, 538))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -166,8 +166,8 @@ class Ui_MainWindow(object):
         spacerItem1 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Minimum)
         self.HeadLayout.addItem(spacerItem1)
         self.EqOnOffLab = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents)
-        self.EqOnOffLab.setMinimumSize(QtCore.QSize(75, 30))
-        self.EqOnOffLab.setMaximumSize(QtCore.QSize(70, 30))
+        self.EqOnOffLab.setMinimumSize(QtCore.QSize(80, 30))
+        self.EqOnOffLab.setMaximumSize(QtCore.QSize(80, 30))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(20)
@@ -2015,7 +2015,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.scrollArea)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1155, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1155, 21))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(parent=self.menubar)
         self.menuFile.setObjectName("menuFile")

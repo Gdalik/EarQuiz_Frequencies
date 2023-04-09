@@ -25,7 +25,7 @@ from GUI.FileMaker.make_playlist import exportPlaylist, exportPlaylistWithRelPat
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.audiodrill_gen import AudioDrillGen
 from Model.file_hash import filehash
-from PyQt6.QtCore import QObject
+from PyQt6.QtCore import QObject, QTimer
 from PyQt6.QtGui import QActionGroup
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
@@ -75,7 +75,7 @@ class MainWindowContr(QObject):
         self.setSourceButtons()
         self.mw_view.VolumeSlider.setValue(60)
         self.playAudioOnPreview = False
-        StartLogo.hide()
+        QTimer.singleShot(1000, StartLogo.hide)
         self.PlaylistContr.loadCurrentPlaylist()
 
     def setFileMenuActions(self):

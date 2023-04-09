@@ -28,6 +28,7 @@ class PlayerContr(QMediaPlayer):
         MediaDevices.audioOutputsChanged.connect(self.onAudioOutputsChanged)
         self.mw_view.actionPlayPause.triggered.connect(self.onPlayPause_triggered)
         self.mw_view.actionStop.triggered.connect(self.onStopTriggered)
+        self.mw_view.actionSequential_Playback.triggered.connect(self.mw_view.onActionSequentialPlaybackTriggered)
         self.mw_view.actionIncrease_Volume.triggered.connect(self.increaseVolume)
         self.mw_view.actionDecrease_Volume.triggered.connect(self.decreaseVolume)
         self.mw_view.AudioDevicesGroup.triggered.connect(self.onAudioDeviceChecked)

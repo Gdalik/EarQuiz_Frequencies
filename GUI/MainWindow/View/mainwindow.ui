@@ -85,8 +85,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>579</width>
-         <height>543</height>
+         <width>599</width>
+         <height>538</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -398,13 +398,13 @@ background: rgba(118, 214, 255, 85);
            <widget class="QLabel" name="EqOnOffLab">
             <property name="minimumSize">
              <size>
-              <width>75</width>
+              <width>80</width>
               <height>30</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>70</width>
+              <width>80</width>
               <height>30</height>
              </size>
             </property>
@@ -4629,7 +4629,7 @@ color: gray;
      <x>0</x>
      <y>0</y>
      <width>1155</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -7314,14 +7314,14 @@ background: rgba(118, 214, 255, 85)
      <y>633</y>
     </hint>
     <hint type="destinationlabel">
-     <x>194</x>
-     <y>68</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="AudioSourceButtonGroup"/>
   <buttongroup name="ModeButtonGroup"/>
+  <buttongroup name="AudioSourceButtonGroup"/>
  </buttongroups>
 </ui>

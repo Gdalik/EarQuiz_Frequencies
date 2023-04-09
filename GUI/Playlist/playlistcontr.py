@@ -270,7 +270,7 @@ class PlaylistContr(QObject):
         if not Path(CURRENT_PLAYLIST_PATH).is_file():
             return
         with contextlib.suppress(Exception):
-            urls = [QUrl.fromLocalFile(link) for link in parseLinksFrom_M3U(CURRENT_PLAYLIST_PATH)]
+            urls = [QUrl.fromLocalFile(link) for link in parseLinksFrom_M3U(CURRENT_PLAYLIST_PATH, encoding='utf-8')]
             if urls:
                 self.addTracks(urls)
 

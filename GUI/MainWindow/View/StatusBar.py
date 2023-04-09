@@ -67,7 +67,7 @@ class EQStateLabel(QLabel):
         self.isOn = isOn
         self.setFrameShape(QFrame.Shape.StyledPanel)
         self.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        self.setFixedWidth(55)
+        self.setFixedWidth(50)
         self.update()
 
     def update(self, isOn=False):

@@ -29,6 +29,10 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+        #   overriding QtDesigner bug which spontaneously resets TransportPanel min width to MainWindow width:
+        self.TransportPanel.setMinimumWidth(0)
+
         self._flags = self.windowFlags()
         self.setDockOptions(self.dockOptions().AnimatedDocks)
         self.setWindowTitle(definitions.app_name)
@@ -44,7 +48,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setUniActBut()
         self.alt_pressed = None
         self.setFocus()
-        self.actionSequential_Playback.triggered.connect(self.onActionSequentialPlaybackTriggered)
         self.SupportProject.visibilityChanged.connect(self.onSupportProjectVisibilityChanged)
         self.TransportPanelViewBut.setDefaultAction(self.actionTransport_Panel_view)
 
