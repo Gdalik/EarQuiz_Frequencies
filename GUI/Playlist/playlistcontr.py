@@ -60,6 +60,8 @@ class PlaylistContr(QObject):
         contextMenu.exec(self.PlaylistView.mapToGlobal(pos))
 
     def addTracks(self, URLs: list[QUrl], index=-1):
+        if len(URLs) == 0:
+            return
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)
 
         paths = [url.toLocalFile() for url in URLs]

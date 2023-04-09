@@ -10,7 +10,7 @@ def export_m3u_playlist(playlistdata: list[PlSong], out_fullpath: str, pathmode=
     pl_paths = playlist_paths(playlistdata, out_dir=out_dir, pathmode=pathmode)
     pl_paths_str = '\n'.join(pl_paths)
     Path.mkdir(out_dir, parents=True, exist_ok=True)
-    with open(out_fullpath, "w", encoding=encoding) as f:
+    with open(out_fullpath, "w", encoding=encoding, errors='replace') as f:
         f.write(pl_paths_str)
     return out_fullpath if Path(out_fullpath).is_file() else False
 
