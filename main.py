@@ -21,6 +21,7 @@ if __name__ == '__main__':
     app.setWindowIcon(QIcon(":Logo/Icons/Logo/EarQuiz_Icon.png"))
     app.setApplicationDisplayName(app_name)
     app.setApplicationName(app_name)
+    app.setOrganizationDomain("earquiz.org")
     shutil.rmtree(TEMP_AUDIO_DIR, ignore_errors=True)
     mw = MainWindowContr()
     app.aboutToQuit.connect(onAppAboutToQuit)

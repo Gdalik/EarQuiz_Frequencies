@@ -398,7 +398,7 @@ background: rgba(118, 214, 255, 85);
            <widget class="QLabel" name="EqOnOffLab">
             <property name="minimumSize">
              <size>
-              <width>70</width>
+              <width>75</width>
               <height>30</height>
              </size>
             </property>
@@ -421,6 +421,12 @@ background: rgba(118, 214, 255, 85);
              <string notr="true">color: rgb(115, 115, 115);
 font-weight: bold</string>
             </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
             <property name="text">
              <string>EQ Off</string>
             </property>
@@ -428,7 +434,10 @@ font-weight: bold</string>
              <bool>false</bool>
             </property>
             <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="margin">
+             <number>0</number>
             </property>
             <property name="indent">
              <number>-1</number>

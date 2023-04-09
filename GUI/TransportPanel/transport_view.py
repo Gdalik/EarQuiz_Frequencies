@@ -7,6 +7,8 @@ from Utilities.common_calcs import hhmmss
 class TransportPanelView:
     def __init__(self, mw_view):
         self.mw_view = mw_view
+        #   overriding QtDesigner bug which spontaneously resets TransportPanel min width to MainWindow width:
+        self.mw_view.TransportPanel.setMinimumWidth(0)
         self.PlayerView = PlayerView(self.mw_view)
         self.AudioSliderView = AudioSliderView(self.mw_view.AudioSlider)
         self.Duration_Lab = mw_view.Duration_Lab

@@ -52,6 +52,7 @@ class NormalizationLabel(QLabel):
         self.value = value
         self.parent = parent
         self.setFrameShape(QFrame.Shape.StyledPanel)
+        self.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.update()
 
     def update(self, value=None):
@@ -65,6 +66,8 @@ class EQStateLabel(QLabel):
         self.parent = parent
         self.isOn = isOn
         self.setFrameShape(QFrame.Shape.StyledPanel)
+        self.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        self.setFixedWidth(55)
         self.update()
 
     def update(self, isOn=False):
@@ -83,6 +86,7 @@ class FreqGainLabel(QLabel):
         self.value = value
         self.parent = parent
         self.setFrameShape(QFrame.Shape.StyledPanel)
+        self.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.update()
 
     def update(self, value=0):

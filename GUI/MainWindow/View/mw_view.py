@@ -1,6 +1,10 @@
+import contextlib
+import datetime
 import platform
-from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton, QSlider
-from PyQt6.QtGui import QAction, QWheelEvent
+
+from PyQt6.QtWidgets import QDockWidget
+from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
+from PyQt6.QtGui import QAction
 from PyQt6.QtCore import Qt, QObject, pyqtSignal
 from GUI.MainWindow.View.mainwindow import Ui_MainWindow
 from GUI.TransportPanel.transport_view import TransportPanelView
@@ -11,6 +15,7 @@ from GUI.MainWindow.View.audiodevices_view import AudioDevicesView
 from GUI.Misc.error_message import error_message
 from GUI.MainWindow.View.StatusBar import StatusBar
 import definitions
+from definitions import Settings
 
 
 class MW_Signals(QObject):
@@ -35,13 +40,14 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.EQSetView = EQSetView(self)
         self._setUpEQSettingsButtons()
         self.AudioDevicesView = AudioDevicesView(self)
-        self.setMinimalistView()
-        self.actionMinimal.triggered.connect(self.setMinimalistView)
+        self.restoreWindowView()
+        self._setWinViewActions()
         self.actionSequential_Playback.triggered.connect(self.onActionSequentialPlaybackTriggered)
         self.TransportPanelView = TransportPanelView(self)
         self.setUniActBut()
         self.alt_pressed = None
         self.setFocus()
+        self.SupportProject.visibilityChanged.connect(self.onSupportProjectVisibilityChanged)
 
     def win_os_settings(self):
         widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + \
@@ -63,6 +69,12 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         timelab_fonts.setPointSize(14)
         self.Position_Lab.setFont(timelab_fonts)
         self.Duration_Lab.setFont(timelab_fonts)
+
+    def _setWinViewActions(self):
+        self.actionMinimal.triggered.connect(self.setMinimalistView)
+        self.actionMaximal.triggered.connect(self.setMaximalistView)
+        self.actionMinimize.triggered.connect(self.showMinimized)
+        self.actionZoom.triggered.connect(self.showMaximized)
 
     def keyPressEvent(self, event):
         super(MainWindowView, self).keyPressEvent(event)
@@ -107,6 +119,14 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         height = min(700, av_geom.height() - 30)
         self.resize(width, height)
 
+    def setMaximalistView(self):
+        self.showMaximized()
+        self.showFullScreen()
+        self.ExScoreInfo.show()
+        self.Eq_Settings.show()
+        self.SupportProject.show()
+        self.TransportPanel.show()
+
     def setActionNextExampleEnabled(self, arg):
         self.actionNext_Example.setEnabled(arg)
         self.actionNext_Example.setVisible(arg)
@@ -118,7 +138,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def error_msg(self, message: str):
         error_message(self, message)
-
 
     def setEQStateIndicatorOn(self, arg: bool):
         self.EqOnOffLab.setVisible(True)
@@ -137,3 +156,47 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def onActionSequentialPlaybackTriggered(self):
         self.actionLoop_Sequence.setEnabled(self.actionSequential_Playback.isChecked())
+
+    def storeWindowView(self):
+        Settings.setValue('MainWindow/Geometry', self.geometry())
+        self._saveDockWidgets((self.AudioSource, self.TransportPanel, self.Eq_Settings, self.ExScoreInfo,
+                               self.SupportProject))
+
+    def restoreWindowView(self):
+        geometry = Settings.value('MainWindow/Geometry', None)
+        if geometry is None:
+            self.setMinimalistView()
+            return
+        self.setGeometry(geometry)
+        self._restoreDockWidgets((self.AudioSource, self.TransportPanel, self.Eq_Settings, self.ExScoreInfo,
+                                  self.SupportProject))
+
+    def _saveDockWidgets(self, objects: list[QDockWidget] or tuple[QDockWidget]):
+        for obj in objects:
+            self._saveDockWidget(obj)
+
+    def _restoreDockWidgets(self, objects: list[QDockWidget] or tuple[QDockWidget]):
+        for obj in objects:
+            self._restoreDockWidget(obj)
+
+    @staticmethod
+    def _saveDockWidget(obj: QDockWidget):
+        Settings.beginGroup('MainWindow')
+        Settings.setValue(obj.objectName(), {'Visible': obj.isVisible(),
+                                             'Floating': obj.isFloating(),
+                                             'Geometry': obj.geometry()})
+        Settings.endGroup()
+
+    @staticmethod
+    def _restoreDockWidget(obj: QDockWidget):
+        Settings.beginGroup('MainWindow')
+        with contextlib.suppress(TypeError, KeyError):
+            obj.setVisible(Settings.value(obj.objectName())['Visible'])
+            obj.setFloating(Settings.value(obj.objectName())['Floating'])
+            obj.setGeometry(Settings.value(obj.objectName())['Geometry'])
+        Settings.endGroup()
+
+    def onSupportProjectVisibilityChanged(self, arg: bool):
+        if arg:
+            return
+        Settings.setValue(f'MainWindow/{self.SupportProject.objectName()}_LastClosed', datetime.datetime.now())

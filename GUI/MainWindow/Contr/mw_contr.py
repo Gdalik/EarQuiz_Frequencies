@@ -1,4 +1,6 @@
-from definitions import app
+import datetime
+import platform
+from definitions import app, Settings
 from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.EQ.eq_contr import EQContr
@@ -19,15 +21,14 @@ from GUI.MainWindow.Contr.adgen_contr import ADGenContr
 from GUI.MainWindow.Contr.sourcerange_contr import SourceRangeContr
 from GUI.Misc.tracked_proc import ProcTrackControl
 from GUI.StartScreen import StartLogo
+from GUI.FileMaker.make_playlist import exportPlaylist, exportPlaylistWithRelPaths
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.audiodrill_gen import AudioDrillGen
+from Model.file_hash import filehash
 from PyQt6.QtCore import QObject
 from PyQt6.QtGui import QActionGroup
-import platform
-from Model.file_hash import filehash
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
-from GUI.FileMaker.make_playlist import exportPlaylist, exportPlaylistWithRelPaths
 
 
 class MainWindowContr(QObject):
@@ -207,8 +208,16 @@ class MainWindowContr(QObject):
             return
         self.mw_view.actionUni_Mode.setChecked(True)
         self.mw_view.ExScoreInfo.show()
-        if 'passed' in self.ExScore.test_status:
+        days_passed = self._daysSinceBeggingWinWasClosed()
+        if 'passed' in self.ExScore.test_status and (days_passed is None or days_passed >= 7):
             self.mw_view.SupportProject.show()
+
+    def _daysSinceBeggingWinWasClosed(self):
+        last_closed = Settings.value(f'MainWindow/{self.mw_view.SupportProject.objectName()}_LastClosed', None)
+        if last_closed is None:
+            return None
+        timedelta = datetime.datetime.now() - last_closed
+        return timedelta.days
 
     def _pushBackToPreview(self):
         if self.ADGen is None and self.CurrentMode.name not in ('Preview', 'Uni'):
@@ -240,6 +249,7 @@ class MainWindowContr(QObject):
     def onAppClose(self):
         self.SRC.savePrevSourceAudioRange()
         self.PlaylistContr.saveCurrentPlaylist()
+        self.mw_view.storeWindowView()
 
     @property
     def normHeadroomChanged(self):
