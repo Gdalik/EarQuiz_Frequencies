@@ -1,7 +1,5 @@
 import contextlib
 import datetime
-import platform
-
 from PyQt6.QtWidgets import QDockWidget
 from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
 from PyQt6.QtGui import QAction
@@ -48,6 +46,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.alt_pressed = None
         self.setFocus()
         self.SupportProject.visibilityChanged.connect(self.onSupportProjectVisibilityChanged)
+        self.TransportPanelViewBut.setDefaultAction(self.actionTransport_Panel_view)
 
     def win_os_settings(self):
         widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + \
@@ -75,6 +74,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.actionMaximal.triggered.connect(self.setMaximalistView)
         self.actionMinimize.triggered.connect(self.showMinimized)
         self.actionZoom.triggered.connect(self.showMaximized)
+        self.actionMinimize_All_Windows.triggered.connect(self.minimizeAllWindows)
 
     def keyPressEvent(self, event):
         super(MainWindowView, self).keyPressEvent(event)
@@ -178,6 +178,13 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def _restoreDockWidgets(self, objects: list[QDockWidget] or tuple[QDockWidget]):
         for obj in objects:
             self._restoreDockWidget(obj)
+
+    def minimizeAllWindows(self):
+        self.showMinimized()
+        DockWidgets = self.findChildren(QDockWidget)
+        for W in DockWidgets:
+            if W.isFloating():
+                W.setHidden(True)
 
     @staticmethod
     def _saveDockWidget(obj: QDockWidget):

@@ -4681,6 +4681,7 @@ color: gray;
      <string>Window</string>
     </property>
     <addaction name="actionMinimize"/>
+    <addaction name="actionMinimize_All_Windows"/>
     <addaction name="actionZoom"/>
    </widget>
    <widget class="QMenu" name="menuControls">
@@ -7114,6 +7115,11 @@ background: rgba(118, 214, 255, 85)
     <string>Support the App</string>
    </property>
   </action>
+  <action name="actionMinimize_All_Windows">
+   <property name="text">
+    <string>Minimize All Windows</string>
+   </property>
+  </action>
   <zorder>Eq_Settings</zorder>
   <zorder>TransportPanel</zorder>
   <zorder>ExScoreInfo</zorder>
@@ -7150,22 +7156,6 @@ background: rgba(118, 214, 255, 85)
     <hint type="destinationlabel">
      <x>577</x>
      <y>640</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>TransportPanel</sender>
-   <signal>visibilityChanged(bool)</signal>
-   <receiver>actionTransport_Panel_view</receiver>
-   <slot>setChecked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>577</x>
-     <y>640</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
     </hint>
    </hints>
   </connection>
@@ -7266,34 +7256,18 @@ background: rgba(118, 214, 255, 85)
    </hints>
   </connection>
   <connection>
-   <sender>TransportPanelViewBut</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>TransportPanel</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>192</x>
-     <y>65</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>577</x>
-     <y>640</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>TransportPanel</sender>
    <signal>visibilityChanged(bool)</signal>
-   <receiver>TransportPanelViewBut</receiver>
+   <receiver>actionTransport_Panel_view</receiver>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>577</x>
-     <y>640</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
-     <x>192</x>
-     <y>65</y>
+     <x>194</x>
+     <y>68</y>
     </hint>
    </hints>
   </connection>

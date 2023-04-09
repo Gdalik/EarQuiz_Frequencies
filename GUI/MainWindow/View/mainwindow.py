@@ -3021,6 +3021,8 @@ class Ui_MainWindow(object):
         self.actionSupport_the_App_view = QtGui.QAction(parent=MainWindow)
         self.actionSupport_the_App_view.setCheckable(True)
         self.actionSupport_the_App_view.setObjectName("actionSupport_the_App_view")
+        self.actionMinimize_All_Windows = QtGui.QAction(parent=MainWindow)
+        self.actionMinimize_All_Windows.setObjectName("actionMinimize_All_Windows")
         self.Eq_Settings.raise_()
         self.TransportPanel.raise_()
         self.ExScoreInfo.raise_()
@@ -3051,6 +3053,7 @@ class Ui_MainWindow(object):
         self.menuHelp.addAction(self.actionVideo_Tutorial)
         self.menuHelp.addAction(self.actionOnline_Help)
         self.menuWindow.addAction(self.actionMinimize)
+        self.menuWindow.addAction(self.actionMinimize_All_Windows)
         self.menuWindow.addAction(self.actionZoom)
         self.menuEQ_Bands_Playback_Order.addAction(self.actionAscendingEQ)
         self.menuEQ_Bands_Playback_Order.addAction(self.actionDescendingEQ)
@@ -3096,15 +3099,13 @@ class Ui_MainWindow(object):
         self.PatternBox.setCurrentIndex(-1)
         self.BWBox.setCurrentIndex(-1)
         self.actionTransport_Panel_view.triggered['bool'].connect(self.TransportPanel.setVisible) # type: ignore
-        self.TransportPanel.visibilityChanged['bool'].connect(self.actionTransport_Panel_view.setChecked) # type: ignore
         self.actionEQ_Settings_view.triggered['bool'].connect(self.Eq_Settings.setVisible) # type: ignore
         self.Eq_Settings.visibilityChanged['bool'].connect(self.actionEQ_Settings_view.setChecked) # type: ignore
         self.actionExercise_Score_Information_view.triggered['bool'].connect(self.ExScoreInfo.setVisible) # type: ignore
         self.ExScoreInfo.visibilityChanged['bool'].connect(self.actionExercise_Score_Information_view.setChecked) # type: ignore
         self.actionSupport_the_App_view.triggered['bool'].connect(self.SupportProject.setVisible) # type: ignore
         self.SupportProject.visibilityChanged['bool'].connect(self.actionSupport_the_App_view.setChecked) # type: ignore
-        self.TransportPanelViewBut.toggled['bool'].connect(self.TransportPanel.setVisible) # type: ignore
-        self.TransportPanel.visibilityChanged['bool'].connect(self.TransportPanelViewBut.setChecked) # type: ignore
+        self.TransportPanel.visibilityChanged['bool'].connect(self.actionTransport_Panel_view.setChecked) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -3296,5 +3297,6 @@ class Ui_MainWindow(object):
         self.actionEQ_Settings_view.setText(_translate("MainWindow", "EQ Settings"))
         self.actionExercise_Score_Information_view.setText(_translate("MainWindow", "Exercise / Score Information"))
         self.actionSupport_the_App_view.setText(_translate("MainWindow", "Support the App"))
+        self.actionMinimize_All_Windows.setText(_translate("MainWindow", "Minimize All Windows"))
 from playlistview import PlaylistView
 from pyqtgraph import PlotWidget
