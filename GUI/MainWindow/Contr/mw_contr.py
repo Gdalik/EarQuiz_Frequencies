@@ -152,6 +152,7 @@ class MainWindowContr(QObject):
 
     def setNextExampleBut(self):
         self.mw_view.NextExample.setDefaultAction(self.mw_view.actionNext_Example)
+        self.mw_view.NextExample_TP.setDefaultAction(self.mw_view.actionNext_Example)
         self.mw_view.actionNext_Example.triggered.connect(self.onNextExampleTriggered)
 
     def onNextExampleTriggered(self):

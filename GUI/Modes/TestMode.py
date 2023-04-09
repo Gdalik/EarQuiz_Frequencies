@@ -13,7 +13,7 @@ class TestMode(UniMode):
         if self.parent.LastMode.name not in ['Preview', 'Uni']:
             self.parent.EQContr.resetEQ()
         self.view.setActionNextExampleEnabled(False)
-        self.view.NextExample.setVisible(True)
+        self.setNextExampleVisible(True)
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
         self.restart_test()
         self.parent.ADGC.setAudioDrillGen()

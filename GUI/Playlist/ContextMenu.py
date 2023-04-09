@@ -43,7 +43,9 @@ class PLContextMenu(QMenu):
             self.addAction(self.actionRemove)
         if not remove_sep:
             self.addSeparator()
-        if any((not S.available for S in self.playlistdata)):
+        unavailable_present = any((not S.available for S in self.playlistdata))
+        self.actionRemoveUnavailable.setEnabled(unavailable_present)
+        if unavailable_present or len(self.selected_tracks) > 0:
             self.addAction(self.actionRemoveUnavailable)
 
     def _createSingleSelectedTrackMenu(self):

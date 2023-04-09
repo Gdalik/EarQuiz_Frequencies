@@ -5061,6 +5061,54 @@ border-radius: 4px;
           </widget>
          </item>
          <item>
+          <widget class="QToolButton" name="NextExample_TP">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Next Example</string>
+           </property>
+           <property name="statusTip">
+            <string/>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QToolButton{
+border: None;
+}
+QToolButton:hover{
+background: rgba(192, 192, 192, 128);
+border-radius: 4px;
+}
+QToolButton:pressed{
+border: 1px inset gray;
+background: rgba(118, 214, 255, 85);
+}</string>
+           </property>
+           <property name="text">
+            <string>Next Example</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../icons.qrc">
+             <normaloff>:/Player/Icons/Player/arrow-right_gray.png</normaloff>:/Player/Icons/Player/arrow-right_gray.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>26</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QToolButton" name="SequencePlayBut">
            <property name="minimumSize">
             <size>

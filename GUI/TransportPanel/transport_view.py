@@ -23,6 +23,7 @@ class TransportPanelView:
         self.RangeToEnd = mw_view.RangeToEnd
         self.ClearRangeBut = mw_view.ClearRangeBut
         self.CropRegionTstr = CropRegionTimestr(self)
+        self.SaveSliceLengthAsDefault = mw_view.SaveSliceLengthAsDefault
         self.setHeader()
 
     def setHeader(self, audio_name='No audio'):

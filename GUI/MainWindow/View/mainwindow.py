@@ -2181,6 +2181,25 @@ class Ui_MainWindow(object):
         self.LoopButton.setChecked(True)
         self.LoopButton.setObjectName("LoopButton")
         self.PlayerLay.addWidget(self.LoopButton)
+        self.NextExample_TP = QtWidgets.QToolButton(parent=self.dockWidgetContents)
+        self.NextExample_TP.setMinimumSize(QtCore.QSize(30, 30))
+        self.NextExample_TP.setMaximumSize(QtCore.QSize(30, 30))
+        self.NextExample_TP.setStatusTip("")
+        self.NextExample_TP.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85);\n"
+"}")
+        self.NextExample_TP.setIcon(icon2)
+        self.NextExample_TP.setIconSize(QtCore.QSize(26, 26))
+        self.NextExample_TP.setObjectName("NextExample_TP")
+        self.PlayerLay.addWidget(self.NextExample_TP)
         self.SequencePlayBut = QtWidgets.QToolButton(parent=self.dockWidgetContents)
         self.SequencePlayBut.setMinimumSize(QtCore.QSize(31, 31))
         self.SequencePlayBut.setStyleSheet("QToolButton{border: none;}\n"
@@ -3181,6 +3200,8 @@ class Ui_MainWindow(object):
         self.Player_PlayPause.setText(_translate("MainWindow", "..."))
         self.Player_Stop.setText(_translate("MainWindow", "..."))
         self.Player_SkipForw.setText(_translate("MainWindow", "..."))
+        self.NextExample_TP.setToolTip(_translate("MainWindow", "Next Example"))
+        self.NextExample_TP.setText(_translate("MainWindow", "Next Example"))
         self.SequencePlayBut.setText(_translate("MainWindow", "..."))
         self.VolumeLab.setText(_translate("MainWindow", "Volume:"))
         self.VolumeLevelLab.setText(_translate("MainWindow", "75%"))

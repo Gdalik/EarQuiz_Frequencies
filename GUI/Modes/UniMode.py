@@ -17,7 +17,7 @@ class UniMode:
         # True CursorBeingDragged value, caused by previous Audio Cursor position change, may result in further
         # glitches.
         self.view.setActionNextExampleEnabled(False)
-        self.view.NextExample.setVisible(False)
+        self.setNextExampleVisible(False)
         self.enableTimeSettingsChanges(False)
         self.hideEQState()
         self.setEQBandsOrderMenuEnabled(contrEnabled)
@@ -132,3 +132,7 @@ class UniMode:
     def hideEQState(self):
         self.view.EqOnOffLab.setVisible(False)
         self.view.status.EQStateLabel.setVisible(False)
+
+    def setNextExampleVisible(self, arg: bool):
+        self.view.NextExample.setVisible(arg)
+        self.view.NextExample_TP.setVisible(arg)

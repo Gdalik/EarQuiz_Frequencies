@@ -1,6 +1,8 @@
 from PyQt6.QtCore import QObject, Qt
 from GUI.TransportPanel.player_contr import PlayerContr
 from Model.calc import proc_unproc_len
+from definitions import Settings
+from GUI.globals import defaultSliceLenUpd
 
 
 class TransportContr(QObject):
@@ -15,6 +17,7 @@ class TransportContr(QObject):
         self._setCropRegionActions()
         self._setCursorActions()
         self.TransportView.SliceLenSpin.valueChanged.connect(self.onSliceLenChanged)
+        self.TransportView.SaveSliceLengthAsDefault.clicked.connect(self.onSaveSliceLengthAsDefaultClicked)
 
     @property
     def SourceRange(self):
@@ -143,6 +146,11 @@ class TransportContr(QObject):
         self.SourceRange.slice_length = value
         self.TransportView.SliceLenSpin.setValue(self.SourceRange.slice_length)
         self.TransportView.setSlicesNum(self.SourceRange.slices_num)
+
+    def onSaveSliceLengthAsDefaultClicked(self):
+        _key = 'PinknoiseSliceLength' if self.parent.CurrentSourceMode.name == 'Pinknoise' else 'ExtAudioSliceLength'
+        Settings.setValue(f'GlobalVars/{_key}', self.TransportView.SliceLenSpin.value())
+        defaultSliceLenUpd()
 
     def updAudioToEqSettings(self, refreshAfter=True, play_after=False, raiseInterruptedException=True):
         if self.parent.CurrentMode.name not in ('Learn', 'Test') or not self.parent.eqSetChanged:

@@ -40,11 +40,11 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.AudioDevicesView = AudioDevicesView(self)
         self.restoreWindowView()
         self._setWinViewActions()
-        self.actionSequential_Playback.triggered.connect(self.onActionSequentialPlaybackTriggered)
         self.TransportPanelView = TransportPanelView(self)
         self.setUniActBut()
         self.alt_pressed = None
         self.setFocus()
+        self.actionSequential_Playback.triggered.connect(self.onActionSequentialPlaybackTriggered)
         self.SupportProject.visibilityChanged.connect(self.onSupportProjectVisibilityChanged)
         self.TransportPanelViewBut.setDefaultAction(self.actionTransport_Panel_view)
 
@@ -159,8 +159,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def storeWindowView(self):
         Settings.setValue('MainWindow/Geometry', self.geometry())
-        self._saveDockWidgets((self.AudioSource, self.TransportPanel, self.Eq_Settings, self.ExScoreInfo,
-                               self.SupportProject))
+        self._saveDockWidgets(self.dockWidgets)
 
     def restoreWindowView(self):
         geometry = Settings.value('MainWindow/Geometry', None)
@@ -168,8 +167,11 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             self.setMinimalistView()
             return
         self.setGeometry(geometry)
-        self._restoreDockWidgets((self.AudioSource, self.TransportPanel, self.Eq_Settings, self.ExScoreInfo,
-                                  self.SupportProject))
+        self._restoreDockWidgets(self.dockWidgets)
+
+    @property
+    def dockWidgets(self):
+        return self.findChildren(QDockWidget)
 
     def _saveDockWidgets(self, objects: list[QDockWidget] or tuple[QDockWidget]):
         for obj in objects:

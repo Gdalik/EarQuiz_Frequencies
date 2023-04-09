@@ -20,7 +20,7 @@ class LearnMode(UniMode):
 
     def setControls(self):
         self.view.setActionNextExampleEnabled(True)
-        self.view.NextExample.setVisible(True)
+        self.setNextExampleVisible(True)
         self.view.actionSequential_Playback.setVisible(True)
         self.view.SequencePlayBut.setVisible(True)
         self.view.actionLoop_Sequence.setVisible(True)
