@@ -72,7 +72,7 @@ class PlayerContr(QMediaPlayer):
             return 0
 
     def loopPlayback(self):
-        self.setPosition(self.startPos)
+        self.setPosition(int(self.startPos))
 
     def sourceAudioData(self):
         def hzTokHz(value: int or float):
@@ -171,7 +171,7 @@ class PlayerContr(QMediaPlayer):
         curMode = self.mw_contr.CurrentMode
         if curMode.name != 'Preview':
             return
-        starttime = curMode.currentAudioStartTime * 1000
+        starttime = int(curMode.currentAudioStartTime * 1000)
         if self.position() != starttime:
             self.setPosition(starttime)
         curMode.ensureCursorGotoStart()
@@ -214,7 +214,6 @@ class PlayerContr(QMediaPlayer):
         self.onAudioDeviceChecked()
 
     def onError(self, err, string):
-        print(f'{err=} {string=}')
         sourcefile = self.mw_contr.SourceAudio
         self.PlModel.nonLoadedSong_paths.add(sourcefile.path)
         self.PlModel.updCanLoadData()

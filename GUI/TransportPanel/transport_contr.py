@@ -203,7 +203,9 @@ class TransportContr(QObject):
         if self.CropRegionBeingChanged or self.parent.CurrentMode.name != 'Preview':
             return
         pos = self.PlayerContr.position() / 1000  # ms -> s
-        if pos < int(self.SourceRange.starttime) or pos > self.SourceRange.endtime:
+        # if pos < int(self.SourceRange.starttime) or pos > self.SourceRange.endtime:
+        if pos < self.SourceRange.starttime or pos > self.SourceRange.endtime:
+            print(f'{pos=} {int(self.SourceRange.starttime)=} {self.SourceRange.endtime=}')
             if not self.parent.mw_view.actionLoop_Playback.isChecked():
                 self.PlayerContr.onStopTriggered()
             else:
