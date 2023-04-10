@@ -20,7 +20,6 @@ class PlayerContr(QMediaPlayer):
         self._connectSignals()
         self.playAfterAudioLoaded = False
         self.onceAudioLoaded = False
-        self.playAfterStopped = False
         self.PlModel = self.mw_contr.PlaylistContr.playlistModel
 
     def _connectSignals(self):
@@ -116,7 +115,7 @@ class PlayerContr(QMediaPlayer):
                 self.PlModel.updCanLoadData()
 
     def _onEndofMedia(self):
-        self.setPosition(self.startPos)
+        self.setPosition(int(self.startPos))
         if self.mw_view.actionLoop_Playback.isChecked() and self.mw_contr.CurrentMode.name == 'Preview':
             self.play()
         self.mw_contr.CurrentMode.playbackStoppedEnded()

@@ -81,7 +81,7 @@ class TransportContr(QObject):
         mouse_x = self.TransportView.AudioSliderView.ViewBox.mapSceneToView(ev.scenePos()).toPoint().x()
         if mouse_x < self.SourceRange.starttime * 1000 or mouse_x > self.SourceRange.endtime * 1000:
             return
-        self.PlayerContr.setPosition(mouse_x)
+        self.PlayerContr.setPosition(int(mouse_x))
 
     def onCropRegionTstrChanged(self):
         if self.SourceRange is None:

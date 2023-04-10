@@ -17,6 +17,8 @@ def delTempAudio():
 def setAudioBackend():
     if platform.system() == 'Windows':
         os.environ['QT_MEDIA_BACKEND'] = 'windows'
+    elif platform.system() == 'Darwin':
+        os.environ['QT_MEDIA_BACKEND'] = 'darwin'
 
 
 if __name__ == '__main__':
