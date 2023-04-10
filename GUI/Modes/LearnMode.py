@@ -2,7 +2,7 @@ from GUI.Modes.UniMode import UniMode
 
 
 class LearnMode(UniMode):
-    def __init__(self, parent):     # parent: MainWindowContr
+    def __init__(self, parent):  # parent: MainWindowContr
         super().__init__(parent)
         self.name = 'Learn'
         self.currentDrillFreq = None

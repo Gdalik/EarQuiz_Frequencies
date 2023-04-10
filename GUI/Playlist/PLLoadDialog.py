@@ -1,7 +1,9 @@
 from multiprocessing import Process, Manager
-from Model.FileLinksParser import pathsResolve
+
 from PyQt6.QtCore import QObject, Qt, QRunnable, pyqtSignal, pyqtSlot, QThreadPool
 from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QLabel, QVBoxLayout
+
+from Model.FileLinksParser import pathsResolve
 
 
 class PLLoadSignals(QObject):

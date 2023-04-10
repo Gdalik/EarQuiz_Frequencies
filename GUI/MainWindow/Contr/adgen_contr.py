@@ -5,7 +5,7 @@ from definitions import PN
 
 
 class ADGenContr:
-    def __init__(self, parent):     # parent: MainWindowContr
+    def __init__(self, parent):  # parent: MainWindowContr
         self.parent = parent
 
     def setAudioDrillGen(self, resetExGen=True):
@@ -38,7 +38,8 @@ class ADGenContr:
         self.parent.isErrorInProcess(ADG)
         self.parent.ADGen = ADG.return_obj or None
         if self.parent.ADGen is not None:
-            self.parent.ADGen.audiochunk.signals.showNormalizationLevel.connect(self.parent.mw_view.status.showNormalization)
+            self.parent.ADGen.audiochunk.signals.showNormalizationLevel.connect(
+                self.parent.mw_view.status.showNormalization)
 
     def _adjustADGenCropRange(self):
         SR = self.parent.SourceRange

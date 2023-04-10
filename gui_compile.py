@@ -1,7 +1,8 @@
 import os
-from definitions import ROOT_DIR
-import subprocess
 import platform
+import subprocess
+
+from definitions import ROOT_DIR
 
 # replace with current virtual environment directory name:
 venv_dir = 'venv'

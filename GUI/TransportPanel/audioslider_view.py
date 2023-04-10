@@ -6,7 +6,7 @@ from PyQt6.QtGui import QColor
 
 class AudioSliderView:
     def __init__(self, parent, length=30):
-        self.parent = parent    # parent: TransportPanelView
+        self.parent = parent  # parent: TransportPanelView
         self.setCommonView()
 
         self.audioLength = length
@@ -61,7 +61,7 @@ class AudioSliderView:
 
 
 class AudioCursor(pg.InfiniteLine):
-    def __init__(self, parent):     # parent: AudioSliderView
+    def __init__(self, parent):  # parent: AudioSliderView
         super().__init__(movable=False)
         self.setPen(style=Qt.PenStyle.SolidLine, color='red', width=8)
         self.setHoverPen(style=Qt.PenStyle.SolidLine, color='darkred', width=8)
@@ -89,6 +89,7 @@ class CropRegion(pg.LinearRegionItem):
         self.blockSignals(True)
         self.setRegion((int(a_pos * 1000), int(b_pos * 1000)))
         self.blockSignals(False)
+
 
 class SliceRegion(pg.LinearRegionItem):
     def __init__(self, a_pos: int or float, b_pos: int or float):

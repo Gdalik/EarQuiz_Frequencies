@@ -1,6 +1,7 @@
-from PyQt6.QtWidgets import QSplashScreen
-from PyQt6.QtGui import QPixmap, QColor
 from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QPixmap, QColor
+from PyQt6.QtWidgets import QSplashScreen
+
 from definitions import version
 
 

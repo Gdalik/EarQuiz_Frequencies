@@ -1,6 +1,7 @@
 import copy
-from GUI.Playlist.plsong import PlSong
 import random
+
+from GUI.Playlist.plsong import PlSong
 
 
 class PlNavi:
@@ -47,7 +48,7 @@ class PlNavi:
             return self._nextShuffle()
         if self.currentSong() == self.playlistdata[-1]:
             return self.findCurrentSong(availableOnly=False, avoidActualCurrentSong=True) if self.repeat_playlist() \
-                    else None
+                else None
         if not self.currentSongInside():
             return self._findNextToDeletedCurrentSong()
         next_song_id = self.playlistdata.index(self._currentSong) + 1
@@ -64,7 +65,7 @@ class PlNavi:
 
     def _findNextToDeletedCurrentSong(self):
         if len(self.playlistdata) == 0 or len(self.prev_playlistdata) == 0 or self.currentSong() is None \
-                    or self.currentSong() not in self.prev_playlistdata:
+                or self.currentSong() not in self.prev_playlistdata:
             return None
         start_ind = self.prev_playlistdata.index(self.currentSong())
         return next(
@@ -100,10 +101,10 @@ class PlNavi:
 
     def _findPrevToDeletedCurrentSong(self, curr_list: list, prev_list: list):
         if (
-            not curr_list
-            or not prev_list
-            or self.currentSong() is None
-            or self.currentSong() not in prev_list
+                not curr_list
+                or not prev_list
+                or self.currentSong() is None
+                or self.currentSong() not in prev_list
         ):
             return None
         stop_ind = prev_list.index(self.currentSong())

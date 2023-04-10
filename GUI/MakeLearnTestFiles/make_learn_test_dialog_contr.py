@@ -1,10 +1,12 @@
-from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QFileDialog
+import re
+from pathlib import Path
+
 from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QFileDialog
+
 from GUI.MakeLearnTestFiles.make_learn_test_dialog_view import Ui_MakeLearnTest_Dialog
 from Model.globals import supported_bitrates_mp3, supported_bitrates_ogg
 from definitions import EXERCISE_DIR
-from pathlib import Path
-import re
 
 
 class MakeLearnTestDialogContr(QDialog, Ui_MakeLearnTest_Dialog):
@@ -43,7 +45,7 @@ class MakeLearnTestDialogContr(QDialog, Ui_MakeLearnTest_Dialog):
 
     def onChangeFolderBut_clicked(self):
         Dialog = QFileDialog.getExistingDirectory(self, "Select folder:", self.parent_path,
-                                                        QFileDialog.Option.ShowDirsOnly)
+                                                  QFileDialog.Option.ShowDirsOnly)
         if not Dialog:
             return
         self.parent_path = Dialog

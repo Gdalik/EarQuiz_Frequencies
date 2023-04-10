@@ -1,6 +1,7 @@
 from PyQt6.QtCore import QObject
-from PyQt6.QtMultimedia import QMediaDevices
 from PyQt6.QtGui import QActionGroup
+from PyQt6.QtMultimedia import QMediaDevices
+
 from definitions import MediaDevices, Settings
 
 
@@ -49,4 +50,3 @@ class AudioDevicesView(QObject):
         for device in outputs:
             if device.description() == current.text():
                 return device
-

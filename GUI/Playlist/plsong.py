@@ -1,9 +1,11 @@
 from dataclasses import dataclass
-from pedalboard.io import AudioFile
-from Utilities.common_calcs import mmss
-from pathlib import PurePath, Path
 from functools import cached_property
+from pathlib import PurePath, Path
+
+from pedalboard.io import AudioFile
+
 from Model.globals import MinAudioDuration
+from Utilities.common_calcs import mmss
 from definitions import PN
 
 

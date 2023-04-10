@@ -1,10 +1,10 @@
 from dataclasses import dataclass, field
+
+from PyQt6.QtCore import QObject
+from PyQt6.QtGui import QWheelEvent
 from PyQt6.QtWidgets import QSlider, QLabel
-from PyQt6.QtCore import QEvent, QObject
-from PyQt6.QtGui import QMouseEvent, QWheelEvent
 
 from Utilities.common_calcs import findAdjacentEl
-import re
 
 
 class EqView(QObject):
@@ -19,7 +19,7 @@ class EqView(QObject):
         self.disabledHandleStyle = '.QSlider::handle:vertical{background: white; ' \
                                    'border: 2px solid rgb(191, 191, 191); height: 5px; width: 10px; margin: 0px -5px}'
         self.basicSliderStyleNoHandle = '.QSlider::groove:vertical{border: 1px solid #262626; ' \
-                                'background: rgb(191, 191, 191); width: 5px; margin: 0 12px;}'
+                                        'background: rgb(191, 191, 191); width: 5px; margin: 0 12px;}'
         self.basicSliderStyle = self.basicSliderStyleNoHandle + self.handleStyle
         self.disabledSliderStyle = self.basicSliderStyle + self.disabledHandleStyle
         self._DisableAdjacentFiltersMode = False
@@ -45,7 +45,7 @@ class EqView(QObject):
         for S in list(self.TabWidget.findChildren(QSlider)):
             S.installEventFilter(self)
 
-    def setCurrentEQ(self, EQ: str):    # 'EQ1' (10-band) / 'EQ2' (30-band)
+    def setCurrentEQ(self, EQ: str):  # 'EQ1' (10-band) / 'EQ2' (30-band)
         if EQ == 'EQ1':
             self.TabWidget.setTabVisible(0, True)
             self.TabWidget.setTabVisible(1, False)
@@ -60,9 +60,9 @@ class EqView(QObject):
         _slider_style = F.Slider.styleSheet()
         norm_handle_style = self.disabledHandleStyle if self.disabledHandleStyle in _slider_style else self.handleStyle
         green_slider_set = '.QSlider::groove:vertical{margin: 0 12px; background: green; ' \
-                                'width: 5px;border: 1px solid #262626}'
+                           'width: 5px;border: 1px solid #262626}'
         green_handle_style = '.QSlider::handle:vertical{background: white; border: 2px solid green; ' \
-                           'height: 5px; width: 10px; margin: 0px -5px}'
+                             'height: 5px; width: 10px; margin: 0px -5px}'
         handle_style = green_handle_style if highlightHandle else norm_handle_style
         slider_style = f'{handle_style}{green_slider_set}'
         F.Slider.setStyleSheet(slider_style)
@@ -80,8 +80,10 @@ class EqView(QObject):
     def makeFilters(self):
         getEQ = lambda SliderLabel: SliderLabel[0].objectName().split('_')[0]
         getfreq = lambda SliderLabel: int(SliderLabel[0].objectName().split('_')[-1])
-        SliderList = [Slider for Slider in self.TabWidget.findChildren(QSlider) if Slider.objectName().startswith(self.currentEQ)]
-        LabelList = [self.TabWidget.findChild(QLabel, f'{SliderName}_Lab') for SliderName in map(QSlider.objectName, SliderList)]
+        SliderList = [Slider for Slider in self.TabWidget.findChildren(QSlider) if
+                      Slider.objectName().startswith(self.currentEQ)]
+        LabelList = [self.TabWidget.findChild(QLabel, f'{SliderName}_Lab') for SliderName in
+                     map(QSlider.objectName, SliderList)]
         return [self.Filter(getEQ(El), getfreq(El), *El) for El in zip(SliderList, LabelList)]
 
     def resetFilterStyle(self, freq: int, enabled=True):
@@ -124,11 +126,11 @@ class EqView(QObject):
         for F in self.Filters:
             self._filterSetEnabled(F, False)
 
-    def filterHandle(self, freq: int, boost_cut: str, blockSignals=False):      # boost_cut: '+'/'-'
+    def filterHandle(self, freq: int, boost_cut: str, blockSignals=False):  # boost_cut: '+'/'-'
         return self._filterHandle(self.getFilter(freq), boost_cut, blockSignals=blockSignals)
 
     @staticmethod
-    def _filterHandle(F: Filter, boost_cut: str, blockSignals=False):     # boost_cut: '+'/'-'
+    def _filterHandle(F: Filter, boost_cut: str, blockSignals=False):  # boost_cut: '+'/'-'
         F.Slider.blockSignals(blockSignals)
         if boost_cut == '+':
             F.Slider.setValue(F.Slider.maximum())
@@ -145,7 +147,9 @@ class EqView(QObject):
             return F
         F.Slider.setEnabled(arg)
         F.Label.setEnabled(arg)
-        slider_style = F.Slider.styleSheet().replace(self.disabledHandleStyle, self.handleStyle) if arg else F.Slider.styleSheet().replace(self.handleStyle, self.disabledHandleStyle)
+        slider_style = F.Slider.styleSheet().replace(self.disabledHandleStyle,
+                                                     self.handleStyle) if arg else F.Slider.styleSheet().replace(
+            self.handleStyle, self.disabledHandleStyle)
         F.Slider.setStyleSheet(slider_style)
         return F
 
@@ -168,6 +172,7 @@ class EqView(QObject):
                 if _freq == abs(v):
                     return '+' if v > 0 else '-'
             return '0'
+
         for F in self.Filters:
             self.filterHandle(F.freq, freq_bc(F.freq, values), blockSignals=blockSignals)
 
@@ -176,25 +181,27 @@ class EqView(QObject):
         filter_list.sort(key=lambda F: F.freq)
         return filter_list
 
-    def getAdjacentFilters(self, F: Filter, arg: int or bool):     # arg: the number of adjacent filters from each side or False
+    def getAdjacentFilters(self, F: Filter,
+                           arg: int or bool):  # arg: the number of adjacent filters from each side or False
         if not arg:
             return
         sorted_filters = self.sortedFilters()
         return findAdjacentEl(sorted_filters, F, num=arg)
 
-    def disableAdjacentFilters(self, freq: int, num=1):   # num: the number of adjacent filters from each side
+    def disableAdjacentFilters(self, freq: int, num=1):  # num: the number of adjacent filters from each side
         if not num:
             return
         adj_filt = self.getAdjacentFilters(self.getFilter(freq), num)
         for F in adj_filt:
             self._filterSetEnabled(F, False)
 
-    def enableAdjacentFilters(self, freq: int, num=1):   # num: the number of adjacent filters from each side
+    def enableAdjacentFilters(self, freq: int, num=1):  # num: the number of adjacent filters from each side
         adj_filt = self.getAdjacentFilters(self.getFilter(freq), num)
         for F in adj_filt:
             self._filterSetEnabled(F, True)
 
-    def disableAdjacentFiltersMode(self, arg: int or bool):    # arg: the number of adjacent filters from each side or False
+    def disableAdjacentFiltersMode(self,
+                                   arg: int or bool):  # arg: the number of adjacent filters from each side or False
         self._DisableAdjacentFiltersMode = arg
 
     def case_DisableAdjacentFiltersModeOn(self, sliderValue: int, activeFreqRange=(20, 20000)):

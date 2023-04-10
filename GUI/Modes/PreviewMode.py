@@ -2,7 +2,7 @@ from GUI.Modes.UniMode import UniMode
 
 
 class PreviewMode(UniMode):
-    def __init__(self, parent):     # parent: MainWindowContr
+    def __init__(self, parent):  # parent: MainWindowContr
         super().__init__(parent, setPlayerContr=False)
         self.name = 'Preview'
         self.parent.EQContr.resetEQ()
@@ -21,14 +21,14 @@ class PreviewMode(UniMode):
         self.parent.playAudioOnPreview = False
 
     @property
-    def proxyCursorPos(self):   # in sec
+    def proxyCursorPos(self):  # in sec
         player_pos_s = self.parent.TransportContr.PlayerContr.position() / 1000
         if self.sourceRangeStartTime is not None and player_pos_s < self.sourceRangeStartTime:
             return self.sourceRangeStartTime
         return player_pos_s if self.parent.SourceAudio is not None else 0
 
     @property
-    def currentAudioStartTime(self):    # in sec
+    def currentAudioStartTime(self):  # in sec
         return self.sourceRangeStartTime or 0
 
     @property

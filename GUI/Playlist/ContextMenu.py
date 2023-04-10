@@ -1,7 +1,9 @@
-from PyQt6.QtWidgets import QMenu
-from PyQt6.QtGui import QAction
-from Utilities.selectFileInSysExplorer import selectFile
 import platform
+
+from PyQt6.QtGui import QAction
+from PyQt6.QtWidgets import QMenu
+
+from Utilities.selectFileInSysExplorer import selectFile
 
 
 class PLContextMenu(QMenu):
@@ -11,7 +13,7 @@ class PLContextMenu(QMenu):
     actionRemove: QAction
     actionRemoveUnavailable: QAction
 
-    def __init__(self, parent):     # parent: PlaylistContr
+    def __init__(self, parent):  # parent: PlaylistContr
         super().__init__()
         self.parent = parent
         self.playlistdata = self.parent.playlistModel.playlistdata

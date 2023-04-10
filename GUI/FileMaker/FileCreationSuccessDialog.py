@@ -1,7 +1,8 @@
 import contextlib
+import os
 import platform
 import subprocess
-import os
+
 from PyQt6.QtWidgets import QMessageBox
 
 

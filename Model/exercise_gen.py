@@ -1,6 +1,7 @@
 import copy
-import random
 import itertools
+import random
+
 from Utilities.common_calcs import findAdjacentEl as findAdj
 
 
@@ -72,6 +73,7 @@ class ExampleGenerator:
                 return x
             return abs_source(x, max(abs(x[0]), abs(x[1]))) if self.order == 'desc' \
                 else abs_source(x, min(abs(x[0]), abs(x[1])))
+
         self._genSourceSequence()
         _start_freq = self._source_sequence[0] if start_freq is None else start_freq
         source_seq = self._source_seq_reorder(abs(crop_tuple(_start_freq)))
@@ -82,7 +84,7 @@ class ExampleGenerator:
         if self.disableAdjacent:
             source_seq = list(filter(self._filterAdjacent, source_seq))
         if self.boost_cut == '-':
-            source_seq = list(map(lambda x: (x[0]*-1, x[1]*-1), source_seq))
+            source_seq = list(map(lambda x: (x[0] * -1, x[1] * -1), source_seq))
         elif self.boost_cut == '+-':
             startfrom = '+' if crop_tuple(_start_freq) > 0 else '-'
             source_seq = self._make_dual_boostcut_seq(source_seq, startfrom=startfrom)
@@ -115,6 +117,7 @@ class ExampleGenerator:
     def _make_dual_boostcut_seq(self, source_seq: list[int], startfrom='+'):
         def applyPattern(el: tuple, pattern: tuple):
             return el[0] * pattern[0], el[1] * pattern[1]
+
         k = -1 if startfrom == '-' else 1
         bc_patterns = list(itertools.product([1 * k, -1 * k], repeat=2))
         if self.boost_cut_priority == 1:

@@ -1,5 +1,5 @@
-from PyQt6.QtWidgets import QStatusBar, QLabel, QHBoxLayout, QWidget, QFrame
 from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QStatusBar, QLabel, QHBoxLayout, QWidget, QFrame
 
 
 class StatusBar(QStatusBar):
@@ -59,6 +59,7 @@ class NormalizationLabel(QLabel):
         self.value = value or self.value
         self.setText(f'Peak Normalization: {self.value}dB')
 
+
 class EQStateLabel(QLabel):
     def __init__(self, parent, isOn=False):
         super().__init__()
@@ -79,6 +80,7 @@ class EQStateLabel(QLabel):
         ss = 'color: green; font-weight: bold' if self.isOn else 'color: gray; font-weight: bold'
         self.setText(_text)
         self.setStyleSheet(ss)
+
 
 class FreqGainLabel(QLabel):
     def __init__(self, parent, value=0):

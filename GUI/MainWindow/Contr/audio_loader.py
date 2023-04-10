@@ -1,12 +1,12 @@
-from GUI.Playlist.plsong import PlSong
-from Model.globals import MinAudioDuration
-from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from GUI.Modes.PreviewMode import PreviewMode
+from GUI.Playlist.plsong import PlSong
+from Model.AudioEngine.preview_audio import PreviewAudioCrop
+from Model.globals import MinAudioDuration
 from definitions import Settings, PN
 
 
 class AudioLoad:
-    def __init__(self, parent):     # parent: MainWindowContr
+    def __init__(self, parent):  # parent: MainWindowContr
         self.parent = parent
         self.mw_view = self.parent.mw_view
         self.TransportContr = self.parent.TransportContr

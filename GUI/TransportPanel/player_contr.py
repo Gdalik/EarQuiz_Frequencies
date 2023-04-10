@@ -1,11 +1,11 @@
-import contextlib
+import platform
 
 from PyQt6.QtCore import QUrl
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData, QAudio
 from PyQt6.QtWidgets import QMessageBox
-from definitions import MediaDevices, PN, Settings
+
 from GUI.Misc.error_message import reformat_message
-import platform
+from definitions import MediaDevices, PN, Settings
 
 
 class PlayerContr(QMediaPlayer):

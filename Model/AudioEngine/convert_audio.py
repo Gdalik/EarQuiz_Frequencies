@@ -1,7 +1,9 @@
-from pedalboard.io import AudioFile
-from pathlib import Path
-from Utilities.exceptions import InterruptedException
 import re
+from pathlib import Path
+
+from pedalboard.io import AudioFile
+
+from Utilities.exceptions import InterruptedException
 
 
 def get_target_samplerate(source_sr: int or float, sr_mode: str):
@@ -37,6 +39,7 @@ def convert_audio(audiofile_path: str, source_samplerate: int or float, audio_fo
     def callback_out():
         if callback is not None:
             callback(out_stat)
+
     if not Path(audiofile_path).is_file():
         return None
     target_samplerate = get_target_samplerate(source_samplerate, target_samplerate_mode)

@@ -2,7 +2,7 @@ import hashlib
 from functools import partial
 
 
-def filehash(filepath: str, buffer_size=1024*1024*50):
+def filehash(filepath: str, buffer_size=1024 * 1024 * 50):
     hash_obj = hashlib.md5
     content = b''
     with open(filepath, 'rb') as f:

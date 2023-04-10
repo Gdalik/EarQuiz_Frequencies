@@ -1,11 +1,12 @@
-import time
+import shutil
+from multiprocessing import freeze_support
+
 from PyQt6.QtGui import QIcon
-from definitions import app, app_name, TEMP_AUDIO_DIR
+from tendo.singleton import SingleInstance
+
 from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.StartScreen import StartLogo
-from tendo.singleton import SingleInstance
-from multiprocessing import freeze_support
-import shutil
+from definitions import app, app_name, TEMP_AUDIO_DIR
 
 
 def delTempAudio():

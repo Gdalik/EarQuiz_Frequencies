@@ -31,4 +31,3 @@ class EQSetView:
         self.BWBox.setEnabled(arg)
         self.GainRangeSpin.setEnabled(arg)
         self.ResetBut.setEnabled(arg)
-

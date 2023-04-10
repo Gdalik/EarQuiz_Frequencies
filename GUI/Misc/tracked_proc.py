@@ -1,10 +1,9 @@
-import contextlib
-import time
+import platform
 
 from PyQt6.QtCore import QObject, Qt, QRunnable, pyqtSignal, pyqtSlot, QThreadPool
 from PyQt6.QtWidgets import QProgressBar, QDialog, QDialogButtonBox, QLabel, QVBoxLayout
+
 from Utilities.exceptions import InterruptedException
-import platform
 
 
 class TrackedProcSignals(QObject):

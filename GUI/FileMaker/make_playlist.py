@@ -1,9 +1,11 @@
 import contextlib
+from pathlib import Path
+
 from PyQt6.QtWidgets import QFileDialog
+
+from GUI.Playlist.plsong import PlSong
 from Model.export_playlist import export_m3u_playlist
 from definitions import PLAYLIST_DIR, CURRENT_PLAYLIST_PATH
-from GUI.Playlist.plsong import PlSong
-from pathlib import Path
 
 
 def exportPlaylistWithRelPaths(mw, playlistdata: list[PlSong]):

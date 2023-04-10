@@ -1,7 +1,7 @@
 import contextlib
+import os
 import platform
 import subprocess
-import os
 
 
 def selectFile(filepath: str):

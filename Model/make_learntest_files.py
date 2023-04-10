@@ -1,8 +1,10 @@
-from Model.audiodrill_gen import AudioDrillGen
 from pathlib import Path
-from Utilities.freq2str import freqString
+
 from pedalboard.io import AudioFile
+
+from Model.audiodrill_gen import AudioDrillGen
 from Utilities.exceptions import InterruptedException
+from Utilities.freq2str import freqString
 from definitions import version
 
 

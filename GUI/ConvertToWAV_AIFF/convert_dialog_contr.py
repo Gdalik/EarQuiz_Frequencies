@@ -1,5 +1,6 @@
-from PyQt6.QtWidgets import QDialog, QDialogButtonBox
 from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QDialog, QDialogButtonBox
+
 from GUI.ConvertToWAV_AIFF.convert_dialog_view import Ui_ConvertToWAV_AIFF_Dialog
 
 

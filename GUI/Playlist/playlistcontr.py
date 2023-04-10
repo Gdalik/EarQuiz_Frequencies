@@ -1,20 +1,23 @@
 import contextlib
-from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilterProxyModel
-from GUI.Playlist.plsong import PlSong
-from GUI.Playlist.PLLoadDialog import PLProcDialog
-from GUI.Playlist.PlaylistNavigation import PlNavi
-from GUI.Misc.error_message import error_message
+from pathlib import Path
+
 from PyQt6.QtCore import QObject, Qt, QModelIndex, QUrl
 from PyQt6.QtWidgets import QFileDialog, QWidget
-from definitions import app, USER_DOCS_DIR, CURRENT_PLAYLIST_PATH, Settings, PN
-from GUI.Playlist.ContextMenu import PLContextMenu
+
 from GUI.FileMaker.make_playlist import saveCurrentPlaylist
-from pathlib import Path
+from GUI.Misc.error_message import error_message
+from GUI.Playlist.ContextMenu import PLContextMenu
+from GUI.Playlist.PLLoadDialog import PLProcDialog
+from GUI.Playlist.PlaylistNavigation import PlNavi
+from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilterProxyModel
+from GUI.Playlist.plsong import PlSong
 from Model.FileLinksParser import parseLinksFrom_M3U
+from definitions import app, USER_DOCS_DIR, CURRENT_PLAYLIST_PATH, Settings, PN
 
 
 class PlaylistContr(QObject):
     """@DynamicAttrs"""
+
     def __init__(self, parent):
         super().__init__()
         self.mw_view = parent.mw_view

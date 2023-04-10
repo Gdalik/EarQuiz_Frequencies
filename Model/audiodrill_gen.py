@@ -1,11 +1,13 @@
-from Model.AudioEngine.load_audio import AudioChunk
-from pedalboard.io import AudioFile
-from Model.exercise_gen import ExampleGenerator
-from Model.AudioEngine.process import eq_proc
-from Utilities.exceptions import InterruptedException
-from tempfile import NamedTemporaryFile
-from definitions import TEMP_AUDIO_DIR, PN
 from pathlib import Path
+from tempfile import NamedTemporaryFile
+
+from pedalboard.io import AudioFile
+
+from Model.AudioEngine.load_audio import AudioChunk
+from Model.AudioEngine.process import eq_proc
+from Model.exercise_gen import ExampleGenerator
+from Utilities.exceptions import InterruptedException
+from definitions import TEMP_AUDIO_DIR, PN
 
 EQ1_freq = [31, 63, 125, 250, 500, 1000, 2000, 4000, 8000, 16000]
 EQ2_freq = [32, 40, 50, 63, 80, 100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500,
@@ -151,7 +153,7 @@ class AudioDrillGen:
             self.exercise_gen.seqOut()
 
     def resetExGen(self, freq_options, boost_cut='+-', DualBandMode=False, order='asc',
-                                               boost_cut_priority=1, disableAdjacent=1, inf_cycle=True):
+                   boost_cut_priority=1, disableAdjacent=1, inf_cycle=True):
         self.exercise_gen = ExampleGenerator(freq_options=freq_options, boost_cut=boost_cut,
                                              DualBandMode=DualBandMode, order=order,
                                              boost_cut_priority=boost_cut_priority, disableAdjacent=disableAdjacent,

@@ -1,9 +1,10 @@
 import contextlib
+
 from GUI import globals as gb
 
 
 class PinkNoiseMode:
-    def __init__(self, parent):     # parent: MainWindowContr
+    def __init__(self, parent):  # parent: MainWindowContr
         self.parent = parent
         self.name = 'Pinknoise'
         self.view = parent.mw_view
@@ -17,7 +18,7 @@ class PinkNoiseMode:
 
 
 class AudioFileMode:
-    def __init__(self, parent):     # parent: MainWindowContr
+    def __init__(self, parent):  # parent: MainWindowContr
         self.parent = parent
         self.name = 'Audiofile'
         self.view = parent.mw_view

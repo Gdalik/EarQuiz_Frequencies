@@ -1,7 +1,7 @@
 import math
 
 
-def expected_results(eq_mode: int, DualBand: bool):     # eq_mode 1 -- 1-octave; eq_mode 2 -- 1/3-octave EQ
+def expected_results(eq_mode: int, DualBand: bool):  # eq_mode 1 -- 1-octave; eq_mode 2 -- 1/3-octave EQ
     exp_res = (40, 40)
     if eq_mode == 1 and not DualBand:
         exp_res = (85, 95)

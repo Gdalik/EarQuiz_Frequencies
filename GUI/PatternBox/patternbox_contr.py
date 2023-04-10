@@ -1,6 +1,7 @@
 import contextlib
-from Utilities.exceptions import InterruptedException
+
 from Model.eq_patterns import EQPatterns
+from Utilities.exceptions import InterruptedException
 from definitions import Settings
 
 
@@ -23,7 +24,7 @@ class PatternBoxContr(object):
         self.mw_contr.EQContr.setEQMode(mode_num=index + 1)
         self._nextPatternButEnable()
         if not self.mw_view.actionLockEQSettings.isChecked():
-          self.mw_contr.EQSetContr.refreshSet()
+            self.mw_contr.EQSetContr.refreshSet()
         self.setExGenToPattern()
         self._restartExamples()
         self.saveLastPattern()
@@ -55,12 +56,12 @@ class PatternBoxContr(object):
     def onNextPatternBut_clicked(self):
         PBindex = self.PatternBox.currentIndex()
         max_index = self.PatternBox.count() - 1
-        index = PBindex+1 if PBindex < max_index else max_index
+        index = PBindex + 1 if PBindex < max_index else max_index
         self.PatternBox.setCurrentIndex(index)
 
     def _nextPatternButEnable(self):
         self.NextPatternBut.setEnabled(self.PatternBox.currentIndex() <
-                                               self.PatternBox.count() - 1)
+                                       self.PatternBox.count() - 1)
 
     def getPatternNames(self):
         return [mode['Name'] for mode in self.EQPatterns.List]

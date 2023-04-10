@@ -1,11 +1,12 @@
 import contextlib
+
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
-from definitions import SineWaveCalibrationFilename
 from Model.calc import optimal_range_length
 from Model.sourcerange_manager import SourceRangeManager
+from definitions import SineWaveCalibrationFilename
 
 
-class SourceRangeContr:     # parent: MainWindowContr
+class SourceRangeContr:  # parent: MainWindowContr
     def __init__(self, parent):
         self.parent = parent
         self.TransportContr = self.parent.TransportContr

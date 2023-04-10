@@ -1,10 +1,9 @@
-from Utilities.common_calcs import hhmmss, get_sec
 from PyQt6.QtCore import QTime
-from PyQt6.QtWidgets import QPushButton
+from Utilities.common_calcs import hhmmss, get_sec
 
 
 class CropRegionTimestr:
-    def __init__(self, parent):     # parent: TransportView
+    def __init__(self, parent):  # parent: TransportView
         self.parent = parent
         self.StartTimeEdit = parent.StartTimeEdit
         self.EndTimeEdit = parent.EndTimeEdit
@@ -39,6 +38,3 @@ class CropRegionTimestr:
         self.parent.RangeToEnd.setEnabled(arg)
         self.parent.ClearRangeBut.setEnabled(arg)
         self.setReadOnly(not arg)
-
-
-

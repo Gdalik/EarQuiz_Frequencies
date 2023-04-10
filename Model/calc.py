@@ -9,7 +9,7 @@ def proc_unproc_len(total_chunk_len: int or float, proc_perc=40):
 
 
 def rand_buffer():
-    return 32*math.pow(2, random.randint(4, 8))
+    return 32 * math.pow(2, random.randint(4, 8))
 
 
 def find_divider(x: int, Min=2):

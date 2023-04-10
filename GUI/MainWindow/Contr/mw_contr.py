@@ -1,34 +1,36 @@
 import datetime
 import platform
-from definitions import app, Settings, PN
 from typing import Union
-from GUI.MainWindow.View.mw_view import MainWindowView
+
+from PyQt6.QtCore import QObject, QTimer
+from PyQt6.QtGui import QActionGroup
+
 from GUI.EQ.eq_contr import EQContr
 from GUI.EQSettings.eqset_contr import EQSetContr
-from GUI.PatternBox.patternbox_contr import PatternBoxContr
-from GUI.Playlist.playlistcontr import PlaylistContr
 from GUI.ExScoreInfo.exscoreinfo_contr import ExScoreInfoContr
-from GUI.Modes.PreviewMode import PreviewMode
+from GUI.FileMaker.audiofilemaker import AudioFileMaker
+from GUI.FileMaker.make_playlist import exportPlaylist, exportPlaylistWithRelPaths
+from GUI.MainWindow.Contr.adgen_contr import ADGenContr
+from GUI.MainWindow.Contr.audio_loader import AudioLoad
+from GUI.MainWindow.Contr.sourcerange_contr import SourceRangeContr
+from GUI.MainWindow.View.mw_view import MainWindowView
+from GUI.Misc.tracked_proc import ProcTrackControl
 from GUI.Modes.LearnMode import LearnMode
+from GUI.Modes.PreviewMode import PreviewMode
 from GUI.Modes.TestMode import TestMode
 from GUI.Modes.UniMode import UniMode
 from GUI.Modes.audiosource_modes import PinkNoiseMode, AudioFileMode
+from GUI.PatternBox.patternbox_contr import PatternBoxContr
+from GUI.Playlist.playlistcontr import PlaylistContr
 from GUI.Playlist.plsong import PlSong
-from GUI.TransportPanel.transport_contr import TransportContr
-from GUI.FileMaker.audiofilemaker import AudioFileMaker
-from GUI.MainWindow.Contr.audio_loader import AudioLoad
-from GUI.MainWindow.Contr.adgen_contr import ADGenContr
-from GUI.MainWindow.Contr.sourcerange_contr import SourceRangeContr
-from GUI.Misc.tracked_proc import ProcTrackControl
 from GUI.StartScreen import StartLogo
-from GUI.FileMaker.make_playlist import exportPlaylist, exportPlaylistWithRelPaths
+from GUI.TransportPanel.transport_contr import TransportContr
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.audiodrill_gen import AudioDrillGen
 from Model.file_hash import filehash
-from PyQt6.QtCore import QObject, QTimer
-from PyQt6.QtGui import QActionGroup
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
+from definitions import app, Settings, PN
 
 
 class MainWindowContr(QObject):

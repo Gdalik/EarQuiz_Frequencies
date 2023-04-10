@@ -4753,7 +4753,7 @@ color: gray;
    </property>
    <property name="minimumSize">
     <size>
-     <width>0</width>
+     <width>1107</width>
      <height>115</height>
     </size>
    </property>
@@ -7083,7 +7083,7 @@ background: rgba(118, 214, 255, 85)
    </property>
    <property name="toolTip">
     <string>(Un)Lock EQ Settings. When locked:
-- EQ Settings are stored between sessions; 
+- EQ Settings are stored between sessions;
 - EQ Pattern changes do not affect EQ Settings.</string>
    </property>
   </action>

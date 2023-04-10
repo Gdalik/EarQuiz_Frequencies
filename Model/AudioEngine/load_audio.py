@@ -1,15 +1,17 @@
-import math
-from PyQt6.QtCore import QObject, pyqtSignal
-import numpy
-from Model.calc import optimize_divider
-from Model.AudioEngine.preview_audio import PreviewAudioCrop
-import numpy as np
-from pedalboard.io import AudioFile
-from copy import copy
-import itertools
-from Utilities.exceptions import InterruptedException
-from Model.globals import pinknoise, MinAudioDuration, PinknoiseLength
 import copy
+import itertools
+import math
+from copy import copy
+
+import numpy
+import numpy as np
+from PyQt6.QtCore import QObject, pyqtSignal
+from pedalboard.io import AudioFile
+
+from Model.AudioEngine.preview_audio import PreviewAudioCrop
+from Model.calc import optimize_divider
+from Model.globals import pinknoise, MinAudioDuration, PinknoiseLength
+from Utilities.exceptions import InterruptedException
 from definitions import PN
 
 
@@ -85,7 +87,7 @@ class AudioChunk(PreviewAudioCrop, QObject):
                 self._stop()
                 return
             if self.audiofile.tell() == self.audiofile.frames:
-                break   # to avoid infinite loop for some 'broken' MP3 files
+                break  # to avoid infinite loop for some 'broken' MP3 files
         self._close_audiofile()
 
     def _open_audiofile(self):

@@ -74,5 +74,6 @@ class Ui_ConvertToWAV_AIFF_Dialog(object):
         self.SameAsOriginalBut.setText(_translate("ConvertToWAV_AIFF_Dialog", "Same as original"))
         self.SR441But.setText(_translate("ConvertToWAV_AIFF_Dialog", "44100 Hz"))
         self.SR48But.setText(_translate("ConvertToWAV_AIFF_Dialog", "48000 Hz"))
-        self.DivisibleBut.setText(_translate("ConvertToWAV_AIFF_Dialog", "auto choose 44100 Hz or 48000 Hz (downsample to \n"
-"multiple where original samplerate is higher)"))
+        self.DivisibleBut.setText(_translate("ConvertToWAV_AIFF_Dialog", "auto choose 44100 Hz or 48000 Hz (downsample to\n"
+"                                                multiple where original samplerate is higher)\n"
+"                                            "))

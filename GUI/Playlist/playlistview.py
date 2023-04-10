@@ -1,6 +1,7 @@
-from PyQt6.QtWidgets import QTableView, QAbstractItemView, QHeaderView
-from PyQt6.QtGui import QPainter, QDrag, QColor
 from PyQt6.QtCore import Qt, pyqtSignal, QObject, QMimeData, QUrl, QItemSelection, QItemSelectionModel, QModelIndex
+from PyQt6.QtGui import QPainter, QDrag, QColor
+from PyQt6.QtWidgets import QTableView, QAbstractItemView, QHeaderView
+
 from Utilities.urlcheck import validUrls
 
 
@@ -8,6 +9,7 @@ class PL_Signals(QObject):
     urlsDropped = pyqtSignal(list, int)
     dragDropFromPLFinished = pyqtSignal(Qt.DropAction)
     keyPressed = pyqtSignal(int)
+
 
 class PlaylistView(QTableView):
     signals = PL_Signals()

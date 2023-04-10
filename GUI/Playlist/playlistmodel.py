@@ -1,10 +1,10 @@
+from pathlib import Path
+
 from PyQt6 import QtCore, QtGui
 from PyQt6.QtCore import Qt, QSortFilterProxyModel, QModelIndex
 from PyQt6.QtGui import QImage
+
 from GUI.Playlist.plsong import PlSong
-from pathlib import Path
-from Utilities.urlcheck import validUrls
-import copy
 
 PlaylistData = []
 
@@ -33,9 +33,9 @@ class PlaylistModel(QtCore.QAbstractTableModel):
         if role == Qt.ItemDataRole.BackgroundRole and index.row() % 2 == 0:
             return QtGui.QColor(244, 244, 245)
         if (
-            role == Qt.ItemDataRole.DecorationRole
-            and index.column() == 0
-            and self.currentSong ==CurData
+                role == Qt.ItemDataRole.DecorationRole
+                and index.column() == 0
+                and self.currentSong == CurData
         ):
             return QImage(':/Player/Icons/Player/CurrentSong.png')
 

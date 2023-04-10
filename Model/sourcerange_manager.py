@@ -1,8 +1,9 @@
-import os
-from definitions import SourceRangeLib_DIR
-from Model.AudioEngine.preview_audio import PreviewAudioCrop
-from pathlib import Path
 import json
+import os
+from pathlib import Path
+
+from Model.AudioEngine.preview_audio import PreviewAudioCrop
+from definitions import SourceRangeLib_DIR
 
 
 class SourceRangeManager:

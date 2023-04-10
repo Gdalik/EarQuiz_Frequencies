@@ -1,10 +1,11 @@
-from PyQt6.QtWidgets import QSlider
 from PyQt6.QtCore import QObject, QTimer
+from PyQt6.QtWidgets import QSlider
+
 from Model.eq_patterns import EQPatterns
 
 
 class EQContr(QObject):
-    def __init__(self, parent):     # parent: MainWindowContr
+    def __init__(self, parent):  # parent: MainWindowContr
         super().__init__()
         self.parent = parent
         self.EQ_view = parent.mw_view.EQView
@@ -70,7 +71,7 @@ class EQContr(QObject):
     def highlightEQFreq(self, freq: int or tuple):
         if self.parent.CurrentMode.name not in ('Learn', 'Test') or self.parent.ADGen is None:
             return
-        freq = (freq, ) if isinstance(freq, int) else freq
+        freq = (freq,) if isinstance(freq, int) else freq
         for f in freq:
             self.EQ_view.highlight_right_Filter(f)
 

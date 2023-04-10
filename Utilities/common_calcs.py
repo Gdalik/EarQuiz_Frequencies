@@ -2,7 +2,8 @@ import math
 from fractions import Fraction
 
 
-def findAdjacentEl(L: list, element, num=1):  # num: the maximum number of adjacent elements from each side of given element
+def findAdjacentEl(L: list, element,
+                   num=1):  # num: the maximum number of adjacent elements from each side of given element
     element_ind = L.index(element)
     min_ind = max(0, element_ind - num)
     max_ind = min(len(L) - 1, element_ind + num)
@@ -11,7 +12,7 @@ def findAdjacentEl(L: list, element, num=1):  # num: the maximum number of adjac
 
 def Qcalc(BW_Noct: float or int or str):
     N = float(Fraction(BW_Noct)) if isinstance(BW_Noct, str) else BW_Noct
-    return round(math.sqrt(2**N) / (2**N - 1), 2)
+    return round(math.sqrt(2 ** N) / (2 ** N - 1), 2)
 
 
 def mmss(s, string=False):
@@ -33,11 +34,12 @@ def get_sec(time_str):
 
 
 def ms2samp(ms: int or float, samplerate=44100):
-    return ms*samplerate/1000
+    return ms * samplerate / 1000
 
 
 def samp2ms(samples: int, samplerate=44100):
     return samples / samplerate * 1000
+
 
 def round_s(secs: int or float):
     return round(secs * 1000) / 1000

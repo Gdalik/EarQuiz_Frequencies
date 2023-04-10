@@ -1,12 +1,13 @@
 from PyQt6.QtCore import QObject, Qt
+
 from GUI.TransportPanel.player_contr import PlayerContr
+from GUI.globals import defaultSliceLenUpd
 from Model.calc import proc_unproc_len
 from definitions import Settings
-from GUI.globals import defaultSliceLenUpd
 
 
 class TransportContr(QObject):
-    def __init__(self, parent):     # parent: MainWindowContr
+    def __init__(self, parent):  # parent: MainWindowContr
         super().__init__()
         self.CursorBeingDragged = None
         self.CropRegionBeingChanged = None
@@ -44,7 +45,7 @@ class TransportContr(QObject):
         if self.SourceRange is None:
             return
         region = self.TransportView.AudioSliderView.CropRegion.getRegion()
-        _range = (region[0] / 1000, region[1] / 1000)    # ms -> s
+        _range = (region[0] / 1000, region[1] / 1000)  # ms -> s
         self._resetSourceRange(_range)
 
     def onCropRegionChangeFinished(self):
@@ -109,7 +110,7 @@ class TransportContr(QObject):
         k = 1000
         self.SourceRange.starttime = int(_range[0] * k) / k
         self.SourceRange.endtime = int(_range[1] * k) / k
-        if self.SourceRange.slices_num < slices_num:    # Rounding error correction to maintain same number of slices
+        if self.SourceRange.slices_num < slices_num:  # Rounding error correction to maintain same number of slices
             self.SourceRange.endtime += 1 / k
         self.SourceRange.blockSignals(False)
         self.onSourceRangeChanged()
@@ -137,7 +138,7 @@ class TransportContr(QObject):
         self.TransportView.AudioSliderView.CropRegion.setValues(self.SourceRange.starttime,
                                                                 self.SourceRange.endtime)
         self.TransportView.CropRegionTstr.setValues(self.SourceRange.starttime,
-                                                                self.SourceRange.endtime)
+                                                    self.SourceRange.endtime)
         self.TransportView.setSlicesNum(self.SourceRange.slices_num)
 
     def onSliceLenChanged(self, value):
@@ -201,7 +202,7 @@ class TransportContr(QObject):
     def _checkPlaybackRange(self):
         if self.CropRegionBeingChanged or self.parent.CurrentMode.name != 'Preview':
             return
-        pos = self.PlayerContr.position() / 1000    # ms -> s
+        pos = self.PlayerContr.position() / 1000  # ms -> s
         if pos < int(self.SourceRange.starttime) or pos > self.SourceRange.endtime:
             if not self.parent.mw_view.actionLoop_Playback.isChecked():
                 self.PlayerContr.onStopTriggered()

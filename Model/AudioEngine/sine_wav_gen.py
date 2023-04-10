@@ -1,8 +1,10 @@
 import contextlib
+from pathlib import Path
+
 import numpy as np
 from pedalboard.io import AudioFile
+
 from definitions import SineWaveCalibrationPath
-from pathlib import Path
 
 
 def sine_gen(freq: int, length_s=5, samplerate=44100):

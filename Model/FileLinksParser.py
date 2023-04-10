@@ -1,26 +1,26 @@
-from pathlib import Path, PureWindowsPath, PurePath
 import mimetypes
-from urllib import parse, request
+import platform
 import re
 import xml.etree.ElementTree as ET
-import platform
-
+from pathlib import Path, PureWindowsPath, PurePath
+from urllib import parse, request
 
 mimetypes.add_type('audio/x-scpls', '.pls')
 mimetypes.add_type('application/xspf+xml', '.xspf')
 mimetypes.add_type('audio/x-mpegurl', '.m3u')
 mimetypes.add_type('audio/x-mpegurl', '.m3u8')
 mimetypes.add_type('audio/ogg', '.ogg')
-AudioMimes = ('audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg', )
-m3u_mimes = ('audio/x-mpegurl', 'audio/mpegurl', 'application/x-mpegurl', 'application/vnd.apple.mpegurl', )
-pls_mimes = ('audio/scpls', 'audio/x-scpls', 'application/pls+xml', )
-xspf_mimes = ('application/xspf+xml', )
+AudioMimes = ('audio/x-wav', 'audio/wav', 'audio/mpeg', 'audio/aiff', 'audio/x-aiff', 'audio/x-flac', 'audio/ogg',)
+m3u_mimes = ('audio/x-mpegurl', 'audio/mpegurl', 'application/x-mpegurl', 'application/vnd.apple.mpegurl',)
+pls_mimes = ('audio/scpls', 'audio/x-scpls', 'application/pls+xml',)
+xspf_mimes = ('application/xspf+xml',)
 PLMimes = m3u_mimes + pls_mimes + xspf_mimes
 
 
 def pathsResolve(Paths: list[str], return_dict: dict):
     def make_error_list(msg):
         errors.append(str(msg))
+
     paths = []
     errors = []
     for path in Paths:
@@ -61,7 +61,7 @@ def expandPlayLists(paths: list[str], callback=None):
 def files_from_PL(pl_path: str, callback=None):
     mime = mimetypes.guess_type(pl_path, strict=False)[0]
     err_mess = f'Error occurred while parsing "{pl_path}": '
-    enc = 'utf-8' if Path(pl_path).suffix in ('.m3u8', '.xspf', ) else None
+    enc = 'utf-8' if Path(pl_path).suffix in ('.m3u8', '.xspf',) else None
     try:
         if mime in xspf_mimes:
             pl_links = parseLinksFromXSPF(pl_path)

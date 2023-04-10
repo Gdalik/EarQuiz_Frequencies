@@ -1,14 +1,15 @@
-from Model.AudioEngine.sine_wav_gen import generateCalibrationSineTones
-from Model.AudioEngine.convert_audio import convert_audio
-from Model.make_learntest_files import makeLearnFiles, makeTestFiles
+from PyQt6.QtCore import QUrl, QItemSelection, QItemSelectionModel
+
 from GUI.ConvertToWAV_AIFF.convert_dialog_contr import ConvertFilesDialogContr
+from GUI.FileMaker.FileCreationSuccessDialog import SuccessDialog
 from GUI.MakeLearnTestFiles.make_learn_test_dialog_contr import MakeLearnTestDialogContr
 from GUI.Misc.tracked_proc import ProcTrackControl
-from PyQt6.QtCore import QUrl, QItemSelection, QItemSelectionModel
 from GUI.Playlist.plsong import PlSong
+from Model.AudioEngine.convert_audio import convert_audio
+from Model.AudioEngine.sine_wav_gen import generateCalibrationSineTones
+from Model.make_learntest_files import makeLearnFiles, makeTestFiles
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
-from GUI.FileMaker.FileCreationSuccessDialog import SuccessDialog
 
 
 class AudioFileMaker:
@@ -86,18 +87,18 @@ class AudioFileMaker:
         cropped = self.parent.ADGen.audiochunk.cropped
         cropped_normalized = self.parent.ADGen.audiochunk.cropped_normalized
         kwargs = {'cropped': cropped,
-         'cropped_normalized': cropped_normalized,
-         'filename_prefix': Dialog.prefix,
-         'extension': Dialog.extension,
-         'bitrate': Dialog.bitrate,
-         'boost_cut': EQP['EQ_boost_cut'],
-         'DualBandMode': EQP['DualBandMode'],
-         'starttime': SR.starttime,
-         'endtime': SR.endtime,
-         'drill_length': SR.slice_length,
-         'gain_depth': self.parent.EQSetContr.EQSetView.GainRangeSpin.value(),
-         'Q': Qextr(self.parent.EQSetContr.EQSetView.BWBox.currentText()),
-         'disableAdjacent': EQP['DisableAdjacentFiltersMode']}
+                  'cropped_normalized': cropped_normalized,
+                  'filename_prefix': Dialog.prefix,
+                  'extension': Dialog.extension,
+                  'bitrate': Dialog.bitrate,
+                  'boost_cut': EQP['EQ_boost_cut'],
+                  'DualBandMode': EQP['DualBandMode'],
+                  'starttime': SR.starttime,
+                  'endtime': SR.endtime,
+                  'drill_length': SR.slice_length,
+                  'gain_depth': self.parent.EQSetContr.EQSetView.GainRangeSpin.value(),
+                  'Q': Qextr(self.parent.EQSetContr.EQSetView.BWBox.currentText()),
+                  'disableAdjacent': EQP['DisableAdjacentFiltersMode']}
         if Dialog.LearnBut.isChecked():
             kwargs['order'] = self.parent.freqOrder(audioFileGeneratorMode=True)
             kwargs['enumerate_examples'] = Dialog.EnumLearningExBut.isChecked()

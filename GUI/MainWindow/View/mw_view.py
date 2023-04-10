@@ -1,21 +1,21 @@
 import contextlib
 import datetime
+from functools import partial
+from PyQt6.QtCore import Qt, QObject, pyqtSignal
+from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QDockWidget
 from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
-from PyQt6.QtGui import QAction
-from PyQt6.QtCore import Qt, QObject, pyqtSignal
-from GUI.MainWindow.View.mainwindow import Ui_MainWindow
-from GUI.TransportPanel.transport_view import TransportPanelView
-from GUI.PatternBox.patternbox_view import PatternBoxView
+import definitions
 from GUI.EQ.eq_view import EqView
 from GUI.EQSettings.eqset_view import EQSetView
-from GUI.MainWindow.View.audiodevices_view import AudioDevicesView
-from GUI.Misc.error_message import error_message
 from GUI.MainWindow.View.StatusBar import StatusBar
-import definitions
-from definitions import Settings
-from functools import partial
+from GUI.MainWindow.View.audiodevices_view import AudioDevicesView
+from GUI.MainWindow.View.mainwindow import Ui_MainWindow
+from GUI.Misc.error_message import error_message
+from GUI.PatternBox.patternbox_view import PatternBoxView
+from GUI.TransportPanel.transport_view import TransportPanelView
 from Utilities.str2bool import str2bool
+from definitions import Settings
 
 
 class MW_Signals(QObject):

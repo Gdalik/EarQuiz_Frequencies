@@ -1,7 +1,7 @@
+from GUI.ExScoreInfo.exscoreinfo_view import ExScoreInfoView
 from Model.scorecalc import ScoreCalculator as SC
 from Model.scorecalc import expected_results as ER
 from Model.scorecalc import passed_failed as PF
-from GUI.ExScoreInfo.exscoreinfo_view import ExScoreInfoView
 
 
 class ExScoreInfoContr:
@@ -48,7 +48,7 @@ class ExScoreInfoContr:
     def showScore(self):
         if self.CurTest.ScoreList:
             self.view.showAnswScore(self.CurTest.ScoreList[-1][2])
-            self.view.showTotalScore(self.CurTest.totalScore, underlined=len(self.CurTest.ScoreList)==10)
+            self.view.showTotalScore(self.CurTest.totalScore, underlined=len(self.CurTest.ScoreList) == 10)
 
     def showTestStatus(self):
         self.view.showStatus(self.test_status)

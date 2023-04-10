@@ -1,12 +1,14 @@
-from pedalboard import PeakFilter, Pedalboard
-from Model.calc import proc_unproc_len, rand_buffer
 import numpy as np
+from pedalboard import PeakFilter, Pedalboard
+
+from Model.calc import proc_unproc_len, rand_buffer
 
 
 def eq_proc(cur_sample, samplerate: int, freq1: int or float, freq2=None,
             gain_depth=12, Q=1.41, proc_t_perc=40, eq_transition_len_s=0.035, fade_inout_len_s=0.005):
     def sec2fr(sec: int or float):
         return int(samplerate * sec)
+
     pre_eq, to_eq, post_eq = _eq_audio_parts(cur_sample, samplerate, proc_t_perc=proc_t_perc)
     gain = gain_depth * -1 if freq1 < 0 else gain_depth
     eq1 = PeakFilter(cutoff_frequency_hz=abs(freq1), gain_db=gain, q=Q)
@@ -33,9 +35,10 @@ def eq_proc(cur_sample, samplerate: int, freq1: int or float, freq2=None,
     return np.concatenate((pre_eq, equalized, post_eq), axis=1)
 
 
-def _eq_audio_parts(cur_sample: np.ndarray, samplerate: int, proc_t_perc=40):   # -> pre_eq / to_eq / post_eq
+def _eq_audio_parts(cur_sample: np.ndarray, samplerate: int, proc_t_perc=40):  # -> pre_eq / to_eq / post_eq
     def sec2fr(sec: int or float):
         return int(samplerate * sec)
+
     cur_sample_length = cur_sample[0].size / samplerate
     proc_len, unproc_len = proc_unproc_len(cur_sample_length, proc_t_perc)
     proc_len_fr = sec2fr(proc_len)
@@ -47,6 +50,7 @@ def _pb_process(audio_sample: np.ndarray, chain: Pedalboard, samplerate: int or 
     def _process(buffer_size: int = 8192):
         _processed = chain.process(audio_sample, samplerate, buffer_size=buffer_size, reset=True)
         return _processed
+
     processed = _process()
     while processed.size != audio_sample.size:
         processed = _process(buffer_size=rand_buffer())  # Solving possible buffering issues (see Pedalboard docs).

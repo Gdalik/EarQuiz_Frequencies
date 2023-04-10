@@ -21,4 +21,3 @@ def reformat_message(window, msg='The file seems to be unreadable. Try to reform
     win.setIcon(QMessageBox.Icon.Question)
     win.setText(msg)
     return win.exec()
-

@@ -3308,7 +3308,7 @@ class Ui_MainWindow(object):
         self.actionLoop_Sequence.setText(_translate("MainWindow", "Loop Sequence (of EQ Bands)"))
         self.actionLockEQSettings.setText(_translate("MainWindow", "actionLockEQSettings"))
         self.actionLockEQSettings.setToolTip(_translate("MainWindow", "(Un)Lock EQ Settings. When locked:\n"
-"- EQ Settings are stored between sessions; \n"
+"- EQ Settings are stored between sessions;\n"
 "- EQ Pattern changes do not affect EQ Settings."))
         self.actionStartPlayingAfterLoading.setText(_translate("MainWindow", "Start Playing After Loading Track in Preview Mode"))
         self.actionStartPlayingAfterLoading.setToolTip(_translate("MainWindow", "Start playing after loading track in Preview mode (Autoplay)"))

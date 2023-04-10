@@ -1,6 +1,6 @@
 from GUI.TransportPanel.audioslider_view import AudioSliderView
-from GUI.TransportPanel.player_view import PlayerView
 from GUI.TransportPanel.cropregiontimestr import CropRegionTimestr
+from GUI.TransportPanel.player_view import PlayerView
 from Utilities.common_calcs import hhmmss
 
 

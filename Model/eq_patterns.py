@@ -1,6 +1,7 @@
 import json
-import definitions
 from pathlib import PurePath
+
+import definitions
 
 
 class EQPatterns:

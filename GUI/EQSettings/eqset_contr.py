@@ -1,13 +1,14 @@
 import json
 from pathlib import PurePath
-from Utilities.exceptions import InterruptedException
+
 import definitions
-from definitions import Settings
-from Utilities.Q_extract import Qextr
 from GUI.Misc.tracked_proc import ProcTrackControl
+from Utilities.Q_extract import Qextr
+from Utilities.exceptions import InterruptedException
+from definitions import Settings
 
 
-class EQSetContr:   # parent: MainWindowContr
+class EQSetContr:  # parent: MainWindowContr
     def __init__(self, parent):
         self.parent = parent
         self.EQSetView = parent.mw_view.EQSetView
@@ -71,7 +72,7 @@ class EQSetContr:   # parent: MainWindowContr
     def saveEQSettings(self):
         if self.parent.mw_view.actionLockEQSettings.isChecked():
             Settings.setValue('LastStuff/EQSettingsLocked', {'GainDepth': self.EQSetView.GainRangeSpin.value(),
-                                                    'BW': self.EQSetView.BWBox.currentText()})
+                                                             'BW': self.EQSetView.BWBox.currentText()})
         else:
             Settings.setValue('LastStuff/EQSettingsLocked', None)
 

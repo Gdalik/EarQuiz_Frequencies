@@ -1,12 +1,14 @@
 import contextlib
-from Model.audiodrill_gen import create_temp_wavefile
 from pathlib import Path
-from definitions import TEMP_AUDIO_DIR
+
 from PyQt6.QtCore import QTimer
+
+from Model.audiodrill_gen import create_temp_wavefile
+from definitions import TEMP_AUDIO_DIR
 
 
 class UniMode:
-    def __init__(self, parent, contrEnabled=True, setPlayerContr=True):     # parent: MainWindowContr
+    def __init__(self, parent, contrEnabled=True, setPlayerContr=True):  # parent: MainWindowContr
         self.TimeSettingsChangesEnabled = None
         self.name = 'Uni'
         self.view = parent.mw_view
@@ -30,26 +32,26 @@ class UniMode:
         self.parent.ExScore.showTestStatus()
 
     @property
-    def currentAudioCursorStartPos(self):   # in sec
+    def currentAudioCursorStartPos(self):  # in sec
         if self.parent.ADGen is None or self.parent.ADGen.audiochunk.currentSliceRange is None:
             return self.sourceRangeStartTime or 0
         return self.parent.ADGen.audiochunk.currentSliceRange[0]
 
     @property
-    def proxyCursorPos(self):   # in sec
+    def proxyCursorPos(self):  # in sec
         return self.parent.TransportContr.PlayerContr.position() / 1000 + self.currentAudioCursorStartPos \
             if self.parent.SourceAudio is not None else 0
 
     @property
-    def sourceRangeStartTime(self):     # in sec
+    def sourceRangeStartTime(self):  # in sec
         return self.parent.SourceRange.starttime if self.parent.SourceRange else None
 
     @property
-    def sourceRangeEndTime(self):   # in sec
+    def sourceRangeEndTime(self):  # in sec
         return self.parent.SourceRange.endtime if self.parent.SourceRange else None
 
     @property
-    def currentAudioStartTime(self):    # in sec
+    def currentAudioStartTime(self):  # in sec
         return 0
 
     @property
@@ -85,7 +87,7 @@ class UniMode:
     def generateDrill(self, **kwargs):
         pass
 
-    def nextDrill(self, **kwargs):      # The case when test is complete, and user changes EQ pattern
+    def nextDrill(self, **kwargs):  # The case when test is complete, and user changes EQ pattern
         self.parent.TransportContr.PlayerContr.clearSource()
         self.cleanTempAudio()
         self.parent.ExScore.refresh(onlyLastExcInfo=True)
