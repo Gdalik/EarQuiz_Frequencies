@@ -14,6 +14,8 @@ from GUI.Misc.error_message import error_message
 from GUI.MainWindow.View.StatusBar import StatusBar
 import definitions
 from definitions import Settings
+from functools import partial
+from Utilities.str2bool import str2bool
 
 
 class MW_Signals(QObject):
@@ -29,10 +31,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-
-        #   overriding QtDesigner bug which spontaneously resets TransportPanel min width to MainWindow width:
-        self.TransportPanel.setMinimumWidth(0)
-
         self._flags = self.windowFlags()
         self.setDockOptions(self.dockOptions().AnimatedDocks)
         self.setWindowTitle(definitions.app_name)
@@ -50,6 +48,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setFocus()
         self.SupportProject.visibilityChanged.connect(self.onSupportProjectVisibilityChanged)
         self.TransportPanelViewBut.setDefaultAction(self.actionTransport_Panel_view)
+        self._restoreActionsState()
+        self._connectActionsToSaver()
 
     def win_os_settings(self):
         widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + \
@@ -118,8 +118,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.SupportProject.hide()
         self.TransportPanel.hide()
         av_geom = definitions.app.primaryScreen().availableGeometry()
-        width = min(1100, av_geom.width() - 10)
-        height = min(700, av_geom.height() - 30)
+        width = min(self.width(), 1100, av_geom.width() - 10)
+        height = min(self.height(), 700, av_geom.height() - 30)
         self.resize(width, height)
 
     def setMaximalistView(self):
@@ -207,6 +207,39 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             obj.setFloating(Settings.value(obj.objectName())['Floating'])
             obj.setGeometry(Settings.value(obj.objectName())['Geometry'])
         Settings.endGroup()
+
+    def _restoreActionsState(self):
+        self.loadActionState(self.actionStartPlayingAfterLoading, default=True)
+        self.loadActionState(self.actionSkip_Unavailable_Tracks, default=True)
+        self.loadActionState(self.actionLoop_Playback, default=True)
+        self.loadActionState(self.actionShuffle_Playback, default=False)
+        self.loadActionState(self.actionRepeat_Playlist, default=True)
+        self.loadActionState(self.actionSequential_Playback, default=False)
+        self.loadActionState(self.actionLoop_Sequence, default=False)
+        self.loadActionState(self.actionAscendingEQ, default=True)
+        self.loadActionState(self.actionDescendingEQ, default=False)
+        self.loadActionState(self.actionShuffleEQ, default=False)
+        self.loadActionState(self.actionEach_Band_Boosted_then_Cut, default=True)
+        self.loadActionState(self.actionAll_Bands_Boosted_then_All_Bands_Cut, default=False)
+
+    def _connectActionsToSaver(self):
+        controlActions = [self.actionStartPlayingAfterLoading, self.actionSkip_Unavailable_Tracks,
+                          self.actionLoop_Playback, self.actionShuffle_Playback, self.actionRepeat_Playlist,
+                          self.actionSequential_Playback, self.actionLoop_Sequence,
+                          self.actionAscendingEQ, self.actionDescendingEQ, self.actionShuffleEQ,
+                          self.actionEach_Band_Boosted_then_Cut, self.actionAll_Bands_Boosted_then_All_Bands_Cut]
+        for act in controlActions:
+            act.toggled.connect(partial(self.saveActionState, act))
+
+    @staticmethod
+    def loadActionState(obj: QAction, default=None):
+        value = Settings.value(f'Actions/{obj.objectName()}', default)
+        if value is not None:
+            obj.setChecked(str2bool(value))
+
+    @staticmethod
+    def saveActionState(obj: QAction):
+        Settings.setValue(f'Actions/{obj.objectName()}', obj.isChecked())
 
     def onSupportProjectVisibilityChanged(self, arg: bool):
         if arg:

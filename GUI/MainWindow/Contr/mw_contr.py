@@ -1,6 +1,6 @@
 import datetime
 import platform
-from definitions import app, Settings
+from definitions import app, Settings, PN
 from typing import Union
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.EQ.eq_contr import EQContr
@@ -60,8 +60,8 @@ class MainWindowContr(QObject):
         self.CurrentMode = self.LastMode = UniMode(self)
         self.AL = AudioLoad(self)
         self.SRC = SourceRangeContr(self)
-        self.CurrentSourceMode = PinkNoiseMode(self) if Settings.value('LastStuff/AudioSource', 'Pink noise') \
-                                                        == 'Pink noise' else AudioFileMode(self)
+        self.CurrentSourceMode = PinkNoiseMode(self) if Settings.value('LastStuff/AudioSource', PN) == PN \
+            else AudioFileMode(self)
         self.AL.setNoAudio()
         self.ADGC = ADGenContr(self)
         self.setFileMenuActions()
@@ -89,9 +89,9 @@ class MainWindowContr(QObject):
         self.mw_view.actionMake_Learning_Files.triggered.connect(self.FileMaker.onActionMakeLearningFilesTrig)
         self.mw_view.actionConvert_Selected_Files.triggered.connect(self.FileMaker.onActionConvertFilesTriggered)
         self.mw_view.actionClose.triggered.connect(self.onActionCloseTriggered)
-        self.mw_view.actionExportPlaylistAbsolute.triggered.connect\
+        self.mw_view.actionExportPlaylistAbsolute.triggered.connect \
             (lambda x: exportPlaylist(self.mw_view, self.PlaylistContr.playlistModel.playlistdata))
-        self.mw_view.actionExportPlaylistRelative.triggered.connect\
+        self.mw_view.actionExportPlaylistRelative.triggered.connect \
             (lambda x: exportPlaylistWithRelPaths(self.mw_view, self.PlaylistContr.playlistModel.playlistdata))
 
     def setModesButtons(self):
@@ -237,7 +237,6 @@ class MainWindowContr(QObject):
         self.mw_view.MW_Stop.setDefaultAction(self.mw_view.actionStop)
 
     def setShufflePBMode(self):
-        self.mw_view.actionShuffle_Playback.setChecked(False)
         self.mw_view.ShufflePlaybackBut.setDefaultAction(self.mw_view.actionShuffle_Playback)
 
     def setMakeAudioActionsEnabled(self, arg: bool):
@@ -250,6 +249,7 @@ class MainWindowContr(QObject):
 
     def onAppClose(self):
         self.SRC.savePrevSourceAudioRange()
+        self.EQSetContr.saveEQSettings()
         self.PlaylistContr.saveCurrentPlaylist()
         self.mw_view.storeWindowView()
 

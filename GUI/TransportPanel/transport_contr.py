@@ -118,7 +118,6 @@ class TransportContr(QObject):
         if self.parent.CurrentMode.name != 'Preview' or self.parent.CurrentSourceMode.name != 'Audiofile':
             return
         self.TransportView.setHeader(self.PlayerContr.sourceAudioData())
-        # duration_s = self.PlayerContr.duration() / 1000
         duration_s = self.parent.SourceAudio.duration
         self.TransportView.setDurationLabValue(duration_s)
         self.TransportView.AudioSliderView.setNewDataLength(duration_s)

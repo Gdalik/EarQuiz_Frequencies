@@ -4,6 +4,7 @@ from Utilities.common_calcs import mmss
 from pathlib import PurePath, Path
 from functools import cached_property
 from Model.globals import MinAudioDuration
+from definitions import PN
 
 
 @dataclass(eq=False)
@@ -12,7 +13,7 @@ class PlSong:
 
     @cached_property
     def path(self):
-        if self.inputPath == 'Pink noise':
+        if self.inputPath == PN:
             return self.inputPath
         return str(Path(self.inputPath).absolute()) if self.inputPath else ''
 
@@ -27,7 +28,7 @@ class PlSong:
 
     @property
     def exists(self):
-        return True if self.name == 'Pink noise' else Path(self.path).is_file()
+        return True if self.name == PN else Path(self.path).is_file()
 
     @cached_property
     def file_properties(self):
@@ -81,7 +82,7 @@ class PlSong:
 
     @property
     def _default_dict(self):
-        if self.name == 'Pink noise':
+        if self.name == PN:
             return {'duration': 30, 'num_channels': 'Mono', 'samplerate': 44100}
         else:
             return {'duration': False, 'num_channels': None, 'samplerate': None}

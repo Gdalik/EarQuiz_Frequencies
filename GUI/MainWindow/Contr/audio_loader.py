@@ -2,7 +2,7 @@ from GUI.Playlist.plsong import PlSong
 from Model.globals import MinAudioDuration
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from GUI.Modes.PreviewMode import PreviewMode
-from definitions import Settings
+from definitions import Settings, PN
 
 
 class AudioLoad:
@@ -54,8 +54,8 @@ class AudioLoad:
         self.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview or forcePlayAfter)
 
     def load_pinknoise(self):
-        self.parent.SourceAudio = PlSong('Pink noise')
-        self.TransportContr.TransportView.setHeader('Pink noise')
+        self.parent.SourceAudio = PlSong(PN)
+        self.TransportContr.TransportView.setHeader(PN)
         dur = self.parent.SourceAudio.duration
         self.parent.SourceRange = PreviewAudioCrop(dur, 0, dur, self.TransportContr.TransportView.SliceLenSpin.value())
         self.TransportContr.setInitCropRegionView()
@@ -79,7 +79,7 @@ class AudioLoad:
         self.mw_view.status.clearMessage()
 
     def saveLoadedSourceInfo(self):
-        if self.parent.SourceAudio.name == 'Pink noise':
+        if self.parent.SourceAudio.name == PN:
             Settings.setValue('LastStuff/AudioSource', self.parent.SourceAudio.name)
             Settings.setValue('LastStuff/PlaylistIndex', None)
         else:

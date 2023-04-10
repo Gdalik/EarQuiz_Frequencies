@@ -32,3 +32,5 @@ SineWaveCalibrationPath = os.path.normpath(os.path.join(DATA_DIR, 'Audio', SineW
 SourceRangeLib_DIR = os.path.normpath(os.path.join(DATA_DIR, 'SourceRangeLib'))
 
 Settings = QSettings(SETTINGS_PATH, QSettings.Format.IniFormat)
+
+PN = 'Pink noise'

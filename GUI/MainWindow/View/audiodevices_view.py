@@ -1,7 +1,7 @@
 from PyQt6.QtCore import QObject
 from PyQt6.QtMultimedia import QMediaDevices
 from PyQt6.QtGui import QActionGroup
-from definitions import MediaDevices
+from definitions import MediaDevices, Settings
 
 
 class AudioDevicesView(QObject):
@@ -13,7 +13,7 @@ class AudioDevicesView(QObject):
         self.mw.AudioDevicesGroup = QActionGroup(self)
         self.setAudioDeviceActions()
         self.audio_devices.audioOutputsChanged.connect(self.updateAudioDeviceActions)
-        self.selectOutput(self.default_name)
+        self.selectOutput(Settings.value('Actions/SelectedAudioOut', self.default_name))
 
     def setAudioDeviceActions(self):
         audio_outs = [out.description() for out in QMediaDevices.audioOutputs()]
@@ -39,6 +39,7 @@ class AudioDevicesView(QObject):
             if act.text() == name and not act.isChecked():
                 act.toggle()
                 return
+        self.selectOutput(self.default_name)
 
     def selectedOutput(self):
         outputs = self.audio_devices.audioOutputs()
@@ -48,3 +49,4 @@ class AudioDevicesView(QObject):
         for device in outputs:
             if device.description() == current.text():
                 return device
+

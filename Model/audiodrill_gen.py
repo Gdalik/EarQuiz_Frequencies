@@ -4,7 +4,7 @@ from Model.exercise_gen import ExampleGenerator
 from Model.AudioEngine.process import eq_proc
 from Utilities.exceptions import InterruptedException
 from tempfile import NamedTemporaryFile
-from definitions import TEMP_AUDIO_DIR
+from definitions import TEMP_AUDIO_DIR, PN
 from pathlib import Path
 
 EQ1_freq = [31, 63, 125, 250, 500, 1000, 2000, 4000, 8000, 16000]
@@ -20,7 +20,7 @@ def create_temp_wavefile():
 
 class AudioDrillGen:
     def __init__(self, freq_options: list[int], boost_cut='+-', DualBandMode=False,
-                 audio_source_path='Pink noise', cropped=None, cropped_normalized=None,
+                 audio_source_path=PN, cropped=None, cropped_normalized=None,
                  starttime=0, endtime=None, drill_length=15,
                  gain_depth=12, Q=4.32, order='asc', boost_cut_priority=1, disableAdjacent=1, inf_cycle=True,
                  proc_t_perc=40, callback=None):
@@ -31,7 +31,7 @@ class AudioDrillGen:
         # self.order, self.boost_cut_priority, self.Q, self.proc_t_perc are dynamically adjustable
         # with another EQ_Pattern on the same audio source use self.resetExGen
 
-        if audio_source_path == 'Pink noise':
+        if audio_source_path == PN:
             self.af_duration = 30
             self.af_samplerate = 44100
             self.af_num_channels = 1

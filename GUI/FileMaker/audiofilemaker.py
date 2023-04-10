@@ -101,6 +101,8 @@ class AudioFileMaker:
         if Dialog.LearnBut.isChecked():
             kwargs['order'] = self.parent.freqOrder(audioFileGeneratorMode=True)
             kwargs['enumerate_examples'] = Dialog.EnumLearningExBut.isChecked()
+        elif Dialog.TestBut.isChecked():
+            kwargs['audiodata'] = self.parent.TransportContr.PlayerContr.sourceAudioData()
         Proc = ProcTrackControl(action, args=[SA.path, Dialog.ExerciseFolderLine.text(),
                                               self.parent.EQContr.getAvailableFreq()], kwargs=kwargs)
         if not Proc.exec():

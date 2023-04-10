@@ -1,6 +1,7 @@
 from GUI.Misc.tracked_proc import ProcTrackControl
 from Model.audiodrill_gen import AudioDrillGen
 from Utilities.Q_extract import Qextr
+from definitions import PN
 
 
 class ADGenContr:
@@ -9,7 +10,7 @@ class ADGenContr:
 
     def setAudioDrillGen(self, resetExGen=True):
         if self.parent.ADGen is None and self.parent.SourceAudio is not None \
-                and (self.parent.SourceAudio.name == 'Pink noise' or self.parent.LoadedFileHash):
+                and (self.parent.SourceAudio.name == PN or self.parent.LoadedFileHash):
             self._createADGen()
             self._adjustADGenOrderToMode()
         elif self.parent.ADGen is not None:

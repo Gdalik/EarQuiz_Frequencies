@@ -2,6 +2,7 @@ import json
 from pathlib import PurePath
 from Utilities.exceptions import InterruptedException
 import definitions
+from definitions import Settings
 from Utilities.Q_extract import Qextr
 from GUI.Misc.tracked_proc import ProcTrackControl
 
@@ -14,6 +15,8 @@ class EQSetContr:   # parent: MainWindowContr
         self.EQSetView.refreshBWQList(self.BWQPresets)
         self.ResetEQBut = parent.mw_view.ResetEQBut
         self.ResetEQBut.clicked.connect(self.on_ResetClicked)
+        self.parent.mw_view.actionLockEQSettings.triggered.connect(self.onActionLockEQSettings_trig)
+        self.restoreEQSettings()
 
     @property
     def EQpattern(self):
@@ -62,3 +65,20 @@ class EQSetContr:   # parent: MainWindowContr
             return
         self.parent.ADGen.Q = Qextr(self.EQSetView.BWBox.currentText())
 
+    def onActionLockEQSettings_trig(self):
+        self.saveEQSettings()
+
+    def saveEQSettings(self):
+        if self.parent.mw_view.actionLockEQSettings.isChecked():
+            Settings.setValue('LastStuff/EQSettingsLocked', {'GainDepth': self.EQSetView.GainRangeSpin.value(),
+                                                    'BW': self.EQSetView.BWBox.currentText()})
+        else:
+            Settings.setValue('LastStuff/EQSettingsLocked', None)
+
+    def restoreEQSettings(self):
+        values = Settings.value('LastStuff/EQSettingsLocked', None)
+        if values is None:
+            self.parent.mw_view.actionLockEQSettings.setChecked(False)
+            return
+        self.parent.mw_view.actionLockEQSettings.setChecked(True)
+        self.EQSetView.update(int(values['GainDepth']), values['BW'])

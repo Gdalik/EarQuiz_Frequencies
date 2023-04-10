@@ -3,6 +3,7 @@ from pathlib import Path
 from Utilities.freq2str import freqString
 from pedalboard.io import AudioFile
 from Utilities.exceptions import InterruptedException
+from definitions import version
 
 
 def makeLearnFiles(audiosource: str, output_dir: str, freq_options: list[int], filename_prefix='', extension='.wav',
@@ -42,9 +43,9 @@ def makeLearnFiles(audiosource: str, output_dir: str, freq_options: list[int], f
     callback_out({'State': f'Exporting "{filename}"', 'Percent': 100})
 
 
-def makeTestFiles(audiosource: str, output_dir: str, freq_options: list[int], filename_prefix='', extension='.wav',
-                  bitrate=None, boost_cut='+-', DualBandMode=False, starttime=0, endtime=None, drill_length=15,
-                  gain_depth=12, Q=4.32, disableAdjacent=1, proc_t_perc=40,
+def makeTestFiles(audiosource: str, output_dir: str, freq_options: list[int], audiodata='', filename_prefix='',
+                  extension='.wav', bitrate=None, boost_cut='+-', DualBandMode=False, starttime=0, endtime=None,
+                  drill_length=15, gain_depth=12, Q=4.32, disableAdjacent=1, proc_t_perc=40,
                   cropped=None, cropped_normalized=None, callback=None):
     def callback_out(out_stat: dict):
         if callback is not None:
@@ -53,8 +54,15 @@ def makeTestFiles(audiosource: str, output_dir: str, freq_options: list[int], fi
     def makeAnswersFile():
         answ_filename = f'{prefix}Answers.txt'
         answ_path = str(Path(output_dir, answ_filename))
-        answers.insert(0, f'Audio source: {Path(audiosource).name}\n\n')
-        with open(answ_path, 'w') as tf:
+        info = []
+        info.append(f'Audio source: {audiodata}\n')
+        gain_bc = boost_cut if boost_cut != '+-' else '±'
+        info.append(f'Frequency gain: {gain_bc}{gain_depth}dB; Q: {Q}\n')
+        info.append(f'Peak normalization: {ADGen.gain_headroom}dB\n\n')
+        nonlocal answers
+        tag = [f'\nGenerated with EarQuiz Frequencies v{version} (c) 2023, Gdaliy Garmiza.\nWebsite: www.earquiz.org']
+        answers = info + answers + tag
+        with open(answ_path, 'w', encoding='utf-8', errors='replace') as tf:
             tf.writelines(answers)
 
     Path.mkdir(Path(output_dir), parents=True, exist_ok=True)

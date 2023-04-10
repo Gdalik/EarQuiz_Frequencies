@@ -14,7 +14,7 @@ class SourceRangeManager:
         os.makedirs(SourceRangeLib_DIR, exist_ok=True)
         content = {'Audiofile': filename, 'Range': (SourceRange.starttime, SourceRange.endtime),
                    'SliceLength': SourceRange.slice_length}
-        with open(out_path, 'w') as f:
+        with open(out_path, 'w', encoding='utf-8', errors='replace') as f:
             f.write(json.dumps(content, indent=1))
 
     def get(self, filehash: str):
@@ -23,7 +23,7 @@ class SourceRangeManager:
         if not filepath.is_file():
             return None
         filepath = filepath.absolute()
-        with open(filepath) as f:
+        with open(filepath, encoding='utf-8', errors='replace') as f:
             content = json.loads(f.read())
             try:
                 return *content['Range'], content['SliceLength']

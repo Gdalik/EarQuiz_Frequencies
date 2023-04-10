@@ -3,9 +3,10 @@ import contextlib
 from PyQt6.QtCore import QUrl
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData, QAudio
 from PyQt6.QtWidgets import QMessageBox
-from definitions import MediaDevices
+from definitions import MediaDevices, PN, Settings
 from GUI.Misc.error_message import reformat_message
 import platform
+
 
 class PlayerContr(QMediaPlayer):
     def __init__(self, parent):  # parent: TransportContr
@@ -51,18 +52,20 @@ class PlayerContr(QMediaPlayer):
         if not self.metaData():
             return ''
         title = self.metaData().stringValue(QMediaMetaData.Key.Title)
+        title = f'"{title}"' if title else ''
         author = self.metaData().stringValue(QMediaMetaData.Key.Author)
         albumTitle = self.metaData().stringValue(QMediaMetaData.Key.AlbumTitle)
+        albumTitle = f'"{albumTitle}"' if albumTitle else ''
         albumArtist = self.metaData().stringValue(QMediaMetaData.Key.AlbumArtist)
-        displ_data = []
-        if title or albumTitle:
-            displ_data.append(title or albumTitle)
-        if author or albumArtist:
-            displ_data.append(author or albumArtist)
-        return f'{" - ".join(displ_data)}' if displ_data else ''
+        track_data = [el for el in [title, author] if el]
+        track_data_str = f"Track: {' - '.join(track_data)}" if track_data else ''
+        album_data = [el for el in [albumTitle, albumArtist] if el]
+        album_data_str = f"Album: {' - '.join(album_data)}" if album_data else ''
+        displ_data = [track_data_str, album_data_str]
+        return f'{"; ".join([el for el in displ_data if el])}' if displ_data else ''
 
     @property
-    def startPos(self):     # in ms
+    def startPos(self):  # in ms
         try:
             return self.mw_contr.CurrentMode.currentAudioStartTime * 1000
         except AttributeError:
@@ -77,8 +80,8 @@ class PlayerContr(QMediaPlayer):
             return int(res) if value % 1000 == 0 else round(res, 1)
 
         SourceAudio = self.mw_contr.SourceAudio
-        metadata = self.loadMetaData() if SourceAudio.name != 'Pink noise' else ''
-        displ_data = [f'"{SourceAudio.name}"']
+        metadata = self.loadMetaData() if SourceAudio.name != PN else ''
+        displ_data = [f'"{SourceAudio.name}"'] if SourceAudio.name != PN else [SourceAudio.name]
         if metadata:
             displ_data.append(f'({metadata})')
         displ_data.append(f'[{hzTokHz(SourceAudio.samplerate)} kHz | {SourceAudio.num_channels}]')
@@ -121,7 +124,8 @@ class PlayerContr(QMediaPlayer):
             return
         noPreviewSource = (self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.SourceAudio is None)
         if noPreviewSource:
-            this_song = self.mw_contr.PlaylistContr.PlNavi.findCurrentSong(availableOnly=self.mw_view.actionSkip_Unavailable_Tracks.isChecked())
+            this_song = self.mw_contr.PlaylistContr.PlNavi.findCurrentSong \
+                (availableOnly=self.mw_view.actionSkip_Unavailable_Tracks.isChecked())
             if this_song is not None:
                 self.mw_contr.PlaylistContr.loadAndSelectSong(this_song, forcePlayAfter=True)
             elif not self.PlModel.playlistdata:
@@ -187,7 +191,7 @@ class PlayerContr(QMediaPlayer):
         if self.mw_contr.SourceAudio is None:
             self.mw_view.status.clearMessage()
             return
-        source = 'Pink noise' if self.mw_contr.SourceAudio.name == 'Pink noise' else self.mw_contr.LastSourceAudio.name
+        source = PN if self.mw_contr.SourceAudio.name == PN else self.mw_contr.LastSourceAudio.name
         self.mw_view.status.showMessage(f'{source}: {self.PlayerView.pb_state2str(state)}')
 
     def onPlayPause_triggered(self):
@@ -198,6 +202,7 @@ class PlayerContr(QMediaPlayer):
 
     def onAudioDeviceChecked(self):
         selected_out = self.mw_view.AudioDevicesView.selectedOutput()
+        Settings.setValue('Actions/SelectedAudioOut', self.mw_view.AudioDevicesGroup.checkedAction().text())
         if selected_out != self.audioOutput.device():
             self.audioOutput.setDevice(selected_out)
             self._translatePBStateToStatusBar(self.playbackState())
@@ -216,11 +221,12 @@ class PlayerContr(QMediaPlayer):
         self.mw_contr.AL.setNoAudio()
         message = f'{err}: {string}'
         if not sourcefile.exists:
-          message = f'File "{sourcefile.path}" not found!'
+            message = f'File "{sourcefile.path}" not found!'
         elif err == self.Error.FormatError:
             message = f'The file "{sourcefile.name}" seems to be in a wrong format. Do you want to reformat it?'
             if sourcefile.name.endswith('.ogg'):
-                message = f'OGG file format is not supported by the current audio playback backend. Do you want to reformat "{sourcefile.name}"?'
+                message = f'OGG file format is not supported by the current audio playback backend. ' \
+                          f'Do you want to reformat "{sourcefile.name}"?'
             if reformat_message(self.mw_view, msg=message) == QMessageBox.StandardButton.Yes:
                 self.mw_contr.FileMaker.onActionConvertFilesTriggered()
             return
