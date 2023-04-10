@@ -71,7 +71,7 @@ class TransportContr(QObject):
 
     def onCursorPositionChangeFinished(self, pos):
         self.CursorBeingDragged = False
-        self.PlayerContr.setPosition(pos.x())
+        self.PlayerContr.setPosition(int(pos.x()))
 
     def onASMouseClicked(self, ev):
         if ev.button() != Qt.MouseButton.LeftButton or self.parent.CurrentMode.name != 'Preview':
@@ -205,9 +205,7 @@ class TransportContr(QObject):
         if self.CropRegionBeingChanged or self.parent.CurrentMode.name != 'Preview':
             return
         pos = self.PlayerContr.position() / 1000  # ms -> s
-        st = int(self.SourceRange.starttime) if platform.system() == 'Darwin' else self.SourceRange.starttime
-        if pos < st or pos > self.SourceRange.endtime:
-            print(f'{pos=} {int(self.SourceRange.starttime)=} {self.SourceRange.endtime=}')
+        if pos < int(self.SourceRange.starttime) or pos > self.SourceRange.endtime:
             if not self.parent.mw_view.actionLoop_Playback.isChecked():
                 self.PlayerContr.onStopTriggered()
             else:

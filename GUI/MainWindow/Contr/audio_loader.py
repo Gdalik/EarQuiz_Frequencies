@@ -3,6 +3,7 @@ from GUI.Playlist.plsong import PlSong
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.globals import MinAudioDuration
 from definitions import Settings, PN
+from pathlib import Path
 
 
 class AudioLoad:
@@ -34,7 +35,7 @@ class AudioLoad:
         if not self._songCanBeLoaded(Song):
             return
         reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)
-        reloaded_same_path = (self.parent.SourceAudio is not None and self.parent.SourceAudio.path == Song.path)
+        reloaded_same_path = (self.parent.SourceAudio is not None and Path(self.parent.SourceAudio.path).samefile(Song.path))
         if not reloaded_same_path:
             self.parent.SRC.savePrevSourceAudioRange()
         self.parent.SourceAudio = Song

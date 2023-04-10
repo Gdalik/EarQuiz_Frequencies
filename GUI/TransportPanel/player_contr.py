@@ -20,6 +20,7 @@ class PlayerContr(QMediaPlayer):
         self._connectSignals()
         self.playAfterAudioLoaded = False
         self.onceAudioLoaded = False
+        self.playAfterStopped = False
         self.PlModel = self.mw_contr.PlaylistContr.playlistModel
 
     def _connectSignals(self):
@@ -94,6 +95,8 @@ class PlayerContr(QMediaPlayer):
             self._onEndofMedia()
 
     def _onLoadedMedia(self):
+        if self.mw_contr.SourceAudio is None:
+            return
         if self.onceAudioLoaded:
             self.mw_contr.CurrentMode.cleanTempAudio()
             self._refreshAudioOutput_mac()
@@ -142,7 +145,7 @@ class PlayerContr(QMediaPlayer):
         except AttributeError:
             starttime = 0
         if self.position() != starttime:
-            self.setPosition(starttime)
+            self.setPosition(int(starttime))
 
     def increaseVolume(self):
         self.mw_view.VolumeSlider.setValue(self.mw_view.VolumeSlider.value() + 5)
