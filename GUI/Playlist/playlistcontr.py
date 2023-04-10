@@ -6,7 +6,7 @@ from GUI.Playlist.PlaylistNavigation import PlNavi
 from GUI.Misc.error_message import error_message
 from PyQt6.QtCore import QObject, Qt, QModelIndex, QUrl
 from PyQt6.QtWidgets import QFileDialog, QWidget
-from definitions import app, USER_DOCS_DIR, CURRENT_PLAYLIST_PATH
+from definitions import app, USER_DOCS_DIR, CURRENT_PLAYLIST_PATH, Settings
 from GUI.Playlist.ContextMenu import PLContextMenu
 from GUI.FileMaker.make_playlist import saveCurrentPlaylist
 from pathlib import Path
@@ -152,9 +152,22 @@ class PlaylistContr(QObject):
         song2load = self.playlistModel.playlistdata[source_ind]
         self.mw_contr.AL.load_song(song2load)
 
-    def loadAndSelectSong(self, Song: PlSong, forcePlayAfter=False):
-        self.mw_contr.AL.load_song(Song, forcePlayAfter=forcePlayAfter)
+    def loadAndSelectSong(self, Song: PlSong, forcePlayAfter=False, forceNotPlayAfter=False):
+        self.mw_contr.AL.load_song(Song, forcePlayAfter=forcePlayAfter, forceNotPlayAfter=forceNotPlayAfter)
         self.selectCurrentSong()
+
+    def restoreLastAudioSource(self):
+        last_source = Settings.value('LastStuff/AudioSource', 'Pink noise')
+        if last_source == 'Pink noise' or last_source not in self.PlNavi.playlist_paths \
+                or not Path(last_source).is_file():
+            self.mw_view.PinkNoiseRBut.setChecked(True)
+            return
+        self.mw_view.AudiofileRBut.setChecked(True)
+        ind = Settings.value('LastStuff/PlaylistIndex', None)
+        ind = int(ind) if ind is not None else ind
+        if ind is None or not Path(self.playlistModel.playlistdata[ind].path).samefile(last_source):
+            return
+        self.loadAndSelectSong(self.playlistModel.playlistdata[ind], forceNotPlayAfter=True)
 
     def setCurrentSongToPlaylistModel(self):
         rows = []

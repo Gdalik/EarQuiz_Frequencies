@@ -136,10 +136,14 @@ class PlNavi:
             if S.available:
                 return S
 
+    @property
+    def playlist_paths(self):
+        return {P.path for P in self.playlistdata}
+
     def _getShuffled(self):
         if len(self.playlistdata) == 0:
             return
-        playlist_paths = {P.path for P in self.playlistdata}
+        playlist_paths = self.playlist_paths
         playedSong_paths = {P.path for P in self.playedSongs}
         if playlist_paths == playedSong_paths:
             return self.playedSongs[0] if self.repeat_playlist() else None

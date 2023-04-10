@@ -60,7 +60,8 @@ class MainWindowContr(QObject):
         self.CurrentMode = self.LastMode = UniMode(self)
         self.AL = AudioLoad(self)
         self.SRC = SourceRangeContr(self)
-        self.CurrentSourceMode = PinkNoiseMode(self)
+        self.CurrentSourceMode = PinkNoiseMode(self) if Settings.value('LastStuff/AudioSource', 'Pink noise') \
+                                                        == 'Pink noise' else AudioFileMode(self)
         self.AL.setNoAudio()
         self.ADGC = ADGenContr(self)
         self.setFileMenuActions()
@@ -77,6 +78,7 @@ class MainWindowContr(QObject):
         self.playAudioOnPreview = False
         QTimer.singleShot(1000, StartLogo.hide)
         self.PlaylistContr.loadCurrentPlaylist()
+        self.PlaylistContr.restoreLastAudioSource()
 
     def setFileMenuActions(self):
         self.mw_view.actionOpen.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='files'))
@@ -100,7 +102,6 @@ class MainWindowContr(QObject):
     def setSourceButtons(self):
         self.mw_view.PinkNoiseRBut.toggled.connect(self.setAudioSourceMode)
         self.mw_view.AudiofileRBut.toggled.connect(self.setAudioSourceMode)
-        self.mw_view.PinkNoiseRBut.setChecked(True)
 
     def setAudioSourceMode(self, value):
         if not value:

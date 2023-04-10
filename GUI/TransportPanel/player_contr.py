@@ -209,6 +209,7 @@ class PlayerContr(QMediaPlayer):
         self.onAudioDeviceChecked()
 
     def onError(self, err, string):
+        print(f'{err=} {string=}')
         sourcefile = self.mw_contr.SourceAudio
         self.PlModel.nonLoadedSong_paths.add(sourcefile.path)
         self.PlModel.updCanLoadData()

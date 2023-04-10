@@ -2,6 +2,7 @@ from GUI.Playlist.plsong import PlSong
 from Model.globals import MinAudioDuration
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from GUI.Modes.PreviewMode import PreviewMode
+from definitions import Settings
 
 
 class AudioLoad:
@@ -29,7 +30,7 @@ class AudioLoad:
         else:
             self.mw_view.actionPreview_Mode.setChecked(True)
 
-    def load_song(self, Song: PlSong, forcePlayAfter=False):
+    def load_song(self, Song: PlSong, forcePlayAfter=False, forceNotPlayAfter=False):
         if not self._songCanBeLoaded(Song):
             return
         reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)
@@ -40,6 +41,7 @@ class AudioLoad:
         self.parent.PlaylistContr.PlNavi.setCurrentSong(Song)
         self.parent.playAudioOnPreview = True if reloaded_same \
             else self.mw_view.actionStartPlayingAfterLoading.isChecked()
+        self.parent.playAudioOnPreview = False if forceNotPlayAfter else self.parent.playAudioOnPreview
         self._switchToPreview()
         if reloaded_same_path:
             if not reloaded_same:
@@ -59,6 +61,7 @@ class AudioLoad:
         self.TransportContr.setInitCropRegionView()
         self.TransportContr.TransportView.setDurationLabValue(dur)
         self.TransportContr.TransportView.AudioSliderView.setNewDataLength(dur)
+        self.saveLoadedSourceInfo()
 
     def setNoAudio(self):
         self.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
@@ -74,3 +77,15 @@ class AudioLoad:
         self.parent.SourceRange = None
         self.parent.setMakeAudioActionsEnabled(False)
         self.mw_view.status.clearMessage()
+
+    def saveLoadedSourceInfo(self):
+        if self.parent.SourceAudio.name == 'Pink noise':
+            Settings.setValue('LastStuff/AudioSource', self.parent.SourceAudio.name)
+            Settings.setValue('LastStuff/PlaylistIndex', None)
+        else:
+            Settings.setValue('LastStuff/AudioSource', self.parent.SourceAudio.path)
+            if self.parent.SourceAudio in self.parent.PlaylistContr.playlistModel.playlistdata:
+                ind = self.parent.PlaylistContr.playlistModel.playlistdata.index(self.parent.SourceAudio)
+                Settings.setValue('LastStuff/PlaylistIndex', ind)
+            else:
+                Settings.setValue('LastStuff/PlaylistIndex', None)

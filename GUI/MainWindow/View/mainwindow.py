@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'D:\PyCharm Projects\EarQuiz Frequencies\GUI\MainWindow\View\mainwindow.ui'
+# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/mainwindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #

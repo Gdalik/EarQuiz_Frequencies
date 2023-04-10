@@ -131,6 +131,7 @@ class TransportContr(QObject):
         self.CursorBeingDragged = False
         self.CropRegionBeingChanged = False
         self.parent.LastSourceAudio = self.parent.SourceAudio
+        self.parent.AL.saveLoadedSourceInfo()
         self.parent.setMakeAudioActionsEnabled(True)
 
     def onSourceRangeChanged(self):

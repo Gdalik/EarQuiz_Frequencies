@@ -85,7 +85,7 @@ def parseLinksFrom_M3U(pl_path: str, encoding=None):
 
 
 def parseLinksFrom_PLS(pl_path: str):
-    with open(pl_path, 'r') as f:
+    with open(pl_path, 'r', errors='replace') as f:
         pl_lines = [re.sub('File\d+=', '', line.rstrip()) for line in f.readlines()]
     return pl_lines
 
