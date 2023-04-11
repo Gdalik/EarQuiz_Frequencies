@@ -5,7 +5,7 @@ from pedalboard.io import AudioFile
 from Model.audiodrill_gen import AudioDrillGen
 from Utilities.exceptions import InterruptedException
 from Utilities.freq2str import freqString
-from definitions import version
+from Model.get_version import version
 
 
 def makeLearnFiles(audiosource: str, output_dir: str, freq_options: list[int], filename_prefix='', extension='.wav',
@@ -62,7 +62,7 @@ def makeTestFiles(audiosource: str, output_dir: str, freq_options: list[int], au
         info.append(f'Frequency gain: {gain_bc}{gain_depth}dB; Q: {Q}\n')
         info.append(f'Peak normalization: {ADGen.gain_headroom}dB\n\n')
         nonlocal answers
-        tag = [f'\nGenerated with EarQuiz Frequencies v{version} (c) 2023, Gdaliy Garmiza.\nWebsite: www.earquiz.org']
+        tag = [f'\nGenerated with EarQuiz Frequencies v{version()} (c) 2023, Gdaliy Garmiza.\nWebsite: www.earquiz.org']
         answers = info + answers + tag
         with open(answ_path, 'w', encoding='utf-8', errors='replace') as tf:
             tf.writelines(answers)

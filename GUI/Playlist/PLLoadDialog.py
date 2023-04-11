@@ -1,5 +1,4 @@
 from multiprocessing import Process, Manager
-
 from PyQt6.QtCore import QObject, Qt, QRunnable, pyqtSignal, pyqtSlot, QThreadPool
 from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QLabel, QVBoxLayout
 

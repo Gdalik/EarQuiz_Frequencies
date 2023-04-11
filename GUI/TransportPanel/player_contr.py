@@ -90,8 +90,13 @@ class PlayerContr(QMediaPlayer):
     def onPlayerStatusChanged(self, status):
         if status == QMediaPlayer.MediaStatus.LoadedMedia:
             self._onLoadedMedia()
+        elif status == QMediaPlayer.MediaStatus.LoadingMedia:
+            self._onLoadingMedia()
         elif status == QMediaPlayer.MediaStatus.EndOfMedia:
             self._onEndofMedia()
+
+    def _onLoadingMedia(self):
+        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loading...')
 
     def _onLoadedMedia(self):
         if self.mw_contr.SourceAudio is None:

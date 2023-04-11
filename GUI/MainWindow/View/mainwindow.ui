@@ -85,8 +85,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>599</width>
-         <height>538</height>
+         <width>579</width>
+         <height>543</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -4629,7 +4629,7 @@ color: gray;
      <x>0</x>
      <y>0</y>
      <width>1155</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -4753,7 +4753,7 @@ color: gray;
    </property>
    <property name="minimumSize">
     <size>
-     <width>0</width>
+     <width>1107</width>
      <height>115</height>
     </size>
    </property>
@@ -5176,24 +5176,15 @@ border-radius: 4px;
        <item>
         <layout class="QVBoxLayout" name="VolLay">
          <property name="spacing">
+          <number>-1</number>
+         </property>
+         <property name="topMargin">
           <number>0</number>
          </property>
-         <item>
-          <widget class="QLabel" name="VolumeLab">
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Volume:</string>
-           </property>
-          </widget>
-         </item>
          <item alignment="Qt::AlignVCenter">
           <widget class="QSlider" name="VolumeSlider">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -5201,17 +5192,28 @@ border-radius: 4px;
            <property name="minimumSize">
             <size>
              <width>100</width>
-             <height>18</height>
+             <height>30</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>100</width>
-             <height>18</height>
+             <width>16777215</width>
+             <height>16777215</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+            </font>
            </property>
            <property name="acceptDrops">
             <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QSlider:horizontal {
+    min-height: 30px;
+}
+</string>
            </property>
            <property name="minimum">
             <number>0</number>
@@ -5233,6 +5235,12 @@ border-radius: 4px;
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="invertedAppearance">
+            <bool>false</bool>
+           </property>
+           <property name="invertedControls">
+            <bool>false</bool>
            </property>
            <property name="tickPosition">
             <enum>QSlider::NoTicks</enum>

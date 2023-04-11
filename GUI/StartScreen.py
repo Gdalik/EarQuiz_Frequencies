@@ -2,7 +2,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap, QColor
 from PyQt6.QtWidgets import QSplashScreen
 
-from definitions import version
+from Model.get_version import version
 
 
 class StartScreen(QSplashScreen):
@@ -10,9 +10,9 @@ class StartScreen(QSplashScreen):
         super().__init__()
         logo = QPixmap(":/Logo/Icons/Logo/EarQuiz_Splash.png")
         self.setPixmap(logo)
-        self.showMessage(f'Version {version}', Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignBottom,
+        self.showMessage(f'v{version()}', Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop,
                          color=QColor('blue'))
-        self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
+        # self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
 
 StartLogo = StartScreen()

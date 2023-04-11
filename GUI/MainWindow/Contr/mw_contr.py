@@ -74,11 +74,14 @@ class MainWindowContr(QObject):
         self.setPlaybackButtons()
         self.setNextExampleBut()
         self.mw_view.signals.appClose.connect(self.onAppClose)
-        self.mw_view.show()
+        QTimer.singleShot(10, self.mw_view.show)
         self.setSourceButtons()
         self.mw_view.VolumeSlider.setValue(60)
         self.playAudioOnPreview = False
         QTimer.singleShot(1000, StartLogo.hide)
+        QTimer.singleShot(10, self._restoreAudioSource)
+
+    def _restoreAudioSource(self):
         self.PlaylistContr.loadCurrentPlaylist()
         self.PlaylistContr.restoreLastAudioSource()
 

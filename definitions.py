@@ -1,13 +1,13 @@
 import os
 import platform
 import sys
-
+# from Model.get_version import version
 from PyQt6.QtCore import QSettings
 from PyQt6.QtMultimedia import QMediaDevices
 from PyQt6.QtWidgets import QApplication
 
 app_name = 'EarQuiz Frequencies'
-version = '0.1.0'
+# version = version()
 
 app = QApplication(sys.argv)
 MediaDevices = QMediaDevices()

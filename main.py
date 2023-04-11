@@ -1,10 +1,11 @@
-import shutil
 from multiprocessing import freeze_support
+import multiprocessing as mp
+import shutil
 import platform
 import os
-from PyQt6.QtGui import QIcon
 from tendo.singleton import SingleInstance
-
+from PyQt6.QtGui import QIcon
+from PyQt6.QtCore import QTimer
 from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.StartScreen import StartLogo
 from definitions import app, app_name, TEMP_AUDIO_DIR
@@ -23,8 +24,10 @@ def setAudioBackend():
 
 if __name__ == '__main__':
     freeze_support()
+    if platform.system() == 'Darwin':
+        mp.set_start_method('fork')
     me = SingleInstance()
-    StartLogo.show()
+    QTimer.singleShot(1, StartLogo.show)
     app.setWindowIcon(QIcon(":Logo/Icons/Logo/EarQuiz_Icon.png"))
     app.setApplicationDisplayName(app_name)
     app.setApplicationName(app_name)

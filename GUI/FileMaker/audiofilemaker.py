@@ -1,4 +1,4 @@
-from PyQt6.QtCore import QUrl, QItemSelection, QItemSelectionModel
+from PyQt6.QtCore import QUrl, QItemSelection, QItemSelectionModel, QObject, QTimer
 
 from GUI.ConvertToWAV_AIFF.convert_dialog_contr import ConvertFilesDialogContr
 from GUI.FileMaker.FileCreationSuccessDialog import SuccessDialog
@@ -12,8 +12,9 @@ from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
 
 
-class AudioFileMaker:
+class AudioFileMaker(QObject):
     def __init__(self, parent):  # parent -- MainWindowContr
+        super().__init__()
         self.parent = parent
 
     def makeAndImportCalibrationSineTones(self):
@@ -109,8 +110,8 @@ class AudioFileMaker:
         if not Proc.exec():
             self.parent.isErrorInProcess(Proc)
             return
-        SuccessDialog(self.parent.mw_view, Dialog.ExerciseFolderLine.text(),
-                      mode_name='Learning' if Dialog.LearnBut.isChecked() else 'Test')
+        QTimer.singleShot(100, lambda: SuccessDialog(self.parent.mw_view, Dialog.ExerciseFolderLine.text(),
+                      mode_name='Learning' if Dialog.LearnBut.isChecked() else 'Test'))
 
     def _checkAudioNormalization(self):
         if self.parent.CurrentMode.name == 'Preview':
