@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/mainwindow.ui'
+# Form implementation generated from reading ui file 'D:\PyCharm Projects\EarQuiz Frequencies\GUI\MainWindow\View\mainwindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.0
 #
@@ -43,7 +43,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 579, 543))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 599, 538))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -2015,7 +2015,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.scrollArea)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1155, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1155, 21))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(parent=self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -2045,7 +2045,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.TransportPanel.sizePolicy().hasHeightForWidth())
         self.TransportPanel.setSizePolicy(sizePolicy)
-        self.TransportPanel.setMinimumSize(QtCore.QSize(1107, 115))
+        self.TransportPanel.setMinimumSize(QtCore.QSize(0, 115))
         self.TransportPanel.setMaximumSize(QtCore.QSize(524287, 115))
         self.TransportPanel.setBaseSize(QtCore.QSize(0, 0))
         self.TransportPanel.setStatusTip("")
@@ -2228,6 +2228,8 @@ class Ui_MainWindow(object):
         self.PlayerLay.addWidget(self.line_3)
         self.TransportLay.addLayout(self.PlayerLay)
         self.VolLay = QtWidgets.QVBoxLayout()
+        self.VolLay.setContentsMargins(-1, 0, -1, -1)
+        self.VolLay.setSpacing(6)
         self.VolLay.setObjectName("VolLay")
         self.VolumeSlider = QtWidgets.QSlider(parent=self.dockWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
@@ -2236,14 +2238,15 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.VolumeSlider.sizePolicy().hasHeightForWidth())
         self.VolumeSlider.setSizePolicy(sizePolicy)
         self.VolumeSlider.setMinimumSize(QtCore.QSize(100, 30))
-        self.VolumeSlider.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.VolumeSlider.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.VolumeSlider.setFont(font)
         self.VolumeSlider.setAcceptDrops(True)
         self.VolumeSlider.setStyleSheet("QSlider:horizontal {\n"
 "    min-height: 30px;\n"
-"}")
+"}\n"
+"")
         self.VolumeSlider.setMinimum(0)
         self.VolumeSlider.setMaximum(100)
         self.VolumeSlider.setSingleStep(1)

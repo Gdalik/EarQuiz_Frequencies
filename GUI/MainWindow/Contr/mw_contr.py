@@ -78,7 +78,7 @@ class MainWindowContr(QObject):
         self.setSourceButtons()
         self.mw_view.VolumeSlider.setValue(60)
         self.playAudioOnPreview = False
-        QTimer.singleShot(1000, StartLogo.hide)
+        QTimer.singleShot(2000, StartLogo.hide)
         QTimer.singleShot(10, self._restoreAudioSource)
 
     def _restoreAudioSource(self):

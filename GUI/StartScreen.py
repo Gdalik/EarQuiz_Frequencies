@@ -12,7 +12,7 @@ class StartScreen(QSplashScreen):
         self.setPixmap(logo)
         self.showMessage(f'v{version()}', Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop,
                          color=QColor('blue'))
-        # self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
+        self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
 
 StartLogo = StartScreen()

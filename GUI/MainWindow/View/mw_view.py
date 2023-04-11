@@ -71,6 +71,10 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         timelab_fonts.setPointSize(14)
         self.Position_Lab.setFont(timelab_fonts)
         self.Duration_Lab.setFont(timelab_fonts)
+        pl_stats_font = self.PL_Stats_Lab.font()
+        pl_stats_font.setPointSize(8)
+        self.PL_Stats_Lab.setFont(pl_stats_font)
+        self.VolumeSlider.setStyleSheet("")
 
     def _setWinViewActions(self):
         self.actionMinimal.triggered.connect(self.setMinimalistView)
