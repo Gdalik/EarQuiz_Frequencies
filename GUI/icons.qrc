@@ -32,6 +32,7 @@
   </qresource>
   <qresource prefix="Logo">
     <file>Icons/Logo/EarQuiz_Icon.png</file>
+    <file>Icons/Logo/EarQuiz_Header.png</file>
     <file>Icons/Logo/EarQuiz_Splash.png</file>
   </qresource>
 </RCC>

@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="Getting_Started">
+    <file>Data/Images/Drill_structure.png</file>
+  </qresource>
+</RCC>

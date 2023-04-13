@@ -8,7 +8,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('Model/Version/version.json', 'Model/Version')],
+    datas=[('Model/Version/version.json', 'Model/Version'), ('GUI/Help/Data/get_started.md', 'GUI/Help/Data')],
     hiddenimports=['tendo'],
     hookspath=[],
     runtime_hooks=[],

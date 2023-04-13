@@ -2,7 +2,7 @@ import datetime
 import platform
 from typing import Union
 
-from PyQt6.QtCore import QObject, QTimer
+from PyQt6.QtCore import QObject, QTimer, pyqtSignal
 from PyQt6.QtGui import QActionGroup
 
 from GUI.EQ.eq_contr import EQContr
@@ -25,12 +25,17 @@ from GUI.Playlist.playlistcontr import PlaylistContr
 from GUI.Playlist.plsong import PlSong
 from GUI.StartScreen import StartLogo
 from GUI.TransportPanel.transport_contr import TransportContr
+from GUI.Help.HelpActions import HelpActions
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.audiodrill_gen import AudioDrillGen
 from Model.file_hash import filehash
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
 from definitions import app, Settings, PN
+
+
+class MW_Signals(QObject):
+    audioSourcesRestored = pyqtSignal()
 
 
 class MainWindowContr(QObject):
@@ -41,6 +46,7 @@ class MainWindowContr(QObject):
     SourceRange: PreviewAudioCrop or None
     ADGen: AudioDrillGen or None
     CurrentSourceMode: PinkNoiseMode or AudioFileMode
+    signals = MW_Signals()
 
     def __init__(self):
         super().__init__()
@@ -67,6 +73,7 @@ class MainWindowContr(QObject):
         self.AL.setNoAudio()
         self.ADGC = ADGenContr(self)
         self.setFileMenuActions()
+        self.HelpActions = HelpActions(self)
         self.setModesActions()
         self.setModesButtons()
         self.setLearnFreqOrderAG()
@@ -84,6 +91,7 @@ class MainWindowContr(QObject):
     def _restoreAudioSource(self):
         self.PlaylistContr.loadCurrentPlaylist()
         self.PlaylistContr.restoreLastAudioSource()
+        self.signals.audioSourcesRestored.emit()
 
     def setFileMenuActions(self):
         self.mw_view.actionOpen.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='files'))

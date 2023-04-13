@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'D:\PyCharm Projects\EarQuiz Frequencies\GUI\MakeLearnTestFiles\make_learn_test_dialog_view.ui'
+# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MakeLearnTestFiles/make_learn_test_dialog_view.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.0
 #
