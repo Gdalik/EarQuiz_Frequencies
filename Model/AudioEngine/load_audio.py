@@ -75,7 +75,8 @@ class AudioChunk(PreviewAudioCrop, QObject):
         output = {'State': 'Reading / cropping audiofile', 'Percent': 0}
         self._callback_out(output, callback=callback)
         self.audiofile.seek(int(self.sec2fr(self.starttime)))
-        read_ch_samples = int(self.chunk_length_fr / self._find_rc_divider()) if self.audiofile.exact_duration_known \
+        prop_subchunk_length = int(self.chunk_length_fr / self._find_rc_divider())
+        read_ch_samples = max(prop_subchunk_length, self.samplerate) if self.audiofile.exact_duration_known \
             else int(self.samplerate)
         while self.cropped[0].size < self.chunk_length_fr:
             ch = self.audiofile.read(read_ch_samples)

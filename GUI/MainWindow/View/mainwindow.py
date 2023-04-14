@@ -2242,6 +2242,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(13)
         self.VolumeSlider.setFont(font)
+        self.VolumeSlider.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.CustomContextMenu)
         self.VolumeSlider.setAcceptDrops(True)
         self.VolumeSlider.setStyleSheet("QSlider:horizontal {\n"
 "    min-height: 30px;\n"
@@ -3048,6 +3049,10 @@ class Ui_MainWindow(object):
         self.actionMinimize_All_Windows.setObjectName("actionMinimize_All_Windows")
         self.actionGetting_Started = QtGui.QAction(parent=MainWindow)
         self.actionGetting_Started.setObjectName("actionGetting_Started")
+        self.actionSave_Volume_Level = QtGui.QAction(parent=MainWindow)
+        self.actionSave_Volume_Level.setObjectName("actionSave_Volume_Level")
+        self.actionRestore_Volume_Level = QtGui.QAction(parent=MainWindow)
+        self.actionRestore_Volume_Level.setObjectName("actionRestore_Volume_Level")
         self.Eq_Settings.raise_()
         self.TransportPanel.raise_()
         self.ExScoreInfo.raise_()
@@ -3111,6 +3116,9 @@ class Ui_MainWindow(object):
         self.menuAudio_Device.addSeparator()
         self.menuAudio.addAction(self.actionIncrease_Volume)
         self.menuAudio.addAction(self.actionDecrease_Volume)
+        self.menuAudio.addSeparator()
+        self.menuAudio.addAction(self.actionSave_Volume_Level)
+        self.menuAudio.addAction(self.actionRestore_Volume_Level)
         self.menuAudio.addSeparator()
         self.menuAudio.addAction(self.menuAudio_Device.menuAction())
         self.menubar.addAction(self.menuFile.menuAction())
@@ -3328,5 +3336,7 @@ class Ui_MainWindow(object):
         self.actionSupport_the_App_view.setText(_translate("MainWindow", "Support the App"))
         self.actionMinimize_All_Windows.setText(_translate("MainWindow", "Minimize All Windows"))
         self.actionGetting_Started.setText(_translate("MainWindow", "Getting Started"))
+        self.actionSave_Volume_Level.setText(_translate("MainWindow", "Save Volume Level"))
+        self.actionRestore_Volume_Level.setText(_translate("MainWindow", "Restore Volume Level"))
 from playlistview import PlaylistView
 from pyqtgraph import PlotWidget

@@ -4735,6 +4735,9 @@ color: gray;
     <addaction name="actionIncrease_Volume"/>
     <addaction name="actionDecrease_Volume"/>
     <addaction name="separator"/>
+    <addaction name="actionSave_Volume_Level"/>
+    <addaction name="actionRestore_Volume_Level"/>
+    <addaction name="separator"/>
     <addaction name="menuAudio_Device"/>
    </widget>
    <addaction name="menuFile"/>
@@ -4754,7 +4757,7 @@ color: gray;
    </property>
    <property name="minimumSize">
     <size>
-     <width>1107</width>
+     <width>0</width>
      <height>115</height>
     </size>
    </property>
@@ -5206,6 +5209,9 @@ border-radius: 4px;
             <font>
              <pointsize>13</pointsize>
             </font>
+           </property>
+           <property name="contextMenuPolicy">
+            <enum>Qt::CustomContextMenu</enum>
            </property>
            <property name="acceptDrops">
             <bool>true</bool>
@@ -7182,6 +7188,16 @@ background: rgba(118, 214, 255, 85)
   <action name="actionGetting_Started">
    <property name="text">
     <string>Getting Started</string>
+   </property>
+  </action>
+  <action name="actionSave_Volume_Level">
+   <property name="text">
+    <string>Save Volume Level</string>
+   </property>
+  </action>
+  <action name="actionRestore_Volume_Level">
+   <property name="text">
+    <string>Restore Volume Level</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

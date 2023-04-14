@@ -1,5 +1,5 @@
 from PyQt6.QtCore import QObject
-from PyQt6.QtGui import QTextDocument
+from PyQt6.QtGui import QTextDocument, QTextBlockFormat, QTextCursor
 from GUI.Help.QuickHelpWin import QuickHelpWin
 from definitions import ROOT_DIR, Settings
 from pathlib import Path
@@ -24,7 +24,18 @@ class HelpActions(QObject):
             content = f.read()
         document = QTextDocument()
         document.setMarkdown(content)
+        font = document.defaultFont()
+        font.setPointSize(16)
+        document.setDefaultFont(font)
         self.GS_Win.TextBr.setDocument(document)
+        blockFmt = QTextBlockFormat()
+        blockFmt.setLineHeight(120, 1)
+        self.GS_Win.TextBr.selectAll()
+        theCursor = self.GS_Win.TextBr.textCursor()
+        theCursor.mergeBlockFormat(blockFmt)
+        theCursor.clearSelection()
+        theCursor.setPosition(0)
+        self.GS_Win.TextBr.setTextCursor(theCursor)
         self.GS_Win.show()
 
     def onAppStartup(self):

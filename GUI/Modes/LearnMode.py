@@ -7,7 +7,7 @@ class LearnMode(UniMode):
         self.name = 'Learn'
         self.currentDrillFreq = None
         self.view.SliceLenSpin.setEnabled(False)
-        if self.parent.LastMode.name not in ['Preview', 'Uni']:
+        if self.parent.LastMode.name not in ['Preview']:
             self.parent.EQContr.resetEQ()
         self.setControls()
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()

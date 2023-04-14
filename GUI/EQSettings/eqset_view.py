@@ -4,6 +4,7 @@ class EQSetView:
         self.GainRangeSpin = self.mw_view.GainRangeSpin
         self.BWBox = self.mw_view.BWBox
         self.ResetBut = self.mw_view.ResetEQBut
+        self.LockEQSettingsBut = self.mw_view.LockEQSettingsBut
         self.mw_view.LockEQSettingsBut.setDefaultAction(self.mw_view.actionLockEQSettings)
         self.mw_view.GainRangeSpin.valueChanged.connect(self.mw_view.status.FreqGainLabel.update)
 
@@ -31,3 +32,4 @@ class EQSetView:
         self.BWBox.setEnabled(arg)
         self.GainRangeSpin.setEnabled(arg)
         self.ResetBut.setEnabled(arg)
+        self.LockEQSettingsBut.setEnabled(arg)

@@ -19,6 +19,7 @@ class PLContextMenu(QMenu):
         self.playlistdata = self.parent.playlistModel.playlistdata
         self.selected_tracks = self.parent.PlaylistView.selectedItems
         self.createActions()
+        self.menuCreated = False
         self.createMenu()
 
     def createActions(self):
@@ -38,17 +39,15 @@ class PLContextMenu(QMenu):
             self._createSingleSelectedTrackMenu()
         remove_sep = False
         if len(self.selected_tracks) >= 1:
-            self.actionConvertAudio.setEnabled(any((P.exists for P in self.selected_tracks)))
-            self.addAction(self.actionConvertAudio)
-            self.addSeparator()
             remove_sep = True
-            self.addAction(self.actionRemove)
+            self._createMultipleSelectedTrackMenu()
         if not remove_sep:
             self.addSeparator()
         unavailable_present = any((not S.available for S in self.playlistdata))
         self.actionRemoveUnavailable.setEnabled(unavailable_present)
         if unavailable_present or len(self.selected_tracks) > 0:
             self.addAction(self.actionRemoveUnavailable)
+            self.menuCreated = True
 
     def _createSingleSelectedTrackMenu(self):
         self.addAction(self.actionLoad)
@@ -57,6 +56,14 @@ class PLContextMenu(QMenu):
         exists = self.selected_tracks[0].exists
         self.actionLoad.setEnabled(exists)
         self.actionShowFile.setEnabled(exists)
+        self.menuCreated = True
+
+    def _createMultipleSelectedTrackMenu(self):
+        self.actionConvertAudio.setEnabled(any((P.exists for P in self.selected_tracks)))
+        self.addAction(self.actionConvertAudio)
+        self.addSeparator()
+        self.addAction(self.actionRemove)
+        self.menuCreated = True
 
     def showSelectedFile(self):
         filepath = self.selected_tracks[0].path

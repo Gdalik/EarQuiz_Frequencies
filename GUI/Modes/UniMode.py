@@ -22,7 +22,7 @@ class UniMode:
         self.setNextExampleVisible(False)
         self.enableTimeSettingsChanges(False)
         self.hideEQState()
-        self.setEQBandsOrderMenuEnabled(contrEnabled)
+        self.setEQBandsOrderMenuEnabled(True)
         if setPlayerContr:
             self.setPlayerControls()
         self.view.SliceLenSpin.setEnabled(contrEnabled)

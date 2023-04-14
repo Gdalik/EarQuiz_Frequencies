@@ -10,10 +10,11 @@ class TestMode(UniMode):
         self.currentDrillFreq = None
         self.view.SliceLenSpin.setEnabled(False)
         self.view.EQSetView.setEnabled(False)
-        if self.parent.LastMode.name not in ['Preview', 'Uni']:
+        if self.parent.LastMode.name not in ['Preview']:
             self.parent.EQContr.resetEQ()
         self.view.setActionNextExampleEnabled(False)
         self.setNextExampleVisible(True)
+        self.setEQBandsOrderMenuEnabled(False)
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
         self.restart_test()
         self.parent.ADGC.setAudioDrillGen()

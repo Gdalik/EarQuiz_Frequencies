@@ -55,6 +55,8 @@ class PlaylistContr(QObject):
 
     def _onCustomContextMenuRequested(self, pos):
         contextMenu = PLContextMenu(self)
+        if not contextMenu.menuCreated:
+            return True
         sel_ind = self.PlaylistView.selectedIndexes()
         contextMenu.actionLoad.triggered.connect(lambda x: self.loadSongFromIndex(sel_ind[0]))
         contextMenu.actionConvertAudio.triggered.connect(self.mw_contr.FileMaker.onActionConvertFilesTriggered)
@@ -63,7 +65,7 @@ class PlaylistContr(QObject):
         contextMenu.exec(self.PlaylistView.mapToGlobal(pos))
 
     def addTracks(self, URLs: list[QUrl], index=-1):
-        if len(URLs) == 0:
+        if not URLs:
             return
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)
 
