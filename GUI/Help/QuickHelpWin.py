@@ -60,6 +60,7 @@ class QuickHelpWin(QWidget):
         self.TextBr = QTextBrowser()
         self.TextBr.setOpenExternalLinks(True)
         self.TextBr.setOpenLinks(True)
+        self.TextBr.setStyleSheet("selection-color: white; selection-background-color: blue;")
 
         self.OkButton = QPushButton('Ok')
         self.OkButton.setMaximumWidth(50)

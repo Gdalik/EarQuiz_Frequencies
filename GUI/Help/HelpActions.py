@@ -1,3 +1,5 @@
+import platform
+
 from PyQt6.QtCore import QObject
 from PyQt6.QtGui import QTextDocument, QTextBlockFormat, QTextCursor
 from GUI.Help.QuickHelpWin import QuickHelpWin
@@ -25,11 +27,13 @@ class HelpActions(QObject):
         document = QTextDocument()
         document.setMarkdown(content)
         font = document.defaultFont()
-        font.setPointSize(16)
+        font_size = 16 if platform.system() == 'Darwin' else 13
+        font.setPointSize(font_size)
         document.setDefaultFont(font)
         self.GS_Win.TextBr.setDocument(document)
         blockFmt = QTextBlockFormat()
-        blockFmt.setLineHeight(120, 1)
+        line_height = 120 if platform.system() == 'Darwin' else 110
+        blockFmt.setLineHeight(line_height, 1)
         self.GS_Win.TextBr.selectAll()
         theCursor = self.GS_Win.TextBr.textCursor()
         theCursor.mergeBlockFormat(blockFmt)
