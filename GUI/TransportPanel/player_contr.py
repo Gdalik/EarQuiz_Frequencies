@@ -187,12 +187,18 @@ class PlayerContr(QMediaPlayer):
         if state == self.PlaybackState.StoppedState:
             self.mw_contr.CurrentMode.playbackStoppedEnded()
 
+    def _get_slice_number_str(self):
+        slice_number = self.mw_contr.ADGen.audiochunk.cycle_id + 1\
+            if self.mw_contr.ADGen is not None and self.mw_contr.SourceAudio.name != PN and \
+               self.mw_contr.CurrentMode.name in ('Learn', 'Test') else None
+        return f' [{slice_number}]' if slice_number is not None else ''
+
     def _translatePBStateToStatusBar(self, state):
         if self.mw_contr.SourceAudio is None:
             self.mw_view.status.clearMessage()
             return
         source = PN if self.mw_contr.SourceAudio.name == PN else self.mw_contr.LastSourceAudio.name
-        self.mw_view.status.showMessage(f'{source}: {self.PlayerView.pb_state2str(state)}')
+        self.mw_view.status.showMessage(f'{source}{self._get_slice_number_str()}: {self.PlayerView.pb_state2str(state)}')
 
     def onPlayPause_triggered(self):
         if self.playbackState() == self.PlaybackState.PlayingState and self.mw_contr.CurrentMode.playPause_toggleable:

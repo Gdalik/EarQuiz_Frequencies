@@ -1,16 +1,15 @@
 import os
 import platform
 import sys
-# from Model.get_version import version
 from PyQt6.QtCore import QSettings
 from PyQt6.QtMultimedia import QMediaDevices
 from PyQt6.QtWidgets import QApplication
 
 app_name = 'EarQuiz Frequencies'
-# version = version()
 
 app = QApplication(sys.argv)
 MediaDevices = QMediaDevices()
+launch_file_onstart = sys.argv[1] if len(sys.argv) > 1 else None
 
 ROOT_DIR = os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = ''

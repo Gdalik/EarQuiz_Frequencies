@@ -1,9 +1,10 @@
 import contextlib
+import mimetypes
 from pathlib import Path
 
 from PyQt6.QtCore import QObject, Qt, QModelIndex, QUrl
 from PyQt6.QtWidgets import QFileDialog, QWidget
-
+from PyQt6.QtGui import QAction, QKeySequence
 from GUI.FileMaker.make_playlist import saveCurrentPlaylist
 from GUI.Misc.error_message import error_message
 from GUI.Playlist.ContextMenu import PLContextMenu
@@ -11,8 +12,8 @@ from GUI.Playlist.PLLoadDialog import PLProcDialog
 from GUI.Playlist.PlaylistNavigation import PlNavi
 from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilterProxyModel
 from GUI.Playlist.plsong import PlSong
-from Model.FileLinksParser import parseLinksFrom_M3U
-from definitions import app, USER_DOCS_DIR, CURRENT_PLAYLIST_PATH, Settings, PN
+from Model.FileLinksParser import parseLinksFrom_M3U, AudioMimes
+from definitions import app, USER_DOCS_DIR, CURRENT_PLAYLIST_PATH, Settings, PN, launch_file_onstart
 
 
 class PlaylistContr(QObject):
@@ -52,6 +53,20 @@ class PlaylistContr(QObject):
         self.onPlFullEmpty()
         self.mw_view.PreviewNextBut.clicked.connect(self.onPreviewNextBut_clicked)
         self.mw_view.PreviewPreviousBut.clicked.connect(self.onPreviewPreviousBut_clicked)
+        self._setupSearchActions()
+
+    def _setupSearchActions(self):
+        searchActivateAction = QAction(self.PlaylistView)
+        searchDeactivateAction = QAction(self.PlaylistView)
+        self.PlaylistView.addActions((searchActivateAction, searchDeactivateAction))
+        searchActivateAction.setShortcut(QKeySequence.StandardKey.Find)
+        searchDeactivateAction.setShortcut(Qt.Key.Key_Escape)
+        searchActivateAction.triggered.connect(self.SearchAudio.setFocus)
+        searchDeactivateAction.triggered.connect(self._onSearchDeactivateActionTriggered)
+
+    def _onSearchDeactivateActionTriggered(self):
+        self.SearchAudio.clear()
+        self.PlaylistView.setFocus()
 
     def _onCustomContextMenuRequested(self, pos):
         contextMenu = PLContextMenu(self)
@@ -162,13 +177,16 @@ class PlaylistContr(QObject):
         self.selectCurrentSong()
 
     def restoreLastAudioSource(self):
-        last_source = Settings.value('LastStuff/AudioSource', PN)
+        _launched_file_onstart = launch_file_onstart \
+            if launch_file_onstart is not None and Path(launch_file_onstart).is_file() \
+               and mimetypes.guess_type(launch_file_onstart)[0] in AudioMimes else None
+        last_source = _launched_file_onstart or Settings.value('LastStuff/AudioSource', PN)
         if last_source == PN or last_source not in self.PlNavi.playlist_paths \
                 or not Path(last_source).is_file():
             self.mw_view.PinkNoiseRBut.setChecked(True)
             return
         self.mw_view.AudiofileRBut.setChecked(True)
-        ind = Settings.value('LastStuff/PlaylistIndex', None)
+        ind = Settings.value('LastStuff/PlaylistIndex', None) if _launched_file_onstart is None else 0
         ind = int(ind) if ind is not None else ind
         if ind is None or not Path(self.playlistModel.playlistdata[ind].path).samefile(last_source):
             return
@@ -291,6 +309,8 @@ class PlaylistContr(QObject):
             return
         with contextlib.suppress(Exception):
             urls = [QUrl.fromLocalFile(link) for link in parseLinksFrom_M3U(CURRENT_PLAYLIST_PATH, encoding='utf-8')]
+            if launch_file_onstart is not None:
+                urls.insert(0, QUrl.fromLocalFile(launch_file_onstart))
             if urls:
                 self.addTracks(urls)
 

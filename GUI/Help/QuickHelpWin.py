@@ -15,7 +15,11 @@ class QuickHelpWin(QWidget):
         self.TextBr.setFocus()
 
     def setup_view(self):
-        self.setWindowFlags(Qt.WindowType.Window | Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.WindowCloseButtonHint | Qt.WindowType.CustomizeWindowHint | Qt.WindowType.WindowMaximizeButtonHint)
+        self.setWindowFlags(Qt.WindowType.Window |
+                            Qt.WindowType.WindowStaysOnTopHint |
+                            Qt.WindowType.WindowCloseButtonHint |
+                            Qt.WindowType.CustomizeWindowHint |
+                            Qt.WindowType.WindowMaximizeButtonHint)
         self.setWindowTitle(self.title)
         self.resize(600, 400)
 
@@ -60,7 +64,7 @@ class QuickHelpWin(QWidget):
         self.TextBr = QTextBrowser()
         self.TextBr.setOpenExternalLinks(True)
         self.TextBr.setOpenLinks(True)
-        self.TextBr.setStyleSheet("selection-color: white; selection-background-color: blue;")
+        self.TextBr.setStyleSheet("selection-color: white; selection-background-color: rgb(0, 150, 255);")
 
         self.OkButton = QPushButton('Ok')
         self.OkButton.setMaximumWidth(50)
@@ -69,10 +73,7 @@ class QuickHelpWin(QWidget):
         self.NotShowAgainBut = QCheckBox("Don't show this window on startup")
         self.NotShowAgainBut.setCheckable(True)
 
-        if self.showagain_settings_path is not None:
-            showagain = Settings.value(self.showagain_settings_path)
-            if showagain is not None:
-                self.NotShowAgainBut.setChecked(not str2bool(showagain))
+        self.restoreNotShowAgainBut()
 
         self.layout = QVBoxLayout()
         self.layout.addLayout(self.SearchLay)
@@ -85,6 +86,16 @@ class QuickHelpWin(QWidget):
         if self.showagain_settings_path is not None:
             Settings.setValue(self.showagain_settings_path, not self.NotShowAgainBut.isChecked())
         self.close()
+
+    def closeEvent(self, ev):
+        self.restoreNotShowAgainBut()
+        super(QuickHelpWin, self).closeEvent(ev)
+
+    def restoreNotShowAgainBut(self):
+        if self.showagain_settings_path is not None:
+            showagain = Settings.value(self.showagain_settings_path)
+            if showagain is not None:
+                self.NotShowAgainBut.setChecked(not str2bool(showagain))
 
     def findText(self, fromStart=True, mode='forward'):
         if text := self.SearchLine.text():

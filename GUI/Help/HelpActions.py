@@ -6,6 +6,7 @@ from GUI.Help.QuickHelpWin import QuickHelpWin
 from definitions import ROOT_DIR, Settings
 from pathlib import Path
 from Utilities.str2bool import str2bool
+from Model.get_version import version
 
 
 class HelpActions(QObject):
@@ -15,7 +16,7 @@ class HelpActions(QObject):
         self.mw_view = mw_contr.mw_view
         self.mw_view.actionGetting_Started.triggered.connect(self.onGettingStarted_called)
         self.mw_contr.signals.audioSourcesRestored.connect(self.onAppStartup)
-        self.GS_Win = QuickHelpWin(self.mw_view, title='Getting Started with EarQuiz Frequencies',
+        self.GS_Win = QuickHelpWin(self.mw_view, title=f'Getting Started with EarQuiz Frequencies v{version()}',
                            showagain_settings_path='MessageBoxes/ShowGettingStartedOnStartup')
 
     def onGettingStarted_called(self):
