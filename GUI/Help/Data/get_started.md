@@ -98,8 +98,8 @@ perception is heavily influenced by the sound level (for more details, see studi
 So, at this stage, it makes sense to adjust the volume to a comfortable medium loud level while you check the audio playback 
 using pink noise and current EQ pattern. You may need to reconsider it later for different EQ patterns/settings or other audio sources.
 
-There is a **Volume Slider** with the level indicator both in percents and decibels, which can be accessed from the **Transport Panel**. 
-The latter can be opened from various places, including top-right corner of the **Audio Source** window and **View** menu 
+There is a **Volume Slider** with the level indicator both in percents (slider value) and decibels (relative amplitude level), 
+which can be accessed from the **Transport Panel**. The latter can be opened from various places, including top-right corner of the **Audio Source** window and **View** menu 
 of the main menu.
 
 --------
