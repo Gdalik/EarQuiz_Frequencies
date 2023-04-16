@@ -92,7 +92,7 @@ If your audio path contains any tone controls, equalizers, or sound processors, 
 in most cases, they should be switched off or set flat, unless you know for sure that they compensate for the certain flaws. If you have the 
 loudness compensation button on your playback preamp or receiver, it should be off as well.
 
-As for the volume, the main idea here is to set the comfortable level for the whole Learn/Test exercise cycle with the same audio stuff
+As for the **volume**, the main idea here is to set the comfortable level for the whole Learn/Test exercise cycle with the same audio stuff
 and EQ pattern, without changing the loudness during or between separate examples. Please note that our frequency 
 perception is heavily influenced by the sound level (for more details, see studies by Fletcher and Munson on this topic).
 So, at this stage, it makes sense to adjust the volume to a comfortable medium loud level while you check the audio playback 
@@ -102,11 +102,16 @@ There is a **Volume Slider** with the level indicator both in percents (slider v
 which can be accessed from the **Transport Panel**. The latter can be opened from various places, including the top-right corner 
 of the **Audio Source** window and **View** menu of the main menu.
 
-*It would be ideal to calibrate the audio system once, and not to touch the volume levels during the whole training session since then.
-This is an absolutely achievable mastering task, when packaging exercises into a finished audio product. With software, we gain 
+It would be ideal to calibrate the audio system once, and not to touch the volume levels during the whole training session since then.
+This is an absolutely achievable mastering task, when packaging exercises into a finished audio product.
+With software, we gain 
 from flexibility and the possibility to create exercises with very different settings from any audio material on the fly. However, 
 with in-app training we also run into a kind of compromise between sound quality, overall loudness, and alignment of levels between 
-exercises with different audio sources and settings.*
+exercises with different audio sources and settings.
+
+As my priority was to achieve the best possible sound quality without clipping as a side effect of boosting frequencies,
+I decided to apply to every single-band exercise audio source the preventive peak normalization with opposite number to current EQ gain depth.
+For dual-band EQ patterns, I have added additional headroom up to 3dB.
 
 --------
 ### Annotations
