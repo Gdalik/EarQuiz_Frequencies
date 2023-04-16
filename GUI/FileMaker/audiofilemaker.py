@@ -87,7 +87,9 @@ class AudioFileMaker(QObject):
             return
         cropped = self.parent.ADGen.audiochunk.cropped
         cropped_normalized = self.parent.ADGen.audiochunk.cropped_normalized
-        kwargs = {'cropped': cropped,
+        kwargs = {'audiodata': self.parent.TransportContr.PlayerContr.sourceAudioData(),
+                  'EQPattern': self.parent.PatternBoxContr.PatternBox.currentText(),
+                  'cropped': cropped,
                   'cropped_normalized': cropped_normalized,
                   'filename_prefix': Dialog.prefix,
                   'extension': Dialog.extension,
@@ -103,8 +105,6 @@ class AudioFileMaker(QObject):
         if Dialog.LearnBut.isChecked():
             kwargs['order'] = self.parent.freqOrder(audioFileGeneratorMode=True)
             kwargs['enumerate_examples'] = Dialog.EnumLearningExBut.isChecked()
-        elif Dialog.TestBut.isChecked():
-            kwargs['audiodata'] = self.parent.TransportContr.PlayerContr.sourceAudioData()
         Proc = ProcTrackControl(action, args=[SA.path, Dialog.ExerciseFolderLine.text(),
                                               self.parent.EQContr.getAvailableFreq()], kwargs=kwargs)
         if not Proc.exec():

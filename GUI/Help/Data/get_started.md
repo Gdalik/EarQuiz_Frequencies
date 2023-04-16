@@ -27,7 +27,7 @@ either personal or commercial!
 
 <a id="the-basic-exercise-principle">The overall training process involves ongoing learning and testing yourself</a>.
 Both learning and test exercises consist of audio samples, which we will call *examples*. Each example is a 10-30 
-seconds long chunk of either **[pink noise](#pink-noise)** (generated on each application launch) or **music**.  
+seconds' long chunk of either **[pink noise](#pink-noise)** (generated on each application launch) or **music**.  
 Technically, any external audio file of a [supported format](#supported-audio-formats), stored locally on your device, can be used instead for the latter.
 So, you could further experiment with recordings of speech, different sounds, natural or synthetic noises, 
 whatever you have in your audio collection.
@@ -89,7 +89,7 @@ audio system** first.* <br />
 ### Adjusting Audio System
 <a id="adjusting-system">The flatter, the better.</a> I mean frequency response of your whole playback system, of course.
 If your audio path contains any tone controls, equalizers, or sound processors, which affect the spectrum of reproduced sound,
-in most cases they should be switched off or set flat, unless you know for sure that they compensate for the certain flaws. If you have the 
+in most cases, they should be switched off or set flat, unless you know for sure that they compensate for the certain flaws. If you have the 
 loudness compensation button on your playback preamp or receiver, it should be off as well.
 
 As for the volume, the main idea here is to set the comfortable level for the whole Learn/Test exercise cycle with the same audio stuff
@@ -99,8 +99,14 @@ So, at this stage, it makes sense to adjust the volume to a comfortable medium l
 using pink noise and current EQ pattern. You may need to reconsider it later for different EQ patterns/settings or other audio sources.
 
 There is a **Volume Slider** with the level indicator both in percents (slider value) and decibels (relative amplitude level), 
-which can be accessed from the **Transport Panel**. The latter can be opened from various places, including top-right corner of the **Audio Source** window and **View** menu 
-of the main menu.
+which can be accessed from the **Transport Panel**. The latter can be opened from various places, including the top-right corner 
+of the **Audio Source** window and **View** menu of the main menu.
+
+*It would be ideal to calibrate the audio system once, and not to touch the volume levels during the whole training session since then.
+This is an absolutely achievable mastering task, when packaging exercises into a finished audio product. With software, we gain 
+from flexibility and the possibility to create exercises with very different settings from any audio material on the fly. However, 
+with in-app training we also run into a kind of compromise between sound quality, overall loudness, and alignment of levels between 
+exercises with different audio sources and settings.*
 
 --------
 ### Annotations
