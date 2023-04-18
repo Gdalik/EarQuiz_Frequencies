@@ -13,7 +13,7 @@ from GUI.Playlist.PlaylistNavigation import PlNavi
 from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilterProxyModel
 from GUI.Playlist.plsong import PlSong
 from Model.FileLinksParser import parseLinksFrom_M3U, AudioMimes
-from definitions import app, USER_DOCS_DIR, CURRENT_PLAYLIST_PATH, Settings, PN, launch_file_onstart
+from definitions import app, USER_DOCS_DIR, CURRENT_PLAYLIST_PATH, Settings, PN, launch_files_onstart
 
 
 class PlaylistContr(QObject):
@@ -177,10 +177,10 @@ class PlaylistContr(QObject):
         self.selectCurrentSong()
 
     def restoreLastAudioSource(self):
-        _launched_file_onstart = launch_file_onstart \
-            if launch_file_onstart is not None and Path(launch_file_onstart[0]).is_file() \
-               and mimetypes.guess_type(launch_file_onstart[0])[0] in AudioMimes else None
-        last_source = _launched_file_onstart[0] or Settings.value('LastStuff/AudioSource', PN)
+        _launched_file_onstart = launch_files_onstart[0] \
+            if launch_files_onstart is not None and Path(launch_files_onstart[0]).is_file() \
+               and mimetypes.guess_type(launch_files_onstart[0])[0] in AudioMimes else None
+        last_source = _launched_file_onstart or Settings.value('LastStuff/AudioSource', PN)
         if last_source == PN or last_source not in self.PlNavi.playlist_paths \
                 or not Path(last_source).is_file():
             self.mw_view.PinkNoiseRBut.setChecked(True)
@@ -309,7 +309,7 @@ class PlaylistContr(QObject):
             return
         with contextlib.suppress(Exception):
             urls = [QUrl.fromLocalFile(link) for link in parseLinksFrom_M3U(CURRENT_PLAYLIST_PATH, encoding='utf-8')]
-            urls_to_ins = [QUrl.fromLocalFile(link) for link in launch_file_onstart] if launch_file_onstart is not None else None
+            urls_to_ins = [QUrl.fromLocalFile(link) for link in launch_files_onstart] if launch_files_onstart is not None else None
             if urls_to_ins is not None:
                 urls = urls_to_ins + urls
             '''if launch_file_onstart is not None:

@@ -9,7 +9,7 @@ app_name = 'EarQuiz Frequencies'
 
 app = QApplication(sys.argv)
 MediaDevices = QMediaDevices()
-launch_file_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
+launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
 
 ROOT_DIR = os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = ''
