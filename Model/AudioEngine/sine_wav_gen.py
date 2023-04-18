@@ -23,9 +23,8 @@ def silence_gen(length_s=1.0, samplerate=44100):
 
 def generateCalibrationSineTones():
     sil = silence_gen()
-    sil_half = silence_gen(length_s=0.5)
-    cs = np.concatenate((sil_half, sine_gen(1000), sil, sine_gen(10000), sil, sine_gen(100), sil,
-                         sine_gen(15000), sil, sine_gen(40), sil_half), axis=1)
+    cs = np.concatenate((sil, sine_gen(1000), sil, sine_gen(10000), sil, sine_gen(100), sil,
+                         sine_gen(15000), sil, sine_gen(40)), axis=1)
     cs = cs * 0.2
     Path.mkdir(Path(SineWaveCalibrationPath).parent, parents=True, exist_ok=True)
     with contextlib.suppress(Exception):

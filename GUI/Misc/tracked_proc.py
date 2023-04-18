@@ -60,6 +60,8 @@ class ProcTrackControl(QDialog):
 
     def _setupView(self):
         self.setWindowFlags(Qt.WindowType.SplashScreen)
+        self.setMaximumWidth(250)
+        self.setMaximumHeight(125)
         self.buttonBox = QDialogButtonBox(QDialogButtonBox.StandardButton.Cancel)
         self.buttonBox.rejected.connect(self.reject)
         self.layout = QVBoxLayout()

@@ -178,9 +178,9 @@ class PlaylistContr(QObject):
 
     def restoreLastAudioSource(self):
         _launched_file_onstart = launch_file_onstart \
-            if launch_file_onstart is not None and Path(launch_file_onstart).is_file() \
-               and mimetypes.guess_type(launch_file_onstart)[0] in AudioMimes else None
-        last_source = _launched_file_onstart or Settings.value('LastStuff/AudioSource', PN)
+            if launch_file_onstart is not None and Path(launch_file_onstart[0]).is_file() \
+               and mimetypes.guess_type(launch_file_onstart[0])[0] in AudioMimes else None
+        last_source = _launched_file_onstart[0] or Settings.value('LastStuff/AudioSource', PN)
         if last_source == PN or last_source not in self.PlNavi.playlist_paths \
                 or not Path(last_source).is_file():
             self.mw_view.PinkNoiseRBut.setChecked(True)
@@ -309,8 +309,11 @@ class PlaylistContr(QObject):
             return
         with contextlib.suppress(Exception):
             urls = [QUrl.fromLocalFile(link) for link in parseLinksFrom_M3U(CURRENT_PLAYLIST_PATH, encoding='utf-8')]
-            if launch_file_onstart is not None:
-                urls.insert(0, QUrl.fromLocalFile(launch_file_onstart))
+            urls_to_ins = [QUrl.fromLocalFile(link) for link in launch_file_onstart] if launch_file_onstart is not None else None
+            if urls_to_ins is not None:
+                urls = urls_to_ins + urls
+            '''if launch_file_onstart is not None:
+                urls.insert(0, QUrl.fromLocalFile(launch_file_onstart))'''
             if urls:
                 self.addTracks(urls)
 
