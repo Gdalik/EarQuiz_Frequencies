@@ -1,5 +1,12 @@
 <RCC>
   <qresource prefix="Getting_Started">
     <file>Data/Images/Drill_structure.png</file>
+    <file>Data/Images/BellFilterScheme.png</file>
+  </qresource>
+  <qresource prefix="Formulas">
+    <file>Data/Images/BW_form.png</file>
+    <file>Data/Images/BWoct_form.png</file>
+    <file>Data/Images/Q_from_BW_form1.png</file>
+    <file>Data/Images/Q_from_BW_form2.png</file>
   </qresource>
 </RCC>

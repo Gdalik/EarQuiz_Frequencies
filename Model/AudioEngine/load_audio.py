@@ -9,7 +9,7 @@ from PyQt6.QtCore import QObject, pyqtSignal
 from pedalboard.io import AudioFile
 
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
-from Model.calc import optimize_divider
+from Model.calc import find_divider
 from Model.globals import pinknoise, MinAudioDuration, PinknoiseLength
 from Utilities.exceptions import InterruptedException
 from definitions import PN
@@ -97,9 +97,9 @@ class AudioChunk(PreviewAudioCrop, QObject):
         self.audiofile = AudioFile(self.audiofile_path)
         return self.audiofile
 
-    def _find_rc_divider(self, max_div=100):
+    def _find_rc_divider(self):
         min_div = self.chunk_length // 300 if self.chunk_length >= 600 else 2
-        return optimize_divider(self.chunk_length_fr, ref_div=min_div, max_div=max_div)
+        return find_divider(self.chunk_length_fr, Min=min_div)
 
     @property
     def chunk_length_fr(self):

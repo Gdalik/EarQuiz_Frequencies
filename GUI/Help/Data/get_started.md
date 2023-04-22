@@ -144,6 +144,7 @@ each, and separated with 1 second of silence from each other. All the tones have
 possible (approximately -14dB).
 
 Here is the timeline table, to make it even clearer and easier to use:
+
 <br />
 
 | Frequency | Time (sec)  |
@@ -160,6 +161,94 @@ You should be able to hear the first three tones (1 kHz, 10 kHz and 100 Hz) clea
 unless this difference is too big. If you cannot hear one or more of these, you have a serious issue with your playback system, which
 must be resolved before going on. In case only the last two tones (15 kHz and 40 Hz) are barely audible or even inaudible, you can
 proceed, but be aware that you may have difficulties hearing/identifying the low or the high extremes of the spectrum correspondingly. 
+
+### Equalization: Patterns, Settings and Sliders 
+
+#### Equalization Patterns
+**Equalization Pattern** is the core of each exercise, as it defines:
+- the range of frequency options;
+- default **EQ Settings** (Frequency Gain and Bandwidth/Q factor of filters);
+- the type of **Equalizer**: 1-octave (10-band) or 1/3-octave (30-band);
+- if the frequencies would be boosted or cut, or both options;
+- if one or two frequency bands would be treated at once;
+- for dual-band presets: the minimal range between altered frequency bands.
+
+There are 15 presets with increasing difficulty: from boosting a single 1-octave band within a limited frequency range (lows, mids, highs separately)
+to boosting or cutting two 1/3-octave bands simultaneously in the full range. 
+You can choose any pattern from the list or skip forward with the <span style="color:blue; font-weight:bold"> > </span> 
+(**Next Equalization Pattern**) button. This can be made silently (without triggering other actions) in the **Preview** mode, 
+unlike in the **Learn** or the **Test** modes, where it resets the exercises and their playback.
+
+#### Equalization Settings
+**EQ Settings** consist of two parameters: 
+1. *Frequency Gain*, that determines an amount by which the center frequency of filter is boosted or cut.
+2. *Bandwidth*/*Q factor*, that are used to set the width of boosted or cut frequency band.
+
+Here is a filter scheme:
+
+<br />
+
+<img align="center" src=":/Getting_Started/Data/Images/BellFilterScheme.png"/>
+
+This type of filter is called *peaking* or *bell* bandpass filter.
+Center frequency (f<sub>0</sub>) is the most altered (boosted or cut) point within a frequency band.
+To measure how wide or narrow the whole band is, we need two symmetrical points on the left (f<sub>1</sub>) and 
+on the right (f<sub>2</sub>) side of this peak, which have the 3dB roll-off (50% drop in power/energy).
+
+The absolute bandwidth (BW) in Hz is simply the difference between the highest and the lowest frequencies:
+
+<br />
+<br />
+<img src=":/Formulas/Data/Images/BW_form.png"/>
+<br />
+
+But our perception is not linear. The same music intervals will contain different number of Hz in different spectral ranges.
+An absolute difference in Hz doubles with each increase of 1 octave.
+That is to say, there is an octave between 50 and 100 Hz, 100 and 200 Hz, 200 and 400 Hz, 400 and 800 Hz, etc.
+So, for our ears, the *ratio* between frequencies (f<sub>2</sub>/f<sub>1</sub>) matters much more than their absolute difference. 
+This is why bandwidth of filters is also measured in octaves.
+
+To calculate the difference in octaves between f<sub>1</sub> and f<sub>2</sub>, means to detect how many times we should multiply
+f<sub>1</sub> by 2 to get f<sub>2</sub>. If we translate this into algebraic expression, we get the following formula:
+
+<br />
+<br />
+<img src=":/Formulas/Data/Images/BWoct_form.png"/>
+<br />
+
+In our case, we deal with 1-octave and narrower bands, that's why we have BW values between 0 and 1.
+
+Even more often than BW, we encounter the *Q factor* (abbrev. from *Quality factor*) as a filter parameter. Though used interchangeably often, 
+they are not the same. In fact, they have inverse correlation: the bigger the Q, the narrower the band; the wider the band, 
+the smaller the Q. If we know the absolute BW in Hz and the center frequency of a filter, the Q is easily calculated:
+
+<br />
+<br />
+<img src=":/Formulas/Data/Images/Q_from_BW_form1.png"/>
+<br />
+
+But as we mostly deal with relative BW in octaves, we might want to know, how to convert them to those weird Q numbers.
+This formula is a bit more complicated:
+
+<br />
+<br />
+<img src=":/Formulas/Data/Images/Q_from_BW_form2.png"/> <br />
+where N is number of octaves.
+
+Enough with algebra and formulas here. The one that converts Q factor to BW in octaves is rather big, by the way.
+
+For *Bandwidth*, I have used the options which can easily be thought of as music (tempered-scale) intervals:
+<br />
+
+| Bandwidth | Q      | Interval |
+|:----------|:-------|:---------|
+ |1 Octave | ~1.41  | Octave   |
+| 3/4 Octave| ~1.9   | Major 6th |
+| 2/3 Octave| ~2.14  | Minor 6th |
+| 1/2 Octave | ~2.87  | Tritone  |
+| 1/3 Octave | ~4.32  | Major 3d |
+| 1/4 Octave | ~5.76  | Minor 3d |
+| 1/6 Octave | ~8.65  | Major 2nd |
 
 --------
 ### Annotations
