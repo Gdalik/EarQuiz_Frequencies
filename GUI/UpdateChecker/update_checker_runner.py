@@ -16,10 +16,11 @@ class UpdCheckRun(QRunnable):
     def __init__(self):
         super().__init__()
         self.upd_data = None
+        self.in_process = False
 
     @pyqtSlot()
     def run(self):
-
+        self.in_process = True
         try:
             upd_data = request.urlopen(self.VersionData_URL).read()
             latest_version = version_int(external_data=upd_data)
