@@ -179,8 +179,12 @@ You can choose any pattern from the list or skip forward with the <span style="c
 (**Next Equalization Pattern**) button. This can be made silently (without triggering other actions) in the **Preview** mode, 
 unlike in the **Learn** or the **Test** modes, where it resets the exercises and their playback.
 
+The current EQ pattern is stored between sessions.
+
 #### Equalization Settings
-**EQ Settings** consist of two parameters: 
+You can open the **EQ Settings** by pressing the button with gear icon in the top-right corner
+of the EQ or by selecting **View | EQ Settings** from the main menu.
+They consist of two parameters: 
 1. *Frequency Gain*, that determines an amount by which the center frequency of filter is boosted or cut.
 2. *Bandwidth*/*Q factor*, that are used to set the width of boosted or cut frequency band.
 
@@ -249,6 +253,26 @@ For *Bandwidth*, I have used the options which can easily be thought of as music
 | 1/3 Octave | ~4.32  | Major 3d |
 | 1/4 Octave | ~5.76  | Minor 3d |
 | 1/6 Octave | ~8.65  | Major 2nd |
+
+In general, the narrower/steeper filter curve, the more accurately and precisely it works.
+The wider band, conversely, affects more frequencies, and makes equalization more prominent, but less exact.
+With too high Q factor, the situation,
+when there is no audible content in particular part of spectrum, is more likely. With too low one, the boundaries
+between frequency bands may become blurred.
+
+For presets with 10-band EQ I have set the default bandwidth to 1 octave with ±12dB gain, and for those with 30-band EQ I have used
+the 1/3-octave value with ±15dB gain.
+
+You can set your custom options in the **Preview** mode or in the **Learn** mode between playback of examples. The app
+will re-normalize your audio according to current Frequency Gain and EQ pattern. Pressing the **Reset** button restores 
+default EQ pattern settings.
+
+If you want to use the same settings across various EQ patterns, you can **Lock** them with the corresponding button.
+For example, you have become confident with all the patterns, and you want to boost your proficiency. In this case,
+while going through the same patterns, 
+you can try lowering the frequency gain value, and challenge your ears to hear the subtler and subtler equalization.
+
+When locked, this state and values themselves are stored between sessions.
 
 --------
 ### Annotations

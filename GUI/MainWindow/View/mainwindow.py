@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'D:\PyCharm Projects\EarQuiz Frequencies\GUI\MainWindow\View\mainwindow.ui'
+# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/mainwindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.0
 #
@@ -2045,7 +2045,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.TransportPanel.sizePolicy().hasHeightForWidth())
         self.TransportPanel.setSizePolicy(sizePolicy)
-        self.TransportPanel.setMinimumSize(QtCore.QSize(0, 115))
+        self.TransportPanel.setMinimumSize(QtCore.QSize(1107, 115))
         self.TransportPanel.setMaximumSize(QtCore.QSize(524287, 115))
         self.TransportPanel.setBaseSize(QtCore.QSize(0, 0))
         self.TransportPanel.setStatusTip("")
@@ -2916,6 +2916,7 @@ class Ui_MainWindow(object):
         self.actionOpen = QtGui.QAction(parent=MainWindow)
         self.actionOpen.setObjectName("actionOpen")
         self.actionClose = QtGui.QAction(parent=MainWindow)
+        self.actionClose.setMenuRole(QtGui.QAction.MenuRole.QuitRole)
         self.actionClose.setObjectName("actionClose")
         self.actionAbout = QtGui.QAction(parent=MainWindow)
         self.actionAbout.setObjectName("actionAbout")
@@ -3053,6 +3054,9 @@ class Ui_MainWindow(object):
         self.actionSave_Volume_Level.setObjectName("actionSave_Volume_Level")
         self.actionRestore_Volume_Level = QtGui.QAction(parent=MainWindow)
         self.actionRestore_Volume_Level.setObjectName("actionRestore_Volume_Level")
+        self.actionCheck_for_Updates = QtGui.QAction(parent=MainWindow)
+        self.actionCheck_for_Updates.setMenuRole(QtGui.QAction.MenuRole.ApplicationSpecificRole)
+        self.actionCheck_for_Updates.setObjectName("actionCheck_for_Updates")
         self.Eq_Settings.raise_()
         self.TransportPanel.raise_()
         self.ExScoreInfo.raise_()
@@ -3083,6 +3087,8 @@ class Ui_MainWindow(object):
         self.menuHelp.addAction(self.actionGetting_Started)
         self.menuHelp.addAction(self.actionVideo_Tutorial)
         self.menuHelp.addAction(self.actionOnline_Help)
+        self.menuHelp.addSeparator()
+        self.menuHelp.addAction(self.actionCheck_for_Updates)
         self.menuWindow.addAction(self.actionMinimize)
         self.menuWindow.addAction(self.actionMinimize_All_Windows)
         self.menuWindow.addAction(self.actionZoom)
@@ -3338,5 +3344,6 @@ class Ui_MainWindow(object):
         self.actionGetting_Started.setText(_translate("MainWindow", "Getting Started"))
         self.actionSave_Volume_Level.setText(_translate("MainWindow", "Save Volume Level"))
         self.actionRestore_Volume_Level.setText(_translate("MainWindow", "Restore Volume Level"))
+        self.actionCheck_for_Updates.setText(_translate("MainWindow", "Check for Updates..."))
 from playlistview import PlaylistView
 from pyqtgraph import PlotWidget

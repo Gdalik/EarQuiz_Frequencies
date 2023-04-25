@@ -4676,6 +4676,8 @@ color: gray;
     <addaction name="actionGetting_Started"/>
     <addaction name="actionVideo_Tutorial"/>
     <addaction name="actionOnline_Help"/>
+    <addaction name="separator"/>
+    <addaction name="actionCheck_for_Updates"/>
    </widget>
    <widget class="QMenu" name="menuWindow">
     <property name="title">
@@ -4757,7 +4759,7 @@ color: gray;
    </property>
    <property name="minimumSize">
     <size>
-     <width>0</width>
+     <width>1107</width>
      <height>115</height>
     </size>
    </property>
@@ -6773,6 +6775,9 @@ background: rgba(118, 214, 255, 85)
    <property name="shortcut">
     <string>Ctrl+W</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
   </action>
   <action name="actionAbout">
    <property name="text">
@@ -7198,6 +7203,14 @@ background: rgba(118, 214, 255, 85)
   <action name="actionRestore_Volume_Level">
    <property name="text">
     <string>Restore Volume Level</string>
+   </property>
+  </action>
+  <action name="actionCheck_for_Updates">
+   <property name="text">
+    <string>Check for Updates...</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::ApplicationSpecificRole</enum>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

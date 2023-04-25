@@ -4,7 +4,7 @@ from typing import Union
 
 from PyQt6.QtCore import QObject, QTimer, pyqtSignal
 from PyQt6.QtGui import QActionGroup
-
+from GUI.UpdateChecker.update_checker_contr import UpdCheckContr
 from GUI.EQ.eq_contr import EQContr
 from GUI.EQSettings.eqset_contr import EQSetContr
 from GUI.ExScoreInfo.exscoreinfo_contr import ExScoreInfoContr
@@ -57,6 +57,7 @@ class MainWindowContr(QObject):
         self.LoadedFileHash = None
         self.LoadedFilePath = None
         self.LastSourceAudio = None
+        self.UpdCheckContr = UpdCheckContr(self)
         self.EQContr = EQContr(self)
         self.EQSetContr = EQSetContr(self)
         self.setShufflePBMode()
