@@ -1,8 +1,9 @@
 import platform
 
 from PyQt6.QtCore import QObject
-from PyQt6.QtGui import QTextDocument, QTextBlockFormat, QTextCursor
+from PyQt6.QtGui import QTextDocument
 from GUI.Help.QuickHelpWin import QuickHelpWin
+from GUI.TextBrowserDocParameters import setParameters
 from definitions import ROOT_DIR, Settings
 from pathlib import Path
 from Utilities.str2bool import str2bool
@@ -27,20 +28,14 @@ class HelpActions(QObject):
             content = f.read()
         document = QTextDocument()
         document.setMarkdown(content)
-        font = document.defaultFont()
-        font_size = 16 if platform.system() == 'Darwin' else 13
-        font.setPointSize(font_size)
-        document.setDefaultFont(font)
         self.GS_Win.TextBr.setDocument(document)
-        blockFmt = QTextBlockFormat()
-        line_height = 120 if platform.system() == 'Darwin' else 110
-        blockFmt.setLineHeight(line_height, 1)
-        self.GS_Win.TextBr.selectAll()
-        theCursor = self.GS_Win.TextBr.textCursor()
-        theCursor.mergeBlockFormat(blockFmt)
-        theCursor.clearSelection()
-        theCursor.setPosition(0)
-        self.GS_Win.TextBr.setTextCursor(theCursor)
+        if platform.system() == 'Darwin':
+            font_size = 16
+            line_height = 120
+        else:
+            font_size = 13
+            line_height = 110
+        setParameters(self.GS_Win.TextBr, document, font_size=font_size, line_height=line_height)
         self.GS_Win.show()
 
     def onAppStartup(self):

@@ -47,7 +47,7 @@ class UpdCheckRun(QRunnable):
             return True
         try:
             info_data = request.urlopen(info_url).read()
-            self.upd_data['info_data'] = info_data
+            self.upd_data['info_data'] = info_data.decode('utf-8')
         except Exception as e:
             self.signals.error.emit(str(e))
             return False

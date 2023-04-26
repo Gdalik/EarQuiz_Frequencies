@@ -14,6 +14,7 @@ from GUI.MainWindow.View.mainwindow import Ui_MainWindow
 from GUI.Misc.error_message import error_message
 from GUI.PatternBox.patternbox_view import PatternBoxView
 from GUI.TransportPanel.transport_view import TransportPanelView
+from GUI.UpdateChecker.update_checker_view import UpdCheckView
 from Utilities.str2bool import str2bool
 from definitions import Settings
 
@@ -35,6 +36,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setDockOptions(self.dockOptions().AnimatedDocks)
         self.setWindowTitle(definitions.app_name)
         self.status = StatusBar(self)
+        self.UpdCheckView = UpdCheckView(self)
         self.PatternBoxView = PatternBoxView(self)
         self.EQView = EqView(self)
         self.EQSetView = EQSetView(self)

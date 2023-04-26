@@ -1,7 +1,5 @@
 from PyQt6.QtCore import QObject, QThreadPool, Qt
-from PyQt6.QtWidgets import QMessageBox
 from GUI.UpdateChecker.update_checker_runner import UpdCheckRun
-from Model.get_version import version
 
 
 class UpdCheckContr(QObject):
@@ -11,7 +9,8 @@ class UpdCheckContr(QObject):
     def __init__(self, mw_contr):
         super().__init__()
         self.mw_contr = mw_contr
-        self.mw_contr.mw_view.actionCheck_for_Updates.triggered.connect(self.checkUpdates_manual)
+        self.mw_view = mw_contr.mw_view
+        self.mw_view.actionCheck_for_Updates.triggered.connect(self.checkUpdates_manual)
         self.UpdCheckRun = None
         self.manual_call = False
 
@@ -38,19 +37,13 @@ class UpdCheckContr(QObject):
         if self.UpdCheckRun.upd_data is None:
             return
         if self.UpdCheckRun.upd_data == 'no_upd' and self.manual_call:
-            self.noUpdMsg()
+            self.mw_view.UpdCheckView.noUpdMsg()
             self.manual_call = False
             return
         if not isinstance(self.UpdCheckRun.upd_data, dict):
             return
-        print(self.UpdCheckRun.upd_data.get('info_data', None))
+        self.mw_view.UpdCheckView.showUpdWindow(self.UpdCheckRun.upd_data)
 
     def updCheckStoppedEnded(self):
         self.UpdCheckRun.signals.disconnect()
         self.UpdCheckRun.in_process = False
-
-    def noUpdMsg(self):
-        msg = QMessageBox(self.mw_contr.mw_view)
-        msg.setText(f'You are using the latest version of EarQuiz Frequencies: {version()}!')
-        msg.setStandardButtons(QMessageBox.StandardButton.Ok)
-        msg.exec()
