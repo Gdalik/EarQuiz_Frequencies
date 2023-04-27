@@ -79,7 +79,7 @@ get up and running. And it is usually the best starting point for your practice 
 option is selected in the **Audio Source** window.
 
 Are you ready to hear the sound :-)? Just press the 
-**Learn** mode button **or** change the position of any EQ slider by dragging/clicking on it, which will switch the application
+**Learn** mode button **or** change the position of any EQ sliders' handle by dragging/clicking on it, which will switch the application
 to the *Learn* mode automatically. After some processing (peak normalization and equalization) and loading, which usually takes fractions of second
 on contemporary machines, the playback of an example should start.
 
@@ -162,7 +162,7 @@ unless this difference is too big. If you cannot hear one or more of these, you 
 must be resolved before going on. In case only the last two tones (15 kHz and 40 Hz) are barely audible or even inaudible, you can
 proceed, but be aware that you may have difficulties hearing/identifying the low or the high extremes of the spectrum correspondingly. 
 
-### Equalization: Patterns, Settings and Sliders 
+### Equalization: Patterns, Sliders and Settings 
 
 #### Equalization Patterns
 **Equalization Pattern** is the core of each exercise, as it defines:
@@ -181,6 +181,33 @@ unlike in the **Learn** or the **Test** modes, where it resets the exercises and
 
 The current EQ pattern is stored between sessions.
 
+#### Equalization Sliders
+**EQ Sliders** are the main input controllers for the training (**Learn** and **Test**) modes. The numbers below each of them
+represent the central frequencies of corresponding frequency bands. And the positions of sliders' handles determine the boost or cut
+of particular bands, whether real or guessed.
+
+However, in the **Learn**
+mode one may need to manually trigger them only to force the boost/cut of specific frequencies in the following example,
+since this is done automatically otherwise. In the **Test** mode a user enters his or her answers pushing the 
+appropriate sliders' handles up or down.
+
+The frequency range of the current EQ Pattern determines the range of available/enabled sliders when the app is ready for
+the corresponding input. The 25Hz and 20kHz sliders of the 30-Band EQ are permanently disabled, since these frequencies are 
+at the boundaries of our perception and most systems' reproduction.
+
+The initial positions of sliders' handles depend on the current EQ Pattern. If frequency bands are to be boosted, they are
+at the bottom of the sliders. If frequency bands are to be cut, they are at the top of the sliders. When both options
+are possible, the handles are at the vertical center.
+
+With *single-band* patterns, the input is accepted when a user changes the position of a slider handle. There is no way to
+change the mind within the example here.
+
+With *dual-band* patterns, the input is accepted when the position of two sliders' handles
+is changed. After a user has dragged or clicked on a first slider, one or more adjacent sliders are disabled.
+This is because the option to simultaneously alter two frequency bands, that are too close to each other, is intentionally
+avoided, as it would become a kind of "mind game" otherwise. While the user hasn't chosen a second slider, he or she can
+return the first one to its initial state, and reconsider the input.
+
 #### Equalization Settings
 You can open the **EQ Settings** by pressing the button with gear icon in the top-right corner
 of the EQ or by selecting **View | EQ Settings** from the main menu.
@@ -195,7 +222,8 @@ Here is a filter scheme:
 <img align="center" src=":/Getting_Started/Data/Images/BellFilterScheme.png"/>
 
 This type of filter is called *peaking* or *bell* bandpass filter.
-Center frequency (f<sub>0</sub>) is the most altered (boosted or cut) point within a frequency band.
+Center frequency (f<sub>0</sub>) which is determined by the choice of an EQ Slider, is the most altered (boosted or cut) 
+point within a frequency band.
 To measure how wide or narrow the whole band is, we need two symmetrical points on the left (f<sub>1</sub>) and 
 on the right (f<sub>2</sub>) side of this peak, which have the 3dB roll-off (50% drop in power/energy).
 

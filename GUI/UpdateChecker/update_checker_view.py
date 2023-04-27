@@ -29,9 +29,9 @@ class UpdCheckDialog(QWidget):
         self.TextBr.setStyleSheet("selection-color: white; selection-background-color: rgb(0, 150, 255);")
 
         self.DownloadBut = QPushButton('Download')
-        self.DownloadBut.setMaximumWidth(75)
+        self.DownloadBut.setMaximumWidth(85)
         self.CloseBut = QPushButton('Close')
-        self.CloseBut.setMaximumWidth(65)
+        self.CloseBut.setMaximumWidth(60)
         self.CloseBut.clicked.connect(self.close, type=Qt.ConnectionType.SingleShotConnection)
 
         self.ButtonBox = QHBoxLayout()
@@ -57,7 +57,7 @@ class UpdCheckView:
 
     def noUpdMsg(self):
         msg = QMessageBox(self.mw_view)
-        msg.setText(f'You are using the latest version of EarQuiz Frequencies: {version()}!')
+        msg.setText(f'You are running the latest version of EarQuiz Frequencies: {version()}!')
         msg.setStandardButtons(QMessageBox.StandardButton.Ok)
         msg.exec()
 

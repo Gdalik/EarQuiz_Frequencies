@@ -15,6 +15,7 @@ from GUI.Misc.error_message import error_message
 from GUI.PatternBox.patternbox_view import PatternBoxView
 from GUI.TransportPanel.transport_view import TransportPanelView
 from GUI.UpdateChecker.update_checker_view import UpdCheckView
+from GUI.About.about_dialog_view import AboutDialogView
 from Utilities.str2bool import str2bool
 from definitions import Settings
 
@@ -52,6 +53,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.TransportPanelViewBut.setDefaultAction(self.actionTransport_Panel_view)
         self._restoreActionsState()
         self._connectActionsToSaver()
+        self.actionAbout.triggered.connect(self.showAboutWin)
 
     def win_os_settings(self):
         widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + \
@@ -236,6 +238,10 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                           self.actionEach_Band_Boosted_then_Cut, self.actionAll_Bands_Boosted_then_All_Bands_Cut]
         for act in controlActions:
             act.toggled.connect(partial(self.saveActionState, act))
+
+    def showAboutWin(self):
+        Dialog = AboutDialogView()
+        Dialog.exec()
 
     @staticmethod
     def loadActionState(obj: QAction, default=None):

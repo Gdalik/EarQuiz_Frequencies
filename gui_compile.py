@@ -9,7 +9,8 @@ venv_dir = 'venv'
 
 ui_files = ('GUI/MainWindow/View/mainwindow.ui',
             'GUI/ConvertToWAV_AIFF/convert_dialog_view.ui',
-            'GUI/MakeLearnTestFiles/make_learn_test_dialog_view.ui',)
+            'GUI/MakeLearnTestFiles/make_learn_test_dialog_view.ui',
+            'GUI/About/AboutDialog.ui',)
 
 script_dir = 'bin' if platform.system() == 'Darwin' else 'Scripts'
 script_path = os.path.normpath(os.path.join(ROOT_DIR, venv_dir, script_dir, 'pyuic6'))
