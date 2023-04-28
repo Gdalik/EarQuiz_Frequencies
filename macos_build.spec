@@ -8,7 +8,8 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('Model/Version/version.json', 'Model/Version'), ('GUI/Help/Data/get_started.md', 'GUI/Help/Data')],
+    datas=[('Model/Version/version.json', 'Model/Version'), ('GUI/Help/Data/get_started.md', 'GUI/Help/Data'),
+    ('GUI/About/credits.md', 'GUI/About')],
     hiddenimports=['tendo'],
     hookspath=[],
     runtime_hooks=[],
@@ -20,7 +21,6 @@ a = Analysis(
 )
 
 a.datas += Tree('Model/Data', prefix='Model/Data')
-
 
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 

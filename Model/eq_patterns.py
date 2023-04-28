@@ -9,10 +9,11 @@ class EQPatterns:
         with open(PurePath(definitions.ROOT_DIR, 'Model', 'Data', 'eq_patterns.json')) as f:
             d = json.load(f)
             self.List = d['Patterns']
+        P: dict
         for P in self.List:
             defaults = self.get_defaults(P['EQtype'])
             for key in defaults:
-                P[key] = defaults[key] if key not in P else P[key]
+                P.setdefault(key, defaults[key])
 
     def get(self, mode_num: int):  # Enumeration starts from 1
         return self.List[mode_num - 1]

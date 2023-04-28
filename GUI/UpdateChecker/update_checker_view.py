@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLab
 from PyQt6.QtGui import QTextDocument
 from PyQt6.QtCore import Qt
 from Model.get_version import version
-from GUI.TextBrowserDocParameters import setParameters
+from GUI.Misc.TextBrowserDocParameters import setParameters
 
 
 class UpdCheckDialog(QWidget):

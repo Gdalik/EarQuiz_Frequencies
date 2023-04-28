@@ -7,7 +7,7 @@ from tendo.singleton import SingleInstance
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import QTimer
 from GUI.MainWindow.Contr.mw_contr import MainWindowContr
-from GUI.StartScreen import StartLogo
+from GUI.Misc.StartScreen import StartLogo
 from definitions import app, app_name, TEMP_AUDIO_DIR
 
 

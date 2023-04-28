@@ -4721,6 +4721,7 @@ color: gray;
     <addaction name="actionLoop_Playback"/>
     <addaction name="actionShuffle_Playback"/>
     <addaction name="actionRepeat_Playlist"/>
+    <addaction name="separator"/>
     <addaction name="actionSequential_Playback"/>
     <addaction name="actionLoop_Sequence"/>
     <addaction name="separator"/>
@@ -4762,7 +4763,7 @@ color: gray;
    </property>
    <property name="minimumSize">
     <size>
-     <width>1107</width>
+     <width>0</width>
      <height>115</height>
     </size>
    </property>

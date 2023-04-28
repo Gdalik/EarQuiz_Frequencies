@@ -23,7 +23,7 @@ from GUI.Modes.audiosource_modes import PinkNoiseMode, AudioFileMode
 from GUI.PatternBox.patternbox_contr import PatternBoxContr
 from GUI.Playlist.playlistcontr import PlaylistContr
 from GUI.Playlist.plsong import PlSong
-from GUI.StartScreen import StartLogo
+from GUI.Misc.StartScreen import StartLogo
 from GUI.TransportPanel.transport_contr import TransportContr
 from GUI.Help.HelpActions import HelpActions
 from Model.AudioEngine.preview_audio import PreviewAudioCrop

@@ -165,7 +165,7 @@ proceed, but be aware that you may have difficulties hearing/identifying the low
 ### Equalization: Patterns, Sliders and Settings 
 
 #### Equalization Patterns
-**Equalization Pattern** is the core of each exercise, as it defines:
+**EQ Pattern** is the core of each exercise, as it defines:
 - the range of frequency options;
 - default **EQ Settings** (Frequency Gain and Bandwidth/Q factor of filters);
 - the type of **Equalizer**: 1-octave (10-band) or 1/3-octave (30-band);
