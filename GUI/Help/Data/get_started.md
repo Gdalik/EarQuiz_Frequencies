@@ -25,7 +25,7 @@ either personal or commercial!
 
 ### The Basic Training Method
 
-<a id="the-basic-exercise-principle">The overall training process involves ongoing learning and testing yourself</a>.
+<a id="the-basic-training-method">The overall training process involves ongoing learning and testing yourself</a>.
 Both learning and test exercises consist of audio samples, which we will call *examples*. Each example is a 10-30 
 seconds' long chunk of either **[pink noise](#pink-noise)** (generated on each application launch) or **music**.  
 Technically, any external audio file of a [supported format](#supported-audio-formats), stored locally on your device, can be used instead for the latter.
@@ -43,7 +43,7 @@ automatically. After some more seconds, the EQ is switched off again, and the so
 <img align="center" src=":/Getting_Started/Data/Images/Drill_structure.png"/>
 
 *Note: The current proportion of equalized part length versus sum length of non-equalized ones is hard-coded at 40/60 per cent.
-Therefore, if we have 10 seconds length example, this would be: 3sec **EQ Off**, 4sec **EQ On**, and 
+Therefore, if we have 10 seconds length example, this would be: 3sec **EQ Off**, 4sec **EQ On** and 
 3sec **EQ Off** respectively.
 The option to adjust this setting is planned to be introduced in future versions.*
 
@@ -107,7 +107,7 @@ of the **Audio Source** window and **View** menu of the main menu.
 It would be ideal to calibrate the audio system once, and not to touch the volume levels during the whole training session since then.
 There is no big problem with this when exercises are packaged into a finished and mastered audio product, like a complete CD.
 Software lets us gain from flexibility and the possibility to create exercises with very different settings from any audio material on the fly. However, 
-with in-app training we also run into a kind of compromise between sound quality, overall loudness, and alignment of levels between 
+with in-app training we also run into a kind of compromise between sound quality, overall loudness and alignment of levels between 
 exercises with different audio sources and settings.
 
 As my priority is to achieve the best possible sound quality without clipping as a side effect of boosting frequencies,
@@ -116,7 +116,7 @@ of frequency gain.
 For dual-band EQ patterns, I have added extra-headroom from 1 up to 3dB. 
 
 So, there is an inverse relationship between equalization depth and peak normalization level (the more the frequency gain, 
-the quieter the source before the equalization, and vice-versa). 
+the quieter the source before the equalization and vice-versa). 
 The former can be set from ±1 to ±18 dB, whereas the latter can vary from -1 to -21 dB. Both values are displayed at the status bar
 at the right-bottom side of the main window, which may be helpful when adjusting the volume level under different settings.
 
@@ -137,7 +137,8 @@ solution here, which would provide the best user experience without sacrificing 
 the special calibration test audio file. To generate it, simply select **File | Make and Open Calibration Sine Waves File**
 from the main menu. After having been created, the file "1kHz__10kHz__100Hz__15kHz__40Hz Sinus Tones.wav" will be added
 to the **Playlist** and selected. To load it, you can just double-click on it or press the *Enter* key without changing the selection
-(this will automatically set the relevant **Audio Source** mode, and switch the application to the **Preview** mode as well).
+(this will automatically set the relevant **Audio Source** mode and switch the application to the **Preview** mode as well; 
+see details [here](#working-with-external-audio-files)).
 
 The name of the file exactly reflects its content. There are five sinus tones with different frequencies, lasting 5 seconds
 each, and separated with 1 second of silence from each other. All the tones have the equal amplitude, which is 20% of the highest
@@ -165,7 +166,7 @@ proceed, but be aware that you may have difficulties hearing/identifying the low
 ### Equalization: Patterns, Sliders and Settings 
 
 #### Equalization Patterns
-**EQ Pattern** is the core of each exercise, as it defines:
+**EQ Pattern** is a core of each exercise, as it defines:
 - the range of frequency options;
 - default **EQ Settings** (Frequency Gain and Bandwidth/Q factor of filters);
 - the type of **Equalizer**: 1-octave (10-band) or 1/3-octave (30-band);
@@ -192,7 +193,7 @@ since this is done automatically otherwise. In the **Test** mode a user enters h
 appropriate sliders' handles up or down.
 
 The frequency range of the current EQ Pattern determines the range of available/enabled sliders when the app is ready for
-the corresponding input. The 25Hz and 20kHz sliders of the 30-Band EQ are permanently disabled, since these frequencies are 
+the corresponding input. The 25Hz and the 20kHz sliders of the 30-Band EQ are permanently disabled, since these frequencies are 
 at the boundaries of our perception and most systems' reproduction.
 
 The initial positions of sliders' handles depend on the current EQ Pattern. If frequency bands are to be boosted, they are
@@ -206,7 +207,7 @@ With *dual-band* patterns, the input is accepted when the position of two slider
 is changed. After a user has dragged or clicked on a first slider, one or more adjacent sliders are disabled.
 This is because the option to simultaneously alter two frequency bands, that are too close to each other, is intentionally
 avoided, as it would become a kind of "mind game" otherwise. While the user hasn't chosen a second slider, he or she can
-return the first one to its initial state, and reconsider the input.
+return the first one to its initial state and reconsider the input.
 
 #### Equalization Settings
 You can open the **EQ Settings** by pressing the button with gear icon in the top-right corner
@@ -283,7 +284,7 @@ For *Bandwidth*, I have used the options which can easily be thought of as music
 | 1/6 Octave | ~8.65  | Major 2nd |
 
 In general, the narrower/steeper filter curve, the more accurately and precisely it works.
-The wider band, conversely, affects more frequencies, and makes equalization more prominent, but less exact.
+The wider band, conversely, affects more frequencies and makes equalization more prominent, but less exact.
 With too high Q factor, the situation,
 when there is no audible content in particular part of spectrum, is more likely. With too low one, the boundaries
 between frequency bands may become blurred.
@@ -302,16 +303,62 @@ you can try lowering the frequency gain value, and challenge your ears to hear t
 
 When locked, this state and values themselves are stored between sessions.
 
+### Working with External Audio Files
+
+<a id="working-with-external-audio-files">There are</a> different ways to load external audio into the software:
+- Select **File | Open Files...** from the main menu, or press **Ctrl+O** (on Windows) or 
+**⌘O** (on macOS), or click on <span style="color:green; font-weight:bold">+</span> in the **Audio Source** window.
+- Select **File | Open Folder...** from the main menu.
+- Drag & Drop files to the **Playlist** from anywhere possible.
+
+The methods above can be used both for locating audio files of [the supported formats](#supported-audio-formats) directly
+or through playlists. Currently, parsing of M3U, M3U8, PLS and XSPF playlists is supported.
+
+After adding audio files to the **Playlist**, you can load each of them in various ways.
+If you haven't loaded any audio file before, in case you manually switch the **Audio Source** to the **Audio File (Playlist)** mode,
+pressing the **Play** button or choosing **Controls | Play** from the main menu will load and start playing the first track.
+However, with **Shuffle Playback** option checked, a random audio file will be chosen. 
+
+You can also load any track you want just by double-clicking on it or by selecting it and pressing *Enter*. This will switch the **Audio Source** to the 
+**Audio File (Playlist)** mode automatically. 
+
+Every change of an audio source resets the application to the **Preview** mode. On the first switch to **Audio File (Playlist)**, 
+the **Transport Panel** becomes visible automatically. Here we may take the most advantage of the latter.
+
+One of the main purposes of the **Preview** mode is to let a user select and crop an audio track region for further training.
+
+
+The current **Playlist** and the latest audio source used are stored between sessions. However, I highly recommend 
+saving the collections you would like to use repeatedly with **File | Export Playlist...** options.
+
+
 --------
 ### Annotations
 #### Pink Noise
-#### <a id="pink-noise">[Write text here...]</a>
+
+<a id="pink-noise">Pink noise</a> is a kind of random noise which has equal energy in different octave ranges. It derives from white noise which
+is a random signal with wide frequency range and equal power for each frequency. Since the number of frequencies in octave doubles
+for each octave increase, the energy of white noise doubles in each higher octave as well, which is 3 dB/oct. boost. In other words, white noise
+gives the *impression* of high-frequencies dominance.
+In pink noise, the energy falls proportionally to frequency, which is 3 dB/oct. attenuation, starting from 1 Hz, applied to white noise. This gives much more flat/even result from
+a human ear perspective, and the spectrum of pink noise is the closest one to average music signal.
+
+[< Back to "The Basic Training Method"](#the-basic-training-method)
+
 #### Supported Audio Formats
-#### <a id="supported-audio-formats">[Write text here...]</a>
+<a id="supported-audio-formats">The fully supported audio formats</a> are: WAVE, AIFF, MP3 and FLAC. The OGG format is half-supported.
+OGG audio files can be added to the **Playlist**, but they cannot be played with the current media
+player backend neither on Windows nor on macOS. If you try to load an OGG file, you will get the error message
+with option to proceed with conversion to WAVE or AIFF. There is also a known backend issue with incorrect FLAC files'
+playback position on macOS, which may occur when starting playing from non-zero position. To work around
+these format problems, you can convert audio files to WAVE or AIFF beforehand by selecting them and choosing 
+**File | Convert Selected Files...** from the main menu or the similar option from the right-click context menu of the **Playlist**.
+
+[< Back to "The Basic Training Method"](#the-basic-training-method)<br />
+[< Back to "Working with External Audio Files"](#working-with-external-audio-files)
+
 #### Remembering Frequency Bands
 #### <a id="remembering-frequencies">[Write text here...]</a>
 You mentally connect the highlighted frequency numbers with certain pitches, 
 make your own associations (both aural and non-aural/"synesthetic"), note and try to describe the changes in 
 character/timbre of different sounds.
-
-[< Go Back](#the-basic-exercise-principle)

@@ -24,7 +24,7 @@ class HelpActions(QObject):
         if self.GS_Win.isVisible():
             return
         content_path = Path(ROOT_DIR, 'GUI', 'Help', 'Data', 'get_started.md').absolute()
-        with open(content_path, 'r') as f:
+        with open(content_path, 'r', encoding='utf-8') as f:
             content = f.read()
         document = QTextDocument()
         document.setMarkdown(content)

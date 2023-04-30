@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/mainwindow.ui'
+# Form implementation generated from reading ui file 'C:\Users\gdali\PycharmProjects\EarQuiz_Frequencies\GUI\MainWindow\View\mainwindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.0
 #
@@ -44,7 +44,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 579, 543))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 599, 538))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -2016,7 +2016,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.scrollArea)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1155, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1155, 21))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(parent=self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -3263,7 +3263,7 @@ class Ui_MainWindow(object):
         self.AudioSource.setWindowTitle(_translate("MainWindow", "Audio Source"))
         self.PinkNoiseRBut.setText(_translate("MainWindow", "Pink Noise"))
         self.TransportPanelViewBut.setText(_translate("MainWindow", "Transport Panel"))
-        self.AudiofileRBut.setText(_translate("MainWindow", "Audiofile (Playlist):"))
+        self.AudiofileRBut.setText(_translate("MainWindow", "Audio File (Playlist):"))
         self.PlusFilesBut.setToolTip(_translate("MainWindow", "Add tracks"))
         self.PlusFilesBut.setText(_translate("MainWindow", "..."))
         self.MinusFilesBut.setToolTip(_translate("MainWindow", "Remove tracks"))
