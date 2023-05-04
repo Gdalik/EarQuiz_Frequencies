@@ -1,7 +1,16 @@
 <RCC>
   <qresource prefix="Getting_Started">
+    <file>Data/Images/C4_A4.png</file>
+    <file>Data/Images/Frequency-Note.png</file>
     <file>Data/Images/Drill_structure.png</file>
     <file>Data/Images/BellFilterScheme.png</file>
+  </qresource>
+  <qresource prefix="Help_Icons">
+    <file>Data/Images/lightbulb.png</file>
+    <file>Data/Images/arrows-right-and-left-filled-triangles.png</file>
+    <file>Data/Images/clear.png</file>
+    <file>Data/Images/media-skip-backward_16.png</file>
+    <file>Data/Images/media-skip-forward_16.png</file>
   </qresource>
   <qresource prefix="Formulas">
     <file>Data/Images/BW_form.png</file>

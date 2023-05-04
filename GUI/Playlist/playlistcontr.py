@@ -275,6 +275,8 @@ class PlaylistContr(QObject):
     def onPlFullEmpty(self):
         pl_not_empty = len(self.playlistModel.playlistdata) > 0
         self.mw_view.menuExport_Playlist.setEnabled(pl_not_empty)
+        self.MinusFilesBut.setEnabled(pl_not_empty)
+        self.ClearFilesBut.setEnabled(pl_not_empty)
         PreviewNextPrevButEnabled = pl_not_empty if self.mw_view.AudiofileRBut.isChecked() else False
         self.mw_view.PreviewPreviousBut.setEnabled(PreviewNextPrevButEnabled)
         self.mw_view.PreviewNextBut.setEnabled(PreviewNextPrevButEnabled)

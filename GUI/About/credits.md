@@ -33,5 +33,6 @@ The majority of icons, used in this application, have been taken from [Flaticon]
 <a href="https://www.flaticon.com/free-icons/left-arrow" title="left arrow icons">Left arrow icons created by NajmunNahar - Flaticon</a><br />
 <a href="https://www.flaticon.com/free-icons/right-arrowhead" title="right arrowhead icons">Right arrowhead icons created by NajmunNahar - Flaticon</a><br />
 <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Pixel perfect - Flaticon</a><br />
+<a href="https://www.flaticon.com/free-icons/idea" title="idea icons">Idea icons created by Good Ware - Flaticon</a><br />
 
 Player icons by [The Oxygen Team](https://www.iconarchive.com/icons/oxygen-icons.org/oxygen/authors.txt).

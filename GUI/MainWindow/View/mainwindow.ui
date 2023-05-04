@@ -88,8 +88,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>599</width>
-         <height>538</height>
+         <width>579</width>
+         <height>543</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -510,7 +510,7 @@ font-weight: bold</string>
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="tabsClosable">
            <bool>false</bool>
@@ -2614,7 +2614,7 @@ background: rgba(118, 214, 255, 85)
                   <number>0</number>
                  </property>
                  <item alignment="Qt::AlignHCenter">
-                  <widget class="QSlider" name="EQ2_32">
+                  <widget class="QSlider" name="EQ2_31">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -2673,7 +2673,7 @@ background: rgba(118, 214, 255, 85)
                   </widget>
                  </item>
                  <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-                  <widget class="QLabel" name="EQ2_32_Lab">
+                  <widget class="QLabel" name="EQ2_31_Lab">
                    <property name="minimumSize">
                     <size>
                      <width>30</width>
@@ -2687,7 +2687,7 @@ background: rgba(118, 214, 255, 85)
                     </size>
                    </property>
                    <property name="text">
-                    <string>32</string>
+                    <string>31</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -3133,7 +3133,7 @@ background: rgba(118, 214, 255, 85)
                     </size>
                    </property>
                    <property name="text">
-                    <string>1k</string>
+                    <string>1k </string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
@@ -4632,7 +4632,7 @@ color: gray;
      <x>0</x>
      <y>0</y>
      <width>1155</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -4763,7 +4763,7 @@ color: gray;
    </property>
    <property name="minimumSize">
     <size>
-     <width>0</width>
+     <width>1107</width>
      <height>115</height>
     </size>
    </property>
@@ -7371,7 +7371,7 @@ background: rgba(118, 214, 255, 85)
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="ModeButtonGroup"/>
   <buttongroup name="AudioSourceButtonGroup"/>
+  <buttongroup name="ModeButtonGroup"/>
  </buttongroups>
 </ui>

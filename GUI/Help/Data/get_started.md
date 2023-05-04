@@ -48,8 +48,8 @@ Therefore, if we have 10 seconds length example, this would be: 3sec **EQ Off**,
 The option to adjust this setting is planned to be introduced in future versions.*
 
 Regardless of the audio source material and the EQ settings, the recommended approach remains the same.
-- First, you **learn** and warm-up by listening to examples, trying to [memorize and internalize](#remembering-frequencies) 
-the sound of different frequency ranges. <br /> *Don't be scared; just relax, listen, watch the
+- First, you **learn** and warm-up by listening to examples, trying to [memorize and internalize](#memorizing-frequencies) 
+the sound of different frequency ranges. <br /> *Don't be scared; relax, listen, watch the
 highlighted frequency values on the screen, and let your brains do the job ;-)!*
 - Second, you take a **test** which is nothing but a sequence of ten similar examples with randomly chosen frequency values 
 and boost/cut options (where available), which you guess, and get a score to track your progress.
@@ -138,7 +138,7 @@ the special calibration test audio file. To generate it, simply select **File | 
 from the main menu. After having been created, the file "1kHz__10kHz__100Hz__15kHz__40Hz Sinus Tones.wav" will be added
 to the **Playlist** and selected. To load it, you can just double-click on it or press the *Enter* key without changing the selection
 (this will automatically set the relevant **Audio Source** mode and switch the application to the **Preview** mode as well; 
-see details [here](#working-with-external-audio-files)).
+see details about [working with external audio files](#working-with-external-audio-files)).
 
 The name of the file exactly reflects its content. There are five sinus tones with different frequencies, lasting 5 seconds
 each, and separated with 1 second of silence from each other. All the tones have the equal amplitude, which is 20% of the highest
@@ -210,7 +210,7 @@ avoided, as it would become a kind of "mind game" otherwise. While the user hasn
 return the first one to its initial state and reconsider the input.
 
 #### Equalization Settings
-You can open the **EQ Settings** by pressing the button with gear icon in the top-right corner
+<a id="equalization-settings">You can open the **EQ Settings**</a> by pressing the button with gear icon in the top-right corner
 of the EQ or by selecting **View | EQ Settings** from the main menu.
 They consist of two parameters: 
 1. *Frequency Gain*, that determines an amount by which the center frequency of filter is boosted or cut.
@@ -222,7 +222,7 @@ Here is a filter scheme:
 
 <img align="center" src=":/Getting_Started/Data/Images/BellFilterScheme.png"/>
 
-This type of filter is called *peaking* or *bell* bandpass filter.
+This type of filter is called *peaking* or *bell* band-pass filter.
 Center frequency (f<sub>0</sub>) which is determined by the choice of an EQ Slider, is the most altered (boosted or cut) 
 point within a frequency band.
 To measure how wide or narrow the whole band is, we need two symmetrical points on the left (f<sub>1</sub>) and 
@@ -270,7 +270,7 @@ where N is number of octaves.
 
 Enough with algebra and formulas here. The one that converts Q factor to BW in octaves is rather big, by the way.
 
-For *Bandwidth*, I have used the options which can easily be thought of as music (tempered-scale) intervals:
+For *Bandwidth* options, I have used the values which can easily be thought of as music (tempered-scale) intervals:
 <br />
 
 | Bandwidth | Q      | Interval |
@@ -322,9 +322,11 @@ However, with **Shuffle Playback** option checked, a random audio file will be c
 You can also load any track you want just by double-clicking on it or by selecting it and pressing *Enter*. This will switch the **Audio Source** to the 
 **Audio File (Playlist)** mode automatically.
 
-For further playlist navigation, you can use the **Previous Track** / **Next Track** player controls or similar buttons above the **Playlist**. 
-When you are not in the **Preview** mode, the player skip controls/buttons won't be available, though. In this case, if you want to go forward/backward
-in the playlist, you can still use the buttons above the **Playlist**. This will switch the programme to the **Preview**
+For further playlist navigation, you can use the <img src=":/Help_Icons/Data/Images/media-skip-backward_16.png"/> 
+**Previous Track** / <img src=":/Help_Icons/Data/Images/media-skip-forward_16.png"/> **Next Track** player controls or similar buttons <img src=":/Help_Icons/Data/Images/arrows-right-and-left-filled-triangles.png"/> 
+above the **Playlist**. 
+When you are not in the **Preview** mode, the player skip controls/buttons are not available, though. In this case, if you want to go forward/backward
+in the playlist, you can still use the navigation buttons above the **Playlist**. This will switch the programme to the **Preview**
 mode, whatever the current mode is. Any training process will be cancelled. Moreover, every change of an audio source resets the application to the **Preview** mode. 
 
 On the first switch to **Audio File (Playlist)**, 
@@ -346,20 +348,73 @@ point to the beginning of a file, and to set the ending point to the end of a fi
 The bounds' values of regions and the slice lengths are stored for each audio file on another file load or when the application
 is about to be closed. When these audio files are loaded again (which is detected through hashing), these settings are restored.
 
-Pressing the **Clear** button at the right of the start/end spin boxes resets the region bounds to default for newly loaded files, and
+Pressing the <img src=":/Help_Icons/Data/Images/clear.png"/>**Clear** button at the right of the start/end spin boxes resets the region bounds to default for newly loaded files, and
 restores the previously saved values for already known ones.
 
 The current **Playlist** and the latest audio source used are stored between sessions. However, I highly recommend 
 saving the collections you would like to use repeatedly with **File | Export Playlist...** options.
 
-***Useful Tip***
+<img src=":/Help_Icons/Data/Images/lightbulb.png"/>***Useful Tip***
 
 *Before doing training exercises in the **Learn** and the **Test** modes, prepare your own collection of trimmed audio files, 
 using the above-described application tools. Then uncheck the **Controls | Start Playing After Loading Track in Preview Mode** 
-option in the main menu if checked. Adjust the volume level for your EQ Pattern and EQ Settings (see details [here](#setting-volume-level)).
+option in the main menu if checked. [Adjust the volume level](#setting-volume-level) for your EQ Pattern and EQ Settings.
 Load external audio files as audio source for your exercises without playing them in the **Preview** mode. This will help you to
 leave the volume knobs untouched as long as possible, while navigating through different audio sources/tracks.*
 
+### The Learn Mode
+
+### The Test Mode
+
+### How to Memorize Frequency Bands?
+
+<a id="memorizing-frequencies">Here are some tips</a> that could help you to memorize and internalize the frequency bands. Think of them as of reference
+points for your mind rather than direct guidance. They may be more or less helpful, depending on different factors:
+personal skills, experience, peculiarities of perception, kind of audio material, equalization settings, listening conditions, etc.
+
+<img src=":/Help_Icons/Data/Images/lightbulb.png"/>If you are a musician, and especially if you have a perfect pitch, trying to
+mentally connect center frequencies of band-pass filters with musical notes, closest to them, may be a good place to start.
+This works best with pink noise. [The higher the Q factor and the more the frequency gain](#equalization-settings), the stronger the impression of a certain pitch.
+
+Here is a screenshot of the 30-band in-app EQ with labels of musical notes that *approximately* match the filters' center frequencies.<br />
+
+<img align="center" src=":/Getting_Started/Data/Images/Frequency-Note.png"/><br />
+
+Musical instruments manufacturers and software developers often use different octave numerations. We use the 
+*Scientific pitch notation (SPN)*, also known as *American standard pitch notation (ASPN)* and *international pitch notation (IPN)* here.
+So, we consider that C4 is the *middle C* (~260 Hz), and the exact audio frequency of A4 is 440 Hz.<br />
+
+<img align="center" src=":/Getting_Started/Data/Images/C4_A4.png"/><br />
+
+This method can be applied to some extent to music as well, especially in certain cases when frequency bands contain the fundamental frequencies of musical 
+instruments. You might notice, how equalization changes loudness of different notes or relationship between fundamentals and harmonics/overtones.
+But for music, the approach would generally work as a positive side effect of timbre/pitch associations.<br />
+
+<img src=":/Help_Icons/Data/Images/lightbulb.png"/>For pink noise exercises, try to find connotations between different spectral
+bands and certain "real" sounds, such as working engine, streamlet, waterfall, pouring sand, etc. For music exercises, think of resonating environments and objects
+which may have an effect, similar to particular equalization: big and small boxes, bottles, jars, cans, pots, cars, rooms, bathrooms, caves, tunnels, anything you have had experience with.<br />
+
+<img src=":/Help_Icons/Data/Images/lightbulb.png"/>When training with music, make (mental) notes of how altering different frequency bands
+changes timbres of instruments/voices. There are some tables with attempts to verbally describe different spectral ranges. However, using 
+them may not be very helpful because the effect of particular equalization on timbre may drastically depend on a sound source, how it has been recorded,
+the playback conditions, the amount of frequency gain, and other settings. Moreover, the alteration of the same frequency band
+may be described as something that brings a positive or a negative quality under different conditions. E.g., fat and groovy vs boomy (low range boost),
+full and warm vs muddy (low-mid range boost), clear vs thin (low-mid range cut), round, full and rich vs boxy and honky (mid range boost), bright vs harsh (high-mid and high range boost), 
+smooth vs dull (high-mid and high range cut) and so on. Cutting one frequency band may have an effect similar to boosting another frequency band. 
+So, instead of relying on someone's interpretations, try to make
+your own descriptions, related to certain sound sources, settings and conditions.
+
+<img src=":/Help_Icons/Data/Images/lightbulb.png"/>Guessing cut frequencies is a bit harder than boosted ones. When the EQ is on, listen to
+the frequencies left trying to figure out what is missing. When the EQ returns to its off state, think of it as of frequencies' boost. 
+
+<img src=":/Help_Icons/Data/Images/lightbulb.png"/>What about synesthesia? The most primitive and obvious case of it, which you deal with here by training:
+you hear frequencies, and see different positions in space plus highlighted numbers. But can you see/imagine frequency bands as different colors/textures/material types?
+Can you feel them? Can you smell them? Can you taste them? Try to note the slightest and subtlest body and mind reactions when listening to equalization examples, and focus on them for a moment.
+
+*Try different approaches. Find out, what works better for you in different situations. Stay as relaxed as possible while training.
+Take pauses. Do not torture your ears and brains too much.
+Train regularly, not long: 2*&mdash;*4 exercises per session may be enough. 
+Try to build your personal timbre/frequency vocabulary through daily practice!*
 
 --------
 ### Annotations
@@ -369,8 +424,8 @@ leave the volume knobs untouched as long as possible, while navigating through d
 is a random signal with wide frequency range and equal power for each frequency. Since the number of frequencies in octave doubles
 for each octave increase, the energy of white noise doubles in each higher octave as well, which is 3 dB/oct. boost. In other words, white noise
 gives the *impression* of high-frequencies dominance.
-In pink noise, the energy falls proportionally to frequency, which is 3 dB/oct. attenuation, starting from 1 Hz, applied to white noise. This gives much more flat/even result from
-a human ear perspective, and the spectrum of pink noise is the closest one to average music signal.
+In pink noise, the energy falls proportionally to frequency. I.e., it is similar to white noise, but with 3 dB/octave attenuation, starting from 1 Hz. 
+This gives a much more even result from a human ear perspective, and the spectrum of pink noise is the closest one to an average music signal.
 
 [< Back to "The Basic Training Method"](#the-basic-training-method)
 
@@ -379,15 +434,9 @@ a human ear perspective, and the spectrum of pink noise is the closest one to av
 OGG audio files can be added to the **Playlist**, but they cannot be played with the current media
 player backend neither on Windows nor on macOS. If you try to load an OGG file, you will get the error message
 with option to proceed with conversion to WAVE or AIFF. There is also a known backend issue with incorrect FLAC files'
-playback position on macOS, which may occur when starting playing from non-zero position. To work around
+playback position on macOS, which may occur when starting playing from a non-zero position. To work around
 these format problems, you can convert audio files to WAVE or AIFF beforehand by selecting them and choosing 
 **File | Convert Selected Files...** from the main menu or the similar option from the right-click context menu of the **Playlist**.
 
 [< Back to "The Basic Training Method"](#the-basic-training-method)<br />
 [< Back to "Working with External Audio Files"](#working-with-external-audio-files)
-
-#### Remembering Frequency Bands
-#### <a id="remembering-frequencies">[Write text here...]</a>
-You mentally connect the highlighted frequency numbers with certain pitches, 
-make your own associations (both aural and non-aural/"synesthetic"), note and try to describe the changes in 
-character/timbre of different sounds.

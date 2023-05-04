@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'C:\Users\gdali\PycharmProjects\EarQuiz_Frequencies\GUI\MainWindow\View\mainwindow.ui'
+# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/mainwindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.0
 #
@@ -44,7 +44,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 599, 538))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 579, 543))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -1123,13 +1123,13 @@ class Ui_MainWindow(object):
         self.Band1_3 = QtWidgets.QVBoxLayout()
         self.Band1_3.setSpacing(0)
         self.Band1_3.setObjectName("Band1_3")
-        self.EQ2_32 = QtWidgets.QSlider(parent=self.EQ2_frame2)
-        self.EQ2_32.setMinimumSize(QtCore.QSize(0, 55))
-        self.EQ2_32.setMaximumSize(QtCore.QSize(16777215, 55))
+        self.EQ2_31 = QtWidgets.QSlider(parent=self.EQ2_frame2)
+        self.EQ2_31.setMinimumSize(QtCore.QSize(0, 55))
+        self.EQ2_31.setMaximumSize(QtCore.QSize(16777215, 55))
         font = QtGui.QFont()
         font.setKerning(True)
-        self.EQ2_32.setFont(font)
-        self.EQ2_32.setStyleSheet(".QSlider::groove:vertical {\n"
+        self.EQ2_31.setFont(font)
+        self.EQ2_31.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
 "    width: 5px;\n"
@@ -1144,21 +1144,21 @@ class Ui_MainWindow(object):
 "    margin: 0px -5px\n"
 "\n"
 "}")
-        self.EQ2_32.setMinimum(-1)
-        self.EQ2_32.setMaximum(1)
-        self.EQ2_32.setPageStep(1)
-        self.EQ2_32.setTracking(True)
-        self.EQ2_32.setOrientation(QtCore.Qt.Orientation.Vertical)
-        self.EQ2_32.setInvertedAppearance(False)
-        self.EQ2_32.setInvertedControls(False)
-        self.EQ2_32.setObjectName("EQ2_32")
-        self.Band1_3.addWidget(self.EQ2_32, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
-        self.EQ2_32_Lab = QtWidgets.QLabel(parent=self.EQ2_frame2)
-        self.EQ2_32_Lab.setMinimumSize(QtCore.QSize(30, 0))
-        self.EQ2_32_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
-        self.EQ2_32_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.EQ2_32_Lab.setObjectName("EQ2_32_Lab")
-        self.Band1_3.addWidget(self.EQ2_32_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.EQ2_31.setMinimum(-1)
+        self.EQ2_31.setMaximum(1)
+        self.EQ2_31.setPageStep(1)
+        self.EQ2_31.setTracking(True)
+        self.EQ2_31.setOrientation(QtCore.Qt.Orientation.Vertical)
+        self.EQ2_31.setInvertedAppearance(False)
+        self.EQ2_31.setInvertedControls(False)
+        self.EQ2_31.setObjectName("EQ2_31")
+        self.Band1_3.addWidget(self.EQ2_31, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
+        self.EQ2_31_Lab = QtWidgets.QLabel(parent=self.EQ2_frame2)
+        self.EQ2_31_Lab.setMinimumSize(QtCore.QSize(30, 0))
+        self.EQ2_31_Lab.setMaximumSize(QtCore.QSize(30, 16777215))
+        self.EQ2_31_Lab.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.EQ2_31_Lab.setObjectName("EQ2_31_Lab")
+        self.Band1_3.addWidget(self.EQ2_31_Lab, 0, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.horizontalLayout_3.addLayout(self.Band1_3)
         self.Band2_3 = QtWidgets.QVBoxLayout()
         self.Band2_3.setSpacing(0)
@@ -2016,7 +2016,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.scrollArea)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1155, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1155, 24))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(parent=self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -2046,7 +2046,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.TransportPanel.sizePolicy().hasHeightForWidth())
         self.TransportPanel.setSizePolicy(sizePolicy)
-        self.TransportPanel.setMinimumSize(QtCore.QSize(0, 115))
+        self.TransportPanel.setMinimumSize(QtCore.QSize(1107, 115))
         self.TransportPanel.setMaximumSize(QtCore.QSize(524287, 115))
         self.TransportPanel.setBaseSize(QtCore.QSize(0, 0))
         self.TransportPanel.setStatusTip("")
@@ -3137,7 +3137,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.EQtabWidget.setCurrentIndex(0)
+        self.EQtabWidget.setCurrentIndex(1)
         self.PatternBox.setCurrentIndex(-1)
         self.BWBox.setCurrentIndex(-1)
         self.actionTransport_Panel_view.triggered['bool'].connect(self.TransportPanel.setVisible) # type: ignore
@@ -3183,12 +3183,12 @@ class Ui_MainWindow(object):
         self.EQ2_3150_Lab.setText(_translate("MainWindow", "3.15k"))
         self.EQ2_6300_Lab.setText(_translate("MainWindow", "6.3k"))
         self.EQ2_12500_Lab.setText(_translate("MainWindow", "12.5k"))
-        self.EQ2_32_Lab.setText(_translate("MainWindow", "32"))
+        self.EQ2_31_Lab.setText(_translate("MainWindow", "31"))
         self.EQ2_63_Lab.setText(_translate("MainWindow", "63"))
         self.EQ2_125_Lab.setText(_translate("MainWindow", "125"))
         self.EQ2_250_Lab.setText(_translate("MainWindow", "250"))
         self.EQ2_500_Lab.setText(_translate("MainWindow", "500"))
-        self.EQ2_1000_Lab.setText(_translate("MainWindow", "1k"))
+        self.EQ2_1000_Lab.setText(_translate("MainWindow", "1k "))
         self.EQ2_2000_Lab.setText(_translate("MainWindow", "2k"))
         self.EQ2_4000_Lab.setText(_translate("MainWindow", "4k"))
         self.EQ2_8000_Lab.setText(_translate("MainWindow", "8k"))

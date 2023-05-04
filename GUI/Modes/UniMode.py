@@ -27,8 +27,6 @@ class UniMode:
             self.setPlayerControls()
         self.view.SliceLenSpin.setEnabled(contrEnabled)
         self.view.EQSetView.setEnabled(contrEnabled)
-        if not contrEnabled:
-            self.parent.playAudioOnPreview = False
         self.parent.ExScore.showTestStatus()
 
     @property
