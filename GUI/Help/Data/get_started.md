@@ -78,7 +78,7 @@ Initially, the audio source is set to **Pink noise** so that the software would 
 get up and running. And it is usually the best starting point for your practice session. So, make sure the corresponding
 option is selected in the **Audio Source** window.
 
-Are you ready to hear the sound :-)? Just press the 
+Are you ready to hear the sound :-)? Just click the 
 **Learn** mode button **or** change the position of any EQ sliders' handle by dragging/clicking on it, which will switch the application
 to the *Learn* mode automatically. After some processing (peak normalization and equalization) and loading, which usually takes fractions of second
 on contemporary machines, the playback of an example should start.
@@ -210,7 +210,7 @@ avoided, as it would become a kind of "mind game" otherwise. While the user hasn
 return the first one to its initial state and reconsider the input.
 
 #### Equalization Settings
-<a id="equalization-settings">You can open the **EQ Settings**</a> by pressing the button with gear icon in the top-right corner
+<a id="equalization-settings">You can open the **EQ Settings**</a> by clicking the button with gear icon in the top-right corner
 of the EQ or by selecting **View | EQ Settings** from the main menu.
 They consist of two parameters: 
 1. *Frequency Gain*, that determines an amount by which the center frequency of filter is boosted or cut.
@@ -293,7 +293,7 @@ For presets with 10-band EQ I have set the default bandwidth to 1 octave with ±
 the 1/3-octave value with ±15dB gain.
 
 You can set your custom options in the **Preview** mode or in the **Learn** mode between playback of examples. The app
-will re-normalize your audio according to current Frequency Gain and EQ pattern. Pressing the **Reset** button restores 
+will re-normalize your audio according to current Frequency Gain and EQ pattern. Clicking the **Reset** button restores 
 default EQ pattern settings.
 
 If you want to use the same settings across various EQ patterns, you can **Lock** them with the corresponding button.
@@ -316,7 +316,7 @@ or through playlists. Currently, parsing of M3U, M3U8, PLS and XSPF playlists is
 
 After adding audio files to the **Playlist**, you can load each of them in various ways.
 If you haven't loaded any audio file before, in case you manually switch the **Audio Source** to the **Audio File (Playlist)** mode,
-pressing the **Play** button or choosing **Controls | Play** from the main menu will load and start playing the first track.
+clicking the **Play** button or choosing **Controls | Play** from the main menu will load and start playing the first track.
 However, with **Shuffle Playback** option checked, a random audio file will be chosen. 
 
 You can also load any track you want just by double-clicking on it or by selecting it and pressing *Enter*. This will switch the **Audio Source** to the 
@@ -352,7 +352,7 @@ point to the beginning of a file, and to set the ending point to the end of a fi
 The bounds' values of regions and the slice lengths are stored for each audio file on another file load or when the application
 is about to be closed. When these audio files are loaded again (which is detected through hashing), these settings are restored.
 
-Pressing the <img src=":/Help_Icons/Data/Images/clear.png"/>**Clear** button at the right of the start/end spin boxes resets the region bounds to default for newly loaded files, and
+Clicking the <img src=":/Help_Icons/Data/Images/clear.png"/>**Clear** button at the right of the start/end spin boxes resets the region bounds to default for newly loaded files, and
 restores the previously saved values for already known ones.
 
 The current **Playlist** and the latest audio source used are stored between sessions. However, I highly recommend 
@@ -368,6 +368,7 @@ leave the volume knobs untouched as long as possible, while navigating through d
 
 ### The Learn Mode
 
+The basic way to activate the **Learn** mode is clicking the corresponding button on the main window. <br />
 <img align="center" src=":/Getting_Started/Data/Images/LearnMode.png" /><br />
 <img src=":/Getting_Started/Data/Images/next-example.png"/>
 <img src=":/Getting_Started/Data/Images/sequential-playback.png"/>
