@@ -1,6 +1,10 @@
 <RCC>
   <qresource prefix="Getting_Started">
     <file>Data/Images/C4_A4.png</file>
+    <file>Data/Images/LearnMode.png</file>
+    <file>Data/Images/PreviewMode.png</file>
+    <file>Data/Images/TransportPanel.png</file>
+    <file>Data/Images/TestMode.png</file>
     <file>Data/Images/Frequency-Note.png</file>
     <file>Data/Images/Drill_structure.png</file>
     <file>Data/Images/BellFilterScheme.png</file>

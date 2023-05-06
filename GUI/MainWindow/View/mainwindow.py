@@ -2046,7 +2046,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.TransportPanel.sizePolicy().hasHeightForWidth())
         self.TransportPanel.setSizePolicy(sizePolicy)
-        self.TransportPanel.setMinimumSize(QtCore.QSize(1107, 115))
+        self.TransportPanel.setMinimumSize(QtCore.QSize(0, 115))
         self.TransportPanel.setMaximumSize(QtCore.QSize(524287, 115))
         self.TransportPanel.setBaseSize(QtCore.QSize(0, 0))
         self.TransportPanel.setStatusTip("")

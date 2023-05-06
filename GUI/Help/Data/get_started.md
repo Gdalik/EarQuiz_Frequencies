@@ -185,7 +185,7 @@ The current EQ pattern is stored between sessions.
 #### Equalization Sliders
 **EQ Sliders** are the main input controllers for the training (**Learn** and **Test**) modes. The numbers below each of them
 represent the central frequencies of corresponding frequency bands. And the positions of sliders' handles determine the boost or cut
-of particular bands, whether real or guessed.
+of particular bands, whether real (while learning) or guessed (while testing).
 
 However, in the **Learn**
 mode one may need to manually trigger them only to force the boost/cut of specific frequencies in the following example,
@@ -327,13 +327,17 @@ For further playlist navigation, you can use the <img src=":/Help_Icons/Data/Ima
 above the **Playlist**. 
 When you are not in the **Preview** mode, the player skip controls/buttons are not available, though. In this case, if you want to go forward/backward
 in the playlist, you can still use the navigation buttons above the **Playlist**. This will switch the programme to the **Preview**
-mode, whatever the current mode is. Any training process will be cancelled. Moreover, every change of an audio source resets the application to the **Preview** mode. 
+mode, whatever the current mode is. Any training process will be cancelled. Moreover, every change of an audio source resets the application to the **Preview** mode.<br /> 
+
+<img align="center" src=":/Getting_Started/Data/Images/PreviewMode.png"/><br />
 
 On the first switch to **Audio File (Playlist)**, 
-the **Transport Panel** becomes visible automatically. Here we may take the most advantage of the latter.
+the **Transport Panel** becomes visible automatically. Here we may take the most advantage of the latter.<br />
 
-One of the main purposes of the **Preview** mode is to let a user select and **trim** an audio track region for further training. The white inside
-gray zones of the audio timeline slider at the **Transport Panel** represent the trimmed region inside a whole audio track.
+<img align="center" src=":/Getting_Started/Data/Images/TransportPanel.png"/><br />
+
+One of the main purposes of the **Preview** mode is to let a user select and **trim** an audio track region for further training. The white vs
+gray zone(s) of the audio timeline slider at the **Transport Panel** represent the trimmed region inside a whole audio track.
 By default, each region starts at zero, and its length is equal to **Slice Length** (length of each future training example) multiplied by ten or by 
 a smaller maximum number which can fit the length of a track. 
 
@@ -359,12 +363,17 @@ saving the collections you would like to use repeatedly with **File | Export Pla
 *Before doing training exercises in the **Learn** and the **Test** modes, prepare your own collection of trimmed audio files, 
 using the above-described application tools. Then uncheck the **Controls | Start Playing After Loading Track in Preview Mode** 
 option in the main menu if checked. [Adjust the volume level](#setting-volume-level) for your EQ Pattern and EQ Settings.
-Load external audio files as audio source for your exercises without playing them in the **Preview** mode. This will help you to
+Load external audio files as audio sources for your exercises without playing them in the **Preview** mode. This will help you to
 leave the volume knobs untouched as long as possible, while navigating through different audio sources/tracks.*
 
 ### The Learn Mode
 
+<img align="center" src=":/Getting_Started/Data/Images/LearnMode.png" /><br />
+
+
 ### The Test Mode
+
+<img align="center" src=":/Getting_Started/Data/Images/TestMode.png" /><br />
 
 ### How to Memorize Frequency Bands?
 
