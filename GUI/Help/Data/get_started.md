@@ -369,7 +369,8 @@ leave the volume knobs untouched as long as possible, while navigating through d
 ### The Learn Mode
 
 <img align="center" src=":/Getting_Started/Data/Images/LearnMode.png" /><br />
-
+<img src=":/Getting_Started/Data/Images/next-example.png"/>
+<img src=":/Getting_Started/Data/Images/sequential-playback.png"/>
 
 ### The Test Mode
 
