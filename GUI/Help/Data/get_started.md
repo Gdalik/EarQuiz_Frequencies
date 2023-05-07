@@ -395,7 +395,7 @@ or press **Ctrl+Return** (on Windows) or **⌘+Return** (on macOS).
 Alternatively, you can check the option **Sequential Playback (of Learning Examples)** <img src=":/Getting_Started/Data/Images/sequential-playback.png"/>
 in the **Controls** menu of the main menu or in the **Transport Panel**. In this case, you can start the playback once, and then
 the application will make and play each next example automatically. With **Controls | Loop Sequence (of EQ Bands)** unchecked,
-it will stop after all possible EQ Slider options/combinations within the current EQ pattern have been gone through. Checking
+it will stop after all possible EQ sliders' positions within the current EQ pattern have been gone through. Checking
 this option will result in infinite loop until the playback is stopped.
 
 Moving a slider handle (or two slider handles for dual-band patterns) will force the boost/cut of certain frequency band(s), and
