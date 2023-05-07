@@ -18,7 +18,7 @@ follow his easy-to-difficult patterns, but you can also adjust the settings to g
 Educators in the audio industry may use this software to produce superb quality training and test materials for their students 
 almost in no time.
 
-The programme is distributed under [GNU GPL v3 License](https://www.gnu.org/licenses/gpl-3.0.html). So, it is Free for any use, 
+The program is distributed under [GNU GPL v3 License](https://www.gnu.org/licenses/gpl-3.0.html). So, it is Free for any use, 
 either personal or commercial!
 
 <br />
@@ -71,7 +71,7 @@ with your whole body this way, which may be especially important for analysing t
 ### Checking Audio Playback
 
 Obvious, but important: make sure your audio system is switched on, and the playback audio path is working properly.
-By default, the programme uses your system sound output device. But you can easily switch to any available 
+By default, the program uses your system sound output device. But you can easily switch to any available 
 audio playback device, selecting **Audio | Audio Device** menu item from the main menu.
 
 Initially, the audio source is set to **Pink noise** so that the software would not require any external files to 
@@ -326,7 +326,7 @@ For further playlist navigation, you can use the <img src=":/Help_Icons/Data/Ima
 **Previous Track** / <img src=":/Help_Icons/Data/Images/media-skip-forward_16.png"/> **Next Track** player controls or similar buttons <img src=":/Help_Icons/Data/Images/arrows-right-and-left-filled-triangles.png"/> 
 above the **Playlist**. 
 When you are not in the **Preview** mode, the player skip controls/buttons are not available, though. In this case, if you want to go forward/backward
-in the playlist, you can still use the navigation buttons above the **Playlist**. This will switch the programme to the **Preview**
+in the playlist, you can still use the navigation buttons above the **Playlist**. This will switch the program to the **Preview**
 mode, whatever the current mode is. Any training process will be cancelled. Moreover, every change of an audio source resets the application to the **Preview** mode.<br /> 
 
 <img align="center" src=":/Getting_Started/Data/Images/PreviewMode.png"/><br />
@@ -368,10 +368,38 @@ leave the volume knobs untouched as long as possible, while navigating through d
 
 ### The Learn Mode
 
-The basic way to activate the **Learn** mode is clicking the corresponding button on the main window. <br />
+The basic way to activate the **Learn** mode is clicking the corresponding button on the main window.<br />
 <img align="center" src=":/Getting_Started/Data/Images/LearnMode.png" /><br />
-<img src=":/Getting_Started/Data/Images/next-example.png"/>
-<img src=":/Getting_Started/Data/Images/sequential-playback.png"/>
+
+The application will normalize the audio if needed. When you use an external audio file as a source, the program 
+will read and crop it before that.
+Then the playback of the first example will start automatically.
+
+On each example playback, the corresponding EQ sliders' handles change their positions. And when the EQ is on, these sliders
+are highlighted with green, and their labels show if the frequencies are boosted <span style="color:green; font-weight:bold">(+)</span>
+or cut <span style="color:green; font-weight:bold">(-)</span>.
+
+If you want to stop the playback of an example, use the **Stop** control/button or press the dot *(.)* key. To start playing the example once again, click 
+the **Play** control/button or press the *Space* key. You can change the **EQ settings** between the playbacks. If you set another **Frequency Gain**,
+the audio would be re-normalized.
+
+By default, the EQ bands are played in the ascending order; if both boosting and cutting are available in the current
+EQ pattern, each band is first boosted, then cut before proceeding to the next one. However, you can optionally change
+this order to the descending or the shuffle one, selecting the appropriate option in **Controls | EQ Bands Order in Learn Mode** menu
+of the main menu. In boost & cut exercises, you can set the order with the sequence of all the bands boosted, and then 
+all bands cut (or vice-versa), by selecting the option **All Bands Boosted, then All Bands Cut** in the same menu.
+
+To go to the next example, click the <img src=":/Getting_Started/Data/Images/next-example.png"/> **Next Example** control/button,
+or press **Ctrl+Return** (on Windows) or **⌘+Return** (on macOS).
+
+Alternatively, you can check the option **Sequential Playback (of Learning Examples)** <img src=":/Getting_Started/Data/Images/sequential-playback.png"/>
+in the **Controls** menu of the main menu or in the **Transport Panel**. In this case, you can start the playback once, and then
+the application will make and play each next example automatically. With **Controls | Loop Sequence (of EQ Bands)** unchecked,
+it will stop after all possible EQ Slider options/combinations within the current EQ pattern have been gone through. Checking
+this option will result in infinite loop until the playback is stopped.
+
+Moving a slider handle (or two slider handles for dual-band patterns) will force the boost/cut of certain frequency band(s), and
+this will become the first element of a sequence regardless of the EQ bands order set.
 
 ### The Test Mode
 
