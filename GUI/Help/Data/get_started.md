@@ -5,9 +5,31 @@
 
 ----------------
 
+### Table of Contents
+
+* [Greetings!](#greetings)
+* [The Basic Training Method](#the-basic-training-method)
+* [Short Start Guide](#short-start-guide)
+* [Choosing Acoustic Device](#choosing-acoustic-device)
+* [Checking Audio Playback](#checking-audio-playback)
+* [Adjusting Audio System](#adjusting-audio-system)
+    - [Setting Volume Level](#setting-volume-level)
+    - [Quick Checking Frequency Range and Response](#checking-frequency-range)
+* [Equalization: Patterns, Sliders and Settings](#eq-patterns)
+    - [Equalization Patterns](#eq-patterns)
+    - [Equalization Sliders](#equalization-sliders)
+    - [Equalization Settings](#equalization-settings)
+* [Working with External Audio Files](#working-with-external-audio-files)
+* [The Learn Mode](#learn-mode)
+* [The Test Mode](#test-mode)
+* [How to Memorize Frequency Bands?](#memorizing-frequencies)
+* [Annotations](#pink-noise)
+
+<br />
+
 ### Greetings!
 
-*EarQuiz Frequencies* is a software for technical ear training. It aims to help musicians 
+<a id="greetings">*EarQuiz Frequencies*</a> is a software for technical ear training. It aims to help musicians 
 and all kinds of audio professionals or students (producers, recording/mixing/mastering/live sound engineers, 
 audio designers, etc.) develop and master the ability to aurally recognize frequency bands. In fact, anybody 
 who wants to teach himself/herself how to adjust an audio system with equalizer by ear consciously may find it useful.
@@ -50,14 +72,40 @@ The option to adjust this setting is planned to be introduced in future versions
 Regardless of the audio source material and the EQ settings, the recommended approach remains the same.
 - First, you **learn** and warm-up by listening to examples, trying to [memorize and internalize](#memorizing-frequencies) 
 the sound of different frequency ranges. <br /> *Don't be scared; relax, listen, watch the
-highlighted frequency values on the screen, and let your brains do the job ;-)!*
+highlighted sliders and frequency values on the screen, and let your brains do the job ;-)!*
 - Second, you take a **test** which is nothing but a sequence of ten similar examples with randomly chosen frequency values 
 and boost/cut options (where available), which you guess, and get a score to track your progress.
 
 <br />
 
+### Short Start Guide
+
+<a id="short-start-guide">Let's get started!</a>
+* With pink noise, selected as an audio source, [switch the application to the Learn mode](#learn-mode), using the corresponding
+button on the main window, the main menu item or the keyboard shortcut, or just by changing an [EQ slider](#equalization-sliders) handle position.
+* With pink noise examples, played in [the Learn mode](#learn-mode):
+  - [Check/set up your audio playback system](#checking-audio-playback). 
+  - [Adjust the volume level](#setting-volume-level).
+* [Make sure the frequency range/response of your playback audio system is decent enough](#checking-frequency-range).
+* In [the Learn mode](#learn-mode), with pink noise as an audio source and the first [equalization pattern](#eq-patterns),
+go through all the possible examples.
+* Activate [the Test mode](#test-mode), and try to pass a test.
+* Repeat the learn-test cycle with the second and the third EQ patterns, using pink noise.
+* Save the volume level with the feature, available from the **Volume Slider** 
+right-click context menu or from the **Audio** menu of the main menu. Then reduce the volume level by 10-15 dB.
+* [Load, preview and trim](#working-with-external-audio-files) some of your favorite commercially mastered music tracks of different
+styles/genres.
+* Uncheck the **Controls | Start Playing After Loading Track in Preview Mode** option in the main menu if checked.
+* Restore the volume level with the feature, available from the **Volume Slider** 
+right-click context menu or from the **Audio** menu of the main menu.
+* Do the learn-test exercises with the first three EQ patterns, using prepared music tracks.
+* Go through the other EQ patterns with both pink noise and music audio sources, thus increasing the difficulty step by step.
+Adjust the volume level where needed.
+* After becoming familiar with the built-in EQ patterns, try practicing with custom [EQ Settings](#equalization-settings).
+<br />
+
 ### Choosing Acoustic Device
-If you can do these exercises in a well treated room with studio quality monitors, it is great, 
+<a id="choosing-acoustic-device">If you can do</a> these exercises in a well treated room with studio quality monitors, it is great, 
 but not obligatory. Decent consumer systems that do not add obvious distortion, crackling noises, etc. to sound 
 at tolerably loud levels, and reproduce a wide frequency range 
 ([see further](#checking-frequency-range) about checking this), can also meet our requirements. 
@@ -70,7 +118,7 @@ with your whole body this way, which may be especially important for analysing t
 
 ### Checking Audio Playback
 
-Obvious, but important: make sure your audio system is switched on, and the playback audio path is working properly.
+<a id="checking-audio-playback">Obvious</a>, but important: make sure your audio system is switched on, and the playback audio path is working properly.
 By default, the program uses your system sound output device. But you can easily switch to any available 
 audio playback device, selecting **Audio | Audio Device** menu item from the main menu.
 
@@ -80,14 +128,14 @@ option is selected in the **Audio Source** window.
 
 Are you ready to hear the sound :-)? Just click the 
 **Learn** mode button **or** change the position of any EQ sliders' handle by dragging/clicking on it, which will switch the application
-to the *Learn* mode automatically. After some processing (peak normalization and equalization) and loading, which usually takes fractions of second
+to the *Learn* mode automatically. After some processing ([peak normalization](#peak-normalization) and equalization) and loading, which usually takes fractions of second
 on contemporary machines, the playback of an example should start.
 
 *Here, you may want to proceed with the training process. But I suggest that we should **adjust your
 audio system** first.* <br />
 
 ### Adjusting Audio System
-The flatter, the better. I mean frequency response of your whole playback system, of course.
+<a id="adjusting-audio-system">The flatter, the better</a>. I mean frequency response of your whole playback system, of course.
 If your audio path contains any tone controls, equalizers, or sound processors, which affect the spectrum of reproduced sound,
 in most cases, they should be switched off or set flat, unless you know for sure that they compensate for the certain flaws. If you have the 
 loudness compensation button on your playback preamp or receiver, it should be off as well.
@@ -111,7 +159,7 @@ with in-app training we also run into a kind of compromise between sound quality
 exercises with different audio sources and settings.
 
 As my priority is to achieve the best possible sound quality without clipping as a side effect of boosting frequencies,
-I have decided to apply to every audio source of single-band exercise the preventive peak normalization with opposite number to current absolute value
+I have decided to apply to every audio source of single-band exercise the preventive [peak normalization](#peak-normalization) with opposite number to current absolute value
 of frequency gain.
 For dual-band EQ patterns, I have added extra-headroom from 1 up to 3dB. 
 
@@ -166,7 +214,7 @@ proceed, but be aware that you may have difficulties hearing/identifying the low
 ### Equalization: Patterns, Sliders and Settings 
 
 #### Equalization Patterns
-**EQ Pattern** is a core of each exercise, as it defines:
+<a id="eq-patterns">**EQ Pattern**</a> is a core of each exercise, as it defines:
 - the range of frequency options;
 - default **EQ Settings** (Frequency Gain and Bandwidth/Q factor of filters);
 - the type of **Equalizer**: 1-octave (10-band) or 1/3-octave (30-band);
@@ -181,9 +229,10 @@ You can choose any pattern from the list or skip forward with the <span style="c
 unlike in the **Learn** or the **Test** modes, where it resets the exercises and their playback.
 
 The current EQ pattern is stored between sessions.
+<br />
 
 #### Equalization Sliders
-**EQ Sliders** are the main input controllers for the training (**Learn** and **Test**) modes. The numbers below each of them
+<a id="equalization-sliders">**EQ Sliders**</a> are the main input controllers for the training (**Learn** and **Test**) modes. The numbers below each of them
 represent the central frequencies of corresponding frequency bands. And the positions of sliders' handles determine the boost or cut
 of particular bands, whether real (while learning) or guessed (while testing).
 
@@ -208,6 +257,7 @@ is changed. After a user has dragged or clicked on a first slider, one or more a
 This is because the option to simultaneously alter two frequency bands, that are too close to each other, is intentionally
 avoided, as it would become a kind of "mind game" otherwise. While the user hasn't chosen a second slider, he or she can
 return the first one to its initial state and reconsider the input.
+<br />
 
 #### Equalization Settings
 <a id="equalization-settings">You can open the **EQ Settings**</a> by clicking the button with gear icon in the top-right corner
@@ -216,7 +266,7 @@ They consist of two parameters:
 1. *Frequency Gain*, that determines an amount by which the center frequency of filter is boosted or cut.
 2. *Bandwidth*/*Q factor*, that are used to set the width of boosted or cut frequency band.
 
-Here is a filter scheme:
+Here is a filter frequency response scheme:
 
 <br />
 
@@ -302,6 +352,7 @@ while going through the same patterns,
 you can try lowering the frequency gain value, and challenge your ears to hear the subtler and subtler equalization.
 
 When locked, this state and values themselves are stored between sessions.
+<br />
 
 ### Working with External Audio Files
 
@@ -327,7 +378,9 @@ For further playlist navigation, you can use the <img src=":/Help_Icons/Data/Ima
 above the **Playlist**. 
 When you are not in the **Preview** mode, the player skip controls/buttons are not available, though. In this case, if you want to go forward/backward
 in the playlist, you can still use the navigation buttons above the **Playlist**. This will switch the program to the **Preview**
-mode, whatever the current mode is. Any training process will be cancelled. Moreover, every change of an audio source resets the application to the **Preview** mode.<br /> 
+mode, whatever the current mode is. Any training process will be cancelled. Moreover, every change of an audio source resets the application to the **Preview** mode.
+You can also manually activate the **Preview** mode by clicking the corresponding button on the main window or
+by selecting **Controls | Preview Mode** from the main menu. The keyboard shortcut for it is  **Ctrl+P** (on Windows) or **⌘P** (on macOS).<br /> 
 
 <img align="center" src=":/Getting_Started/Data/Images/PreviewMode.png"/><br />
 
@@ -358,17 +411,19 @@ restores the previously saved values for already known ones.
 The current **Playlist** and the latest audio source used are stored between sessions. However, I highly recommend 
 saving the collections you would like to use repeatedly with **File | Export Playlist...** options.
 
-<img src=":/Help_Icons/Data/Images/lightbulb.png"/>***Useful Tip***
-
-*Before doing training exercises in the **Learn** and the **Test** modes, prepare your own collection of trimmed audio files, 
+> <img src=":/Help_Icons/Data/Images/lightbulb.png"/>***Useful Tip***
+> 
+> *Before doing training exercises in the **Learn** and the **Test** modes, prepare your own collection of trimmed audio files, 
 using the above-described application tools. Then uncheck the **Controls | Start Playing After Loading Track in Preview Mode** 
 option in the main menu if checked. [Adjust the volume level](#setting-volume-level) for your EQ Pattern and EQ Settings.
 Load external audio files as audio sources for your exercises without playing them in the **Preview** mode. This will help you to
 leave the volume knobs untouched as long as possible, while navigating through different audio sources/tracks.*
+<br />
 
 ### The Learn Mode
 
-The basic way to activate the **Learn** mode is clicking the corresponding button on the main window.<br />
+<a id="learn-mode">The basic way</a> to activate the **Learn** mode is clicking the corresponding button on the main window or
+by selecting **Controls | Learn Mode** from the main menu. The keyboard shortcut for it is  **Ctrl+L** (on Windows) or **⌘L** (on macOS).<br />
 <img align="center" src=":/Getting_Started/Data/Images/LearnMode.png" /><br />
 
 The application will normalize the audio if needed. When you use an external audio file as a source, the program 
@@ -376,7 +431,7 @@ will read and crop it before that.
 Then the playback of the first example will start automatically.
 
 On each example playback, the corresponding EQ sliders' handles change their positions. And when the EQ is on, these sliders
-are highlighted with green, and their labels show if the frequencies are boosted <span style="color:green; font-weight:bold">(+)</span>
+are highlighted in green, and their labels show if the frequencies are boosted <span style="color:green; font-weight:bold">(+)</span>
 or cut <span style="color:green; font-weight:bold">(-)</span>.
 
 If you want to stop the playback of an example, use the **Stop** control/button or press the dot *(.)* key. To start playing the example once again, click 
@@ -392,7 +447,7 @@ all bands cut (or vice-versa), by selecting the option **All Bands Boosted, then
 To go to the next example, click the <img src=":/Getting_Started/Data/Images/next-example.png"/> **Next Example** control/button,
 or press **Ctrl+Return** (on Windows) or **⌘+Return** (on macOS).
 
-Alternatively, you can check the option **Sequential Playback (of Learning Examples)** <img src=":/Getting_Started/Data/Images/sequential-playback.png"/>
+Alternatively, you can check the option <img src=":/Getting_Started/Data/Images/sequential-playback.png"/> **Sequential Playback (of Learning Examples)** 
 in the **Controls** menu of the main menu or in the **Transport Panel**. In this case, you can start the playback once, and then
 the application will make and play each next example automatically. With **Controls | Loop Sequence (of EQ Bands)** unchecked,
 it will stop after all possible EQ sliders' positions within the current EQ pattern have been gone through. Checking
@@ -400,10 +455,54 @@ this option will result in infinite loop until the playback is stopped.
 
 Moving a slider handle (or two slider handles for dual-band patterns) will force the boost/cut of certain frequency band(s), and
 this will become the first element of a sequence regardless of the EQ bands order set.
+<br />
 
 ### The Test Mode
 
+<a id="test-mode">The **Test** mode</a> is activated by clicking the corresponding button on the main window or
+by selecting **Controls | Test Mode** from the main menu. The keyboard shortcut for it is  **Ctrl+T** (on Windows) or 
+**⌘T** (on macOS).<br />
 <img align="center" src=":/Getting_Started/Data/Images/TestMode.png" /><br />
+
+The application will normalize the audio if needed. When you use an external audio file as a source, the program will 
+read and crop it before that. Then the playback of the first example will start automatically.
+
+To complete a test, you should do ten examples in a row. [Use sliders' handles to input the guessed answers](#equalization-sliders).
+This can be done during or after the playback of each example. Once your answer is accepted, the right answer 
+will be labelled and highlighted in green immediately. The <img src=":/Getting_Started/Data/Images/next-example.png"/> **Next Example** control/button
+will become enabled so that you could proceed.  Unlike in the **Learn** mode, the sliders with changed handles' positions (the user input)
+may differ from the highlighted ones (the right answer).
+
+You can play and stop a current example as many times as you want with the **Play** and the **Stop** buttons/controls correspondingly.
+Any time you do not give the exact right answer, it is highly recommended to play the example once again for better training effectiveness.
+
+When the mode is activated, the **Exercise / Score Information** window is shown. It contains useful information about a current test:
+examples count, test status (in progress, finished with pass/fail or canceled), the user and the right answers, and scoring.
+
+The score calculation is quite straightforward. The maximum score for an example is 10, and the maximum total score for a test is 100.
+When a user's answer is equal to the right answer, he or she gets 10 out of 10. Each 1-octave error subtracts 1 score point. Each 1/3-octave
+error subtracts 0.33 points. The boost/cut mistake takes off 2 points. In case of dual-band exercise, the scores for each frequency band
+in an example are count separately, with 5 being the maximum and 0 being the minimum for a frequency band. And then a maximum possible sum is taken as the 
+score for the example.
+
+The following table shows the expected score range for different types of exercises (EQ patterns):
+
+| Exercise / EQ Pattern Type | Expected Score |
+|:---------------------------|:--------------:|
+| 1-octave bands, single-band|  85&mdash;95   |
+| 1/3-octave bands, single-band|  75&mdash;90   |
+| 1-octave bands, dual-band|  70&mdash;85   |
+| 1/3-octave bands, dual-band|  65&mdash;80   |
+
+<br />
+
+To pass the test, you must get a total score which is 5 points below the lower end of the expected score range or higher. If your score is higher than
+the upper end of the range, you get the *passed+* mark.
+
+Changing EQ settings is disabled in this mode. Loading another audio source or switching to another mode would cancel 
+the current test. Selecting another EQ Pattern would reset it as well.
+
+<br />
 
 ### How to Memorize Frequency Bands?
 
@@ -447,7 +546,7 @@ your own descriptions, related to certain sound sources, settings and conditions
 the frequencies left trying to figure out what is missing. When the EQ returns to its off state, think of it as of frequencies' boost. 
 
 <img src=":/Help_Icons/Data/Images/lightbulb.png"/>What about synesthesia? The most primitive and obvious case of it, which you deal with here by training:
-you hear frequencies, and see different positions in space plus highlighted numbers. But can you see/imagine frequency bands as different colors/textures/material types?
+you hear frequencies, and see different activated sliders, each having its position in space, plus highlighted numbers. But can you see/imagine frequency bands as different colors/textures/material types?
 Can you feel them? Can you smell them? Can you taste them? Try to note the slightest and subtlest body and mind reactions when listening to equalization examples, and focus on them for a moment.
 
 *Try different approaches. Find out, what works better for you in different situations. Stay as relaxed as possible while training.
@@ -455,8 +554,12 @@ Take pauses. Do not torture your ears and brains too much.
 Train regularly, not long: 2*&mdash;*4 exercises per session may be enough. 
 Try to build your personal timbre/frequency vocabulary through daily practice!*
 
+***And, last but not least. Even the small recurring donation to the project not only helps to support and develop the software, but it is a great source of additional motivation for you to
+keep practicing!***
+
 --------
 ### Annotations
+
 #### Pink Noise
 
 <a id="pink-noise">Pink noise</a> is a kind of random noise which has equal energy in different octave ranges. It derives from white noise which
@@ -467,6 +570,14 @@ In pink noise, the energy falls proportionally to frequency. I.e., it is similar
 This gives a much more even result from a human ear perspective, and the spectrum of pink noise is the closest one to an average music signal.
 
 [< Back to "The Basic Training Method"](#the-basic-training-method)
+
+#### Peak Normalization
+
+<a id="peak-normalization">Peak normalization</a> of an audio file or its part is a linear change of its whole gain that makes the amplitude level of its (PCM) sample 
+with the maximum amplitude equal to a certain value (in dB).
+
+[< Back to "Checking Audio Playback"](#checking-audio-playback)<br />
+[< Back to "Setting Volume Level"](#setting-volume-level)
 
 #### Supported Audio Formats
 <a id="supported-audio-formats">The fully supported audio formats</a> are: WAVE, AIFF, MP3 and FLAC. The OGG format is half-supported.
