@@ -26,6 +26,7 @@ from GUI.Playlist.plsong import PlSong
 from GUI.Misc.StartScreen import StartLogo
 from GUI.TransportPanel.transport_contr import TransportContr
 from GUI.Help.HelpActions import HelpActions
+from GUI.SupportApp.supportapp_contr import SupportAppContr
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.audiodrill_gen import AudioDrillGen
 from Model.file_hash import filehash
@@ -75,6 +76,7 @@ class MainWindowContr(QObject):
         self.ADGC = ADGenContr(self)
         self.setFileMenuActions()
         self.HelpActions = HelpActions(self)
+        self.SupportAppContr = SupportAppContr(self)
         self.setModesActions()
         self.setModesButtons()
         self.setLearnFreqOrderAG()

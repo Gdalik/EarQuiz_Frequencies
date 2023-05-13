@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1155, 718)
+        MainWindow.resize(1115, 718)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -44,7 +44,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 579, 543))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 559, 543))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -2016,7 +2016,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.scrollArea)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1155, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1115, 24))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(parent=self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -2700,7 +2700,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.SupportProject.sizePolicy().hasHeightForWidth())
         self.SupportProject.setSizePolicy(sizePolicy)
-        self.SupportProject.setMinimumSize(QtCore.QSize(87, 97))
+        self.SupportProject.setMinimumSize(QtCore.QSize(0, 140))
         self.SupportProject.setMaximumSize(QtCore.QSize(524287, 140))
         self.SupportProject.setBaseSize(QtCore.QSize(0, 0))
         self.SupportProject.setAllowedAreas(QtCore.Qt.DockWidgetArea.BottomDockWidgetArea|QtCore.Qt.DockWidgetArea.LeftDockWidgetArea|QtCore.Qt.DockWidgetArea.RightDockWidgetArea)
@@ -2710,10 +2710,211 @@ class Ui_MainWindow(object):
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.dockWidgetContents_4)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.ShareAppBox = QtWidgets.QGroupBox(parent=self.dockWidgetContents_4)
+        self.ShareAppBox.setMinimumSize(QtCore.QSize(0, 0))
         self.ShareAppBox.setObjectName("ShareAppBox")
+        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.ShareAppBox)
+        self.horizontalLayout_9.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_9.setSpacing(0)
+        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
+        self.Facebook = QtWidgets.QToolButton(parent=self.ShareAppBox)
+        self.Facebook.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.Facebook.setText("")
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap(":/Support/Icons/Support_Logos/facebook.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.Facebook.setIcon(icon12)
+        self.Facebook.setIconSize(QtCore.QSize(30, 30))
+        self.Facebook.setObjectName("Facebook")
+        self.horizontalLayout_9.addWidget(self.Facebook)
+        self.Twitter = QtWidgets.QToolButton(parent=self.ShareAppBox)
+        self.Twitter.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.Twitter.setText("")
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap(":/Support/Icons/Support_Logos/twitter.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.Twitter.setIcon(icon13)
+        self.Twitter.setIconSize(QtCore.QSize(30, 30))
+        self.Twitter.setObjectName("Twitter")
+        self.horizontalLayout_9.addWidget(self.Twitter)
+        self.Reddit = QtWidgets.QToolButton(parent=self.ShareAppBox)
+        self.Reddit.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.Reddit.setText("")
+        icon14 = QtGui.QIcon()
+        icon14.addPixmap(QtGui.QPixmap(":/Support/Icons/Support_Logos/reddit.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.Reddit.setIcon(icon14)
+        self.Reddit.setIconSize(QtCore.QSize(30, 30))
+        self.Reddit.setObjectName("Reddit")
+        self.horizontalLayout_9.addWidget(self.Reddit)
+        self.VK = QtWidgets.QToolButton(parent=self.ShareAppBox)
+        self.VK.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.VK.setText("")
+        icon15 = QtGui.QIcon()
+        icon15.addPixmap(QtGui.QPixmap(":/Support/Icons/Support_Logos/vk.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.VK.setIcon(icon15)
+        self.VK.setIconSize(QtCore.QSize(30, 30))
+        self.VK.setObjectName("VK")
+        self.horizontalLayout_9.addWidget(self.VK)
+        self.WhatsApp = QtWidgets.QToolButton(parent=self.ShareAppBox)
+        self.WhatsApp.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.WhatsApp.setText("")
+        icon16 = QtGui.QIcon()
+        icon16.addPixmap(QtGui.QPixmap(":/Support/Icons/Support_Logos/WhatsApp.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.WhatsApp.setIcon(icon16)
+        self.WhatsApp.setIconSize(QtCore.QSize(30, 30))
+        self.WhatsApp.setObjectName("WhatsApp")
+        self.horizontalLayout_9.addWidget(self.WhatsApp)
+        self.Telegram = QtWidgets.QToolButton(parent=self.ShareAppBox)
+        self.Telegram.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.Telegram.setText("")
+        icon17 = QtGui.QIcon()
+        icon17.addPixmap(QtGui.QPixmap(":/Support/Icons/Support_Logos/telegram.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.Telegram.setIcon(icon17)
+        self.Telegram.setIconSize(QtCore.QSize(30, 30))
+        self.Telegram.setObjectName("Telegram")
+        self.horizontalLayout_9.addWidget(self.Telegram)
+        self.CopyLink = QtWidgets.QToolButton(parent=self.ShareAppBox)
+        self.CopyLink.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.CopyLink.setText("")
+        icon18 = QtGui.QIcon()
+        icon18.addPixmap(QtGui.QPixmap(":/Support/Icons/Support_Logos/linked.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.CopyLink.setIcon(icon18)
+        self.CopyLink.setIconSize(QtCore.QSize(30, 30))
+        self.CopyLink.setObjectName("CopyLink")
+        self.horizontalLayout_9.addWidget(self.CopyLink)
         self.verticalLayout_7.addWidget(self.ShareAppBox)
         self.DonateBox = QtWidgets.QGroupBox(parent=self.dockWidgetContents_4)
         self.DonateBox.setObjectName("DonateBox")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.DonateBox)
+        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.BMC = QtWidgets.QToolButton(parent=self.DonateBox)
+        self.BMC.setMinimumSize(QtCore.QSize(0, 0))
+        self.BMC.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.BMC.setText("")
+        icon19 = QtGui.QIcon()
+        icon19.addPixmap(QtGui.QPixmap(":/Support/Icons/Support_Logos/bmc-logo.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.BMC.setIcon(icon19)
+        self.BMC.setIconSize(QtCore.QSize(28, 28))
+        self.BMC.setObjectName("BMC")
+        self.horizontalLayout_8.addWidget(self.BMC)
+        self.Patreon = QtWidgets.QToolButton(parent=self.DonateBox)
+        self.Patreon.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.Patreon.setText("")
+        icon20 = QtGui.QIcon()
+        icon20.addPixmap(QtGui.QPixmap(":/Support/Icons/Support_Logos/Patreon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.Patreon.setIcon(icon20)
+        self.Patreon.setIconSize(QtCore.QSize(28, 28))
+        self.Patreon.setObjectName("Patreon")
+        self.horizontalLayout_8.addWidget(self.Patreon)
+        self.Boosty = QtWidgets.QToolButton(parent=self.DonateBox)
+        self.Boosty.setStatusTip("")
+        self.Boosty.setStyleSheet("QToolButton{\n"
+"border: None;\n"
+"}\n"
+"QToolButton:hover{\n"
+"background: rgba(192, 192, 192, 128);\n"
+"border-radius: 4px;\n"
+"}\n"
+"QToolButton:pressed{\n"
+"border: 1px inset gray;\n"
+"background: rgba(118, 214, 255, 85)\n"
+"}")
+        self.Boosty.setText("")
+        icon21 = QtGui.QIcon()
+        icon21.addPixmap(QtGui.QPixmap(":/Support/Icons/Support_Logos/Boosty.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.Boosty.setIcon(icon21)
+        self.Boosty.setIconSize(QtCore.QSize(28, 28))
+        self.Boosty.setObjectName("Boosty")
+        self.horizontalLayout_8.addWidget(self.Boosty)
         self.verticalLayout_7.addWidget(self.DonateBox)
         self.SupportProject.setWidget(self.dockWidgetContents_4)
         MainWindow.addDockWidget(QtCore.Qt.DockWidgetArea(2), self.SupportProject)
@@ -2779,9 +2980,9 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon12 = QtGui.QIcon()
-        icon12.addPixmap(QtGui.QPixmap(":/AddRemove/Icons/AddRemove/plus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.PlusFilesBut.setIcon(icon12)
+        icon22 = QtGui.QIcon()
+        icon22.addPixmap(QtGui.QPixmap(":/AddRemove/Icons/AddRemove/plus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.PlusFilesBut.setIcon(icon22)
         self.PlusFilesBut.setObjectName("PlusFilesBut")
         self.AddPlusRemoveAudioLay.addWidget(self.PlusFilesBut)
         self.MinusFilesBut = QtWidgets.QToolButton(parent=self.dockWidgetContents_5)
@@ -2796,9 +2997,9 @@ class Ui_MainWindow(object):
 "border: 1px inset gray;\n"
 "background: rgba(118, 214, 255, 85)\n"
 "}")
-        icon13 = QtGui.QIcon()
-        icon13.addPixmap(QtGui.QPixmap(":/AddRemove/Icons/AddRemove/minus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.MinusFilesBut.setIcon(icon13)
+        icon23 = QtGui.QIcon()
+        icon23.addPixmap(QtGui.QPixmap(":/AddRemove/Icons/AddRemove/minus.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.MinusFilesBut.setIcon(icon23)
         self.MinusFilesBut.setObjectName("MinusFilesBut")
         self.AddPlusRemoveAudioLay.addWidget(self.MinusFilesBut)
         spacerItem17 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -2817,9 +3018,9 @@ class Ui_MainWindow(object):
 "background: rgba(118, 214, 255, 85)\n"
 "}")
         self.PreviewPreviousBut.setText("")
-        icon14 = QtGui.QIcon()
-        icon14.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/left-arrow-playlist.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.PreviewPreviousBut.setIcon(icon14)
+        icon24 = QtGui.QIcon()
+        icon24.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/left-arrow-playlist.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.PreviewPreviousBut.setIcon(icon24)
         self.PreviewPreviousBut.setIconSize(QtCore.QSize(18, 18))
         self.PreviewPreviousBut.setObjectName("PreviewPreviousBut")
         self.AddPlusRemoveAudioLay.addWidget(self.PreviewPreviousBut)
@@ -2837,9 +3038,9 @@ class Ui_MainWindow(object):
 "background: rgba(118, 214, 255, 85)\n"
 "}")
         self.PreviewNextBut.setText("")
-        icon15 = QtGui.QIcon()
-        icon15.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/right-arrow-playlist.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.PreviewNextBut.setIcon(icon15)
+        icon25 = QtGui.QIcon()
+        icon25.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/right-arrow-playlist.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.PreviewNextBut.setIcon(icon25)
         self.PreviewNextBut.setIconSize(QtCore.QSize(18, 18))
         self.PreviewNextBut.setObjectName("PreviewNextBut")
         self.AddPlusRemoveAudioLay.addWidget(self.PreviewNextBut)
@@ -2854,10 +3055,10 @@ class Ui_MainWindow(object):
 "QToolButton:checked{\n"
 "border-radius: 4px;\n"
 "}")
-        icon16 = QtGui.QIcon()
-        icon16.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/shuffle_black.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon16.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/shuffle_blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
-        self.ShufflePlaybackBut.setIcon(icon16)
+        icon26 = QtGui.QIcon()
+        icon26.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/shuffle_black.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon26.addPixmap(QtGui.QPixmap(":/Player/Icons/Player/shuffle_blue.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        self.ShufflePlaybackBut.setIcon(icon26)
         self.ShufflePlaybackBut.setCheckable(True)
         self.ShufflePlaybackBut.setObjectName("ShufflePlaybackBut")
         self.AddPlusRemoveAudioLay.addWidget(self.ShufflePlaybackBut)
@@ -2984,7 +3185,7 @@ class Ui_MainWindow(object):
         self.actionMake_Test_Files.setObjectName("actionMake_Test_Files")
         self.actionShuffle_Playback = QtGui.QAction(parent=MainWindow)
         self.actionShuffle_Playback.setCheckable(True)
-        self.actionShuffle_Playback.setIcon(icon16)
+        self.actionShuffle_Playback.setIcon(icon26)
         self.actionShuffle_Playback.setIconVisibleInMenu(False)
         self.actionShuffle_Playback.setObjectName("actionShuffle_Playback")
         self.actionOpen_Folder = QtGui.QAction(parent=MainWindow)
@@ -3259,7 +3460,17 @@ class Ui_MainWindow(object):
         self.ResetEQBut.setText(_translate("MainWindow", "Reset"))
         self.SupportProject.setWindowTitle(_translate("MainWindow", "Support the App"))
         self.ShareAppBox.setTitle(_translate("MainWindow", "Share"))
+        self.Facebook.setToolTip(_translate("MainWindow", "Facebook"))
+        self.Twitter.setToolTip(_translate("MainWindow", "Twitter"))
+        self.Reddit.setToolTip(_translate("MainWindow", "Reddit"))
+        self.VK.setToolTip(_translate("MainWindow", "VK"))
+        self.WhatsApp.setToolTip(_translate("MainWindow", "WhatsApp"))
+        self.Telegram.setToolTip(_translate("MainWindow", "Telegram"))
+        self.CopyLink.setToolTip(_translate("MainWindow", "Copy Link to Clipboard"))
         self.DonateBox.setTitle(_translate("MainWindow", "Donate"))
+        self.BMC.setToolTip(_translate("MainWindow", "Buy Me a Coffee"))
+        self.Patreon.setToolTip(_translate("MainWindow", "Patreon"))
+        self.Boosty.setToolTip(_translate("MainWindow", "Boosty"))
         self.AudioSource.setWindowTitle(_translate("MainWindow", "Audio Source"))
         self.PinkNoiseRBut.setText(_translate("MainWindow", "Pink Noise"))
         self.TransportPanelViewBut.setText(_translate("MainWindow", "Transport Panel"))

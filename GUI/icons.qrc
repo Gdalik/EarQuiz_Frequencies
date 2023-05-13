@@ -5,6 +5,18 @@
     <file>Icons/AddRemove/minus.png</file>
     <file>Icons/AddRemove/plus.png</file>
   </qresource>
+  <qresource prefix="Support">
+    <file>Icons/Support_Logos/bmc-logo.png</file>
+    <file>Icons/Support_Logos/facebook.png</file>
+    <file>Icons/Support_Logos/linked.png</file>
+    <file>Icons/Support_Logos/reddit.png</file>
+    <file>Icons/Support_Logos/telegram.png</file>
+    <file>Icons/Support_Logos/twitter.png</file>
+    <file>Icons/Support_Logos/vk.png</file>
+    <file>Icons/Support_Logos/WhatsApp.png</file>
+    <file>Icons/Support_Logos/Patreon.png</file>
+    <file>Icons/Support_Logos/Boosty.png</file>
+  </qresource>
   <qresource prefix="Misc">
     <file>Icons/Misc/padlock.png</file>
     <file>Icons/Misc/Settings.png</file>
