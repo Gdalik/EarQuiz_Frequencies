@@ -151,8 +151,14 @@ class TransportContr(QObject):
         self.TransportView.setSlicesNum(self.SourceRange.slices_num)
 
     def onSaveSliceLengthAsDefaultClicked(self):
-        _key = 'PinknoiseSliceLength' if self.parent.CurrentSourceMode.name == 'Pinknoise' else 'ExtAudioSliceLength'
-        Settings.setValue(f'GlobalVars/{_key}', self.TransportView.SliceLenSpin.value())
+        value = self.TransportView.SliceLenSpin.value()
+        if self.parent.CurrentSourceMode.name == 'Pinknoise':
+            _key = 'PinknoiseSliceLength'
+            self.parent.mw_view.status.TempLabel.update(f'Default slice length for pink noise set to {value} sec.')
+        else:
+            _key = 'ExtAudioSliceLength'
+            self.parent.mw_view.status.TempLabel.update(f'Default slice length for external audio set to {value} sec.')
+        Settings.setValue(f'GlobalVars/{_key}', value)
         defaultSliceLenUpd()
 
     def updAudioToEqSettings(self, refreshAfter=True, play_after=False, raiseInterruptedException=True):

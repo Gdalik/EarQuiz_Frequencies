@@ -1,4 +1,4 @@
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtWidgets import QStatusBar, QLabel, QHBoxLayout, QWidget, QFrame
 
 
@@ -10,6 +10,7 @@ class StatusBar(QStatusBar):
         self.setFixedHeight(28)
         self._setLayout()
         self._setContainer()
+        self._setTempLabel()
         self._setEQStateLabel()
         self._setFreqGainLabel()
         self._setNormalizationLabel()
@@ -36,6 +37,10 @@ class StatusBar(QStatusBar):
     def _setFreqGainLabel(self):
         self.FreqGainLabel = FreqGainLabel(self)
         self.statusLayout.addWidget(self.FreqGainLabel)
+
+    def _setTempLabel(self):
+        self.TempLabel = TempLabel(self)
+        self.statusLayout.addWidget(self.TempLabel)
 
     def showNormalization(self, value: int or float):
         self.NormLabel.update(value)
@@ -94,3 +99,19 @@ class FreqGainLabel(QLabel):
     def update(self, value=0):
         self.value = value or self.value
         self.setText(f'Freq. Gain: ±{self.value}dB')
+
+
+class TempLabel(QLabel):
+    def __init__(self, parent, shown_text='', time=5000):
+        super().__init__()
+        self.parent = parent
+        self.setStyleSheet('color: blue;')
+        self.shown_text = shown_text
+        self.time = time
+        self.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+
+    def update(self, shown_text='', time=5000):
+        self.shown_text = shown_text or self.shown_text
+        self.time = time or self.time
+        self.setText(self.shown_text)
+        QTimer.singleShot(self.time, self.clear)
