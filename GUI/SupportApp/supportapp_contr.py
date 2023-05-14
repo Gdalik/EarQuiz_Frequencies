@@ -52,4 +52,3 @@ class SupportAppContr:
 
     def onReddit_clicked(self):
         webbrowser.open(f'https://reddit.com/submit?url={self.sharedURL_q}&title={self.sharedText}')
-

@@ -35,6 +35,7 @@ class UpdCheckContr(QObject):
         self.UpdCheckRun.signals.finished.connect(self.on_finished, type=Qt.ConnectionType.SingleShotConnection)
         self.UpdCheckRun.signals.error.connect(self.on_error, type=Qt.ConnectionType.UniqueConnection)
         self.threadpool.start(self.UpdCheckRun)
+        self.mw_view.status.TempLabel.update(shown_text='Checking for updates...', time=-1)
 
     def on_error(self, msg: str):
         self.updCheckStoppedEnded()
@@ -59,6 +60,7 @@ class UpdCheckContr(QObject):
         self.UpdCheckRun.signals.disconnect()
         self.UpdCheckRun.in_process = False
         self.manual_call = False
+        self.mw_view.status.TempLabel.clear()
 
     @staticmethod
     def saveLastSuccessfulCheck():

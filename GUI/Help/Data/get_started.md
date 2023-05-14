@@ -84,8 +84,8 @@ and boost/cut options (where available), which you guess, and get a score to tra
 1. With pink noise, selected as an audio source, [switch the application to the Learn mode](#learn-mode), using the corresponding
 button on the main window, the main menu item or the keyboard shortcut, or just by changing an [EQ slider](#equalization-sliders) handle position.
 2. With pink noise examples, played in [the Learn mode](#learn-mode):
-  - [Check/set up your audio playback system](#checking-audio-playback). 
-  - [Adjust the volume level](#setting-volume-level).
+     * [Check/set up your audio playback system](#checking-audio-playback). 
+     * [Adjust the volume level](#setting-volume-level).
 3. [Make sure the frequency range/response of your playback audio system is decent enough](#checking-frequency-range).
 4. In [the Learn mode](#learn-mode), with pink noise as an audio source and the first [equalization pattern](#eq-patterns),
 go through all the possible examples.

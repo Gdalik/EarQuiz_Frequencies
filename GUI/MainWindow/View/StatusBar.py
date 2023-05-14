@@ -114,4 +114,5 @@ class TempLabel(QLabel):
         self.shown_text = shown_text or self.shown_text
         self.time = time or self.time
         self.setText(self.shown_text)
-        QTimer.singleShot(self.time, self.clear)
+        if time != -1:
+            QTimer.singleShot(self.time, self.clear)
