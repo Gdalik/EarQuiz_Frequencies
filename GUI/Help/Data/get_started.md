@@ -360,7 +360,7 @@ When locked, this state and values themselves are stored between sessions.
 - Select **File | Open Files...** from the main menu, or press **Ctrl+O** (on Windows) or 
 **⌘O** (on macOS), or click on <span style="color:green; font-weight:bold">+</span> in the **Audio Source** window.
 - Select **File | Open Folder...** from the main menu.
-- Drag & Drop files to the **Playlist** from anywhere possible.
+- Drag & Drop files/folders to the **Playlist** from anywhere possible.
 
 The methods above can be used both for locating audio files of [the supported formats](#supported-audio-formats) directly
 or through playlists. Currently, parsing of M3U, M3U8, PLS and XSPF playlists is supported.
