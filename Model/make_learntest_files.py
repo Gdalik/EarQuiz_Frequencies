@@ -1,7 +1,21 @@
+#    EarQuiz Frequencies. Software for technical ear training on equalization.
+#    Copyright (C) 2023, Gdaliy Garmiza.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 from pathlib import Path
-
 from pedalboard.io import AudioFile
-
 from Model.audiodrill_gen import AudioDrillGen
 from Utilities.exceptions import InterruptedException
 from Utilities.freq2str import freqString
@@ -27,7 +41,8 @@ def makeLearnFiles(audiosource: str, output_dir: str, freq_options: list[int], a
                    drill_length=15, order='asc', gain_depth=12, Q=4.32, disableAdjacent=1, proc_t_perc=40,
                    cropped=None, cropped_normalized=None, enumerate_examples=False, callback=None):
     def makeInfoFile():
-        info_filename = f'{prefix}__Info.txt'
+        tf_name = 'Info.txt'
+        info_filename = f'{prefix}__{tf_name}' if prefix else tf_name
         info_path = str(Path(output_dir, info_filename))
         info = files_info(audiodata, EQPattern, boost_cut, ADGen.gain_headroom, gain_depth, Q)
         with open(info_path, 'w', encoding='utf-8', errors='replace') as tf:

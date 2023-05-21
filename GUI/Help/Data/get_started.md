@@ -40,8 +40,8 @@ follow his easy-to-difficult patterns, but you can also adjust the settings to g
 Educators in the audio industry may use this software to produce superb quality training and test materials for their students 
 almost in no time.
 
-The program is distributed under [GNU GPL v3 License](https://www.gnu.org/licenses/gpl-3.0.html). So, it is Free for any use, 
-either personal or commercial!
+The program is [Free Software](https://www.gnu.org/philosophy/free-sw.html), distributed under [GNU GPL v3 License](https://www.gnu.org/licenses/gpl-3.0.html). 
+It is free for any use, either personal or commercial!
 
 <br />
 
@@ -102,6 +102,7 @@ right-click context menu or from the **Audio** menu of the main menu.
 12. Go through the other EQ patterns with both pink noise and music audio sources, thus increasing the difficulty step by step.
 Adjust the volume level where needed.
 13. After becoming familiar with the built-in EQ patterns, try practicing with custom [EQ Settings](#equalization-settings).
+14. Explore more features, read more documentation (if needed).
 <br />
 
 ### Choosing Acoustic Device
@@ -542,7 +543,7 @@ smooth vs dull (high-mid and high range cut) and so on. Cutting one frequency ba
 So, instead of relying on someone's interpretations, try to make
 your own descriptions, related to certain sound sources, settings and conditions.
 
-<img src=":/Help_Icons/Data/Images/lightbulb.png"/>Guessing cut frequencies is a bit harder than boosted ones. When the EQ is on, listen to
+<img src=":/Help_Icons/Data/Images/lightbulb.png"/>Recognizing cut frequencies is a bit harder than boosted ones. When the EQ is on, listen to
 the frequencies left trying to figure out what is missing. When the EQ returns to its off state, think of it as of frequencies' boost. 
 
 <img src=":/Help_Icons/Data/Images/lightbulb.png"/>What about synesthesia? The most primitive and obvious case of it, which you deal with here by training:

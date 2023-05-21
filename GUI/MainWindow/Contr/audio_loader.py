@@ -1,3 +1,19 @@
+#    EarQuiz Frequencies. Software for technical ear training on equalization.
+#    Copyright (C) 2023, Gdaliy Garmiza.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 from GUI.Modes.PreviewMode import PreviewMode
 from GUI.Playlist.plsong import PlSong
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
@@ -35,7 +51,11 @@ class AudioLoad:
         if not self._songCanBeLoaded(Song):
             return
         reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)
-        reloaded_same_path = (self.parent.SourceAudio is not None and Path(self.parent.SourceAudio.path).samefile(Song.path))
+        try:
+            reloaded_same_path = (self.parent.SourceAudio is not None and
+                                  Path(self.parent.SourceAudio.path).samefile(Song.path))
+        except FileNotFoundError:
+            reloaded_same_path = False
         if not reloaded_same_path:
             self.parent.SRC.savePrevSourceAudioRange()
         self.parent.SourceAudio = Song

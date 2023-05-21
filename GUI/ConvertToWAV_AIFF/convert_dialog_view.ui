@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    EarQuiz Frequencies. Software for technical ear training on equalization.
+    Copyright (C) 2023, Gdaliy Garmiza.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
 <ui version="4.0">
  <class>ConvertToWAV_AIFF_Dialog</class>
  <widget class="QDialog" name="ConvertToWAV_AIFF_Dialog">
@@ -66,28 +83,28 @@
         <string>Sampling rate:</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
+        <item alignment="Qt::AlignLeft">
          <widget class="QRadioButton" name="SameAsOriginalBut">
           <property name="text">
            <string>Same as original</string>
           </property>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignLeft">
          <widget class="QRadioButton" name="SR441But">
           <property name="text">
            <string>44100 Hz</string>
           </property>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignLeft">
          <widget class="QRadioButton" name="SR48But">
           <property name="text">
            <string>48000 Hz</string>
           </property>
          </widget>
         </item>
-        <item>
+        <item alignment="Qt::AlignLeft">
          <widget class="QRadioButton" name="DivisibleBut">
           <property name="minimumSize">
            <size>
@@ -99,8 +116,8 @@
            <string notr="true">text-align: left;</string>
           </property>
           <property name="text">
-           <string>auto choose 44100 Hz or 48000 Hz (downsample to
-multiple where original samplerate is higher)
+           <string>Auto choose 44100 Hz or 48000 Hz (downsample
+to multiple where original samplerate is higher)
                                             </string>
           </property>
          </widget>
@@ -112,6 +129,12 @@ multiple where original samplerate is higher)
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>

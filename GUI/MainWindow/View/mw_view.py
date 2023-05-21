@@ -1,7 +1,23 @@
+#    EarQuiz Frequencies. Software for technical ear training on equalization.
+#    Copyright (C) 2023, Gdaliy Garmiza.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 import contextlib
 import datetime
 from functools import partial
-from PyQt6.QtCore import Qt, QObject, pyqtSignal
+from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QDockWidget
 from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
@@ -43,7 +59,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.EQSetView = EQSetView(self)
         self._setUpEQSettingsButtons()
         self.AudioDevicesView = AudioDevicesView(self)
-        self.restoreWindowView()
+        QTimer.singleShot(0, self.restoreWindowView)
         self._setWinViewActions()
         self.TransportPanelView = TransportPanelView(self)
         self.setUniActBut()
