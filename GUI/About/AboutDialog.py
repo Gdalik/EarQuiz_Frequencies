@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'C:\Users\gdali\PycharmProjects\EarQuiz_Frequencies\GUI\About\AboutDialog.ui'
+# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/About/AboutDialog.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.0
 #

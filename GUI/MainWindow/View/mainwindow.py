@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'C:\Users\gdali\PycharmProjects\EarQuiz_Frequencies\GUI\MainWindow\View\mainwindow.ui'
+# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/MainWindow/View/mainwindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.0
 #
@@ -44,7 +44,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 559, 538))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 559, 543))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -2016,7 +2016,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.scrollArea)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1115, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1115, 24))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(parent=self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -2700,7 +2700,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.SupportProject.sizePolicy().hasHeightForWidth())
         self.SupportProject.setSizePolicy(sizePolicy)
-        self.SupportProject.setMinimumSize(QtCore.QSize(269, 140))
+        self.SupportProject.setMinimumSize(QtCore.QSize(285, 140))
         self.SupportProject.setMaximumSize(QtCore.QSize(524287, 140))
         self.SupportProject.setBaseSize(QtCore.QSize(0, 0))
         self.SupportProject.setAllowedAreas(QtCore.Qt.DockWidgetArea.BottomDockWidgetArea|QtCore.Qt.DockWidgetArea.LeftDockWidgetArea|QtCore.Qt.DockWidgetArea.RightDockWidgetArea)
@@ -2713,7 +2713,7 @@ class Ui_MainWindow(object):
         self.ShareAppBox.setMinimumSize(QtCore.QSize(0, 0))
         self.ShareAppBox.setObjectName("ShareAppBox")
         self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.ShareAppBox)
-        self.horizontalLayout_9.setContentsMargins(-1, 0, -1, 5)
+        self.horizontalLayout_9.setContentsMargins(-1, 0, -1, 4)
         self.horizontalLayout_9.setSpacing(0)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
         self.Facebook = QtWidgets.QToolButton(parent=self.ShareAppBox)
@@ -2853,7 +2853,7 @@ class Ui_MainWindow(object):
         self.DonateBox = QtWidgets.QGroupBox(parent=self.dockWidgetContents_4)
         self.DonateBox.setObjectName("DonateBox")
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.DonateBox)
-        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 5)
+        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 4)
         self.horizontalLayout_8.setSpacing(0)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.BMC = QtWidgets.QToolButton(parent=self.DonateBox)
