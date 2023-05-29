@@ -1,9 +1,11 @@
 <img align="left" src=":/Logo/Icons/Logo/EarQuiz_Header.png"/>
 
 ## EarQuiz Frequencies  
-### &copy; 2023 Gdaliy Garmiza. [https://www.earquiz.org](https://www.earquiz.org)
+### &copy; 2023 Gdaliy Garmiza. [https://earquiz.org/EQ_Frequencies/](https://earquiz.org/EQ_Frequencies/)
 
 ----------------
+
+[Read Online Help >](https://earquiz.org/manuals/earquiz-frequencies-help/)
 
 ### Table of Contents
 
@@ -37,7 +39,7 @@ who wants to teach himself/herself how to adjust an audio system with equalizer 
 This application is based on (and deeply inspired by) the world-renowned *[Golden Ears](https://goldenearsaudio.com/)* method of David Moulton, 
 whose course is half dedicated to building this essential critical listening skill. The pre-built presets generally 
 follow his easy-to-difficult patterns, but you can also adjust the settings to go far beyond their boundaries.
-Educators in the audio industry may use this software to produce superb quality training and test materials for their students 
+Educators in the audio industry may use this software to [produce superb quality training and test materials](https://earquiz.org/manuals/earquiz-frequencies-help/making-training-audio/) for their students 
 almost in no time.
 
 The program is distributed under [GNU GPL v3 License](https://www.gnu.org/licenses/gpl-3.0.html). So, it is Free for any use, 
@@ -585,7 +587,7 @@ OGG audio files can be added to the **Playlist**, but they cannot be played with
 player backend neither on Windows nor on macOS. If you try to load an OGG file, you will get the error message
 with option to proceed with conversion to WAVE or AIFF. There is also a known backend issue with incorrect FLAC files'
 playback position on macOS, which may occur when starting playing from a non-zero position. To work around
-these format problems, you can convert audio files to WAVE or AIFF beforehand by selecting them and choosing 
+these format problems, you can [convert audio files to WAVE or AIFF](https://earquiz.org/manuals/earquiz-frequencies-help/converting-audio/) beforehand by selecting them and choosing 
 **File | Convert Selected Files...** from the main menu or the similar option from the right-click context menu of the **Playlist**.
 
 [< Back to "The Basic Training Method"](#the-basic-training-method)<br />

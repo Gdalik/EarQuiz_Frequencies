@@ -5,7 +5,7 @@ import webbrowser
 
 class SupportAppContr:
     def __init__(self, mw_contr):
-        self.sharedURL = 'https://earquiz.org/frequencies'
+        self.sharedURL = 'https://earquiz.org/EQ_Frequencies/'
         self.sharedURL_q = parse.quote(self.sharedURL, encoding='utf-8')
         self.sharedText = parse.quote("Great free software for technical ear "
                                       "training on equalization under Windows and macOS: ")

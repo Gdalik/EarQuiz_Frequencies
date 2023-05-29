@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_AboutDialog(object):
     def setupUi(self, AboutDialog):
         AboutDialog.setObjectName("AboutDialog")
-        AboutDialog.resize(350, 354)
+        AboutDialog.resize(354, 354)
         self.verticalLayout = QtWidgets.QVBoxLayout(AboutDialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.tabWidget = QtWidgets.QTabWidget(parent=AboutDialog)
@@ -110,11 +110,11 @@ class Ui_AboutDialog(object):
         self.CopyrightLab.setText(_translate("AboutDialog", "Copyright (c) 2023 by Gdaliy Garmiza"))
         self.DescriptionLab.setText(_translate("AboutDialog", "Software for technical ear training"))
         self.LicenseLab.setText(_translate("AboutDialog", "Licensed under <a href=\'https://www.gnu.org/licenses/gpl-3.0.html\'>GNU GPL v3</a>"))
-        self.WebsiteLab.setText(_translate("AboutDialog", "<a href=\'https://www.earquiz.org\'>www.earquiz.org</a>"))
+        self.WebsiteLab.setText(_translate("AboutDialog", "<a href=\'https://earquiz.org\'>https://earquiz.org</a>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.About), _translate("AboutDialog", "About"))
         self.creditsText.setHtml(_translate("AboutDialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'.AppleSystemUIFont\'; font-size:13pt;\"><br /></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Credits), _translate("AboutDialog", "Credits"))

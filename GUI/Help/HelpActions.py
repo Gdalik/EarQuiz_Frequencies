@@ -1,5 +1,5 @@
 import platform
-
+import webbrowser
 from PyQt6.QtCore import QObject
 from PyQt6.QtGui import QTextDocument
 from GUI.Help.QuickHelpWin import QuickHelpWin
@@ -16,6 +16,7 @@ class HelpActions(QObject):
         self.mw_contr = mw_contr
         self.mw_view = mw_contr.mw_view
         self.mw_view.actionGetting_Started.triggered.connect(self.onGettingStarted_called)
+        self.mw_view.actionOnline_Help.triggered.connect(self.onOnlineHelp_called)
         self.mw_contr.signals.audioSourcesRestored.connect(self.onAppStartup)
         self.GS_Win = QuickHelpWin(self.mw_view, title=f'Getting Started with EarQuiz Frequencies v{version()}',
                            showagain_settings_path='MessageBoxes/ShowGettingStartedOnStartup')
@@ -41,3 +42,6 @@ class HelpActions(QObject):
     def onAppStartup(self):
         if str2bool(Settings.value('MessageBoxes/ShowGettingStartedOnStartup', True)):
             self.onGettingStarted_called()
+
+    def onOnlineHelp_called(self):
+        webbrowser.open('https://earquiz.org/manuals/earquiz-frequencies-help/')
