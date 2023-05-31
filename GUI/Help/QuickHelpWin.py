@@ -40,7 +40,7 @@ class QuickHelpWin(QWidget):
         self.resize(600, 400)
 
         self.SearchLine = QLineEdit()
-        self.SearchLine.setPlaceholderText('Search...')
+        self.SearchLine.setPlaceholderText('Search')
         self.SearchLine.textChanged.connect(self.onSearchTextChanged)
         self.SearchLine.setClearButtonEnabled(True)
         actionActivateSearch = QAction(self)

@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="Getting_Started">
     <file>Data/Images/next-example.png</file>
+    <file>Data/Images/EQ_Frequencies_Help_QRcode.png</file>
     <file>Data/Images/sequential-playback.png</file>
     <file>Data/Images/C4_A4.png</file>
     <file>Data/Images/LearnMode.png</file>

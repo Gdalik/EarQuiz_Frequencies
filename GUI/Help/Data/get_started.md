@@ -6,6 +6,7 @@
 ----------------
 
 [Read Online Help >](https://earquiz.org/manuals/earquiz-frequencies-help/)
+<img align='right' src=":/Getting_Started/Data/Images/EQ_Frequencies_Help_QRcode.png"/>
 
 ### Table of Contents
 
