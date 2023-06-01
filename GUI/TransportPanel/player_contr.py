@@ -242,7 +242,7 @@ class PlayerContr(QMediaPlayer):
         message = f'{err}: {string}'
         if not sourcefile.exists:
             message = f'File "{sourcefile.path}" not found!'
-        elif err == self.Error.FormatError:
+        elif err == self.Error.FormatError and sourcefile.name != PN:
             message = f'The file "{sourcefile.name}" seems to be in a wrong format. Do you want to reformat it?'
             if sourcefile.name.endswith('.ogg'):
                 message = f'OGG file format is not supported by the current audio playback backend. ' \
