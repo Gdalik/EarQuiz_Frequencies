@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '/Users/gdaliymac/Desktop/EarQuiz Frequencies/GUI/About/AboutDialog.ui'
+# Form implementation generated from reading ui file 'D:\PyCharm Projects\EarQuiz Frequencies\GUI\About\AboutDialog.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.0
 #
@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_AboutDialog(object):
     def setupUi(self, AboutDialog):
         AboutDialog.setObjectName("AboutDialog")
-        AboutDialog.resize(354, 354)
+        AboutDialog.resize(355, 355)
         self.verticalLayout = QtWidgets.QVBoxLayout(AboutDialog)
         self.verticalLayout.setObjectName("verticalLayout")
         self.tabWidget = QtWidgets.QTabWidget(parent=AboutDialog)

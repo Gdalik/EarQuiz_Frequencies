@@ -88,8 +88,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>559</width>
-         <height>543</height>
+         <width>553</width>
+         <height>530</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -4632,7 +4632,7 @@ color: gray;
      <x>0</x>
      <y>0</y>
      <width>1115</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -4763,7 +4763,7 @@ color: gray;
    </property>
    <property name="minimumSize">
     <size>
-     <width>1107</width>
+     <width>0</width>
      <height>115</height>
     </size>
    </property>
@@ -7744,7 +7744,7 @@ background: rgba(118, 214, 255, 85)
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="ModeButtonGroup"/>
   <buttongroup name="AudioSourceButtonGroup"/>
+  <buttongroup name="ModeButtonGroup"/>
  </buttongroups>
 </ui>
