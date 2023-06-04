@@ -50,7 +50,12 @@ class PlayerContr(QMediaPlayer):
         self.mw_view.AudioDevicesGroup.triggered.connect(self.onAudioDeviceChecked)
 
     def loadCurrentAudio(self, play_after=True):
-        AudioToLoad = QUrl.fromLocalFile(self.mw_contr.CurrentAudio)
+        filepath = self.mw_contr.CurrentAudio
+
+        # Workaround for PyQt6 QMediaPlayer issue with remote files' playback on Windows:
+        filepath = f'file:{filepath}' if platform.system() == 'Windows' else filepath
+
+        AudioToLoad = QUrl.fromLocalFile(filepath)
         if self.source() == AudioToLoad:
             return
         self.clearSource()

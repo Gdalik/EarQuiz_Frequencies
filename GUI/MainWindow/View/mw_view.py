@@ -16,6 +16,7 @@
 
 import contextlib
 import datetime
+import platform
 from functools import partial
 from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction
@@ -148,7 +149,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def setMaximalistView(self):
         self.showMaximized()
-        self.showFullScreen()
+        if platform.system() == 'Darwin':
+            self.showFullScreen()
         self.ExScoreInfo.show()
         self.Eq_Settings.show()
         self.SupportProject.show()
@@ -227,8 +229,9 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def _restoreDockWidget(obj: QDockWidget):
         Settings.beginGroup('MainWindow')
         with contextlib.suppress(TypeError, KeyError):
-            obj.setVisible(Settings.value(obj.objectName())['Visible'])
-            obj.setFloating(Settings.value(obj.objectName())['Floating'])
+            if obj.objectName() != 'AudioSource':
+                obj.setVisible(Settings.value(obj.objectName())['Visible'])
+                obj.setFloating(Settings.value(obj.objectName())['Floating'])
             obj.setGeometry(Settings.value(obj.objectName())['Geometry'])
         Settings.endGroup()
 

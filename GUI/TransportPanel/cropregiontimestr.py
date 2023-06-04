@@ -46,6 +46,8 @@ class CropRegionTimestr:
     def setReadOnly(self, arg: bool):
         self.StartTimeEdit.setReadOnly(arg)
         self.EndTimeEdit.setReadOnly(arg)
+        self.StartTimeEdit.setEnabled(not arg)
+        self.EndTimeEdit.setEnabled(not arg)
 
     def setChangesEnabled(self, arg: bool):
         self.parent.StartPointBut.setEnabled(arg)

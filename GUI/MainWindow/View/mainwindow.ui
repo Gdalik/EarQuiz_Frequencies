@@ -4780,7 +4780,7 @@ color: gray;
     </size>
    </property>
    <property name="toolTip">
-    <string>Save slice length as default for current type of audio source</string>
+    <string/>
    </property>
    <property name="statusTip">
     <string/>
@@ -5221,6 +5221,12 @@ border-radius: 4px;
            </property>
            <property name="acceptDrops">
             <bool>true</bool>
+           </property>
+           <property name="toolTip">
+            <string>Adjust the volume level</string>
+           </property>
+           <property name="statusTip">
+            <string/>
            </property>
            <property name="styleSheet">
             <string notr="true">QSlider:horizontal {
@@ -7744,7 +7750,7 @@ background: rgba(118, 214, 255, 85)
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="AudioSourceButtonGroup"/>
   <buttongroup name="ModeButtonGroup"/>
+  <buttongroup name="AudioSourceButtonGroup"/>
  </buttongroups>
 </ui>

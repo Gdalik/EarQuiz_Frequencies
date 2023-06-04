@@ -16,7 +16,6 @@
 
 from PyQt6.QtCore import QObject, QTimer
 from PyQt6.QtWidgets import QSlider
-
 from Model.eq_patterns import EQPatterns
 
 

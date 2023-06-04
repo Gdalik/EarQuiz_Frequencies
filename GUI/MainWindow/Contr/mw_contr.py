@@ -227,7 +227,7 @@ class MainWindowContr(QObject):
                 self.CurrentMode = UniMode(self, contrEnabled=self.LastMode.name != 'Test')
         except InterruptedException:
             self.mw_view.actionPreview_Mode.setChecked(True)
-        self._pushBackToPreview()
+        QTimer.singleShot(0, self._pushBackToPreview)
         self.LastMode = self.CurrentMode
 
     def isErrorInProcess(self, process: ProcTrackControl):
