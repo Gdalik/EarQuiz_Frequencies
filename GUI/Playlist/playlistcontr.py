@@ -330,8 +330,6 @@ class PlaylistContr(QObject):
             urls_to_ins = [QUrl.fromLocalFile(link) for link in launch_files_onstart] if launch_files_onstart is not None else None
             if urls_to_ins is not None:
                 urls = urls_to_ins + urls
-            '''if launch_file_onstart is not None:
-                urls.insert(0, QUrl.fromLocalFile(launch_file_onstart))'''
             if urls:
                 self.addTracks(urls)
 
@@ -340,4 +338,4 @@ class PlaylistContr(QObject):
         self.playlistModel.layoutAboutToBeChanged.emit()
         self.playlistModel.playlistdata = new_pl
         self.playlistModel.layoutChanged.emit()
-        self.onSelectionChanged()
+        self.PlaylistView.clearSelection()

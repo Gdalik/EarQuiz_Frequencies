@@ -79,7 +79,7 @@ class AudioSliderView:
 class AudioCursor(pg.InfiniteLine):
     def __init__(self, parent):  # parent: AudioSliderView
         super().__init__(movable=False)
-        self.setPen(style=Qt.PenStyle.SolidLine, color='red', width=8)
+        self.showEnabled(True)
         self.setHoverPen(style=Qt.PenStyle.SolidLine, color='darkred', width=8)
         self.setAngle(90)
         self.setPos(0)
@@ -90,6 +90,12 @@ class AudioCursor(pg.InfiniteLine):
         self.blockSignals(True)
         self.setPos(int(s * 1000))
         self.blockSignals(False)
+
+    def showEnabled(self, arg: bool):
+        if arg:
+            self.setPen(style=Qt.PenStyle.SolidLine, color='red', width=8)
+        else:
+            self.setPen(style=Qt.PenStyle.SolidLine, color=QColor(170, 85, 85), width=8)
 
 
 class CropRegion(pg.LinearRegionItem):

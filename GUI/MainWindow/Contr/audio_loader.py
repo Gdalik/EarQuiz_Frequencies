@@ -33,11 +33,22 @@ class AudioLoad:
             return False
         if hasattr(Song, 'file_properties'):
             Song.__delattr__('file_properties')
+        self._showNoLoadReasons(Song)
         return bool(
             Song.duration >= MinAudioDuration
             and Song.exists
             and Song.samplerate >= 44100
         )
+
+    def _showNoLoadReasons(self, Song: PlSong):
+        if not Song.exists:
+            return
+        if Song.duration < MinAudioDuration:
+            self.mw_view.status.WarnLabel.update(shown_text=f'Audio file duration cannot be less than '
+                                                            f'{MinAudioDuration}sec!')
+        elif Song.samplerate < 44100:
+            self.mw_view.status.WarnLabel.update(
+                shown_text='Audio file sampling rate cannot be less than 44.1kHz!')
 
     def _switchToPreview(self):
         if self.parent.CurrentMode.name == 'Preview':

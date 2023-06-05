@@ -26,6 +26,7 @@ class StatusBar(QStatusBar):
         self.setFixedHeight(28)
         self._setLayout()
         self._setContainer()
+        self._setWarnLabel()
         self._setTempLabel()
         self._setEQStateLabel()
         self._setFreqGainLabel()
@@ -57,6 +58,10 @@ class StatusBar(QStatusBar):
     def _setTempLabel(self):
         self.TempLabel = TempLabel(self)
         self.statusLayout.addWidget(self.TempLabel)
+
+    def _setWarnLabel(self):
+        self.WarnLabel = WarningLabel(self)
+        self.statusLayout.addWidget(self.WarnLabel)
 
     def showNormalization(self, value: int or float):
         self.NormLabel.update(value)
@@ -132,3 +137,9 @@ class TempLabel(QLabel):
         self.setText(self.shown_text)
         if time != -1:
             QTimer.singleShot(self.time, self.clear)
+
+
+class WarningLabel(TempLabel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.setStyleSheet('color: red;')

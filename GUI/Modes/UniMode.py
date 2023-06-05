@@ -92,6 +92,7 @@ class UniMode:
 
     def enableTimeSettingsChanges(self, arg: bool):
         self.view.TransportPanelView.AudioSliderView.Cursor.setMovable(arg)
+        self.view.TransportPanelView.AudioSliderView.Cursor.showEnabled(arg)
         self.view.TransportPanelView.AudioSliderView.CropRegion.setMovable(arg)
         self.view.TransportPanelView.CropRegionTstr.setChangesEnabled(arg)
         self.TimeSettingsChangesEnabled = arg
