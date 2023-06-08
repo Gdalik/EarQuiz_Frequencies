@@ -6,7 +6,7 @@
 
 `EarQuiz Frequencies` is a software for technical ear training on equalization. Its main goal is to help musicians and all kinds of audio professionals or students (producers, recording/mixing/mastering/live sound engineers, audio designers, etc.) develop and master the ability to aurally recognize frequency bands. In general, anybody who wants to teach himself/herself how to adjust an audio system with equalizer by ear consciously may find it useful.
 
-This application is based on the world-renowned [Golden Ears](https://goldenearsaudio.com/) method of David Moulton, whose course is half dedicated to building this essential critical listening skill. Built-in presets usually follow his easy-to-difficult patterns, but a user can also change the settings to do more than what is already available. This software may be used by educators in the audio industry to produce superb quality training and test materials for their students.
+This application is based on the world-renowned [Golden Ears](https://goldenearsaudio.com/) method of David Moulton, whose course is half dedicated to building this essential critical listening skill. Built-in presets are similar to his easy-to-difficult patterns, but a user can also change the settings to do more than what is already available. This software may be used by educators in the audio industry to produce superb quality training and test materials for their students.
 
 ## Features
 
@@ -26,7 +26,7 @@ This application is based on the world-renowned [Golden Ears](https://goldenears
 - Reading M3U, M3U8, PLS, XSPF playlists supported.
 - Exporting M3U and M3U8 playlists supported.
 - Convenient and flexible playlist navigation.
-- And other features...
+- And other features (see [EarQuiz Frequencies Help](https://earquiz.org/manuals/earquiz-frequencies-help/))...
 
 ## Installation
 
