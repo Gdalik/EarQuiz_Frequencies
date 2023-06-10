@@ -44,3 +44,6 @@ After that, you can start the application with:
 
 `python -m main`
 
+## Building from Source
+
+You can build your own executables both for Windows and macOS from this codebase.
