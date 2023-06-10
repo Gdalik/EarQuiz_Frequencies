@@ -40,3 +40,7 @@ The repository doesn't contain any pre-compiled dependencies, so they should be 
 
 `pip install -r requirements.txt`
 
+After that, you can start the application with:
+
+`python -m main`
+
