@@ -46,4 +46,17 @@ After that, you can start the application with:
 
 ## Building from Source
 
-You can build your own executables both for Windows and macOS from this codebase.
+You can build executables yourself both for Windows and macOS from this codebase.
+
+1. Use the platform you are going to build on. You cannot make executables for Windows under macOS, and creating a macOS bundle 
+under Windows is not possible as well.
+2. Make sure, the relevant version of Python is installed, a virtual environment for the project is created, all the requirements are installed,
+and you can run the application from the source code, using the interpreter.
+2. With the activated virtual environment, install [PyInstaller](https://pyinstaller.org/) using the package manager:<br />
+`pip install -U pyinstaller`
+3. On macOS, run:<br />
+`pyinstaller macos_build.spec`<br />
+On Windows, run:<br />
+`pyinstaller windows_build.spec`
+
+The bundled application should now be available in the *dist* folder.
