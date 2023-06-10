@@ -30,7 +30,13 @@ This application is based on the world-renowned [Golden Ears](https://goldenears
 
 ## Installation
 
-To use the application out of the box, you can just download the distribution package for your OS (Windows or macOS), run it and follow the installation process.
+*To use the application out of the box, you can just download the distribution package for your OS (Windows or macOS), run it and follow the installation process.*
 
 You can also clone (download) this repository and launch the program from [Python](https://www.python.org/). It has been tested with Python 3.9 and Python 3.10.
-So, make sure the proper version is installed on your computer.
+So, make sure the proper version of interpreter is installed on your computer.
+
+The repository doesn't contain any pre-compiled dependencies, so they should be installed before the application execution. Though it is technically possible to use the "base" Python environment,
+[creating a separate virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment) for the project and all its packages is highly recommended. Then, once you have [activated the project's virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#activating-a-virtual-environment), installing all the requirements using the package manager is as simple as:
+
+`pip install -r requirements.txt`
+
