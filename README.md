@@ -46,17 +46,39 @@ After that, you can start the application with:
 
 ## Building from Source
 
-You can build executables yourself both for Windows and macOS from this codebase.
+You can build executables yourself both for Windows and for macOS from this codebase.
 
 1. Use the platform you are going to build on. You cannot make executables for Windows under macOS, and creating a macOS bundle 
 under Windows is not possible as well.
 2. Make sure, the relevant version of Python is installed, a virtual environment for the project is created, all the requirements are installed,
 and you can run the application from the source code, using the interpreter.
-2. With the activated virtual environment, install [PyInstaller](https://pyinstaller.org/) using the package manager:<br />
-`pip install -U pyinstaller`
-3. On macOS, run:<br />
-`pyinstaller macos_build.spec`<br />
-On Windows, run:<br />
+2. With the activated virtual environment, install [PyInstaller](https://pyinstaller.org/) using the package manager:<br /><br />
+`pip install -U pyinstaller`<br /><br />
+3. On macOS, run:<br /><br />
+`pyinstaller macos_build.spec`<br /><br />
+On Windows, run:<br /><br />
 `pyinstaller windows_build.spec`
 
 The bundled application should now be available in the *dist* folder.
+
+## License
+
+`EarQuiz Frequencies` is Copyright &copy; 2023 by Gdaliy Garmiza.<br />
+`EarQuiz Frequencies` is licensed under the [GNU General Public License v3](https://github.com/Gdalik/EarQuiz_Frequencies/blob/master/LICENSE).
+
+This application uses the following open source libraries:
+- [PyQt6](https://www.riverbankcomputing.com/software/pyqt/)<br />
+Copyright &copy; 2021-2023 Riverbank Computing Limited<br />
+License: [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html)
+- [Pedalboard](https://spotify.github.io/pedalboard/index.html#)<br />
+Copyright &copy; 2021-2022 Spotify AB<br />
+License: [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html)
+- [NumPy](https://numpy.org/)<br />
+Copyright &copy; 2005-2023 NumPy Developers<br />
+License: [BSD 3-Clause](https://opensource.org/license/bsd-3-clause/)
+- [PyQtGraph](https://www.pyqtgraph.org/)<br />
+Copyright &copy; 2012 University of North Carolina at Chapel Hill<br />
+License: [MIT](https://opensource.org/license/mit/)
+- [tendo](https://pypi.org/project/tendo/)<br />
+Copyright &copy; 2010-2022 Sorin Sbarnea<br />
+License: [Python Software Foundation License](https://docs.python.org/3/license.html#psf-license)
