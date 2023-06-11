@@ -96,6 +96,14 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         pl_stats_font.setPointSize(8)
         self.PL_Stats_Lab.setFont(pl_stats_font)
         self.VolumeSlider.setStyleSheet("")
+        next_example_font = self.NextExample.font()
+        next_example_font.setPointSize(8)
+        self.NextExample.setFont(next_example_font)
+        self.NextExample_TP.setFont(next_example_font)
+        self.NextExample.setMinimumHeight(33)
+        self.NextExample_TP.setMinimumHeight(33)
+        self.NextExample.setMinimumWidth(33)
+        self.NextExample_TP.setMinimumWidth(33)
 
     def _setWinViewActions(self):
         self.actionMinimal.triggered.connect(self.setMinimalistView)
