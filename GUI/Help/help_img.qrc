@@ -14,6 +14,7 @@
   </qresource>
   <qresource prefix="Help_Icons">
     <file>Data/Images/lightbulb.png</file>
+    <file>Data/Images/settings_16.png</file>
     <file>Data/Images/arrows-right-and-left-filled-triangles.png</file>
     <file>Data/Images/clear.png</file>
     <file>Data/Images/media-skip-backward_16.png</file>

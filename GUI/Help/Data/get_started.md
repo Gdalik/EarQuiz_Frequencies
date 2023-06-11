@@ -264,8 +264,8 @@ return the first one to its initial state and reconsider the input.
 <br />
 
 #### Equalization Settings
-<a id="equalization-settings">You can open the **EQ Settings**</a> by clicking the button with gear icon in the top-right corner
-of the EQ or by selecting **View | EQ Settings** from the main menu.
+<a id="equalization-settings">You can open the **EQ Settings**</a> by clicking the button with <img src=":/Help_Icons/Data/Images/settings_16.png"/>
+gear icon in the top-right corner of the EQ or by selecting **View | EQ Settings** from the main menu.
 They consist of two parameters: 
 1. *Frequency Gain*, that determines an amount by which the center frequency of filter is boosted or cut.
 2. *Bandwidth*/*Q factor*, that are used to set the width of boosted or cut frequency band.

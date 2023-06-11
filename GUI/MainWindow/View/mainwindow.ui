@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    EarQuiz Frequencies. Software for technical ear training on equalization.
+    Copyright (C) 2023, Gdaliy Garmiza.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
@@ -88,8 +105,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>553</width>
-         <height>530</height>
+         <width>559</width>
+         <height>543</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -356,6 +373,8 @@ background: rgba(118, 214, 255, 85)
             <property name="styleSheet">
              <string notr="true">QToolButton{
 border: None;
+color: blue;
+font-weight: bold;
 }
 QToolButton:hover{
 background: rgba(192, 192, 192, 128);
@@ -364,10 +383,13 @@ border-radius: 4px;
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85);
+}
+QToolButton:disabled{
+color: gray;
 }</string>
             </property>
             <property name="text">
-             <string>Next Example</string>
+             <string notr="true">Next!</string>
             </property>
             <property name="icon">
              <iconset resource="../../icons.qrc">
@@ -378,6 +400,12 @@ background: rgba(118, 214, 255, 85);
               <width>26</width>
               <height>26</height>
              </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -510,7 +538,7 @@ font-weight: bold</string>
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="tabsClosable">
            <bool>false</bool>
@@ -4632,7 +4660,7 @@ color: gray;
      <x>0</x>
      <y>0</y>
      <width>1115</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -5093,6 +5121,8 @@ border-radius: 4px;
            <property name="styleSheet">
             <string notr="true">QToolButton{
 border: None;
+color: blue;
+font-weight: bold;
 }
 QToolButton:hover{
 background: rgba(192, 192, 192, 128);
@@ -5101,10 +5131,13 @@ border-radius: 4px;
 QToolButton:pressed{
 border: 1px inset gray;
 background: rgba(118, 214, 255, 85);
+}
+QToolButton:disabled{
+color: gray;
 }</string>
            </property>
            <property name="text">
-            <string>Next Example</string>
+            <string notr="true">Next!</string>
            </property>
            <property name="icon">
             <iconset resource="../../icons.qrc">
@@ -5115,6 +5148,9 @@ background: rgba(118, 214, 255, 85);
              <width>26</width>
              <height>26</height>
             </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
            </property>
           </widget>
          </item>
@@ -7401,6 +7437,9 @@ background: rgba(118, 214, 255, 85)
    <property name="text">
     <string>Next Example</string>
    </property>
+   <property name="iconText">
+    <string>Next!</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+Return</string>
    </property>
@@ -7750,7 +7789,7 @@ background: rgba(118, 214, 255, 85)
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="ModeButtonGroup"/>
   <buttongroup name="AudioSourceButtonGroup"/>
+  <buttongroup name="ModeButtonGroup"/>
  </buttongroups>
 </ui>
