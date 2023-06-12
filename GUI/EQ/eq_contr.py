@@ -15,7 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from PyQt6.QtCore import QObject, QTimer
-from PyQt6.QtWidgets import QSlider, QAbstractSlider
+from PyQt6.QtWidgets import QSlider
 from Model.eq_patterns import EQPatterns
 from GUI.globals import SliderAmplitude as SA
 from functools import partial
