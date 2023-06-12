@@ -100,12 +100,7 @@ class EQContr(QObject):
 
     @staticmethod
     def _slider_value(v: int):
-        if v > 0:
-            return 1
-        elif v < 0:
-            return -1
-        else:
-            return 0
+        return int(v / abs(v)) if v != 0 else 0
 
     def getEQValues(self):
         if self.EQ_view.Filters is None:
