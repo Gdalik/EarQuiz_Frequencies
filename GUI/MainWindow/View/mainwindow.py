@@ -268,18 +268,18 @@ class Ui_MainWindow(object):
         self.EQ1_31.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
-"\n"
-"}")
+"}\n"
+"")
         self.EQ1_31.setMinimum(-1)
         self.EQ1_31.setMaximum(1)
         self.EQ1_31.setPageStep(1)
@@ -309,18 +309,19 @@ class Ui_MainWindow(object):
         self.EQ1_63.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ1_63.setMinimum(-1)
         self.EQ1_63.setMaximum(1)
         self.EQ1_63.setPageStep(1)
@@ -346,21 +347,24 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ1_125.setFont(font)
+        self.EQ1_125.setMouseTracking(False)
+        self.EQ1_125.setTabletTracking(False)
         self.EQ1_125.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ1_125.setMinimum(-1)
         self.EQ1_125.setMaximum(1)
         self.EQ1_125.setPageStep(1)
@@ -389,18 +393,19 @@ class Ui_MainWindow(object):
         self.EQ1_250.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ1_250.setMinimum(-1)
         self.EQ1_250.setMaximum(1)
         self.EQ1_250.setPageStep(1)
@@ -429,18 +434,19 @@ class Ui_MainWindow(object):
         self.EQ1_500.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ1_500.setMinimum(-1)
         self.EQ1_500.setMaximum(1)
         self.EQ1_500.setPageStep(1)
@@ -470,18 +476,19 @@ class Ui_MainWindow(object):
         self.EQ1_1000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ1_1000.setMinimum(-1)
         self.EQ1_1000.setMaximum(1)
         self.EQ1_1000.setPageStep(1)
@@ -510,18 +517,19 @@ class Ui_MainWindow(object):
         self.EQ1_2000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ1_2000.setMinimum(-1)
         self.EQ1_2000.setMaximum(1)
         self.EQ1_2000.setPageStep(1)
@@ -550,18 +558,19 @@ class Ui_MainWindow(object):
         self.EQ1_4000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ1_4000.setMinimum(-1)
         self.EQ1_4000.setMaximum(1)
         self.EQ1_4000.setPageStep(1)
@@ -590,18 +599,19 @@ class Ui_MainWindow(object):
         self.EQ1_8000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ1_8000.setMinimum(-1)
         self.EQ1_8000.setMaximum(1)
         self.EQ1_8000.setPageStep(1)
@@ -630,18 +640,19 @@ class Ui_MainWindow(object):
         self.EQ1_16000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ1_16000.setMinimum(-1)
         self.EQ1_16000.setMaximum(1)
         self.EQ1_16000.setPageStep(1)
@@ -716,17 +727,18 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_25.setFont(font)
+        self.EQ2_25.setMouseTracking(False)
         self.EQ2_25.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(191, 191, 191);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
@@ -760,18 +772,19 @@ class Ui_MainWindow(object):
         self.EQ2_50.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_50.setMinimum(-1)
         self.EQ2_50.setMaximum(1)
         self.EQ2_50.setPageStep(1)
@@ -800,18 +813,19 @@ class Ui_MainWindow(object):
         self.EQ2_100.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_100.setMinimum(-1)
         self.EQ2_100.setMaximum(1)
         self.EQ2_100.setPageStep(1)
@@ -840,14 +854,14 @@ class Ui_MainWindow(object):
         self.EQ2_200.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
@@ -880,18 +894,19 @@ class Ui_MainWindow(object):
         self.EQ2_400.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_400.setMinimum(-1)
         self.EQ2_400.setMaximum(1)
         self.EQ2_400.setPageStep(1)
@@ -921,18 +936,19 @@ class Ui_MainWindow(object):
         self.EQ2_800.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_800.setMinimum(-1)
         self.EQ2_800.setMaximum(1)
         self.EQ2_800.setPageStep(1)
@@ -961,18 +977,19 @@ class Ui_MainWindow(object):
         self.EQ2_1600.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_1600.setMinimum(-1)
         self.EQ2_1600.setMaximum(1)
         self.EQ2_1600.setPageStep(1)
@@ -1001,18 +1018,19 @@ class Ui_MainWindow(object):
         self.EQ2_3150.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_3150.setMinimum(-1)
         self.EQ2_3150.setMaximum(1)
         self.EQ2_3150.setPageStep(1)
@@ -1041,18 +1059,19 @@ class Ui_MainWindow(object):
         self.EQ2_6300.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_6300.setMinimum(-1)
         self.EQ2_6300.setMaximum(1)
         self.EQ2_6300.setPageStep(1)
@@ -1081,18 +1100,19 @@ class Ui_MainWindow(object):
         self.EQ2_12500.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_12500.setMinimum(-1)
         self.EQ2_12500.setMaximum(1)
         self.EQ2_12500.setPageStep(1)
@@ -1140,18 +1160,19 @@ class Ui_MainWindow(object):
         self.EQ2_31.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_31.setMinimum(-1)
         self.EQ2_31.setMaximum(1)
         self.EQ2_31.setPageStep(1)
@@ -1180,18 +1201,19 @@ class Ui_MainWindow(object):
         self.EQ2_63.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_63.setMinimum(-1)
         self.EQ2_63.setMaximum(1)
         self.EQ2_63.setPageStep(1)
@@ -1220,18 +1242,19 @@ class Ui_MainWindow(object):
         self.EQ2_125.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_125.setMinimum(-1)
         self.EQ2_125.setMaximum(1)
         self.EQ2_125.setPageStep(1)
@@ -1260,18 +1283,19 @@ class Ui_MainWindow(object):
         self.EQ2_250.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_250.setMinimum(-1)
         self.EQ2_250.setMaximum(1)
         self.EQ2_250.setPageStep(1)
@@ -1300,18 +1324,19 @@ class Ui_MainWindow(object):
         self.EQ2_500.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_500.setMinimum(-1)
         self.EQ2_500.setMaximum(1)
         self.EQ2_500.setPageStep(1)
@@ -1341,18 +1366,19 @@ class Ui_MainWindow(object):
         self.EQ2_1000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_1000.setMinimum(-1)
         self.EQ2_1000.setMaximum(1)
         self.EQ2_1000.setPageStep(1)
@@ -1381,18 +1407,19 @@ class Ui_MainWindow(object):
         self.EQ2_2000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_2000.setMinimum(-1)
         self.EQ2_2000.setMaximum(1)
         self.EQ2_2000.setPageStep(1)
@@ -1421,18 +1448,19 @@ class Ui_MainWindow(object):
         self.EQ2_4000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_4000.setMinimum(-1)
         self.EQ2_4000.setMaximum(1)
         self.EQ2_4000.setPageStep(1)
@@ -1461,18 +1489,19 @@ class Ui_MainWindow(object):
         self.EQ2_8000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_8000.setMinimum(-1)
         self.EQ2_8000.setMaximum(1)
         self.EQ2_8000.setPageStep(1)
@@ -1501,18 +1530,19 @@ class Ui_MainWindow(object):
         self.EQ2_16000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_16000.setMinimum(-1)
         self.EQ2_16000.setMaximum(1)
         self.EQ2_16000.setPageStep(1)
@@ -1560,18 +1590,19 @@ class Ui_MainWindow(object):
         self.EQ2_40.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_40.setMinimum(-1)
         self.EQ2_40.setMaximum(1)
         self.EQ2_40.setPageStep(1)
@@ -1600,18 +1631,19 @@ class Ui_MainWindow(object):
         self.EQ2_80.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_80.setMinimum(-1)
         self.EQ2_80.setMaximum(1)
         self.EQ2_80.setPageStep(1)
@@ -1640,18 +1672,19 @@ class Ui_MainWindow(object):
         self.EQ2_160.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_160.setMinimum(-1)
         self.EQ2_160.setMaximum(1)
         self.EQ2_160.setPageStep(1)
@@ -1680,18 +1713,19 @@ class Ui_MainWindow(object):
         self.EQ2_315.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_315.setMinimum(-1)
         self.EQ2_315.setMaximum(1)
         self.EQ2_315.setPageStep(1)
@@ -1720,18 +1754,19 @@ class Ui_MainWindow(object):
         self.EQ2_630.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_630.setMinimum(-1)
         self.EQ2_630.setMaximum(1)
         self.EQ2_630.setPageStep(1)
@@ -1761,18 +1796,19 @@ class Ui_MainWindow(object):
         self.EQ2_1250.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_1250.setMinimum(-1)
         self.EQ2_1250.setMaximum(1)
         self.EQ2_1250.setPageStep(1)
@@ -1801,18 +1837,19 @@ class Ui_MainWindow(object):
         self.EQ2_2500.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_2500.setMinimum(-1)
         self.EQ2_2500.setMaximum(1)
         self.EQ2_2500.setPageStep(1)
@@ -1841,18 +1878,19 @@ class Ui_MainWindow(object):
         self.EQ2_5000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_5000.setMinimum(-1)
         self.EQ2_5000.setMaximum(1)
         self.EQ2_5000.setPageStep(1)
@@ -1881,18 +1919,19 @@ class Ui_MainWindow(object):
         self.EQ2_10000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(15, 128, 255);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"
-"}")
+"}\n"
+"")
         self.EQ2_10000.setMinimum(-1)
         self.EQ2_10000.setMaximum(1)
         self.EQ2_10000.setPageStep(1)
@@ -1919,17 +1958,18 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setKerning(True)
         self.EQ2_20000.setFont(font)
+        self.EQ2_20000.setMouseTracking(False)
         self.EQ2_20000.setStyleSheet(".QSlider::groove:vertical {\n"
 "    border: 1px solid #262626;\n"
 "    background: rgb(191, 191, 191);\n"
-"    width: 5px;\n"
+"    width: 8px;\n"
 "    margin: 0 12px;\n"
 "}\n"
 "\n"
 ".QSlider::handle:vertical {\n"
 "    background: white;\n"
 "    border: 2px solid rgb(191, 191, 191);\n"
-"    height: 5px;\n"
+"    height: 7px;\n"
 "    width: 10px;\n"
 "    margin: 0px -5px\n"
 "\n"

@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    EarQuiz Frequencies. Software for technical ear training on equalization.
+    Copyright (C) 2023, Gdaliy Garmiza.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
@@ -659,18 +676,18 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
-
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -750,18 +767,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -834,22 +852,29 @@ background: rgba(118, 214, 255, 85)
                      <kerning>true</kerning>
                     </font>
                    </property>
+                   <property name="mouseTracking">
+                    <bool>false</bool>
+                   </property>
+                   <property name="tabletTracking">
+                    <bool>false</bool>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -926,18 +951,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -1014,18 +1040,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -1108,18 +1135,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -1196,18 +1224,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -1284,18 +1313,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -1372,18 +1402,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -1460,18 +1491,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -1686,18 +1718,21 @@ background: rgba(118, 214, 255, 85)
                      <kerning>true</kerning>
                     </font>
                    </property>
+                   <property name="mouseTracking">
+                    <bool>false</bool>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(191, 191, 191);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
@@ -1781,18 +1816,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -1869,18 +1905,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -1957,14 +1994,14 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
@@ -2045,18 +2082,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -2139,18 +2177,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -2227,18 +2266,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -2315,18 +2355,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -2403,18 +2444,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -2491,18 +2533,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -2647,18 +2690,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -2735,18 +2779,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -2823,18 +2868,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -2911,18 +2957,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -2999,18 +3046,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -3093,18 +3141,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -3181,18 +3230,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -3269,18 +3319,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -3357,18 +3408,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -3445,18 +3497,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -3601,18 +3654,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -3689,18 +3743,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -3777,18 +3832,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -3865,18 +3921,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -3953,18 +4010,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -4047,18 +4105,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -4135,18 +4194,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -4223,18 +4283,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -4311,18 +4372,19 @@ background: rgba(118, 214, 255, 85)
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(15, 128, 255);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 
-}</string>
+}
+</string>
                    </property>
                    <property name="minimum">
                     <number>-1</number>
@@ -4398,18 +4460,21 @@ background: rgba(118, 214, 255, 85)
                      <kerning>true</kerning>
                     </font>
                    </property>
+                   <property name="mouseTracking">
+                    <bool>false</bool>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true">.QSlider::groove:vertical {
     border: 1px solid #262626;
 	background: rgb(191, 191, 191);
-	width: 5px;
+	width: 8px;
 	margin: 0 12px;
 }
 
 .QSlider::handle:vertical {
     background: white;
     border: 2px solid rgb(191, 191, 191);
-    height: 5px;
+    height: 7px;
     width: 10px;
 	margin: 0px -5px
 

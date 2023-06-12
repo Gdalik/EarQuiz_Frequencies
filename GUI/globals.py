@@ -19,6 +19,7 @@ from definitions import Settings
 default_pn_slice_length = None
 default_audio_slice_length = None
 
+SliderAmplitude = 2
 
 def defaultSliceLenUpd():
     global default_pn_slice_length

@@ -19,7 +19,7 @@ from dataclasses import dataclass, field
 from PyQt6.QtCore import QObject
 from PyQt6.QtGui import QWheelEvent
 from PyQt6.QtWidgets import QSlider, QLabel
-
+from GUI.globals import SliderAmplitude as SA
 from Utilities.common_calcs import findAdjacentEl
 
 
@@ -31,11 +31,11 @@ class EqView(QObject):
         self.TabWidget.setTabText(0, '10-Band Equalizer')
         self.TabWidget.setTabText(1, '30-Band Equalizer')
         self.handleStyle = '.QSlider::handle:vertical{background: white; border: 2px solid rgb(15, 128, 255); ' \
-                           'height: 5px; width: 10px; margin: 0px -5px}'
+                           'height: 7px; width: 10px; margin: 0px -5px;}'
         self.disabledHandleStyle = '.QSlider::handle:vertical{background: white; ' \
-                                   'border: 2px solid rgb(191, 191, 191); height: 5px; width: 10px; margin: 0px -5px}'
+                                   'border: 2px solid rgb(191, 191, 191); height: 7px; width: 10px; margin: 0px -5px}'
         self.basicSliderStyleNoHandle = '.QSlider::groove:vertical{border: 1px solid #262626; ' \
-                                        'background: rgb(191, 191, 191); width: 5px; margin: 0 12px;}'
+                                        'background: rgb(191, 191, 191); width: 8px; margin: 0 12px;}'
         self.basicSliderStyle = self.basicSliderStyleNoHandle + self.handleStyle
         self.disabledSliderStyle = self.basicSliderStyle + self.disabledHandleStyle
         self._DisableAdjacentFiltersMode = False
@@ -76,9 +76,9 @@ class EqView(QObject):
         _slider_style = F.Slider.styleSheet()
         norm_handle_style = self.disabledHandleStyle if self.disabledHandleStyle in _slider_style else self.handleStyle
         green_slider_set = '.QSlider::groove:vertical{margin: 0 12px; background: green; ' \
-                           'width: 5px;border: 1px solid #262626}'
+                           'width: 8px;border: 1px solid #262626}'
         green_handle_style = '.QSlider::handle:vertical{background: white; border: 2px solid green; ' \
-                             'height: 5px; width: 10px; margin: 0px -5px}'
+                             'height: 7px; width: 10px; margin: 0px -5px}'
         handle_style = green_handle_style if highlightHandle else norm_handle_style
         slider_style = f'{handle_style}{green_slider_set}'
         F.Slider.setStyleSheet(slider_style)
@@ -122,14 +122,14 @@ class EqView(QObject):
     def resetEQ(self, mode: str):  # mode: '+', '-', '+-'
         if mode == '+':
             min_value = value = 0
-            max_value = 1
+            max_value = SA
         elif mode == '-':
-            min_value = -1
+            min_value = -SA
             max_value = value = 0
         else:
-            min_value = -1
+            min_value = -SA
             value = 0
-            max_value = 1
+            max_value = SA
         Filters = self.resetEQStyle()
         for F in Filters:
             F.Slider.setMinimum(min_value)

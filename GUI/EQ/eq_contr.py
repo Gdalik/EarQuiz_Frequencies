@@ -17,6 +17,8 @@
 from PyQt6.QtCore import QObject, QTimer
 from PyQt6.QtWidgets import QSlider
 from Model.eq_patterns import EQPatterns
+from GUI.globals import SliderAmplitude as SA
+from functools import partial
 
 
 class EQContr(QObject):
@@ -28,12 +30,27 @@ class EQContr(QObject):
         self.EQpattern = None
         self.Sliders = parent.mw_view.EQtabWidget.findChildren(QSlider)
         for Slider in self.Sliders:
-            Slider.valueChanged.connect(self.onSliderDragged)
+            Slider.valueChanged.connect(partial(self.onSliderDragged, Slider))
+            Slider.sliderPressed.connect(partial(self.onSliderPressed, Slider))
         self.frozen = False
         self._onSliderDraggedBlocked = False
 
-    def onSliderDragged(self, value):
+    def _normSliderValue(self, Slider: QSlider):
+        v = Slider.value()
+        if v != 0 and abs(v) < SA:
+            Slider.setValue(int(v / abs(v) * SA))
+
+    def onSliderPressed(self, Slider):
+        if self.EQpattern['EQ_boost_cut'] == '+-':
+            return
+        v = 1 if self.EQpattern['EQ_boost_cut'] == '+' else -1
+        Slider.setValue(SA * v)
+
+    def onSliderDragged(self, Slider: QSlider, value):
         if self._onSliderDraggedBlocked:
+            return
+        if value != 0 and abs(value) < SA:
+            self._normSliderValue(Slider)
             return
         self.EQ_view.case_DisableAdjacentFiltersModeOn(value, self.EQpattern['ActiveFreqRange'])
         if self.parent.CurrentMode.name in ['Uni', 'Preview'] and self.freqAccepted and self.parent.SourceAudio:
@@ -72,10 +89,19 @@ class EQContr(QObject):
         self.EQ_view.freezeEQ()
         self.frozen = True
 
+    @staticmethod
+    def _slider_value(v: int):
+        if v > 0:
+            return 1
+        elif v < 0:
+            return -1
+        else:
+            return 0
+
     def getEQValues(self):
         if self.EQ_view.Filters is None:
             return None
-        values = [F.freq * F.Slider.value() for F in self.EQ_view.Filters if F.Slider.value() != 0]
+        values = [F.freq * self._slider_value(F.Slider.value()) for F in self.EQ_view.Filters if F.Slider.value() != 0]
         if not values:
             return None
         elif len(values) == 1:
