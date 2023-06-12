@@ -324,8 +324,7 @@ where N is number of octaves.
 
 Enough with algebra and formulas here. The one that converts Q factor to BW in octaves is rather big, by the way.
 
-For *Bandwidth* options, I have used the values which can easily be thought of as music (tempered-scale) intervals:
-<br />
+For *Bandwidth* options, I have used the values which can easily be thought of as music (tempered-scale) intervals:<br />
 
 | Bandwidth | Q      | Interval |
 |:----------|:-------|:---------|
@@ -336,6 +335,8 @@ For *Bandwidth* options, I have used the values which can easily be thought of a
 | 1/3 Octave | ~4.32  | Major 3d |
 | 1/4 Octave | ~5.76  | Minor 3d |
 | 1/6 Octave | ~8.65  | Major 2nd |
+
+<br />
 
 In general, the narrower/steeper filter curve, the more accurately and precisely it works.
 The wider band, conversely, affects more frequencies and makes equalization more prominent, but less exact.
@@ -489,7 +490,7 @@ error subtracts 0.33 points. The boost/cut mistake takes off 2 points. In case o
 in an example are count separately, with 5 being the maximum and 0 being the minimum for a frequency band. And then a maximum possible sum is taken as the 
 score for the example.
 
-The following table shows the expected score range for different types of exercises (EQ patterns):
+The following table shows the expected score range for different types of exercises (EQ patterns):<br />
 
 | Exercise / EQ Pattern Type | Expected Score |
 |:---------------------------|:--------------:|
@@ -535,6 +536,18 @@ But for music, the approach would generally work as a positive side effect of ti
 <img src=":/Help_Icons/Data/Images/lightbulb.png"/>For pink noise exercises, try to find connotations between different spectral
 bands and certain "real" sounds, such as working engine, streamlet, waterfall, pouring sand, etc. For music exercises, think of resonating environments and objects
 which may have an effect, similar to particular equalization: big and small boxes, bottles, jars, cans, pots, cars, rooms, bathrooms, caves, tunnels, anything you have had experience with.<br />
+
+<img src=":/Help_Icons/Data/Images/lightbulb.png"/>You can associate middle frequencies boost with vowel sounds:<br />
+
+| Boosted frequency band, Hz | Vowel sound |
+|:--------------------------:|:-----------:|
+|            250             |  'Oo' /u:/  |
+|            500             |  'O' /ɔː/   |
+|            1000            |  'Ah' /ɑ:/  |
+|            2000            |   'A' /ɛ/   |
+|            4000            |  'Ee' /i:/  |
+
+<br />
 
 <img src=":/Help_Icons/Data/Images/lightbulb.png"/>When training with music, make (mental) notes of how altering different frequency bands
 changes timbres of instruments/voices. There are some tables with attempts to verbally describe different spectral ranges. However, using 
