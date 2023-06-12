@@ -34,7 +34,7 @@ class EQContr(QObject):
             Slider.sliderPressed.connect(partial(self.onSliderPressed, Slider))
             Slider.actionTriggered.connect(partial(self.onSliderActionTriggered, Slider))
         self.frozen = False
-        self._onSliderValueChangeBlocked = False
+        self._sliderValueChangeBlocked = False
 
     def _normSliderValue(self, Slider: QSlider):
         v = Slider.value()
@@ -56,7 +56,7 @@ class EQContr(QObject):
         Slider.setValue(SA * v)
 
     def onSliderValueChanged(self, Slider: QSlider, value):
-        if self._onSliderValueChangeBlocked:
+        if self._sliderValueChangeBlocked:
             return
         if value != 0 and abs(value) < SA:
             self._normSliderValue(Slider)
@@ -140,4 +140,4 @@ class EQContr(QObject):
         return num_pattern == num_entered
 
     def blockSliderValueChange(self, arg):
-        self._onSliderValueChangeBlocked = arg
+        self._sliderValueChangeBlocked = arg
