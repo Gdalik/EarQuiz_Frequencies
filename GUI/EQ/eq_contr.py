@@ -15,7 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from PyQt6.QtCore import QObject, QTimer
-from PyQt6.QtWidgets import QSlider
+from PyQt6.QtWidgets import QSlider, QAbstractSlider
 from Model.eq_patterns import EQPatterns
 from GUI.globals import SliderAmplitude as SA
 from functools import partial
@@ -30,15 +30,24 @@ class EQContr(QObject):
         self.EQpattern = None
         self.Sliders = parent.mw_view.EQtabWidget.findChildren(QSlider)
         for Slider in self.Sliders:
-            Slider.valueChanged.connect(partial(self.onSliderDragged, Slider))
+            Slider.valueChanged.connect(partial(self.onSliderValueChanged, Slider))
             Slider.sliderPressed.connect(partial(self.onSliderPressed, Slider))
+            Slider.actionTriggered.connect(partial(self.onSliderActionTriggered, Slider))
         self.frozen = False
-        self._onSliderDraggedBlocked = False
+        self._onSliderValueChangeBlocked = False
 
     def _normSliderValue(self, Slider: QSlider):
         v = Slider.value()
         if v != 0 and abs(v) < SA:
             Slider.setValue(int(v / abs(v) * SA))
+
+    def onSliderActionTriggered(self, Slider, action):
+        if action == QSlider.SliderAction.SliderMove.value:
+            return
+        sp = Slider.sliderPosition()
+        sv = Slider.value()
+        if sp != 0 and sv != 0 and abs(sp) < abs(sv):
+            Slider.setValue(0)
 
     def onSliderPressed(self, Slider):
         if self.EQpattern['EQ_boost_cut'] == '+-':
@@ -46,8 +55,8 @@ class EQContr(QObject):
         v = 1 if self.EQpattern['EQ_boost_cut'] == '+' else -1
         Slider.setValue(SA * v)
 
-    def onSliderDragged(self, Slider: QSlider, value):
-        if self._onSliderDraggedBlocked:
+    def onSliderValueChanged(self, Slider: QSlider, value):
+        if self._onSliderValueChangeBlocked:
             return
         if value != 0 and abs(value) < SA:
             self._normSliderValue(Slider)
@@ -71,9 +80,9 @@ class EQContr(QObject):
         self.EQpattern = self.EQPatterns.get(mode_num)
 
         self.EQ_view.setCurrentEQ(self.EQpattern['EQtype'])
-        self.blockOnSliderDragged(True)
+        self.blockSliderValueChange(True)
         self.EQ_view.resetEQ(self.EQpattern['EQ_boost_cut'])
-        self.blockOnSliderDragged(False)
+        self.blockSliderValueChange(False)
         self.EQ_view.rangeCrop(*self.EQpattern['ActiveFreqRange'])
         self.EQ_view.disableAdjacentFiltersMode(self.EQpattern.get('DisableAdjacentFiltersMode', False))
         self.frozen = False
@@ -130,5 +139,5 @@ class EQContr(QObject):
             num_entered = 0
         return num_pattern == num_entered
 
-    def blockOnSliderDragged(self, arg):
-        self._onSliderDraggedBlocked = arg
+    def blockSliderValueChange(self, arg):
+        self._onSliderValueChangeBlocked = arg
