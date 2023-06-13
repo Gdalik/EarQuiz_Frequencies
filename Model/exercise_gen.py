@@ -18,6 +18,7 @@ import copy
 import itertools
 import random
 from Utilities.common_calcs import findAdjacentEl as findAdj
+from Model.calc import abs_tuple
 
 
 class ExampleGenerator:
@@ -89,6 +90,27 @@ class ExampleGenerator:
             return abs_source(x, max(abs(x[0]), abs(x[1]))) if self.order == 'desc' \
                 else abs_source(x, min(abs(x[0]), abs(x[1])))
 
+        def force_single_to_start(sf: int):
+            for f in self.full_sequence:
+                if sf in f:
+                    self.full_sequence.remove(f)
+                    self.full_sequence.insert(0, f)
+                    break
+
+        def force_pair_to_start(pair: tuple[int]):
+            try:
+                self.full_sequence.remove(pair)
+            except ValueError:
+                self.full_sequence.remove((pair[1], pair[0]))
+            self.full_sequence.insert(0, pair)
+
+        def find_pair_abs_ind(pair: tuple[int]):
+            abs_pair = abs_tuple(pair)
+            for ind, P in enumerate(self.full_sequence):
+                if set(abs_pair) == set(abs_tuple(P)):
+                    return ind
+            return None
+
         self._genSourceSequence()
         _start_freq = self._source_sequence[0] if start_freq is None else start_freq
         source_seq = self._source_seq_reorder(abs(crop_tuple(_start_freq)))
@@ -104,19 +126,13 @@ class ExampleGenerator:
             startfrom = '+' if crop_tuple(_start_freq) > 0 else '-'
             source_seq = self._make_dual_boostcut_seq(source_seq, startfrom=startfrom)
         self.full_sequence = source_seq
-
         if isinstance(_start_freq, int) and start_freq is not None and self.order == 'shuffle':
-            for f in self.full_sequence:
-                if _start_freq in f:
-                    self.full_sequence.remove(f)
-                    self.full_sequence.insert(0, f)
-                    break
+            force_single_to_start(_start_freq)
         elif isinstance(_start_freq, tuple):
-            try:
-                self.full_sequence.remove(_start_freq)
-            except ValueError:
-                self.full_sequence.remove((_start_freq[1], _start_freq[0]))
-            self.full_sequence.insert(0, _start_freq)
+            api = find_pair_abs_ind(_start_freq)  # pair index
+            if api is not None:
+                self.full_sequence = self.full_sequence[api:] + self.full_sequence[:api]
+            force_pair_to_start(_start_freq)
         return source_seq
 
     def _make_single_boostcut_seq(self, source_seq: list[int], startfrom='+'):
@@ -129,7 +145,7 @@ class ExampleGenerator:
             source_seq = [x * k for x in source_seq] + [x * k * -1 for x in source_seq]
         return source_seq
 
-    def _make_dual_boostcut_seq(self, source_seq: list[int], startfrom='+'):
+    def _make_dual_boostcut_seq(self, source_seq: list[tuple], startfrom='+'):
         def applyPattern(el: tuple, pattern: tuple):
             return el[0] * pattern[0], el[1] * pattern[1]
 

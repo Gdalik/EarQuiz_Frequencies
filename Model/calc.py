@@ -37,3 +37,7 @@ def find_divider(x: int, Min=2):
 
 def optimal_range_length(total_length: int or float, slice_length: int or float, num_slices=10):
     return min(total_length // slice_length, num_slices) * slice_length
+
+
+def abs_tuple(value: tuple):
+    return tuple(abs(f) for f in value)
