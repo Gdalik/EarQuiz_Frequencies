@@ -22,7 +22,7 @@ from Utilities.freq2str import freqString
 from Model.get_version import version
 
 
-tag = [f'\nGenerated with EarQuiz Frequencies v{version()} (c) 2023, Gdaliy Garmiza.\nWebsite: www.earquiz.org']
+tag = [f'\nGenerated with EarQuiz Frequencies v{version()} (c) 2023, Gdaliy Garmiza.\nWebsite: https://earquiz.org']
 
 
 def files_info(audiodata: str, EQPattern: str, boost_cut: str, gain_headroom: int or float,
