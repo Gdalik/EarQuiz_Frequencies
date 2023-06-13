@@ -41,14 +41,14 @@ class PlaylistModel(QtCore.QAbstractTableModel):
         if role == Qt.ItemDataRole.DisplayRole:
             return [CurData.name, CurData.duration_str, CurData.dirPath][index.column()]
         if role == Qt.ItemDataRole.ForegroundRole:
-            if index.column() == 1 and (not CurData.duration or
-                                        (CurData.duration and CurData.duration < MinAudioDuration)):
-                return QtGui.QColor('red')
             if not CurData.exists:
+                return QtGui.QColor('red')
+            elif index.column() == 1 and (not CurData.duration or
+                                        (CurData.duration and CurData.duration < MinAudioDuration)):
                 return QtGui.QColor('red')
             elif not CurData.available:
                 return QtGui.QColor('gray')
-        if role == Qt.ItemDataRole.BackgroundRole and index.row() % 2 == 0:
+        if role == Qt.ItemDataRole.BackgroundRole and index.row() % 2 != 0:
             return QtGui.QColor(244, 244, 245)
         if (
                 role == Qt.ItemDataRole.DecorationRole

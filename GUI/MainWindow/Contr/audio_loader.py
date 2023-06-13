@@ -57,6 +57,8 @@ class AudioLoad:
             self.parent.CurrentMode = PreviewMode(self.parent)
         else:
             self.mw_view.actionPreview_Mode.setChecked(True)
+            return True
+        return False
 
     def load_song(self, Song: PlSong, forcePlayAfter=False, forceNotPlayAfter=False):
         if not self._songCanBeLoaded(Song):
@@ -74,14 +76,14 @@ class AudioLoad:
         self.parent.playAudioOnPreview = True if reloaded_same \
             else self.mw_view.actionStartPlayingAfterLoading.isChecked()
         self.parent.playAudioOnPreview = False if forceNotPlayAfter else self.parent.playAudioOnPreview
-        self._switchToPreview()
-        if reloaded_same_path:
+        if not self._switchToPreview() and reloaded_same_path:  # the same audio file without leaving the Preview mode
             if not reloaded_same:
                 self.parent.PlaylistContr.setCurrentSongToPlaylistModel()
             self.TransportContr.PlayerContr.onStopTriggered()
             self.TransportContr.PlayerContr.play()
             return
-        self.parent.ADGen = None
+        elif not reloaded_same_path:
+            self.parent.ADGen = None
         self.parent.PlaylistContr.setCurrentSongToPlaylistModel()
         self.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview or forcePlayAfter)
 

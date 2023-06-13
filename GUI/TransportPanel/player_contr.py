@@ -121,14 +121,17 @@ class PlayerContr(QMediaPlayer):
         if self.mw_contr.SourceAudio is None:
             return
         if self.onceAudioLoaded:
-            self.mw_contr.CurrentMode.cleanTempAudio()
-            self._refreshAudioOutput_mac()
-            self._hashAndRefreshLoadedAudioData()
-            self.parent.onLoadSourceAudio()
-            self.checkPreviewStartTime()
-            self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loaded')
-            self.onceAudioLoaded = False
+            self._onOnceAudioLoaded()
         self._playLoadedAudio()
+
+    def _onOnceAudioLoaded(self):
+        self.mw_contr.CurrentMode.cleanTempAudio()
+        self._refreshAudioOutput_mac()
+        self._hashAndRefreshLoadedAudioData()
+        self.parent.onLoadSourceAudio()
+        self.checkPreviewStartTime()
+        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loaded')
+        self.onceAudioLoaded = False
 
     def _hashAndRefreshLoadedAudioData(self):
         self.mw_contr.LoadedFilePath = self.mw_contr.CurrentAudio
