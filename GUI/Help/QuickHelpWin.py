@@ -88,6 +88,7 @@ class QuickHelpWin(QWidget):
 
         self.NotShowAgainBut = QCheckBox("Don't show this window on startup")
         self.NotShowAgainBut.setCheckable(True)
+        self.NotShowAgainBut.toggled.connect(self.NotShowAgainButToggled)
 
         self.restoreNotShowAgainBut()
 
@@ -98,9 +99,11 @@ class QuickHelpWin(QWidget):
         self.layout.addWidget(self.OkButton, alignment=Qt.AlignmentFlag.AlignHCenter)
         self.setLayout(self.layout)
 
-    def onOk_clicked(self):
+    def NotShowAgainButToggled(self):
         if self.showagain_settings_path is not None:
             Settings.setValue(self.showagain_settings_path, not self.NotShowAgainBut.isChecked())
+
+    def onOk_clicked(self):
         self.close()
 
     def closeEvent(self, ev):
