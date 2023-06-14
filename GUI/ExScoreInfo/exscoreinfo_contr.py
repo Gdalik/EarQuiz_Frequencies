@@ -66,5 +66,11 @@ class ExScoreInfoContr:
             self.view.showAnswScore(self.CurTest.ScoreList[-1][2])
             self.view.showTotalScore(self.CurTest.totalScore, underlined=len(self.CurTest.ScoreList) == 10)
 
-    def showTestStatus(self):
+    def showTestStatus(self, reset_mark=True):
+        if not reset_mark and self.markInStr(self.view.TestStatus.text()):
+            return
         self.view.showStatus(self.test_status)
+
+    @staticmethod
+    def markInStr(value: str):
+        return 'passed' in value or 'failed' in value

@@ -41,7 +41,7 @@ class UniMode:
             self.setPlayerControls()
         self.view.SliceLenSpin.setEnabled(contrEnabled)
         self.view.EQSetView.setEnabled(contrEnabled)
-        self.parent.ExScore.showTestStatus()
+        self.parent.ExScore.showTestStatus(reset_mark=False)
 
     @property
     def currentAudioCursorStartPos(self):  # in sec

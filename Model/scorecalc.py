@@ -81,7 +81,7 @@ class ScoreCalculator:
             sc2.input(*comb[1])
             sc2_count = sc2._singleBand_count(max_score=5)
             score_list.append(max(0, sc1_count) + max(0, sc2_count))
-        return max(score_list)
+        return round(max(score_list), 2)
 
     @property
     def next_ex_num(self):
