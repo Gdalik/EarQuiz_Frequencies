@@ -64,7 +64,7 @@ app = BUNDLE(
     'CFBundlePackageType': 'APPL',
     'CFBundleSignature': 'EQFREQ',
     'CFBundleIdentifier': 'org.earquiz.frequencies',
-    'CFBundleShortVersionString': '0.1.1',
+    'CFBundleShortVersionString': '0.1.2',
     'NSHighResolutionCapable': True,
     'LSMinimumSystemVersion': '11.0.0',
     'CFBundleDevelopmentRegion': 'en_US',
