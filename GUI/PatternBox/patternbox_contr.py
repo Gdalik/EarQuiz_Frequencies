@@ -48,6 +48,9 @@ class PatternBoxContr(object):
         with contextlib.suppress(AttributeError):
             if self.mw_contr.CurrentMode.name == 'Test':
                 self.mw_contr.CurrentMode.restart_test()
+            elif self.mw_contr.CurrentMode.name == 'Uni':
+                self.mw_view.actionPreview_Mode.setChecked(True)
+                return
             try:
                 self.mw_contr.CurrentMode.nextDrill(fromStart=True, play_after=True)
             except InterruptedException:

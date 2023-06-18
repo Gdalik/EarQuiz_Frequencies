@@ -100,10 +100,8 @@ class UniMode:
     def generateDrill(self, **kwargs):
         pass
 
-    def nextDrill(self, **kwargs):  # The case when test is complete, and user changes EQ pattern
-        self.parent.TransportContr.PlayerContr.clearSource()
-        self.cleanTempAudio()
-        self.parent.ExScore.refresh(onlyLastExcInfo=True)
+    def nextDrill(self, **kwargs):
+        pass
 
     def playbackStoppedEnded(self):
         self.hideEQState()
