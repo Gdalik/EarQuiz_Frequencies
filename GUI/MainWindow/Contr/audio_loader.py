@@ -96,6 +96,7 @@ class AudioLoad:
         self.TransportContr.TransportView.setDurationLabValue(dur)
         self.TransportContr.TransportView.AudioSliderView.setNewDataLength(dur)
         self.saveLoadedSourceInfo()
+        self.parent.setTrainingActionsEnabled(True)
 
     def setNoAudio(self):
         self.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
@@ -110,6 +111,7 @@ class AudioLoad:
         self.mw_view.TransportPanelView.noSongState()
         self.parent.SourceRange = None
         self.parent.setMakeAudioActionsEnabled(False)
+        self.parent.setTrainingActionsEnabled(False)
         self.mw_view.status.clearMessage()
 
     def saveLoadedSourceInfo(self):

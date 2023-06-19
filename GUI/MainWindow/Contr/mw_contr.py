@@ -274,6 +274,10 @@ class MainWindowContr(QObject):
         self.mw_view.actionMake_Learning_Files.setEnabled(arg)
         self.mw_view.actionMake_Test_Files.setEnabled(arg)
 
+    def setTrainingActionsEnabled(self, arg: bool):
+        self.mw_view.actionLearn_Mode.setEnabled(arg)
+        self.mw_view.actionTest_Mode.setEnabled(arg)
+
     @staticmethod
     def onActionCloseTriggered():
         app.quit()
