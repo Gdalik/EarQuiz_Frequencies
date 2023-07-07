@@ -162,7 +162,7 @@ class TransportContr(QObject):
         if self.SourceRange is None:
             return
         self.SourceRange.slice_length = value
-        self.TransportView.SliceLenSpin.setValue(self.SourceRange.slice_length)
+        self.TransportView.SliceLenSpin.setValue(int(self.SourceRange.slice_length))
         self.TransportView.setSlicesNum(self.SourceRange.slices_num)
 
     def onSaveSliceLengthAsDefaultClicked(self):
