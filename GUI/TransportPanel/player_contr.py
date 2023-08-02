@@ -246,10 +246,7 @@ class PlayerContr(QMediaPlayer):
         sourcefile = self.mw_contr.SourceAudio
         self.PlModel.nonLoadedSong_paths.add(sourcefile.path)
         self.PlModel.updCanLoadData()
-        resetAudioHeader = bool(
-            self.mw_contr.SourceAudio and self.mw_contr.SourceAudio.name != PN
-        )
-        self.mw_contr.AL.setNoAudio(resetAudioHeader)
+        self._stopTrainingOnError()
         message = f'{err}: {string}'
         if not sourcefile.exists:
             message = f'File "{sourcefile.path}" not found!'
@@ -262,3 +259,9 @@ class PlayerContr(QMediaPlayer):
                 self.mw_contr.FileMaker.onActionConvertFilesTriggered()
             return
         self.mw_view.error_msg(message)
+
+    def _stopTrainingOnError(self):
+        if self.mw_contr.CurrentSourceMode.name == 'Audiofile':
+            self.mw_contr.AL.setNoAudio()
+        else:
+            self.mw_contr.pushBackToPreview(ignoreADGen=True)

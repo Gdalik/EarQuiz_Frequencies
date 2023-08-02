@@ -252,8 +252,10 @@ class MainWindowContr(QObject):
         timedelta = datetime.datetime.now() - last_closed
         return timedelta.days
 
-    def pushBackToPreview(self):
-        if self.ADGen is None and self.CurrentMode.name not in ('Preview', 'Uni'):
+    def pushBackToPreview(self, ignoreADGen=False):
+        if not ignoreADGen and self.ADGen is not None:
+            return
+        if self.CurrentMode.name not in ('Preview', 'Uni'):
             self.mw_view.actionPreview_Mode.setChecked(True)
 
     def hashAudioFile(self):
