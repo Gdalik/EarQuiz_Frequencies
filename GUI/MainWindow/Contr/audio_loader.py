@@ -98,7 +98,7 @@ class AudioLoad:
         self.saveLoadedSourceInfo()
         self.parent.setTrainingActionsEnabled(True)
 
-    def setNoAudio(self):
+    def setNoAudio(self, resetAudioHeader=True):
         self.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
         self.parent.SourceAudio = self.parent.LastSourceAudio = None
         self.parent.ADGen = None
@@ -108,11 +108,12 @@ class AudioLoad:
         self.TransportContr.PlayerContr.clearSource()
         self.parent.CurrentMode.cleanTempAudio()
         self.parent.LoadedFilePath = None
-        self.mw_view.TransportPanelView.noSongState()
+        self.mw_view.TransportPanelView.noSongState(resetAudioHeader)
         self.parent.SourceRange = None
         self.parent.setMakeAudioActionsEnabled(False)
         self.parent.setTrainingActionsEnabled(False)
         self.mw_view.status.clearMessage()
+        self.parent.pushBackToPreview()
 
     def saveLoadedSourceInfo(self):
         if self.parent.SourceAudio.name == PN:

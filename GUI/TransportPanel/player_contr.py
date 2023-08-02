@@ -246,7 +246,10 @@ class PlayerContr(QMediaPlayer):
         sourcefile = self.mw_contr.SourceAudio
         self.PlModel.nonLoadedSong_paths.add(sourcefile.path)
         self.PlModel.updCanLoadData()
-        self.mw_contr.AL.setNoAudio()
+        resetAudioHeader = bool(
+            self.mw_contr.SourceAudio and self.mw_contr.SourceAudio.name != PN
+        )
+        self.mw_contr.AL.setNoAudio(resetAudioHeader)
         message = f'{err}: {string}'
         if not sourcefile.exists:
             message = f'File "{sourcefile.path}" not found!'
@@ -254,7 +257,7 @@ class PlayerContr(QMediaPlayer):
             message = f'The file "{sourcefile.name}" seems to be in a wrong format. Do you want to reformat it?'
             if sourcefile.name.endswith('.ogg'):
                 message = f'OGG file format is not supported by the current audio playback backend. ' \
-                          f'Do you want to reformat "{sourcefile.name}"?'
+                              f'Do you want to reformat "{sourcefile.name}"?'
             if reformat_message(self.mw_view, msg=message) == QMessageBox.StandardButton.Yes:
                 self.mw_contr.FileMaker.onActionConvertFilesTriggered()
             return

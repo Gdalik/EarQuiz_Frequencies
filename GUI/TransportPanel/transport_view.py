@@ -46,8 +46,9 @@ class TransportPanelView:
     def setSlicesNum(self, value: int):
         self.SlicesNum_Lab.setText(f'Number of Slices: {value}')
 
-    def noSongState(self):
-        self.setHeader()
+    def noSongState(self, resetAudioHeader=True):
+        if resetAudioHeader:
+            self.setHeader()
         self.AudioSliderView.SliceRegion.hide()
         self.AudioSliderView.CropRegion.hide()
         self.AudioSliderView.Cursor.hide()

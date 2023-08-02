@@ -227,7 +227,7 @@ class MainWindowContr(QObject):
                 self.CurrentMode = UniMode(self, contrEnabled=self.LastMode.name != 'Test')
         except InterruptedException:
             self.mw_view.actionPreview_Mode.setChecked(True)
-        QTimer.singleShot(0, self._pushBackToPreview)
+        QTimer.singleShot(0, self.pushBackToPreview)
         self.LastMode = self.CurrentMode
 
     def isErrorInProcess(self, process: ProcTrackControl):
@@ -252,7 +252,7 @@ class MainWindowContr(QObject):
         timedelta = datetime.datetime.now() - last_closed
         return timedelta.days
 
-    def _pushBackToPreview(self):
+    def pushBackToPreview(self):
         if self.ADGen is None and self.CurrentMode.name not in ('Preview', 'Uni'):
             self.mw_view.actionPreview_Mode.setChecked(True)
 
