@@ -264,4 +264,5 @@ class PlayerContr(QMediaPlayer):
         if self.mw_contr.CurrentSourceMode.name == 'Audiofile':
             self.mw_contr.AL.setNoAudio()
         else:
+            self.onStopTriggered(checkPlaybackState=True)
             self.mw_contr.pushBackToPreview(ignoreADGen=True)
