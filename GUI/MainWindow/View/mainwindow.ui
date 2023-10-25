@@ -1,21 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    EarQuiz Frequencies. Software for technical ear training on equalization.
-    Copyright (C) 2023, Gdaliy Garmiza.
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
--->
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
@@ -105,8 +88,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>553</width>
-         <height>530</height>
+         <width>559</width>
+         <height>543</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -4708,7 +4691,7 @@ color: gray;
      <x>0</x>
      <y>0</y>
      <width>1115</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -4839,7 +4822,7 @@ color: gray;
    </property>
    <property name="minimumSize">
     <size>
-     <width>0</width>
+     <width>1108</width>
      <height>115</height>
     </size>
    </property>
@@ -7406,7 +7389,7 @@ background: rgba(118, 214, 255, 85)
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Each Band Boosted, then Cut</string>
+    <string>Each Band Boosted, then Cut or VV</string>
    </property>
   </action>
   <action name="actionAll_Bands_Boosted_then_All_Bands_Cut">
@@ -7417,7 +7400,7 @@ background: rgba(118, 214, 255, 85)
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>All Bands Boosted, then All Bands Cut</string>
+    <string>All Bands Boosted, then All Bands Cut or VV</string>
    </property>
   </action>
   <action name="actionMinimize">
