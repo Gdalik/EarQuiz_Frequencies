@@ -115,7 +115,7 @@ class PlayerContr(QMediaPlayer):
             self._onEndofMedia()
 
     def _onLoadingMedia(self):
-        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loading...')
+        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loading...', 0)
 
     def _onLoadedMedia(self):
         if self.mw_contr.SourceAudio is None:
@@ -130,7 +130,7 @@ class PlayerContr(QMediaPlayer):
         self._hashAndRefreshLoadedAudioData()
         self.parent.onLoadSourceAudio()
         self.checkPreviewStartTime()
-        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loaded')
+        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loaded', 0)
         self.onceAudioLoaded = False
 
     def _hashAndRefreshLoadedAudioData(self):
@@ -221,7 +221,7 @@ class PlayerContr(QMediaPlayer):
             self.mw_view.status.clearMessage()
             return
         source = PN if self.mw_contr.SourceAudio.name == PN else self.mw_contr.LastSourceAudio.name
-        self.mw_view.status.showMessage(f'{source}{self._get_slice_number_str()}: {self.PlayerView.pb_state2str(state)}')
+        self.mw_view.status.showMessage(f'{source}{self._get_slice_number_str()}: {self.PlayerView.pb_state2str(state)}', 0)
 
     def onPlayPause_triggered(self):
         if self.playbackState() == self.PlaybackState.PlayingState and self.mw_contr.CurrentMode.playPause_toggleable:

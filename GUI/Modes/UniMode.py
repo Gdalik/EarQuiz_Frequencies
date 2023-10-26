@@ -139,7 +139,7 @@ class UniMode:
         self.view.menuEQ_Bands_Playback_Order.setEnabled(arg)
 
     def showProcessingSourceMessage(self):
-        self.view.status.showMessage(f'{self.parent.SourceAudio.name}: Processsing/Loading...')
+        self.view.status.showMessage(f'{self.parent.SourceAudio.name}: Processsing/Loading...', 0)
 
     def hideEQState(self):
         self.view.EqOnOffLab.setVisible(False)
