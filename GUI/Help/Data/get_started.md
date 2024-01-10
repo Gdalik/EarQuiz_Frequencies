@@ -167,7 +167,7 @@ I have decided to apply to every audio source of single-band exercise the preven
 of frequency gain.
 For dual-band EQ patterns, I have added extra-headroom from 1 up to 3dB. 
 
-So, there is an inverse relationship between equalization depth and peak normalization level (the more the frequency gain, 
+So, there is an inverse relationship between equalization depth and peak normalization level (the higher the frequency gain, 
 the quieter the source before the equalization and vice-versa). 
 The former can be set from ±1 to ±18 dB, whereas the latter can vary from -1 to -21 dB. Both values are displayed at the status bar
 at the right-bottom side of the main window, which may be helpful when adjusting the volume level under different settings.
