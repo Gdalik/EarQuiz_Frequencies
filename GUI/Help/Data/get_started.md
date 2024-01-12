@@ -347,7 +347,7 @@ between frequency bands may become blurred.
 For presets with 10-band EQ I have set the default bandwidth to 1 octave with ±12dB gain, and for those with 30-band EQ I have used
 the 1/3-octave value with ±15dB gain.
 
-You can set your custom options in the **Preview** mode or in the **Learn** mode between playback of examples. The app
+You can set your custom options in the **Preview** mode or in the **Learn** mode between playbacks of examples. The app
 will re-normalize your audio according to current Frequency Gain and EQ pattern. Clicking the **Reset** button restores 
 default EQ pattern settings.
 
