@@ -45,8 +45,6 @@ Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: checkedonce
 
 [Files]
-; Source: "D:\PyCharm Projects\EarQuiz Frequencies\dist\main\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-; Source: "D:\PyCharm Projects\EarQuiz Frequencies\Distribution\Windows\exec\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#AppRepPath}\dist\main\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
