@@ -36,3 +36,6 @@ install:
   - cmd: pip install -r requirements.txt
   - cmd: pip install -U pyinstaller
   - cmd: pyinstaller windows_build.spec
+
+# Not a project with an msbuild file, build done at install.
+build: None
