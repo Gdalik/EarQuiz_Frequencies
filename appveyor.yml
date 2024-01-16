@@ -13,6 +13,7 @@ init:
   - cmd: ver
   - cmd: ECHO Processor architecture - %PROCESSOR_ARCHITECTURE%
   - cmd: wmic OS get OSArchitecture
+  - cmd: %ISS_FILE_PATH%
 
   # As AppVeyor has multiple python install, check which one uses by default
   - cmd: ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%
