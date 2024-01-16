@@ -38,7 +38,7 @@ install:
   - cmd: pyinstaller windows_build.spec
 
 artifacts:
-  - path: dist\main\*
+  - path: dist\main
     name: EQ_Freq
 
 # Not a project with an msbuild file, build done at install.
