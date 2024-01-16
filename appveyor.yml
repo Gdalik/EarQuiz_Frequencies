@@ -33,6 +33,9 @@ init:
   - cmd: pip freeze
 
 install:
+  # Fix for PyQt not being installed in correct directory: https://github.com/appveyor/ci/issues/363
+  - cmd: REG ADD HKCU\Software\Python\PythonCore\3.10\InstallPath /f /ve /t REG_SZ /d C:\Python310-x64
+
   - cmd: pip install -r requirements.txt
   - cmd: pip install -U pyinstaller==5.13.2
   - cmd: pyinstaller windows_build.spec
