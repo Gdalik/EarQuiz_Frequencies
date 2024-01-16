@@ -38,7 +38,8 @@ install:
   - cmd: pyinstaller windows_build.spec
 
 artifacts:
-  - path: build\eq-freq-*.zip
+  - path: build\windows_build\*
+    name: EQ_Freq
 
 # Not a project with an msbuild file, build done at install.
 build: None
