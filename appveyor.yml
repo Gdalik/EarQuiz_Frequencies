@@ -3,7 +3,7 @@ environment:
     - PYTHON: "C:\\Python310-x64"
       PYTHON_VERSION: "3.10.11"
       PYTHON_ARCH: "64"
-  ISS_FILE_PATH: "C:\\Program Files (x86)\\Inno Setup 6\\ISCC.exe"
+  ISS_FILE_PATH: '"C:\\Program Files (x86)\\Inno Setup 6\\ISCC.exe"'
 
 platform: x64
 
