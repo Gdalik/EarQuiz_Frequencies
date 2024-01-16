@@ -3,7 +3,7 @@ environment:
     - PYTHON: "C:\\Python310-x64"
       PYTHON_VERSION: "3.10.11"
       PYTHON_ARCH: "64"
-  ISS_FILE_PATH: C:\Program Files (x86)\Inno Setup 6\ISCC
+  ISS_FILE_PATH: "C:\Program Files (x86)\Inno Setup 6\ISCC"
 
 platform: x64
 
@@ -43,7 +43,7 @@ install:
   - ps: pip3 install PyQt6 pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-tools
   - cmd: pip3 install -U pyinstaller==5.13.2
   - cmd: pyinstaller windows_build.spec
-  - cmd: %{ISS_FILE_PATH}% Distribution\eqfreq_AppVeyor.iss
+  - cmd: {ISS_FILE_PATH} Distribution\eqfreq_AppVeyor.iss
 
 artifacts:
   - path: dist\main
