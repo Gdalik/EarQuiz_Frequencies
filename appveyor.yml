@@ -34,7 +34,7 @@ init:
 
 install:
   - cmd: pip install -r requirements.txt
-  - cmd: pip install -U pyinstaller
+  - cmd: pip install -U pyinstaller==5.13.2
   - cmd: pyinstaller windows_build.spec
 
 artifacts:
