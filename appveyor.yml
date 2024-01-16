@@ -48,6 +48,7 @@ install:
 artifacts:
   - path: dist\main
     name: EQ_Freq
+  - path: Distribution\Windows\output\*.exe
 
 # Not a project with an msbuild file, build done at install.
 build: None
