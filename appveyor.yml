@@ -37,7 +37,7 @@ install:
   - cmd: REG ADD HKCU\Software\Python\PythonCore\3.10\InstallPath /f /ve /t REG_SZ /d C:\Python310-x64
   - cmd: pip3 install -r requirements.txt
   # - cmd: pip3 uninstall -y PyQt6 pyqt6-plugins PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-applications qt6-tools
-  - ps: pip3 uninstall -y PyQt6 pyqt6-plugins PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-applications qt6-tools
+  - ps: pip3 uninstall -y PyQt6 PyQt6-Qt6 PyQt6-sip
   - ps: pip3 install PyQt6
   - cmd: pip3 install -U pyinstaller==5.13.2
   - cmd: pyinstaller windows_build.spec
