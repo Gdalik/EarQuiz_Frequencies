@@ -1,0 +1,41 @@
+environment:
+  matrix:
+    - PYTHON: "C:\\Python310-x64"
+      PYTHON_VERSION: "3.10.11"
+      PYTHON_ARCH: "64"
+
+platform: x64
+
+configuration: Release
+
+init:
+  - cmd: ver
+  - cmd: ECHO Processor architecture - %PROCESSOR_ARCHITECTURE%
+  - cmd: wmic OS get OSArchitecture
+
+  # Utilise pre-installed MinGw for make
+  - ps: $env:PATH = 'C:\MinGW\msys\1.0\bin;C:\MinGW\mingw32\bin;C:\MinGW\bin;' + $env:PATH
+
+  # As AppVeyor has multiple python install, check which one uses by default
+  - cmd: ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%
+  - cmd: python --version
+  - cmd: python -c "import struct; print(struct.calcsize('P') * 8)"
+  - cmd: python -c "import sys; print(sys.executable)"
+
+  # Set the relevant Python and pip location to the path
+  - cmd: set PATH=%PYTHON%;%PYTHON%\scripts;%PATH%
+  - cmd: ECHO Path - %PATH%
+
+  # Verify the new default python
+  - cmd: python --version
+  - cmd: python -c "import struct; print(struct.calcsize('P') * 8)"
+  - cmd: python -c "import sys; print(sys.executable)"
+  - cmd: pip --version
+
+  # Check out installed python packages
+  - cmd: pip freeze
+
+install:
+  - cmd: pip install -r requirements.txt
+  - cmd: pip install -U pyinstaller
+  - cmd: pyinstaller windows_build.spec
