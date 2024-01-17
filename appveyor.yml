@@ -41,7 +41,6 @@ install:
   - ps: pip3 uninstall -y PyQt6
   - ps: pip3 install PyQt6 pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-tools
 
-  # - cmd: pip3 install -U pyinstaller==5.13.2
   - cmd: pip3 install -U pyinstaller
   - cmd: pyinstaller windows_build.spec
   - cmd: '%ISS_FILE_PATH% Distribution\Windows\eqfreq_AppVeyor.iss'
