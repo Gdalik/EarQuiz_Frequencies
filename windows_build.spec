@@ -42,7 +42,8 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=r'GUI/Icons/Logo/EarQuiz_Icon.ico',
-    version='version.rc'
+    version='version.rc',
+    contents_directory='.'
 )
 coll = COLLECT(
     exe,
