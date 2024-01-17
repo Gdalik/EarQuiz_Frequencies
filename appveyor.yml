@@ -43,7 +43,7 @@ install:
 
   # - cmd: pip3 install -U pyinstaller==5.13.2
   - cmd: pip3 install -U pyinstaller
-  - cmd: pyinstaller --contents-directory . windows_build.spec
+  - cmd: pyinstaller windows_build.spec
   - cmd: '%ISS_FILE_PATH% Distribution\Windows\eqfreq_AppVeyor.iss'
 
 artifacts:
