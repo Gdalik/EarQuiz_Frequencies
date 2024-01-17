@@ -1,9 +1,7 @@
 environment:
   matrix:
-#    - PYTHON: "C:\\Python310-x64"
-#      PYTHON_VERSION: "3.10.11"
-    - PYTHON: "C:\\Python39-x64"
-    - PYTHON_VERSION: "3.9.13"
+    - PYTHON: "C:\\Python310-x64"
+      PYTHON_VERSION: "3.10.11"
       PYTHON_ARCH: "64"
   ISS_FILE_PATH: '"C:\\Program Files (x86)\\Inno Setup 6\\ISCC.exe"'
 
@@ -38,7 +36,7 @@ init:
 install:
   - ps: python.exe -m pip install --upgrade pip
   - ps: pip3 install -r requirements.txt
-#  - ps: pip3 install pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-tools
+  - ps: pip3 install pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-tools
 
   - cmd: pip3 install -U pyinstaller
   - cmd: pyinstaller windows_build.spec
