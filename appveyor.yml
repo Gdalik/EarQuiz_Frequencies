@@ -35,7 +35,7 @@ init:
 
 install:
   # Fix for PyQt not being installed in correct directory: https://github.com/appveyor/ci/issues/363
-  # - cmd: REG ADD HKCU\Software\Python\PythonCore\3.10\InstallPath /f /ve /t REG_SZ /d C:\Python310-x64
+  - cmd: REG ADD HKCU\Software\Python\PythonCore\3.10\InstallPath /f /ve /t REG_SZ /d C:\Python310-x64
   - ps: python.exe -m pip install --upgrade pip
   - cmd: pip3 install -r requirements.txt
   # - ps: pip3 uninstall -y PyQt6
