@@ -54,8 +54,8 @@ deploy:
   release: draft release of EarQuiz Frequencies -v$(APPVEYOR_BUILD_VERSION)
   description: ''
   provider: GitHub
-  auth_token: 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
-#    secure: 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
+  auth_token:
+    secure: Uzm1JM03aD8x+EeSMyQoUQx9Dmj3DY8GzzOIZ+VEOYFSE+Xrg4eTXQ5FLoPRVwQ
   artifact: /.*\.exe/
   draft: true
   prerelease: true
