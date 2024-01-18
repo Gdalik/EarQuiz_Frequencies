@@ -50,7 +50,7 @@ artifacts:
 build: None
 
 deploy:
-  tag: $(APPVEYOR_REPO_TAG_NAME)
+  tag: EarQuiz_Frequencies-v$(APPVEYOR_BUILD_VERSION)
   release: draft release of EarQuiz Frequencies -v$(APPVEYOR_BUILD_VERSION)
   description: ''
   provider: GitHub
