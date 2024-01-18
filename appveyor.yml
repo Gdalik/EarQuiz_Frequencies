@@ -3,12 +3,9 @@ environment:
     - PYTHON: "C:\\Python310-x64"
       PYTHON_VERSION: "3.10.11"
       PYTHON_ARCH: "64"
-    - job_name: making binaries
     - job_name: making installer
-      -job_depends_on: making binaries
     - job_name: making artifacts
       -job_depends_on: making installer
-
   ISS_FILE_PATH: '"C:\\Program Files (x86)\\Inno Setup 6\\ISCC.exe"'
 
 platform: x64
@@ -51,6 +48,13 @@ install:
   - ps: pip3 install -r requirements.txt
   - ps: pip3 install --no-cache-dir pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-tools
 
+  - cmd: pip3 install -U pyinstaller
+  - cmd: pyinstaller windows_build.spec
+
+  # Remove unnecessary items
+  - cmd: rmdir /s /q dist\main\pyqtgraph\icons
+  - cmd: del "dist\main\PyQt6\Qt6\plugins\multimedia\ffmpegmediaplugin.dll"
+
   # job-specific configurations
 
 for:
@@ -58,48 +62,22 @@ for:
   -
     matrix:
       only:
-        - job_name: making binaries
-
-    init:
-      - PYTHON: "C:\\Python310-x64"
-        PYTHON_VERSION: "3.10.11"
-        PYTHON_ARCH: "64"
-      - cmd: set PATH=%PYTHON%;%PYTHON%\scripts;%PATH%
-      - cmd: ECHO Path - %PATH%
-      # Verify the new default python
-      - cmd: python --version
-      - cmd: python -c "import struct; print(struct.calcsize('P') * 8)"
-      - cmd: python -c "import sys; print(sys.executable)"
-      - cmd: pip3 --version
+        - job_name: making installer
 
     build_script:
-    - echo Making binaries...
+      - cmd: echo Making installer...
 
     install:
-      - cmd: pip3 install -U pyinstaller
-      - cmd: pyinstaller windows_build.spec
-
-      # Remove unnecessary items
-      - cmd: rmdir /s /q dist\main\pyqtgraph\icons
-      - cmd: del "dist\main\PyQt6\Qt6\plugins\multimedia\ffmpegmediaplugin.dll"
+  # Make installer file
+      - cmd: '%ISS_FILE_PATH% Distribution\Windows\eqfreq_AppVeyor.iss'
 
   -
     matrix:
       only:
-        - job_name: making installer
-
-    build_script:
-    - echo Making installer...
-
-    install:
-      # Make installer file
-      - cmd: '%ISS_FILE_PATH% Distribution\Windows\eqfreq_AppVeyor.iss'
-
-  - matrix:
-      only:
         - job_name: making artifacts
+
     build_script:
-    - echo Making artifacts...
+      - cmd: echo Making artifacts...
 
     artifacts:
       - path: Distribution\Windows\output\*.exe
