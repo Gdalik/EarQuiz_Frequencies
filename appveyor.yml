@@ -59,6 +59,5 @@ deploy:
   draft: true
   prerelease: true
   on:
-    branch: master
     APPVEYOR_REPO_TAG: true
   force_update: true
