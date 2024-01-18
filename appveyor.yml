@@ -46,12 +46,12 @@ init:
   # Check out installed python packages
   - cmd: pip3 freeze
 
-  # job-specific configurations
-
 install:
   - ps: python.exe -m pip install --upgrade pip
   - ps: pip3 install -r requirements.txt
   - ps: pip3 install --no-cache-dir pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-tools
+
+  # job-specific configurations
 
 for:
 
@@ -64,7 +64,8 @@ for:
     - echo Making binaries...
 
     install:
-
+      - cmd: set PATH=%PYTHON%;%PYTHON%\scripts;%PATH%
+      - cmd: ECHO Path - %PATH%
       - cmd: pip3 install -U pyinstaller
       - cmd: pyinstaller windows_build.spec
 
