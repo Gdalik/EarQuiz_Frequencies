@@ -11,7 +11,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId=EarQuiz Frequencies v{#MyAppVersion}
+AppId={#MyAppName}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppCopyright=Copyright (C) 2023 by Gdaliy Garmiza
