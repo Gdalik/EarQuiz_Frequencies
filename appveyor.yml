@@ -49,8 +49,6 @@ install:
   - cmd: '%ISS_FILE_PATH% Distribution\Windows\eqfreq_AppVeyor.iss'
 
 artifacts:
-  - path: dist\main
-    name: EQ_Freq
   - path: Distribution\Windows\output\*.exe
 
 # Not a project with an msbuild file, build done at install.
