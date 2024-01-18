@@ -61,5 +61,6 @@ deploy:
   prerelease: true
   on:
 #    APPVEYOR_REPO_TAG: true
-    appveyor_repo_tag: true
+    branch: master
+#    appveyor_repo_tag: true
   force_update: true
