@@ -49,3 +49,16 @@ artifacts:
 # Not a project with an msbuild file, build done at install.
 build: None
 
+deploy:
+  release: draft release of EarQuiz Frequencies -v$(APPVEYOR_BUILD_VERSION)
+  description: ''
+  provider: GitHub
+  auth_token:
+    secure: <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>
+  artifact: /.*\.exe/
+  draft: true
+  prerelease: true
+  on:
+    branch: master
+    APPVEYOR_REPO_TAG: true
+  force_update: true
