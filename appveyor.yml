@@ -55,7 +55,7 @@ deploy:
   description: ''
   provider: GitHub
   auth_token:
-    secure: <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>
+    secure: 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
   artifact: /.*\.exe/
   draft: true
   prerelease: true
