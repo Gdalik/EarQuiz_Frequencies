@@ -59,7 +59,15 @@ for:
     matrix:
       only:
         - job_name: making binaries
-        - PYTHON: "C:\\Python310-x64"
+
+    init:
+      - cmd: set PATH=%PYTHON%;%PYTHON%\scripts;%PATH%
+      - cmd: ECHO Path - %PATH%
+      # Verify the new default python
+      - cmd: python --version
+      - cmd: python -c "import struct; print(struct.calcsize('P') * 8)"
+      - cmd: python -c "import sys; print(sys.executable)"
+      - cmd: pip3 --version
 
     build_script:
     - echo Making binaries...
