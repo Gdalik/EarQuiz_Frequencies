@@ -59,13 +59,12 @@ for:
     matrix:
       only:
         - job_name: making binaries
+        - PYTHON: "C:\\Python310-x64"
 
     build_script:
     - echo Making binaries...
 
     install:
-      - cmd: set PATH=%PYTHON%;%PYTHON%\scripts;%PATH%
-      - cmd: ECHO Path - %PATH%
       - cmd: pip3 install -U pyinstaller
       - cmd: pyinstaller windows_build.spec
 
