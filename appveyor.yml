@@ -19,6 +19,9 @@ configuration: Release
 matrix:
   fast_finish: true
 
+# Not a project with an msbuild file, build done at install.
+build: None
+
 init:
   - cmd: ver
   - cmd: ECHO Processor architecture - %PROCESSOR_ARCHITECTURE%
@@ -87,9 +90,6 @@ for:
 
     artifacts:
       - path: Distribution\Windows\output\*.exe
-
-    # Not a project with an msbuild file, build done at install.
-    build: None
 
     deploy:
       tag: EarQuiz_Frequencies-v$(APPVEYOR_BUILD_VERSION)
