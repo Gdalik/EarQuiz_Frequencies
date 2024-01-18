@@ -41,8 +41,8 @@ install:
   - cmd: pyinstaller windows_build.spec
       -
   # Remove unnecessary items
-  - cmd: rmdir \dist\main\pyqtgraph\icons
-  - cmd: del "\dist\main\PyQt6\Qt6\plugins\multimedia\ffmpegmediaplugin.dll"
+  - cmd: rmdir dist\main\pyqtgraph\icons
+  - cmd: del "dist\main\PyQt6\Qt6\plugins\multimedia\ffmpegmediaplugin.dll"
 
   # Make installer file
   - cmd: '%ISS_FILE_PATH% Distribution\Windows\eqfreq_AppVeyor.iss'
