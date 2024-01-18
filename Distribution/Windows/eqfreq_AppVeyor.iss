@@ -25,11 +25,11 @@ DisableProgramGroupPage=yes
 LicenseFile={#AppRepPath}\Distribution\Windows\LICENSE.txt
 InfoBeforeFile={#AppRepPath}\Distribution\Windows\README.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
-;PrivilegesRequired=lowest
+PrivilegesRequired=lowest
 OutputDir={#AppRepPath}\Distribution\Windows\output
 OutputBaseFilename=eqfreq_v{#MyAppVersion}
 SetupIconFile={#AppRepPath}\GUI\Icons\Logo\EarQuiz_Icon.ico
-UninstallDisplayIcon={#AppRepPath}\GUI\Icons\Logo\EarQuiz_Icon.ico
+UninstallDisplayIcon={app}\{#MyAppExeName}
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
