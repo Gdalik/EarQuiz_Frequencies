@@ -61,6 +61,9 @@ for:
         - job_name: making binaries
 
     init:
+      - PYTHON: "C:\\Python310-x64"
+        PYTHON_VERSION: "3.10.11"
+        PYTHON_ARCH: "64"
       - cmd: set PATH=%PYTHON%;%PYTHON%\scripts;%PATH%
       - cmd: ECHO Path - %PATH%
       # Verify the new default python
