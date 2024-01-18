@@ -36,8 +36,6 @@ init:
 install:
   - ps: python.exe -m pip install --upgrade pip
   - ps: pip3 install -r requirements.txt
-  # - ps: pip3 uninstall -y PyQt6
-  # - ps: pip3 install PyQt6 pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-tools
 
   - cmd: pip3 install -U pyinstaller
   - cmd: pyinstaller windows_build.spec
@@ -51,17 +49,3 @@ artifacts:
 # Not a project with an msbuild file, build done at install.
 build: None
 
-deploy:
-#  tag: EQ_Freq-v$(APPVEYOR_BUILD_VERSION)
-  release: draft release of EarQuiz Frequencies -v$(APPVEYOR_BUILD_VERSION)
-  description: 'Draft release'
-  provider: GitHub
-  auth_token:
-    secure: <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>
-  artifact: /.*\.exe/
-  draft: true
-  prerelease: true
-  on:
-    branch: master
-    APPVEYOR_REPO_TAG: true
-  force_update: true
