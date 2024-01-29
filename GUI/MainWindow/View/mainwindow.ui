@@ -4736,8 +4736,13 @@ color: gray;
     <addaction name="actionAbout"/>
     <addaction name="separator"/>
     <addaction name="actionGetting_Started"/>
-    <addaction name="actionVideo_Tutorial"/>
     <addaction name="actionOnline_Help"/>
+    <addaction name="actionVideo_Tutorial"/>
+    <addaction name="actionVideo_Tutorial_Rus"/>
+    <addaction name="separator"/>
+    <addaction name="actionReport_an_Issue"/>
+    <addaction name="actionAsk_and_Discuss"/>
+    <addaction name="actionGo_To_Source_Code"/>
     <addaction name="separator"/>
     <addaction name="actionCheck_for_Updates"/>
    </widget>
@@ -7236,7 +7241,7 @@ background: rgba(118, 214, 255, 85)
   </action>
   <action name="actionVideo_Tutorial">
    <property name="text">
-    <string>Tutorial Video</string>
+    <string>Video Tutorial (English)</string>
    </property>
   </action>
   <action name="actionHow_to_Support_the_App">
@@ -7664,6 +7669,26 @@ background: rgba(118, 214, 255, 85)
    </property>
    <property name="menuRole">
     <enum>QAction::ApplicationSpecificRole</enum>
+   </property>
+  </action>
+  <action name="actionVideo_Tutorial_Rus">
+   <property name="text">
+    <string>Видеоучебник (русский)</string>
+   </property>
+  </action>
+  <action name="actionReport_an_Issue">
+   <property name="text">
+    <string>Report an Issue...</string>
+   </property>
+  </action>
+  <action name="actionGo_To_Source_Code">
+   <property name="text">
+    <string>Go To Source Code...</string>
+   </property>
+  </action>
+  <action name="actionAsk_and_Discuss">
+   <property name="text">
+    <string>Ask and Discuss...</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

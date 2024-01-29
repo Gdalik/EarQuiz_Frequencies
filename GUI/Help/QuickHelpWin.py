@@ -1,5 +1,5 @@
 #    EarQuiz Frequencies. Software for technical ear training on equalization.
-#    Copyright (C) 2023, Gdaliy Garmiza.
+#    Copyright (C) 2023-2024, Gdaliy Garmiza.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ class QuickHelpWin(QWidget):
                             Qt.WindowType.CustomizeWindowHint |
                             Qt.WindowType.WindowMaximizeButtonHint)
         self.setWindowTitle(self.title)
-        self.resize(600, 400)
+        self.resize(600, 475)
 
         self.SearchLine = QLineEdit()
         self.SearchLine.setPlaceholderText('Search')

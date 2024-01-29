@@ -1,5 +1,5 @@
 #    EarQuiz Frequencies. Software for technical ear training on equalization.
-#    Copyright (C) 2023, Gdaliy Garmiza.
+#    Copyright (C) 2023-2024, Gdaliy Garmiza.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@ from Utilities.freq2str import freqString
 from Model.get_version import version
 
 
-tag = [f'\nGenerated with EarQuiz Frequencies v{version()} (c) 2023, Gdaliy Garmiza.\nWebsite: https://earquiz.org']
+tag = [f'\nGenerated with EarQuiz Frequencies v{version()} (c) 2023-2024, Gdaliy Garmiza.\nWebsite: https://earquiz.org']
 
 
 def files_info(audiodata: str, EQPattern: str, boost_cut: str, gain_headroom: int or float,

@@ -36,5 +36,6 @@ The majority of icons, used in this application, have been taken from [Flaticon]
 <a href="https://www.flaticon.com/free-icons/idea" title="idea icons">Idea icons created by Good Ware - Flaticon</a><br />
 <a href="https://www.flaticon.com/free-icons/copy-link" title="copy link icons">Copy link icons created by feen - Flaticon</a><br />
 <a href="https://www.freepik.com/free-vector/social-media-icons-vector-set-with-facebook-instagram-twitter-tiktok-youtube-logos_17221195.htm#query=facebook%20logo%20png&position=1&from_view=keyword&track=ais">Image by rawpixel.com</a> on Freepik<br />
+<a href="https://www.flaticon.com/free-icons/youtube" title="youtube icons">Youtube icons created by Freepik - Flaticon</a>
 
 Player icons by [The Oxygen Team](https://www.iconarchive.com/icons/oxygen-icons.org/oxygen/authors.txt).

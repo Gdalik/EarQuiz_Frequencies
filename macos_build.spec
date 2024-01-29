@@ -64,11 +64,11 @@ app = BUNDLE(
     'CFBundlePackageType': 'APPL',
     'CFBundleSignature': 'EQFREQ',
     'CFBundleIdentifier': 'org.earquiz.frequencies',
-    'CFBundleShortVersionString': '0.1.2',
+    'CFBundleShortVersionString': '0.1.3',
     'NSHighResolutionCapable': True,
     'LSMinimumSystemVersion': '11.0.0',
     'CFBundleDevelopmentRegion': 'en_US',
-    'NSHumanReadableCopyright': '© 2023 Gdaliy Garmiza',
+    'NSHumanReadableCopyright': '© 2023-2024 Gdaliy Garmiza',
     'NSPrincipalClass': 'NSApplication'
     },
 )

@@ -1,12 +1,18 @@
 <img align="left" src=":/Logo/Icons/Logo/EarQuiz_Header.png"/>
 
 ## EarQuiz Frequencies  
-### &copy; 2023 Gdaliy Garmiza. [https://earquiz.org/EQ_Frequencies/](https://earquiz.org/EQ_Frequencies/)
+### &copy; 2023-2024 Gdaliy Garmiza. [https://earquiz.org/EQ_Frequencies/](https://earquiz.org/EQ_Frequencies/)
 
 ----------------
 
+[<img src=":/Help_Icons/Data/Images/youtube_16.png"/> Watch Video Tutorial (in English)](https://youtu.be/XOJai5Fdofw)
+
+[<img src=":/Help_Icons/Data/Images/youtube_16.png"/> Смотреть видеоучебник (на русском) ](https://youtu.be/pz-V5KNaBWU)
+
 [Read Online Help >](https://earquiz.org/manuals/earquiz-frequencies-help/)
 <img align='right' src=":/Getting_Started/Data/Images/EQ_Frequencies_Help_QRcode.png"/>
+
+<br/>
 
 ### Table of Contents
 

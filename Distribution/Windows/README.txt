@@ -1,5 +1,5 @@
-EarQuiz Frequencies v0.1.2-beta. Software for technical ear training on equalization.
-Copyright (C) 2023, Gdaliy Garmiza.
+EarQuiz Frequencies v0.1.3. Software for technical ear training on equalization.
+Copyright (C) 2023-2024, Gdaliy Garmiza.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

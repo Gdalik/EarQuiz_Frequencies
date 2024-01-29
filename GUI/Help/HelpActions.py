@@ -1,5 +1,5 @@
 #    EarQuiz Frequencies. Software for technical ear training on equalization.
-#    Copyright (C) 2023, Gdaliy Garmiza.
+#    Copyright (C) 2023-2024, Gdaliy Garmiza.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -33,6 +33,11 @@ class HelpActions(QObject):
         self.mw_view = mw_contr.mw_view
         self.mw_view.actionGetting_Started.triggered.connect(self.onGettingStarted_called)
         self.mw_view.actionOnline_Help.triggered.connect(self.onOnlineHelp_called)
+        self.mw_view.actionVideo_Tutorial.triggered.connect(self.onVideoTutorial_called)
+        self.mw_view.actionVideo_Tutorial_Rus.triggered.connect(self.onVideoTutorialRus_called)
+        self.mw_view.actionReport_an_Issue.triggered.connect(self.onReportIssue_called)
+        self.mw_view.actionGo_To_Source_Code.triggered.connect(self.onGoToSourceCode_called)
+        self.mw_view.actionAsk_and_Discuss.triggered.connect(self.onAskAndDiscuss_called)
         self.mw_contr.signals.audioSourcesRestored.connect(self.onAppStartup)
         self.GS_Win = QuickHelpWin(self.mw_view, title=f'Getting Started with EarQuiz Frequencies v{version()}',
                            showagain_settings_path='MessageBoxes/ShowGettingStartedOnStartup')
@@ -61,3 +66,19 @@ class HelpActions(QObject):
 
     def onOnlineHelp_called(self):
         webbrowser.open('https://earquiz.org/manuals/earquiz-frequencies-help/')
+
+    def onVideoTutorial_called(self):
+        webbrowser.open('https://youtu.be/XOJai5Fdofw')
+
+    def onVideoTutorialRus_called(self):
+        webbrowser.open('https://youtu.be/pz-V5KNaBWU')
+
+    def onReportIssue_called(self):
+        webbrowser.open('https://github.com/Gdalik/EarQuiz_Frequencies/issues')
+
+    def onAskAndDiscuss_called(self):
+        webbrowser.open('https://github.com/Gdalik/EarQuiz_Frequencies/discussions')
+
+    def onGoToSourceCode_called(self):
+        webbrowser.open('https://github.com/Gdalik/EarQuiz_Frequencies')
+
