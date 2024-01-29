@@ -37,7 +37,7 @@ class QuickHelpWin(QWidget):
                             Qt.WindowType.CustomizeWindowHint |
                             Qt.WindowType.WindowMaximizeButtonHint)
         self.setWindowTitle(self.title)
-        self.resize(600, 475)
+        self.resize(650, 475)
 
         self.SearchLine = QLineEdit()
         self.SearchLine.setPlaceholderText('Search')
