@@ -51,9 +51,9 @@ You can build executables yourself both for Windows and for macOS from this code
 1. Use the platform you are going to build on. You cannot make an executable package for Windows under macOS, and creating a macOS bundle under Windows is not possible as well.
 2. Make sure, the relevant version of Python is installed, a virtual environment for the project is created, all the requirements are installed,
 and you can run the application from the source code, using the interpreter.
-2. With the activated virtual environment, install [PyInstaller](https://pyinstaller.org/) using the package manager:<br /><br />
+3. With the activated virtual environment, install [PyInstaller](https://pyinstaller.org/) using the package manager:<br /><br />
 `pip install -U pyinstaller`<br /><br />
-3. On macOS, run:<br /><br />
+4. On macOS, run:<br /><br />
 `pyinstaller macos_build.spec`<br /><br />
 On Windows, run:<br /><br />
 `pyinstaller windows_build.spec`
@@ -62,7 +62,7 @@ The bundled application should now be available in the *dist* folder.
 
 ## License
 
-`EarQuiz Frequencies` is Copyright &copy; 2023 by Gdaliy Garmiza.<br />
+`EarQuiz Frequencies` is Copyright &copy; 2023-2024 by Gdaliy Garmiza.<br />
 `EarQuiz Frequencies` is licensed under the [GNU General Public License v3](https://github.com/Gdalik/EarQuiz_Frequencies/blob/master/LICENSE).
 
 This application uses the following open source libraries:
