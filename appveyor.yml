@@ -59,13 +59,17 @@ install:
 artifacts:
   - path: Distribution\Windows\output\*.exe
 
+version: 0.1.3 (build {build})
+pull_requests:
+  do_not_increment_build_number: true
+
 deploy:
   tag: EarQuiz_Frequencies-v$(APPVEYOR_BUILD_VERSION)
-  release: draft release of EarQuiz Frequencies -v$(APPVEYOR_BUILD_VERSION)
+  release: Draft release of EarQuiz Frequencies -v$(APPVEYOR_BUILD_VERSION)
   description: ''
   provider: GitHub
   auth_token:
-    secure: Uzm1JM03aD8x+EeSMyQoUQx9Dmj3DY8GzzOIZ+VEOYFSE+Xrg4eTXQ5FLoPRVwQg
+    secure: xJk+9ewA93j4l6R9F2rzhe5fpwsKmrH/GMmUOv7HBfLiq1FwjTkLLGCpWVznhQQ7
   artifact: /.*\.exe/
   draft: true
   prerelease: true
