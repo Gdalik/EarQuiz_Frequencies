@@ -14,10 +14,14 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from pathlib import Path
+from Utilities.urlcheck import validUrls
 
 
-def validUrls(urls: list):
-    available_ext = ('.wav', '.aiff', '.flac', '.ogg', '.mp3', '.m3u', '.m3u8', '.pls', '.xspf')
-    return [url for url in urls if url.toLocalFile() and Path(url.toLocalFile()).exists()
-            and (Path(url.toLocalFile()).is_dir() or Path(url.toLocalFile()).suffix in available_ext)]
+def checkDroppedMimeData(data):
+    if data.objectName() == 'FromPlaylist':
+        return False
+    if data.hasUrls():
+        valid_urls = validUrls(data.urls())
+        if valid_urls:
+            return valid_urls
+    return False

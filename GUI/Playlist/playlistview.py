@@ -17,7 +17,7 @@
 from PyQt6.QtCore import Qt, pyqtSignal, QObject, QMimeData, QUrl, QItemSelection, QItemSelectionModel, QModelIndex
 from PyQt6.QtGui import QPainter, QDrag, QColor
 from PyQt6.QtWidgets import QTableView, QAbstractItemView, QHeaderView
-from Utilities.urlcheck import validUrls
+from Utilities.checkMimeData import checkDroppedMimeData
 
 
 class PL_Signals(QObject):
@@ -74,27 +74,23 @@ class PlaylistView(QTableView):
 
     def dragEnterEvent(self, event):
         super(PlaylistView, self).dragEnterEvent(event)
-        if self.checkDroppedMimeData(event.mimeData()):
+        if checkDroppedMimeData(event.mimeData()):
             event.setDropAction(Qt.DropAction.CopyAction)
             event.accept()
 
     def dragMoveEvent(self, event):
         super(PlaylistView, self).dragMoveEvent(event)
-        if self.checkDroppedMimeData(event.mimeData()):
+        if checkDroppedMimeData(event.mimeData()):
             cur_index = self.indexAt(self.viewport().mapFromGlobal(self.cursor().pos()))
             self.setCurrentIndex(cur_index)
             event.accept()
 
     def dropEvent(self, event):
         super(PlaylistView, self).dropEvent(event)
-        if self.checkDroppedMimeData(event.mimeData()):
+        checkedDroppedMimeData = checkDroppedMimeData(event.mimeData())
+        if checkedDroppedMimeData:
             event.accept()
-            valid_urls = validUrls(event.mimeData().urls())
-            if valid_urls:
-                self.signals.urlsDropped.emit(valid_urls, self.model().mapToSource(self.currentIndex()).row())
-
-    def checkDroppedMimeData(self, data):
-        return data.hasUrls() and data.objectName() != 'FromPlaylist'
+            self.signals.urlsDropped.emit(checkedDroppedMimeData, self.model().mapToSource(self.currentIndex()).row())
 
     def mousePressEvent(self, e) -> None:
         super(PlaylistView, self).mousePressEvent(e)

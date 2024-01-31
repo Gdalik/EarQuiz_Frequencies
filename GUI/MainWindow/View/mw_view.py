@@ -34,7 +34,7 @@ from GUI.TransportPanel.transport_view import TransportPanelView
 from GUI.UpdateChecker.update_checker_view import UpdCheckView
 from GUI.About.about_dialog_view import AboutDialogView
 from Utilities.str2bool import str2bool
-from Utilities.urlcheck import validUrls
+from Utilities.checkMimeData import checkDroppedMimeData
 from definitions import Settings
 
 
@@ -130,14 +130,14 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def dragEnterEvent(self, event):
         super(MainWindowView, self).dragEnterEvent(event)
-        if self.checkDroppedMimeData(event.mimeData()):
+        if checkDroppedMimeData(event.mimeData()):
             event.accept()
         else:
             event.ignore()
 
     def dragMoveEvent(self, event):
         super(MainWindowView, self).dragMoveEvent(event)
-        if self.checkDroppedMimeData(event.mimeData()):
+        if checkDroppedMimeData(event.mimeData()):
             event.setDropAction(Qt.DropAction.CopyAction)
             event.accept()
         else:
@@ -145,14 +145,10 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def dropEvent(self, event):
         super(MainWindowView, self).dropEvent(event)
-        if self.checkDroppedMimeData(event.mimeData()):
+        checkedDroppedMimeData = checkDroppedMimeData(event.mimeData())
+        if checkedDroppedMimeData:
             event.accept()
-            valid_urls = validUrls(event.mimeData().urls())
-            if valid_urls:
-                self.PlaylistView.signals.urlsDropped.emit(valid_urls, -1)
-
-    def checkDroppedMimeData(self, data):
-        return data.hasUrls() and data.objectName() != 'FromPlaylist'
+            self.PlaylistView.signals.urlsDropped.emit(checkedDroppedMimeData, -1)
 
     def _setUpEQSettingsButtons(self):
         icon = self.EQSettings_But1.icon()
