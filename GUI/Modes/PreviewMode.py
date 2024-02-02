@@ -26,7 +26,8 @@ class PreviewMode(UniMode):
         self.hideSequentialPlayContr()
         self.parent.ExScore.view.init_texts(onlyLastExcInfo=True)
         self.view.status.clearNormalization()
-        if not self.isAudioSourceMode():
+        if not self.parent.CurrentSourceMode.name == 'Audiofile':
+            self._pinkNoiseModeView()
             return
         self.setPlayerControls()
         self.playPause_toggleable = True
@@ -94,9 +95,7 @@ class PreviewMode(UniMode):
             self.view.TransportPanelView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)
             self.parent.TransportContr.CursorBeingDragged = False
 
-    def isAudioSourceMode(self):
-        if self.parent.CurrentSourceMode.name == 'Audiofile':
-            return True
+    def _pinkNoiseModeView(self):
         self.enableTimeSettingsChanges(False)
         self.view.actionPlayPause.setEnabled(False)
         self.view.actionStop.setEnabled(False)
@@ -116,4 +115,4 @@ class PreviewMode(UniMode):
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
         self.view.TransportPanelView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)
         self.parent.TransportContr.CursorBeingDragged = False
-        return False
+
