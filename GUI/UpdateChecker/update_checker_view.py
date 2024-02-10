@@ -80,7 +80,10 @@ class UpdCheckView:
     def showUpdWindow(self, data: dict):
         if self.Dialog is not None and self.Dialog.isVisible():
             return
-        self.download_link = data['download_mac'] if platform.system() == 'Darwin' else data['download_win']
+        if platform.system() == 'Darwin':
+            self.download_link = data['download_mac-arm64'] if platform.machine() == 'arm64' else data['download_mac']
+        else:
+            self.download_link = data['download_win']
         self.Dialog = UpdCheckDialog(self.mw_view)
         self.setMainLabelText(data)
         self.setVersionInfo(data)
