@@ -100,7 +100,7 @@ class AudioCursor(pg.InfiniteLine):
 
 class CropRegion(pg.LinearRegionItem):
     def __init__(self, a_pos: int or float, b_pos: int or float):
-        super().__init__(pen=pg.mkPen('k'), hoverPen=pg.mkPen('blue', width=3), swapMode='block')
+        super().__init__(pen=pg.mkPen('k'), hoverPen=pg.mkPen('blue', width=4), swapMode='block')
         self.setValues(a_pos, b_pos)
         brush = pg.mkBrush(color='w')
         self.setBrush(brush)
