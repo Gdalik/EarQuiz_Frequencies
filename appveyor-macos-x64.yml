@@ -1,0 +1,24 @@
+image: macos-bigsur
+
+platform: x64
+
+init:
+  - chmod +x $HOME/venv3.10/bin/activate
+  - source $HOME/venv3.10/bin/activate
+
+install:
+  - python -m pip install --upgrade pip
+  - pip install -r requirements.txt
+  - pip install --no-cache-dir pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools
+  - pip install -U pyinstaller
+  - pyinstaller macos_build.spec
+  - tar -cvf eqfreq_build.tar "dist/EarQuiz Frequencies.app"
+
+build: None
+
+artifacts:
+  - path: eqfreq_build.tar
+
+version: 0.1.4 (build-{build})
+pull_requests:
+  do_not_increment_build_number: true

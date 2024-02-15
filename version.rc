@@ -36,7 +36,7 @@ VSVersionInfo(
         StringStruct('LegalCopyright', 'Copyright © 2023-2024 by Gdaliy Garmiza'),
         StringStruct('OriginalFileName', '                                                  '),
         StringStruct('ProductName', 'EarQuiz Frequencies'),
-        StringStruct('ProductVersion', '0.1.3')])
+        StringStruct('ProductVersion', '0.1.4')])
       ]), 
     VarFileInfo([VarStruct('Translation', [0, 1200])])
   ]
