@@ -226,8 +226,6 @@ class TransportContr(QObject):
         if self.CropRegionBeingChanged or self.parent.CurrentMode.name != 'Preview':
             return
         pos = self.PlayerContr.position() / 1000  # ms -> s
-        print(f'{pos=} {int(self.SourceRange.starttime)=}')
-        print(f'{excludeZeroPos=}')
         pos_cond = 0 < math.ceil(pos) < int(self.SourceRange.starttime) if excludeZeroPos else \
             math.ceil(pos) < int(self.SourceRange.starttime)
         if pos_cond or pos > self.SourceRange.endtime:
