@@ -17,7 +17,7 @@ install:
 build: None
 
 artifacts:
-  - path: eqfreq_build.tar
+  - path: eqfreq_build-macos-x64.tar
 
 version: 0.1.4 (build-{build})
 pull_requests:
