@@ -227,7 +227,7 @@ class TransportContr(QObject):
             return
         pos = self.PlayerContr.position() / 1000  # ms -> s
         pos_cond = 0 < math.ceil(pos) < int(self.SourceRange.starttime) if excludeZeroPos else \
-            math.ceil(pos) < int(self.SourceRange.starttime)
+            pos < int(self.SourceRange.starttime)
         if pos_cond or pos > self.SourceRange.endtime:
             if not self.parent.mw_view.actionLoop_Playback.isChecked():
                 self.PlayerContr.onStopTriggered()
