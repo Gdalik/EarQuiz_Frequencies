@@ -14,7 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import platform
+import math
 from PyQt6.QtCore import QObject, Qt
 from GUI.TransportPanel.player_contr import PlayerContr
 from GUI.globals import defaultSliceLenUpd
@@ -226,10 +226,13 @@ class TransportContr(QObject):
         if self.CropRegionBeingChanged or self.parent.CurrentMode.name != 'Preview':
             return
         pos = self.PlayerContr.position() / 1000  # ms -> s
-        pos_cond = 0 < pos < int(self.SourceRange.starttime) if excludeZeroPos else \
-            pos < int(self.SourceRange.starttime)
+        print(f'{pos=} {int(self.SourceRange.starttime)=}')
+        print(f'{excludeZeroPos=}')
+        pos_cond = 0 < math.ceil(pos) < int(self.SourceRange.starttime) if excludeZeroPos else \
+            math.ceil(pos) < int(self.SourceRange.starttime)
         if pos_cond or pos > self.SourceRange.endtime:
             if not self.parent.mw_view.actionLoop_Playback.isChecked():
+                print('stopTriggered')
                 self.PlayerContr.onStopTriggered()
             else:
                 self.PlayerContr.loopPlayback()
