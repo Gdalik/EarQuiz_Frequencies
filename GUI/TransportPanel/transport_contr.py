@@ -230,7 +230,6 @@ class TransportContr(QObject):
             math.ceil(pos) < int(self.SourceRange.starttime)
         if pos_cond or pos > self.SourceRange.endtime:
             if not self.parent.mw_view.actionLoop_Playback.isChecked():
-                print('stopTriggered')
                 self.PlayerContr.onStopTriggered()
             else:
                 self.PlayerContr.loopPlayback()
