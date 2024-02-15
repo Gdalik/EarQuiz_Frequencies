@@ -18,11 +18,13 @@ from GUI.TransportPanel.audioslider_view import AudioSliderView
 from GUI.TransportPanel.cropregiontimestr import CropRegionTimestr
 from GUI.TransportPanel.player_view import PlayerView
 from Utilities.common_calcs import hhmmss
+from PyQt6 import QtCore
 
 
 class TransportPanelView:
     def __init__(self, mw_view):
         self.mw_view = mw_view
+        self.mw_view.TransportPanel.setMinimumSize(QtCore.QSize(0, 115))
         self.PlayerView = PlayerView(self.mw_view)
         self.AudioSliderView = AudioSliderView(self.mw_view.AudioSlider)
         self.Duration_Lab = mw_view.Duration_Lab
