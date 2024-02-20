@@ -53,8 +53,10 @@ You can build executables yourself both for Windows and for macOS from this code
 and you can run the application from the source code, using the interpreter.
 3. With the activated virtual environment, install [PyInstaller](https://pyinstaller.org/) using the package manager:<br /><br />
 `pip install -U pyinstaller`<br /><br />
-4. On macOS, run:<br /><br />
+4. On macOS (Intel), run:<br /><br />
 `pyinstaller macos_build.spec`<br /><br />
+On macOS (Apple Silicon), run:<br /><br />
+`pyinstaller macos_build-arm64.spec`<br /><br />
 On Windows, run:<br /><br />
 `pyinstaller windows_build.spec`
 
