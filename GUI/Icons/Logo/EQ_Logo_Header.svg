@@ -28,13 +28,13 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.78127806"
-     inkscape:cx="110.71602"
-     inkscape:cy="461.42343"
+     inkscape:zoom="0.19531952"
+     inkscape:cx="-985.5646"
+     inkscape:cy="1610.1822"
      inkscape:window-width="1390"
      inkscape:window-height="1027"
-     inkscape:window-x="418"
-     inkscape:window-y="25"
+     inkscape:window-x="311"
+     inkscape:window-y="65"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
@@ -101,13 +101,16 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#ffffff;stroke-width:0.247354;paint-order:markers fill stroke"
+       style="display:none;fill:#ffffff;stroke-width:0.247354;paint-order:markers fill stroke"
        id="rect852"
        width="177.5489"
        height="149.32069"
        x="5.0542374"
        y="45.292782"
-       ry="1.399119" />
+       ry="1.399119"
+       inkscape:export-filename="EarQuiz_Header.png"
+       inkscape:export-xdpi="9.3557024"
+       inkscape:export-ydpi="9.3557024" />
     <g
        inkscape:label="Layer 1"
        inkscape:groupmode="layer"
