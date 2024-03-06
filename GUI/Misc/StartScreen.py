@@ -18,6 +18,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap, QColor
 from PyQt6.QtWidgets import QSplashScreen
 from Model.get_version import version
+from GUI.MainWindow.View.dark_theme import blue_color
 
 
 class StartScreen(QSplashScreen):
@@ -26,7 +27,7 @@ class StartScreen(QSplashScreen):
         logo = QPixmap(":/Logo/Icons/Logo/EarQuiz_Splash.png")
         self.setPixmap(logo)
         self.showMessage(f'v{version()}', Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop,
-                         color=QColor('blue'))
+                         color=QColor(f'{blue_color()}'))
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
 

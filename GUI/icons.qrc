@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="AddRemove">
     <file>Icons/AddRemove/clear.png</file>
+    <file>Icons/AddRemove/clear_neg.png</file>
     <file>Icons/Misc/next-pattern.png</file>
     <file>Icons/AddRemove/minus.png</file>
     <file>Icons/AddRemove/plus.png</file>
@@ -18,12 +19,22 @@
     <file>Icons/Support_Logos/Boosty.png</file>
   </qresource>
   <qresource prefix="Misc">
+    <file>Icons/Misc/Negative/padlock.png</file>
+    <file>Icons/Misc/Negative/Settings.png</file>
+    <file>Icons/Misc/Negative/star.png</file>
+    <file>Icons/Misc/Negative/unlock.png</file>
     <file>Icons/Misc/padlock.png</file>
     <file>Icons/Misc/Settings.png</file>
     <file>Icons/Misc/star.png</file>
     <file>Icons/Misc/unlock.png</file>
   </qresource>
   <qresource prefix="Player">
+    <file>Icons/Player/Negative/arrow-right_gray.png</file>
+    <file>Icons/Player/Negative/left-arrow-playlist.png</file>
+    <file>Icons/Player/Negative/music-note-with-loop-circular-arrows-around.png</file>
+    <file>Icons/Player/Negative/right-arrow-playlist.png</file>
+    <file>Icons/Player/Negative/sequence - black.png</file>
+    <file>Icons/Player/Negative/shuffle_black.png</file>
     <file>Icons/Player/Actions-media-playback-pause-icon.png</file>
     <file>Icons/Player/left-arrow-playlist.png</file>
     <file>Icons/Player/right-arrow-playlist.png</file>

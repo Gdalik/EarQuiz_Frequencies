@@ -7845,7 +7845,7 @@ background: rgba(118, 214, 255, 85)
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="AudioSourceButtonGroup"/>
   <buttongroup name="ModeButtonGroup"/>
+  <buttongroup name="AudioSourceButtonGroup"/>
  </buttongroups>
 </ui>

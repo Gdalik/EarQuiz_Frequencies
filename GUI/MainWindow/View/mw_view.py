@@ -18,11 +18,12 @@ import contextlib
 import datetime
 import platform
 from functools import partial
-from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
+from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer, QEvent
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QDockWidget
 from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
 import definitions
+from GUI.MainWindow.View.dark_theme import change_theme
 from GUI.EQ.eq_view import EqView
 from GUI.EQSettings.eqset_view import EQSetView
 from GUI.MainWindow.View.StatusBar import StatusBar
@@ -149,6 +150,10 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         if checkedDroppedMimeData:
             event.accept()
             self.PlaylistView.signals.urlsDropped.emit(checkedDroppedMimeData, -1)
+
+    def changeEvent(self, ev):
+        super(MainWindowView, self).changeEvent(ev)
+        change_theme(self)
 
     def _setUpEQSettingsButtons(self):
         icon = self.EQSettings_But1.icon()

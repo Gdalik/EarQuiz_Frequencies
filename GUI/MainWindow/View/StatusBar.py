@@ -16,6 +16,7 @@
 
 from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtWidgets import QStatusBar, QLabel, QHBoxLayout, QWidget, QFrame
+from GUI.MainWindow.View.dark_theme import blue_color
 
 
 class StatusBar(QStatusBar):
@@ -126,7 +127,7 @@ class TempLabel(QLabel):
     def __init__(self, parent, shown_text='', time=5000):
         super().__init__()
         self.parent = parent
-        self.setStyleSheet('color: blue;')
+        self.setStyleSheet(f'color: {blue_color()};')
         self.shown_text = shown_text
         self.time = time
         self.setAlignment(Qt.AlignmentFlag.AlignHCenter)

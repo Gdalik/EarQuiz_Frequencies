@@ -19,6 +19,7 @@ from PyQt6 import QtCore, QtGui
 from PyQt6.QtCore import Qt, QSortFilterProxyModel, QModelIndex
 from PyQt6.QtGui import QImage
 from GUI.Playlist.plsong import PlSong
+from GUI.MainWindow.View.dark_theme import playlist_even_background_color
 from Model.globals import MinAudioDuration
 
 PlaylistData = []
@@ -49,7 +50,7 @@ class PlaylistModel(QtCore.QAbstractTableModel):
             elif not CurData.available:
                 return QtGui.QColor('gray')
         if role == Qt.ItemDataRole.BackgroundRole and index.row() % 2 != 0:
-            return QtGui.QColor(244, 244, 245)
+            return playlist_even_background_color()
         if (
                 role == Qt.ItemDataRole.DecorationRole
                 and index.column() == 0

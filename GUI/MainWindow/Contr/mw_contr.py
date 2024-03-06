@@ -16,9 +16,12 @@
 
 import datetime
 import platform
+import threading
+import darkdetect
 from typing import Union
 from PyQt6.QtCore import QObject, QTimer, pyqtSignal
 from PyQt6.QtGui import QActionGroup
+from GUI.MainWindow.View import dark_theme
 from GUI.UpdateChecker.update_checker_contr import UpdCheckContr
 from GUI.EQ.eq_contr import EQContr
 from GUI.EQSettings.eqset_contr import EQSetContr
@@ -69,6 +72,7 @@ class MainWindowContr(QObject):
         self.mw_view = MainWindowView()
         if platform.system() == 'Windows':
             self.mw_view.win_os_settings()
+        dark_theme.change_theme(self.mw_view)
         self.CurrentAudio = None
         self.LoadedFileHash = None
         self.LoadedFilePath = None
