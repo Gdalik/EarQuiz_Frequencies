@@ -106,7 +106,7 @@ def _setObjIcon(obj, pixmap, pixmap_on=None):
 
 
 def blue_color():
-    return 'blue' if darkdetect.isLight() else 'lightblue'
+    return 'blue' if platform.system() == 'Windows' or darkdetect.isLight() else 'lightblue'
 
 
 def _set_StartEndPointBut_Style(mw, norm_color: str):
