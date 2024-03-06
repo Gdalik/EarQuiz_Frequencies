@@ -32,7 +32,8 @@ def activate_dark(mw):
                  QtGui.QPixmap(":/Player/Icons/Player/Negative/shuffle_black.png"),
                  QtGui.QPixmap(":/Player/Icons/Player/shuffle_blue.png"))
     _setObjsIcon([mw.ClearRangeBut, mw.ClearFilesBut], QtGui.QPixmap(":/AddRemove/Icons/AddRemove/clear_neg.png"))
-    _setObjsIcon([mw.EQSettings_But1, mw.EQSettings_But2], QtGui.QPixmap(":/Misc/Icons/Misc/Negative/Settings.png"),
+    _setObjsIcon([mw.EQSettings_But1, mw.EQSettings_But2, mw.actionEQ_Settings_view],
+                 QtGui.QPixmap(":/Misc/Icons/Misc/Negative/Settings.png"),
                  QtGui.QPixmap(":/Misc/Icons/Misc/Negative/Settings.png"))
     _setObjIcon(mw.SaveSliceLengthAsDefault, QtGui.QPixmap(":/Misc/Icons/Misc/Negative/star.png"))
     _setObjsIcon([mw.LockEQSettingsBut, mw.actionLockEQSettings],
@@ -67,7 +68,8 @@ def activate_light(mw):
                  QtGui.QPixmap(":/Player/Icons/Player/shuffle_black.png"),
                  QtGui.QPixmap(":/Player/Icons/Player/shuffle_blue.png"))
     _setObjsIcon([mw.ClearRangeBut, mw.ClearFilesBut], QtGui.QPixmap(":/AddRemove/Icons/AddRemove/clear.png"))
-    _setObjsIcon([mw.EQSettings_But1, mw.EQSettings_But2], QtGui.QPixmap(":/Misc/Icons/Misc/Settings.png"),
+    _setObjsIcon([mw.EQSettings_But1, mw.EQSettings_But2, mw.actionEQ_Settings_view],
+                 QtGui.QPixmap(":/Misc/Icons/Misc/Settings.png"),
                  QtGui.QPixmap(":/Misc/Icons/Misc/Settings.png"))
     _setObjIcon(mw.SaveSliceLengthAsDefault, QtGui.QPixmap(":/Misc/Icons/Misc/star.png"))
     _setObjsIcon([mw.LockEQSettingsBut, mw.actionLockEQSettings], QtGui.QPixmap(":/Misc/Icons/Misc/unlock.png"),
