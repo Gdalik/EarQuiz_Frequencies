@@ -38,15 +38,19 @@ def eq_proc(cur_sample, samplerate: int, freq1: int or float, freq2=None,
     crossfade_len_fr = sec2fr(eq_transition_len_s)
     fade_inout_len_fr = sec2fr(fade_inout_len_s)
 
-    pre_eq = pre_eq * fadeInCurveGen(pre_eq[0].size, fade_inout_len_fr)
-    post_eq = post_eq * fadeOutCurveGen(post_eq[0].size, fade_inout_len_fr)
-
     equalized = _pb_process(to_eq, chain, samplerate)
-    eq_in_curve = eqGainCurveGen(0, 1, to_eq[0].size, crossfade_len_fr)
-    eq_out_curve = eqGainCurveGen(1, 0, to_eq[0].size, crossfade_len_fr)
-    eq_proc_in = equalized * eq_in_curve
-    eq_unproc_out = to_eq * eq_out_curve
-    equalized = eq_proc_in + eq_unproc_out
+
+    if proc_t_perc < 100:
+        pre_eq = pre_eq * fadeInCurveGen(pre_eq[0].size, fade_inout_len_fr)
+        post_eq = post_eq * fadeOutCurveGen(post_eq[0].size, fade_inout_len_fr)
+        eq_in_curve = eqGainCurveGen(0, 1, to_eq[0].size, crossfade_len_fr)
+        eq_out_curve = eqGainCurveGen(1, 0, to_eq[0].size, crossfade_len_fr)
+        eq_proc_in = equalized * eq_in_curve
+        eq_unproc_out = to_eq * eq_out_curve
+        equalized = eq_proc_in + eq_unproc_out
+    else:
+        equalized = equalized * fadeInCurveGen(equalized[0].size, fade_inout_len_fr) * \
+                fadeOutCurveGen(to_eq[0].size, fade_inout_len_fr)
 
     return np.concatenate((pre_eq, equalized, post_eq), axis=1)
 
@@ -82,6 +86,7 @@ def eqGainCurveGen(value1: int or float, value2: int or float, duration_fr: int,
 
 
 def fadeInCurveGen(duration_fr: int, fade_in_len_fr: int):
+    fade_in_len_fr = min(duration_fr, fade_in_len_fr)
     start = np.linspace(0, 1, fade_in_len_fr)
     body = np.ndarray((duration_fr - fade_in_len_fr, ))
     body.fill(1)
@@ -89,6 +94,7 @@ def fadeInCurveGen(duration_fr: int, fade_in_len_fr: int):
 
 
 def fadeOutCurveGen(duration_fr: int, fade_out_len_fr: int):
+    fade_out_len_fr = min(duration_fr, fade_out_len_fr)
     body = np.ndarray((duration_fr - fade_out_len_fr, ))
     body.fill(1)
     end = np.linspace(1, 0, fade_out_len_fr)
