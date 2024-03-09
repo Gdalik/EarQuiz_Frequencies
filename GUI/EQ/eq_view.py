@@ -19,6 +19,7 @@ from dataclasses import dataclass, field
 from PyQt6.QtCore import QObject
 from PyQt6.QtGui import QWheelEvent
 from PyQt6.QtWidgets import QSlider, QLabel
+from GUI.MainWindow.View.dark_theme import green_color
 from GUI.globals import SliderAmplitude as SA
 from Utilities.common_calcs import findAdjacentEl
 
@@ -75,17 +76,17 @@ class EqView(QObject):
         F = self.getFilter(abs(freq))
         _slider_style = F.Slider.styleSheet()
         norm_handle_style = self.disabledHandleStyle if self.disabledHandleStyle in _slider_style else self.handleStyle
-        green_slider_set = '.QSlider::groove:vertical{margin: 0 12px; background: green; ' \
-                           'width: 8px;border: 1px solid #262626}'
-        green_handle_style = '.QSlider::handle:vertical{background: white; border: 2px solid green; ' \
-                             'height: 7px; width: 10px; margin: 0px -5px}'
+        green_slider_set = '.QSlider::groove:vertical{margin: 0 12px; background: %s; ' \
+                           'width: 8px;border: 1px solid #262626}' % green_color()
+        green_handle_style = '.QSlider::handle:vertical{background: white; border: 2px solid %s; ' \
+                             'height: 7px; width: 10px; margin: 0px -5px}' % green_color()
         handle_style = green_handle_style if highlightHandle else norm_handle_style
         slider_style = f'{handle_style}{green_slider_set}'
         F.Slider.setStyleSheet(slider_style)
         labtext = F.Label.text()
         if not labtext.endswith(')'):
             F.Label.setText(f'{labtext}\n(+)') if freq > 0 else F.Label.setText(f'{labtext}\n(-)')
-        F.Label.setStyleSheet('color: green; font-weight: bold')
+        F.Label.setStyleSheet(f'color: {green_color()}; font-weight: bold')
         return F
 
     def getFilter(self, freq: int):

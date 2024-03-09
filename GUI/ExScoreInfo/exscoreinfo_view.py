@@ -15,6 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from Utilities.freq2str import freqString
+from GUI.MainWindow.View.dark_theme import green_color
 
 
 class ExScoreInfoView:
@@ -65,7 +66,7 @@ class ExScoreInfoView:
 
     def showStatus(self, status: str):
         if 'passed' in status or 'progress' in status:
-            status = self.colorStr(status, 'green')
+            status = self.colorStr(status, green_color())
         elif 'failed' in status or 'canceled' in status:
             status = self.colorStr(status, 'red')
         self.TestStatus.setText(f'{self.TestStatus_t} {status}')

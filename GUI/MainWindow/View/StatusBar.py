@@ -16,7 +16,7 @@
 
 from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtWidgets import QStatusBar, QLabel, QHBoxLayout, QWidget, QFrame
-from GUI.MainWindow.View.dark_theme import blue_color
+from GUI.MainWindow.View.dark_theme import blue_color, green_color
 
 
 class StatusBar(QStatusBar):
@@ -104,7 +104,7 @@ class EQStateLabel(QLabel):
 
     def _updView(self):
         _text = 'EQ On' if self.isOn else 'EQ Off'
-        ss = 'color: green; font-weight: bold' if self.isOn else 'color: gray; font-weight: bold'
+        ss = f'color: {green_color()}; font-weight: bold' if self.isOn else 'color: gray; font-weight: bold'
         self.setText(_text)
         self.setStyleSheet(ss)
 

@@ -34,6 +34,7 @@ from GUI.PatternBox.patternbox_view import PatternBoxView
 from GUI.TransportPanel.transport_view import TransportPanelView
 from GUI.UpdateChecker.update_checker_view import UpdCheckView
 from GUI.About.about_dialog_view import AboutDialogView
+from GUI.MainWindow.View.dark_theme import green_color
 from Utilities.str2bool import str2bool
 from Utilities.checkMimeData import checkDroppedMimeData
 from definitions import Settings
@@ -210,7 +211,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.status.EQStateLabel.setVisible(True)
         if arg:
             self.EqOnOffLab.setText('EQ On')
-            self.EqOnOffLab.setStyleSheet('color: green; font-weight: bold')
+            self.EqOnOffLab.setStyleSheet(f'color: {green_color()}; font-weight: bold')
         else:
             self.EqOnOffLab.setText('EQ Off')
             self.EqOnOffLab.setStyleSheet('color: gray; font-weight: bold')

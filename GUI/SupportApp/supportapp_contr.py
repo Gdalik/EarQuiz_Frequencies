@@ -37,6 +37,7 @@ class SupportAppContr:
         self.mw_view.WhatsApp.clicked.connect(self.onWhatsApp_clicked)
         self.mw_view.Telegram.clicked.connect(self.onTelegram_clicked)
         self.mw_view.Reddit.clicked.connect(self.onReddit_clicked)
+        self.mw_view.BMC.setVisible(False)
 
     def onFacebook_clicked(self):
         webbrowser.open(f'https://www.facebook.com/sharer/sharer.php?u={self.sharedURL_q}')
