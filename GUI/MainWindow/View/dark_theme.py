@@ -17,7 +17,7 @@ def change_theme(mw):
 
 
 def _usedarktheme():
-    return False if platform.system() == 'Windows' or darkdetect.isLight() else True
+    return platform.system() != 'Windows' and not darkdetect.isLight()
 
 
 def activate_dark(mw):
@@ -98,7 +98,7 @@ def activate_light(mw):
 
 
 def playlist_even_background_color():
-    return QColor(244, 244, 245) if not _usedarktheme() else QColor(47, 43, 54)
+    return QColor(47, 43, 54) if _usedarktheme() else QColor(244, 244, 245)
 
 
 def _setObjsIcon(obj_list: list or tuple, pixmap: QPixmap, pixmap_on=None):
@@ -115,11 +115,11 @@ def _setObjIcon(obj, pixmap, pixmap_on=None):
 
 
 def blue_color():
-    return 'blue' if not _usedarktheme() else 'lightblue'
+    return 'lightblue' if _usedarktheme() else 'blue'
 
 
 def green_color():
-    return 'green' if not _usedarktheme() else 'lightgreen'
+    return 'lightgreen' if _usedarktheme() else 'green'
 
 
 def _set_StartEndPointBut_Style(mw, norm_color: str):
