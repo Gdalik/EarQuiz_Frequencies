@@ -72,7 +72,6 @@ class MainWindowContr(QObject):
         self.mw_view = MainWindowView()
         if platform.system() == 'Windows':
             self.mw_view.win_os_settings()
-        dark_theme.change_theme(self.mw_view)
         self.CurrentAudio = None
         self.LoadedFileHash = None
         self.LoadedFilePath = None
@@ -106,6 +105,7 @@ class MainWindowContr(QObject):
         QTimer.singleShot(10, self.mw_view.show)
         self.setSourceButtons()
         self.mw_view.VolumeSlider.setValue(60)
+        dark_theme.change_theme(self.mw_view)
         self.playAudioOnPreview = False
         QTimer.singleShot(2000, StartLogo.hide)
         QTimer.singleShot(10, self._restoreAudioSource)

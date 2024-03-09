@@ -56,6 +56,7 @@ def activate_dark(mw):
 
     mw.PatternBox.setStyleSheet("font-weight: normal; color: white")
     _replaceTestStatusColor(mw)
+    _repaintFiltersSS(mw)
 
 
 def activate_light(mw):
@@ -93,6 +94,7 @@ def activate_light(mw):
 
     mw.PatternBox.setStyleSheet("font-weight: normal; color: black")
     _replaceTestStatusColor(mw)
+    _repaintFiltersSS(mw)
 
 
 def playlist_even_background_color():
@@ -188,6 +190,21 @@ def _setStatusTempLabelColor(mw):
         mw.status.TempLabel.setStyleSheet(f'color: {blue_color()};')
 
 
+def _greenReplace(t: str):
+    if 'lightgreen' in t:
+        return t.replace('lightgreen', green_color())
+    elif 'green' in t:
+        return t.replace('green', green_color())
+    else:
+        return t
+
+
 def _replaceTestStatusColor(mw):
-    t = mw.TestStatusLab.text().replace("'green'", f"'{green_color()}'").replace("'lightgreen'", f"'{green_color()}'")
-    mw.TestStatusLab.setText(t)
+    mw.TestStatusLab.setText(_greenReplace(mw.TestStatusLab.text()))
+
+
+def _repaintFiltersSS(mw):
+    with suppress(AttributeError):
+        for F in mw.EQView.Filters:
+            F.Slider.setStyleSheet(_greenReplace(F.Slider.styleSheet()))
+            F.Label.setStyleSheet(_greenReplace(F.Label.styleSheet()))
