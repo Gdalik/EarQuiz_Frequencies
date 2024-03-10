@@ -2,10 +2,11 @@
   "version": {
     "major": 0,
     "minor": 1,
-    "patch": 4
+    "patch": 5
   },
   "info_file": "",
   "update_active": false,
   "download_mac": "",
+  "download_mac-arm64": "",
   "download_win": ""
 }
