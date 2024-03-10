@@ -1,5 +1,5 @@
-pedalboard~=0.8.7
-pyqtgraph~=0.13.3
+pedalboard~=0.9.2
+pyqtgraph~=0.13.4
 numpy~=1.26.4
 PyQt6
 darkdetect~=0.8.0
