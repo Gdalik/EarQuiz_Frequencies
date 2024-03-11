@@ -127,25 +127,19 @@ def green_color():
 
 
 def _set_StartEndPointBut_Style(mw):
-    StyleSheet = mw.StartPointBut.styleSheet()
-    StyleSheet = _switchColor(StyleSheet, ('lightblue', 'blue'), blue_color())
-    StyleSheet = _switchColor(StyleSheet, ('lightgreen', 'green'), green_color())
-    StyleSheet = _switchColor(StyleSheet, ('black', 'white'), blackorwhite_text())
+    StyleSheet = _blackwhiteSwitch(_greenReplace(_blueReplace(mw.StartPointBut.styleSheet())))
     mw.StartPointBut.setStyleSheet(StyleSheet)
     mw.EndPointBut.setStyleSheet(StyleSheet)
 
 
 def _set_RangeStartEndBut_Style(mw):
-    StyleSheet = mw.RangeToStart.styleSheet()
-    StyleSheet = _switchColor(StyleSheet, ('lightblue', 'blue'), blue_color())
-    StyleSheet = _switchColor(StyleSheet, ('lightgreen', 'green'), green_color())
+    StyleSheet = _greenReplace(_blueReplace(mw.RangeToStart.styleSheet()))
     mw.RangeToStart.setStyleSheet(StyleSheet)
     mw.RangeToEnd.setStyleSheet(StyleSheet)
 
 
 def _setNextExampleBut_Style(mw):
-    StyleSheet = mw.NextExample.styleSheet()
-    StyleSheet = _switchColor(StyleSheet, ('lightblue', 'blue'), blue_color())
+    StyleSheet = _blueReplace(mw.NextExample.styleSheet())
     mw.NextExample.setStyleSheet(StyleSheet)
     mw.NextExample_TP.setStyleSheet(StyleSheet)
 
@@ -164,6 +158,14 @@ def _switchColor(stylesheet: str, options: tuple or list[str], target: str):
 
 def _greenReplace(t: str):
     return _switchColor(t, ('lightgreen', 'green'), green_color())
+
+
+def _blueReplace(t: str):
+    return _switchColor(t, ('lightblue', 'blue'), blue_color())
+
+
+def _blackwhiteSwitch(t: str):
+    return _switchColor(t, ('black', 'white'), blackorwhite_text())
 
 
 def _replaceTestStatusColor(mw):
