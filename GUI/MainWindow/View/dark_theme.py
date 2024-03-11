@@ -50,7 +50,7 @@ def activate_dark(mw):
     mw.Duration_Lab.setStyleSheet(TP_PosDur_Style)
 
     _setStatusTempLabelColor(mw)
-    _set_StartEndPointBut_Style(mw, 'white')
+    _set_StartEndPointBut_Style(mw)
     _set_RangeStartEndBut_Style(mw)
     _setNextExampleBut_Style(mw)
 
@@ -88,7 +88,7 @@ def activate_light(mw):
     mw.Duration_Lab.setStyleSheet(TP_PosDur_Style)
 
     _setStatusTempLabelColor(mw)
-    _set_StartEndPointBut_Style(mw, 'black')
+    _set_StartEndPointBut_Style(mw)
     _set_RangeStartEndBut_Style(mw)
     _setNextExampleBut_Style(mw)
 
@@ -114,6 +114,10 @@ def _setObjIcon(obj, pixmap, pixmap_on=None):
     _setObjsIcon((obj, ), pixmap, pixmap_on=pixmap_on)
 
 
+def blackorwhite_text():
+    return 'white' if _usedarktheme() else 'black'
+
+
 def blue_color():
     return 'lightblue' if _usedarktheme() else 'blue'
 
@@ -122,65 +126,26 @@ def green_color():
     return 'lightgreen' if _usedarktheme() else 'green'
 
 
-def _set_StartEndPointBut_Style(mw, norm_color: str):
-    StyleSheet = ("QPushButton{\n"
-                  "border: none;\n"
-                  "color: %s;\n"
-                  "}\n"
-                  "\n"
-                  "QPushButton:hover{\n"
-                  "font-weight: bold;\n"
-                  "}\n"
-                  "\n"
-                  "QPushButton:pressed{\n"
-                  "color: green;\n"
-                  "}\n"
-                  "\n"
-                  "QPushButton:disabled{\n"
-                  "color: %s;\n"
-                  "}" % (blue_color(), norm_color))
+def _set_StartEndPointBut_Style(mw):
+    StyleSheet = mw.StartPointBut.styleSheet()
+    StyleSheet = _switchColor(StyleSheet, ('lightblue', 'blue'), blue_color())
+    StyleSheet = _switchColor(StyleSheet, ('lightgreen', 'green'), green_color())
+    StyleSheet = _switchColor(StyleSheet, ('black', 'white'), blackorwhite_text())
     mw.StartPointBut.setStyleSheet(StyleSheet)
     mw.EndPointBut.setStyleSheet(StyleSheet)
 
 
 def _set_RangeStartEndBut_Style(mw):
-    StyleSheet = ("QPushButton{\n"
-                  "border: none;\n"
-                  "color: %s;\n"
-                  "}\n"
-                  "\n"
-                  "QPushButton:hover{\n"
-                  "font-weight: bold;\n"
-                  "}\n"
-                  "\n"
-                  "QPushButton:pressed{\n"
-                  "color: green;\n"
-                  "}\n"
-                  "\n"
-                  "QPushButton:disabled{\n"
-                  "color: gray;\n"
-                  "}" % blue_color())
+    StyleSheet = mw.RangeToStart.styleSheet()
+    StyleSheet = _switchColor(StyleSheet, ('lightblue', 'blue'), blue_color())
+    StyleSheet = _switchColor(StyleSheet, ('lightgreen', 'green'), green_color())
     mw.RangeToStart.setStyleSheet(StyleSheet)
     mw.RangeToEnd.setStyleSheet(StyleSheet)
 
 
 def _setNextExampleBut_Style(mw):
-    StyleSheet = ("QToolButton{\n"
-                  "border: None;\n"
-                  "color: %s;\n"
-                  "font-weight: bold;\n"
-                  "}\n"
-                  "QToolButton:hover{\n"
-                  "background: rgba(192, 192, 192, 128);\n"
-                  "border-radius: 4px;\n"
-                  "}\n"
-                  "QToolButton:pressed{\n"
-                  "border: 1px inset gray;\n"
-                  "background: rgba(118, 214, 255, 85);\n"
-                  "}\n"
-                  "QToolButton:disabled{\n"
-                  "color: gray;\n"
-                  "}" % blue_color())
+    StyleSheet = mw.NextExample.styleSheet()
+    StyleSheet = _switchColor(StyleSheet, ('lightblue', 'blue'), blue_color())
     mw.NextExample.setStyleSheet(StyleSheet)
     mw.NextExample_TP.setStyleSheet(StyleSheet)
 
@@ -190,13 +155,15 @@ def _setStatusTempLabelColor(mw):
         mw.status.TempLabel.setStyleSheet(f'color: {blue_color()};')
 
 
+def _switchColor(stylesheet: str, options: tuple or list[str], target: str):
+    return next(
+        (stylesheet.replace(o, target) for o in options if o in stylesheet),
+        stylesheet,
+    )
+
+
 def _greenReplace(t: str):
-    if 'lightgreen' in t:
-        return t.replace('lightgreen', green_color())
-    elif 'green' in t:
-        return t.replace('green', green_color())
-    else:
-        return t
+    return _switchColor(t, ('lightgreen', 'green'), green_color())
 
 
 def _replaceTestStatusColor(mw):
