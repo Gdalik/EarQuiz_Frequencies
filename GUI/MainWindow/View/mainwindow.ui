@@ -157,7 +157,8 @@
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgba(255, 255, 102, 207);</string>
+                <string notr="true">background-color: rgba(255, 255, 102, 207);
+color: black;</string>
                </property>
                <property name="text">
                 <string>Preview</string>
@@ -187,7 +188,8 @@
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgba(118, 214, 255, 191)</string>
+                <string notr="true">background-color: rgba(118, 214, 255, 191);
+color: black;</string>
                </property>
                <property name="text">
                 <string>Learn</string>
@@ -214,7 +216,8 @@
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">background-color: rgba(255, 126, 121, 191)</string>
+                <string notr="true">background-color: rgba(255, 126, 121, 191);
+color: black;</string>
                </property>
                <property name="text">
                 <string>Test</string>
