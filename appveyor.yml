@@ -64,6 +64,13 @@ pull_requests:
   do_not_increment_build_number: true
 
 deploy:
+- provider: Webhook
+  url: https://app.signpath.io/API/v1/5d80b854-5feb-4128-ac4c-1ef9a083c0b1/Integrations/AppVeyor?ProjectSlug=
+EarQuiz_Frequencies&SigningPolicySlug=test-signing&ArtifactConfigurationSlug=eq-frequencies-config
+  authorization:
+    secure: s+mLTI0CINXmqiziWCJJwmOA6tRWiZDQh9s3o/BtdKgN+vO9AknY+2tOmyVto4Du9cIN1hsnOVz0hopIri3yDg==
+    
+deploy:
   tag: EarQuiz_Frequencies-v$(APPVEYOR_BUILD_VERSION)
   release: Draft release of EarQuiz Frequencies -v$(APPVEYOR_BUILD_VERSION)
   description: ''
