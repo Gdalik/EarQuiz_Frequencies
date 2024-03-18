@@ -40,6 +40,10 @@ The repository doesn't contain any pre-compiled dependencies, so they should be 
 
 `pip install -r requirements.txt`
 
+Oftentimes, PyQt6 works more correctly after reinstalling some of its parts. Here is the workaround:
+
+`pip install --no-cache-dir pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-tools`
+
 After that, you can start the application with:
 
 `python -m main`
