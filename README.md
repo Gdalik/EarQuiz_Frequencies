@@ -95,4 +95,4 @@ License: [Python Software Foundation License](https://docs.python.org/3/license.
 This program will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it.
 
 ## Code Signing Policy
-For Windows binaries, this application uses free code signing provided by [SignPath.io](https://signpath.io/), and a certificate by the [SignPath Foundation](https://signpath.org/).
+For Windows binaries, starting from version 0.1.5, this application uses free code signing provided by [SignPath.io](https://signpath.io/), and a certificate by the [SignPath Foundation](https://signpath.org/).
