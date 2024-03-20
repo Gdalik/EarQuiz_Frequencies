@@ -40,7 +40,7 @@ The repository doesn't contain any pre-compiled dependencies, so they should be 
 
 `pip install -r requirements.txt`
 
-Oftentimes, PyQt6 works more correctly after reinstalling some of its parts. Here is the workaround:
+Oftentimes, PyQt6 works more correctly after reinstalling some of its parts. Here is the workaround for Windows and macOS on Intel:
 
 `pip install --no-cache-dir pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-tools`
 
@@ -90,3 +90,9 @@ License: [BSD 3-Clause](https://opensource.org/license/bsd-3-clause/)
 - [tendo](https://pypi.org/project/tendo/)<br />
 Copyright &copy; 2010-2022 Sorin Sbarnea<br />
 License: [Python Software Foundation License](https://docs.python.org/3/license.html#psf-license)
+
+## Privacy Policy
+This program will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it.
+
+## Code Signing Policy
+For Windows binaries, this application uses free code signing provided by [SignPath.io](https://signpath.io/), and a certificate by the [SignPath Foundation](https://signpath.org/).
