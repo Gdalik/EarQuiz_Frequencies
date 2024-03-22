@@ -24,7 +24,7 @@ from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import QTimer
 from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.Misc.StartScreen import StartLogo
-from definitions import app, app_name, TEMP_AUDIO_DIR
+from definitions import app, app_name, TEMP_AUDIO_DIR, NativeAudioBackend
 
 
 def delTempAudio():
@@ -32,6 +32,9 @@ def delTempAudio():
 
 
 def setAudioBackend():
+    if not NativeAudioBackend:
+        os.environ['QT_MEDIA_BACKEND'] = 'ffmpeg'
+        return
     if platform.system() == 'Windows':
         os.environ['QT_MEDIA_BACKEND'] = 'windows'
     elif platform.system() == 'Darwin':
