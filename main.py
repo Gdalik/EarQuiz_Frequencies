@@ -46,7 +46,7 @@ if __name__ == '__main__':
     if platform.system() == 'Darwin':
         mp.set_start_method('fork')
     me = SingleInstance()
-    QTimer.singleShot(0, StartLogo.show)
+    StartLogo.show()
     app.setWindowIcon(QIcon(":Logo/Icons/Logo/EarQuiz_Icon.png"))
     app.setApplicationDisplayName(app_name)
     app.setApplicationName(app_name)
