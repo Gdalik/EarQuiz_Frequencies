@@ -16,6 +16,7 @@
 
 from GUI.Modes.PreviewMode import PreviewMode
 from GUI.Playlist.plsong import PlSong
+from PyQt6.QtCore import QTimer
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.globals import MinAudioDuration
 from definitions import Settings, PN
@@ -61,6 +62,9 @@ class AudioLoad:
         return False
 
     def load_song(self, Song: PlSong, forcePlayAfter=False, forceNotPlayAfter=False):
+        def load_current_audio():
+            self.TransportContr.PlayerContr.loadCurrentAudio(
+                play_after=self.parent.playAudioOnPreview or forcePlayAfter)
         if not self._songCanBeLoaded(Song):
             return
         reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)
@@ -86,7 +90,7 @@ class AudioLoad:
         elif not reloaded_same_path:
             self.parent.ADGen = None
         self.parent.PlaylistContr.setCurrentSongToPlaylistModel()
-        self.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview or forcePlayAfter)
+        QTimer.singleShot(0, load_current_audio)
 
     def load_pinknoise(self):
         self.parent.SourceAudio = PlSong(PN)
