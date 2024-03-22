@@ -20,7 +20,7 @@ from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
 from GUI.TransportPanel.volumeslider_contr import VolumeSliderContr
 from GUI.Misc.error_message import reformat_message
-from definitions import MediaDevices, PN, Settings
+from definitions import MediaDevices, PN, Settings, NativeAudioBackend
 
 
 class PlayerContr(QMediaPlayer):
@@ -52,8 +52,8 @@ class PlayerContr(QMediaPlayer):
     def loadCurrentAudio(self, play_after=True):
         filepath = self.mw_contr.CurrentAudio
 
-        # Workaround for PyQt6 QMediaPlayer issue with remote files' playback on Windows:
-        filepath = f'file:{filepath}' if platform.system() == 'Windows' else filepath
+        # Workaround for PyQt6 QMediaPlayer issue with remote files' playback on Windows (native backend):
+        filepath = f'file:{filepath}' if platform.system() == 'Windows' and NativeAudioBackend else filepath
 
         AudioToLoad = QUrl.fromLocalFile(filepath)
         if self.source() == AudioToLoad:
