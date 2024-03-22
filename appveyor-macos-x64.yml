@@ -9,7 +9,6 @@ init:
 install:
   - python -m pip install --upgrade pip
   - pip install -r requirements.txt
-  - pip install --no-cache-dir pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools
   - pip install -U pyinstaller
   - pyinstaller macos_build.spec
   - tar -cvf eqfreq_build-macos-x64.tar "dist/EarQuiz Frequencies.app"
