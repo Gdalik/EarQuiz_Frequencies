@@ -60,7 +60,7 @@ class LearnMode(UniMode):
         self.parent.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
         self.currentDrillFreq = self.generateDrill(fromStart=fromStart,
                                                    raiseInterruptedException=raiseInterruptedException)
-        self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=play_after)
+        self.parent.TransportContr.PlayerContr.t_loadCurrentAudio(play_after=play_after)
 
     def updateSliceRegion(self):
         if self.parent.ADGen is None:

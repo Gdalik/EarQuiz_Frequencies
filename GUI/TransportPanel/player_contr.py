@@ -15,7 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import platform
-from PyQt6.QtCore import QUrl
+from PyQt6.QtCore import QUrl, QTimer
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
 from GUI.TransportPanel.volumeslider_contr import VolumeSliderContr
@@ -63,6 +63,9 @@ class PlayerContr(QMediaPlayer):
         self.onceAudioLoaded = True
         self.playAfterAudioLoaded = play_after
         self.mw_contr.playAudioOnPreview = False
+
+    def t_loadCurrentAudio(self, **kwargs):
+        QTimer.singleShot(5, lambda: self.loadCurrentAudio(**kwargs))
 
     def clearSource(self):
         self.setSource(QUrl())

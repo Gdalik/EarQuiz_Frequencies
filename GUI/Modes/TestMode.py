@@ -55,7 +55,7 @@ class TestMode(UniMode):
         self.view.setActionNextExampleEnabled(False)
         self.parent.EQContr.resetEQ()
         self.currentDrillFreq = self.generateDrill(fromStart=fromStart)
-        self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=play_after)
+        self.parent.TransportContr.PlayerContr.t_loadCurrentAudio(play_after=play_after)
         self.parent.ExScore.nextEx()
 
     def acceptAnswer(self):

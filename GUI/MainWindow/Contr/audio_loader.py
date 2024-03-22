@@ -62,9 +62,6 @@ class AudioLoad:
         return False
 
     def load_song(self, Song: PlSong, forcePlayAfter=False, forceNotPlayAfter=False):
-        def load_current_audio():
-            self.TransportContr.PlayerContr.loadCurrentAudio(
-                play_after=self.parent.playAudioOnPreview or forcePlayAfter)
         if not self._songCanBeLoaded(Song):
             return
         reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)
@@ -89,7 +86,7 @@ class AudioLoad:
         elif not reloaded_same_path:
             self.parent.ADGen = None
         self.parent.PlaylistContr.setCurrentSongToPlaylistModel()
-        QTimer.singleShot(0, load_current_audio)
+        self.TransportContr.PlayerContr.t_loadCurrentAudio(play_after=self.parent.playAudioOnPreview or forcePlayAfter)
 
     def load_pinknoise(self):
         self.parent.SourceAudio = PlSong(PN)
