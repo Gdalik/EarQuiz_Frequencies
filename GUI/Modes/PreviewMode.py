@@ -34,7 +34,7 @@ class PreviewMode(UniMode):
         if self.parent.SourceAudio is not None:
             self.enableTimeSettingsChanges(True)
         if self.updateCurrentAudio():
-            self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview)
+            self.parent.TransportContr.PlayerContr.t_loadCurrentAudio(play_after=self.parent.playAudioOnPreview)
         self.parent.playAudioOnPreview = False
 
     @property
