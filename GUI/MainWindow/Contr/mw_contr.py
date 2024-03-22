@@ -193,7 +193,9 @@ class MainWindowContr(QObject):
         if self.CurrentMode is not None:
             self.CurrentMode.nextDrill(raiseInterruptedException=False)
 
-    def onmodesActionGroupTriggered(self):
+    def onmodesActionGroupTriggered(self, act):
+        if act.text().startswith(self.CurrentMode.name):
+            return
         player = self.TransportContr.PlayerContr
         player.onStopTriggered(checkPlaybackState=True)
 
