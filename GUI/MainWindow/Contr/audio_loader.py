@@ -84,7 +84,6 @@ class AudioLoad:
         if not self._switchToPreview() and reloaded_same_path:  # the same audio file without leaving the Preview mode
             if not reloaded_same:
                 self.parent.PlaylistContr.setCurrentSongToPlaylistModel()
-            #self.TransportContr.PlayerContr.onStopTriggered()
             self.TransportContr.PlayerContr.play()
             return
         elif not reloaded_same_path:
