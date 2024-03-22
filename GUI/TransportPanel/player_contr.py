@@ -214,6 +214,8 @@ class PlayerContr(QMediaPlayer):
             self.mw_contr.CurrentMode.playbackStoppedEnded()
 
     def _get_slice_number_str(self):
+        if self.mw_contr.ADGen is None:
+            return ''
         slice_number = self.mw_contr.ADGen.audiochunk.cycle_id + 1\
             if self.mw_contr.ADGen is not None and self.mw_contr.SourceAudio.name != PN and \
                self.mw_contr.CurrentMode.name in ('Learn', 'Test') else None
