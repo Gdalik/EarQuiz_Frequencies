@@ -16,8 +16,6 @@
 
 import datetime
 import platform
-import threading
-import darkdetect
 from typing import Union
 from PyQt6.QtCore import QObject, QTimer, pyqtSignal
 from PyQt6.QtGui import QActionGroup
@@ -216,17 +214,27 @@ class MainWindowContr(QObject):
         if self.BoostCutOrderActionGroup.checkedAction() == self.mw_view.actionAll_Bands_Boosted_then_All_Bands_Cut:
             return 2
 
+    def _setPreviewMode(self):
+        self.CurrentMode = PreviewMode(self)
+
+    def _setLearnMode(self):
+        self.CurrentMode = LearnMode(self)
+
+    def _setTestMode(self):
+        self.CurrentMode = TestMode(self)
+
     def setCurrentMode(self, value):
         if not value:
             return
         self.CurrentMode.cleanTempAudio()
+        SwitchTime = 10
         try:
             if self.modesActionGroup.checkedAction() == self.mw_view.actionPreview_Mode:
-                self.CurrentMode = PreviewMode(self)
+                QTimer.singleShot(SwitchTime, self._setPreviewMode)
             elif self.modesActionGroup.checkedAction() == self.mw_view.actionLearn_Mode:
-                self.CurrentMode = LearnMode(self)
+                QTimer.singleShot(SwitchTime, self._setLearnMode)
             elif self.modesActionGroup.checkedAction() == self.mw_view.actionTest_Mode:
-                self.CurrentMode = TestMode(self)
+                QTimer.singleShot(SwitchTime, self._setTestMode)
             elif self.modesActionGroup.checkedAction() == self.mw_view.actionUni_Mode:
                 self.CurrentMode = UniMode(self, contrEnabled=self.LastMode.name != 'Test')
         except InterruptedException:
