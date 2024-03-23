@@ -44,6 +44,7 @@ class TestMode(UniMode):
         if self.parent.ADGen is None:
             return
         self.showProcessingSourceMessage()
+        self.procEvents()
         self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False)
         self.updateCurrentAudio()
         return self.parent.ADGen.output(audio_path=self.parent.CurrentAudio, force_freq=None, fromStart=fromStart)[0]

@@ -46,6 +46,7 @@ class LearnMode(UniMode):
         if self.parent.ADGen is None:
             return
         self.showProcessingSourceMessage()
+        self.procEvents()
         self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False,
                                                         raiseInterruptedException=raiseInterruptedException)
         self.updateCurrentAudio()

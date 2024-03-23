@@ -65,7 +65,7 @@ class PlayerContr(QMediaPlayer):
         self.mw_contr.playAudioOnPreview = False
 
     def t_loadCurrentAudio(self, **kwargs):
-        QTimer.singleShot(5, lambda: self.loadCurrentAudio(**kwargs))
+        QTimer.singleShot(0, lambda: self.loadCurrentAudio(**kwargs))
 
     def clearSource(self):
         self.setSource(QUrl())
