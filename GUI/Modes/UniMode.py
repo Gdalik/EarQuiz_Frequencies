@@ -19,6 +19,7 @@ from pathlib import Path
 from PyQt6.QtCore import QTimer
 from Model.audiodrill_gen import create_temp_wavefile
 from definitions import TEMP_AUDIO_DIR
+from GUI.Misc.procEvents import procEvents
 
 
 class UniMode:
@@ -140,6 +141,9 @@ class UniMode:
 
     def showProcessingSourceMessage(self):
         self.view.status.showMessage(f'{self.parent.SourceAudio.name}: Processsing/Loading...', 0)
+
+    def procEvents(self):
+        procEvents()
 
     def hideEQState(self):
         self.view.EqOnOffLab.setVisible(False)

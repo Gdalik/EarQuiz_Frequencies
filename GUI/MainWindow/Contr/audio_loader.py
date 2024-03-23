@@ -16,6 +16,7 @@
 
 from GUI.Modes.PreviewMode import PreviewMode
 from GUI.Playlist.plsong import PlSong
+from GUI.Misc.procEvents import procEvents
 from PyQt6.QtCore import QTimer
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.globals import MinAudioDuration
@@ -57,6 +58,7 @@ class AudioLoad:
         elif self.mw_view.actionPreview_Mode.isChecked():
             self.parent.CurrentMode = PreviewMode(self.parent)
         else:
+            procEvents()
             self.mw_view.actionPreview_Mode.setChecked(True)
             return True
         return False
@@ -64,6 +66,7 @@ class AudioLoad:
     def load_song(self, Song: PlSong, forcePlayAfter=False, forceNotPlayAfter=False):
         if not self._songCanBeLoaded(Song):
             return
+        procEvents()
         reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)
         try:
             reloaded_same_path = (self.parent.SourceAudio is not None and
@@ -106,7 +109,8 @@ class AudioLoad:
         self.parent.CurrentAudio = None
         self.parent.LoadedFileHash = None
         self.parent.SRC.disconnectSourceRangeSig()
-        self.TransportContr.PlayerContr.clearSource()
+        #self.TransportContr.PlayerContr.clearSource()
+        QTimer.singleShot(0, self.TransportContr.PlayerContr.clearSource)
         self.parent.CurrentMode.cleanTempAudio()
         self.parent.LoadedFilePath = None
         self.mw_view.TransportPanelView.noSongState()
@@ -114,7 +118,7 @@ class AudioLoad:
         self.parent.setMakeAudioActionsEnabled(False)
         self.parent.setTrainingActionsEnabled(False)
         self.mw_view.status.clearMessage()
-        self.parent.pushBackToPreview()
+        #self.parent.pushBackToPreview()
 
     def saveLoadedSourceInfo(self):
         if self.parent.SourceAudio.name == PN:

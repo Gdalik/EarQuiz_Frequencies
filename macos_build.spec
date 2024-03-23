@@ -37,7 +37,7 @@ exe = EXE(
     console=False,
     windowed=True,
     disable_windowed_traceback=True,
-    argv_emulation=True,
+    argv_emulation=False,
     target_arch='x86_64',
     codesign_identity=None,
     entitlements_file=None,
@@ -68,6 +68,8 @@ app = BUNDLE(
     'NSHighResolutionCapable': True,
     'LSMinimumSystemVersion': '11.0.0',
     'CFBundleDevelopmentRegion': 'en_US',
+    'CFBundleTypeExtensions': ['wav', 'aiff', 'flac', 'mp3', 'ogg', ],
+    'CFBundleTypeRole': 'Viewer',
     'NSHumanReadableCopyright': '© 2023-2024 Gdaliy Garmiza',
     'NSPrincipalClass': 'NSApplication'
     },

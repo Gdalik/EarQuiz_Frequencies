@@ -48,7 +48,7 @@ from Model.audiodrill_gen import AudioDrillGen
 from Model.file_hash import filehash
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
-from definitions import app, Settings, PN
+from definitions import app, Settings, PN, NativeAudioBackend
 
 
 class MW_Signals(QObject):
@@ -193,8 +193,8 @@ class MainWindowContr(QObject):
         if self.CurrentMode is not None:
             self.CurrentMode.nextDrill(raiseInterruptedException=False)
 
-    def onmodesActionGroupTriggered(self, act):
-        if act.text().startswith(self.CurrentMode.name):
+    def onmodesActionGroupTriggered(self):
+        if self.mw_view.ModeButtonGroup.checkedButton().text() == self.CurrentMode.name:
             return
         player = self.TransportContr.PlayerContr
         player.onStopTriggered(checkPlaybackState=True)
@@ -225,20 +225,22 @@ class MainWindowContr(QObject):
     def _setTestMode(self):
         self.CurrentMode = TestMode(self)
 
+    def _setUniMode(self):
+        self.CurrentMode = UniMode(self, contrEnabled=self.LastMode.name != 'Test')
+
     def setCurrentMode(self, value):
         if not value:
             return
         self.CurrentMode.cleanTempAudio()
-        SwitchTime = 10
         try:
             if self.modesActionGroup.checkedAction() == self.mw_view.actionPreview_Mode:
-                QTimer.singleShot(SwitchTime, self._setPreviewMode)
+                self._setPreviewMode()
             elif self.modesActionGroup.checkedAction() == self.mw_view.actionLearn_Mode:
-                QTimer.singleShot(SwitchTime, self._setLearnMode)
+                self._setLearnMode()
             elif self.modesActionGroup.checkedAction() == self.mw_view.actionTest_Mode:
-                QTimer.singleShot(SwitchTime, self._setTestMode)
+                self._setTestMode()
             elif self.modesActionGroup.checkedAction() == self.mw_view.actionUni_Mode:
-                self.CurrentMode = UniMode(self, contrEnabled=self.LastMode.name != 'Test')
+                self._setUniMode()
         except InterruptedException:
             self.mw_view.actionPreview_Mode.setChecked(True)
         QTimer.singleShot(0, self.pushBackToPreview)
