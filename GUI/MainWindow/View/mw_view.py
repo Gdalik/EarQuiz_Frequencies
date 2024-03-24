@@ -18,7 +18,7 @@ import contextlib
 import datetime
 import platform
 from functools import partial
-from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer, QEvent
+from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QDockWidget
 from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
@@ -286,13 +286,16 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.loadActionState(self.actionShuffleEQ, default=False)
         self.loadActionState(self.actionEach_Band_Boosted_then_Cut, default=True)
         self.loadActionState(self.actionAll_Bands_Boosted_then_All_Bands_Cut, default=False)
+        self.loadActionState(self.actionFFmpeg, default=True)
+        self.loadActionState(self.actionNative, default=False)
 
     def _connectActionsToSaver(self):
         controlActions = [self.actionStartPlayingAfterLoading, self.actionSkip_Unavailable_Tracks,
                           self.actionLoop_Playback, self.actionShuffle_Playback, self.actionRepeat_Playlist,
                           self.actionSequential_Playback, self.actionLoop_Sequence,
                           self.actionAscendingEQ, self.actionDescendingEQ, self.actionShuffleEQ,
-                          self.actionEach_Band_Boosted_then_Cut, self.actionAll_Bands_Boosted_then_All_Bands_Cut]
+                          self.actionEach_Band_Boosted_then_Cut, self.actionAll_Bands_Boosted_then_All_Bands_Cut,
+                          self.actionFFmpeg, self.actionNative]
         for act in controlActions:
             act.toggled.connect(partial(self.saveActionState, act))
 

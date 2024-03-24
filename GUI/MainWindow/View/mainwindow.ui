@@ -4829,6 +4829,13 @@ color: gray;
      </property>
      <addaction name="separator"/>
     </widget>
+    <widget class="QMenu" name="menuAudio_Backend">
+     <property name="title">
+      <string>Audio Backend</string>
+     </property>
+     <addaction name="actionFFmpeg"/>
+     <addaction name="actionNative"/>
+    </widget>
     <addaction name="actionIncrease_Volume"/>
     <addaction name="actionDecrease_Volume"/>
     <addaction name="separator"/>
@@ -4836,6 +4843,7 @@ color: gray;
     <addaction name="actionRestore_Volume_Level"/>
     <addaction name="separator"/>
     <addaction name="menuAudio_Device"/>
+    <addaction name="menuAudio_Backend"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -7718,6 +7726,25 @@ background: rgba(118, 214, 255, 85)
     <string>Ask and Discuss...</string>
    </property>
   </action>
+  <action name="actionFFmpeg">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>FFmpeg</string>
+   </property>
+  </action>
+  <action name="actionNative">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Native</string>
+   </property>
+  </action>
   <zorder>Eq_Settings</zorder>
   <zorder>TransportPanel</zorder>
   <zorder>ExScoreInfo</zorder>
@@ -7872,7 +7899,7 @@ background: rgba(118, 214, 255, 85)
   </connection>
  </connections>
  <buttongroups>
-  <buttongroup name="AudioSourceButtonGroup"/>
   <buttongroup name="ModeButtonGroup"/>
+  <buttongroup name="AudioSourceButtonGroup"/>
  </buttongroups>
 </ui>

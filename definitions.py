@@ -26,7 +26,6 @@ app_name = 'EarQuiz Frequencies'
 app = QApplication(sys.argv)
 MediaDevices = QMediaDevices()
 launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
-NativeAudioBackend = False
 
 ROOT_DIR = os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = ''
