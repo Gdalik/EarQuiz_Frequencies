@@ -14,10 +14,17 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from definitions import app
+
+import os
+import platform
 from Model.globals import NativeAudioBackend
 
 
-def procEvents():
+def setAudioBackend():
     if not NativeAudioBackend:
-        app.processEvents()
+        os.environ['QT_MEDIA_BACKEND'] = 'ffmpeg'
+        return
+    if platform.system() == 'Windows':
+        os.environ['QT_MEDIA_BACKEND'] = 'windows'
+    elif platform.system() == 'Darwin':
+        os.environ['QT_MEDIA_BACKEND'] = 'darwin'

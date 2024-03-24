@@ -14,10 +14,13 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from definitions import app
-from Model.globals import NativeAudioBackend
+from PyQt6.QtWidgets import QMessageBox
 
 
-def procEvents():
-    if not NativeAudioBackend:
-        app.processEvents()
+def restart_message(window):
+    win = QMessageBox(window)
+    win.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.Cancel)
+    win.setDefaultButton(QMessageBox.StandardButton.Yes)
+    win.setIcon(QMessageBox.Icon.Question)
+    win.setText('The application should be restarted for the changes to take effect. Restart?')
+    return win.exec()

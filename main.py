@@ -18,27 +18,16 @@ from multiprocessing import freeze_support
 import multiprocessing as mp
 import shutil
 import platform
-import os
 from tendo.singleton import SingleInstance
 from PyQt6.QtGui import QIcon
-from PyQt6.QtCore import QTimer
 from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.Misc.StartScreen import StartLogo
-from definitions import app, app_name, TEMP_AUDIO_DIR, NativeAudioBackend
+from definitions import app, app_name, TEMP_AUDIO_DIR
+from Model.AudioEngine.audio_backend import setAudioBackend
 
 
 def delTempAudio():
     shutil.rmtree(TEMP_AUDIO_DIR, ignore_errors=True)
-
-
-def setAudioBackend():
-    if not NativeAudioBackend:
-        os.environ['QT_MEDIA_BACKEND'] = 'ffmpeg'
-        return
-    if platform.system() == 'Windows':
-        os.environ['QT_MEDIA_BACKEND'] = 'windows'
-    elif platform.system() == 'Darwin':
-        os.environ['QT_MEDIA_BACKEND'] = 'darwin'
 
 
 if __name__ == '__main__':

@@ -20,7 +20,8 @@ from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
 from GUI.TransportPanel.volumeslider_contr import VolumeSliderContr
 from GUI.Misc.error_message import reformat_message
-from definitions import MediaDevices, PN, Settings, NativeAudioBackend
+from definitions import MediaDevices, PN, Settings
+from Model.globals import NativeAudioBackend
 
 
 class PlayerContr(QMediaPlayer):

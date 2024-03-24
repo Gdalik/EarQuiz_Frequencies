@@ -16,7 +16,6 @@
 
 import datetime
 import platform
-from typing import Union
 from PyQt6.QtCore import QObject, QTimer, pyqtSignal
 from PyQt6.QtGui import QActionGroup
 from GUI.MainWindow.View import dark_theme
@@ -29,6 +28,7 @@ from GUI.FileMaker.make_playlist import exportPlaylist, exportPlaylistWithRelPat
 from GUI.MainWindow.Contr.adgen_contr import ADGenContr
 from GUI.MainWindow.Contr.audio_loader import AudioLoad
 from GUI.MainWindow.Contr.sourcerange_contr import SourceRangeContr
+from GUI.MainWindow.Contr.audio_backend_contr import AudioBackendContr
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.Misc.tracked_proc import ProcTrackControl
 from GUI.Modes.LearnMode import LearnMode
@@ -48,7 +48,7 @@ from Model.audiodrill_gen import AudioDrillGen
 from Model.file_hash import filehash
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
-from definitions import app, Settings, PN, NativeAudioBackend
+from definitions import app, Settings, PN
 
 
 class MW_Signals(QObject):
@@ -56,9 +56,9 @@ class MW_Signals(QObject):
 
 
 class MainWindowContr(QObject):
-    modesActionGroup: Union[QActionGroup, QActionGroup]
-    LearnFreqOrderActionGroup: Union[QActionGroup, QActionGroup]
-    BoostCutOrderActionGroup: Union[QActionGroup, QActionGroup]
+    modesActionGroup: QActionGroup
+    LearnFreqOrderActionGroup: QActionGroup
+    BoostCutOrderActionGroup: QActionGroup
     SourceAudio: PlSong or None
     SourceRange: PreviewAudioCrop or None
     ADGen: AudioDrillGen or None
@@ -74,6 +74,7 @@ class MainWindowContr(QObject):
         self.LoadedFileHash = None
         self.LoadedFilePath = None
         self.LastSourceAudio = None
+        self.AudioBackend = AudioBackendContr(self)
         self.UpdCheckContr = UpdCheckContr(self)
         self.EQContr = EQContr(self)
         self.EQSetContr = EQSetContr(self)
@@ -144,7 +145,7 @@ class MainWindowContr(QObject):
         elif self.mw_view.AudiofileRBut.isChecked():
             self.CurrentSourceMode = AudioFileMode(self)
         if self.mw_view.actionPreview_Mode.isChecked():
-            self.CurrentMode = PreviewMode(self)
+            self._setPreviewMode()
         else:
             self.mw_view.actionPreview_Mode.setChecked(True)
 
