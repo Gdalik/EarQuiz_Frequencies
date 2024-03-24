@@ -16,7 +16,7 @@
 
 import os
 import sys
-from PyQt6.QtCore import QObject
+from PyQt6.QtCore import QObject, QTimer
 from PyQt6.QtGui import QActionGroup
 from PyQt6.QtWidgets import QMessageBox
 from GUI.Misc.restart_message import restart_message
@@ -44,7 +44,8 @@ class AudioBackendContr(QObject):
         if act.text() == prevOption:
             return
         if restart_message(self.mw_view) == QMessageBox.StandardButton.Yes:
-            os.execl(sys.executable, sys.executable, sys.argv[0])
+            self.parent.onAppClose()
+            QTimer.singleShot(0, lambda: os.execl(sys.executable, sys.executable, sys.argv[0]))
         else:
             self.AudioBackendActionGroup.blockSignals(True)
             if NativeAudioBackend:
