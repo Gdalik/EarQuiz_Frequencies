@@ -106,7 +106,7 @@ class MainWindowContr(QObject):
         self.mw_view.VolumeSlider.setValue(60)
         dark_theme.change_theme(self.mw_view)
         self.playAudioOnPreview = False
-        QTimer.singleShot(2000, StartLogo.hide)
+        QTimer.singleShot(2000, lambda: StartLogo.finish(self.mw_view))
         QTimer.singleShot(10, self._restoreAudioSource)
 
     def _restoreAudioSource(self):

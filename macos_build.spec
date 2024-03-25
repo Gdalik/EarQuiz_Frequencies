@@ -27,16 +27,13 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(
     pyz,
     a.scripts,
-    [],
     exclude_binaries=True,
     name='eqfreq',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
-    upx=True,
+    upx=False,
     console=False,
-    windowed=True,
-    disable_windowed_traceback=True,
     argv_emulation=False,
     target_arch='x86_64',
     codesign_identity=None,
@@ -48,7 +45,7 @@ coll = COLLECT(
     a.zipfiles,
     a.datas,
     strip=False,
-    upx=True,
+    upx=False,
     upx_exclude=[],
     name='eqfreq',
 )
@@ -68,8 +65,18 @@ app = BUNDLE(
     'NSHighResolutionCapable': True,
     'LSMinimumSystemVersion': '11.0.0',
     'CFBundleDevelopmentRegion': 'en_US',
-    'CFBundleTypeExtensions': ['wav', 'aiff', 'flac', 'mp3', 'ogg', ],
-    'CFBundleTypeRole': 'Viewer',
+    'CFBundleURLTypes': [{
+            'CFBundleURLName': 'MyCustomUrlSchemaQt',
+            'CFBundleTypeRole': 'Viewer',
+            'CFBundleURLSchemes': ['pyi-qt'],
+        }],
+    'CFBundleDocumentTypes': [{
+        'CFBundleTypeName': 'MyCustomFileTypeQt',
+        'CFBundleTypeExtensions': [
+            'pyi_qt',
+        ],
+         }],
+    'CFBundleTypeRole': "Viewer",
     'NSHumanReadableCopyright': '© 2023-2024 Gdaliy Garmiza',
     'NSPrincipalClass': 'NSApplication'
     },
