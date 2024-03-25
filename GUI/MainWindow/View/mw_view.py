@@ -22,6 +22,8 @@ from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QDockWidget
 from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
+
+import application
 import definitions
 from GUI.MainWindow.View.dark_theme import change_theme
 from GUI.EQ.eq_view import EqView

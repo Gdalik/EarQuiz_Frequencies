@@ -30,18 +30,19 @@ class AudioBackendContr(QObject):
         super().__init__()
         self.parent = parent
         self.mw_view = self.parent.mw_view
+        self.actionFFmpeg = self.mw_view.actionFFmpeg
+        self.actionNative = self.mw_view.actionNative
         self.setAudioBackendAG()
 
     def setAudioBackendAG(self):
         self.AudioBackendActionGroup = QActionGroup(self)
         self.AudioBackendActionGroup.setExclusive(True)
-        self.AudioBackendActionGroup.addAction(self.mw_view.actionFFmpeg)
-        self.AudioBackendActionGroup.addAction(self.mw_view.actionNative)
+        self.AudioBackendActionGroup.addAction(self.actionFFmpeg)
+        self.AudioBackendActionGroup.addAction(self.actionNative)
         self.AudioBackendActionGroup.triggered.connect(self.onAudioEngineActionToggled)
 
     def onAudioEngineActionToggled(self, act):
-        prevOption = 'Native' if NativeAudioBackend else 'FFmpeg'
-        if act.text() == prevOption:
+        if act == self.storedOption:
             return
         if restart_message(self.mw_view) == QMessageBox.StandardButton.Yes:
             self.parent.onAppClose()
@@ -49,7 +50,11 @@ class AudioBackendContr(QObject):
         else:
             self.AudioBackendActionGroup.blockSignals(True)
             if NativeAudioBackend:
-                self.mw_view.actionNative.setChecked(True)
+                self.actionNative.setChecked(True)
             else:
-                self.mw_view.actionFFmpeg.setChecked(True)
+                self.actionFFmpeg.setChecked(True)
             self.AudioBackendActionGroup.blockSignals(False)
+
+    @property
+    def storedOption(self):
+        return self.actionNative if NativeAudioBackend else self.actionFFmpeg

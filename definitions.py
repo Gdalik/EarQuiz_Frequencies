@@ -19,11 +19,10 @@ import platform
 import sys
 from PyQt6.QtCore import QSettings
 from PyQt6.QtMultimedia import QMediaDevices
-from PyQt6.QtWidgets import QApplication
+from application import EQFreqApp
 
 app_name = 'EarQuiz Frequencies'
-
-app = QApplication(sys.argv)
+app = EQFreqApp(sys.argv)
 MediaDevices = QMediaDevices()
 launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
 
