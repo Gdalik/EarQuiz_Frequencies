@@ -50,6 +50,7 @@ class PlaylistContr(QObject):
         self._setUpActions()
         self.PlaylistView.customContextMenuRequested.connect(self._onCustomContextMenuRequested)
         self.plStatsLabUpd()
+        self.launch_files_onstart = launch_files_onstart
 
     def _setUpActions(self):
         self.selModel.selectionChanged.connect(self.onSelectionChanged)
@@ -193,9 +194,9 @@ class PlaylistContr(QObject):
         self.selectCurrentSong()
 
     def restoreLastAudioSource(self):
-        _launched_file_onstart = launch_files_onstart[0] \
-            if launch_files_onstart is not None and Path(launch_files_onstart[0]).is_file() \
-               and mimetypes.guess_type(launch_files_onstart[0])[0] in AudioMimes else None
+        _launched_file_onstart = self.launch_files_onstart[0] \
+            if self.launch_files_onstart is not None and Path(self.launch_files_onstart[0]).is_file() \
+               and mimetypes.guess_type(self.launch_files_onstart[0])[0] in AudioMimes else None
         last_source = _launched_file_onstart or Settings.value('LastStuff/AudioSource', PN)
         if last_source == PN or last_source not in self.PlNavi.playlist_paths \
                 or not Path(last_source).is_file():
@@ -323,12 +324,11 @@ class PlaylistContr(QObject):
         saveCurrentPlaylist(self.playlistModel.playlistdata)
 
     def loadCurrentPlaylist(self):
-        print('loadCurrentPlaylist')
         if not Path(CURRENT_PLAYLIST_PATH).is_file():
             return
         with contextlib.suppress(Exception):
             urls = [QUrl.fromLocalFile(link) for link in parseLinksFrom_M3U(CURRENT_PLAYLIST_PATH, encoding='utf-8')]
-            urls_to_ins = [QUrl.fromLocalFile(link) for link in launch_files_onstart] if launch_files_onstart is not None else None
+            urls_to_ins = [QUrl.fromLocalFile(link) for link in self.launch_files_onstart] if self.launch_files_onstart is not None else None
             if urls_to_ins is not None:
                 urls = urls_to_ins + urls
             if urls:
@@ -342,4 +342,6 @@ class PlaylistContr(QObject):
         self.PlaylistView.clearSelection()
 
     def handle_open_file_request(self, url):
-        print(f"Open request: {url.toString()}")
+        if self.launch_files_onstart is None:
+            self.launch_files_onstart = []
+        self.launch_files_onstart.append(url.toLocalFile())

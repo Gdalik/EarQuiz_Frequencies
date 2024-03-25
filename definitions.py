@@ -22,7 +22,7 @@ from PyQt6.QtMultimedia import QMediaDevices
 from application import EQFreqApp
 
 app_name = 'EarQuiz Frequencies'
-app = EQFreqApp(sys.argv)
+app = EQFreqApp(list(sys.argv))
 MediaDevices = QMediaDevices()
 launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
 
