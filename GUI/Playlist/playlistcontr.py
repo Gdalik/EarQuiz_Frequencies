@@ -323,6 +323,7 @@ class PlaylistContr(QObject):
         saveCurrentPlaylist(self.playlistModel.playlistdata)
 
     def loadCurrentPlaylist(self):
+        print('loadCurrentPlaylist')
         if not Path(CURRENT_PLAYLIST_PATH).is_file():
             return
         with contextlib.suppress(Exception):
@@ -339,3 +340,6 @@ class PlaylistContr(QObject):
         self.playlistModel.playlistdata = new_pl
         self.playlistModel.layoutChanged.emit()
         self.PlaylistView.clearSelection()
+
+    def handle_open_file_request(self, url):
+        print(f"Open request: {url.toString()}")

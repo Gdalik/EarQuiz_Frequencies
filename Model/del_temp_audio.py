@@ -14,28 +14,9 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from multiprocessing import freeze_support
-import multiprocessing as mp
-import platform
-import signal
-from tendo.singleton import SingleInstance
-from GUI.MainWindow.Contr.mw_contr import MainWindowContr
-from GUI.Misc.StartScreen import StartLogo
-from definitions import app
-from Model.AudioEngine.audio_backend import setAudioBackend
-import Model.del_temp_audio as dta
+import shutil
+import definitions
 
 
-if __name__ == '__main__':
-    freeze_support()
-    signal.signal(signal.SIGINT, signal.SIG_DFL)
-    if platform.system() == 'Darwin':
-        mp.set_start_method('fork')
-    me = SingleInstance()
-
-    StartLogo.show()
-    setAudioBackend()
-    dta.delTempAudio()
-    mw = MainWindowContr()
-    app.openFileRequest.connect(mw.PlaylistContr.handle_open_file_request)
-    app.exec()
+def delTempAudio():
+    shutil.rmtree(definitions.TEMP_AUDIO_DIR, ignore_errors=True)
