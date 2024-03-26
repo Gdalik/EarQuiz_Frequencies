@@ -107,7 +107,7 @@ class MainWindowContr(QObject):
         dark_theme.change_theme(self.mw_view)
         self.playAudioOnPreview = False
         QTimer.singleShot(StartLogoTime, lambda: StartLogo.finish(self.mw_view))
-        QTimer.singleShot(StartLogoTime, self._restoreAudioSource)
+        QTimer.singleShot(int(StartLogoTime/2), self._restoreAudioSource)
 
     def _restoreAudioSource(self):
         self.PlaylistContr.loadCurrentPlaylist()
