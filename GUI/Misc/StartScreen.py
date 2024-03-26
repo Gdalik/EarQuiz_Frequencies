@@ -14,11 +14,12 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtGui import QPixmap, QColor
 from PyQt6.QtWidgets import QSplashScreen
 from Model.get_version import version
 from GUI.MainWindow.View.dark_theme import blue_color
+import platform
 
 
 class StartScreen(QSplashScreen):
@@ -29,6 +30,12 @@ class StartScreen(QSplashScreen):
         self.showMessage(f'v{version()}', Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop,
                          color=QColor(f'{blue_color()}'))
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
+
+    def start(self):
+        if platform.system() == 'Windows':
+            self.show()
+        else:
+            QTimer.singleShot(0, self.show)
 
 
 StartLogo = StartScreen()
