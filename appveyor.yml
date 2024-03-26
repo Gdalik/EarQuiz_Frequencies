@@ -1,7 +1,7 @@
 environment:
   matrix:
-    - PYTHON: "C:\\Python310-x64"
-      PYTHON_VERSION: "3.10.11"
+    - PYTHON: "C:\\Python311-x64"
+      PYTHON_VERSION: "3.11.8"
       PYTHON_ARCH: "64"
   ISS_FILE_PATH: '"C:\\Program Files (x86)\\Inno Setup 6\\ISCC.exe"'
 
@@ -55,7 +55,7 @@ install:
 artifacts:
   - path: Distribution\Windows\output\*.exe
 
-version: 0.1.5-build-{build}
+version: 0.1.6-build-{build}
 pull_requests:
   do_not_increment_build_number: true
 

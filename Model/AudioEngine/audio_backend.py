@@ -17,7 +17,7 @@
 
 import os
 import platform
-from Model.globals import NativeAudioBackend
+from application import NativeAudioBackend
 
 
 def setAudioBackend():

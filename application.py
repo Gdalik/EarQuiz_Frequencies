@@ -20,6 +20,7 @@ from PyQt6.QtCore import QSettings
 from PyQt6.QtGui import QIcon
 from PyQt6.QtMultimedia import QMediaDevices
 from Model.del_temp_audio import delTempAudio
+from Utilities.str2bool import str2bool
 from definitions import SETTINGS_PATH
 
 app_name = 'EarQuiz Frequencies'
@@ -47,3 +48,4 @@ app = EQFreqApp(list(sys.argv))
 launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
 MediaDevices = QMediaDevices()
 Settings = QSettings(SETTINGS_PATH, QSettings.Format.IniFormat)
+NativeAudioBackend = str2bool(Settings.value('Actions/actionNative', False))
