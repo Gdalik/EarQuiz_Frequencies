@@ -16,16 +16,10 @@
 
 import os
 import platform
-import sys
 from PyQt6.QtCore import QSettings
 from PyQt6.QtMultimedia import QMediaDevices
-from application import EQFreqApp
 
-app_name = 'EarQuiz Frequencies'
-app = EQFreqApp(list(sys.argv))
 MediaDevices = QMediaDevices()
-launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
-StartLogoTime = 3000
 
 ROOT_DIR = os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = ''

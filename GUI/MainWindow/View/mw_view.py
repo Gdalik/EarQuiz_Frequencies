@@ -22,7 +22,8 @@ from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QDockWidget
 from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
-import definitions as defs
+from GUI.Misc.StartScreen import StartLogoTime
+import application
 from GUI.MainWindow.View.dark_theme import change_theme
 from GUI.EQ.eq_view import EqView
 from GUI.EQSettings.eqset_view import EQSetView
@@ -55,7 +56,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self._flags = self.windowFlags()
         self.setDockOptions(self.dockOptions().AnimatedDocks)
-        self.setWindowTitle(defs.app_name)
+        self.setWindowTitle(application.app_name)
         self.status = StatusBar(self)
         self.UpdCheckView = UpdCheckView(self)
         self.PatternBoxView = PatternBoxView(self)
@@ -180,7 +181,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.Eq_Settings.hide()
         self.SupportProject.hide()
         self.TransportPanel.hide()
-        av_geom = defs.app.primaryScreen().availableGeometry()
+        av_geom = application.app.primaryScreen().availableGeometry()
         width = min(self.width(), 1100, av_geom.width() - 10)
         height = min(self.height(), 700, av_geom.height() - 30)
         self.resize(width, height)
@@ -234,7 +235,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             self.setMinimalistView()
             return
         self.setGeometry(geometry)
-        QTimer.singleShot(defs.StartLogoTime, lambda: self._restoreDockWidgets(self.dockWidgets))
+        QTimer.singleShot(StartLogoTime, lambda: self._restoreDockWidgets(self.dockWidgets))
 
     @property
     def dockWidgets(self):

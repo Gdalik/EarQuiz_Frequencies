@@ -14,11 +14,13 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
+import sys
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtGui import QIcon
 from Model.del_temp_audio import delTempAudio
-import definitions as defs
+
+
+app_name = 'EarQuiz Frequencies'
 
 
 class EQFreqApp(QtWidgets.QApplication):
@@ -27,8 +29,8 @@ class EQFreqApp(QtWidgets.QApplication):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setWindowIcon(QIcon(":Logo/Icons/Logo/EarQuiz_Icon.png"))
-        self.setApplicationDisplayName(defs.app_name)
-        self.setApplicationName(defs.app_name)
+        self.setApplicationDisplayName(app_name)
+        self.setApplicationName(app_name)
         self.setOrganizationDomain("earquiz.org")
         self.aboutToQuit.connect(delTempAudio)
 
@@ -37,3 +39,7 @@ class EQFreqApp(QtWidgets.QApplication):
             self.openFileRequest.emit(event.url())
             return True
         return super().event(event)
+
+
+app = EQFreqApp(list(sys.argv))
+launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None

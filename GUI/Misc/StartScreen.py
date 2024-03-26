@@ -39,3 +39,4 @@ class StartScreen(QSplashScreen):
 
 
 StartLogo = StartScreen()
+StartLogoTime = 3000

@@ -17,7 +17,6 @@
 import contextlib
 import mimetypes
 from pathlib import Path
-
 from PyQt6.QtCore import QObject, Qt, QModelIndex, QUrl
 from PyQt6.QtWidgets import QFileDialog, QWidget
 from PyQt6.QtGui import QAction, QKeySequence
@@ -29,7 +28,8 @@ from GUI.Playlist.PlaylistNavigation import PlNavi
 from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilterProxyModel
 from GUI.Playlist.plsong import PlSong
 from Model.FileLinksParser import parseLinksFrom_M3U, AudioMimes
-from definitions import app, USER_DOCS_DIR, CURRENT_PLAYLIST_PATH, Settings, PN, launch_files_onstart
+from definitions import USER_DOCS_DIR, CURRENT_PLAYLIST_PATH, Settings, PN
+from application import app, launch_files_onstart
 
 
 class PlaylistContr(QObject):
