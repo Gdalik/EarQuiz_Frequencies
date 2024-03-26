@@ -19,7 +19,6 @@ import multiprocessing as mp
 import platform
 import signal
 from tendo.singleton import SingleInstance
-from PyQt6.QtCore import QTimer
 from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.Misc.StartScreen import StartLogo
 from definitions import app
@@ -33,7 +32,7 @@ if __name__ == '__main__':
         mp.set_start_method('fork')
     me = SingleInstance()
     signal.signal(signal.SIGINT, signal.SIG_DFL)
-    QTimer.singleShot(0, StartLogo.show)
+    StartLogo.start()
     setAudioBackend()
     dta.delTempAudio()
     mw = MainWindowContr()
