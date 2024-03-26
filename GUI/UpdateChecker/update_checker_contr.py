@@ -16,7 +16,7 @@
 
 from PyQt6.QtCore import QObject, QThreadPool, Qt
 from GUI.UpdateChecker.update_checker_runner import UpdCheckRun
-from definitions import Settings
+from application import Settings
 import datetime
 
 

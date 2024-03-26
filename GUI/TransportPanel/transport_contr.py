@@ -19,7 +19,7 @@ from PyQt6.QtCore import QObject, Qt
 from GUI.TransportPanel.player_contr import PlayerContr
 from GUI.globals import defaultSliceLenUpd
 from Model.calc import proc_unproc_len
-from definitions import Settings
+from application import Settings
 
 
 class TransportContr(QObject):

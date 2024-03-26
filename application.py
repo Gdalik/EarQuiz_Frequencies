@@ -16,9 +16,11 @@
 
 import sys
 from PyQt6 import QtCore, QtWidgets
+from PyQt6.QtCore import QSettings
 from PyQt6.QtGui import QIcon
+from PyQt6.QtMultimedia import QMediaDevices
 from Model.del_temp_audio import delTempAudio
-
+from definitions import SETTINGS_PATH
 
 app_name = 'EarQuiz Frequencies'
 
@@ -43,3 +45,5 @@ class EQFreqApp(QtWidgets.QApplication):
 
 app = EQFreqApp(list(sys.argv))
 launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
+MediaDevices = QMediaDevices()
+Settings = QSettings(SETTINGS_PATH, QSettings.Format.IniFormat)

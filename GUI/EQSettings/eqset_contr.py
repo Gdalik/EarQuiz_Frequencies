@@ -21,7 +21,7 @@ import definitions
 from GUI.Misc.tracked_proc import ProcTrackControl
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
-from definitions import Settings
+from application import Settings
 
 
 class EQSetContr:  # parent: MainWindowContr

@@ -38,7 +38,7 @@ from GUI.About.about_dialog_view import AboutDialogView
 from GUI.MainWindow.View.dark_theme import green_color
 from Utilities.str2bool import str2bool
 from Utilities.checkMimeData import checkDroppedMimeData
-from definitions import Settings
+from application import Settings
 
 
 class MW_Signals(QObject):

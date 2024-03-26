@@ -21,6 +21,7 @@ class PreviewMode(UniMode):
     def __init__(self, parent):  # parent: MainWindowContr
         super().__init__(parent, setPlayerContr=False)
         self.name = 'Preview'
+        self.procEvents()
         self.parent.EQContr.resetEQ()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.hide()
         self.hideSequentialPlayContr()

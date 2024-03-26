@@ -20,7 +20,8 @@ from PyQt6.QtCore import QObject, QTimer
 from PyQt6.QtGui import QTextDocument
 from GUI.Help.QuickHelpWin import QuickHelpWin
 from GUI.Misc.TextBrowserDocParameters import setParameters
-from definitions import ROOT_DIR, Settings
+from definitions import ROOT_DIR
+from application import Settings
 from pathlib import Path
 from Utilities.str2bool import str2bool
 from Model.get_version import version

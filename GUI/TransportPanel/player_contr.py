@@ -20,7 +20,9 @@ from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
 from GUI.TransportPanel.volumeslider_contr import VolumeSliderContr
 from GUI.Misc.error_message import reformat_message
-from definitions import MediaDevices, PN, Settings
+from GUI.Misc.procEvents import procEvents
+from definitions import PN
+from application import MediaDevices, Settings
 
 
 class PlayerContr(QMediaPlayer):
@@ -65,6 +67,7 @@ class PlayerContr(QMediaPlayer):
         self.mw_contr.playAudioOnPreview = False
 
     def t_loadCurrentAudio(self, **kwargs):
+        procEvents()
         QTimer.singleShot(0, lambda: self.loadCurrentAudio(**kwargs))
 
     def clearSource(self):
@@ -152,6 +155,7 @@ class PlayerContr(QMediaPlayer):
         self.mw_contr.CurrentMode.playbackEnded()
 
     def onPlayTriggered(self):
+        procEvents()
         if self.playbackState() == self.PlaybackState.PlayingState:
             return
         noPreviewSource = (self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.SourceAudio is None)
@@ -166,7 +170,9 @@ class PlayerContr(QMediaPlayer):
             self.play()
 
     def onStopTriggered(self, checkPlaybackState=False):
-        if checkPlaybackState and self.playbackState() != self.PlaybackState.PlayingState:
+        if not checkPlaybackState:
+            procEvents()
+        elif self.playbackState() != self.PlaybackState.PlayingState:
             return
         self.stop()
         try:
@@ -270,4 +276,4 @@ class PlayerContr(QMediaPlayer):
             self.mw_contr.AL.setNoAudio()
         else:
             self.onStopTriggered(checkPlaybackState=True)
-            self.mw_contr.pushBackToPreview(ignoreADGen=True)
+            self.mw_contr.ModesHandler.pushBackToPreview(ignoreADGen=True)

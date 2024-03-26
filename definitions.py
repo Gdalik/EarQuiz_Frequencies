@@ -16,10 +16,6 @@
 
 import os
 import platform
-from PyQt6.QtCore import QSettings
-from PyQt6.QtMultimedia import QMediaDevices
-
-MediaDevices = QMediaDevices()
 
 ROOT_DIR = os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = ''
@@ -39,7 +35,5 @@ SineWaveCalibrationFilename = '1kHz__10kHz__100Hz__15kHz__40Hz Sinus Tones.wav'
 SineWaveCalibrationPath = os.path.normpath(os.path.join(DATA_DIR, 'Audio', SineWaveCalibrationFilename))
 
 SourceRangeLib_DIR = os.path.normpath(os.path.join(DATA_DIR, 'SourceRangeLib'))
-
-Settings = QSettings(SETTINGS_PATH, QSettings.Format.IniFormat)
 
 PN = 'Pink noise'

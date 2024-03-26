@@ -18,7 +18,7 @@ from PyQt6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QTex
     QToolButton, QStyle
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QTextCursor, QTextDocument, QKeySequence, QAction
-from definitions import Settings
+from application import Settings
 from Utilities.str2bool import str2bool
 
 

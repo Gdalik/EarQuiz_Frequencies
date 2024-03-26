@@ -14,7 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from definitions import Settings
+from application import Settings
 
 default_pn_slice_length = None
 default_audio_slice_length = None

@@ -17,7 +17,7 @@
 from PyQt6.QtCore import QObject
 from PyQt6.QtGui import QActionGroup
 from PyQt6.QtMultimedia import QMediaDevices
-from definitions import MediaDevices, Settings
+from application import MediaDevices, Settings
 
 
 class AudioDevicesView(QObject):
