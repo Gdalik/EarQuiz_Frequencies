@@ -39,7 +39,7 @@ from GUI.Modes.audiosource_modes import PinkNoiseMode, AudioFileMode
 from GUI.PatternBox.patternbox_contr import PatternBoxContr
 from GUI.Playlist.playlistcontr import PlaylistContr
 from GUI.Playlist.plsong import PlSong
-from GUI.Misc.StartScreen import StartLogo
+from GUI.Misc.StartScreen import StartLogo, StartLogoTime
 from GUI.TransportPanel.transport_contr import TransportContr
 from GUI.Help.HelpActions import HelpActions
 from GUI.SupportApp.supportapp_contr import SupportAppContr
@@ -48,7 +48,8 @@ from Model.audiodrill_gen import AudioDrillGen
 from Model.file_hash import filehash
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
-from definitions import app, Settings, PN, StartLogoTime
+from definitions import Settings, PN
+from application import app
 
 
 class MW_Signals(QObject):

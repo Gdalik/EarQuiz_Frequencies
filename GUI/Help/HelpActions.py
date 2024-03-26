@@ -24,7 +24,7 @@ from definitions import ROOT_DIR, Settings
 from pathlib import Path
 from Utilities.str2bool import str2bool
 from Model.get_version import version
-from definitions import StartLogoTime
+from GUI.Misc.StartScreen import StartLogoTime
 
 
 class HelpActions(QObject):
