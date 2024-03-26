@@ -19,7 +19,7 @@ from PyQt6.QtGui import QPixmap, QColor
 from PyQt6.QtWidgets import QSplashScreen
 from Model.get_version import version
 from GUI.MainWindow.View.dark_theme import blue_color
-import platform
+import multiprocessing as mp
 
 
 class StartScreen(QSplashScreen):
@@ -32,7 +32,7 @@ class StartScreen(QSplashScreen):
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
     def start(self):
-        if platform.system() == 'Windows':
+        if mp.get_start_method() != 'fork':
             self.show()
         else:
             QTimer.singleShot(0, self.show)
