@@ -19,6 +19,7 @@ import multiprocessing as mp
 import platform
 import signal
 from tendo.singleton import SingleInstance
+from PyQt6.QtCore import QTimer
 from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.Misc.StartScreen import StartLogo
 from definitions import app
@@ -28,12 +29,11 @@ import Model.del_temp_audio as dta
 
 if __name__ == '__main__':
     freeze_support()
-    signal.signal(signal.SIGINT, signal.SIG_DFL)
     if platform.system() == 'Darwin':
         mp.set_start_method('fork')
     me = SingleInstance()
-
-    StartLogo.show()
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
+    QTimer.singleShot(0, StartLogo.show)
     setAudioBackend()
     dta.delTempAudio()
     mw = MainWindowContr()
