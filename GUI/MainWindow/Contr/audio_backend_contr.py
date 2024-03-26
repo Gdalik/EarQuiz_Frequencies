@@ -20,7 +20,7 @@ from PyQt6.QtCore import QObject, QTimer
 from PyQt6.QtGui import QActionGroup
 from PyQt6.QtWidgets import QMessageBox
 from GUI.Misc.restart_message import restart_message
-from Model.globals import NativeAudioBackend
+from application import NativeAudioBackend
 
 
 class AudioBackendContr(QObject):

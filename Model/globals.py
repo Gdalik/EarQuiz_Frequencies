@@ -15,12 +15,9 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from Model.AudioEngine.pinknoise_gen import generate_pinknoise
-from application import Settings
-from Utilities.str2bool import str2bool
 
 supported_bitrates_mp3 = (32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320)
 supported_bitrates_ogg = (64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 500)
 pinknoise = generate_pinknoise()
 MinAudioDuration = 10  # in sec
 PinknoiseLength = 30  # in sec
-NativeAudioBackend = str2bool(Settings.value('Actions/actionNative', False))
