@@ -23,6 +23,7 @@ class TestMode(UniMode):
     def __init__(self, parent):  # parent: MainWindowContr
         super().__init__(parent)
         self.name = 'Test'
+        self.procEvents()
         self.currentDrillFreq = None
         self.view.SliceLenSpin.setEnabled(False)
         self.view.EQSetView.setEnabled(False)

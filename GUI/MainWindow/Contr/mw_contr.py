@@ -17,7 +17,8 @@
 import datetime
 import platform
 from PyQt6.QtCore import QObject, QTimer, pyqtSignal
-from PyQt6.QtGui import QActionGroup
+from GUI.MainWindow.Contr.app_modes_handler import AppModesHandler
+from GUI.MainWindow.Contr.learn_freq_order_handler import LearnFreqOrderHandler
 from GUI.MainWindow.View import dark_theme
 from GUI.UpdateChecker.update_checker_contr import UpdCheckContr
 from GUI.EQ.eq_contr import EQContr
@@ -31,9 +32,6 @@ from GUI.MainWindow.Contr.sourcerange_contr import SourceRangeContr
 from GUI.MainWindow.Contr.audio_backend_contr import AudioBackendContr
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.Misc.tracked_proc import ProcTrackControl
-from GUI.Modes.LearnMode import LearnMode
-from GUI.Modes.PreviewMode import PreviewMode
-from GUI.Modes.TestMode import TestMode
 from GUI.Modes.UniMode import UniMode
 from GUI.Modes.audiosource_modes import PinkNoiseMode, AudioFileMode
 from GUI.PatternBox.patternbox_contr import PatternBoxContr
@@ -47,9 +45,8 @@ from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.audiodrill_gen import AudioDrillGen
 from Model.file_hash import filehash
 from Utilities.Q_extract import Qextr
-from Utilities.exceptions import InterruptedException
-from definitions import Settings, PN
-from application import app
+from definitions import PN
+from application import app, Settings
 
 
 class MW_Signals(QObject):
@@ -57,9 +54,6 @@ class MW_Signals(QObject):
 
 
 class MainWindowContr(QObject):
-    modesActionGroup: QActionGroup
-    LearnFreqOrderActionGroup: QActionGroup
-    BoostCutOrderActionGroup: QActionGroup
     SourceAudio: PlSong or None
     SourceRange: PreviewAudioCrop or None
     ADGen: AudioDrillGen or None
@@ -95,15 +89,12 @@ class MainWindowContr(QObject):
         self.setFileMenuActions()
         self.HelpActions = HelpActions(self)
         self.SupportAppContr = SupportAppContr(self)
-        self.setModesActions()
-        self.setModesButtons()
-        self.setLearnFreqOrderAG()
-        self.setBoostCutOrderAG()
+        self.ModesHandler = AppModesHandler(self)
+        self.LFOH = LearnFreqOrderHandler(self)
         self.setPlaybackButtons()
         self.setNextExampleBut()
         self.mw_view.signals.appClose.connect(self.onAppClose)
         QTimer.singleShot(StartLogoTime, self.mw_view.show)
-        self.setSourceButtons()
         self.mw_view.VolumeSlider.setValue(60)
         dark_theme.change_theme(self.mw_view)
         self.playAudioOnPreview = False
@@ -129,63 +120,6 @@ class MainWindowContr(QObject):
         self.mw_view.actionExportPlaylistRelative.triggered.connect \
             (lambda x: exportPlaylistWithRelPaths(self.mw_view, self.PlaylistContr.playlistModel.playlistdata))
 
-    def setModesButtons(self):
-        self.mw_view.PreviewBut.setDefaultAction(self.mw_view.actionPreview_Mode)
-        self.mw_view.LearnBut.setDefaultAction(self.mw_view.actionLearn_Mode)
-        self.mw_view.TestBut.setDefaultAction(self.mw_view.actionTest_Mode)
-
-    def setSourceButtons(self):
-        self.mw_view.PinkNoiseRBut.toggled.connect(self.setAudioSourceMode)
-        self.mw_view.AudiofileRBut.toggled.connect(self.setAudioSourceMode)
-
-    def setAudioSourceMode(self, value):
-        if not value:
-            return
-        if self.mw_view.PinkNoiseRBut.isChecked():
-            self.CurrentSourceMode = PinkNoiseMode(self)
-        elif self.mw_view.AudiofileRBut.isChecked():
-            self.CurrentSourceMode = AudioFileMode(self)
-        if self.mw_view.actionPreview_Mode.isChecked():
-            self._setPreviewMode()
-        else:
-            self.mw_view.actionPreview_Mode.setChecked(True)
-
-    def setModesActions(self):
-        self.modesActionGroup = QActionGroup(self)
-        self.modesActionGroup.setExclusive(True)
-        self.modesActionGroup.addAction(self.mw_view.actionPreview_Mode)
-        self.modesActionGroup.addAction(self.mw_view.actionLearn_Mode)
-        self.modesActionGroup.addAction(self.mw_view.actionTest_Mode)
-        self.modesActionGroup.addAction(self.mw_view.actionUni_Mode)
-        self.mw_view.actionPreview_Mode.toggled.connect(self.setCurrentMode)
-        self.mw_view.actionLearn_Mode.toggled.connect(self.setCurrentMode)
-        self.mw_view.actionTest_Mode.toggled.connect(self.setCurrentMode)
-        self.mw_view.actionUni_Mode.toggled.connect(self.setCurrentMode)
-        self.modesActionGroup.triggered.connect(self.onmodesActionGroupTriggered)
-
-    def setLearnFreqOrderAG(self):
-        self.LearnFreqOrderActionGroup = QActionGroup(self)
-        self.LearnFreqOrderActionGroup.addAction(self.mw_view.actionAscendingEQ)
-        self.LearnFreqOrderActionGroup.addAction(self.mw_view.actionDescendingEQ)
-        self.LearnFreqOrderActionGroup.addAction(self.mw_view.actionShuffleEQ)
-        self.LearnFreqOrderActionGroup.triggered.connect(self.onLearnFreqOrderActionChanged)
-
-    def setBoostCutOrderAG(self):
-        self.BoostCutOrderActionGroup = QActionGroup(self)
-        self.BoostCutOrderActionGroup.addAction(self.mw_view.actionEach_Band_Boosted_then_Cut)
-        self.BoostCutOrderActionGroup.addAction(self.mw_view.actionAll_Bands_Boosted_then_All_Bands_Cut)
-        self.BoostCutOrderActionGroup.triggered.connect(self.onBoostCutOrderActionChanged)
-
-    def onLearnFreqOrderActionChanged(self):
-        if self.ADGen is None:
-            return
-        self.ADGen.order = self.freqOrder()
-
-    def onBoostCutOrderActionChanged(self):
-        if self.ADGen is None:
-            return
-        self.ADGen.boost_cut_priority = self.boostCutPriority
-
     def setNextExampleBut(self):
         self.mw_view.NextExample.setDefaultAction(self.mw_view.actionNext_Example)
         self.mw_view.NextExample_TP.setDefaultAction(self.mw_view.actionNext_Example)
@@ -195,58 +129,22 @@ class MainWindowContr(QObject):
         if self.CurrentMode is not None:
             self.CurrentMode.nextDrill(raiseInterruptedException=False)
 
-    def onmodesActionGroupTriggered(self):
-        if self.mw_view.ModeButtonGroup.checkedButton().text() == self.CurrentMode.name:
-            return
-        player = self.TransportContr.PlayerContr
-        player.onStopTriggered(checkPlaybackState=True)
-
     def freqOrder(self, audioFileGeneratorMode=False):
         if self.CurrentMode.name == 'Test' and not audioFileGeneratorMode:
             return 'random'
-        if self.LearnFreqOrderActionGroup.checkedAction() == self.mw_view.actionAscendingEQ:
+        if self.LFOH.LearnFreqOrderActionGroup.checkedAction() == self.mw_view.actionAscendingEQ:
             return 'asc'
-        if self.LearnFreqOrderActionGroup.checkedAction() == self.mw_view.actionDescendingEQ:
+        if self.LFOH.LearnFreqOrderActionGroup.checkedAction() == self.mw_view.actionDescendingEQ:
             return 'desc'
-        if self.LearnFreqOrderActionGroup.checkedAction() == self.mw_view.actionShuffleEQ:
+        if self.LFOH.LearnFreqOrderActionGroup.checkedAction() == self.mw_view.actionShuffleEQ:
             return 'shuffle'
 
     @property
     def boostCutPriority(self):
-        if self.BoostCutOrderActionGroup.checkedAction() == self.mw_view.actionEach_Band_Boosted_then_Cut:
+        if self.LFOH.BoostCutOrderActionGroup.checkedAction() == self.mw_view.actionEach_Band_Boosted_then_Cut:
             return 1
-        if self.BoostCutOrderActionGroup.checkedAction() == self.mw_view.actionAll_Bands_Boosted_then_All_Bands_Cut:
+        if self.LFOH.BoostCutOrderActionGroup.checkedAction() == self.mw_view.actionAll_Bands_Boosted_then_All_Bands_Cut:
             return 2
-
-    def _setPreviewMode(self):
-        self.CurrentMode = PreviewMode(self)
-
-    def _setLearnMode(self):
-        self.CurrentMode = LearnMode(self)
-
-    def _setTestMode(self):
-        self.CurrentMode = TestMode(self)
-
-    def _setUniMode(self):
-        self.CurrentMode = UniMode(self, contrEnabled=self.LastMode.name != 'Test')
-
-    def setCurrentMode(self, value):
-        if not value:
-            return
-        self.CurrentMode.cleanTempAudio()
-        try:
-            if self.modesActionGroup.checkedAction() == self.mw_view.actionPreview_Mode:
-                self._setPreviewMode()
-            elif self.modesActionGroup.checkedAction() == self.mw_view.actionLearn_Mode:
-                self._setLearnMode()
-            elif self.modesActionGroup.checkedAction() == self.mw_view.actionTest_Mode:
-                self._setTestMode()
-            elif self.modesActionGroup.checkedAction() == self.mw_view.actionUni_Mode:
-                self._setUniMode()
-        except InterruptedException:
-            self.mw_view.actionPreview_Mode.setChecked(True)
-        QTimer.singleShot(0, self.pushBackToPreview)
-        self.LastMode = self.CurrentMode
 
     def isErrorInProcess(self, process: ProcTrackControl):
         if process.error is not None:
@@ -269,12 +167,6 @@ class MainWindowContr(QObject):
             return None
         timedelta = datetime.datetime.now() - last_closed
         return timedelta.days
-
-    def pushBackToPreview(self, ignoreADGen=False):
-        if not ignoreADGen and self.ADGen is not None:
-            return
-        if self.CurrentMode.name not in ('Preview', 'Uni'):
-            self.mw_view.actionPreview_Mode.setChecked(True)
 
     def hashAudioFile(self):
         if self.SourceAudio is None:

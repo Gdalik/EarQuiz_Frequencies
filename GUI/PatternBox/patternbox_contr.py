@@ -17,7 +17,7 @@
 import contextlib
 from Model.eq_patterns import EQPatterns
 from Utilities.exceptions import InterruptedException
-from definitions import Settings
+from application import Settings
 
 
 class PatternBoxContr(object):

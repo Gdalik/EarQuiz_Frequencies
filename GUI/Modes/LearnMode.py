@@ -21,6 +21,7 @@ class LearnMode(UniMode):
     def __init__(self, parent):  # parent: MainWindowContr
         super().__init__(parent)
         self.name = 'Learn'
+        self.procEvents()
         self.currentDrillFreq = None
         self.view.SliceLenSpin.setEnabled(False)
         if self.parent.LastMode.name != 'Preview':
