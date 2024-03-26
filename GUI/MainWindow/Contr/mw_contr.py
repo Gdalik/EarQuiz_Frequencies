@@ -48,7 +48,7 @@ from Model.audiodrill_gen import AudioDrillGen
 from Model.file_hash import filehash
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
-from definitions import app, Settings, PN
+from definitions import app, Settings, PN, StartLogoTime
 
 
 class MW_Signals(QObject):
@@ -101,13 +101,13 @@ class MainWindowContr(QObject):
         self.setPlaybackButtons()
         self.setNextExampleBut()
         self.mw_view.signals.appClose.connect(self.onAppClose)
-        QTimer.singleShot(10, self.mw_view.show)
+        QTimer.singleShot(StartLogoTime, self.mw_view.show)
         self.setSourceButtons()
         self.mw_view.VolumeSlider.setValue(60)
         dark_theme.change_theme(self.mw_view)
         self.playAudioOnPreview = False
-        QTimer.singleShot(2000, lambda: StartLogo.finish(self.mw_view))
-        QTimer.singleShot(10, self._restoreAudioSource)
+        QTimer.singleShot(StartLogoTime, lambda: StartLogo.finish(self.mw_view))
+        QTimer.singleShot(StartLogoTime, self._restoreAudioSource)
 
     def _restoreAudioSource(self):
         self.PlaylistContr.loadCurrentPlaylist()
