@@ -28,3 +28,5 @@ def setAudioBackend():
         os.environ['QT_MEDIA_BACKEND'] = 'windows'
     elif platform.system() == 'Darwin':
         os.environ['QT_MEDIA_BACKEND'] = 'darwin'
+    elif platform.system() == 'Linux':
+        os.environ['QT_MEDIA_BACKEND'] = 'gstreamer'

@@ -23,6 +23,8 @@ if platform.system() == 'Darwin':
     DATA_DIR = os.path.expanduser('~/Library/Application Support/EarQuiz/Frequencies')
 elif platform.system() == 'Windows':
     DATA_DIR = os.path.normpath(os.path.join(os.path.expandvars('%AppData%'), 'EarQuiz', 'Frequencies'))
+elif platform.system() == 'Linux':
+    DATA_DIR = os.path.expanduser('~/.config/EarQuiz/Frequencies')
 SETTINGS_PATH = os.path.normpath(os.path.join(DATA_DIR, 'config.ini'))
 TEMP_AUDIO_DIR = os.path.normpath(os.path.join(DATA_DIR, 'temp_audio'))
 CURRENT_PLAYLIST_PATH = os.path.normpath(os.path.join(DATA_DIR, 'Playlists', 'current.m3u8'))

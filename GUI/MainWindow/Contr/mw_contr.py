@@ -65,6 +65,8 @@ class MainWindowContr(QObject):
         self.mw_view = MainWindowView()
         if platform.system() == 'Windows':
             self.mw_view.win_os_settings()
+        elif platform.system() == 'Linux':
+            self.mw_view.linux_os_settings()
         self.CurrentAudio = None
         self.LoadedFileHash = None
         self.LoadedFilePath = None

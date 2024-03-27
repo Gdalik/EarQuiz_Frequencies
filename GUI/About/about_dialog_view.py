@@ -28,13 +28,13 @@ class AboutDialogView(QDialog, Ui_AboutDialog):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.win_os_settings()
+        self.win_linux_os_settings()
         self.setCredits()
         self.VersionLab.setText(f'Version {version()}')
         self.tabWidget.setCurrentIndex(0)
 
-    def win_os_settings(self):
-        if platform.system() != 'Windows':
+    def win_linux_os_settings(self):
+        if platform.system() == 'Darwin':
             return
         labels = self.findChildren(QLabel)
         L: QLabel
