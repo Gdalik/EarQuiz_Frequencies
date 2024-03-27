@@ -603,12 +603,35 @@ with the maximum amplitude equal to a certain value (in dB).
 [< Back to "Setting Volume Level"](#setting-volume-level)
 
 #### Supported Audio Formats
-<a id="supported-audio-formats">The fully supported audio formats</a> are: WAVE, AIFF, MP3 and FLAC. The OGG format is half-supported.
-OGG audio files can be added to the **Playlist**, but they cannot be played with the current media
-player backend neither on Windows nor on macOS. If you try to load an OGG file, you will get the error message
-with option to proceed with conversion to WAVE or AIFF. There is also a known backend issue with incorrect FLAC files'
-playback position on macOS, which may occur when starting playing from a non-zero position. To work around
-these format problems, you can [convert audio files to WAVE or AIFF](https://earquiz.org/manuals/earquiz-frequencies-help/converting-audio/) beforehand by selecting them and choosing 
+<a id="supported-audio-formats"> In general, the application works with WAVE, AIFF, MP3, FLAC and OGG files.</a>
+All of them can be added to the **Playlist** and processed.
+
+However, the support of the *playback* of different formats is dependent on the current audio backend (see the comparison in the table below).
+Starting from *version 0.1.6*, you can choose between the **FFmpeg** (the default option) and the **Native** system backend by selecting
+the corresponding option in the **Audio | Audio Backend** menu of the main menu.
+
+<br/>
+
+| &nbsp; |                        FFmpeg                        |       Media Foundation<br/>(Native on Windows)       |         AVFoundation <br/>(Native on macOS)          |
+|:------:|:----------------------------------------------------:|:----------------------------------------------------:|:----------------------------------------------------:|
+ |  WAVE  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |
+|  AIFF  | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  | <span style="color:green; font-weight:bold">✓</span> |
+|  MP3   | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |
+  |  FLAC  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:gray; font-weight:bold">✓</span>* |
+|  OGG   | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  |  <span style="color:red; font-weight:bold">✗</span>  |
+
+*\*AVFoundation which is used natively on macOS, has a known issue with 
+incorrect FLAC files' playback position, which may occur when starting playing from a non-zero position.*
+<br/>
+
+All backends support the playback of WAVE, MP3 and FLAC files. 
+
+If you try to load a file of a format which is not supported by the current backend, you will get an error message
+with option to proceed with [conversion to another (WAVE or AIFF) format](https://earquiz.org/manuals/earquiz-frequencies-help/converting-audio/). 
+
+So, when you encounter any issue with playing back files of a certain format, you have two options:
+- Change the **Audio Backend**. This will require restarting the application.
+- Use the in-app audio conversion tool, selecting these files and choosing 
 **File | Convert Selected Files...** from the main menu or the similar option from the right-click context menu of the **Playlist**.
 
 [< Back to "The Basic Training Method"](#the-basic-training-method)<br />
