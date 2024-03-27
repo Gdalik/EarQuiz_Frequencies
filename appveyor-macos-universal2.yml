@@ -1,6 +1,6 @@
 image: macos-ventura
 
-platform: x64
+platform: Any
 
 init:
   - chmod +x $HOME/venv3.11/bin/activate
