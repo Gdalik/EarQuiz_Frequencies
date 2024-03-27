@@ -548,7 +548,7 @@ font-weight: bold</string>
            <enum>QTabWidget::North</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="tabsClosable">
            <bool>false</bool>
@@ -667,7 +667,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ1_31">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>65</height>
                     </size>
                    </property>
@@ -758,7 +758,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ1_63">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>65</height>
                     </size>
                    </property>
@@ -847,7 +847,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ1_125">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>65</height>
                     </size>
                    </property>
@@ -942,7 +942,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ1_250">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>65</height>
                     </size>
                    </property>
@@ -1031,7 +1031,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ1_500">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>65</height>
                     </size>
                    </property>
@@ -1120,7 +1120,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ1_1000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>65</height>
                     </size>
                    </property>
@@ -1215,7 +1215,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ1_2000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>65</height>
                     </size>
                    </property>
@@ -1304,7 +1304,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ1_4000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>65</height>
                     </size>
                    </property>
@@ -1393,7 +1393,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ1_8000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>65</height>
                     </size>
                    </property>
@@ -1482,7 +1482,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ1_16000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>65</height>
                     </size>
                    </property>
@@ -1713,7 +1713,7 @@ background: rgba(118, 214, 255, 85)
                    </property>
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -1807,7 +1807,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_50">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -1896,7 +1896,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_100">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -1985,7 +1985,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_200">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -2073,7 +2073,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_400">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -2162,7 +2162,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_800">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -2257,7 +2257,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_1600">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -2346,7 +2346,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_3150">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -2435,7 +2435,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_6300">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -2524,7 +2524,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_12500">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -2681,7 +2681,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_31">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -2770,7 +2770,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_63">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -2859,7 +2859,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_125">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -2948,7 +2948,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_250">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -3037,7 +3037,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_500">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -3126,7 +3126,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_1000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -3221,7 +3221,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_2000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -3310,7 +3310,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_4000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -3399,7 +3399,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_8000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -3488,7 +3488,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_16000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -3645,7 +3645,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_40">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -3734,7 +3734,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_80">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -3823,7 +3823,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_160">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -3912,7 +3912,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_315">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -4001,7 +4001,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_630">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -4090,7 +4090,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_1250">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -4185,7 +4185,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_2500">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -4274,7 +4274,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_5000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -4363,7 +4363,7 @@ background: rgba(118, 214, 255, 85)
                   <widget class="QSlider" name="EQ2_10000">
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
@@ -4455,7 +4455,7 @@ background: rgba(118, 214, 255, 85)
                    </property>
                    <property name="minimumSize">
                     <size>
-                     <width>0</width>
+                     <width>20</width>
                      <height>55</height>
                     </size>
                    </property>
