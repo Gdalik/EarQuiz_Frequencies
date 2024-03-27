@@ -31,7 +31,6 @@ class EQFreqApp(QtWidgets.QApplication):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.setWindowIcon(QIcon(":Logo/Icons/Logo/EarQuiz_Icon.png"))
         self.setApplicationDisplayName(app_name)
         self.setApplicationName(app_name)
         self.setOrganizationDomain("earquiz.org")

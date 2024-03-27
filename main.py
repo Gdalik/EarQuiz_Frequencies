@@ -21,6 +21,7 @@ import signal
 from tendo.singleton import SingleInstance
 from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.Misc.StartScreen import StartLogo
+from PyQt6.QtGui import QIcon
 from application import app
 from Model.AudioEngine.audio_backend import setAudioBackend
 import Model.del_temp_audio as dta
@@ -32,6 +33,7 @@ if __name__ == '__main__':
         mp.set_start_method('fork')
     me = SingleInstance()
     signal.signal(signal.SIGINT, signal.SIG_DFL)
+    app.setWindowIcon(QIcon(":Logo/Icons/Logo/EarQuiz_Icon.png"))
     StartLogo.start()
     setAudioBackend()
     dta.delTempAudio()
