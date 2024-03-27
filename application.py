@@ -17,7 +17,6 @@
 import sys
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtCore import QSettings
-from PyQt6.QtGui import QIcon
 from PyQt6.QtMultimedia import QMediaDevices
 from Model.del_temp_audio import delTempAudio
 from Utilities.str2bool import str2bool
