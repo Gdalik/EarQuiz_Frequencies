@@ -34,3 +34,8 @@ def SuccessDialog(mw, filespath: str, mode_name='Learning'):
                 subprocess.run(["open", filespath])
         elif platform.system() == 'Windows':
             os.startfile(filespath)
+        elif platform.system() == 'Linux':
+            subprocess.run(['dbus-send', '--session', '--print-reply', '--dest=org.freedesktop.FileManager1',
+                            '--type=method_call', '/org/freedesktop/FileManager1',
+                            'org.freedesktop.FileManager1.ShowItems',
+                            f'array:string:"file://{filespath}"', 'string:""'])
