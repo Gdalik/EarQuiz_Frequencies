@@ -142,7 +142,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         NextPatternBut_font.setPointSize(16)
         self.NextPatternBut.setFont(NextPatternBut_font)
         timelab_fonts = self.Position_Lab.font()
-        timelab_fonts.setPointSize(12)
+        timelab_fonts.setPointSize(13)
         self.Position_Lab.setFont(timelab_fonts)
         self.Duration_Lab.setFont(timelab_fonts)
         pl_stats_font = self.PL_Stats_Lab.font()
