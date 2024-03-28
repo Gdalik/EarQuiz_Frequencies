@@ -18,6 +18,7 @@ import sys
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtCore import QSettings
 from PyQt6.QtMultimedia import QMediaDevices
+from PyQt6.QtGui import QFont
 from Model.del_temp_audio import delTempAudio
 from Utilities.str2bool import str2bool
 from definitions import SETTINGS_PATH
@@ -33,6 +34,7 @@ class EQFreqApp(QtWidgets.QApplication):
         self.setApplicationDisplayName(app_name)
         self.setApplicationName(app_name)
         self.setOrganizationDomain("earquiz.org")
+        self.set_app_font()
         self.aboutToQuit.connect(delTempAudio)
 
     def event(self, event):
@@ -40,6 +42,9 @@ class EQFreqApp(QtWidgets.QApplication):
             self.openFileRequest.emit(event.url())
             return True
         return super().event(event)
+
+    def set_app_font(self):
+        self.setFont(QFont('Arial', 13))
 
 
 app = EQFreqApp(list(sys.argv))

@@ -374,6 +374,13 @@ background: rgba(118, 214, 255, 85)
               <height>33</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="toolTip">
              <string>Next Example</string>
             </property>
@@ -451,7 +458,6 @@ color: gray;
             </property>
             <property name="font">
              <font>
-              <family>Arial</family>
               <pointsize>20</pointsize>
               <weight>75</weight>
               <bold>true</bold>
@@ -2415,6 +2421,9 @@ background: rgba(118, 214, 255, 85)
                      <width>34</width>
                      <height>16777215</height>
                     </size>
+                   </property>
+                   <property name="font">
+                    <font/>
                    </property>
                    <property name="text">
                     <string>3.15k</string>
@@ -4928,7 +4937,7 @@ color: gray;
          </property>
          <property name="font">
           <font>
-           <pointsize>16</pointsize>
+           <pointsize>18</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <kerning>true</kerning>
@@ -5182,6 +5191,13 @@ border-radius: 4px;
              <width>33</width>
              <height>33</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
            </property>
            <property name="toolTip">
             <string>Next Example</string>
@@ -5980,7 +5996,7 @@ background: rgba(118, 214, 255, 85)
          </property>
          <property name="font">
           <font>
-           <pointsize>16</pointsize>
+           <pointsize>18</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <kerning>true</kerning>
@@ -6888,7 +6904,7 @@ background: rgba(118, 214, 255, 85)
          </property>
          <property name="font">
           <font>
-           <pointsize>9</pointsize>
+           <pointsize>11</pointsize>
           </font>
          </property>
          <property name="text">
