@@ -30,8 +30,8 @@ def selectFile(filepath: str):
         filepath = rf'{filepath}'
         cmd = [filebrowser_path, '/select,', filepath]
     else:
-        cmd = ['dbus-send', '--session', '--print-reply', '--dest=org.freedesktop.FileManager1', '--type=method_call',
+        cmd = ['dbus-send', '--session', '--dest=org.freedesktop.FileManager1', '--type=method_call',
                '/org/freedesktop/FileManager1', 'org.freedesktop.FileManager1.ShowItems',
-               f'array:string:"file://{filepath}"', 'string:""']
+               f'array:string:file://{filepath}', 'string:""']
     with contextlib.suppress():
         subprocess.run(cmd)

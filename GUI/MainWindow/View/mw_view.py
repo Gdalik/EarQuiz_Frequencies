@@ -122,6 +122,9 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                 w_font.setPointSize(11)
             W.setFont(w_font)
 
+        EQOnOffLab_font = self.EqOnOffLab.font()
+        EQOnOffLab_font.setPointSize(15)
+        self.EqOnOffLab.setFont(EQOnOffLab_font)
         TransportPanelBut_font = self.TransportPanelViewBut.font()
         TransportPanelBut_font.setPointSize(8)
         self.TransportPanelViewBut.setFont(TransportPanelBut_font)
@@ -131,7 +134,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.LearnBut.setFont(ModeButtons_font)
         self.TestBut.setFont(ModeButtons_font)
         PatternBox_font = self.PatternBox.font()
-        PatternBox_font.setPointSize(11)
+        PatternBox_font.setPointSize(10)
         self.PatternBox.setFont(PatternBox_font)
         NextPatternBut_font = self.NextPatternBut.font()
         NextPatternBut_font.setPointSize(16)
