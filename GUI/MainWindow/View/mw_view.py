@@ -78,39 +78,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setAcceptDrops(True)
 
     def win_os_settings(self):
-        widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + \
-                      self.dockWidgetContents_2.findChildren(QWidget) + self.dockWidgetContents_3.findChildren(QWidget)
-        for W in widget_list:
-            w_font = W.font()
-            w_fontsize = w_font.pointSize()
-            if w_fontsize >= 16:
-                w_font.setPointSize(w_fontsize - 4)
-            elif w_fontsize >= 11:
-                w_font.setPointSize(w_fontsize - 2)
-            elif 'TimeEdit' in W.objectName():
-                w_font.setPointSize(11)
-            W.setFont(w_font)
-        NextPatternBut_font = self.NextPatternBut.font()
-        NextPatternBut_font.setPointSize(16)
-        self.NextPatternBut.setFont(NextPatternBut_font)
-        timelab_fonts = self.Position_Lab.font()
-        timelab_fonts.setPointSize(14)
-        self.Position_Lab.setFont(timelab_fonts)
-        self.Duration_Lab.setFont(timelab_fonts)
-        pl_stats_font = self.PL_Stats_Lab.font()
-        pl_stats_font.setPointSize(8)
-        self.PL_Stats_Lab.setFont(pl_stats_font)
-        self.VolumeSlider.setStyleSheet("")
-        next_example_font = self.NextExample.font()
-        next_example_font.setPointSize(8)
-        self.NextExample.setFont(next_example_font)
-        self.NextExample_TP.setFont(next_example_font)
-        self.NextExample.setMinimumHeight(33)
-        self.NextExample_TP.setMinimumHeight(33)
-        self.NextExample.setMinimumWidth(33)
-        self.NextExample_TP.setMinimumWidth(33)
-
-    def linux_os_settings(self):
         widget_list = (self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) +
                        self.dockWidgetContents_3.findChildren(QWidget))
         for W in widget_list:
@@ -161,6 +128,9 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         RangeToStartEnd_font.setFamily('Helvetica')
         self.RangeToStart.setFont(RangeToStartEnd_font)
         self.RangeToEnd.setFont(RangeToStartEnd_font)
+
+    def linux_os_settings(self):
+        self.win_os_settings()
         self.EQtabWidget.setStyleSheet("")
 
     def _setWinViewActions(self):

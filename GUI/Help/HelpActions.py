@@ -56,10 +56,7 @@ class HelpActions(QObject):
         if platform.system() == 'Darwin':
             font_size = 16
             line_height = 120
-        elif platform.system() == 'Windows':
-            font_size = 13
-            line_height = 110
-        elif platform.system() == 'Linux':
+        else:
             font_size = 13
             line_height = 110
         setParameters(self.GS_Win.TextBr, document, font_size=font_size, line_height=line_height)
