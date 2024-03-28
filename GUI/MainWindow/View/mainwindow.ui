@@ -6455,7 +6455,7 @@ border-radius: 4px;
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>0</height>
+         <height>55</height>
         </size>
        </property>
        <property name="title">
@@ -6707,6 +6707,12 @@ background: rgba(118, 214, 255, 85)
      </item>
      <item>
       <widget class="QGroupBox" name="DonateBox">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>55</height>
+        </size>
+       </property>
        <property name="title">
         <string>Donate</string>
        </property>
