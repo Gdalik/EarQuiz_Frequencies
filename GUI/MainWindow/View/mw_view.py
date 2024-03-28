@@ -20,7 +20,7 @@ import platform
 from functools import partial
 from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QDockWidget
+from PyQt6.QtWidgets import QDockWidget, QLabel
 from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
 from GUI.Misc.StartScreen import StartLogoTime
 import application
@@ -122,6 +122,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                 w_font.setPointSize(w_fontsize - 2)
             elif 'TimeEdit' in W.objectName():
                 w_font.setPointSize(11)
+            elif isinstance(W, QLabel) and W.objectName().startswith('EQ'):
+                w_font.setPointSize(13)
             W.setFont(w_font)
 
         EQOnOffLab_font = self.EqOnOffLab.font()
@@ -131,7 +133,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         TransportPanelBut_font.setPointSize(8)
         self.TransportPanelViewBut.setFont(TransportPanelBut_font)
         ModeButtons_font = self.PreviewBut.font()
-        ModeButtons_font.setPointSize(16)
+        ModeButtons_font.setFamily('Helvetica')
+        ModeButtons_font.setPointSize(17)
         self.PreviewBut.setFont(ModeButtons_font)
         self.LearnBut.setFont(ModeButtons_font)
         self.TestBut.setFont(ModeButtons_font)
@@ -157,6 +160,10 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.NextExample_TP.setMinimumHeight(33)
         self.NextExample.setMinimumWidth(33)
         self.NextExample_TP.setMinimumWidth(33)
+        RangeToStartEnd_font = self.RangeToStart.font()
+        RangeToStartEnd_font.setFamily('Helvetica')
+        self.RangeToStart.setFont(RangeToStartEnd_font)
+        self.RangeToEnd.setFont(RangeToStartEnd_font)
 
     def _setWinViewActions(self):
         self.actionMinimal.triggered.connect(self.setMinimalistView)

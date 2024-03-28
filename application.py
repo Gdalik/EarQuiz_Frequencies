@@ -13,7 +13,7 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+import platform
 import sys
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtCore import QSettings
@@ -44,7 +44,10 @@ class EQFreqApp(QtWidgets.QApplication):
         return super().event(event)
 
     def set_app_font(self):
-        self.setFont(QFont('Arial', 13))
+        if platform.system() == 'Darwin':
+            self.setFont(QFont('Arial', 13))
+        else:
+            self.setFont(QFont('Arial', 11))
 
 
 app = EQFreqApp(list(sys.argv))
