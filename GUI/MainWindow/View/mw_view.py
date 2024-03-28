@@ -128,9 +128,13 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         RangeToStartEnd_font.setFamily('Helvetica')
         self.RangeToStart.setFont(RangeToStartEnd_font)
         self.RangeToEnd.setFont(RangeToStartEnd_font)
+        self.ShareAppBox.setMinimumHeight(48)
+        self.DonateBox.setMinimumHeight(48)
 
     def linux_os_settings(self):
         self.win_os_settings()
+        self.ShareAppBox.setMinimumHeight(55)
+        self.DonateBox.setMinimumHeight(55)
         self.EQtabWidget.setStyleSheet("")
 
     def _setWinViewActions(self):
