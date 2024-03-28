@@ -135,7 +135,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.win_os_settings()
         self.ShareAppBox.setMinimumHeight(55)
         self.DonateBox.setMinimumHeight(55)
-        self.EQtabWidget.setStyleSheet("")
 
     def _setWinViewActions(self):
         self.actionMinimal.triggered.connect(self.setMinimalistView)
