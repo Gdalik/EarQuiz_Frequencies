@@ -5558,7 +5558,7 @@ color: black;
              <property name="maximumSize">
               <size>
                <width>25</width>
-               <height>15</height>
+               <height>17</height>
               </size>
              </property>
              <property name="font">
@@ -5707,7 +5707,7 @@ color: black;
              <property name="maximumSize">
               <size>
                <width>25</width>
-               <height>15</height>
+               <height>17</height>
               </size>
              </property>
              <property name="font">
