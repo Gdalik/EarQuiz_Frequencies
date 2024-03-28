@@ -14,24 +14,14 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import contextlib
-import os
+
 import platform
-import subprocess
 
 
-def selectFile(filepath: str):
-    if not os.path.isfile(filepath):
-        return
-    if platform.system() == 'Darwin':
-        cmd = ["open", "-R", filepath]
-    elif platform.system() == 'Windows':
-        filebrowser_path = os.path.join(os.getenv('WINDIR'), 'explorer.exe')
-        filepath = rf'{filepath}'
-        cmd = [filebrowser_path, '/select,', filepath]
+def fn():
+    if platform.system() == 'Windows':
+        return 'Explorer'
+    elif platform.system() == 'Darwin':
+        return 'Finder'
     else:
-        cmd = ['dbus-send', '--session', '--print-reply', '--dest=org.freedesktop.FileManager1', '--type=method_call',
-               '/org/freedesktop/FileManager1', 'org.freedesktop.FileManager1.ShowItems',
-               f'array:string:"file://{filepath}"', 'string:""']
-    with contextlib.suppress():
-        subprocess.run(cmd)
+        return 'File Manager'

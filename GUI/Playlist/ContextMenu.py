@@ -18,6 +18,7 @@ import platform
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QMenu
 from Utilities.selectFileInSysExplorer import selectFile
+from GUI.Misc.filemanager_name import fn
 
 
 class PLContextMenu(QMenu):
@@ -38,8 +39,7 @@ class PLContextMenu(QMenu):
 
     def createActions(self):
         self.actionLoad = QAction('Load in Preview Mode', self)
-        filemanager = 'Finder' if platform.system() == 'Darwin' else 'Explorer'
-        self.actionShowFile = QAction(f'Show in {filemanager}')
+        self.actionShowFile = QAction(f'Show in {fn()}')
         self.actionShowFile.triggered.connect(self.showSelectedFile)
         file_word = 'File' if len(self.selected_tracks) == 1 else 'Files'
         self.actionConvertAudio = QAction(f'Convert Selected {file_word}...')

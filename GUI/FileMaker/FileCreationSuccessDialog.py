@@ -18,7 +18,7 @@ import contextlib
 import os
 import platform
 import subprocess
-
+from GUI.Misc.filemanager_name import fn
 from PyQt6.QtWidgets import QMessageBox
 
 
@@ -26,8 +26,7 @@ def SuccessDialog(mw, filespath: str, mode_name='Learning'):
     msg = QMessageBox(mw)
     msg.setText(f'{mode_name} files successfully created in "{filespath}"!')
     msg.setStandardButtons(QMessageBox.StandardButton.Open | QMessageBox.StandardButton.Close)
-    manager = 'Explorer' if platform.system() == 'Windows' else 'Finder'
-    msg.button(QMessageBox.StandardButton.Open).setText(f'Show in {manager}')
+    msg.button(QMessageBox.StandardButton.Open).setText(f'Show in {fn()}')
     btn = msg.exec()
     if btn == QMessageBox.StandardButton.Open:
         if platform.system() == 'Darwin':
