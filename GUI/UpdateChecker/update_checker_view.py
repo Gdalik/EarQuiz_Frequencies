@@ -82,8 +82,10 @@ class UpdCheckView:
             return
         if platform.system() == 'Darwin':
             self.download_link = data['download_mac-arm64'] if platform.machine() == 'arm64' else data['download_mac']
-        else:
+        elif platform.system() == 'Windows':
             self.download_link = data['download_win']
+        elif platform.system() == 'Linux':
+            self.download_link = data['download_linux']
         self.Dialog = UpdCheckDialog(self.mw_view)
         self.setMainLabelText(data)
         self.setVersionInfo(data)

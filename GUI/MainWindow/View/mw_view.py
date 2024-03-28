@@ -116,7 +116,9 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         for W in widget_list:
             w_font = W.font()
             w_fontsize = w_font.pointSize()
-            if w_fontsize >= 11:
+            if w_fontsize >= 16:
+                w_font.setPointSize(w_fontsize - 4)
+            elif w_fontsize >= 11:
                 w_font.setPointSize(w_fontsize - 2)
             elif 'TimeEdit' in W.objectName():
                 w_font.setPointSize(11)
@@ -129,7 +131,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         TransportPanelBut_font.setPointSize(8)
         self.TransportPanelViewBut.setFont(TransportPanelBut_font)
         ModeButtons_font = self.PreviewBut.font()
-        ModeButtons_font.setPointSize(17)
+        ModeButtons_font.setPointSize(16)
         self.PreviewBut.setFont(ModeButtons_font)
         self.LearnBut.setFont(ModeButtons_font)
         self.TestBut.setFont(ModeButtons_font)
