@@ -16,6 +16,7 @@
 
 import contextlib
 import os
+import pathlib
 import platform
 import subprocess
 from GUI.Misc.filemanager_name import fn
@@ -35,7 +36,8 @@ def SuccessDialog(mw, filespath: str, mode_name='Learning'):
         elif platform.system() == 'Windows':
             os.startfile(filespath)
         elif platform.system() == 'Linux':
-            subprocess.run(['dbus-send', '--session', '--dest=org.freedesktop.FileManager1',
+            filespath = pathlib.Path(filespath).as_uri()
+            subprocess.run(['dbus-send', '--session', '--print-reply', '--dest=org.freedesktop.FileManager1',
                             '--type=method_call', '/org/freedesktop/FileManager1',
                             'org.freedesktop.FileManager1.ShowFolders',
-                            f'array:string:file://{filespath}', 'string:""'])
+                            f'array:string:{filespath}', 'string:""'])

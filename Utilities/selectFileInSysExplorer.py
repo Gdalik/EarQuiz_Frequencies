@@ -18,6 +18,7 @@ import contextlib
 import os
 import platform
 import subprocess
+import pathlib
 
 
 def selectFile(filepath: str):
@@ -30,8 +31,9 @@ def selectFile(filepath: str):
         filepath = rf'{filepath}'
         cmd = [filebrowser_path, '/select,', filepath]
     else:
-        cmd = ['dbus-send', '--session', '--dest=org.freedesktop.FileManager1', '--type=method_call',
+        filepath = pathlib.Path(filepath).as_uri()
+        cmd = ['dbus-send', '--session', '--print-reply', '--dest=org.freedesktop.FileManager1', '--type=method_call',
                '/org/freedesktop/FileManager1', 'org.freedesktop.FileManager1.ShowItems',
-               f'array:string:file://{filepath}', 'string:""']
+               f'array:string:{filepath}', 'string:""']
     with contextlib.suppress():
         subprocess.run(cmd)
