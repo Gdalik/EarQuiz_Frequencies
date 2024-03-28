@@ -60,7 +60,7 @@ class HelpActions(QObject):
             font_size = 13
             line_height = 110
         elif platform.system() == 'Linux':
-            font_size = 12
+            font_size = 13
             line_height = 110
         setParameters(self.GS_Win.TextBr, document, font_size=font_size, line_height=line_height)
         ShowTime = int(StartLogoTime/2) if StartUp else 0

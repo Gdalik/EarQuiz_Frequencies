@@ -117,21 +117,18 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             w_font = W.font()
             w_fontsize = w_font.pointSize()
             if w_fontsize >= 16:
-                w_font.setPointSize(w_fontsize - 4)
+                w_font.setPointSize(w_fontsize - 3)
             elif w_fontsize >= 11:
                 w_font.setPointSize(w_fontsize - 2)
             elif 'TimeEdit' in W.objectName():
-                w_font.setPointSize(11)
+                w_font.setPointSize(12)
             elif isinstance(W, QLabel) and W.objectName().startswith('EQ'):
-                w_font.setPointSize(13)
+                w_font.setPointSize(10)
             W.setFont(w_font)
 
         EQOnOffLab_font = self.EqOnOffLab.font()
         EQOnOffLab_font.setPointSize(15)
         self.EqOnOffLab.setFont(EQOnOffLab_font)
-        TransportPanelBut_font = self.TransportPanelViewBut.font()
-        TransportPanelBut_font.setPointSize(8)
-        self.TransportPanelViewBut.setFont(TransportPanelBut_font)
         ModeButtons_font = self.PreviewBut.font()
         ModeButtons_font.setFamily('Helvetica')
         ModeButtons_font.setPointSize(17)
@@ -164,6 +161,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         RangeToStartEnd_font.setFamily('Helvetica')
         self.RangeToStart.setFont(RangeToStartEnd_font)
         self.RangeToEnd.setFont(RangeToStartEnd_font)
+        self.EQtabWidget.setStyleSheet("")
 
     def _setWinViewActions(self):
         self.actionMinimal.triggered.connect(self.setMinimalistView)
