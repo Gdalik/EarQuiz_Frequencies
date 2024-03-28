@@ -150,7 +150,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.PL_Stats_Lab.setFont(pl_stats_font)
         self.VolumeSlider.setStyleSheet("")
         next_example_font = self.NextExample.font()
-        next_example_font.setPointSize(7)
+        next_example_font.setPointSize(8)
         self.NextExample.setFont(next_example_font)
         self.NextExample_TP.setFont(next_example_font)
         self.NextExample.setMinimumHeight(33)
