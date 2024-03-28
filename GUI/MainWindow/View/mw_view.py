@@ -20,7 +20,7 @@ import platform
 from functools import partial
 from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QDockWidget
+from PyQt6.QtWidgets import QDockWidget, QLabel
 from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
 from GUI.Misc.StartScreen import StartLogoTime
 import application
@@ -111,27 +111,27 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.NextExample_TP.setMinimumWidth(33)
 
     def linux_os_settings(self):
-        widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + \
-                      self.dockWidgetContents_2.findChildren(QWidget) + self.dockWidgetContents_3.findChildren(QWidget)
+        widget_list = (self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) +
+                       self.dockWidgetContents_3.findChildren(QWidget))
         for W in widget_list:
             w_font = W.font()
             w_fontsize = w_font.pointSize()
             if w_fontsize >= 16:
-                w_font.setPointSize(w_fontsize - 4)
+                w_font.setPointSize(w_fontsize - 3)
             elif w_fontsize >= 11:
                 w_font.setPointSize(w_fontsize - 2)
             elif 'TimeEdit' in W.objectName():
-                w_font.setPointSize(11)
+                w_font.setPointSize(12)
+            elif isinstance(W, QLabel) and W.objectName().startswith('EQ'):
+                w_font.setPointSize(10)
             W.setFont(w_font)
 
         EQOnOffLab_font = self.EqOnOffLab.font()
         EQOnOffLab_font.setPointSize(15)
         self.EqOnOffLab.setFont(EQOnOffLab_font)
-        TransportPanelBut_font = self.TransportPanelViewBut.font()
-        TransportPanelBut_font.setPointSize(8)
-        self.TransportPanelViewBut.setFont(TransportPanelBut_font)
         ModeButtons_font = self.PreviewBut.font()
-        ModeButtons_font.setPointSize(16)
+        ModeButtons_font.setFamily('Helvetica')
+        ModeButtons_font.setPointSize(17)
         self.PreviewBut.setFont(ModeButtons_font)
         self.LearnBut.setFont(ModeButtons_font)
         self.TestBut.setFont(ModeButtons_font)
@@ -142,7 +142,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         NextPatternBut_font.setPointSize(16)
         self.NextPatternBut.setFont(NextPatternBut_font)
         timelab_fonts = self.Position_Lab.font()
-        timelab_fonts.setPointSize(12)
+        timelab_fonts.setPointSize(13)
         self.Position_Lab.setFont(timelab_fonts)
         self.Duration_Lab.setFont(timelab_fonts)
         pl_stats_font = self.PL_Stats_Lab.font()
@@ -150,13 +150,18 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.PL_Stats_Lab.setFont(pl_stats_font)
         self.VolumeSlider.setStyleSheet("")
         next_example_font = self.NextExample.font()
-        next_example_font.setPointSize(7)
+        next_example_font.setPointSize(8)
         self.NextExample.setFont(next_example_font)
         self.NextExample_TP.setFont(next_example_font)
         self.NextExample.setMinimumHeight(33)
         self.NextExample_TP.setMinimumHeight(33)
         self.NextExample.setMinimumWidth(33)
         self.NextExample_TP.setMinimumWidth(33)
+        RangeToStartEnd_font = self.RangeToStart.font()
+        RangeToStartEnd_font.setFamily('Helvetica')
+        self.RangeToStart.setFont(RangeToStartEnd_font)
+        self.RangeToEnd.setFont(RangeToStartEnd_font)
+        self.EQtabWidget.setStyleSheet("")
 
     def _setWinViewActions(self):
         self.actionMinimal.triggered.connect(self.setMinimalistView)

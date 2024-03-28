@@ -481,6 +481,7 @@ class Ui_MainWindow(object):
         self.EQ1_500.setOrientation(QtCore.Qt.Orientation.Vertical)
         self.EQ1_500.setInvertedAppearance(False)
         self.EQ1_500.setInvertedControls(False)
+        self.EQ1_500.setInvertedControls(False)
         self.EQ1_500.setObjectName("EQ1_500")
         self.Band5.addWidget(self.EQ1_500, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
         self.EQ1_500_Lab = QtWidgets.QLabel(parent=self.EQ1_frame)
