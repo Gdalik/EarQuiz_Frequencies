@@ -111,8 +111,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.NextExample_TP.setMinimumWidth(33)
 
     def linux_os_settings(self):
-        widget_list = self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) + \
-                      self.dockWidgetContents_2.findChildren(QWidget) + self.dockWidgetContents_3.findChildren(QWidget)
+        widget_list = (self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) +
+                       self.dockWidgetContents_3.findChildren(QWidget))
         for W in widget_list:
             w_font = W.font()
             w_fontsize = w_font.pointSize()

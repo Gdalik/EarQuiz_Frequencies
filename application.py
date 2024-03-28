@@ -47,7 +47,7 @@ class EQFreqApp(QtWidgets.QApplication):
         if platform.system() == 'Darwin':
             self.setFont(QFont('Arial', 13))
         else:
-            self.setFont(QFont('Arial', 12))
+            self.setFont(QFont('Arial', 11))
 
 
 app = EQFreqApp(list(sys.argv))
