@@ -88,7 +88,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                 w_font.setPointSize(w_fontsize - 3)
             elif w_fontsize >= 11:
                 w_font.setPointSize(w_fontsize - 2)
-            elif 'TimeEdit' in W.objectName():
+            if 'TimeEdit' in W.objectName():
                 w_font.setPointSize(12)
             W.setFont(w_font)
         # Adjusting fonts of EQ Labels
@@ -115,7 +115,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.Position_Lab.setFont(timelab_fonts)
         self.Duration_Lab.setFont(timelab_fonts)
         pl_stats_font = self.PL_Stats_Lab.font()
-        pl_stats_font.setPointSize(8)
+        pl_stats_font.setPointSize(10)
         self.PL_Stats_Lab.setFont(pl_stats_font)
         self.VolumeSlider.setStyleSheet("")
         next_example_font = self.NextExample.font()
