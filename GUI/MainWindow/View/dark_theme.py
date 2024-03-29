@@ -39,9 +39,12 @@ def _usedarktheme():
 def activate_dark(mw):
     mw.EQtabWidget.setStyleSheet("")
     _setObjsIcon((mw.NextExample, mw.NextExample_TP, mw.actionNext_Example),
-                 QPixmap(":/Player/Icons/Player/Negative/arrow-right_gray.png"))
-    _setObjIcon(mw.PreviewPreviousBut, QPixmap(":/Player/Icons/Player/Negative/left-arrow-playlist.png"))
-    _setObjIcon(mw.PreviewNextBut, QPixmap(":/Player/Icons/Player/Negative/right-arrow-playlist.png"))
+                 QPixmap(":/Player/Icons/Player/Negative/arrow-right_gray.png"),
+                 pixmap_disabled=QPixmap(":/Player/Icons/Player/Negative/arrow-right_gray-disabled.png"))
+    _setObjIcon(mw.PreviewPreviousBut, QPixmap(":/Player/Icons/Player/Negative/left-arrow-playlist.png"),
+                pixmap_disabled=QPixmap(":/Player/Icons/Player/Negative/left-arrow-playlist-disabled.png"))
+    _setObjIcon(mw.PreviewNextBut, QPixmap(":/Player/Icons/Player/Negative/right-arrow-playlist.png"),
+                pixmap_disabled=QPixmap(":/Player/Icons/Player/Negative/right-arrow-playlist-disabled.png"))
     _setObjsIcon((mw.LoopButton, mw.actionLoop_Playback),
                  QPixmap(":/Player/Icons/Player/Negative/music-note-with-loop-circular-arrows-around.png"),
                  QPixmap(":/Player/Icons/Player/music-note-with-loop-circular-arrows-around-blue.png"))
@@ -50,8 +53,11 @@ def activate_dark(mw):
                  QPixmap(":/Player/Icons/Player/sequence - blue.png"))
     _setObjsIcon((mw.ShufflePlaybackBut, mw.actionShuffle_Playback),
                  QPixmap(":/Player/Icons/Player/Negative/shuffle_black.png"),
-                 QPixmap(":/Player/Icons/Player/shuffle_blue.png"))
-    _setObjsIcon((mw.ClearRangeBut, mw.ClearFilesBut), QPixmap(":/AddRemove/Icons/AddRemove/clear_neg.png"))
+                 pixmap_on=QPixmap(":/Player/Icons/Player/shuffle_blue.png"),
+                 pixmap_disabled=QPixmap(":/Player/Icons/Player/Negative/shuffle_black-disabled.png"),
+                 pixmap_on_disabled=QPixmap(":/Player/Icons/Player/shuffle_blue-disabled.png"))
+    _setObjsIcon((mw.ClearRangeBut, mw.ClearFilesBut), QPixmap(":/AddRemove/Icons/AddRemove/clear_neg.png"),
+                 pixmap_disabled=QPixmap(":/AddRemove/Icons/AddRemove/clear_neg-disabled.png"))
     _setObjsIcon((mw.EQSettings_But1, mw.EQSettings_But2, mw.actionEQ_Settings_view),
                  QPixmap(":/Misc/Icons/Misc/Negative/Settings.png"),
                  QPixmap(":/Misc/Icons/Misc/Negative/Settings.png"))
@@ -89,7 +95,8 @@ def activate_light(mw):
                  QPixmap(":/Player/Icons/Player/sequence - blue.png"))
     _setObjsIcon((mw.ShufflePlaybackBut, mw.actionShuffle_Playback),
                  QPixmap(":/Player/Icons/Player/shuffle_black.png"),
-                 QPixmap(":/Player/Icons/Player/shuffle_blue.png"))
+                 QPixmap(":/Player/Icons/Player/shuffle_blue.png"),
+                 pixmap_on_disabled=QPixmap(":/Player/Icons/Player/shuffle_blue-disabled.png"))
     _setObjsIcon((mw.ClearRangeBut, mw.ClearFilesBut), QPixmap(":/AddRemove/Icons/AddRemove/clear.png"))
     _setObjsIcon((mw.EQSettings_But1, mw.EQSettings_But2, mw.actionEQ_Settings_view),
                  QPixmap(":/Misc/Icons/Misc/Settings.png"),
@@ -117,17 +124,23 @@ def playlist_even_background_color():
     return QColor(47, 43, 54) if _usedarktheme() else QColor(244, 244, 245)
 
 
-def _setObjsIcon(obj_list: list or tuple, pixmap: QPixmap, pixmap_on=None):
+def _setObjsIcon(obj_list: list or tuple, pixmap: QPixmap, pixmap_on=None, pixmap_disabled=None,
+                 pixmap_on_disabled=None):
     icon = QIcon()
     icon.addPixmap(pixmap, QIcon.Mode.Normal, QIcon.State.Off)
     if pixmap_on:
         icon.addPixmap(pixmap_on, QIcon.Mode.Normal, QIcon.State.On)
+    if pixmap_disabled:
+        icon.addPixmap(pixmap_disabled, QIcon.Mode.Disabled, QIcon.State.Off)
+    if pixmap_on_disabled:
+        icon.addPixmap(pixmap_on_disabled, QIcon.Mode.Disabled, QIcon.State.On)
     for obj in obj_list:
         obj.setIcon(icon)
 
 
-def _setObjIcon(obj, pixmap, pixmap_on=None):
-    _setObjsIcon((obj, ), pixmap, pixmap_on=pixmap_on)
+def _setObjIcon(obj, pixmap, pixmap_on=None, pixmap_disabled=None, pixmap_on_disabled=None):
+    _setObjsIcon((obj, ), pixmap, pixmap_on=pixmap_on, pixmap_disabled=pixmap_disabled,
+                 pixmap_on_disabled=pixmap_on_disabled)
 
 
 def blackorwhite_text():
