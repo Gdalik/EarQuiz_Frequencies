@@ -7501,7 +7501,8 @@ background: rgba(118, 214, 255, 85)
    <property name="icon">
     <iconset resource="../../icons.qrc">
      <normaloff>:/Player/Icons/Player/shuffle_black.png</normaloff>
-     <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>:/Player/Icons/Player/shuffle_black.png</iconset>
+     <normalon>:/Player/Icons/Player/shuffle_blue.png</normalon>
+     <disabledon>:/Player/Icons/Player/shuffle_blue-disabled.png</disabledon>:/Player/Icons/Player/shuffle_black.png</iconset>
    </property>
    <property name="text">
     <string>Shuffle Playback (of Playlist Tracks)</string>
