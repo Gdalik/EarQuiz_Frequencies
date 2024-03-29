@@ -95,7 +95,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         for W in self.centralwidget.findChildren(QLabel):
             if W.objectName().startswith('EQ'):
                 w_font = W.font()
-                w_font.setPointSize(w_font.pointSize() - 1)
+                w_font.setPointSize(10)
                 W.setFont(w_font)
 
         EQOnOffLab_font = self.EqOnOffLab.font()
