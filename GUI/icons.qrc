@@ -32,6 +32,7 @@
   </qresource>
   <qresource prefix="Player">
     <file>Icons/Player/Negative/arrow-right_gray.png</file>
+    <file>Icons/Player/shuffle_blue-disabled.png</file>
     <file>Icons/Player/Negative/shuffle_black-disabled.png</file>
     <file>Icons/Player/Negative/arrow-right_gray-disabled.png</file>
     <file>Icons/Player/Negative/left-arrow-playlist-disabled.png</file>
