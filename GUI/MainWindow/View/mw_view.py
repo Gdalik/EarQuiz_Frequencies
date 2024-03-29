@@ -78,6 +78,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setAcceptDrops(True)
 
     def win_os_settings(self):
+        # Adjusting fonts in Transport Panel and Exercise / Score Information dockWidgets
         widget_list = (self.dockWidgetContents.findChildren(QWidget) +
                        self.dockWidgetContents_3.findChildren(QWidget))
         for W in widget_list:
@@ -89,9 +90,13 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                 w_font.setPointSize(w_fontsize - 2)
             elif 'TimeEdit' in W.objectName():
                 w_font.setPointSize(12)
-            elif isinstance(W, QLabel) and W.objectName().startswith('EQ'):
-                w_font.setPointSize(10)
             W.setFont(w_font)
+        # Adjusting fonts of EQ Labels
+        for W in self.centralwidget.findChildren(QLabel):
+            if W.objectName().startswith('EQ'):
+                w_font = W.font()
+                w_font.setPointSize(w_font.pointSize() - 1)
+                W.setFont(w_font)
 
         EQOnOffLab_font = self.EqOnOffLab.font()
         EQOnOffLab_font.setPointSize(15)
