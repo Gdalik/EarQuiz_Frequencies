@@ -368,7 +368,7 @@ When locked, this state and values themselves are stored between sessions.
 ### Working with External Audio Files
 
 <a id="working-with-external-audio-files">There are</a> different ways to load external audio into the software:
-- Select **File | Open Files...** from the main menu, or press **Ctrl+O** (on Windows) or 
+- Select **File | Open Files...** from the main menu, or press **Ctrl+O** (on Windows or Linux) or 
 **⌘O** (on macOS), or click on <span style="color:green; font-weight:bold">+</span> in the **Audio Source** window.
 - Select **File | Open Folder...** from the main menu.
 - Drag & Drop files/folders to the **Playlist** from anywhere possible.
@@ -391,7 +391,7 @@ When you are not in the **Preview** mode, the player skip controls/buttons are n
 in the playlist, you can still use the navigation buttons above the **Playlist**. This will switch the program to the **Preview**
 mode, whatever the current mode is. Any training process will be cancelled. Moreover, every change of an audio source resets the application to the **Preview** mode.
 You can also manually activate the **Preview** mode by clicking the corresponding button on the main window or
-by selecting **Controls | Preview Mode** from the main menu. The keyboard shortcut for it is  **Ctrl+P** (on Windows) or **⌘P** (on macOS).<br /> 
+by selecting **Controls | Preview Mode** from the main menu. The keyboard shortcut for it is  **Ctrl+P** (on Windows and Linux) or **⌘P** (on macOS).<br /> 
 
 <img align="center" src=":/Getting_Started/Data/Images/PreviewMode.png"/><br />
 
@@ -434,7 +434,7 @@ leave the volume knobs untouched as long as possible, while navigating through d
 ### The Learn Mode
 
 <a id="learn-mode">The basic way</a> to activate the **Learn** mode is clicking the corresponding button on the main window or
-by selecting **Controls | Learn Mode** from the main menu. The keyboard shortcut for it is  **Ctrl+L** (on Windows) or **⌘L** (on macOS).<br />
+by selecting **Controls | Learn Mode** from the main menu. The keyboard shortcut for it is  **Ctrl+L** (on Windows and Linux) or **⌘L** (on macOS).<br />
 <img align="center" src=":/Getting_Started/Data/Images/LearnMode.png" /><br />
 
 The application will normalize the audio if needed. When you use an external audio file as a source, the program 
@@ -456,7 +456,7 @@ of the main menu. In boost & cut exercises, you can set the order with the seque
 all bands cut (or vice-versa), by selecting the option **All Bands Boosted, then All Bands Cut** in the same menu.
 
 To go to the next example, click the <img src=":/Getting_Started/Data/Images/next-example.png"/> **Next Example** control/button,
-or press **Ctrl+Return** (on Windows) or **⌘+Return** (on macOS).
+or press **Ctrl+Return** (on Windows or Linux) or **⌘+Return** (on macOS).
 
 Alternatively, you can check the option <img src=":/Getting_Started/Data/Images/sequential-playback.png"/> **Sequential Playback (of Learning Examples)** 
 in the **Controls** menu of the main menu or in the **Transport Panel**. In this case, you can start the playback once, and then
@@ -471,7 +471,7 @@ this will become the first element of a sequence regardless of the EQ bands orde
 ### The Test Mode
 
 <a id="test-mode">The **Test** mode</a> is activated by clicking the corresponding button on the main window or
-by selecting **Controls | Test Mode** from the main menu. The keyboard shortcut for it is  **Ctrl+T** (on Windows) or 
+by selecting **Controls | Test Mode** from the main menu. The keyboard shortcut for it is  **Ctrl+T** (on Windows and Linux) or 
 **⌘T** (on macOS).<br />
 <img align="center" src=":/Getting_Started/Data/Images/TestMode.png" /><br />
 
@@ -612,16 +612,17 @@ the corresponding option in the **Audio | Audio Backend** menu of the main menu.
 
 <br/>
 
-| &nbsp; |                        FFmpeg                        |       Media Foundation<br/>(Native on Windows)       |         AVFoundation <br/>(Native on macOS)          |
-|:------:|:----------------------------------------------------:|:----------------------------------------------------:|:----------------------------------------------------:|
- |  WAVE  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |
-|  AIFF  | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  | <span style="color:green; font-weight:bold">✓</span> |
-|  MP3   | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |
-  |  FLAC  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:gray; font-weight:bold">✓</span>* |
-|  OGG   | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  |  <span style="color:red; font-weight:bold">✗</span>  |
+| &nbsp; |                        FFmpeg                        |       Media Foundation<br/>(Native on Windows)       |         AVFoundation <br/>(Native on macOS)          |                                         GStreamer <br/>(on Linux)                                         |
+|:------:|:----------------------------------------------------:|:----------------------------------------------------:|:----------------------------------------------------:|:---------------------------------------------------------------------------------------------------------:|
+ |  WAVE  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |                           <span style="color:green; font-weight:bold">✓</span>                            |
+|  AIFF  | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:red; font-weight:bold">✗</span> <span style="color:green; font-weight:bold">✓</span>** |
+|  MP3   | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |                           <span style="color:green; font-weight:bold">✓</span>                            |
+  |  FLAC  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:gray; font-weight:bold">✓</span>* |                           <span style="color:green; font-weight:bold">✓</span>                            |
+|  OGG   | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  |  <span style="color:red; font-weight:bold">✗</span>  |                           <span style="color:green; font-weight:bold">✓</span>                            |
 
 *\*AVFoundation which is used natively on macOS, has a known issue with 
-incorrect FLAC files' playback position, which may occur when starting playing from a non-zero position.*
+incorrect FLAC files' playback position, which may occur when starting playing from a non-zero position.*<br/>
+*\*\*GStreamer needs a plugin to support the playback of AIFF files.* 
 <br/>
 
 All backends support the playback of WAVE, MP3 and FLAC files. 
