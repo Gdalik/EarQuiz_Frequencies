@@ -130,6 +130,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def linux_os_settings(self):
         self.win_os_settings()
+        self.actionNative.setText('GStreamer')
         self.PreviewBut.setStyleSheet("QToolButton{\n"
                                       "background-color: rgba(255, 255, 102, 207);\n"
                                       "color: black;}\n"

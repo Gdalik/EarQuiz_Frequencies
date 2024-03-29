@@ -2,7 +2,7 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/Gdalik/EarQuiz_Frequencies/blob/master/LICENSE)
 [![Documentation](https://img.shields.io/badge/Documentation-on%20earquiz.org-brightgreen)](https://earquiz.org/manuals/earquiz-frequencies-help/)
-[![Supported Platforms](https://img.shields.io/badge/platforms-macOS%20%7C%20Windows-yellow)]()
+[![Supported Platforms](https://img.shields.io/badge/platforms-macOS%20%7C%20Windows%20%7C%20Linux-yellow)]()
 
 `EarQuiz Frequencies` is a software for technical ear training on equalization. Its main goal is to help musicians and all kinds of audio professionals or students (producers, recording/mixing/mastering/live sound engineers, audio designers, etc.) develop and master the ability to aurally recognize frequency bands. In general, anybody who wants to teach himself/herself how to adjust an audio system with equalizer by ear consciously may find it useful.
 
