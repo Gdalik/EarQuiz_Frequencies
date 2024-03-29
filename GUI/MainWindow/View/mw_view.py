@@ -78,7 +78,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.setAcceptDrops(True)
 
     def win_os_settings(self):
-        widget_list = (self.centralwidget.findChildren(QWidget) + self.dockWidgetContents.findChildren(QWidget) +
+        widget_list = (self.dockWidgetContents.findChildren(QWidget) +
                        self.dockWidgetContents_3.findChildren(QWidget))
         for W in widget_list:
             w_font = W.font()
@@ -102,9 +102,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.PreviewBut.setFont(ModeButtons_font)
         self.LearnBut.setFont(ModeButtons_font)
         self.TestBut.setFont(ModeButtons_font)
-        PatternBox_font = self.PatternBox.font()
-        PatternBox_font.setPointSize(10)
-        self.PatternBox.setFont(PatternBox_font)
         NextPatternBut_font = self.NextPatternBut.font()
         NextPatternBut_font.setPointSize(16)
         self.NextPatternBut.setFont(NextPatternBut_font)
