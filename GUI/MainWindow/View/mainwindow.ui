@@ -6100,7 +6100,7 @@ font-weight: normal</string>
     <set>Qt::BottomDockWidgetArea|Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
    </property>
    <property name="windowTitle">
-    <string>Excercise / Score Information</string>
+    <string>Exercise / Score Information</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>

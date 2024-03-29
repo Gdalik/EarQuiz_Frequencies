@@ -3559,7 +3559,7 @@ class Ui_MainWindow(object):
         self.SlicesNum_Lab.setText(_translate("MainWindow", "Number of Slices:"))
         self.Duration_Lab.setToolTip(_translate("MainWindow", "Audiofile Duration"))
         self.Duration_Lab.setText(_translate("MainWindow", "00:00:00.000"))
-        self.ExScoreInfo.setWindowTitle(_translate("MainWindow", "Excercise / Score Information"))
+        self.ExScoreInfo.setWindowTitle(_translate("MainWindow", "Exercise / Score Information"))
         self.ExampleNLab.setText(_translate("MainWindow", "Example:"))
         self.UserAnswerLab.setText(_translate("MainWindow", "Your answer:"))
         self.CorAnswerLab.setText(_translate("MainWindow", "Right answer:"))
