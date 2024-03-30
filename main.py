@@ -31,6 +31,8 @@ if __name__ == '__main__':
     freeze_support()
     if platform.system() == 'Darwin':
         mp.set_start_method('fork')
+    elif platform.system() == 'Linux':
+        mp.set_start_method('spawn')
     me = SingleInstance()
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     app.setWindowIcon(QIcon(":Logo/Icons/Logo/EarQuiz_Icon.png"))
