@@ -27,8 +27,10 @@ def setAudioBackend():
 
 
 def currentAudioBackend():
-    if not NativeAudioBackend:
-        return 'FFmpeg'
+    return systemNativeBackend() if NativeAudioBackend else 'FFmpeg'
+
+
+def systemNativeBackend():
     native_backend = {'Windows': 'WMF', 'Darwin': 'AVFoundation', 'Linux': 'GStreamer'}
     return native_backend[platform.system()]
 

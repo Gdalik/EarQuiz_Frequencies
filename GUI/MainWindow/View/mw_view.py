@@ -36,7 +36,7 @@ from GUI.TransportPanel.transport_view import TransportPanelView
 from GUI.UpdateChecker.update_checker_view import UpdCheckView
 from GUI.About.about_dialog_view import AboutDialogView
 from GUI.MainWindow.View.dark_theme import green_color
-from Model.AudioEngine.audio_backend import currentAudioBackend
+from Model.AudioEngine.audio_backend import systemNativeBackend
 from Utilities.str2bool import str2bool
 from Utilities.checkMimeData import checkDroppedMimeData
 from application import Settings
@@ -322,7 +322,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                 W.setHidden(True)
 
     def nameNativeAudioBackend(self):
-        self.actionNative.setText(f'Native ({currentAudioBackend()})')
+        self.actionNative.setText(f'Native ({systemNativeBackend()})')
 
     @staticmethod
     def _saveDockWidget(obj: QDockWidget):
