@@ -612,17 +612,17 @@ the corresponding option in the **Audio | Audio Backend** menu of the main menu.
 
 <br/>
 
-| &nbsp; |                        FFmpeg                        |       Media Foundation<br/>(Native on Windows)       |         AVFoundation <br/>(Native on macOS)          |                                         GStreamer <br/>(on Linux)                                         |
-|:------:|:----------------------------------------------------:|:----------------------------------------------------:|:----------------------------------------------------:|:---------------------------------------------------------------------------------------------------------:|
- |  WAVE  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |                           <span style="color:green; font-weight:bold">✓</span>                            |
-|  AIFF  | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:red; font-weight:bold">✗</span> <span style="color:green; font-weight:bold">✓</span>** |
-|  MP3   | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |                           <span style="color:green; font-weight:bold">✓</span>                            |
-  |  FLAC  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:gray; font-weight:bold">✓</span>* |                           <span style="color:green; font-weight:bold">✓</span>                            |
-|  OGG   | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  |  <span style="color:red; font-weight:bold">✗</span>  |                           <span style="color:green; font-weight:bold">✓</span>                            |
+| &nbsp; |                        FFmpeg                        |       Media Foundation<br/>(Native on Windows)       |         AVFoundation <br/>(Native on macOS)          |           GStreamer <br/>(Native on Linux)           |
+|:------:|:----------------------------------------------------:|:----------------------------------------------------:|:----------------------------------------------------:|:----------------------------------------------------:|
+ |  WAVE  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |
+|  AIFF  | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |
+|  MP3   | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |
+  |  FLAC  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:gray; font-weight:bold">✓</span>* | <span style="color:green; font-weight:bold">✓</span> |
+|  OGG   | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  |  <span style="color:red; font-weight:bold">✗</span>  | <span style="color:green; font-weight:bold">✓</span> |
 
 *\*AVFoundation which is used natively on macOS, has a known issue with 
 incorrect FLAC files' playback position, which may occur when starting playing from a non-zero position.*<br/>
-*\*\*GStreamer needs a plugin to support the playback of AIFF files.* 
+
 <br/>
 
 All backends support the playback of WAVE, MP3 and FLAC files. 

@@ -23,6 +23,8 @@ from GUI.Misc.error_message import reformat_message
 from GUI.Misc.procEvents import procEvents
 from definitions import PN
 from application import MediaDevices, Settings
+from pathlib import Path
+from Model.AudioEngine.audio_backend import formatNotSupported
 
 
 class PlayerContr(QMediaPlayer):
@@ -263,8 +265,9 @@ class PlayerContr(QMediaPlayer):
             message = f'File "{sourcefile.path}" not found!'
         elif err == self.Error.FormatError and sourcefile.name != PN:
             message = f'The file "{sourcefile.name}" seems to be in a wrong format. Do you want to reformat it?'
-            if sourcefile.name.endswith('.ogg'):
-                message = f'OGG file format is not supported by the current audio playback backend. ' \
+            ext = Path(sourcefile.name).suffix
+            if formatNotSupported(ext):
+                message = f'{ext[1:].upper()} file format is not supported by the current audio playback backend. ' \
                               f'Do you want to reformat "{sourcefile.name}"?'
             if reformat_message(self.mw_view, msg=message) == QMessageBox.StandardButton.Yes:
                 self.mw_contr.FileMaker.onActionConvertFilesTriggered()

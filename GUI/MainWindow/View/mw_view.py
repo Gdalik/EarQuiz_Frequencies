@@ -36,6 +36,7 @@ from GUI.TransportPanel.transport_view import TransportPanelView
 from GUI.UpdateChecker.update_checker_view import UpdCheckView
 from GUI.About.about_dialog_view import AboutDialogView
 from GUI.MainWindow.View.dark_theme import green_color
+from Model.AudioEngine.audio_backend import currentAudioBackend
 from Utilities.str2bool import str2bool
 from Utilities.checkMimeData import checkDroppedMimeData
 from application import Settings
@@ -57,6 +58,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self._flags = self.windowFlags()
         self.setDockOptions(self.dockOptions().AnimatedDocks)
         self.setWindowTitle(application.app_name)
+        self.nameNativeAudioBackend()
         self.status = StatusBar(self)
         self.UpdCheckView = UpdCheckView(self)
         self.PatternBoxView = PatternBoxView(self)
@@ -135,7 +137,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def linux_os_settings(self):
         self.win_os_settings()
-        self.actionNative.setText('GStreamer')
         self.PreviewBut.setStyleSheet("QToolButton{\n"
                                       "background-color: rgba(255, 255, 102, 207);\n"
                                       "color: black;}\n"
@@ -319,6 +320,9 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         for W in DockWidgets:
             if W.isFloating():
                 W.setHidden(True)
+
+    def nameNativeAudioBackend(self):
+        self.actionNative.setText(f'Native ({currentAudioBackend()})')
 
     @staticmethod
     def _saveDockWidget(obj: QDockWidget):

@@ -21,12 +21,18 @@ from application import NativeAudioBackend
 
 
 def setAudioBackend():
+    native_backend_var = {'Windows': 'windows', 'Darwin': 'darwin', 'Linux': 'gstreamer'}
+    value = 'ffmpeg' if not NativeAudioBackend else native_backend_var[platform.system()]
+    os.environ['QT_MEDIA_BACKEND'] = value
+
+
+def currentAudioBackend():
     if not NativeAudioBackend:
-        os.environ['QT_MEDIA_BACKEND'] = 'ffmpeg'
-        return
-    if platform.system() == 'Windows':
-        os.environ['QT_MEDIA_BACKEND'] = 'windows'
-    elif platform.system() == 'Darwin':
-        os.environ['QT_MEDIA_BACKEND'] = 'darwin'
-    elif platform.system() == 'Linux':
-        os.environ['QT_MEDIA_BACKEND'] = 'gstreamer'
+        return 'FFmpeg'
+    native_backend = {'Windows': 'WMF', 'Darwin': 'AVFoundation', 'Linux': 'GStreamer'}
+    return native_backend[platform.system()]
+
+
+def formatNotSupported(af: str):
+    format_backend_list = (('.aiff', 'WMF'), ('.ogg', 'WMF'), ('.ogg', 'AVFoundation'))
+    return (af, currentAudioBackend()) in format_backend_list
