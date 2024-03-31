@@ -58,7 +58,9 @@ and you can run the application from the source code, using the interpreter.
 On macOS (Apple Silicon), run:<br /><br />
 `pyinstaller macos_build-arm64.spec`<br /><br />
 On Windows, run:<br /><br />
-`pyinstaller windows_build.spec`
+`pyinstaller windows_build.spec`<br /><br />
+On Linux, run:<br /><br />
+`pyinstaller linux_build.spec`<br /><br />
 
 The bundled application should now be available in the *dist* folder.
 
