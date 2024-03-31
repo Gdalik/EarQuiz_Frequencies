@@ -1,0 +1,6 @@
+-C package
+-s dir
+-t deb
+-n "earquiz-frequencies"
+-v 0.1.6
+-p earquiz-frequencies.deb

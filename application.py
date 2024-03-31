@@ -33,7 +33,9 @@ class EQFreqApp(QtWidgets.QApplication):
         super().__init__(*args, **kwargs)
         self.setApplicationDisplayName(app_name)
         self.setApplicationName(app_name)
-        self.setOrganizationDomain("earquiz.org")
+        if platform.system() != 'Linux':
+            self.setOrganizationDomain("earquiz.org")
+        self.setOrganizationName("EarQuiz")
         self.set_app_font()
         self.aboutToQuit.connect(delTempAudio)
 
