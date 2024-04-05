@@ -555,6 +555,16 @@ which may have an effect, similar to particular equalization: big and small boxe
 
 <br />
 
+And the highest frequencies can be thought of as sibilants:
+<br />
+
+| Boosted frequency band, Hz | Sibilant sound |
+|:--------------------------:|:--------------:|
+|            8000            |   'Sh' /sh/    |
+|          16000             |    'S' /s/     |
+
+<br />
+
 <img src=":/Help_Icons/Data/Images/lightbulb.png"/>When training with music, make (mental) notes of how altering different frequency bands
 changes timbres of instruments/voices. There are some tables with attempts to verbally describe different spectral ranges. However, using 
 them may not be very helpful because the effect of particular equalization on timbre may drastically depend on a sound source, how it has been recorded,
@@ -606,9 +616,9 @@ with the maximum amplitude equal to a certain value (in dB).
 <a id="supported-audio-formats"> In general, the application works with WAVE, AIFF, MP3, FLAC and OGG files.</a>
 All of them can be added to the **Playlist** and processed.
 
-However, the support of the *playback* of different formats is dependent on the current audio backend (see the comparison in the table below).
+However, the support of the *playback* of different formats is dependent on the [current audio playback backend](https://earquiz.org/manuals/earquiz-frequencies-help/choosing-audio-backend) (see the comparison in the table below).
 Starting from *version 0.1.6*, you can choose between the **FFmpeg** (the default option) and the **Native** system backend by selecting
-the corresponding option in the **Audio | Audio Backend** menu of the main menu.
+the corresponding option in the **Audio | Audio Playback Backend** menu of the main menu.
 
 <br/>
 
@@ -631,7 +641,7 @@ If you try to load a file of a format which is not supported by the current back
 with option to proceed with [conversion to another (WAVE or AIFF) format](https://earquiz.org/manuals/earquiz-frequencies-help/converting-audio/). 
 
 So, when you encounter any issue with playing back files of a certain format, you have two options:
-- Change the **Audio Backend**. This will require restarting the application.
+- Change the **Audio Playback Backend**. This will require restarting the application.
 - Use the in-app audio conversion tool, selecting these files and choosing 
 **File | Convert Selected Files...** from the main menu or the similar option from the right-click context menu of the **Playlist**.
 

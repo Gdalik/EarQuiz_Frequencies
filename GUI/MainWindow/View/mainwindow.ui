@@ -4840,7 +4840,7 @@ color: gray;
     </widget>
     <widget class="QMenu" name="menuAudio_Backend">
      <property name="title">
-      <string>Audio Backend</string>
+      <string>Audio Playback Backend</string>
      </property>
      <addaction name="actionFFmpeg"/>
      <addaction name="actionNative"/>

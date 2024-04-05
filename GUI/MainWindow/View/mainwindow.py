@@ -3530,7 +3530,7 @@ class Ui_MainWindow(object):
         self.menuEQ_Bands_Playback_Order.setTitle(_translate("MainWindow", "EQ Bands Order in Learn Mode"))
         self.menuAudio.setTitle(_translate("MainWindow", "Audio"))
         self.menuAudio_Device.setTitle(_translate("MainWindow", "Audio Device"))
-        self.menuAudio_Backend.setTitle(_translate("MainWindow", "Audio Backend"))
+        self.menuAudio_Backend.setTitle(_translate("MainWindow", "Audio Playback Backend"))
         self.TransportPanel.setWindowTitle(_translate("MainWindow", "Transport Panel"))
         self.Position_Lab.setToolTip(_translate("MainWindow", "Playback Position"))
         self.Position_Lab.setText(_translate("MainWindow", "00:00:00.000"))
