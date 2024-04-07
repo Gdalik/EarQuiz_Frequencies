@@ -23,7 +23,7 @@ from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.Misc.StartScreen import StartLogo
 from PyQt6.QtGui import QIcon
 from application import app
-from Model.AudioEngine.audio_backend import setAudioBackend, currentAudioBackend
+from Model.AudioEngine.audio_backend import setAudioBackend
 import Model.del_temp_audio as dta
 
 
