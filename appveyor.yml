@@ -44,8 +44,6 @@ init:
 
 install:
   - ps: pip3 install -r requirements.txt
-    # PyQt6 installation bug workaround
-  - ps: pip3 install --no-cache-dir pyqt6-plugins qt6-applications PyQt6-Qt6 PyQt6-sip pyqt6-tools qt6-tools
   - cmd: pip3 install -U pyinstaller
   - cmd: pyinstaller windows_build.spec
 
