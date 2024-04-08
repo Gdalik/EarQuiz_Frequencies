@@ -272,7 +272,7 @@ class PlayerContr(QMediaPlayer):
             if reformat_message(self.mw_view, msg=message) == QMessageBox.StandardButton.Yes:
                 self.mw_contr.FileMaker.onActionConvertFilesTriggered()
             return
-        self.mw_view.error_msg(message)
+        QTimer.singleShot(0, lambda: self.mw_view.error_msg(message))
 
     def _stopTrainingOnError(self):
         if self.mw_contr.CurrentSourceMode.name == 'Audiofile':
