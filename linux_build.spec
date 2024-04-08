@@ -30,7 +30,7 @@ exe = EXE(
     strip=False,
     upx=True,
     console=False,
-    argv_emulation=False,
+    argv_emulation=True,
 )
 coll = COLLECT(
     exe,

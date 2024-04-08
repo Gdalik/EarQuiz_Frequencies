@@ -26,6 +26,7 @@ This application is based on the world-renowned [Golden Ears](https://goldenears
 - Reading M3U, M3U8, PLS, XSPF playlists supported.
 - Exporting M3U and M3U8 playlists supported.
 - Convenient and flexible playlist navigation.
+- Dark Mode support (on macOS and Linux).
 - And other features (see [EarQuiz Frequencies Help](https://earquiz.org/manuals/earquiz-frequencies-help/))...
 
 ## Installation

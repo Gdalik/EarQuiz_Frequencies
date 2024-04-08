@@ -36,6 +36,7 @@ init:
   - cmd: python -c "import struct; print(struct.calcsize('P') * 8)"
   - cmd: python -c "import sys; print(sys.executable)"
   - cmd: pip3 --version
+  - ps: rm -r $env:LOCALAPPDATA\pip\cache\selfcheck\
   - ps: python.exe -m pip install --upgrade pip
 
   # Check out installed python packages
@@ -43,6 +44,7 @@ init:
 
 install:
   - ps: pip3 install -r requirements.txt
+  - ps: pip3 install --no-cache-dir PyQt6-Qt6==6.6.2
   - cmd: pip3 install -U pyinstaller
   - cmd: pyinstaller windows_build.spec
 
