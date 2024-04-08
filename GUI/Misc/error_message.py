@@ -16,9 +16,11 @@
 
 from PyQt6 import QtWidgets, QtCore
 from PyQt6.QtWidgets import QMessageBox
+from GUI.Misc.StartScreen import StartLogo
 
 
 def error_message(window, msg: str, modal='WinModal'):
+    StartLogo.finish(window)    # Prevent splash screen hanging if error message appears during startup
     emsg = QtWidgets.QErrorMessage(window)
     if modal == 'AppModal':
         emsg.setWindowModality(QtCore.Qt.WindowModality.ApplicationModal)
