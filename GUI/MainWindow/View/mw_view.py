@@ -22,7 +22,7 @@ from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QDockWidget, QLabel
 from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
-from GUI.Misc.StartScreen import StartLogoTime, StartLogo
+from GUI.Misc.StartScreen import StartLogo
 import application
 from GUI.MainWindow.View.dark_theme import change_theme
 from GUI.EQ.eq_view import EqView
@@ -314,7 +314,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             self.setMinimalistView()
             return
         self.setGeometry(geometry)
-        # QTimer.singleShot(StartLogoTime, lambda: self._restoreDockWidgets(self.dockWidgets))
 
     @property
     def dockWidgets(self):

@@ -25,7 +25,6 @@ from application import Settings
 from pathlib import Path
 from Utilities.str2bool import str2bool
 from Model.get_version import version
-from GUI.Misc.StartScreen import StartLogoTime
 
 
 class HelpActions(QObject):

@@ -37,7 +37,7 @@ from GUI.Modes.audiosource_modes import PinkNoiseMode, AudioFileMode
 from GUI.PatternBox.patternbox_contr import PatternBoxContr
 from GUI.Playlist.playlistcontr import PlaylistContr
 from GUI.Playlist.plsong import PlSong
-from GUI.Misc.StartScreen import StartLogo, StartLogoTime
+from GUI.Misc.StartScreen import StartLogoTime
 from GUI.TransportPanel.transport_contr import TransportContr
 from GUI.Help.HelpActions import HelpActions
 from GUI.SupportApp.supportapp_contr import SupportAppContr
@@ -100,7 +100,6 @@ class MainWindowContr(QObject):
         self.mw_view.VolumeSlider.setValue(60)
         dark_theme.change_theme(self.mw_view)
         self.playAudioOnPreview = False
-        # QTimer.singleShot(StartLogoTime, lambda: StartLogo.finish(self.mw_view))
         QTimer.singleShot(0, self._restoreAudioSource)
 
     def _restoreAudioSource(self):

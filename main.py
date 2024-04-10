@@ -36,7 +36,7 @@ if __name__ == '__main__':
     me = SingleInstance()
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     app.setWindowIcon(QIcon(":Logo/Icons/Logo/EarQuiz_Icon.png"))
-    StartLogo.start()
+    StartLogo.show()
     setAudioBackend()
     dta.delTempAudio()
     mw = MainWindowContr()

@@ -31,12 +31,6 @@ class StartScreen(QSplashScreen):
                          color=QColor(f'{blue_color()}'))
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint)
 
-    def start(self):
-        if mp.get_start_method() != 'fork':
-            self.show()
-        else:
-            QTimer.singleShot(0, self.show)
-
 
 StartLogo = StartScreen()
-StartLogoTime = 2000
+StartLogoTime = 1000
