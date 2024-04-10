@@ -32,7 +32,6 @@ class QuickHelpWin(QWidget):
 
     def setup_view(self):
         self.setWindowFlags(Qt.WindowType.Window |
-                            Qt.WindowType.WindowStaysOnTopHint |
                             Qt.WindowType.WindowCloseButtonHint |
                             Qt.WindowType.CustomizeWindowHint |
                             Qt.WindowType.WindowMaximizeButtonHint)
