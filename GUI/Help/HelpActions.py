@@ -16,7 +16,7 @@
 
 import platform
 import webbrowser
-from PyQt6.QtCore import QObject
+from PyQt6.QtCore import QObject, QTimer
 from PyQt6.QtGui import QTextDocument
 from GUI.Help.QuickHelpWin import QuickHelpWin
 from GUI.Misc.TextBrowserDocParameters import setParameters
@@ -59,7 +59,7 @@ class HelpActions(QObject):
             font_size = 13
             line_height = 110
         setParameters(self.GS_Win.TextBr, document, font_size=font_size, line_height=line_height)
-        self.GS_Win.show()
+        QTimer.singleShot(0, self.GS_Win.show)
 
     def onAppStartup(self):
         if str2bool(Settings.value('MessageBoxes/ShowGettingStartedOnStartup', True)):
