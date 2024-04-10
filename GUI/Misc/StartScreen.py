@@ -14,12 +14,11 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap, QColor
 from PyQt6.QtWidgets import QSplashScreen
 from Model.get_version import version
 from GUI.MainWindow.View.dark_theme import blue_color
-import multiprocessing as mp
 
 
 class StartScreen(QSplashScreen):
