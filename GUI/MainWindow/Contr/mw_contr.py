@@ -49,16 +49,11 @@ from definitions import PN
 from application import app, Settings
 
 
-class MW_Signals(QObject):
-    audioSourcesRestored = pyqtSignal()
-
-
 class MainWindowContr(QObject):
     SourceAudio: PlSong or None
     SourceRange: PreviewAudioCrop or None
     ADGen: AudioDrillGen or None
     CurrentSourceMode: PinkNoiseMode or AudioFileMode
-    signals = MW_Signals()
 
     def __init__(self):
         super().__init__()
@@ -105,7 +100,6 @@ class MainWindowContr(QObject):
     def _restoreAudioSource(self):
         self.PlaylistContr.loadCurrentPlaylist()
         self.PlaylistContr.restoreLastAudioSource()
-        self.signals.audioSourcesRestored.emit()
 
     def setFileMenuActions(self):
         self.mw_view.actionOpen.triggered.connect(lambda x: self.PlaylistContr.openFiles(mode='files'))
