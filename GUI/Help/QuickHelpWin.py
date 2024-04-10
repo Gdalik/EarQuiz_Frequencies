@@ -14,6 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import platform
 from PyQt6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QTextBrowser, QCheckBox, QLineEdit, \
     QToolButton, QStyle
 from PyQt6.QtCore import Qt
@@ -31,10 +32,18 @@ class QuickHelpWin(QWidget):
         self.TextBr.setFocus()
 
     def setup_view(self):
-        self.setWindowFlags(Qt.WindowType.Window |
+        if platform.system() == 'Darwin':
+            window_flags = (Qt.WindowType.Window |
+                            Qt.WindowType.WindowStaysOnTopHint |
                             Qt.WindowType.WindowCloseButtonHint |
                             Qt.WindowType.CustomizeWindowHint |
                             Qt.WindowType.WindowMaximizeButtonHint)
+        else:
+            window_flags = (Qt.WindowType.Window |
+                            Qt.WindowType.WindowCloseButtonHint |
+                            Qt.WindowType.CustomizeWindowHint |
+                            Qt.WindowType.WindowMaximizeButtonHint)
+        self.setWindowFlags(window_flags)
         self.setWindowTitle(self.title)
         self.resize(650, 475)
 
