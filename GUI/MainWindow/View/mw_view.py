@@ -22,7 +22,7 @@ from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QDockWidget, QLabel
 from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
-from GUI.Misc.StartScreen import StartLogoTime
+from GUI.Misc.StartScreen import StartLogoTime, StartLogo
 import application
 from GUI.MainWindow.View.dark_theme import change_theme
 from GUI.EQ.eq_view import EqView
@@ -44,6 +44,7 @@ from application import Settings
 
 class MW_Signals(QObject):
     appClose = pyqtSignal()
+    MWFirstShown = pyqtSignal()
 
 
 class MainWindowView(QMainWindow, Ui_MainWindow):
@@ -71,12 +72,14 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.TransportPanelView = TransportPanelView(self)
         self.setUniActBut()
         self.alt_pressed = None
+        self._mwWasShown = False
         self.setFocus()
         self.SupportProject.visibilityChanged.connect(self.onSupportProjectVisibilityChanged)
         self.TransportPanelViewBut.setDefaultAction(self.actionTransport_Panel_view)
         self._restoreActionsState()
         self._connectActionsToSaver()
         self.actionAbout.triggered.connect(self.showAboutWin)
+        self.signals.MWFirstShown.connect(self.onMWFirstShown)
         self.setAcceptDrops(True)
 
     def win_os_settings(self):
@@ -222,6 +225,17 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         super(MainWindowView, self).changeEvent(ev)
         change_theme(self)
 
+    def showEvent(self, ev):
+        super(MainWindowView, self).showEvent(ev)
+        if self.isVisible() and not self._mwWasShown:
+            self.signals.MWFirstShown.emit()
+            self._mwWasShown = True
+
+    def onMWFirstShown(self):
+        StartLogo.finish(self)
+        self._restoreDockWidgets(self.dockWidgets)
+
+
     def _setUpEQSettingsButtons(self):
         icon = self.EQSettings_But1.icon()
         self.actionEQ_Settings_view.setIconVisibleInMenu(False)
@@ -300,7 +314,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             self.setMinimalistView()
             return
         self.setGeometry(geometry)
-        QTimer.singleShot(StartLogoTime, lambda: self._restoreDockWidgets(self.dockWidgets))
+        # QTimer.singleShot(StartLogoTime, lambda: self._restoreDockWidgets(self.dockWidgets))
 
     @property
     def dockWidgets(self):

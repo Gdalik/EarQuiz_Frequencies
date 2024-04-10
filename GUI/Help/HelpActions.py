@@ -40,7 +40,8 @@ class HelpActions(QObject):
         self.mw_view.actionReport_an_Issue.triggered.connect(self.onReportIssue_called)
         self.mw_view.actionGo_To_Source_Code.triggered.connect(self.onGoToSourceCode_called)
         self.mw_view.actionAsk_and_Discuss.triggered.connect(self.onAskAndDiscuss_called)
-        self.mw_contr.signals.audioSourcesRestored.connect(self.onAppStartup)
+        # self.mw_contr.signals.audioSourcesRestored.connect(self.onAppStartup)
+        self.mw_view.signals.MWFirstShown.connect(self.onAppStartup)
         self.GS_Win = QuickHelpWin(self.mw_view, title=f'Getting Started with EarQuiz Frequencies v{version()}',
                            showagain_settings_path='MessageBoxes/ShowGettingStartedOnStartup')
 
@@ -60,8 +61,9 @@ class HelpActions(QObject):
             font_size = 13
             line_height = 110
         setParameters(self.GS_Win.TextBr, document, font_size=font_size, line_height=line_height)
-        ShowTime = int(StartLogoTime/2) if StartUp else 0
-        QTimer.singleShot(ShowTime, self.GS_Win.show)
+        self.GS_Win.show()
+        # ShowTime = int(StartLogoTime/2) if StartUp else 0
+        # QTimer.singleShot(ShowTime, self.GS_Win.show)
 
     def onAppStartup(self):
         if str2bool(Settings.value('MessageBoxes/ShowGettingStartedOnStartup', True)):
