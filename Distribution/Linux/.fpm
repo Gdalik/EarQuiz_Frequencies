@@ -9,4 +9,5 @@
 --description "Software for ear training on equalization"
 --url "https://earquiz.org/EQ_Frequencies/"
 --maintainer "Gdaliy Garmiza <earquiz@gmail.com>"
+--vendor EarQuiz
 
