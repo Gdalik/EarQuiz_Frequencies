@@ -8,5 +8,6 @@
   "update_active": false,
   "download_mac": "",
   "download_mac-arm64": "",
-  "download_win": ""
+  "download_win": "",
+  "download_linux": ""
 }
