@@ -7,6 +7,6 @@
 --license gpl3
 --architecture amd64
 --description "Software for ear training on equalization"
---url https://earquiz.org/EQ_Frequencies/
+--url "https://earquiz.org/EQ_Frequencies/"
 --maintainer "Gdaliy Garmiza <earquiz@gmail.com>"
 
