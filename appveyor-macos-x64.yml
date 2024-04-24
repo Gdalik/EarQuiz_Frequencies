@@ -1,4 +1,4 @@
-image: macos-monterey
+image: macos-bigsur
 
 platform: x64
 
