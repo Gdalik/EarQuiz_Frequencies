@@ -37,7 +37,7 @@ You can also clone (download) this repository and launch the program from [Pytho
 So, make sure the proper version of interpreter is installed on your computer.
 
 The repository doesn't contain any pre-compiled dependencies, so they should be installed before the application execution. Though it is technically possible to use the "base" Python environment,
-[creating a separate virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment) for the project and all its packages is highly recommended. Then, once you have [activated the project's virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#activating-a-virtual-environment), installing all the requirements using the package manager is as simple as:
+[creating a separate virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment) for the project and all its packages is highly recommended. Then, once you have [activated the project's virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#activate-a-virtual-environment), installing all the requirements using the package manager is as simple as:
 
 `pip install -r requirements.txt`
 
