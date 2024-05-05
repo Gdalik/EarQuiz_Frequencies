@@ -1,6 +1,7 @@
 pedalboard~=0.9.3
 pyqtgraph~=0.13.4
 numpy~=1.26.4
-PyQt6
+PyQt6<6.7.0
+PyQt6-Qt6==6.6.2
 darkdetect~=0.8.0
 tendo~=0.3.0
