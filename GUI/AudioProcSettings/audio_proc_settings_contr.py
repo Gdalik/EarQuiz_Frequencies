@@ -35,8 +35,8 @@ class AudioProcSettingsContr(QObject):
         if self.APSV.isVisible():
             self.APSV.setFocus()
             self.APSV.activateWindow()
-            return
-        self.APSV.show()
+        else:
+            self.APSV.show()
 
     def on_ResetBut_clicked(self):
         self.APSV.EQOnTimeSlider.setValue(default_EQOnTimePerc)
