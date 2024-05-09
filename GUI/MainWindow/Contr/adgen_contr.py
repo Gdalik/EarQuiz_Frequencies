@@ -16,6 +16,7 @@
 
 from GUI.Misc.tracked_proc import ProcTrackControl
 from Model.audiodrill_gen import AudioDrillGen
+import Model.AudioEngine.audio_proc_settings as APS
 from Utilities.Q_extract import Qextr
 from definitions import PN
 
@@ -47,6 +48,7 @@ class ADGenContr:
                                        'drill_length': SR.slice_length,
                                        'gain_depth': self.parent.EQSetContr.EQSetView.GainRangeSpin.value(),
                                        'Q': Qextr(self.parent.EQSetContr.EQSetView.BWBox.currentText()),
+                                       'proc_t_perc': APS.getEQOnTimePerc(),
                                        'order': self.parent.freqOrder(),
                                        'boost_cut_priority': self.parent.boostCutPriority,
                                        'disableAdjacent': EQP['DisableAdjacentFiltersMode']})

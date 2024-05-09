@@ -111,6 +111,7 @@ class UniMode:
         pass
 
     def oncePlayingStarted(self):
+        self.view.setEQStateIndicatorOn(self.parent.TransportContr.eqStateOnOff())
         self.view.EqOnOffLab.setVisible(True)
         QTimer.singleShot(200, self.updateSliceRegion)
 

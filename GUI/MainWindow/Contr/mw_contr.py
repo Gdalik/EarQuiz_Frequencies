@@ -39,6 +39,7 @@ from GUI.Playlist.playlistcontr import PlaylistContr
 from GUI.Playlist.plsong import PlSong
 from GUI.Misc.StartScreen import StartLogoTime
 from GUI.TransportPanel.transport_contr import TransportContr
+from GUI.AudioProcSettings.audio_proc_settings_contr import AudioProcSettingsContr
 from GUI.Help.HelpActions import HelpActions
 from GUI.SupportApp.supportapp_contr import SupportAppContr
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
@@ -84,6 +85,7 @@ class MainWindowContr(QObject):
         self.AL.setNoAudio()
         self.ADGC = ADGenContr(self)
         self.setFileMenuActions()
+        self.AudioProcSettingsContr = AudioProcSettingsContr(self)
         self.HelpActions = HelpActions(self)
         self.SupportAppContr = SupportAppContr(self)
         self.ModesHandler = AppModesHandler(self)
@@ -208,4 +210,9 @@ class MainWindowContr(QObject):
 
     @property
     def eqSetChanged(self):
-        return bool(self.normHeadroomChanged or self.qChanged)
+        return bool(self.normHeadroomChanged or self.qChanged or self.eqOnTimePercChanged)
+
+    @property
+    def eqOnTimePercChanged(self):
+        return self.AudioProcSettingsContr.sit_proc_t_perc != self.ADGen.proc_t_perc \
+            if self.ADGen is not None else False

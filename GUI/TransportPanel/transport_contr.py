@@ -187,12 +187,15 @@ class TransportContr(QObject):
         if self.parent.qChanged:
             self.parent.EQSetContr.updADGenQ()
             refresh_needed = True
+        if self.parent.eqOnTimePercChanged:
+            self.parent.AudioProcSettingsContr.updADGenEQOnTimeToSit()
+            refresh_needed = True
         if refresh_needed and refreshAfter:
             self.refreshAudio(play_after=play_after)
         return refresh_needed
 
     def refreshAudio(self, play_after=False):
-        if self.parent.CurrentMode.name not in ('Learn', 'Test') or self.parent.ADGen is None:
+        if self.parent.CurrentMode.name == 'Preview' or self.parent.ADGen is None:
             return
         self.parent.CurrentMode.updateCurrentAudio()
         self.parent.ADGen.refresh_audio(filepath=self.parent.CurrentAudio)

@@ -34,6 +34,7 @@ from GUI.Misc.error_message import error_message
 from GUI.PatternBox.patternbox_view import PatternBoxView
 from GUI.TransportPanel.transport_view import TransportPanelView
 from GUI.UpdateChecker.update_checker_view import UpdCheckView
+from GUI.AudioProcSettings.audio_proc_settings_view import AudioProcSettingsView
 from GUI.About.about_dialog_view import AboutDialogView
 from GUI.MainWindow.View.dark_theme import green_color
 from Model.AudioEngine.audio_backend import systemNativeBackend
@@ -65,6 +66,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.PatternBoxView = PatternBoxView(self)
         self.EQView = EqView(self)
         self.EQSetView = EQSetView(self)
+        self.AudioProcSettingsView = AudioProcSettingsView(self)
         self._setUpEQSettingsButtons()
         self.AudioDevicesView = AudioDevicesView(self)
         QTimer.singleShot(0, self.restoreWindowView)

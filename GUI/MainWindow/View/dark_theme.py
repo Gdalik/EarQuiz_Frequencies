@@ -71,14 +71,9 @@ def activate_dark(mw):
     mw.Position_Lab.setStyleSheet(TP_PosDur_Style)
     mw.Duration_Lab.setStyleSheet(TP_PosDur_Style)
 
-    _setStatusTempLabelColor(mw)
-    _set_StartEndPointBut_Style(mw)
-    _set_RangeStartEndBut_Style(mw)
-    _setNextExampleBut_Style(mw)
-
     mw.PatternBox.setStyleSheet("font-weight: normal; color: white")
-    _replaceTestStatusColor(mw)
-    _repaintFiltersSS(mw)
+
+    _common_actions(mw)
 
 
 def activate_light(mw):
@@ -110,14 +105,20 @@ def activate_light(mw):
     mw.Position_Lab.setStyleSheet(TP_PosDur_Style)
     mw.Duration_Lab.setStyleSheet(TP_PosDur_Style)
 
+    mw.PatternBox.setStyleSheet("font-weight: normal; color: black")
+
+    _common_actions(mw)
+
+
+def _common_actions(mw):
     _setStatusTempLabelColor(mw)
     _set_StartEndPointBut_Style(mw)
     _set_RangeStartEndBut_Style(mw)
     _setNextExampleBut_Style(mw)
-
-    mw.PatternBox.setStyleSheet("font-weight: normal; color: black")
     _replaceTestStatusColor(mw)
     _repaintFiltersSS(mw)
+    with suppress(AttributeError):
+        mw.AudioProcSettingsView.updLabels()
 
 
 def playlist_even_background_color():

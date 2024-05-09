@@ -4853,6 +4853,9 @@ color: gray;
     <addaction name="separator"/>
     <addaction name="menuAudio_Device"/>
     <addaction name="menuAudio_Backend"/>
+    <addaction name="separator"/>
+    <addaction name="actionAudio_Processing_Settings"/>
+    <addaction name="actionEQ_Always_On_In_Test_Mode"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -7762,6 +7765,19 @@ background: rgba(118, 214, 255, 85)
    </property>
    <property name="text">
     <string>Native</string>
+   </property>
+  </action>
+  <action name="actionAudio_Processing_Settings">
+   <property name="text">
+    <string>Audio Processing Settings...</string>
+   </property>
+  </action>
+  <action name="actionEQ_Always_On_In_Test_Mode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>EQ Always On In Test Mode</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

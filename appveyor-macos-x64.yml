@@ -18,6 +18,6 @@ build: None
 artifacts:
   - path: eqfreq_build-macos-x64.tar
 
-version: 0.1.6 (build-{build})
+version: 0.1.7 (build-{build})
 pull_requests:
   do_not_increment_build_number: true

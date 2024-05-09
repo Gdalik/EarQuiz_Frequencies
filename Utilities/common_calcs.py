@@ -59,3 +59,8 @@ def samp2ms(samples: int, samplerate=44100):
 
 def round_s(secs: int or float):
     return round(secs * 1000) / 1000
+
+
+def eq_off_perc(eq_on_perc: int or float):
+    result = (100 - eq_on_perc) / 2
+    return int(result) if result == int(result) else result
