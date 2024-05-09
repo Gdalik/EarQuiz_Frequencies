@@ -15,9 +15,10 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from PyQt6.QtCore import QObject
+from PyQt6.QtCore import QObject, QTimer
 import Model.AudioEngine.audio_proc_settings as APS
 from Model.AudioEngine.audio_proc_settings import default_EQOnTimePerc, default_EQTransitionDur, default_ExFadeInOutDur
+from GUI.Misc.procEvents import procEvents
 
 
 class AudioProcSettingsContr(QObject):
@@ -60,7 +61,8 @@ class AudioProcSettingsContr(QObject):
 
     def refreshAudio(self):
         self.mw_contr.TransportContr.PlayerContr.onStopTriggered()
-        self.mw_contr.TransportContr.refreshAudio()
+        procEvents()
+        QTimer.singleShot(0, self.mw_contr.TransportContr.refreshAudio)
 
     def updADGenEQOnTimeToSit(self):
         if self.mw_contr.ADGen is None:
