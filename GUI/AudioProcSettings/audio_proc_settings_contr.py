@@ -49,6 +49,8 @@ class AudioProcSettingsContr(QObject):
         APS.setEQTransitionDur(self.APSV.EQOnOffTransSpin.value())
         APS.setExFadeInOutDur(self.APSV.FadeInOutDurSpin.value())
         self.APSV.setApplyButState()
+        if self.mw_contr.CurrentMode.name == 'Test' and APS.getEQAlwaysOnInTest():
+            return
         if self.mw_contr.ADGen is not None:
             self.mw_contr.ADGen.proc_t_perc = APS.getEQOnTimePerc()
             if self.mw_contr.CurrentMode.name != 'Preview':
