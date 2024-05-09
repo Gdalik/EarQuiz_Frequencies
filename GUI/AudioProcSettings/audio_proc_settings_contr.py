@@ -32,6 +32,10 @@ class AudioProcSettingsContr(QObject):
         self.mw_view.actionEQ_Always_On_In_Test_Mode.toggled.connect(self.on_actionEQ_Always_On_In_Test_Mode_toggled)
 
     def on_actionAudio_Processing_Settings_clicked(self):
+        if self.APSV.isVisible():
+            self.APSV.setFocus()
+            self.APSV.activateWindow()
+            return
         self.APSV.show()
 
     def on_ResetBut_clicked(self):
