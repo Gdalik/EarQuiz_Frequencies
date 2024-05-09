@@ -25,11 +25,11 @@ import Model.AudioEngine.audio_proc_settings as APS
 
 class AudioProcSettingsView(QWidget, Ui_AudioProcSettingsDialog):
     def __init__(self, mw_view):
-        super().__init__()
+        super().__init__(parent=mw_view)
         self.setupUi(self)
         self.updLabels()
         self.mw_view = mw_view
-        Flags = Qt.WindowType(Qt.WindowType.CustomizeWindowHint | Qt.WindowType.WindowTitleHint |
+        Flags = Qt.WindowType(Qt.WindowType.Dialog | Qt.WindowType.CustomizeWindowHint | Qt.WindowType.WindowTitleHint |
                               Qt.WindowType.WindowCloseButtonHint | Qt.WindowType.WindowStaysOnTopHint)
         self.setWindowFlags(Flags)
         self.EQOnTimeSlider.valueChanged.connect(self.on_EQOnTimeSlider_valueChanged)
