@@ -138,7 +138,7 @@ class PlayerContr(QMediaPlayer):
         self._hashAndRefreshLoadedAudioData()
         self.parent.onLoadSourceAudio()
         self.checkPreviewStartTime()
-        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loaded', 0)
+        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}{self._get_slice_number_str()}: Loaded', 0)
         self.onceAudioLoaded = False
 
     def _hashAndRefreshLoadedAudioData(self):
@@ -226,7 +226,7 @@ class PlayerContr(QMediaPlayer):
             return ''
         slice_number = self.mw_contr.ADGen.audiochunk.cycle_id + 1\
             if self.mw_contr.ADGen is not None and self.mw_contr.SourceAudio.name != PN and \
-               self.mw_contr.CurrentMode.name in ('Learn', 'Test') else None
+               self.mw_contr.CurrentMode.name != 'Preview' else None
         return f' [{slice_number}]' if slice_number is not None else ''
 
     def _translatePBStateToStatusBar(self, state):
