@@ -125,7 +125,7 @@ class Ui_AudioProcSettingsDialog(object):
         self.EQPerformanceBox.setTitle(_translate("AudioProcSettingsDialog", "Equalization Performance Settings:"))
         self.EQOnOffPropLab.setText(_translate("AudioProcSettingsDialog", "EQ Off / EQ On / EQ Off: 30% / 40% / 30%"))
         self.EQOnTimeLab.setText(_translate("AudioProcSettingsDialog", "EQ On Time:"))
-        self.EQOnOffTransLab.setText(_translate("AudioProcSettingsDialog", "EQ On/Off Transition Time:"))
+        self.EQOnOffTransLab.setText(_translate("AudioProcSettingsDialog", "EQ On<->Off Transition Time:"))
         self.msLab.setText(_translate("AudioProcSettingsDialog", "ms"))
         self.FadeInOutDurBox.setTitle(_translate("AudioProcSettingsDialog", "Example Fade In/Out Duration:"))
         self.msLab_2.setText(_translate("AudioProcSettingsDialog", "ms"))
