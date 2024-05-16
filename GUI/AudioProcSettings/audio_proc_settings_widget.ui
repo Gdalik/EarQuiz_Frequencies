@@ -123,7 +123,7 @@
            </size>
           </property>
           <property name="text">
-           <string>EQ On&lt;-&gt;Off Transition Time:</string>
+           <string>EQ On↔︎Off Transition Time:</string>
           </property>
          </widget>
         </item>
