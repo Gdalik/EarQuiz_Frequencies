@@ -17,6 +17,7 @@
 from GUI.AudioProcSettings.audio_proc_settings_widget import Ui_AudioProcSettingsDialog
 from GUI.MainWindow.View.dark_theme import green_color
 from GUI.Misc.colorStr import colorStr
+from GUI.AudioProcSettings.eq_indicator_view import EqOnOffIndicatorView
 from PyQt6.QtWidgets import QWidget
 from PyQt6.QtCore import Qt
 from Utilities.common_calcs import eq_off_perc
@@ -27,6 +28,7 @@ class AudioProcSettingsView(QWidget, Ui_AudioProcSettingsDialog):
     def __init__(self, mw_view):
         super().__init__(parent=mw_view)
         self.setupUi(self)
+        self.EqIndView = EqOnOffIndicatorView(self.EQOnOffIndicator)
         self.updLabels()
         self.mw_view = mw_view
         Flags = Qt.WindowType(Qt.WindowType.Dialog | Qt.WindowType.CustomizeWindowHint | Qt.WindowType.WindowTitleHint |
@@ -59,10 +61,13 @@ class AudioProcSettingsView(QWidget, Ui_AudioProcSettingsDialog):
         EQOn_Perc = self.EQOnTimeSlider.value()
         EQOff_perc = eq_off_perc(EQOn_Perc)
         eq_off_text = colorStr('EQ Off', 'gray')
-        eq_off_value_str = colorStr(f'{EQOff_perc}%', 'gray')
-        eq_on_value_str = colorStr(f'{EQOn_Perc}%', green_color())
-        self.EQOnOffPropLab.setText(f"<b>{eq_off_text} / {self.eq_on_text} / {eq_off_text}: "
-                                    f"{eq_off_value_str} / {eq_on_value_str} / {eq_off_value_str}</b>")
+        eq_off_value_str = colorStr(f'({EQOff_perc}%)', 'gray')
+        eq_on_value_str = colorStr(f'({EQOn_Perc}%)', green_color())
+        eq_off_lab_text = f'<b>{eq_off_text}<br>{eq_off_value_str}</b>'
+        self.EQOffLab.setText(eq_off_lab_text)
+        self.EQOffLab2.setText(eq_off_lab_text)
+        self.EQOnLab.setText(f'<b>{self.eq_on_text}<br>{eq_on_value_str}</b>')
+        self.EqIndView.update(EQOn_Perc)
 
     def updEQOnTimeLab(self):
         self.EQOnTimeLab.setText(f'<b>{self.eq_on_text}</b> Time:')
