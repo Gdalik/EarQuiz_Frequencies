@@ -123,7 +123,7 @@
        <widget class="QLabel" name="EQOnOffIndicator">
         <property name="minimumSize">
          <size>
-          <width>330</width>
+          <width>0</width>
           <height>0</height>
          </size>
         </property>

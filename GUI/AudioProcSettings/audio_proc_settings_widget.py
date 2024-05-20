@@ -50,7 +50,7 @@ class Ui_AudioProcSettingsDialog(object):
         self.EQOnOffLabLay.addWidget(self.EQOffLab2)
         self.verticalLayout.addLayout(self.EQOnOffLabLay)
         self.EQOnOffIndicator = QtWidgets.QLabel(parent=self.EQPerformanceBox)
-        self.EQOnOffIndicator.setMinimumSize(QtCore.QSize(330, 0))
+        self.EQOnOffIndicator.setMinimumSize(QtCore.QSize(0, 0))
         self.EQOnOffIndicator.setMaximumSize(QtCore.QSize(16777215, 7))
         self.EQOnOffIndicator.setAutoFillBackground(False)
         self.EQOnOffIndicator.setStyleSheet("")

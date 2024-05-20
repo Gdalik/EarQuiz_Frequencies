@@ -26,7 +26,9 @@ class EqOnOffIndicatorView(QObject):
     def __init__(self, IndicatorLabel: QLabel, EqOnPerc=aps.getEQOnTimePerc()):
         super().__init__()
         self.IndLab = IndicatorLabel
-        self.IndLab.setMinimumWidth(355)
+        width = 330
+        self.IndLab.setMinimumWidth(width)
+        self.IndLab.setMaximumWidth(width)
         self.EqOnPerc = EqOnPerc
         self.IndLab.setScaledContents(True)
         self.update(self.EqOnPerc)
