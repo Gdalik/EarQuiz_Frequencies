@@ -14,7 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import Qt, QObject, QRect, QTimer
+from PyQt6.QtCore import Qt, QObject, QRect
 from PyQt6.QtWidgets import QLabel
 from PyQt6.QtGui import QPainter, QPixmap, QColor
 from GUI.MainWindow.View.dark_theme import green_color
