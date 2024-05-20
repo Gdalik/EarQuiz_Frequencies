@@ -14,7 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import Qt, QObject, QRect
+from PyQt6.QtCore import Qt, QObject, QRect, QTimer
 from PyQt6.QtWidgets import QLabel
 from PyQt6.QtGui import QPainter, QPixmap, QColor
 from GUI.MainWindow.View.dark_theme import green_color
@@ -27,8 +27,8 @@ class EqOnOffIndicatorView(QObject):
         super().__init__()
         self.IndLab = IndicatorLabel
         self.EqOnPerc = EqOnPerc
-        self.update(self.EqOnPerc)
         self.IndLab.setScaledContents(True)
+        self.update(self.EqOnPerc)
 
     @property
     def w(self) -> int:
@@ -41,11 +41,11 @@ class EqOnOffIndicatorView(QObject):
     def update(self, EqOnPerc=aps.getEQOnTimePerc()):
         self.EqOnPerc = EqOnPerc
         canvas = QPixmap(self.w, self.h)
-        self.IndLab.setPixmap(canvas)
         canvas.fill(Qt.GlobalColor.gray)
+        color = QColor(green_color())
         painter = QPainter(canvas)
-        painter.setBrush(QColor(green_color()))
-        painter.setPen(QColor(green_color()))
+        painter.setBrush(color)
+        painter.setPen(color)
         painter.drawRect(self.eqOnRect(EqOnPerc))
         painter.end()
         self.IndLab.setPixmap(canvas)
