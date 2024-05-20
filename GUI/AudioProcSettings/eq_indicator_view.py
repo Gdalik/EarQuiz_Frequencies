@@ -45,10 +45,9 @@ class EqOnOffIndicatorView(QObject):
         color = QColor(green_color())
         painter = QPainter(canvas)
         painter.setBrush(color)
-        painter.setPen(color)
         painter.drawRect(self.eqOnRect(EqOnPerc))
         painter.end()
         self.IndLab.setPixmap(canvas)
 
     def eqOnRect(self, EqOnPerc: int or float) -> QRect:
-        return QRect(int(self.w * eq_off_perc(EqOnPerc) / 100), 0, int(self.w * EqOnPerc / 100), self.h)
+        return QRect(int(self.w * eq_off_perc(EqOnPerc) / 100), -5, int(self.w * EqOnPerc / 100) - 1, self.h + 5)
