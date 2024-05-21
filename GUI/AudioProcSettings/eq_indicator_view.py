@@ -14,18 +14,21 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import Qt, QObject, QRect, QTimer
+from PyQt6.QtCore import Qt, QObject, QRect
 from PyQt6.QtWidgets import QLabel
 from PyQt6.QtGui import QPainter, QPixmap, QColor
 from GUI.MainWindow.View.dark_theme import green_color
 from Utilities.common_calcs import eq_off_perc
 import Model.AudioEngine.audio_proc_settings as aps
+import platform
 
 
 class EqOnOffIndicatorView(QObject):
     def __init__(self, IndicatorLabel: QLabel, EqOnPerc=aps.getEQOnTimePerc()):
         super().__init__()
         self.IndLab = IndicatorLabel
+        if platform.system() != 'Darwin':
+            self.IndLab.setMinimumWidth(385)
         self.EqOnPerc = EqOnPerc
         self.IndLab.setScaledContents(True)
         self.update(self.EqOnPerc)
