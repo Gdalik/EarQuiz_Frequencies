@@ -73,7 +73,7 @@ automatically. After some more seconds, the EQ is switched off again, and the so
 
 <img align="center" src=":/Getting_Started/Data/Images/Drill_structure.png"/>
 
-*Note: The default proportion of equalized part length versus sum length of non-equalized ones is hard-coded at 40/60 per cent.
+*Note: The default proportion of equalized part length versus sum length of non-equalized ones is 40/60 percent.
 Therefore, if we have 10 seconds length example, this would be: 3sec **EQ Off**, 4sec **EQ On** and 
 3sec **EQ Off** respectively. It used to be hard-coded, but in the version 0.1.7 the option to adjust this setting as well as 
 some other audio processing parameters has been introduced. [See details here](https://earquiz.org/manuals/earquiz-frequencies-help/audio-processing-settings/).*
