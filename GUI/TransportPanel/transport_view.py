@@ -19,6 +19,7 @@ from GUI.TransportPanel.cropregiontimestr import CropRegionTimestr
 from GUI.TransportPanel.player_view import PlayerView
 from Utilities.common_calcs import hhmmss
 from PyQt6 import QtCore
+from PyQt6 import QtWidgets
 
 
 class TransportPanelView:
