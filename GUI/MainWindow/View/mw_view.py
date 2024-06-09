@@ -82,7 +82,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.actionAbout.triggered.connect(self.showAboutWin)
         self.signals.MWFirstShown.connect(self.onMWFirstShown)
         self.setAcceptDrops(True)
-        application.app.setStyleSheet(self.SpinBoxStyle)
+        self._qtAdjust()
 
     def win_os_settings(self):
         # Adjusting fonts in Transport Panel and Exercise / Score Information dockWidgets
@@ -179,6 +179,15 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                                    "}")
         self.ShareAppBox.setMinimumHeight(55)
         self.DonateBox.setMinimumHeight(55)
+
+    def _qtAdjust(self):
+        application.app.setStyleSheet(self.SpinBoxStyle)
+        if platform.system() == 'Windows' and application.QtVersion >= 7.1:
+            self.GainRangeSpin.setMinimumWidth(45)
+            self.SliceLenSpin.setMinimumWidth(43)
+            comboBoxHeight = 27
+            self.PatternBox.setMinimumHeight(comboBoxHeight)
+            self.BWBox.setMinimumHeight(comboBoxHeight)
 
     def _setWinViewActions(self):
         self.actionMinimal.triggered.connect(self.setMinimalistView)
@@ -327,7 +336,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         if platform.system() == 'Windows' and application.QtVersion >= 7.1:
             return ('SpinType::up-button{subcontrol-origin: border; subcontrol-position: top right;}'
                     'SpinType::down-button{subcontrol-origin: border; subcontrol-position: bottom right;}'
-                    'SpinType{padding-left: -9px}')
+                    'SpinType{padding-left: -8px}')
         return ''
 
     @property
