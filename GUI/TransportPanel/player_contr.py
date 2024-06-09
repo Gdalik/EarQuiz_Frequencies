@@ -230,9 +230,6 @@ class PlayerContr(QMediaPlayer):
         return f' [{slice_number}]' if slice_number is not None else ''
 
     def _translatePBStateToStatusBar(self, state):
-        if self.mw_contr.SourceAudio is None:
-            self.mw_view.status.clearMessage()
-            return
         try:
             source = PN if self.mw_contr.SourceAudio.name == PN else self.mw_contr.LastSourceAudio.name
             self.mw_view.status.showMessage(f'{source}{self._get_slice_number_str()}: {self.PlayerView.pb_state2str(state)}', 0)
