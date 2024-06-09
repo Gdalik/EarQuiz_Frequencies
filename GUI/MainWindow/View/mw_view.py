@@ -183,8 +183,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def _qtAdjust(self):
         application.app.setStyleSheet(self.SpinBoxStyle)
         if platform.system() == 'Windows' and application.QtVersion >= 7.1:
-            self.GainRangeSpin.setMinimumWidth(45)
-            self.SliceLenSpin.setMinimumWidth(43)
             comboBoxHeight = 25
             self.PatternBox.setMinimumHeight(comboBoxHeight)
             self.BWBox.setMinimumHeight(comboBoxHeight)

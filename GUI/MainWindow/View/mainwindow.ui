@@ -4874,7 +4874,7 @@ color: gray;
    </property>
    <property name="minimumSize">
     <size>
-     <width>1108</width>
+     <width>1111</width>
      <height>115</height>
     </size>
    </property>
@@ -5850,7 +5850,7 @@ background: rgba(118, 214, 255, 85)
             <widget class="QSpinBox" name="SliceLenSpin">
              <property name="minimumSize">
               <size>
-               <width>40</width>
+               <width>43</width>
                <height>20</height>
               </size>
              </property>
@@ -6233,7 +6233,7 @@ font-weight: normal</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>232</width>
+     <width>235</width>
      <height>150</height>
     </size>
    </property>
@@ -6295,7 +6295,7 @@ font-weight: normal</string>
         <widget class="QSpinBox" name="GainRangeSpin">
          <property name="minimumSize">
           <size>
-           <width>42</width>
+           <width>45</width>
            <height>0</height>
           </size>
          </property>
