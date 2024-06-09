@@ -5533,7 +5533,7 @@ color: black;
               <bool>true</bool>
              </property>
              <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -5679,7 +5679,7 @@ color: black;
               <bool>false</bool>
              </property>
              <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="accelerated">
               <bool>false</bool>
@@ -5870,6 +5870,9 @@ background: rgba(118, 214, 255, 85)
               <font>
                <pointsize>12</pointsize>
               </font>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::UpDownArrows</enum>
