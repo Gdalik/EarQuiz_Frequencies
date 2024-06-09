@@ -40,7 +40,12 @@ class TransportPanelView:
         self.ClearRangeBut = mw_view.ClearRangeBut
         self.CropRegionTstr = CropRegionTimestr(self)
         self.SaveSliceLengthAsDefault = mw_view.SaveSliceLengthAsDefault
+        self.setSpinStyles()
         self.setHeader()
+
+    def setSpinStyles(self):
+        self.StartTimeEdit.setStyleSheet(self.mw_view.TimeSpinStyle)
+        self.EndTimeEdit.setStyleSheet(self.mw_view.TimeSpinStyle)
 
     def setHeader(self, audio_name='No audio'):
         self.mw_view.TransportPanel.setWindowTitle(f'Transport Panel: {audio_name}')

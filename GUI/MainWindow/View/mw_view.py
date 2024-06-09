@@ -20,8 +20,7 @@ import platform
 from functools import partial
 from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QDockWidget, QLabel
-from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
+from PyQt6.QtWidgets import QDockWidget, QLabel, QMainWindow, QWidget, QToolButton
 from GUI.Misc.StartScreen import StartLogo
 import application
 from GUI.MainWindow.View.dark_theme import change_theme
@@ -83,6 +82,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.actionAbout.triggered.connect(self.showAboutWin)
         self.signals.MWFirstShown.connect(self.onMWFirstShown)
         self.setAcceptDrops(True)
+        application.app.setStyleSheet(self.SpinBoxStyle)
 
     def win_os_settings(self):
         # Adjusting fonts in Transport Panel and Exercise / Score Information dockWidgets
@@ -317,9 +317,26 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             return
         self.setGeometry(geometry)
 
+
     @property
     def dockWidgets(self):
         return self.findChildren(QDockWidget)
+
+    @property
+    def SpinStyle(self):
+        if platform.system() == 'Windows' and application.QtVersion >= 7.1:
+            return ('SpinType::up-button{subcontrol-origin: border; subcontrol-position: top right;}'
+                    'SpinType::down-button{subcontrol-origin: border; subcontrol-position: bottom right;}'
+                    'SpinType{padding-left: -9px}')
+        return ''
+
+    @property
+    def TimeSpinStyle(self):
+        return self.SpinStyle.replace('SpinType', 'QTimeEdit')
+
+    @property
+    def SpinBoxStyle(self):
+        return self.SpinStyle.replace('SpinType', 'QSpinBox')
 
     def _saveDockWidgets(self, objects: list[QDockWidget] or tuple[QDockWidget]):
         for obj in objects:

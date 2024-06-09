@@ -16,7 +16,7 @@
 import platform
 import sys
 from PyQt6 import QtCore, QtWidgets
-from PyQt6.QtCore import QSettings
+from PyQt6.QtCore import QSettings, QLibraryInfo
 from PyQt6.QtMultimedia import QMediaDevices
 from PyQt6.QtGui import QFont
 from Model.del_temp_audio import delTempAudio
@@ -57,3 +57,4 @@ launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
 MediaDevices = QMediaDevices()
 Settings = QSettings(SETTINGS_PATH, QSettings.Format.IniFormat)
 NativeAudioBackend = str2bool(Settings.value('Actions/actionNative', False))
+QtVersion = float((f'{QLibraryInfo.version().minorVersion()}.{QLibraryInfo.version().microVersion()}'))

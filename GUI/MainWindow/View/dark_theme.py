@@ -19,11 +19,13 @@ import platform
 from PyQt6.QtGui import QPixmap, QIcon, QColor
 from contextlib import suppress
 
+import application
+
 last_theme = 'Light'
 
 
 def change_theme(mw):
-    if platform.system() == 'Windows':
+    if _dark_theme_incompatible():
         return
     global last_theme
     if last_theme == darkdetect.theme():
@@ -32,8 +34,12 @@ def change_theme(mw):
     last_theme = darkdetect.theme()
 
 
+def _dark_theme_incompatible():
+    return platform.system() == 'Windows' and application.QtVersion < 7.1
+
+
 def _usedarktheme():
-    return platform.system() != 'Windows' and not darkdetect.isLight()
+    return not(_dark_theme_incompatible()) and darkdetect.isDark()
 
 
 def activate_dark(mw):
