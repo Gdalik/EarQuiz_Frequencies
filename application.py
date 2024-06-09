@@ -58,3 +58,4 @@ MediaDevices = QMediaDevices()
 Settings = QSettings(SETTINGS_PATH, QSettings.Format.IniFormat)
 NativeAudioBackend = str2bool(Settings.value('Actions/actionNative', False))
 QtVersion = float((f'{QLibraryInfo.version().minorVersion()}.{QLibraryInfo.version().microVersion()}'))
+IsWin11 = platform.system() == 'Windows' and sys.getwindowsversion().build >= 22000
