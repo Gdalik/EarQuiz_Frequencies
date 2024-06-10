@@ -56,13 +56,16 @@ class TransportContr(QObject):
         self.TransportView.AudioSliderView.Cursor.sigPositionChangeFinished.connect(self.onCursorPositionChangeFinished)
         self.TransportView.AudioSliderView.GScene.sigMouseClicked.connect(self.onASMouseClicked)
 
-    def onCropRegionChanged(self):
+    @staticmethod
+    def _rangeFromRegion(regionItem):
+        region = regionItem.getRegion()
+        return region[0] / 1000, region[1] / 1000   # ms -> s
+
+    def onCropRegionChanged(self, regionItem):
         self.CropRegionBeingChanged = True
         if self.SourceRange is None:
             return
-        region = self.TransportView.AudioSliderView.CropRegion.getRegion()
-        _range = (region[0] / 1000, region[1] / 1000)  # ms -> s
-        self._resetSourceRange(_range)
+        self._resetSourceRange(self._rangeFromRegion(regionItem))
 
     def onCropRegionChangeFinished(self):
         self.CropRegionBeingChanged = False
@@ -124,10 +127,17 @@ class TransportContr(QObject):
         self.SourceRange.blockSignals(True)
         slices_num = self.SourceRange.slices_num
         k = 1000
-        self.SourceRange.starttime = int(_range[0] * k) / k
-        self.SourceRange.endtime = int(_range[1] * k) / k
-        if self.SourceRange.slices_num < slices_num:  # Rounding error correction to maintain same number of slices
-            self.SourceRange.endtime += 1 / k
+        rangeStartR = int(_range[0] * k) / k
+        rangeEndR = int(_range[1] * k) / k
+        rightChanged = self.SourceRange.endtime != rangeEndR
+        self.SourceRange.starttime = rangeStartR
+        self.SourceRange.endtime = rangeEndR
+        # Rounding error correction to maintain same number of slices
+        if self.SourceRange.slices_num == slices_num - 1:
+            if rightChanged:
+                self.SourceRange.endtime += 1 / k
+            else:
+                self.SourceRange.starttime -= 1 / k
         self.SourceRange.blockSignals(False)
         self.onSourceRangeChanged()
 
@@ -207,7 +217,7 @@ class TransportContr(QObject):
         self.onSliceLenChanged(self.SourceRange.slice_length)
         self.TransportView.AudioSliderView.CropRegion.show()
 
-    def onPlaybackPosChanged(self, pos):
+    def onPlaybackPosChanged(self):
         if not self.CursorBeingDragged:
             CursorPos = self.parent.CurrentMode.proxyCursorPos
             self.TransportView.AudioSliderView.Cursor.update_pos(CursorPos)
