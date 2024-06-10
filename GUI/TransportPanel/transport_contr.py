@@ -67,9 +67,18 @@ class TransportContr(QObject):
             return
         self._resetSourceRange(self._rangeFromRegion(regionItem))
 
-    def onCropRegionChangeFinished(self):
+    def onCropRegionChangeFinished(self, regionItem):
+        self._corrRoundError()
         self.CropRegionBeingChanged = False
         self._checkPlaybackRange()
+
+    def _corrRoundError(self):
+        err = 1 / 1000
+        if int((self.SourceRange.excerpt_length + err) // self.SourceRange.slice_length) > self.SourceRange.slices_num:
+            endtime = self.SourceRange.endtime
+            self.SourceRange.endtime += err
+            if endtime == self.SourceRange.endtime:
+                self.SourceRange.starttime -= err
 
     def onCursorPositionChanged(self, pos):
         self.CursorBeingDragged = True
@@ -125,19 +134,9 @@ class TransportContr(QObject):
 
     def _resetSourceRange(self, _range: list or tuple):
         self.SourceRange.blockSignals(True)
-        slices_num = self.SourceRange.slices_num
         k = 1000
-        rangeStartR = int(_range[0] * k) / k
-        rangeEndR = int(_range[1] * k) / k
-        rightChanged = self.SourceRange.endtime != rangeEndR
-        self.SourceRange.starttime = rangeStartR
-        self.SourceRange.endtime = rangeEndR
-        # Rounding error correction to maintain same number of slices
-        if self.SourceRange.slices_num == slices_num - 1:
-            if rightChanged:
-                self.SourceRange.endtime += 1 / k
-            else:
-                self.SourceRange.starttime -= 1 / k
+        self.SourceRange.starttime = int(_range[0] * k) / k
+        self.SourceRange.endtime = int(_range[1] * k) / k
         self.SourceRange.blockSignals(False)
         self.onSourceRangeChanged()
 
