@@ -182,7 +182,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def _qtAdjust(self):
         application.app.setStyleSheet(self.SpinBoxStyle)
-        if application.IsWin11 and application.QtVersion >= 7.1:
+        if application.IsWin11 and application.QtVersion >= '6.7.1':
             comboBoxHeight = 25
             self.PatternBox.setMinimumHeight(comboBoxHeight)
             self.BWBox.setMinimumHeight(comboBoxHeight)
@@ -331,7 +331,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     @property
     def SpinStyle(self):
-        if application.IsWin11 and application.QtVersion >= 7.1:
+        if application.IsWin11 and application.QtVersion >= '6.7.1':
             return ('SpinType::up-button{subcontrol-origin: border; subcontrol-position: top right;}'
                     'SpinType::down-button{subcontrol-origin: border; subcontrol-position: bottom right;}')
         return ''

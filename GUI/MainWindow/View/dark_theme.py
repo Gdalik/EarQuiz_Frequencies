@@ -36,7 +36,7 @@ def change_theme(mw):
 
 def _dark_theme_incompatible():
     return (platform.system() == 'Windows' and
-            not (sys.getwindowsversion().build >= 22000 and application.QtVersion >= 7.1))
+            not (sys.getwindowsversion().build >= 22000 and application.QtVersion >= '6.7.1'))
 
 
 def _usedarktheme():
