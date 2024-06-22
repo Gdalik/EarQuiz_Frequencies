@@ -176,7 +176,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                                     "\n"
                                     "QToolButton:disabled{\n"
                                     "background-color: rgba(118, 214, 255, 151);\n"
-                                    "color: gray;"
+                                    "color: gray;\n"
                                     "}"
                                     "\n"
                                     "QToolButton:on{\n"
