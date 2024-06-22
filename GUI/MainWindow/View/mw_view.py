@@ -151,7 +151,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.DonateBox.setMinimumHeight(55)
 
     def _assignModeButStyle(self):
-        padding = "padding: 6px;\n" if IsWin11 else ''
+        padding = "padding: 5px;\n" if IsWin11 else ''
         self.PreviewBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.LearnBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.TestBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
