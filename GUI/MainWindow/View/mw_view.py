@@ -23,6 +23,7 @@ from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QDockWidget, QLabel, QMainWindow, QWidget, QToolButton
 from GUI.Misc.StartScreen import StartLogo
 import application
+from application import Settings
 from GUI.MainWindow.View.dark_theme import change_theme
 from GUI.EQ.eq_view import EqView
 from GUI.EQSettings.eqset_view import EQSetView
@@ -39,7 +40,6 @@ from GUI.MainWindow.View.dark_theme import green_color
 from Model.AudioEngine.audio_backend import systemNativeBackend
 from Utilities.str2bool import str2bool
 from Utilities.checkMimeData import checkDroppedMimeData
-from application import Settings, IsWin11
 
 
 class MW_Signals(QObject):
@@ -110,7 +110,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.EqOnOffLab.setFont(EQOnOffLab_font)
         ModeButtons_font = self.PreviewBut.font()
         ModeButtons_font.setFamily('Helvetica')
-        if IsWin11:
+        if application.IsWin11:
             self._assignModeButStyle()
             ModeButtons_font.setPointSize(16)
         else:
@@ -151,7 +151,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.DonateBox.setMinimumHeight(55)
 
     def _assignModeButStyle(self):
-        padding = "padding: 5px;\n" if IsWin11 else ''
+        padding = "padding: 5px;\n" if application.IsWin11 else ''
         self.PreviewBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.LearnBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.TestBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
