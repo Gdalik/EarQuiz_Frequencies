@@ -39,7 +39,7 @@ from GUI.MainWindow.View.dark_theme import green_color
 from Model.AudioEngine.audio_backend import systemNativeBackend
 from Utilities.str2bool import str2bool
 from Utilities.checkMimeData import checkDroppedMimeData
-from application import Settings
+from application import Settings, IsWin11
 
 
 class MW_Signals(QObject):
@@ -110,7 +110,11 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.EqOnOffLab.setFont(EQOnOffLab_font)
         ModeButtons_font = self.PreviewBut.font()
         ModeButtons_font.setFamily('Helvetica')
-        ModeButtons_font.setPointSize(17)
+        if IsWin11:
+            self._assignModeButStyle()
+            ModeButtons_font.setPointSize(16)
+        else:
+            ModeButtons_font.setPointSize(17)
         self.PreviewBut.setFont(ModeButtons_font)
         self.LearnBut.setFont(ModeButtons_font)
         self.TestBut.setFont(ModeButtons_font)
@@ -142,9 +146,19 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def linux_os_settings(self):
         self.win_os_settings()
+        self._assignModeButStyle()
+        self.ShareAppBox.setMinimumHeight(55)
+        self.DonateBox.setMinimumHeight(55)
+
+    def _assignModeButStyle(self):
+        self.PreviewBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+        self.LearnBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+        self.TestBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.PreviewBut.setStyleSheet("QToolButton{\n"
                                       "background-color: rgba(255, 255, 102, 207);\n"
-                                      "color: black;}\n"
+                                      "color: black;\n"
+                                      "padding: 6px;\n"
+                                      "}"
                                       "\n"
                                       "QToolButton:disabled{\n"
                                       "background-color: rgba(255, 255, 102, 167);\n"
@@ -152,22 +166,27 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                                       "}"
                                       "\n"
                                       "QToolButton:on{\n"
-                                      "background-color: rgba(235, 235, 0, 255); font-weight: bold\n"
+                                      "background-color: rgba(235, 235, 0, 255); font-weight: bold;\n"
                                       "}")
         self.LearnBut.setStyleSheet("QToolButton{\n"
                                     "background-color: rgba(118, 214, 255, 191);\n"
-                                    "color: black;}\n"
+                                    "color: black;\n"
+                                    "padding: 6px;\n"
+                                    "}"
                                     "\n"
                                     "QToolButton:disabled{\n"
                                     "background-color: rgba(118, 214, 255, 151);\n"
-                                    "color: gray;}"
+                                    "color: gray;"
+                                    "}"
                                     "\n"
                                     "QToolButton:on{\n"
-                                    "background-color: rgba(61, 197, 255, 255); font-weight: bold\n"
+                                    "background-color: rgba(61, 197, 255, 255); font-weight: bold;\n"
                                     "}")
         self.TestBut.setStyleSheet("QToolButton{\n"
                                    "background-color: rgba(255, 126, 121, 191);\n"
-                                   "color: black;}\n"
+                                   "color: black;\n"
+                                   "padding: 6px;\n"
+                                   "}"
                                    "\n"
                                    "QToolButton:disabled{\n"
                                    "background-color: rgba(255, 126, 121, 151);\n"
@@ -175,10 +194,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                                    "}"
                                    "\n"
                                    "QToolButton:on{\n"
-                                   "background-color: rgba(255, 10, 0, 255); font-weight: bold\n"
+                                   "background-color: rgba(255, 10, 0, 255); font-weight: bold;\n"
                                    "}")
-        self.ShareAppBox.setMinimumHeight(55)
-        self.DonateBox.setMinimumHeight(55)
 
     def _qtAdjust(self):
         application.app.setStyleSheet(self.SpinBoxStyle)
