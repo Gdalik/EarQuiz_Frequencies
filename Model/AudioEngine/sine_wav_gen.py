@@ -46,7 +46,4 @@ def generateCalibrationSineTones():
     with contextlib.suppress(Exception):
         with AudioFile(SineWaveCalibrationPath, 'w', 44100, 1) as f:
             f.write(cs)
-    if Path(SineWaveCalibrationPath).is_file():
-        return SineWaveCalibrationPath
-    else:
-        return False
+    return SineWaveCalibrationPath if Path(SineWaveCalibrationPath).is_file() else False
