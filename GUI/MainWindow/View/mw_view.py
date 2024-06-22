@@ -151,13 +151,14 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.DonateBox.setMinimumHeight(55)
 
     def _assignModeButStyle(self):
+        padding = "padding: 6px;\n" if IsWin11 else ''
         self.PreviewBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.LearnBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.TestBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.PreviewBut.setStyleSheet("QToolButton{\n"
                                       "background-color: rgba(255, 255, 102, 207);\n"
                                       "color: black;\n"
-                                      "padding: 6px;\n"
+                                      f"{padding}"
                                       "}"
                                       "\n"
                                       "QToolButton:disabled{\n"
@@ -171,7 +172,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.LearnBut.setStyleSheet("QToolButton{\n"
                                     "background-color: rgba(118, 214, 255, 191);\n"
                                     "color: black;\n"
-                                    "padding: 6px;\n"
+                                    f"{padding}"
                                     "}"
                                     "\n"
                                     "QToolButton:disabled{\n"
@@ -185,7 +186,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.TestBut.setStyleSheet("QToolButton{\n"
                                    "background-color: rgba(255, 126, 121, 191);\n"
                                    "color: black;\n"
-                                   "padding: 6px;\n"
+                                   f"{padding}"
                                    "}"
                                    "\n"
                                    "QToolButton:disabled{\n"
