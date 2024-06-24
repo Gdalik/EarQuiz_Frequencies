@@ -141,7 +141,7 @@ class UniMode:
         self.view.menuEQ_Bands_Playback_Order.setEnabled(arg)
 
     def showProcessingSourceMessage(self):
-        self.view.status.showMessage(f'{self.parent.SourceAudio.name}: Processsing/Loading...', 0)
+        self.view.status.showMessage(f'{self.parent.SourceAudio.name}: Processing/Loading...', 0)
 
     def procEvents(self):
         procEvents()
