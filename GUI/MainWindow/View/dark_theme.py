@@ -14,24 +14,24 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import darkdetect
 import platform
 import sys
 from PyQt6.QtGui import QPixmap, QIcon, QColor
+from PyQt6.QtCore import Qt
 from contextlib import suppress
 import application
 
-last_theme = 'Light'
+last_theme = application.app.styleHints().colorScheme().Light
 
 
 def change_theme(mw):
     if _dark_theme_incompatible():
         return
     global last_theme
-    if last_theme == darkdetect.theme():
+    if last_theme == application.app.styleHints().colorScheme():
         return
-    activate_dark(mw) if darkdetect.isDark() else activate_light(mw)
-    last_theme = darkdetect.theme()
+    activate_dark(mw) if application.app.styleHints().colorScheme() == Qt.ColorScheme.Dark else activate_light(mw)
+    last_theme = application.app.styleHints().colorScheme()
 
 
 def _dark_theme_incompatible():
@@ -40,7 +40,7 @@ def _dark_theme_incompatible():
 
 
 def _usedarktheme():
-    return not(_dark_theme_incompatible()) and darkdetect.isDark()
+    return not(_dark_theme_incompatible()) and application.app.styleHints().colorScheme() == Qt.ColorScheme.Dark
 
 
 def activate_dark(mw):

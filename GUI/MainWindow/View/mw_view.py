@@ -83,6 +83,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.signals.MWFirstShown.connect(self.onMWFirstShown)
         self.setAcceptDrops(True)
         self._qtAdjust()
+        application.app.styleHints().colorSchemeChanged.connect(lambda: change_theme(self))
 
     def win_os_settings(self):
         # Adjusting fonts in Transport Panel and Exercise / Score Information dockWidgets
@@ -248,9 +249,9 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             event.accept()
             self.PlaylistView.signals.urlsDropped.emit(checkedDroppedMimeData, -1)
 
-    def changeEvent(self, ev):
+    '''def changeEvent(self, ev):
         super(MainWindowView, self).changeEvent(ev)
-        change_theme(self)
+        change_theme(self)'''
 
     def showEvent(self, ev):
         super(MainWindowView, self).showEvent(ev)

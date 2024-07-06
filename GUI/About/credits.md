@@ -16,9 +16,6 @@ License: [BSD 3-Clause](https://opensource.org/license/bsd-3-clause/)
 - [PyQtGraph](https://www.pyqtgraph.org/)<br />
 Copyright &copy; 2012 University of North Carolina at Chapel Hill<br />
 License: [MIT](https://opensource.org/license/mit/)
-- [Darkdetect](https://pypi.org/project/darkdetect/)<br />
-Copyright &copy; 2019-2022 Alberto Sottile<br />
-License: [BSD 3-Clause](https://opensource.org/license/bsd-3-clause/)
 - [tendo](https://pypi.org/project/tendo/)<br />
 Copyright &copy; 2010-2022 Sorin Sbarnea<br />
 License: [Python Software Foundation License](https://docs.python.org/3/license.html#psf-license)
