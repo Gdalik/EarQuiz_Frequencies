@@ -249,10 +249,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             event.accept()
             self.PlaylistView.signals.urlsDropped.emit(checkedDroppedMimeData, -1)
 
-    '''def changeEvent(self, ev):
-        super(MainWindowView, self).changeEvent(ev)
-        change_theme(self)'''
-
     def showEvent(self, ev):
         super(MainWindowView, self).showEvent(ev)
         if self.isVisible() and not self._mwWasShown:
