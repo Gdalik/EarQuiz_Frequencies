@@ -263,7 +263,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         StartLogo.finish(self)
         self._restoreDockWidgets(self.dockWidgets)
 
-
     def _setUpEQSettingsButtons(self):
         icon = self.EQSettings_But1.icon()
         self.actionEQ_Settings_view.setIconVisibleInMenu(False)
@@ -342,7 +341,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             self.setMinimalistView()
             return
         self.setGeometry(geometry)
-
 
     @property
     def dockWidgets(self):
