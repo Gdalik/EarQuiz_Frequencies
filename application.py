@@ -56,6 +56,5 @@ app = EQFreqApp(list(sys.argv))
 launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
 MediaDevices = QMediaDevices()
 Settings = QSettings(SETTINGS_PATH, QSettings.Format.IniFormat)
-NativeAudioBackend = str2bool(Settings.value('Actions/actionNative', False))
 QtVersion = QLibraryInfo.version().toString()
 IsWin11 = platform.system() == 'Windows' and sys.getwindowsversion().build >= 22000

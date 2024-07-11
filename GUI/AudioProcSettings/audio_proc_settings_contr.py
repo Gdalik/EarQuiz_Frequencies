@@ -18,7 +18,7 @@
 from PyQt6.QtCore import QObject, QTimer
 import Model.AudioEngine.audio_proc_settings as APS
 from Model.AudioEngine.audio_proc_settings import default_EQOnTimePerc, default_EQTransitionDur, default_ExFadeInOutDur
-from GUI.Misc.procEvents import procEvents
+from application import app
 
 
 class AudioProcSettingsContr(QObject):
@@ -61,7 +61,7 @@ class AudioProcSettingsContr(QObject):
 
     def refreshAudio(self):
         self.mw_contr.TransportContr.PlayerContr.onStopTriggered()
-        procEvents()
+        app.processEvents()
         QTimer.singleShot(0, self.mw_contr.TransportContr.refreshAudio)
 
     def updADGenEQOnTimeToSit(self):

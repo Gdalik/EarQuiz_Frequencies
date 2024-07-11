@@ -4838,13 +4838,6 @@ color: gray;
      </property>
      <addaction name="separator"/>
     </widget>
-    <widget class="QMenu" name="menuAudio_Backend">
-     <property name="title">
-      <string>Audio Playback Backend</string>
-     </property>
-     <addaction name="actionFFmpeg"/>
-     <addaction name="actionNative"/>
-    </widget>
     <addaction name="actionIncrease_Volume"/>
     <addaction name="actionDecrease_Volume"/>
     <addaction name="separator"/>
@@ -4852,7 +4845,6 @@ color: gray;
     <addaction name="actionRestore_Volume_Level"/>
     <addaction name="separator"/>
     <addaction name="menuAudio_Device"/>
-    <addaction name="menuAudio_Backend"/>
     <addaction name="separator"/>
     <addaction name="actionAudio_Processing_Settings"/>
     <addaction name="actionEQ_Always_On_In_Test_Mode"/>
@@ -7774,25 +7766,6 @@ background: rgba(118, 214, 255, 85)
   <action name="actionAsk_and_Discuss">
    <property name="text">
     <string>Ask and Discuss...</string>
-   </property>
-  </action>
-  <action name="actionFFmpeg">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>FFmpeg</string>
-   </property>
-  </action>
-  <action name="actionNative">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Native</string>
    </property>
   </action>
   <action name="actionAudio_Processing_Settings">

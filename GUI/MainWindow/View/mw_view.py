@@ -37,7 +37,6 @@ from GUI.UpdateChecker.update_checker_view import UpdCheckView
 from GUI.AudioProcSettings.audio_proc_settings_view import AudioProcSettingsView
 from GUI.About.about_dialog_view import AboutDialogView
 from GUI.MainWindow.View.dark_theme import green_color
-from Model.AudioEngine.audio_backend import systemNativeBackend
 from Utilities.str2bool import str2bool
 from Utilities.checkMimeData import checkDroppedMimeData
 
@@ -59,7 +58,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self._flags = self.windowFlags()
         self.setDockOptions(self.dockOptions().AnimatedDocks)
         self.setWindowTitle(application.app_name)
-        self.nameNativeAudioBackend()
         self.status = StatusBar(self)
         self.UpdCheckView = UpdCheckView(self)
         self.PatternBoxView = PatternBoxView(self)
@@ -372,9 +370,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             if W.isFloating():
                 W.setHidden(True)
 
-    def nameNativeAudioBackend(self):
-        self.actionNative.setText(f'Native ({systemNativeBackend()})')
-
     @staticmethod
     def _saveDockWidget(obj: QDockWidget):
         Settings.beginGroup('MainWindow')
@@ -406,16 +401,13 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.loadActionState(self.actionShuffleEQ, default=False)
         self.loadActionState(self.actionEach_Band_Boosted_then_Cut, default=True)
         self.loadActionState(self.actionAll_Bands_Boosted_then_All_Bands_Cut, default=False)
-        self.loadActionState(self.actionFFmpeg, default=True)
-        self.loadActionState(self.actionNative, default=False)
 
     def _connectActionsToSaver(self):
         controlActions = [self.actionStartPlayingAfterLoading, self.actionSkip_Unavailable_Tracks,
                           self.actionLoop_Playback, self.actionShuffle_Playback, self.actionRepeat_Playlist,
                           self.actionSequential_Playback, self.actionLoop_Sequence,
                           self.actionAscendingEQ, self.actionDescendingEQ, self.actionShuffleEQ,
-                          self.actionEach_Band_Boosted_then_Cut, self.actionAll_Bands_Boosted_then_All_Bands_Cut,
-                          self.actionFFmpeg, self.actionNative]
+                          self.actionEach_Band_Boosted_then_Cut, self.actionAll_Bands_Boosted_then_All_Bands_Cut]
         for act in controlActions:
             act.toggled.connect(partial(self.saveActionState, act))
 

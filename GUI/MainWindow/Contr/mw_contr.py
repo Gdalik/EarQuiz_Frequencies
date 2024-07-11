@@ -29,7 +29,6 @@ from GUI.FileMaker.make_playlist import exportPlaylist, exportPlaylistWithRelPat
 from GUI.MainWindow.Contr.adgen_contr import ADGenContr
 from GUI.MainWindow.Contr.audio_loader import AudioLoad
 from GUI.MainWindow.Contr.sourcerange_contr import SourceRangeContr
-from GUI.MainWindow.Contr.audio_backend_contr import AudioBackendContr
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.Misc.tracked_proc import ProcTrackControl
 from GUI.Modes.UniMode import UniMode
@@ -67,7 +66,6 @@ class MainWindowContr(QObject):
         self.LoadedFileHash = None
         self.LoadedFilePath = None
         self.LastSourceAudio = None
-        self.AudioBackend = AudioBackendContr(self)
         self.UpdCheckContr = UpdCheckContr(self)
         self.EQContr = EQContr(self)
         self.EQSetContr = EQSetContr(self)
