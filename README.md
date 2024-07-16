@@ -72,16 +72,16 @@ The bundled application should now be available in the *dist* folder.
 
 This application uses the following open source libraries:
 - [PyQt6](https://www.riverbankcomputing.com/software/pyqt/)<br />
-Copyright &copy; 2021-2023 Riverbank Computing Limited<br />
+Copyright &copy; 2021-2024 Riverbank Computing Limited<br />
 License: [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html)
 - [Pedalboard](https://spotify.github.io/pedalboard/index.html#)<br />
-Copyright &copy; 2021-2022 Spotify AB<br />
+Copyright &copy; 2021-2024 Spotify AB<br />
 License: [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html)
 - [NumPy](https://numpy.org/)<br />
-Copyright &copy; 2005-2023 NumPy Developers<br />
+Copyright &copy; 2005-2024 NumPy Developers<br />
 License: [BSD 3-Clause](https://opensource.org/license/bsd-3-clause/)
 - [PyQtGraph](https://www.pyqtgraph.org/)<br />
-Copyright &copy; 2012 University of North Carolina at Chapel Hill<br />
+Copyright &copy; 2012-2024 University of North Carolina at Chapel Hill<br />
 License: [MIT](https://opensource.org/license/mit/)
 - [tendo](https://pypi.org/project/tendo/)<br />
 Copyright &copy; 2010-2022 Sorin Sbarnea<br />
