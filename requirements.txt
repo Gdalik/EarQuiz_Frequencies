@@ -1,5 +1,5 @@
 pedalboard~=0.9.3
 pyqtgraph~=0.13.4
 numpy~=1.26.4
-PyQt6
+PyQt6~=6.7.1
 tendo~=0.3.0
