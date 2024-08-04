@@ -31,7 +31,7 @@ This application is based on the world-renowned [Golden Ears](https://goldenears
 
 ## Installation
 
-*To use the application out of the box, you can just download the distribution package for your OS (Windows or macOS), run it and follow the installation process.*
+*To use the application out of the box, you can just download the distribution package for your OS (Windows, macOS or Linux), run it and follow the installation process.*
 
 You can also clone (download) this repository and launch the program from [Python](https://www.python.org/). It has been tested with Python 3.9, 3.10 and 3.11.
 So, make sure the proper version of interpreter is installed on your computer.
