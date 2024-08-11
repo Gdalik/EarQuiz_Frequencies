@@ -7,7 +7,11 @@
 
 [<img src=":/Help_Icons/Data/Images/youtube_16.png"/> Watch Video Tutorial (in English)](https://youtu.be/XOJai5Fdofw)
 
+[<img src=":/Help_Icons/Data/Images/youtube_16.png"/> Watch Review of New Features in Version 0.1.7 (in English)](https://youtu.be/gnop0Z-3LWg)
+
 [<img src=":/Help_Icons/Data/Images/youtube_16.png"/> Смотреть видеоучебник (на русском) ](https://youtu.be/pz-V5KNaBWU)
+
+[<img src=":/Help_Icons/Data/Images/youtube_16.png"/> Смотреть обзор новых опций версии 0.1.7 (на русском) ](https://youtu.be/icQxpWbh8WE)
 
 [Read Online Help >](https://earquiz.org/manuals/earquiz-frequencies-help/)
 <img align='right' src=":/Getting_Started/Data/Images/EQ_Frequencies_Help_QRcode.png"/>
