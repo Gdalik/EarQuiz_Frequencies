@@ -20,6 +20,7 @@ This application is based on the world-renowned [Golden Ears](https://goldenears
 - Auto peak-normalization, preventing digital clipping during equalization.
 - Easy non-destructive trimming of external audio files.
 - Adjustable example/slice length from 10 up to 30 seconds.
+- Adjustable audio processing parameters of training examples (EQ On/Off time proportion, EQ On↔︎Off transition time, example fade in/out duration).
 - Auto-saving trimmed ranges and example/slice lengths for different audio sources.
 - Exporting learning and test audio file packages in WAV, AIFF, FLAC, MP3, or OGG format. 
 - Audio format converter.
