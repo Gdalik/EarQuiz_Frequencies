@@ -20,6 +20,7 @@ from Model.audiodrill_gen import AudioDrillGen
 from Utilities.exceptions import InterruptedException
 from Utilities.freq2str import freqString
 from Utilities.common_calcs import eq_off_perc
+from Utilities.common_calcs import perc2sec
 from Model.get_version import version
 import Model.AudioEngine.audio_proc_settings as APS
 
@@ -28,14 +29,17 @@ tag = [f'\nGenerated with EarQuiz Frequencies v{version()} (c) 2023-2024, Gdaliy
 
 
 def files_info(audiodata: str, EQPattern: str, boost_cut: str, gain_headroom: int or float,
-               gain_depth: int or float, Q: float, proc_t_perc: int or float):
+               gain_depth: int or float, Q: float, proc_t_perc: int or float, slice_length: int or float):
     gain_bc = boost_cut if boost_cut != '+-' else '±'
     EQOffPerc = eq_off_perc(proc_t_perc)
+    EQOnLength = perc2sec(slice_length, proc_t_perc)
+    EQOffLength = perc2sec(slice_length, EQOffPerc)
     return [
         f'Audio source: {audiodata}\n', f'Pattern: {EQPattern}\n',
             f'Frequency gain: {gain_bc}{gain_depth}dB; Q: {Q}\n',
             f'Peak normalization: {gain_headroom}dB\n',
-            f'EQ Off/EQ On/EQ Off: {EQOffPerc}%/{proc_t_perc}%/{EQOffPerc}%\n',
+            f'EQ Off/EQ On/EQ Off: {EQOffPerc}%/{proc_t_perc}%/{EQOffPerc}% '
+            f'({EQOffLength}s/{EQOnLength}s/{EQOffLength}s)\n',
     ]
 
 
@@ -49,7 +53,8 @@ def makeLearnFiles(audiosource: str, output_dir: str, freq_options: list[int], a
         tf_name = 'Info.txt'
         info_filename = f'{prefix}__{tf_name}' if prefix else tf_name
         info_path = str(Path(output_dir, info_filename))
-        info = files_info(audiodata, EQPattern, boost_cut, ADGen.gain_headroom, gain_depth, Q, proc_t_perc)
+        info = files_info(audiodata, EQPattern, boost_cut, ADGen.gain_headroom, gain_depth, Q, proc_t_perc,
+                          ADGen.audiochunk.slice_length)
         with open(info_path, 'w', encoding='utf-8', errors='replace') as tf:
             tf.writelines(info + tag)
 
@@ -92,7 +97,8 @@ def makeTestFiles(audiosource: str, output_dir: str, freq_options: list[int], au
     def makeAnswersFile():
         answ_filename = f'{prefix}Answers.txt'
         answ_path = str(Path(output_dir, answ_filename))
-        info = files_info(audiodata, EQPattern, boost_cut, ADGen.gain_headroom, gain_depth, Q, proc_t_perc)
+        info = files_info(audiodata, EQPattern, boost_cut, ADGen.gain_headroom, gain_depth, Q, proc_t_perc,
+                          ADGen.audiochunk.slice_length)
         nonlocal answers
         answers = info + answers + tag
         with open(answ_path, 'w', encoding='utf-8', errors='replace') as tf:
