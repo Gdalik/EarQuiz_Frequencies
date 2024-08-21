@@ -28,8 +28,12 @@ class PlSong:
     inputPath: str
 
     @cached_property
+    def isPinkNoise(self):
+        return self.inputPath == PN
+
+    @cached_property
     def path(self):
-        if self.inputPath == PN:
+        if self.isPinkNoise:
             return self.inputPath
         return str(Path(self.inputPath).absolute()) if self.inputPath else ''
 
@@ -44,12 +48,12 @@ class PlSong:
 
     @property
     def exists(self):
-        return True if self.name == PN else Path(self.path).is_file()
+        return True if self.isPinkNoise else Path(self.path).is_file()
 
     @cached_property
     def file_properties(self):
         return_dict = self._default_dict
-        if not self.exists:
+        if not self.exists or self.isPinkNoise:
             return return_dict
         try:
             with AudioFile(self.path) as f:
@@ -98,7 +102,7 @@ class PlSong:
 
     @property
     def _default_dict(self):
-        if self.name == PN:
+        if self.isPinkNoise:
             return {'duration': 30, 'num_channels': 'Mono', 'samplerate': 44100}
         else:
             return {'duration': False, 'num_channels': None, 'samplerate': None}
