@@ -1,4 +1,4 @@
-pedalboard~=0.9.3
+pedalboard==0.9.6
 pyqtgraph~=0.13.4
 numpy~=1.26.4
 PyQt6<6.7.0
