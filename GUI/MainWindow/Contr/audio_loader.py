@@ -121,7 +121,7 @@ class AudioLoad:
         #self.parent.pushBackToPreview()
 
     def saveLoadedSourceInfo(self):
-        if self.parent.SourceAudio.name == PN:
+        if self.parent.SourceAudio.isPinkNoise:
             Settings.setValue('LastStuff/AudioSource', self.parent.SourceAudio.name)
             Settings.setValue('LastStuff/PlaylistIndex', None)
         else:
