@@ -60,7 +60,6 @@ class EQFreqApp(QtWidgets.QApplication):
 
 
 app = EQFreqApp(list(sys.argv))
-# launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
 MediaDevices = QMediaDevices()
 Settings = QSettings(SETTINGS_PATH, QSettings.Format.IniFormat)
 QtVersion = QLibraryInfo.version().toString()
