@@ -35,9 +35,10 @@ if __name__ == '__main__':
     me = SingleInstance()
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     app.setWindowIcon(QIcon(":Logo/Icons/Logo/EarQuiz_Icon.png"))
+    app.openFileRequest.connect(app.handle_open_file_request)
     StartLogo.show()
+    app.processEvents()
     os.environ['QT_MEDIA_BACKEND'] = 'ffmpeg'
     dta.delTempAudio()
     mw = MainWindowContr()
-    app.openFileRequest.connect(mw.PlaylistContr.handle_open_file_request)
     app.exec()

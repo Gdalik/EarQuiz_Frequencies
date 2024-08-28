@@ -14,6 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import copy
 import contextlib
 import mimetypes
 from pathlib import Path
@@ -29,7 +30,7 @@ from GUI.Playlist.playlistmodel import PlaylistData, PlaylistModel, PLSortFilter
 from GUI.Playlist.plsong import PlSong
 from Model.FileLinksParser import parseLinksFrom_M3U, AudioMimes
 from definitions import USER_DOCS_DIR, CURRENT_PLAYLIST_PATH, PN
-from application import app, launch_files_onstart, Settings
+from application import app, Settings
 
 
 class PlaylistContr(QObject):
@@ -50,13 +51,14 @@ class PlaylistContr(QObject):
         self._setUpActions()
         self.PlaylistView.customContextMenuRequested.connect(self._onCustomContextMenuRequested)
         self.plStatsLabUpd()
-        self.launch_files_onstart = launch_files_onstart
+        self.launch_files_onstart = copy.copy(app.files_to_be_opened)
 
     def _setUpActions(self):
         self.selModel.selectionChanged.connect(self.onSelectionChanged)
         self.SearchAudio.textChanged.connect(self.proxyModel.setFilter)
         self.PlaylistView.signals.urlsDropped.connect(self.addTracks)
         self.PlaylistView.signals.dragDropFromPLFinished.connect(self.ondragDropFromPLFinished)
+        app.openFileRequest.connect(lambda: self.addTracks([QUrl.fromLocalFile(f) for f in app.files_to_be_opened]))
         self.ClearFilesBut.clicked.connect(self.clearPL)
         self.MinusFilesBut.clicked.connect(self.removeTracks)
         self.PlusFilesBut.clicked.connect(lambda x: self.openFiles(mode='files'))
@@ -102,6 +104,8 @@ class PlaylistContr(QObject):
         app.setOverrideCursor(Qt.CursorShape.BusyCursor)
 
         paths = [url.toLocalFile() for url in URLs]
+        if app.files_to_be_opened is not None:
+            app.files_to_be_opened.clear()
 
         pl_audio_adding_dialog = PLProcDialog(paths)
         paths = pl_audio_adding_dialog.return_dict['Paths'] if pl_audio_adding_dialog.exec() else []
@@ -341,7 +345,7 @@ class PlaylistContr(QObject):
         self.playlistModel.layoutChanged.emit()
         self.PlaylistView.clearSelection()
 
-    def handle_open_file_request(self, url):
+'''    def handle_open_file_request(self, url):
         if self.launch_files_onstart is None:
             self.launch_files_onstart = []
-        self.launch_files_onstart.append(url.toLocalFile())
+        self.launch_files_onstart.append(url.toLocalFile())'''
