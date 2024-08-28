@@ -26,6 +26,7 @@ from definitions import SETTINGS_PATH
 app_name = 'EarQuiz Frequencies'
 launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
 
+
 class EQFreqApp(QtWidgets.QApplication):
     openFileRequest = QtCore.pyqtSignal(QtCore.QUrl, name='openFileRequest')
 
