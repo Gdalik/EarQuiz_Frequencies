@@ -56,7 +56,6 @@ class EQFreqApp(QtWidgets.QApplication):
     def handle_open_file_request(self, url):
         if self.files_to_be_opened is None:
             self.files_to_be_opened = []
-
         self.files_to_be_opened.append(url.toLocalFile())
 
 

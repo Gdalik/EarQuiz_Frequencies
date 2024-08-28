@@ -66,7 +66,7 @@ app = BUNDLE(
     'CFBundleDevelopmentRegion': 'en_US',
     'CFBundleDocumentTypes': [{
         'CFBundleTypeName': 'EarQuiz_Frequencies_Audio',
-        'CFBundleTypeExtensions': ['wav', 'flac', 'mp3', 'ogg', 'aiff',],
+        'CFBundleTypeExtensions': ['wav', 'flac', 'mp3', 'ogg', 'aiff', 'pls', 'xspf', 'm3u', 'm3u8',],
         'CFBundleTypeRole': "Viewer",
          }],
     'NSHumanReadableCopyright': '© 2023-2024 Gdaliy Garmiza',

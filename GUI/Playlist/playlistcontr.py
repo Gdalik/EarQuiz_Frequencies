@@ -344,8 +344,3 @@ class PlaylistContr(QObject):
         self.playlistModel.playlistdata = new_pl
         self.playlistModel.layoutChanged.emit()
         self.PlaylistView.clearSelection()
-
-'''    def handle_open_file_request(self, url):
-        if self.launch_files_onstart is None:
-            self.launch_files_onstart = []
-        self.launch_files_onstart.append(url.toLocalFile())'''
