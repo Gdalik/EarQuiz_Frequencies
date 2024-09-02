@@ -16,6 +16,7 @@
 
 from PyQt6.QtCore import QRunnable, QObject, pyqtSignal, pyqtSlot
 import json
+import certifi
 from urllib import request
 from Model.get_version import version_int
 
@@ -38,7 +39,7 @@ class UpdCheckRun(QRunnable):
     def run(self):
         self.in_process = True
         try:
-            upd_data = request.urlopen(self.VersionData_URL).read()
+            upd_data = request.urlopen(self.VersionData_URL, cafile=certifi.where()).read()
             latest_version = version_int(external_data=upd_data)
         except Exception as e:
             self.signals.error.emit(str(e))

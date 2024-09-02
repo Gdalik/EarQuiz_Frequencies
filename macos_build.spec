@@ -56,6 +56,7 @@ app = BUNDLE(
     info_plist={
     'CFBundleDisplayName': 'EarQuiz Frequencies',
     'CFBundleExecutable': 'eqfreq',
+    'CFBundleInfoDictionaryVersion': '6.0',
     'CFBundleName': 'EarQuiz Frequencies',
     'CFBundlePackageType': 'APPL',
     'CFBundleSignature': 'EQFREQ',
