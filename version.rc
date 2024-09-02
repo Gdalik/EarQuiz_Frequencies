@@ -32,9 +32,9 @@ VSVersionInfo(
         [StringStruct('Comments', 'This executable was built with PyInstaller.'),
         StringStruct('CompanyName', 'EarQuiz'),
         StringStruct('FileDescription', 'EarQuiz Frequencies Executable'),
-        StringStruct('FileVersion', '                    '),
+        StringStruct('FileVersion', '0.1.7'),
         StringStruct('LegalCopyright', 'Copyright © 2023-2024 by Gdaliy Garmiza'),
-        StringStruct('OriginalFileName', '                                                  '),
+        StringStruct('OriginalFileName', 'EarQuiz Frequencies'),
         StringStruct('ProductName', 'EarQuiz Frequencies'),
         StringStruct('ProductVersion', '0.1.7')])
       ]), 
