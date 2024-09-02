@@ -87,6 +87,10 @@ License: [MIT](https://opensource.org/license/mit/)
 - [tendo](https://pypi.org/project/tendo/)<br />
 Copyright &copy; 2010-2022 Sorin Sbarnea<br />
 License: [Python Software Foundation License](https://docs.python.org/3/license.html#psf-license)
+- [Certifi](https://pypi.org/project/certifi/)<br />
+Copyright &copy; 2011-2024 Kenneth Reitz<br />
+License: [OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)](https://pypi.org/search/?c=License+%3A%3A+OSI+Approved+%3A%3A+Mozilla+Public+License+2.0+%28MPL+2.0%29)
+
 
 ## Privacy Policy
 This program will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it.
