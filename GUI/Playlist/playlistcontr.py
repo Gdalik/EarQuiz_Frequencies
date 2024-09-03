@@ -154,6 +154,7 @@ class PlaylistContr(QObject):
         self.mw_view.actionConvert_Selected_Files.setEnabled(len(rows) != 0)
         self.PlaylistView.selectedItems = []
         self.playlistModel.SelectedRows = []
+        self.PlaylistView.SelDeleg.select_rows = [ind.row() for ind in rows]
         for row in rows:
             cur_row = self.PlaylistView.model().mapToSource(row).row()
             self.playlistModel.SelectedRows.append(cur_row)
