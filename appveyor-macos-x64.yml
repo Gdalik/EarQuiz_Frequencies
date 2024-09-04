@@ -1,10 +1,10 @@
-image: macos-bigsur
+image: macos-monterey
 
 platform: x64
 
 init:
-  - chmod +x $HOME/venv3.11/bin/activate
-  - source $HOME/venv3.11/bin/activate
+  - chmod +x $HOME/venv3.12/bin/activate
+  - source $HOME/venv3.12/bin/activate
 
 install:
   - python -m pip install --upgrade pip
