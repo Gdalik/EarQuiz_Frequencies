@@ -7,7 +7,11 @@
 
 [<img src=":/Help_Icons/Data/Images/youtube_16.png"/> Watch Video Tutorial (in English)](https://youtu.be/XOJai5Fdofw)
 
+[<img src=":/Help_Icons/Data/Images/youtube_16.png"/> Watch Review of New Features in Version 0.1.7 (in English)](https://youtu.be/gnop0Z-3LWg)
+
 [<img src=":/Help_Icons/Data/Images/youtube_16.png"/> Смотреть видеоучебник (на русском) ](https://youtu.be/pz-V5KNaBWU)
+
+[<img src=":/Help_Icons/Data/Images/youtube_16.png"/> Смотреть обзор новых опций версии 0.1.7 (на русском) ](https://youtu.be/icQxpWbh8WE)
 
 [Read Online Help >](https://earquiz.org/manuals/earquiz-frequencies-help/)
 <img align='right' src=":/Getting_Started/Data/Images/EQ_Frequencies_Help_QRcode.png"/>
@@ -73,10 +77,10 @@ automatically. After some more seconds, the EQ is switched off again, and the so
 
 <img align="center" src=":/Getting_Started/Data/Images/Drill_structure.png"/>
 
-*Note: The current proportion of equalized part length versus sum length of non-equalized ones is hard-coded at 40/60 per cent.
+*Note: The default proportion of equalized part length versus sum length of non-equalized ones is 40/60 percent.
 Therefore, if we have 10 seconds length example, this would be: 3sec **EQ Off**, 4sec **EQ On** and 
-3sec **EQ Off** respectively.
-The option to adjust this setting is planned to be introduced in future versions.*
+3sec **EQ Off** respectively. It used to be hard-coded, but in the version 0.1.7 the option to adjust this setting as well as 
+some other audio processing parameters has been introduced. [See details here](https://earquiz.org/manuals/earquiz-frequencies-help/audio-processing-settings/).*
 
 Regardless of the audio source material and the EQ settings, the recommended approach remains the same.
 - First, you **learn** and warm-up by listening to examples, trying to [memorize and internalize](#memorizing-frequencies) 
@@ -613,37 +617,9 @@ with the maximum amplitude equal to a certain value (in dB).
 [< Back to "Setting Volume Level"](#setting-volume-level)
 
 #### Supported Audio Formats
-<a id="supported-audio-formats"> In general, the application works with WAVE, AIFF, MP3, FLAC and OGG files.</a>
-All of them can be added to the **Playlist** and processed.
 
-However, the support of the *playback* of different formats is dependent on the [current audio playback backend](https://earquiz.org/manuals/earquiz-frequencies-help/choosing-audio-backend) (see the comparison in the table below).
-Starting from *version 0.1.6*, you can choose between the **FFmpeg** (the default option) and the **Native** system backend by selecting
-the corresponding option in the **Audio | Audio Playback Backend** menu of the main menu.
-
-<br/>
-
-| &nbsp; |                        FFmpeg                        |       Media Foundation<br/>(Native on Windows)       |         AVFoundation <br/>(Native on macOS)          |           GStreamer <br/>(Native on Linux)           |
-|:------:|:----------------------------------------------------:|:----------------------------------------------------:|:----------------------------------------------------:|:----------------------------------------------------:|
- |  WAVE  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |
-|  AIFF  | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |
-|  MP3   | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> |
-  |  FLAC  | <span style="color:green; font-weight:bold">✓</span> | <span style="color:green; font-weight:bold">✓</span> | <span style="color:gray; font-weight:bold">✓</span>* | <span style="color:green; font-weight:bold">✓</span> |
-|  OGG   | <span style="color:green; font-weight:bold">✓</span> |  <span style="color:red; font-weight:bold">✗</span>  |  <span style="color:red; font-weight:bold">✗</span>  | <span style="color:green; font-weight:bold">✓</span> |
-
-*\*AVFoundation which is used natively on macOS, has a known issue with 
-incorrect FLAC files' playback position, which may occur when starting playing from a non-zero position.*<br/>
-
-<br/>
-
-All backends support the playback of WAVE, MP3 and FLAC files. 
-
-If you try to load a file of a format which is not supported by the current backend, you will get an error message
-with option to proceed with [conversion to another (WAVE or AIFF) format](https://earquiz.org/manuals/earquiz-frequencies-help/converting-audio/). 
-
-So, when you encounter any issue with playing back files of a certain format, you have two options:
-- Change the **Audio Playback Backend**. This will require restarting the application.
-- Use the in-app audio conversion tool, selecting these files and choosing 
-**File | Convert Selected Files...** from the main menu or the similar option from the right-click context menu of the **Playlist**.
+<a id="supported-audio-formats">Starting</a> from *version 0.1.7*, the application should flawlessly work with 
+WAVE, AIFF, MP3, FLAC, and OGG files on all the supported platforms.
 
 [< Back to "The Basic Training Method"](#the-basic-training-method)<br />
 [< Back to "Working with External Audio Files"](#working-with-external-audio-files)

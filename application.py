@@ -15,15 +15,16 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import platform
 import sys
+import copy
 from PyQt6 import QtCore, QtWidgets
-from PyQt6.QtCore import QSettings
+from PyQt6.QtCore import QSettings, QLibraryInfo
 from PyQt6.QtMultimedia import QMediaDevices
 from PyQt6.QtGui import QFont
 from Model.del_temp_audio import delTempAudio
-from Utilities.str2bool import str2bool
 from definitions import SETTINGS_PATH
 
 app_name = 'EarQuiz Frequencies'
+launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
 
 
 class EQFreqApp(QtWidgets.QApplication):
@@ -38,6 +39,7 @@ class EQFreqApp(QtWidgets.QApplication):
         self.setOrganizationName("EarQuiz")
         self.set_app_font()
         self.aboutToQuit.connect(delTempAudio)
+        self.files_to_be_opened = copy.copy(launch_files_onstart)
 
     def event(self, event):
         if event.type() == QtCore.QEvent.Type.FileOpen:
@@ -51,9 +53,14 @@ class EQFreqApp(QtWidgets.QApplication):
         else:
             self.setFont(QFont('Arial', 11))
 
+    def handle_open_file_request(self, url):
+        if self.files_to_be_opened is None:
+            self.files_to_be_opened = []
+        self.files_to_be_opened.append(url.toLocalFile())
+
 
 app = EQFreqApp(list(sys.argv))
-launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
 MediaDevices = QMediaDevices()
 Settings = QSettings(SETTINGS_PATH, QSettings.Format.IniFormat)
-NativeAudioBackend = str2bool(Settings.value('Actions/actionNative', False))
+QtVersion = QLibraryInfo.version().toString()
+IsWin11 = platform.system() == 'Windows' and sys.getwindowsversion().build >= 22000

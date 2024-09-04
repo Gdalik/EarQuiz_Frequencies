@@ -61,22 +61,15 @@ app = BUNDLE(
     'CFBundlePackageType': 'APPL',
     'CFBundleSignature': 'EQFREQ',
     'CFBundleIdentifier': 'org.earquiz.frequencies',
-    'CFBundleShortVersionString': '0.1.6',
+    'CFBundleShortVersionString': '0.1.7',
     'NSHighResolutionCapable': True,
-    'LSMinimumSystemVersion': '11.0.0',
+    'LSMinimumSystemVersion': '12.0.0',
     'CFBundleDevelopmentRegion': 'en_US',
-    'CFBundleURLTypes': [{
-            'CFBundleURLName': 'MyCustomUrlSchemaQt',
-            'CFBundleTypeRole': 'Viewer',
-            'CFBundleURLSchemes': ['pyi-qt'],
-        }],
     'CFBundleDocumentTypes': [{
-        'CFBundleTypeName': 'MyCustomFileTypeQt',
-        'CFBundleTypeExtensions': [
-            'pyi_qt',
-        ],
+        'CFBundleTypeName': 'EarQuiz_Frequencies_Audio',
+        'CFBundleTypeExtensions': ['wav', 'flac', 'mp3', 'ogg', 'aiff', 'pls', 'xspf', 'm3u', 'm3u8',],
+        'CFBundleTypeRole': "Viewer",
          }],
-    'CFBundleTypeRole': "Viewer",
     'NSHumanReadableCopyright': '© 2023-2024 Gdaliy Garmiza',
     'NSPrincipalClass': 'NSApplication'
     },

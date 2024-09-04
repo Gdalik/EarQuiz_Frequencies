@@ -24,7 +24,7 @@ class SupportAppContr:
         self.sharedURL = 'https://earquiz.org/EQ_Frequencies/'
         self.sharedURL_q = parse.quote(self.sharedURL, encoding='utf-8')
         self.sharedText = parse.quote("Great free software for technical ear "
-                                      "training on equalization under Windows and macOS: ")
+                                      "training on equalization under Windows, macOS, and Linux: ")
         self.mw_contr = mw_contr
         self.mw_view = mw_contr.mw_view
         self.mw_view.Facebook.clicked.connect(self.onFacebook_clicked)

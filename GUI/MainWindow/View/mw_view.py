@@ -20,10 +20,10 @@ import platform
 from functools import partial
 from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QDockWidget, QLabel
-from PyQt6.QtWidgets import QMainWindow, QWidget, QToolButton
+from PyQt6.QtWidgets import QDockWidget, QLabel, QMainWindow, QWidget, QToolButton
 from GUI.Misc.StartScreen import StartLogo
 import application
+from application import Settings
 from GUI.MainWindow.View.dark_theme import change_theme
 from GUI.EQ.eq_view import EqView
 from GUI.EQSettings.eqset_view import EQSetView
@@ -34,12 +34,11 @@ from GUI.Misc.error_message import error_message
 from GUI.PatternBox.patternbox_view import PatternBoxView
 from GUI.TransportPanel.transport_view import TransportPanelView
 from GUI.UpdateChecker.update_checker_view import UpdCheckView
+from GUI.AudioProcSettings.audio_proc_settings_view import AudioProcSettingsView
 from GUI.About.about_dialog_view import AboutDialogView
 from GUI.MainWindow.View.dark_theme import green_color
-from Model.AudioEngine.audio_backend import systemNativeBackend
 from Utilities.str2bool import str2bool
 from Utilities.checkMimeData import checkDroppedMimeData
-from application import Settings
 
 
 class MW_Signals(QObject):
@@ -59,12 +58,12 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self._flags = self.windowFlags()
         self.setDockOptions(self.dockOptions().AnimatedDocks)
         self.setWindowTitle(application.app_name)
-        self.nameNativeAudioBackend()
         self.status = StatusBar(self)
         self.UpdCheckView = UpdCheckView(self)
         self.PatternBoxView = PatternBoxView(self)
         self.EQView = EqView(self)
         self.EQSetView = EQSetView(self)
+        self.AudioProcSettingsView = AudioProcSettingsView(self)
         self._setUpEQSettingsButtons()
         self.AudioDevicesView = AudioDevicesView(self)
         QTimer.singleShot(0, self.restoreWindowView)
@@ -81,6 +80,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.actionAbout.triggered.connect(self.showAboutWin)
         self.signals.MWFirstShown.connect(self.onMWFirstShown)
         self.setAcceptDrops(True)
+        self._qtAdjust()
+        application.app.styleHints().colorSchemeChanged.connect(lambda: change_theme(self))
 
     def win_os_settings(self):
         # Adjusting fonts in Transport Panel and Exercise / Score Information dockWidgets
@@ -108,7 +109,11 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.EqOnOffLab.setFont(EQOnOffLab_font)
         ModeButtons_font = self.PreviewBut.font()
         ModeButtons_font.setFamily('Helvetica')
-        ModeButtons_font.setPointSize(17)
+        if application.IsWin11:
+            self._assignModeButStyle()
+            ModeButtons_font.setPointSize(16)
+        else:
+            ModeButtons_font.setPointSize(17)
         self.PreviewBut.setFont(ModeButtons_font)
         self.LearnBut.setFont(ModeButtons_font)
         self.TestBut.setFont(ModeButtons_font)
@@ -140,9 +145,20 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
 
     def linux_os_settings(self):
         self.win_os_settings()
+        self._assignModeButStyle()
+        self.ShareAppBox.setMinimumHeight(55)
+        self.DonateBox.setMinimumHeight(55)
+
+    def _assignModeButStyle(self):
+        padding = "padding: 5px;\n" if application.IsWin11 else ''
+        self.PreviewBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+        self.LearnBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+        self.TestBut.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.PreviewBut.setStyleSheet("QToolButton{\n"
                                       "background-color: rgba(255, 255, 102, 207);\n"
-                                      "color: black;}\n"
+                                      "color: black;\n"
+                                      f"{padding}"
+                                      "}"
                                       "\n"
                                       "QToolButton:disabled{\n"
                                       "background-color: rgba(255, 255, 102, 167);\n"
@@ -150,22 +166,27 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                                       "}"
                                       "\n"
                                       "QToolButton:on{\n"
-                                      "background-color: rgba(235, 235, 0, 255); font-weight: bold\n"
+                                      "background-color: rgba(235, 235, 0, 255); font-weight: bold;\n"
                                       "}")
         self.LearnBut.setStyleSheet("QToolButton{\n"
                                     "background-color: rgba(118, 214, 255, 191);\n"
-                                    "color: black;}\n"
+                                    "color: black;\n"
+                                    f"{padding}"
+                                    "}"
                                     "\n"
                                     "QToolButton:disabled{\n"
                                     "background-color: rgba(118, 214, 255, 151);\n"
-                                    "color: gray;}"
+                                    "color: gray;\n"
+                                    "}"
                                     "\n"
                                     "QToolButton:on{\n"
-                                    "background-color: rgba(61, 197, 255, 255); font-weight: bold\n"
+                                    "background-color: rgba(61, 197, 255, 255); font-weight: bold;\n"
                                     "}")
         self.TestBut.setStyleSheet("QToolButton{\n"
                                    "background-color: rgba(255, 126, 121, 191);\n"
-                                   "color: black;}\n"
+                                   "color: black;\n"
+                                   f"{padding}"
+                                   "}"
                                    "\n"
                                    "QToolButton:disabled{\n"
                                    "background-color: rgba(255, 126, 121, 151);\n"
@@ -173,10 +194,15 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                                    "}"
                                    "\n"
                                    "QToolButton:on{\n"
-                                   "background-color: rgba(255, 10, 0, 255); font-weight: bold\n"
+                                   "background-color: rgba(255, 10, 0, 255); font-weight: bold;\n"
                                    "}")
-        self.ShareAppBox.setMinimumHeight(55)
-        self.DonateBox.setMinimumHeight(55)
+
+    def _qtAdjust(self):
+        application.app.setStyleSheet(self.SpinBoxStyle)
+        if application.IsWin11 and application.QtVersion >= '6.7.1':
+            comboBoxHeight = 25
+            self.PatternBox.setMinimumHeight(comboBoxHeight)
+            self.BWBox.setMinimumHeight(comboBoxHeight)
 
     def _setWinViewActions(self):
         self.actionMinimal.triggered.connect(self.setMinimalistView)
@@ -221,10 +247,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
             event.accept()
             self.PlaylistView.signals.urlsDropped.emit(checkedDroppedMimeData, -1)
 
-    def changeEvent(self, ev):
-        super(MainWindowView, self).changeEvent(ev)
-        change_theme(self)
-
     def showEvent(self, ev):
         super(MainWindowView, self).showEvent(ev)
         if self.isVisible() and not self._mwWasShown:
@@ -234,7 +256,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def onMWFirstShown(self):
         StartLogo.finish(self)
         self._restoreDockWidgets(self.dockWidgets)
-
 
     def _setUpEQSettingsButtons(self):
         icon = self.EQSettings_But1.icon()
@@ -319,6 +340,21 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
     def dockWidgets(self):
         return self.findChildren(QDockWidget)
 
+    @property
+    def SpinStyle(self):
+        if application.IsWin11 and application.QtVersion >= '6.7.1':
+            return ('SpinType::up-button{subcontrol-origin: border; subcontrol-position: top right;}'
+                    'SpinType::down-button{subcontrol-origin: border; subcontrol-position: bottom right;}')
+        return ''
+
+    @property
+    def TimeSpinStyle(self):
+        return self.SpinStyle.replace('SpinType', 'QTimeEdit')
+
+    @property
+    def SpinBoxStyle(self):
+        return self.SpinStyle.replace('SpinType', 'QSpinBox')
+
     def _saveDockWidgets(self, objects: list[QDockWidget] or tuple[QDockWidget]):
         for obj in objects:
             self._saveDockWidget(obj)
@@ -333,9 +369,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         for W in DockWidgets:
             if W.isFloating():
                 W.setHidden(True)
-
-    def nameNativeAudioBackend(self):
-        self.actionNative.setText(f'Native ({systemNativeBackend()})')
 
     @staticmethod
     def _saveDockWidget(obj: QDockWidget):
@@ -368,16 +401,13 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.loadActionState(self.actionShuffleEQ, default=False)
         self.loadActionState(self.actionEach_Band_Boosted_then_Cut, default=True)
         self.loadActionState(self.actionAll_Bands_Boosted_then_All_Bands_Cut, default=False)
-        self.loadActionState(self.actionFFmpeg, default=True)
-        self.loadActionState(self.actionNative, default=False)
 
     def _connectActionsToSaver(self):
         controlActions = [self.actionStartPlayingAfterLoading, self.actionSkip_Unavailable_Tracks,
                           self.actionLoop_Playback, self.actionShuffle_Playback, self.actionRepeat_Playlist,
                           self.actionSequential_Playback, self.actionLoop_Sequence,
                           self.actionAscendingEQ, self.actionDescendingEQ, self.actionShuffleEQ,
-                          self.actionEach_Band_Boosted_then_Cut, self.actionAll_Bands_Boosted_then_All_Bands_Cut,
-                          self.actionFFmpeg, self.actionNative]
+                          self.actionEach_Band_Boosted_then_Cut, self.actionAll_Bands_Boosted_then_All_Bands_Cut]
         for act in controlActions:
             act.toggled.connect(partial(self.saveActionState, act))
 

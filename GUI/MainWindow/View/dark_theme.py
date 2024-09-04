@@ -14,26 +14,33 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import darkdetect
 import platform
+import sys
 from PyQt6.QtGui import QPixmap, QIcon, QColor
+from PyQt6.QtCore import Qt
 from contextlib import suppress
+import application
 
-last_theme = 'Light'
+last_theme = application.app.styleHints().colorScheme().Light
 
 
 def change_theme(mw):
-    if platform.system() == 'Windows':
+    if _dark_theme_incompatible():
         return
     global last_theme
-    if last_theme == darkdetect.theme():
+    if last_theme == application.app.styleHints().colorScheme():
         return
-    activate_dark(mw) if darkdetect.isDark() else activate_light(mw)
-    last_theme = darkdetect.theme()
+    activate_dark(mw) if application.app.styleHints().colorScheme() == Qt.ColorScheme.Dark else activate_light(mw)
+    last_theme = application.app.styleHints().colorScheme()
+
+
+def _dark_theme_incompatible():
+    return (platform.system() == 'Windows' and
+            not (sys.getwindowsversion().build >= 22000 and application.QtVersion >= '6.7.1'))
 
 
 def _usedarktheme():
-    return platform.system() != 'Windows' and not darkdetect.isLight()
+    return not(_dark_theme_incompatible()) and application.app.styleHints().colorScheme() == Qt.ColorScheme.Dark
 
 
 def activate_dark(mw):
@@ -71,14 +78,9 @@ def activate_dark(mw):
     mw.Position_Lab.setStyleSheet(TP_PosDur_Style)
     mw.Duration_Lab.setStyleSheet(TP_PosDur_Style)
 
-    _setStatusTempLabelColor(mw)
-    _set_StartEndPointBut_Style(mw)
-    _set_RangeStartEndBut_Style(mw)
-    _setNextExampleBut_Style(mw)
-
     mw.PatternBox.setStyleSheet("font-weight: normal; color: white")
-    _replaceTestStatusColor(mw)
-    _repaintFiltersSS(mw)
+
+    _common_actions(mw)
 
 
 def activate_light(mw):
@@ -110,14 +112,20 @@ def activate_light(mw):
     mw.Position_Lab.setStyleSheet(TP_PosDur_Style)
     mw.Duration_Lab.setStyleSheet(TP_PosDur_Style)
 
+    mw.PatternBox.setStyleSheet("font-weight: normal; color: black")
+
+    _common_actions(mw)
+
+
+def _common_actions(mw):
     _setStatusTempLabelColor(mw)
     _set_StartEndPointBut_Style(mw)
     _set_RangeStartEndBut_Style(mw)
     _setNextExampleBut_Style(mw)
-
-    mw.PatternBox.setStyleSheet("font-weight: normal; color: black")
     _replaceTestStatusColor(mw)
     _repaintFiltersSS(mw)
+    with suppress(AttributeError):
+        mw.AudioProcSettingsView.updLabels()
 
 
 def playlist_even_background_color():

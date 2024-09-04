@@ -10,7 +10,7 @@ This application is based on the world-renowned [Golden Ears](https://goldenears
 
 ## Features
 
-- Internal pink noise generator or any external audio file in WAV, AIFF, FLAC or MP3 format as audio source.
+- Internal pink noise generator or any external audio file in WAV, AIFF, FLAC, or MP3 format as audio source.
 - 15 built-in presets with increasing difficulty.
 - 1-octave (10-band) and 1/3-octave (30-band) EQ.
 - Exercise patterns with boost and/or cut frequencies.
@@ -20,13 +20,14 @@ This application is based on the world-renowned [Golden Ears](https://goldenears
 - Auto peak-normalization, preventing digital clipping during equalization.
 - Easy non-destructive trimming of external audio files.
 - Adjustable example/slice length from 10 up to 30 seconds.
+- Adjustable audio processing parameters of training examples (EQ On/Off time proportion, EQ On↔︎Off transition time, example fade in/out duration).
 - Auto-saving trimmed ranges and example/slice lengths for different audio sources.
 - Exporting learning and test audio file packages in WAV, AIFF, FLAC, MP3, or OGG format. 
 - Audio format converter.
 - Reading M3U, M3U8, PLS, XSPF playlists supported.
 - Exporting M3U and M3U8 playlists supported.
 - Convenient and flexible playlist navigation.
-- Dark Mode support (on macOS and Linux).
+- Dark Mode support (on macOS, Linux, and Windows 11).
 - And other features (see [EarQuiz Frequencies Help](https://earquiz.org/manuals/earquiz-frequencies-help/))...
 
 ## Installation
@@ -72,23 +73,24 @@ The bundled application should now be available in the *dist* folder.
 
 This application uses the following open source libraries:
 - [PyQt6](https://www.riverbankcomputing.com/software/pyqt/)<br />
-Copyright &copy; 2021-2023 Riverbank Computing Limited<br />
+Copyright &copy; 2021-2024 Riverbank Computing Limited<br />
 License: [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html)
 - [Pedalboard](https://spotify.github.io/pedalboard/index.html#)<br />
-Copyright &copy; 2021-2022 Spotify AB<br />
+Copyright &copy; 2021-2024 Spotify AB<br />
 License: [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html)
 - [NumPy](https://numpy.org/)<br />
-Copyright &copy; 2005-2023 NumPy Developers<br />
+Copyright &copy; 2005-2024 NumPy Developers<br />
 License: [BSD 3-Clause](https://opensource.org/license/bsd-3-clause/)
 - [PyQtGraph](https://www.pyqtgraph.org/)<br />
-Copyright &copy; 2012 University of North Carolina at Chapel Hill<br />
+Copyright &copy; 2012-2024 University of North Carolina at Chapel Hill<br />
 License: [MIT](https://opensource.org/license/mit/)
-- [Darkdetect](https://pypi.org/project/darkdetect/)<br />
-Copyright (c) 2019-2022 Alberto Sottile<br />
-License: [BSD 3-Clause](https://opensource.org/license/bsd-3-clause/)
 - [tendo](https://pypi.org/project/tendo/)<br />
 Copyright &copy; 2010-2022 Sorin Sbarnea<br />
 License: [Python Software Foundation License](https://docs.python.org/3/license.html#psf-license)
+- [Certifi](https://pypi.org/project/certifi/)<br />
+Copyright &copy; 2011-2024 Kenneth Reitz<br />
+License: [OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)](https://pypi.org/search/?c=License+%3A%3A+OSI+Approved+%3A%3A+Mozilla+Public+License+2.0+%28MPL+2.0%29)
+
 
 ## Privacy Policy
 This program will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it.

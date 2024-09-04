@@ -16,10 +16,8 @@
 
 import re
 from pathlib import Path
-
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QFileDialog
-
 from GUI.MakeLearnTestFiles.make_learn_test_dialog_view import Ui_MakeLearnTest_Dialog
 from Model.globals import supported_bitrates_mp3, supported_bitrates_ogg
 from definitions import EXERCISE_DIR

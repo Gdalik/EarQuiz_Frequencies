@@ -26,6 +26,7 @@ venv_dir = 'venv'
 ui_files = ('GUI/MainWindow/View/mainwindow.ui',
             'GUI/ConvertToWAV_AIFF/convert_dialog_view.ui',
             'GUI/MakeLearnTestFiles/make_learn_test_dialog_view.ui',
+            'GUI/AudioProcSettings/audio_proc_settings_widget.ui',
             'GUI/About/AboutDialog.ui',)
 
 script_dir = 'bin' if platform.system() == 'Darwin' else 'Scripts'

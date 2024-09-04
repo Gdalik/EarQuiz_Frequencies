@@ -16,14 +16,17 @@
 
 import numpy as np
 from pedalboard import PeakFilter, Pedalboard
-
+import Model.AudioEngine.audio_proc_settings as APS
 from Model.calc import proc_unproc_len, rand_buffer
 
 
 def eq_proc(cur_sample, samplerate: int, freq1: int or float, freq2=None,
-            gain_depth=12, Q=1.41, proc_t_perc=40, eq_transition_len_s=0.035, fade_inout_len_s=0.005):
+            gain_depth=12, Q=1.41, proc_t_perc=APS.getEQOnTimePerc()):
     def sec2fr(sec: int or float):
         return int(samplerate * sec)
+
+    eq_transition_len_s = APS.getEQTransitionDur()
+    fade_inout_len_s = APS.getExFadeInOutDur()
 
     pre_eq, to_eq, post_eq = _eq_audio_parts(cur_sample, samplerate, proc_t_perc=proc_t_perc)
     gain = gain_depth * -1 if freq1 < 0 else gain_depth
@@ -48,14 +51,15 @@ def eq_proc(cur_sample, samplerate: int, freq1: int or float, freq2=None,
         eq_proc_in = equalized * eq_in_curve
         eq_unproc_out = to_eq * eq_out_curve
         equalized = eq_proc_in + eq_unproc_out
+        concat = np.concatenate((pre_eq, equalized, post_eq), axis=1)
     else:
-        equalized = equalized * fadeInCurveGen(equalized[0].size, fade_inout_len_fr) * \
+        concat = equalized * fadeInCurveGen(equalized[0].size, fade_inout_len_fr) * \
                 fadeOutCurveGen(to_eq[0].size, fade_inout_len_fr)
+    return concat
 
-    return np.concatenate((pre_eq, equalized, post_eq), axis=1)
 
-
-def _eq_audio_parts(cur_sample: np.ndarray, samplerate: int, proc_t_perc=40):  # -> pre_eq / to_eq / post_eq
+def _eq_audio_parts(cur_sample: np.ndarray, samplerate: int,
+                    proc_t_perc=APS.getEQOnTimePerc()):  # -> pre_eq / to_eq / post_eq
     def sec2fr(sec: int or float):
         return int(samplerate * sec)
 

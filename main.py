@@ -13,7 +13,7 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+import os
 from multiprocessing import freeze_support
 import multiprocessing as mp
 import platform
@@ -23,7 +23,6 @@ from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.Misc.StartScreen import StartLogo
 from PyQt6.QtGui import QIcon
 from application import app
-from Model.AudioEngine.audio_backend import setAudioBackend
 import Model.del_temp_audio as dta
 
 
@@ -36,9 +35,10 @@ if __name__ == '__main__':
     me = SingleInstance()
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     app.setWindowIcon(QIcon(":Logo/Icons/Logo/EarQuiz_Icon.png"))
+    app.openFileRequest.connect(app.handle_open_file_request)
     StartLogo.show()
-    setAudioBackend()
+    app.processEvents()
+    os.environ['QT_MEDIA_BACKEND'] = 'ffmpeg'
     dta.delTempAudio()
     mw = MainWindowContr()
-    app.openFileRequest.connect(mw.PlaylistContr.handle_open_file_request)
     app.exec()

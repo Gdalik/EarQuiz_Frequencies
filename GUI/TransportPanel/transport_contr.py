@@ -56,17 +56,29 @@ class TransportContr(QObject):
         self.TransportView.AudioSliderView.Cursor.sigPositionChangeFinished.connect(self.onCursorPositionChangeFinished)
         self.TransportView.AudioSliderView.GScene.sigMouseClicked.connect(self.onASMouseClicked)
 
-    def onCropRegionChanged(self):
+    @staticmethod
+    def _rangeFromRegion(regionItem):
+        region = regionItem.getRegion()
+        return region[0] / 1000, region[1] / 1000   # ms -> s
+
+    def onCropRegionChanged(self, regionItem):
         self.CropRegionBeingChanged = True
         if self.SourceRange is None:
             return
-        region = self.TransportView.AudioSliderView.CropRegion.getRegion()
-        _range = (region[0] / 1000, region[1] / 1000)  # ms -> s
-        self._resetSourceRange(_range)
+        self._resetSourceRange(self._rangeFromRegion(regionItem))
 
-    def onCropRegionChangeFinished(self):
+    def onCropRegionChangeFinished(self, regionItem):
+        self._corrRoundError()
         self.CropRegionBeingChanged = False
         self._checkPlaybackRange()
+
+    def _corrRoundError(self):
+        err = 1 / 1000
+        if int((self.SourceRange.excerpt_length + err) // self.SourceRange.slice_length) > self.SourceRange.slices_num:
+            endtime = self.SourceRange.endtime
+            self.SourceRange.endtime += err
+            if endtime == self.SourceRange.endtime:
+                self.SourceRange.starttime -= err
 
     def onCursorPositionChanged(self, pos):
         self.CursorBeingDragged = True
@@ -122,12 +134,9 @@ class TransportContr(QObject):
 
     def _resetSourceRange(self, _range: list or tuple):
         self.SourceRange.blockSignals(True)
-        slices_num = self.SourceRange.slices_num
         k = 1000
         self.SourceRange.starttime = int(_range[0] * k) / k
         self.SourceRange.endtime = int(_range[1] * k) / k
-        if self.SourceRange.slices_num < slices_num:  # Rounding error correction to maintain same number of slices
-            self.SourceRange.endtime += 1 / k
         self.SourceRange.blockSignals(False)
         self.onSourceRangeChanged()
 
@@ -187,12 +196,15 @@ class TransportContr(QObject):
         if self.parent.qChanged:
             self.parent.EQSetContr.updADGenQ()
             refresh_needed = True
+        if self.parent.eqOnTimePercChanged:
+            self.parent.AudioProcSettingsContr.updADGenEQOnTimeToSit()
+            refresh_needed = True
         if refresh_needed and refreshAfter:
             self.refreshAudio(play_after=play_after)
         return refresh_needed
 
     def refreshAudio(self, play_after=False):
-        if self.parent.CurrentMode.name not in ('Learn', 'Test') or self.parent.ADGen is None:
+        if self.parent.CurrentMode.name == 'Preview' or self.parent.ADGen is None:
             return
         self.parent.CurrentMode.updateCurrentAudio()
         self.parent.ADGen.refresh_audio(filepath=self.parent.CurrentAudio)
@@ -204,7 +216,7 @@ class TransportContr(QObject):
         self.onSliceLenChanged(self.SourceRange.slice_length)
         self.TransportView.AudioSliderView.CropRegion.show()
 
-    def onPlaybackPosChanged(self, pos):
+    def onPlaybackPosChanged(self):
         if not self.CursorBeingDragged:
             CursorPos = self.parent.CurrentMode.proxyCursorPos
             self.TransportView.AudioSliderView.Cursor.update_pos(CursorPos)

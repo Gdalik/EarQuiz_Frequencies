@@ -81,18 +81,20 @@ class PreviewAudioCrop(QObject):
         old_value = self._slice_length
         if self._strictMode:
             self._slice_length = value
-        self._slice_length = min(value, self.chunk_length, self.max_slice_length)
+        self._slice_length = min(value, self.excerpt_length, self.max_slice_length)
         self._slice_length = max(self._slice_length, self.min_slice_length)
+        slice_length_r = round(self._slice_length)
+        self._slice_length = slice_length_r if self.excerpt_length // slice_length_r > 0 else old_value
         if old_value != self._slice_length:
             self.sliceLengthChanged.emit(self._slice_length)
 
     @property
-    def chunk_length(self):
+    def excerpt_length(self):
         return self.endtime - self.starttime
 
     @property
     def slices_num(self):
-        return int(self.chunk_length // self.slice_length)
+        return int(self.excerpt_length // self.slice_length)
 
     @property
     def range(self):

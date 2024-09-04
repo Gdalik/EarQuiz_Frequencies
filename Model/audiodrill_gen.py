@@ -20,6 +20,7 @@ from pedalboard.io import AudioFile
 from Model.AudioEngine.load_audio import AudioChunk
 from Model.AudioEngine.process import eq_proc
 from Model.exercise_gen import ExampleGenerator
+import Model.AudioEngine.audio_proc_settings as APS
 from Utilities.exceptions import InterruptedException
 from definitions import TEMP_AUDIO_DIR, PN
 
@@ -39,7 +40,7 @@ class AudioDrillGen:
                  audio_source_path=PN, cropped=None, cropped_normalized=None,
                  starttime=0, endtime=None, drill_length=15,
                  gain_depth=12, Q=4.32, order='asc', boost_cut_priority=1, disableAdjacent=1, inf_cycle=True,
-                 proc_t_perc=40, callback=None):
+                 proc_t_perc=APS.getEQOnTimePerc(), callback=None):
         # order: 'asc', 'desc', 'shuffle', 'random'
         # boost_cut: '+', '-', '+-'
         # boost_cut_priority 1 (Each Band Boosted, then Cut) / 2 (All Bands Boosted, then All Bands Cut) -- ignored in random mode

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1115</width>
+    <width>1128</width>
     <height>718</height>
    </rect>
   </property>
@@ -4726,7 +4726,7 @@ color: gray;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1115</width>
+     <width>1128</width>
      <height>24</height>
     </rect>
    </property>
@@ -4838,13 +4838,6 @@ color: gray;
      </property>
      <addaction name="separator"/>
     </widget>
-    <widget class="QMenu" name="menuAudio_Backend">
-     <property name="title">
-      <string>Audio Playback Backend</string>
-     </property>
-     <addaction name="actionFFmpeg"/>
-     <addaction name="actionNative"/>
-    </widget>
     <addaction name="actionIncrease_Volume"/>
     <addaction name="actionDecrease_Volume"/>
     <addaction name="separator"/>
@@ -4852,7 +4845,9 @@ color: gray;
     <addaction name="actionRestore_Volume_Level"/>
     <addaction name="separator"/>
     <addaction name="menuAudio_Device"/>
-    <addaction name="menuAudio_Backend"/>
+    <addaction name="separator"/>
+    <addaction name="actionAudio_Processing_Settings"/>
+    <addaction name="actionEQ_Always_On_In_Test_Mode"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -4871,7 +4866,7 @@ color: gray;
    </property>
    <property name="minimumSize">
     <size>
-     <width>1108</width>
+     <width>1128</width>
      <height>115</height>
     </size>
    </property>
@@ -5499,7 +5494,7 @@ color: black;
              </property>
              <property name="minimumSize">
               <size>
-               <width>105</width>
+               <width>115</width>
                <height>20</height>
               </size>
              </property>
@@ -5528,6 +5523,9 @@ color: black;
              </property>
              <property name="frame">
               <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -5654,7 +5652,7 @@ color: black;
              </property>
              <property name="minimumSize">
               <size>
-               <width>105</width>
+               <width>115</width>
                <height>20</height>
               </size>
              </property>
@@ -5671,6 +5669,9 @@ color: black;
              </property>
              <property name="wrapping">
               <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="accelerated">
               <bool>false</bool>
@@ -5847,7 +5848,7 @@ background: rgba(118, 214, 255, 85)
             <widget class="QSpinBox" name="SliceLenSpin">
              <property name="minimumSize">
               <size>
-               <width>40</width>
+               <width>50</width>
                <height>20</height>
               </size>
              </property>
@@ -5861,6 +5862,9 @@ background: rgba(118, 214, 255, 85)
               <font>
                <pointsize>12</pointsize>
               </font>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
              </property>
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::UpDownArrows</enum>
@@ -6230,7 +6234,7 @@ font-weight: normal</string>
    </property>
    <property name="minimumSize">
     <size>
-     <width>232</width>
+     <width>246</width>
      <height>150</height>
     </size>
    </property>
@@ -6268,19 +6272,6 @@ font-weight: normal</string>
     <layout class="QVBoxLayout" name="verticalLayout_8">
      <item>
       <layout class="QHBoxLayout" name="GainDepthLayout">
-       <item>
-        <spacer name="horizontalSpacer_11">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>10</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item alignment="Qt::AlignRight">
         <widget class="QLabel" name="GainLab">
          <property name="text">
@@ -6292,7 +6283,7 @@ font-weight: normal</string>
         <widget class="QSpinBox" name="GainRangeSpin">
          <property name="minimumSize">
           <size>
-           <width>42</width>
+           <width>55</width>
            <height>0</height>
           </size>
          </property>
@@ -6338,6 +6329,19 @@ font-weight: normal</string>
          </property>
         </widget>
        </item>
+       <item>
+        <spacer name="horizontalSpacer_11">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </item>
      <item>
@@ -6351,6 +6355,12 @@ font-weight: normal</string>
        </item>
        <item>
         <widget class="QComboBox" name="BWBox">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="currentText">
           <string/>
          </property>
@@ -6358,6 +6368,19 @@ font-weight: normal</string>
           <number>-1</number>
          </property>
         </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_19">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>10</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </item>
@@ -7745,23 +7768,17 @@ background: rgba(118, 214, 255, 85)
     <string>Ask and Discuss...</string>
    </property>
   </action>
-  <action name="actionFFmpeg">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
+  <action name="actionAudio_Processing_Settings">
    <property name="text">
-    <string>FFmpeg</string>
+    <string>Audio Processing Settings...</string>
    </property>
   </action>
-  <action name="actionNative">
+  <action name="actionEQ_Always_On_In_Test_Mode">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Native</string>
+    <string>EQ Always On In Test Mode</string>
    </property>
   </action>
   <zorder>Eq_Settings</zorder>

@@ -1,9 +1,0 @@
-[Desktop Entry]
-
-Type=Application
-Name=EarQuiz Frequencies
-Comment=Software for technical ear training on equalization
-Path=/opt/earquiz-frequencies
-Exec=/opt/earquiz-frequencies/earquiz-frequencies
-Icon=EarQuiz_Icon
-MimeType=audio/x-scpls;application/xspf+xml;audio/x-mpegurl;audio/mpegurl;application/x-mpegurl;application/vnd.apple.mpegurl;audio/scpls;application/pls+xml;audio/wav;audio/x-wav;audio/mpeg;audio/x-mpeg;audio/aiff;audio/x-aiff;audio/flac;audio/x-flac;audio/ogg;audio/x-ogg

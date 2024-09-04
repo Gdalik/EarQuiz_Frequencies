@@ -16,7 +16,7 @@
 
 import datetime
 import platform
-from PyQt6.QtCore import QObject, QTimer, pyqtSignal
+from PyQt6.QtCore import QObject, QTimer
 from GUI.MainWindow.Contr.app_modes_handler import AppModesHandler
 from GUI.MainWindow.Contr.learn_freq_order_handler import LearnFreqOrderHandler
 from GUI.MainWindow.View import dark_theme
@@ -29,7 +29,6 @@ from GUI.FileMaker.make_playlist import exportPlaylist, exportPlaylistWithRelPat
 from GUI.MainWindow.Contr.adgen_contr import ADGenContr
 from GUI.MainWindow.Contr.audio_loader import AudioLoad
 from GUI.MainWindow.Contr.sourcerange_contr import SourceRangeContr
-from GUI.MainWindow.Contr.audio_backend_contr import AudioBackendContr
 from GUI.MainWindow.View.mw_view import MainWindowView
 from GUI.Misc.tracked_proc import ProcTrackControl
 from GUI.Modes.UniMode import UniMode
@@ -39,6 +38,7 @@ from GUI.Playlist.playlistcontr import PlaylistContr
 from GUI.Playlist.plsong import PlSong
 from GUI.Misc.StartScreen import StartLogoTime
 from GUI.TransportPanel.transport_contr import TransportContr
+from GUI.AudioProcSettings.audio_proc_settings_contr import AudioProcSettingsContr
 from GUI.Help.HelpActions import HelpActions
 from GUI.SupportApp.supportapp_contr import SupportAppContr
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
@@ -66,7 +66,6 @@ class MainWindowContr(QObject):
         self.LoadedFileHash = None
         self.LoadedFilePath = None
         self.LastSourceAudio = None
-        self.AudioBackend = AudioBackendContr(self)
         self.UpdCheckContr = UpdCheckContr(self)
         self.EQContr = EQContr(self)
         self.EQSetContr = EQSetContr(self)
@@ -84,6 +83,7 @@ class MainWindowContr(QObject):
         self.AL.setNoAudio()
         self.ADGC = ADGenContr(self)
         self.setFileMenuActions()
+        self.AudioProcSettingsContr = AudioProcSettingsContr(self)
         self.HelpActions = HelpActions(self)
         self.SupportAppContr = SupportAppContr(self)
         self.ModesHandler = AppModesHandler(self)
@@ -208,4 +208,9 @@ class MainWindowContr(QObject):
 
     @property
     def eqSetChanged(self):
-        return bool(self.normHeadroomChanged or self.qChanged)
+        return bool(self.normHeadroomChanged or self.qChanged or self.eqOnTimePercChanged)
+
+    @property
+    def eqOnTimePercChanged(self):
+        return self.AudioProcSettingsContr.sit_proc_t_perc != self.ADGen.proc_t_perc \
+            if self.ADGen is not None else False

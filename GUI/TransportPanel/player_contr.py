@@ -20,11 +20,9 @@ from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
 from GUI.TransportPanel.volumeslider_contr import VolumeSliderContr
 from GUI.Misc.error_message import reformat_message
-from GUI.Misc.procEvents import procEvents
 from definitions import PN
-from application import MediaDevices, Settings
+from application import MediaDevices, Settings, app
 from pathlib import Path
-from Model.AudioEngine.audio_backend import formatNotSupported
 
 
 class PlayerContr(QMediaPlayer):
@@ -69,7 +67,7 @@ class PlayerContr(QMediaPlayer):
         self.mw_contr.playAudioOnPreview = False
 
     def t_loadCurrentAudio(self, **kwargs):
-        procEvents()
+        app.processEvents()
         QTimer.singleShot(0, lambda: self.loadCurrentAudio(**kwargs))
 
     def clearSource(self):
@@ -138,7 +136,7 @@ class PlayerContr(QMediaPlayer):
         self._hashAndRefreshLoadedAudioData()
         self.parent.onLoadSourceAudio()
         self.checkPreviewStartTime()
-        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loaded', 0)
+        self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}{self._get_slice_number_str()}: Loaded', 0)
         self.onceAudioLoaded = False
 
     def _hashAndRefreshLoadedAudioData(self):
@@ -157,7 +155,7 @@ class PlayerContr(QMediaPlayer):
         self.mw_contr.CurrentMode.playbackEnded()
 
     def onPlayTriggered(self):
-        procEvents()
+        app.processEvents()
         if self.playbackState() == self.PlaybackState.PlayingState:
             return
         noPreviewSource = (self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.SourceAudio is None)
@@ -173,7 +171,7 @@ class PlayerContr(QMediaPlayer):
 
     def onStopTriggered(self, checkPlaybackState=False):
         if not checkPlaybackState:
-            procEvents()
+            app.processEvents()
         elif self.playbackState() != self.PlaybackState.PlayingState:
             return
         self.stop()
@@ -226,15 +224,15 @@ class PlayerContr(QMediaPlayer):
             return ''
         slice_number = self.mw_contr.ADGen.audiochunk.cycle_id + 1\
             if self.mw_contr.ADGen is not None and self.mw_contr.SourceAudio.name != PN and \
-               self.mw_contr.CurrentMode.name in ('Learn', 'Test') else None
+               self.mw_contr.CurrentMode.name != 'Preview' else None
         return f' [{slice_number}]' if slice_number is not None else ''
 
     def _translatePBStateToStatusBar(self, state):
-        if self.mw_contr.SourceAudio is None:
+        try:
+            source = PN if self.mw_contr.SourceAudio.name == PN else self.mw_contr.LastSourceAudio.name
+            self.mw_view.status.showMessage(f'{source}{self._get_slice_number_str()}: {self.PlayerView.pb_state2str(state)}', 0)
+        except AttributeError:
             self.mw_view.status.clearMessage()
-            return
-        source = PN if self.mw_contr.SourceAudio.name == PN else self.mw_contr.LastSourceAudio.name
-        self.mw_view.status.showMessage(f'{source}{self._get_slice_number_str()}: {self.PlayerView.pb_state2str(state)}', 0)
 
     def onPlayPause_triggered(self):
         if self.playbackState() == self.PlaybackState.PlayingState and self.mw_contr.CurrentMode.playPause_toggleable:
@@ -266,9 +264,6 @@ class PlayerContr(QMediaPlayer):
         elif err == self.Error.FormatError and sourcefile.name != PN:
             message = f'The file "{sourcefile.name}" seems to be in a wrong format. Do you want to reformat it?'
             ext = Path(sourcefile.name).suffix
-            if formatNotSupported(ext):
-                message = f'{ext[1:].upper()} file format is not supported by the current audio playback backend. ' \
-                              f'Do you want to reformat "{sourcefile.name}"?'
             if reformat_message(self.mw_view, msg=message) == QMessageBox.StandardButton.Yes:
                 self.mw_contr.FileMaker.onActionConvertFilesTriggered()
             return

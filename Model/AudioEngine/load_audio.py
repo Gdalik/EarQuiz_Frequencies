@@ -89,13 +89,13 @@ class AudioChunk(PreviewAudioCrop, QObject):
         output = {'State': 'Reading / cropping audiofile', 'Percent': 0}
         self._callback_out(output, callback=callback)
         self.audiofile.seek(int(self.sec2fr(self.starttime)))
-        prop_subchunk_length = int(self.chunk_length_fr / self._find_rc_divider())
+        prop_subchunk_length = int(self.excerpt_length_fr / self._find_rc_divider())
         read_ch_samples = max(prop_subchunk_length, self.samplerate) if self.audiofile.exact_duration_known \
             else int(self.samplerate)
-        while self.cropped[0].size < self.chunk_length_fr:
+        while self.cropped[0].size < self.excerpt_length_fr:
             ch = self.audiofile.read(read_ch_samples)
             self.cropped = np.concatenate((self.cropped, ch), axis=1)
-            output['Percent'] = int(self.cropped[0].size / self.chunk_length_fr * 100)
+            output['Percent'] = int(self.cropped[0].size / self.excerpt_length_fr * 100)
             try:
                 self._callback_out(output, callback=callback)
             except InterruptedException:
@@ -112,12 +112,12 @@ class AudioChunk(PreviewAudioCrop, QObject):
         return self.audiofile
 
     def _find_rc_divider(self):
-        min_div = self.chunk_length // 300 if self.chunk_length >= 600 else 2
-        return find_divider(self.chunk_length_fr, Min=min_div)
+        min_div = self.excerpt_length // 300 if self.excerpt_length >= 600 else 2
+        return find_divider(self.excerpt_length_fr, Min=min_div)
 
     @property
-    def chunk_length_fr(self):
-        return int(self.sec2fr(self.chunk_length))
+    def excerpt_length_fr(self):
+        return int(self.sec2fr(self.excerpt_length))
 
     def _close_audiofile(self):
         if self.audiofile is None or self.audiofile.closed:
@@ -184,7 +184,8 @@ class AudioChunk(PreviewAudioCrop, QObject):
                 self.slice_iter()
 
     def split(self):
-        target_length_fr = int(self.sec2fr(self.slice_length * self.slices_num))
+        # target_length_fr = int(self.sec2fr(self.slice_length * self.slices_num))
+        target_length_fr = int(self.sec2fr(self.slice_length)) * self.slices_num
         cropped_norm_adj = self.cropped_normalized[:, :target_length_fr]
         self.cropped_norm_split = np.hsplit(cropped_norm_adj, self.slices_num)
         return self.cropped_norm_split
@@ -214,7 +215,7 @@ class AudioChunk(PreviewAudioCrop, QObject):
         if not self._old_values:
             return None
         reset_cond1 = self._old_values['starttime'] != self.starttime
-        reset_cond2 = self._old_values['chunk_length'] != self.chunk_length and \
+        reset_cond2 = self._old_values['excerpt_length'] != self.excerpt_length and \
                       (self._old_values['slices_num'] != self.slices_num or self._old_values['slice_length']
                        != self.slice_length)
         if reset_cond1 or reset_cond2:
@@ -233,5 +234,5 @@ class AudioChunk(PreviewAudioCrop, QObject):
             self._refresh_old_values()
 
     def _refresh_old_values(self):
-        self._old_values = {'starttime': self.starttime, 'chunk_length': self.chunk_length,
+        self._old_values = {'starttime': self.starttime, 'excerpt_length': self.excerpt_length,
                             'slices_num': self.slices_num, 'slice_length': self.slice_length}

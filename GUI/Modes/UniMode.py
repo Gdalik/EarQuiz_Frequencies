@@ -19,7 +19,7 @@ from pathlib import Path
 from PyQt6.QtCore import QTimer
 from Model.audiodrill_gen import create_temp_wavefile
 from definitions import TEMP_AUDIO_DIR
-from GUI.Misc.procEvents import procEvents
+from application import app
 
 
 class UniMode:
@@ -111,6 +111,7 @@ class UniMode:
         pass
 
     def oncePlayingStarted(self):
+        self.view.setEQStateIndicatorOn(self.parent.TransportContr.eqStateOnOff())
         self.view.EqOnOffLab.setVisible(True)
         QTimer.singleShot(200, self.updateSliceRegion)
 
@@ -140,10 +141,10 @@ class UniMode:
         self.view.menuEQ_Bands_Playback_Order.setEnabled(arg)
 
     def showProcessingSourceMessage(self):
-        self.view.status.showMessage(f'{self.parent.SourceAudio.name}: Processsing/Loading...', 0)
+        self.view.status.showMessage(f'{self.parent.SourceAudio.name}: Processing/Loading...', 0)
 
     def procEvents(self):
-        procEvents()
+        app.processEvents()
 
     def hideEQState(self):
         self.view.EqOnOffLab.setVisible(False)

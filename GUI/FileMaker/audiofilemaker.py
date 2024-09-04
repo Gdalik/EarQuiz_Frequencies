@@ -23,6 +23,7 @@ from GUI.Playlist.plsong import PlSong
 from Model.AudioEngine.convert_audio import convert_audio
 from Model.AudioEngine.sine_wav_gen import generateCalibrationSineTones
 from Model.make_learntest_files import makeLearnFiles, makeTestFiles
+import Model.AudioEngine.audio_proc_settings as APS
 from Utilities.Q_extract import Qextr
 from Utilities.exceptions import InterruptedException
 
@@ -90,6 +91,7 @@ class AudioFileMaker(QObject):
 
     def _makeLearnTestFiles(self, Dialog):
         action = makeLearnFiles if Dialog.LearnBut.isChecked() else makeTestFiles
+        EQOnTimePerc = 100 if APS.getEQAlwaysOnInTest() and action == makeTestFiles else APS.getEQOnTimePerc()
         EQP = self.parent.EQContr.EQpattern
         SR = self.parent.SourceRange
         SA = self.parent.SourceAudio
@@ -114,6 +116,7 @@ class AudioFileMaker(QObject):
                   'starttime': SR.starttime,
                   'endtime': SR.endtime,
                   'drill_length': SR.slice_length,
+                  'proc_t_perc': EQOnTimePerc,
                   'gain_depth': self.parent.EQSetContr.EQSetView.GainRangeSpin.value(),
                   'Q': Qextr(self.parent.EQSetContr.EQSetView.BWBox.currentText()),
                   'disableAdjacent': EQP['DisableAdjacentFiltersMode']}
