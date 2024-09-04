@@ -34,7 +34,7 @@ This application is based on the world-renowned [Golden Ears](https://goldenears
 
 *To use the application out of the box, you can just download the distribution package for your OS (Windows, macOS or Linux), run it and follow the installation process.*
 
-You can also clone (download) this repository and launch the program from [Python](https://www.python.org/). It has been tested with Python 3.9, 3.10 and 3.11.
+You can also clone (download) this repository and launch the program from [Python](https://www.python.org/). It has been tested with Python 3.9, 3.10, 3.11 and 3.12.
 So, make sure the proper version of interpreter is installed on your computer.
 
 The repository doesn't contain any pre-compiled dependencies, so they should be installed before the application execution. Though it is technically possible to use the "base" Python environment,
