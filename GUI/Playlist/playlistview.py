@@ -34,7 +34,7 @@ class SelectDelegate(QStyledItemDelegate):
             option.font.setStyle(QFont.Style.StyleNormal)
             bg = QColor('lightblue')
             painter.fillRect(option.rect, bg)
-        QStyledItemDelegate.paint(self, painter, option, index)
+        super().paint(painter, option, index)
 
 
 class PL_Signals(QObject):
