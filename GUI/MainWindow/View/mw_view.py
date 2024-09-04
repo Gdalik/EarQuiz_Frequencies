@@ -143,7 +143,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.ShareAppBox.setMinimumHeight(48)
         self.DonateBox.setMinimumHeight(48)
 
-    def linux_os_settings(self):
+    def fusion_style_settings(self):
         self.win_os_settings()
         self._assignModeButStyle()
         self.ShareAppBox.setMinimumHeight(55)

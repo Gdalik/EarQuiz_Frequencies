@@ -15,26 +15,9 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from PyQt6.QtCore import Qt, pyqtSignal, QObject, QMimeData, QUrl, QItemSelection, QItemSelectionModel, QModelIndex
-from PyQt6.QtGui import QPainter, QDrag, QColor, QFont
-from PyQt6.QtWidgets import QTableView, QAbstractItemView, QHeaderView, QStyledItemDelegate
-from application import IsWin11
+from PyQt6.QtGui import QPainter, QDrag, QColor
+from PyQt6.QtWidgets import QTableView, QAbstractItemView, QHeaderView
 from Utilities.checkMimeData import checkDroppedMimeData
-
-
-class SelectDelegate(QStyledItemDelegate):
-    select_rows = []
-
-    def __init__(self, parent):
-        super().__init__()
-        self.parent = parent
-
-    def paint(self, painter, option, index):
-        row = index.row()
-        if row in self.select_rows and self.parent.hasFocus():
-            option.font.setStyle(QFont.Style.StyleNormal)
-            bg = QColor('lightblue')
-            painter.fillRect(option.rect, bg)
-        super().paint(painter, option, index)
 
 
 class PL_Signals(QObject):
@@ -56,17 +39,10 @@ class PlaylistView(QTableView):
         self.selectedItems = []
         self.MouseButtonPressed = None
         self.alt_pressed = None
-        self.SelDeleg = SelectDelegate(self)
-        self._win11_adjust()
 
     @property
     def Model(self):
         return self.model().sourceModel() if self.model() else None
-
-    def _win11_adjust(self):
-        if not IsWin11:
-            return
-        self.setItemDelegate(self.SelDeleg)
 
     def setDragDrop(self):
         self.viewport().setAcceptDrops(True)

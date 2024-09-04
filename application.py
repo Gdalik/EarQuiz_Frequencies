@@ -25,6 +25,7 @@ from definitions import SETTINGS_PATH
 
 app_name = 'EarQuiz Frequencies'
 launch_files_onstart = sys.argv[1:] if len(sys.argv) > 1 else None
+IsWin11 = platform.system() == 'Windows' and sys.getwindowsversion().build >= 22000
 
 
 class EQFreqApp(QtWidgets.QApplication):
@@ -36,6 +37,8 @@ class EQFreqApp(QtWidgets.QApplication):
         self.setApplicationName(app_name)
         if platform.system() != 'Linux':
             self.setOrganizationDomain("earquiz.org")
+        if IsWin11:
+            self.setStyle('Fusion')
         self.setOrganizationName("EarQuiz")
         self.set_app_font()
         self.aboutToQuit.connect(delTempAudio)
@@ -63,4 +66,3 @@ app = EQFreqApp(list(sys.argv))
 MediaDevices = QMediaDevices()
 Settings = QSettings(SETTINGS_PATH, QSettings.Format.IniFormat)
 QtVersion = QLibraryInfo.version().toString()
-IsWin11 = platform.system() == 'Windows' and sys.getwindowsversion().build >= 22000

@@ -46,7 +46,7 @@ from Model.audiodrill_gen import AudioDrillGen
 from Model.file_hash import filehash
 from Utilities.Q_extract import Qextr
 from definitions import PN
-from application import app, Settings
+from application import app, Settings, IsWin11
 
 
 class MainWindowContr(QObject):
@@ -58,10 +58,10 @@ class MainWindowContr(QObject):
     def __init__(self):
         super().__init__()
         self.mw_view = MainWindowView()
-        if platform.system() == 'Windows':
+        if platform.system() == 'Windows' and not IsWin11:
             self.mw_view.win_os_settings()
-        elif platform.system() == 'Linux':
-            self.mw_view.linux_os_settings()
+        elif platform.system() == 'Linux' or IsWin11:
+            self.mw_view.fusion_style_settings()
         self.CurrentAudio = None
         self.LoadedFileHash = None
         self.LoadedFilePath = None
