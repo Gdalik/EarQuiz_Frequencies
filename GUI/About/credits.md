@@ -1,6 +1,6 @@
 ## Credits
 
-*EarQuiz Frequencies* is written in [Python](https://www.python.org/). The executables for Windows and macOS are 
+*EarQuiz Frequencies* is written in [Python](https://www.python.org/). The executables for Windows, macOS and Linux are 
 built with [PyInstaller](https://pyinstaller.org/).
 
 This application uses the following **Open Source libraries**:

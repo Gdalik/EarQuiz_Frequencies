@@ -10,7 +10,7 @@ This application is based on the world-renowned [Golden Ears](https://goldenears
 
 ## Features
 
-- Internal pink noise generator or any external audio file in WAV, AIFF, FLAC, or MP3 format as audio source.
+- Internal pink noise generator or any external audio file in WAV, AIFF, FLAC, MP3, or OGG format as audio source.
 - 15 built-in presets with increasing difficulty.
 - 1-octave (10-band) and 1/3-octave (30-band) EQ.
 - Exercise patterns with boost and/or cut frequencies.
