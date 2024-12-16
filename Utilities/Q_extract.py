@@ -23,5 +23,5 @@ def Qextr(arg: int or float or str):
     if not isinstance(arg, str):
         return
     arg = arg.replace(' ', '')
-    res = re.search(r'(?<=Q\=)\d+.?,?\d+', arg)
+    res = re.search(r'(?<=Q\=)\d+(\.\d+)?', arg)
     return float(res.group()) if res else None
