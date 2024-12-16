@@ -19,5 +19,6 @@ from pathlib import Path
 
 def validUrls(urls: list):
     available_ext = ('.wav', '.aiff', '.flac', '.ogg', '.mp3', '.m3u', '.m3u8', '.pls', '.xspf')
+    available_ext = tuple(list(available_ext) + [EXT.upper() for EXT in available_ext])
     return [url for url in urls if url.toLocalFile() and Path(url.toLocalFile()).exists()
             and (Path(url.toLocalFile()).is_dir() or Path(url.toLocalFile()).suffix in available_ext)]
