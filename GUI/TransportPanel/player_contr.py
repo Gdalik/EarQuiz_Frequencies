@@ -76,10 +76,12 @@ class PlayerContr(QMediaPlayer):
     def _loadFileObject2Buffer(self) -> bool:
         self.clearSource()
         self.LoadedAudioBuffer = QBuffer()
-        self.setSourceDevice(self.LoadedAudioBuffer)
         try:
+            self.setSourceDevice(self.LoadedAudioBuffer)
+            while self.LoadedAudioBuffer.isOpen():
+                self.LoadedAudioBuffer.close()
             self.LoadedAudioBuffer.setData(self.mw_contr.CurrentAudio.getvalue())
-            self.LoadedAudioBuffer.close()
+            self.setSourceDevice(self.LoadedAudioBuffer)
         except Exception as e:
             self.errorOccurred.emit(self.Error.ResourceError, str(e))
             return False
@@ -276,19 +278,32 @@ class PlayerContr(QMediaPlayer):
         self.onAudioDeviceChecked()
 
     def onError(self, err, string):
-        sourcefile = self.mw_contr.SourceAudio
-        self.PlModel.nonLoadedSong_paths.add(sourcefile.path)
-        self.PlModel.updCanLoadData()
-        self._stopTrainingOnError()
+        if self.mw_contr.CurrentMode.name == 'Preview':
+           self._onErrorInPreview(err, string)
+        else:
+            self._onBufferError(err, string)
+
+    def _onErrorInPreview(self, err, string):
         message = f'{err}: {string}'
-        if not sourcefile.exists:
-            message = f'File "{sourcefile.path}" not found!'
-        elif err == self.Error.FormatError and sourcefile.name != PN:
-            message = f'The file "{sourcefile.name}" seems to be in a wrong format. Do you want to reformat it?'
-            if reformat_message(self.mw_view, msg=message) == QMessageBox.StandardButton.Yes:
-                self.mw_contr.FileMaker.onActionConvertFilesTriggered()
-            return
+        sourcefile = self.mw_contr.SourceAudio
+        if sourcefile is not None:
+            self.PlModel.nonLoadedSong_paths.add(sourcefile.path)
+            self.PlModel.updCanLoadData()
+            self._stopTrainingOnError()
+            if not sourcefile.exists:
+                message = f'File "{sourcefile.path}" not found!'
+            elif err == self.Error.FormatError and sourcefile.name != PN:
+                message = f'The file "{sourcefile.name}" seems to be in a wrong format. Do you want to reformat it?'
+                if reformat_message(self.mw_view, msg=message) == QMessageBox.StandardButton.Yes:
+                    self.mw_contr.FileMaker.onActionConvertFilesTriggered()
+                return
         self.mw_view.error_msg(message)
+
+    def _onBufferError(self, err, string):
+        if err == self.Error.ResourceError:
+            self.parent.refreshAudio(play_after=True)
+        else:
+            self.mw_view.error_msg(f'{err}: {string}')
 
     def _stopTrainingOnError(self):
         if self.mw_contr.CurrentSourceMode.name == 'Audiofile':
