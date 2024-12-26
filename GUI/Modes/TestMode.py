@@ -15,6 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from GUI.Modes.UniMode import UniMode
+from Model.AudioEngine.audio_to_buffer import a2b
 
 
 class TestMode(UniMode):
@@ -47,8 +48,10 @@ class TestMode(UniMode):
         self.showProcessingSourceMessage()
         self.procEvents()
         self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False)
-        self.updateCurrentAudio()
-        return self.parent.ADGen.output(audio_path=self.parent.CurrentAudio, force_freq=None, fromStart=fromStart)[0]
+        freq, audio = self.parent.ADGen.output(audio_path=None,
+                                               force_freq=None, fromStart=fromStart)
+        self.parent.CurrentAudio = a2b(audio, self.parent.ADGen.af_samplerate)
+        return freq
 
     def nextDrill(self, fromStart=False, play_after=True, **kwargs):
         if self.parent.ADGen is None:

@@ -15,6 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from GUI.Modes.UniMode import UniMode
+from Model.AudioEngine.audio_to_buffer import a2b
 
 
 class LearnMode(UniMode):
@@ -50,11 +51,12 @@ class LearnMode(UniMode):
         self.procEvents()
         self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False,
                                                         raiseInterruptedException=raiseInterruptedException)
-        self.updateCurrentAudio()
         eq_values = self.parent.EQContr.getEQValues()
         force_freq = eq_values or None
-        return self.parent.ADGen.output(audio_path=self.parent.CurrentAudio,
-                                        force_freq=force_freq, fromStart=fromStart)[0]
+        freq, audio = self.parent.ADGen.output(audio_path=None,
+                                        force_freq=force_freq, fromStart=fromStart)
+        self.parent.CurrentAudio = a2b(audio, self.parent.ADGen.af_samplerate)
+        return freq
 
     def nextDrill(self, fromStart=False, play_after=True, raiseInterruptedException=True):
         if self.parent.ADGen is None:

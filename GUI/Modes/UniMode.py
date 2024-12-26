@@ -89,7 +89,7 @@ class UniMode:
         self.view.actionLoop_Sequence.setVisible(False)
 
     def updateCurrentAudio(self):
-        self.parent.CurrentAudio = create_temp_wavefile()
+        pass
 
     def enableTimeSettingsChanges(self, arg: bool):
         self.view.TransportPanelView.AudioSliderView.Cursor.setMovable(arg)
@@ -123,12 +123,6 @@ class UniMode:
 
     def restart_test(self):
         pass
-
-    def cleanTempAudio(self):
-        with contextlib.suppress(AttributeError, PermissionError):
-            if self.parent.LoadedFilePath is not None \
-                    and Path(self.parent.LoadedFilePath).parent == Path(TEMP_AUDIO_DIR):
-                Path(self.parent.LoadedFilePath).unlink(missing_ok=True)
 
     def showAudioCursor(self):
         if self.parent.CurrentAudio is not None:

@@ -20,7 +20,6 @@ from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtCore import QSettings, QLibraryInfo
 from PyQt6.QtMultimedia import QMediaDevices
 from PyQt6.QtGui import QFont
-from Model.del_temp_audio import delTempAudio
 from definitions import SETTINGS_PATH
 
 app_name = 'EarQuiz Frequencies'
@@ -41,7 +40,6 @@ class EQFreqApp(QtWidgets.QApplication):
             self.setStyle('Fusion')
         self.setOrganizationName("EarQuiz")
         self.set_app_font()
-        self.aboutToQuit.connect(delTempAudio)
         self.files_to_be_opened = copy.copy(launch_files_onstart)
 
     def event(self, event):

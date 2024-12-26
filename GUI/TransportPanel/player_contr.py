@@ -13,16 +13,15 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+import io
 import platform
-from PyQt6.QtCore import QUrl, QTimer
+from PyQt6.QtCore import QUrl, QTimer, QBuffer
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
 from GUI.TransportPanel.volumeslider_contr import VolumeSliderContr
 from GUI.Misc.error_message import reformat_message
 from definitions import PN
 from application import MediaDevices, Settings, app
-from pathlib import Path
 
 
 class PlayerContr(QMediaPlayer):
@@ -31,6 +30,7 @@ class PlayerContr(QMediaPlayer):
         self.parent = parent
         self.mw_contr = parent.parent
         self.mw_view = self.mw_contr.mw_view
+        self.LoadedAudioBuffer = QBuffer()
         self.TransportView = parent.TransportView
         self.PlayerView = self.TransportView.PlayerView
         self.VolumeSlider = self.mw_view.VolumeSlider
@@ -52,19 +52,38 @@ class PlayerContr(QMediaPlayer):
         self.mw_view.AudioDevicesGroup.triggered.connect(self.onAudioDeviceChecked)
 
     def loadCurrentAudio(self, play_after=True):
-        filepath = self.mw_contr.CurrentAudio
-
-        # Workaround for PyQt6 QMediaPlayer issue with remote files' playback on Windows (native backend):
-        # filepath = f'file:{filepath}' if platform.system() == 'Windows' else filepath
-
-        AudioToLoad = QUrl.fromLocalFile(filepath)
-        if self.source() == AudioToLoad:
+        if isinstance(self.mw_contr.CurrentAudio, str):
+            new_audio_loaded = self._loadLocal_Audiofile()
+        elif isinstance(self.mw_contr.CurrentAudio, io.BytesIO):
+            new_audio_loaded = self._loadFileObject2Buffer()
+        else:
             return
-        self.clearSource()
-        self.setSource(AudioToLoad)
+        if not new_audio_loaded:
+            return
         self.onceAudioLoaded = True
         self.playAfterAudioLoaded = play_after
         self.mw_contr.playAudioOnPreview = False
+
+    def _loadLocal_Audiofile(self) -> bool:
+        filepath = self.mw_contr.CurrentAudio
+        AudioToLoad = QUrl.fromLocalFile(filepath)
+        if self.source() == AudioToLoad:
+            return False
+        self.clearSource()
+        self.setSource(AudioToLoad)
+        return True
+
+    def _loadFileObject2Buffer(self) -> bool:
+        self.clearSource()
+        self.LoadedAudioBuffer = QBuffer()
+        self.setSourceDevice(self.LoadedAudioBuffer)
+        try:
+            self.LoadedAudioBuffer.setData(self.mw_contr.CurrentAudio.getvalue())
+            self.LoadedAudioBuffer.close()
+        except Exception as e:
+            self.errorOccurred.emit(self.Error.ResourceError, str(e))
+            return False
+        return True
 
     def t_loadCurrentAudio(self, **kwargs):
         app.processEvents()
@@ -119,6 +138,8 @@ class PlayerContr(QMediaPlayer):
             self._onLoadingMedia()
         elif status == QMediaPlayer.MediaStatus.EndOfMedia:
             self._onEndofMedia()
+        elif status == QMediaPlayer.MediaStatus.BufferedMedia:
+            app.processEvents()
 
     def _onLoadingMedia(self):
         self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loading...', 0)
@@ -131,7 +152,6 @@ class PlayerContr(QMediaPlayer):
         self._playLoadedAudio()
 
     def _onOnceAudioLoaded(self):
-        self.mw_contr.CurrentMode.cleanTempAudio()
         self._refreshAudioOutput_mac()
         self._hashAndRefreshLoadedAudioData()
         self.parent.onLoadSourceAudio()
@@ -140,6 +160,8 @@ class PlayerContr(QMediaPlayer):
         self.onceAudioLoaded = False
 
     def _hashAndRefreshLoadedAudioData(self):
+        if not isinstance(self.mw_contr.CurrentAudio, str):
+            return
         self.mw_contr.LoadedFilePath = self.mw_contr.CurrentAudio
         if self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.CurrentSourceMode.name == 'Audiofile':
             self.mw_contr.hashAudioFile()
@@ -263,7 +285,6 @@ class PlayerContr(QMediaPlayer):
             message = f'File "{sourcefile.path}" not found!'
         elif err == self.Error.FormatError and sourcefile.name != PN:
             message = f'The file "{sourcefile.name}" seems to be in a wrong format. Do you want to reformat it?'
-            ext = Path(sourcefile.name).suffix
             if reformat_message(self.mw_view, msg=message) == QMessageBox.StandardButton.Yes:
                 self.mw_contr.FileMaker.onActionConvertFilesTriggered()
             return

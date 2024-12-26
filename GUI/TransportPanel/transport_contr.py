@@ -209,7 +209,6 @@ class TransportContr(QObject):
         self.parent.CurrentMode.updateCurrentAudio()
         self.parent.ADGen.refresh_audio(filepath=self.parent.CurrentAudio)
         self.PlayerContr.t_loadCurrentAudio(play_after=play_after)
-        self.parent.CurrentMode.cleanTempAudio()
 
     def setInitCropRegionView(self):
         self.onSourceRangeChanged()

@@ -90,7 +90,6 @@ class AppModesHandler(QObject):
     def setCurrentMode(self, value):
         if not value:
             return
-        self.mw_contr.CurrentMode.cleanTempAudio()
         try:
             if self.modesActionGroup.checkedAction() == self.mw_view.actionPreview_Mode:
                 self._setPreviewMode()

@@ -23,7 +23,6 @@ from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.Misc.StartScreen import StartLogo
 from PyQt6.QtGui import QIcon
 from application import app
-import Model.del_temp_audio as dta
 
 
 if __name__ == '__main__':
@@ -39,6 +38,5 @@ if __name__ == '__main__':
     StartLogo.show()
     app.processEvents()
     os.environ['QT_MEDIA_BACKEND'] = 'ffmpeg'
-    dta.delTempAudio()
     mw = MainWindowContr()
     app.exec()

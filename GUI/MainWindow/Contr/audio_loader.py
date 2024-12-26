@@ -111,7 +111,6 @@ class AudioLoad:
         self.parent.SRC.disconnectSourceRangeSig()
         #self.TransportContr.PlayerContr.clearSource()
         QTimer.singleShot(0, self.TransportContr.PlayerContr.clearSource)
-        self.parent.CurrentMode.cleanTempAudio()
         self.parent.LoadedFilePath = None
         self.mw_view.TransportPanelView.noSongState()
         self.parent.SourceRange = None
