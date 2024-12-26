@@ -20,6 +20,7 @@ from GUI.TransportPanel.player_contr import PlayerContr
 from GUI.globals import defaultSliceLenUpd
 from Model.calc import proc_unproc_len
 from application import Settings
+from Model.AudioEngine.audio_to_buffer import a2b
 
 
 class TransportContr(QObject):
@@ -206,8 +207,9 @@ class TransportContr(QObject):
     def refreshAudio(self, play_after=False):
         if self.parent.CurrentMode.name == 'Preview' or self.parent.ADGen is None:
             return
-        self.parent.CurrentMode.updateCurrentAudio()
-        self.parent.ADGen.refresh_audio(filepath=self.parent.CurrentAudio)
+        self.parent.CurrentAudio = a2b(self.parent.ADGen.refresh_audio(filepath=None),
+                                       self.parent.ADGen.audiochunk.samplerate)
+        self.parent.ADGen.refresh_audio(filepath=None)
         self.PlayerContr.t_loadCurrentAudio(play_after=play_after)
 
     def setInitCropRegionView(self):
