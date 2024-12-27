@@ -141,8 +141,6 @@ class PlayerContr(QMediaPlayer):
             self._onLoadingMedia()
         elif status == QMediaPlayer.MediaStatus.EndOfMedia:
             self._onEndofMedia()
-        elif status == QMediaPlayer.MediaStatus.BufferedMedia:
-            app.processEvents()
 
     def _onLoadingMedia(self):
         self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loading...', 0)
