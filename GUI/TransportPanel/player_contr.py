@@ -302,7 +302,6 @@ class PlayerContr(QMediaPlayer):
 
     def _onBufferError(self, err, string):
         if err in (self.Error.ResourceError, self.Error.FormatError):
-            print('Buffer error!')
             self.parent.refreshAudio(play_after=True)
         else:
             self.mw_view.error_msg(f'{err}: {string}')
