@@ -15,6 +15,8 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import io
 import platform
+import time
+
 from PyQt6.QtCore import QUrl, QTimer, QBuffer
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
@@ -77,14 +79,13 @@ class PlayerContr(QMediaPlayer):
         self.clearSource()
         self.LoadedAudioBuffer = QBuffer()
         try:
-            self.setSourceDevice(self.LoadedAudioBuffer)
-            while self.LoadedAudioBuffer.isOpen():
-                self.LoadedAudioBuffer.close()
             self.LoadedAudioBuffer.setData(self.mw_contr.CurrentAudio.getvalue())
             self.setSourceDevice(self.LoadedAudioBuffer)
         except Exception as e:
-            self.errorOccurred.emit(self.Error.ResourceError, str(e))
+            self.errorOccurred.emit(e, str(e))
             return False
+        finally:
+            self.LoadedAudioBuffer.close()
         return True
 
     def t_loadCurrentAudio(self, **kwargs):
@@ -300,7 +301,8 @@ class PlayerContr(QMediaPlayer):
         self.mw_view.error_msg(message)
 
     def _onBufferError(self, err, string):
-        if err == self.Error.ResourceError:
+        if err in (self.Error.ResourceError, self.Error.FormatError):
+            print('Buffer error!')
             self.parent.refreshAudio(play_after=True)
         else:
             self.mw_view.error_msg(f'{err}: {string}')
