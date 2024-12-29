@@ -15,9 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import io
 import platform
-import time
-
-from PyQt6.QtCore import QUrl, QTimer, QBuffer
+from PyQt6.QtCore import QUrl, QTimer, QBuffer, QByteArray
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
 from GUI.TransportPanel.volumeslider_contr import VolumeSliderContr
@@ -80,6 +78,7 @@ class PlayerContr(QMediaPlayer):
         self.LoadedAudioBuffer = QBuffer()
         try:
             self.LoadedAudioBuffer.setData(self.mw_contr.CurrentAudio.getvalue())
+            self.LoadedAudioBuffer.open(QBuffer.OpenModeFlag.ReadOnly)
             self.setSourceDevice(self.LoadedAudioBuffer)
         except Exception as e:
             self.errorOccurred.emit(e, str(e))
@@ -89,7 +88,7 @@ class PlayerContr(QMediaPlayer):
         return True
 
     def t_loadCurrentAudio(self, **kwargs):
-        app.processEvents()
+        #app.processEvents()
         QTimer.singleShot(0, lambda: self.loadCurrentAudio(**kwargs))
 
     def clearSource(self):
@@ -178,7 +177,7 @@ class PlayerContr(QMediaPlayer):
         self.mw_contr.CurrentMode.playbackEnded()
 
     def onPlayTriggered(self):
-        app.processEvents()
+        #app.processEvents()
         if self.playbackState() == self.PlaybackState.PlayingState:
             return
         noPreviewSource = (self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.SourceAudio is None)
@@ -194,7 +193,8 @@ class PlayerContr(QMediaPlayer):
 
     def onStopTriggered(self, checkPlaybackState=False):
         if not checkPlaybackState:
-            app.processEvents()
+            #app.processEvents()
+            pass
         elif self.playbackState() != self.PlaybackState.PlayingState:
             return
         self.stop()

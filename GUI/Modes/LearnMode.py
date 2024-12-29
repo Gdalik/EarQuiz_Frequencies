@@ -14,15 +14,20 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import numpy as np
+from PyQt6.QtCore import QThreadPool
 from GUI.Modes.UniMode import UniMode
 from Model.AudioEngine.audio_to_buffer import a2b
+from GUI.Misc.adg_proc import ADGProc
 
 
 class LearnMode(UniMode):
+
+    ADGRun: ADGProc
     def __init__(self, parent):  # parent: MainWindowContr
         super().__init__(parent)
         self.name = 'Learn'
-        self.procEvents()
+        #self.procEvents()
         self.currentDrillFreq = None
         self.view.SliceLenSpin.setEnabled(False)
         if self.parent.LastMode.name != 'Preview':
@@ -31,7 +36,7 @@ class LearnMode(UniMode):
         self.view.TransportPanelView.AudioSliderView.Cursor.hide()
         self.parent.ADGC.setAudioDrillGen()
         self.nextDrill(fromStart=True)
-        self.updateSliceRegion()
+        #self.updateSliceRegion()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
         self.parent.ExScore.view.init_texts(onlyLastExcInfo=True)
         self.showAudioCursor()
@@ -48,29 +53,37 @@ class LearnMode(UniMode):
         if self.parent.ADGen is None:
             return
         self.showProcessingSourceMessage()
-        self.procEvents()
+        #self.procEvents()
         self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False,
                                                         raiseInterruptedException=raiseInterruptedException)
         eq_values = self.parent.EQContr.getEQValues()
         force_freq = eq_values or None
-        freq, audio = self.parent.ADGen.output(audio_path=None,
-                                        force_freq=force_freq, fromStart=fromStart)
+        self.ADGRun = ADGProc(self.parent.ADGen.output, audio_path=None, force_freq=force_freq,
+                                                                       fromStart=fromStart)
+        self.ADGRun.signals.drillGenerated.connect(self._onDrillGenerated)
+        threadPool = QThreadPool()
+        threadPool.start(self.ADGRun)
+        #freq, audio = self.parent.ADGen.output(audio_path=None,
+        #                                force_freq=force_freq, fromStart=fromStart)
+        #self.parent.CurrentAudio = a2b(audio, self.parent.ADGen.af_samplerate)
+        #return freq
+
+    def _onDrillGenerated(self, freq: int or tuple, audio: np.ndarray):
+        self.ADGRun.signals.drillGenerated.disconnect()
+        self.currentDrillFreq = freq
+        #QTimer.singleShot(200, self.updateSliceRegion)
         self.parent.CurrentAudio = a2b(audio, self.parent.ADGen.af_samplerate)
-        return freq
+        self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=True)
 
     def nextDrill(self, fromStart=False, play_after=True, raiseInterruptedException=True):
         if self.parent.ADGen is None:
             return
         self.parent.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
-        self.currentDrillFreq = self.generateDrill(fromStart=fromStart,
-                                                   raiseInterruptedException=raiseInterruptedException)
-        self.parent.TransportContr.PlayerContr.t_loadCurrentAudio(play_after=play_after)
+        self.generateDrill(fromStart=fromStart, raiseInterruptedException=raiseInterruptedException)
+        #self.parent.TransportContr.PlayerContr.t_loadCurrentAudio(play_after=play_after)
 
     def updateSliceRegion(self):
-        if self.parent.ADGen is None:
-            return
-        slicerange = self.parent.ADGen.audiochunk.currentSliceRange
-        self.view.TransportPanelView.AudioSliderView.SliceRegion.setValues(slicerange[0], slicerange[1])
+        self._updateSliceRegion()
 
     def playbackStoppedEnded(self):
         self.parent.EQContr.resetEQ()

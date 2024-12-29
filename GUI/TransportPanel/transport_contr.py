@@ -15,15 +15,18 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import math
-from PyQt6.QtCore import QObject, Qt
+from PyQt6.QtCore import QObject, Qt, QThreadPool
 from GUI.TransportPanel.player_contr import PlayerContr
 from GUI.globals import defaultSliceLenUpd
 from Model.calc import proc_unproc_len
 from application import Settings
 from Model.AudioEngine.audio_to_buffer import a2b
+from GUI.Misc.adg_proc import ADGRefresh
 
 
 class TransportContr(QObject):
+
+    AudioRefresh: ADGRefresh
     def __init__(self, parent):  # parent: MainWindowContr
         super().__init__()
         self.CursorBeingDragged = None
@@ -210,7 +213,16 @@ class TransportContr(QObject):
         self.parent.CurrentAudio = a2b(self.parent.ADGen.refresh_audio(filepath=None),
                                        self.parent.ADGen.audiochunk.samplerate)
         self.parent.ADGen.refresh_audio(filepath=None)
-        self.PlayerContr.t_loadCurrentAudio(play_after=play_after)
+        threadPool = QThreadPool()
+        self.AudioRefresh = ADGRefresh(self.parent.ADGen.refresh_audio, filepath=None, play_after=play_after)
+        self.AudioRefresh.signals.audioRefreshed.connect(self._onAudioRefreshed)
+        threadPool.start(self.AudioRefresh)
+        #self.PlayerContr.t_loadCurrentAudio(play_after=play_after)
+
+    def _onAudioRefreshed(self, play_after):
+        self.AudioRefresh.signals.disconnect()
+        self.PlayerContr.loadCurrentAudio(play_after=play_after)
+
 
     def setInitCropRegionView(self):
         self.onSourceRangeChanged()

@@ -58,7 +58,7 @@ class AudioLoad:
         elif self.mw_view.actionPreview_Mode.isChecked():
             self.parent.CurrentMode = PreviewMode(self.parent)
         else:
-            app.processEvents()
+            #app.processEvents()
             self.mw_view.actionPreview_Mode.setChecked(True)
             return True
         return False
@@ -66,7 +66,7 @@ class AudioLoad:
     def load_song(self, Song: PlSong, forcePlayAfter=False, forceNotPlayAfter=False):
         if not self._songCanBeLoaded(Song):
             return
-        app.processEvents()
+        #app.processEvents()
         reloaded_same = (self.parent.SourceAudio is not None and self.parent.SourceAudio == Song)
         try:
             reloaded_same_path = (self.parent.SourceAudio is not None and

@@ -61,8 +61,9 @@ class AudioProcSettingsContr(QObject):
 
     def refreshAudio(self):
         self.mw_contr.TransportContr.PlayerContr.onStopTriggered()
-        app.processEvents()
-        QTimer.singleShot(0, self.mw_contr.TransportContr.refreshAudio)
+        #app.processEvents()
+        #QTimer.singleShot(0, self.mw_contr.TransportContr.refreshAudio)
+        self.mw_contr.TransportContr.refreshAudio()
 
     def updADGenEQOnTimeToSit(self):
         if self.mw_contr.ADGen is None:

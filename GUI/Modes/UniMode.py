@@ -14,16 +14,13 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import contextlib
-from pathlib import Path
-from PyQt6.QtCore import QTimer
-from Model.audiodrill_gen import create_temp_wavefile
-from definitions import TEMP_AUDIO_DIR
+from PyQt6.QtCore import QTimer, QObject
 from application import app
 
 
-class UniMode:
+class UniMode(QObject):
     def __init__(self, parent, contrEnabled=True, setPlayerContr=True):  # parent: MainWindowContr
+        super().__init__()
         self.TimeSettingsChangesEnabled = None
         self.name = 'Uni'
         self.view = parent.mw_view
@@ -127,6 +124,12 @@ class UniMode:
     def showAudioCursor(self):
         if self.parent.CurrentAudio is not None:
             self.view.TransportPanelView.AudioSliderView.Cursor.show()
+
+    def _updateSliceRegion(self):
+        if self.parent.ADGen is None:
+            return
+        slicerange = self.parent.ADGen.audiochunk.currentSliceRange
+        self.view.TransportPanelView.AudioSliderView.SliceRegion.setValues(slicerange[0], slicerange[1])
 
     def updateSliceRegion(self):
         pass
