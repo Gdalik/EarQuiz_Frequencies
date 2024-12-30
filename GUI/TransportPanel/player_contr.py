@@ -13,6 +13,7 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 import io
 import platform
 from PyQt6.QtCore import QUrl, QTimer, QBuffer
@@ -31,6 +32,7 @@ class PlayerContr(QMediaPlayer):
         self.mw_contr = parent.parent
         self.mw_view = self.mw_contr.mw_view
         self.LoadedAudioBuffer = None
+        self.__buffer_error_count = 0
         self.TransportView = parent.TransportView
         self.PlayerView = self.TransportView.PlayerView
         self.VolumeSlider = self.mw_view.VolumeSlider
@@ -292,9 +294,11 @@ class PlayerContr(QMediaPlayer):
         self.mw_view.error_msg(message)
 
     def _onBufferError(self, err, string):
-        if err in (self.Error.ResourceError, self.Error.FormatError):
+        if err in (self.Error.ResourceError, self.Error.FormatError) and self.__buffer_error_count <= 5:
+            self.__buffer_error_count += 1
             self.parent.refreshAudio(play_after=True)
         else:
+            self.__buffer_error_count = 0
             self.mw_view.error_msg(f'{err}: {string}')
 
     def _stopTrainingOnError(self):
