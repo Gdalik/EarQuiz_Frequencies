@@ -272,6 +272,7 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.UniBut.setCheckable(True)
         self.UniBut.setDefaultAction(self.actionUni_Mode)
         self.ModeButtonGroup.addButton(self.UniBut)
+        self.ModeButtonGroup.setExclusive(True)
 
     def setMinimalistView(self):
         if self.isFullScreen() or self.isMaximized():

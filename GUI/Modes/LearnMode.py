@@ -15,10 +15,9 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import numpy as np
-from PyQt6.QtCore import QThreadPool
 from GUI.Modes.UniMode import UniMode
 from Model.AudioEngine.audio_to_buffer import a2b
-from GUI.Misc.adg_proc import ADGProc
+from GUI.Misc.adg_thread_run import ADGProc
 
 
 class LearnMode(UniMode):
@@ -27,7 +26,6 @@ class LearnMode(UniMode):
     def __init__(self, parent):  # parent: MainWindowContr
         super().__init__(parent)
         self.name = 'Learn'
-        #self.procEvents()
         self.currentDrillFreq = None
         self.view.SliceLenSpin.setEnabled(False)
         if self.parent.LastMode.name != 'Preview':
@@ -53,7 +51,6 @@ class LearnMode(UniMode):
         if self.parent.ADGen is None:
             return
         self.showProcessingSourceMessage()
-        #self.procEvents()
         self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False,
                                                         raiseInterruptedException=raiseInterruptedException)
         eq_values = self.parent.EQContr.getEQValues()
@@ -61,17 +58,12 @@ class LearnMode(UniMode):
         self.ADGRun = ADGProc(self.parent.ADGen.output, audio_path=None, force_freq=force_freq,
                                                                        fromStart=fromStart)
         self.ADGRun.signals.drillGenerated.connect(self._onDrillGenerated)
-        threadPool = QThreadPool()
-        threadPool.start(self.ADGRun)
-        #freq, audio = self.parent.ADGen.output(audio_path=None,
-        #                                force_freq=force_freq, fromStart=fromStart)
-        #self.parent.CurrentAudio = a2b(audio, self.parent.ADGen.af_samplerate)
-        #return freq
+        self.parent.threadPool.waitForDone()
+        self.parent.threadPool.start(self.ADGRun)
 
     def _onDrillGenerated(self, freq: int or tuple, audio: np.ndarray):
         self.ADGRun.signals.drillGenerated.disconnect()
         self.currentDrillFreq = freq
-        #QTimer.singleShot(200, self.updateSliceRegion)
         self.parent.CurrentAudio = a2b(audio, self.parent.ADGen.af_samplerate)
         self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=True)
 
@@ -80,7 +72,6 @@ class LearnMode(UniMode):
             return
         self.parent.TransportContr.PlayerContr.onStopTriggered(checkPlaybackState=True)
         self.generateDrill(fromStart=fromStart, raiseInterruptedException=raiseInterruptedException)
-        #self.parent.TransportContr.PlayerContr.t_loadCurrentAudio(play_after=play_after)
 
     def updateSliceRegion(self):
         self._updateSliceRegion()

@@ -13,7 +13,8 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+from PyQt6.QtCore import QThread, QTimer
+from definitions import PN
 from GUI.Modes.UniMode import UniMode
 
 
@@ -21,7 +22,6 @@ class PreviewMode(UniMode):
     def __init__(self, parent):  # parent: MainWindowContr
         super().__init__(parent, setPlayerContr=False)
         self.name = 'Preview'
-        #self.procEvents()
         self.parent.EQContr.resetEQ()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.hide()
         self.hideSequentialPlayContr()
@@ -35,7 +35,7 @@ class PreviewMode(UniMode):
         if self.parent.SourceAudio is not None:
             self.enableTimeSettingsChanges(True)
         if self.updateCurrentAudio():
-            self.parent.TransportContr.PlayerContr.t_loadCurrentAudio(play_after=self.parent.playAudioOnPreview)
+            self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=self.parent.playAudioOnPreview)
         self.parent.playAudioOnPreview = False
 
     @property
@@ -86,7 +86,8 @@ class PreviewMode(UniMode):
         pass
 
     def oncePlayingStarted(self):
-        pass
+        if self.parent.SourceAudio.path == PN:
+            self.parent.TransportContr.PlayerContr.onStopTriggered()
 
     def whilePlaying(self):
         pass

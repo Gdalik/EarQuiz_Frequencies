@@ -66,6 +66,7 @@ class TrackedProcRun(QRunnable):
 class ProcTrackControl(QDialog):
     def __init__(self, process, args: list, kwargs=None):
         super().__init__()
+        self.resize(200, 1252)
         self.threadpool = QThreadPool()
         self.tracked_proc_run = TrackedProcRun(process, args, kwargs)
         self.return_obj = None

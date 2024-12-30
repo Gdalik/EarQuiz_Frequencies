@@ -16,7 +16,6 @@
 
 import contextlib
 from GUI import globals as gb
-from definitions import PN
 
 
 class PinkNoiseMode:
@@ -31,7 +30,6 @@ class PinkNoiseMode:
         self.parent.TransportContr.TransportView.SliceLenSpin.setValue(gb.default_pn_slice_length)
         self.parent.setMakeAudioActionsEnabled(True)
         self.parent.AL.load_pinknoise()
-        self.parent.CurrentAudio = PN
 
 
 class AudioFileMode:

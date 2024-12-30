@@ -16,7 +16,7 @@
 
 import datetime
 import platform
-from PyQt6.QtCore import QObject, QTimer
+from PyQt6.QtCore import QObject, QTimer, QThreadPool
 from GUI.MainWindow.Contr.app_modes_handler import AppModesHandler
 from GUI.MainWindow.Contr.learn_freq_order_handler import LearnFreqOrderHandler
 from GUI.MainWindow.View import dark_theme
@@ -66,6 +66,8 @@ class MainWindowContr(QObject):
         self.LoadedFileHash = None
         self.LoadedFilePath = None
         self.LastSourceAudio = None
+        self.threadPool = QThreadPool()
+        self.threadPool.setMaxThreadCount(1)
         self.UpdCheckContr = UpdCheckContr(self)
         self.EQContr = EQContr(self)
         self.EQSetContr = EQSetContr(self)

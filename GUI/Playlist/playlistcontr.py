@@ -46,7 +46,8 @@ class PlaylistContr(QObject):
         self.playlistModel = PlaylistModel(playlistdata=self.playlistData)
         self.proxyModel = PLSortFilterProxyModel(self)
         self.PlaylistView.setModel(self.proxyModel)
-        self.PlNavi = PlNavi(self.playlistModel.playlistdata, shuffle=self.mw_view.actionShuffle_Playback.isChecked())
+        self.PlNavi = PlNavi(self.playlistModel.playlistdata, shuffle=self.mw_view.actionShuffle_Playback.isChecked(),
+                             repeat_playlist=self.mw_view.actionRepeat_Playlist.isChecked())
         self.selModel = self.PlaylistView.selectionModel()
         self._setUpActions()
         self.PlaylistView.customContextMenuRequested.connect(self._onCustomContextMenuRequested)
@@ -258,14 +259,14 @@ class PlaylistContr(QObject):
         _next = self.PlNavi.next()
         if _next is None or (_next == self.mw_contr.SourceAudio and self.mw_contr.CurrentMode.name != 'Preview'):
             return
-        self.mw_view.actionPreview_Mode.setChecked(True)
+        #self.mw_view.actionPreview_Mode.setChecked(True)
         self.onNextTrack_trig()
 
     def onPreviewPreviousBut_clicked(self):
         _prev = self.PlNavi.prev()
         if _prev is None or (_prev == self.mw_contr.SourceAudio and self.mw_contr.CurrentMode.name != 'Preview'):
             return
-        self.mw_view.actionPreview_Mode.setChecked(True)
+        #self.mw_view.actionPreview_Mode.setChecked(True)
         self.onPreviousTrack_trig()
 
     def selectCurrentSong(self):

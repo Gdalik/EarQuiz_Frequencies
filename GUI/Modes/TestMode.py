@@ -16,8 +16,7 @@
 
 from GUI.Modes.UniMode import UniMode
 from Model.AudioEngine.audio_to_buffer import a2b
-from PyQt6.QtCore import QThreadPool
-from GUI.Misc.adg_proc import ADGProc
+from GUI.Misc.adg_thread_run import ADGProc
 import numpy as np
 
 
@@ -28,7 +27,6 @@ class TestMode(UniMode):
     def __init__(self, parent):  # parent: MainWindowContr
         super().__init__(parent)
         self.name = 'Test'
-        #self.procEvents()
         self.currentDrillFreq = None
         self.view.SliceLenSpin.setEnabled(False)
         self.view.EQSetView.setEnabled(False)
@@ -40,7 +38,6 @@ class TestMode(UniMode):
         self.restart_test()
         self.parent.ADGC.setAudioDrillGen()
         self.nextDrill(fromStart=True)
-        #self.updateSliceRegion()
         self.view.TransportPanelView.AudioSliderView.SliceRegion.show()
         self.view.ExScoreInfo.show()
         self.parent.ExScore.showTestStatus()
@@ -50,22 +47,16 @@ class TestMode(UniMode):
         if self.parent.ADGen is None:
             return
         self.showProcessingSourceMessage()
-        #self.procEvents()
         self.parent.TransportContr.updAudioToEqSettings(refreshAfter=False)
-        #freq, audio = self.parent.ADGen.output(audio_path=None,
-        #                                       force_freq=None, fromStart=fromStart)
-        #self.parent.CurrentAudio = a2b(audio, self.parent.ADGen.af_samplerate)
         self.ADGRun = ADGProc(self.parent.ADGen.output, audio_path=None, force_freq=None,
                                                                        fromStart=fromStart)
         self.ADGRun.signals.drillGenerated.connect(self._onDrillGenerated)
-        threadPool = QThreadPool()
-        threadPool.start(self.ADGRun)
-        #return freq
+        self.parent.threadPool.waitForDone()
+        self.parent.threadPool.start(self.ADGRun)
 
     def _onDrillGenerated(self, freq: int or tuple, audio: np.ndarray):
         self.ADGRun.signals.drillGenerated.disconnect()
         self.currentDrillFreq = freq
-        #QTimer.singleShot(200, self.updateSliceRegion)
         self.parent.CurrentAudio = a2b(audio, self.parent.ADGen.af_samplerate)
         self.parent.TransportContr.PlayerContr.loadCurrentAudio(play_after=True)
         self.parent.ExScore.nextEx()
@@ -77,8 +68,6 @@ class TestMode(UniMode):
         self.view.setActionNextExampleEnabled(False)
         self.parent.EQContr.resetEQ()
         self.generateDrill(fromStart=fromStart)
-        #self.parent.TransportContr.PlayerContr.t_loadCurrentAudio(play_after=play_after)
-        #self.parent.ExScore.nextEx()
 
     def acceptAnswer(self):
         eq_values = self.parent.EQContr.getEQValues()

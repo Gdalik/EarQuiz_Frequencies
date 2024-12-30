@@ -83,12 +83,12 @@ class PlayerContr(QMediaPlayer):
         except Exception as e:
             self.errorOccurred.emit(e, str(e))
             return False
-        finally:
-            self.LoadedAudioBuffer.close()
+        '''finally:
+            if self.LoadedAudioBuffer.isOpen():
+                self.LoadedAudioBuffer.close()'''
         return True
 
     def t_loadCurrentAudio(self, **kwargs):
-        #app.processEvents()
         QTimer.singleShot(0, lambda: self.loadCurrentAudio(**kwargs))
 
     def clearSource(self):
@@ -177,7 +177,6 @@ class PlayerContr(QMediaPlayer):
         self.mw_contr.CurrentMode.playbackEnded()
 
     def onPlayTriggered(self):
-        #app.processEvents()
         if self.playbackState() == self.PlaybackState.PlayingState:
             return
         noPreviewSource = (self.mw_contr.CurrentMode.name == 'Preview' and self.mw_contr.SourceAudio is None)
@@ -192,10 +191,7 @@ class PlayerContr(QMediaPlayer):
             self.play()
 
     def onStopTriggered(self, checkPlaybackState=False):
-        if not checkPlaybackState:
-            #app.processEvents()
-            pass
-        elif self.playbackState() != self.PlaybackState.PlayingState:
+        if checkPlaybackState and not self.isPlaying():
             return
         self.stop()
         try:
