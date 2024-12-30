@@ -15,7 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import io
 import platform
-from PyQt6.QtCore import QUrl, QTimer, QBuffer, QByteArray
+from PyQt6.QtCore import QUrl, QTimer, QBuffer
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
 from GUI.TransportPanel.volumeslider_contr import VolumeSliderContr
@@ -30,7 +30,7 @@ class PlayerContr(QMediaPlayer):
         self.parent = parent
         self.mw_contr = parent.parent
         self.mw_view = self.mw_contr.mw_view
-        self.LoadedAudioBuffer = QBuffer()
+        self.LoadedAudioBuffer = None
         self.TransportView = parent.TransportView
         self.PlayerView = self.TransportView.PlayerView
         self.VolumeSlider = self.mw_view.VolumeSlider
@@ -83,9 +83,6 @@ class PlayerContr(QMediaPlayer):
         except Exception as e:
             self.errorOccurred.emit(e, str(e))
             return False
-        '''finally:
-            if self.LoadedAudioBuffer.isOpen():
-                self.LoadedAudioBuffer.close()'''
         return True
 
     def t_loadCurrentAudio(self, **kwargs):

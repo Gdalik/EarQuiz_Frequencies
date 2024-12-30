@@ -16,7 +16,7 @@
 
 from pathlib import Path
 from PyQt6 import QtCore, QtGui
-from PyQt6.QtCore import Qt, QSortFilterProxyModel, QModelIndex
+from PyQt6.QtCore import Qt, QSortFilterProxyModel, QModelIndex, QRegularExpression
 from PyQt6.QtGui import QImage
 from GUI.Playlist.plsong import PlSong
 from GUI.MainWindow.View.dark_theme import playlist_even_background_color
@@ -159,12 +159,18 @@ class PLSortFilterProxyModel(QSortFilterProxyModel):
         self._filter_string = ''
 
     def setFilter(self, pattern: str):
-        self._filter_string = pattern.lower()
-        self.setFilterFixedString(self._filter_string)
+        self._filter_string = pattern
+        self.setFilterWildcard(None)
         self.sourceModel().filtered = bool(pattern)
 
-    def filterAcceptsRow(self, source_row: int, source_parent):
+    def filterAcceptsRow(self, source_row: int, source_parent) -> bool:
         index0 = self.sourceModel().index(source_row, 0, source_parent)
         index2 = self.sourceModel().index(source_row, 2, source_parent)
-        return self._filter_string in self.sourceModel().data(index0, role=Qt.ItemDataRole.DisplayRole).lower() or \
-               self._filter_string in self.sourceModel().data(index2, role=Qt.ItemDataRole.DisplayRole).lower()
+        return (self._wcMatch(self._filter_string, self.sourceModel().data(index0, role=Qt.ItemDataRole.DisplayRole)) or
+                self._wcMatch(self._filter_string, self.sourceModel().data(index2, role=Qt.ItemDataRole.DisplayRole)))
+
+    @staticmethod
+    def _wcMatch(wc_pattern: str, string: str) -> bool:
+        re_pattern = QtCore.QRegularExpression.fromWildcard(wc_pattern, Qt.CaseSensitivity.CaseInsensitive,
+                                                            QRegularExpression.WildcardConversionOption.UnanchoredWildcardConversion)
+        return re_pattern.match(string).hasMatch()

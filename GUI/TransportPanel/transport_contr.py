@@ -15,7 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import math
-from PyQt6.QtCore import QObject, Qt
+from PyQt6.QtCore import QObject, Qt, QThreadPool
 from GUI.TransportPanel.player_contr import PlayerContr
 from GUI.globals import defaultSliceLenUpd
 from Model.calc import proc_unproc_len
@@ -215,13 +215,12 @@ class TransportContr(QObject):
         self.parent.ADGen.refresh_audio(filepath=None)
         self.AudioRefresh = ADGRefresh(self.parent.ADGen.refresh_audio, filepath=None, play_after=play_after)
         self.AudioRefresh.signals.audioRefreshed.connect(self._onAudioRefreshed)
-        self.parent.threadPool.waitForDone()
-        self.parent.threadPool.start(self.AudioRefresh)
-        #self.PlayerContr.t_loadCurrentAudio(play_after=play_after)
+        threadPool = QThreadPool()
+        threadPool.start(self.AudioRefresh)
 
     def _onAudioRefreshed(self, play_after):
         self.AudioRefresh.signals.disconnect()
-        self.PlayerContr.t_loadCurrentAudio(play_after=play_after)
+        self.PlayerContr.loadCurrentAudio(play_after=play_after)
 
 
     def setInitCropRegionView(self):

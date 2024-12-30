@@ -66,8 +66,6 @@ class MainWindowContr(QObject):
         self.LoadedFileHash = None
         self.LoadedFilePath = None
         self.LastSourceAudio = None
-        self.threadPool = QThreadPool()
-        self.threadPool.setMaxThreadCount(1)
         self.UpdCheckContr = UpdCheckContr(self)
         self.EQContr = EQContr(self)
         self.EQSetContr = EQSetContr(self)

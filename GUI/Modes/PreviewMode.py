@@ -13,7 +13,7 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-from PyQt6.QtCore import QThread, QTimer
+
 from definitions import PN
 from GUI.Modes.UniMode import UniMode
 

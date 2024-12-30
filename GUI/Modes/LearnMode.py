@@ -15,6 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import numpy as np
+from PyQt6.QtCore import QThreadPool
 from GUI.Modes.UniMode import UniMode
 from Model.AudioEngine.audio_to_buffer import a2b
 from GUI.Misc.adg_thread_run import ADGProc
@@ -58,8 +59,8 @@ class LearnMode(UniMode):
         self.ADGRun = ADGProc(self.parent.ADGen.output, audio_path=None, force_freq=force_freq,
                                                                        fromStart=fromStart)
         self.ADGRun.signals.drillGenerated.connect(self._onDrillGenerated)
-        self.parent.threadPool.waitForDone()
-        self.parent.threadPool.start(self.ADGRun)
+        threadPool = QThreadPool()
+        threadPool.start(self.ADGRun)
 
     def _onDrillGenerated(self, freq: int or tuple, audio: np.ndarray):
         self.ADGRun.signals.drillGenerated.disconnect()
