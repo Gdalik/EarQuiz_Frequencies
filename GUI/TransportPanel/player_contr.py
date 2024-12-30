@@ -22,7 +22,7 @@ from PyQt6.QtWidgets import QMessageBox
 from GUI.TransportPanel.volumeslider_contr import VolumeSliderContr
 from GUI.Misc.error_message import reformat_message
 from definitions import PN
-from application import MediaDevices, Settings, app
+from application import MediaDevices, Settings
 
 
 class PlayerContr(QMediaPlayer):
