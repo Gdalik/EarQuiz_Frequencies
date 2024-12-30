@@ -88,6 +88,7 @@ class PreviewMode(UniMode):
     def oncePlayingStarted(self):
         if self.parent.SourceAudio.path == PN:
             self.parent.TransportContr.PlayerContr.onStopTriggered()
+            self.parent.TransportContr.PlayerContr.clearSource()
 
     def whilePlaying(self):
         pass
