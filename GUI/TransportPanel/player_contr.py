@@ -82,6 +82,7 @@ class PlayerContr(QMediaPlayer):
             self.LoadedAudioBuffer.setData(self.mw_contr.CurrentAudio.getvalue())
             self.LoadedAudioBuffer.open(QBuffer.OpenModeFlag.ReadOnly)
             self.setSourceDevice(self.LoadedAudioBuffer)
+            self.__buffer_error_count = 0
         except Exception as e:
             self.errorOccurred.emit(e, str(e))
             return False
