@@ -59,7 +59,8 @@ def convert_audio(audiofile_path: str, source_samplerate: int or float, audio_fo
     target_samplerate = get_target_samplerate(source_samplerate, target_samplerate_mode)
     out_ext = '.aiff' if audio_format == 'AIFF' else '.wav'
     output_path = Path(audiofile_path).with_suffix(out_ext)
-    if str(output_path) == audiofile_path and source_samplerate == target_samplerate:
+    output_path_US = Path(audiofile_path).with_suffix(out_ext.upper())
+    if audiofile_path in (str(output_path), str(output_path_US)) and source_samplerate == target_samplerate:
         return None
     if source_samplerate == target_samplerate:
         input_af = AudioFile(audiofile_path, 'r')

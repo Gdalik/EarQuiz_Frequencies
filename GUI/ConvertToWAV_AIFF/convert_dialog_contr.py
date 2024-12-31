@@ -19,7 +19,7 @@ from PyQt6.QtWidgets import QDialog, QDialogButtonBox
 
 from GUI.ConvertToWAV_AIFF.convert_dialog_view import Ui_ConvertToWAV_AIFF_Dialog
 
-
+#TODO: Add conversion to FLAC
 class ConvertFilesDialogContr(QDialog, Ui_ConvertToWAV_AIFF_Dialog):
     def __init__(self):
         super().__init__()

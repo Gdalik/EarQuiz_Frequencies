@@ -90,6 +90,7 @@ class AudioChunk(PreviewAudioCrop, QObject):
         self._callback_out(output, callback=callback)
         self.audiofile.seek(int(self.sec2fr(self.starttime)))
         prop_subchunk_length = int(self.excerpt_length_fr / self._find_rc_divider())
+        #TODO: Optimize reading speed of MP3 files with unknown exact duration
         read_ch_samples = max(prop_subchunk_length, self.samplerate) if self.audiofile.exact_duration_known \
             else int(self.samplerate)
         while self.cropped[0].size < self.excerpt_length_fr:
