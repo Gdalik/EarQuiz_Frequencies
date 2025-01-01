@@ -83,28 +83,26 @@ class AudioChunk(PreviewAudioCrop, QObject):
         if self.audiofile_path == PN:
             self.cropped = pinknoise
             return
-        self._open_audiofile()  # makes no effect if audiofile is already opened
-        self.user_stopped = False
-        self.cropped = np.empty((self.audiofile.num_channels, 0))
-        output = {'State': 'Reading / cropping audiofile', 'Percent': 0}
-        self._callback_out(output, callback=callback)
-        self.audiofile.seek(int(self.sec2fr(self.starttime)))
-        prop_subchunk_length = int(self.excerpt_length_fr / self._find_rc_divider())
-        #TODO: Optimize reading speed of MP3 files with unknown exact duration
-        read_ch_samples = max(prop_subchunk_length, self.samplerate) if self.audiofile.exact_duration_known \
-            else int(self.samplerate)
-        while self.cropped[0].size < self.excerpt_length_fr:
-            ch = self.audiofile.read(read_ch_samples)
-            self.cropped = np.concatenate((self.cropped, ch), axis=1)
-            output['Percent'] = int(self.cropped[0].size / self.excerpt_length_fr * 100)
-            try:
-                self._callback_out(output, callback=callback)
-            except InterruptedException:
-                self._stop()
-                return
-            if self.audiofile.tell() == self.audiofile.frames:
-                break  # to avoid infinite loop for some 'broken' MP3 files
-        self._close_audiofile()
+        with self._open_audiofile():  # makes no effect if audiofile is already opened
+            self.user_stopped = False
+            self.cropped = np.empty((self.audiofile.num_channels, 0))
+            output = {'State': 'Reading / cropping audiofile', 'Percent': 0}
+            self._callback_out(output, callback=callback)
+            self.audiofile.seek(int(self.sec2fr(self.starttime)))
+            prop_subchunk_length = int(self.excerpt_length_fr / self._find_rc_divider())
+            read_ch_samples = max(prop_subchunk_length, self.samplerate) if self.audiofile.exact_duration_known \
+                else int(self.samplerate)
+            while self.cropped[0].size < self.excerpt_length_fr:
+                ch = self.audiofile.read(read_ch_samples)
+                self.cropped = np.concatenate((self.cropped, ch), axis=1)
+                output['Percent'] = int(self.cropped[0].size / self.excerpt_length_fr * 100)
+                try:
+                    self._callback_out(output, callback=callback)
+                except InterruptedException:
+                    self._stop()
+                    return
+                if self.audiofile.tell() == self.audiofile.frames:
+                    break  # to avoid infinite loop for some 'broken' MP3 files
 
     def _open_audiofile(self):
         if self.audiofile is None or not self.audiofile.closed:
