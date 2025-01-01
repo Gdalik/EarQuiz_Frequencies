@@ -76,8 +76,7 @@ class PlayerContr(QMediaPlayer):
         return True
 
     def _loadFileObject2Buffer(self) -> bool:
-        self.clearSource()
-        self.LoadedAudioBuffer = QBuffer()
+        self.clearSource(clearBuffer=True)
         try:
             self.LoadedAudioBuffer.setData(self.mw_contr.CurrentAudio.getvalue())
             self.LoadedAudioBuffer.open(QBuffer.OpenModeFlag.ReadOnly)
@@ -91,8 +90,10 @@ class PlayerContr(QMediaPlayer):
     def t_loadCurrentAudio(self, **kwargs):
         QTimer.singleShot(0, lambda: self.loadCurrentAudio(**kwargs))
 
-    def clearSource(self):
+    def clearSource(self, clearBuffer=False):
         self.setSource(QUrl())
+        if clearBuffer:
+            self.LoadedAudioBuffer = QBuffer()
 
     def loadMetaData(self):
         if not self.metaData():
