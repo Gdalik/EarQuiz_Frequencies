@@ -70,7 +70,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self._setWinViewActions()
         self.TransportPanelView = TransportPanelView(self)
         self.setUniActBut()
-        self.alt_pressed = None
         self._mwWasShown = False
         self.setFocus()
         self.SupportProject.visibilityChanged.connect(self.onSupportProjectVisibilityChanged)
@@ -210,20 +209,6 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
         self.actionMinimize.triggered.connect(self.showMinimized)
         self.actionZoom.triggered.connect(self.showMaximized)
         self.actionMinimize_All_Windows.triggered.connect(self.minimizeAllWindows)
-
-    def keyPressEvent(self, event):
-        super(MainWindowView, self).keyPressEvent(event)
-        if event.key() == Qt.Key.Key_Alt:
-            self.alt_pressed = True
-            self.PlaylistView.alt_pressed = True
-        event.accept()
-
-    def keyReleaseEvent(self, event):
-        super(MainWindowView, self).keyReleaseEvent(event)
-        if event.key() == Qt.Key.Key_Alt:
-            self.alt_pressed = False
-            self.PlaylistView.alt_pressed = False
-        event.accept()
 
     def dragEnterEvent(self, event):
         super(MainWindowView, self).dragEnterEvent(event)

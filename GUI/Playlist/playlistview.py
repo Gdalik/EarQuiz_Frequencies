@@ -15,7 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from PyQt6.QtCore import Qt, pyqtSignal, QObject, QMimeData, QUrl, QItemSelection, QItemSelectionModel, QModelIndex
-from PyQt6.QtGui import QPainter, QDrag, QColor
+from PyQt6.QtGui import QPainter, QDrag, QColor, QGuiApplication
 from PyQt6.QtWidgets import QTableView, QAbstractItemView, QHeaderView
 from Utilities.checkMimeData import checkDroppedMimeData
 
@@ -38,7 +38,6 @@ class PlaylistView(QTableView):
         self.setShowGrid(False)
         self.selectedItems = []
         self.MouseButtonPressed = None
-        self.alt_pressed = None
 
     @property
     def Model(self):
@@ -108,7 +107,8 @@ class PlaylistView(QTableView):
         paths = [QUrl.fromLocalFile(item.path) for item in self.selectedItems]
         mimeData.setUrls(paths)
         drag.setMimeData(mimeData)
-        action = drag.exec(Qt.DropAction.CopyAction) if self.alt_pressed \
+        alt_pressed = Qt.KeyboardModifier.AltModifier in QGuiApplication.instance().keyboardModifiers()
+        action = drag.exec(Qt.DropAction.CopyAction) if alt_pressed \
             else drag.exec(Qt.DropAction.CopyAction | Qt.DropAction.MoveAction)
         self.signals.dragDropFromPLFinished.emit(action)
 
