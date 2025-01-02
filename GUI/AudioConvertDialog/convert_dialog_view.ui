@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    EarQuiz Frequencies. Software for technical ear training on equalization.
-    Copyright (C) 2023-2024, Gdaliy Garmiza.
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
--->
 <ui version="4.0">
- <class>ConvertToWAV_AIFF_Dialog</class>
- <widget class="QDialog" name="ConvertToWAV_AIFF_Dialog">
+ <class>AudioConvertDialog</class>
+ <widget class="QDialog" name="AudioConvertDialog">
   <property name="windowModality">
    <enum>Qt::NonModal</enum>
   </property>
@@ -71,6 +54,13 @@
          <widget class="QRadioButton" name="AIFFBut">
           <property name="text">
            <string>AIFF</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="FLACBut">
+          <property name="text">
+           <string>FLAC</string>
           </property>
          </widget>
         </item>
@@ -153,7 +143,7 @@ to multiple where original samplerate is higher)
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>ConvertToWAV_AIFF_Dialog</receiver>
+   <receiver>AudioConvertDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -169,7 +159,7 @@ to multiple where original samplerate is higher)
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>ConvertToWAV_AIFF_Dialog</receiver>
+   <receiver>AudioConvertDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

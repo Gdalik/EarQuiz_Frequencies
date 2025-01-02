@@ -15,7 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from PyQt6.QtCore import QUrl, QItemSelection, QItemSelectionModel, QObject, QTimer
-from GUI.ConvertToWAV_AIFF.convert_dialog_contr import ConvertFilesDialogContr
+from GUI.AudioConvertDialog.convert_dialog_contr import ConvertFilesDialogContr
 from GUI.FileMaker.FileCreationSuccessDialog import SuccessDialog
 from GUI.MakeLearnTestFiles.make_learn_test_dialog_contr import MakeLearnTestDialogContr
 from GUI.Misc.tracked_proc import ProcTrackControl

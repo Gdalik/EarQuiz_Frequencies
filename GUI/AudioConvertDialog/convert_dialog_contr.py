@@ -15,12 +15,11 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QDialog, QDialogButtonBox
+from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QRadioButton
+from GUI.AudioConvertDialog.convert_dialog_view import Ui_AudioConvertDialog
 
-from GUI.ConvertToWAV_AIFF.convert_dialog_view import Ui_ConvertToWAV_AIFF_Dialog
 
-#TODO: Add conversion to FLAC
-class ConvertFilesDialogContr(QDialog, Ui_ConvertToWAV_AIFF_Dialog):
+class ConvertFilesDialogContr(QDialog, Ui_AudioConvertDialog):
     def __init__(self):
         super().__init__()
         Flags = Qt.WindowType(Qt.WindowType.CustomizeWindowHint | Qt.WindowType.WindowTitleHint |
@@ -33,7 +32,7 @@ class ConvertFilesDialogContr(QDialog, Ui_ConvertToWAV_AIFF_Dialog):
 
     @property
     def audio_format(self):
-        return 'AIFF' if self.AIFFBut.isChecked() else 'WAVE'
+        return [RB.text() for RB in self.FormatGroup.findChildren(QRadioButton) if RB.isChecked()][0]
 
     @property
     def target_samplerate_mode(self):

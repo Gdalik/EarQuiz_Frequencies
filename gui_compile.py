@@ -24,7 +24,7 @@ from definitions import ROOT_DIR
 venv_dir = 'venv'
 
 ui_files = ('GUI/MainWindow/View/mainwindow.ui',
-            'GUI/ConvertToWAV_AIFF/convert_dialog_view.ui',
+            'GUI/AudioConvertDialog/convert_dialog_view.ui',
             'GUI/MakeLearnTestFiles/make_learn_test_dialog_view.ui',
             'GUI/AudioProcSettings/audio_proc_settings_widget.ui',
             'GUI/About/AboutDialog.ui',)
