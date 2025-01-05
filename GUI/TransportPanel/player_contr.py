@@ -16,6 +16,7 @@
 
 import io
 import platform
+import sys
 from PyQt6.QtCore import QUrl, QTimer, QBuffer
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
@@ -171,6 +172,7 @@ class PlayerContr(QMediaPlayer):
                 self.PlModel.updCanLoadData()
 
     def _onEndofMedia(self):
+        sys.stdout.write('')    # Workaround that releases GIL to prevent potential deadlock
         self.setPosition(int(self.startPos))
         if self.mw_view.actionLoop_Playback.isChecked() and self.mw_contr.CurrentMode.name == 'Preview':
             self.play()
