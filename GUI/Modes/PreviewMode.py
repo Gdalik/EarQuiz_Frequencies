@@ -93,6 +93,9 @@ class PreviewMode(UniMode):
     def whilePlaying(self):
         pass
 
+    def playbackStoppedEnded(self):
+        pass
+
     def ensureCursorGotoStart(self):
         if not self.parent.playAudioOnPreview and self.currentAudioStartTime is not None:
             self.view.TransportPanelView.AudioSliderView.Cursor.setPos(self.currentAudioStartTime)

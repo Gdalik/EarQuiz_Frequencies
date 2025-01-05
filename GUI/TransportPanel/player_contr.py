@@ -176,7 +176,6 @@ class PlayerContr(QMediaPlayer):
         self.setPosition(int(self.startPos))
         if self.mw_view.actionLoop_Playback.isChecked() and self.mw_contr.CurrentMode.name == 'Preview':
             self.play()
-        self.mw_contr.CurrentMode.playbackStoppedEnded()
         self.mw_contr.CurrentMode.playbackEnded()
 
     def onPlayTriggered(self):
