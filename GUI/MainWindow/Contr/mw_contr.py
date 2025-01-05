@@ -190,6 +190,7 @@ class MainWindowContr(QObject):
         app.quit()
 
     def onAppClose(self):
+        self.TransportContr.PlayerContr.onStopTriggered()
         self.TransportContr.PlayerContr.clearSource(clearBuffer=True)
         self.SRC.savePrevSourceAudioRange()
         self.EQSetContr.saveEQSettings()
