@@ -107,7 +107,7 @@ class UniMode(QObject):
         self.hideEQState()
 
     def playbackEnded(self):
-        pass
+        self.parent.TransportContr.PlayerContr.waitForLoadedMedia()
 
     def oncePlayingStarted(self):
         self.view.setEQStateIndicatorOn(self.parent.TransportContr.eqStateOnOff())
