@@ -14,8 +14,8 @@
 AppId={#MyAppName}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-AppCopyright=Copyright (C) 2023-2024 by Gdaliy Garmiza
-VersionInfoVersion=0.1.0.7
+AppCopyright=Copyright (C) 2023-2025 by Gdaliy Garmiza
+VersionInfoVersion=0.1.0.8
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}

@@ -1,5 +1,5 @@
 #    EarQuiz Frequencies. Software for technical ear training on equalization.
-#    Copyright (C) 2023-2024, Gdaliy Garmiza.
+#    Copyright (C) 2023-2025, Gdaliy Garmiza.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -15,6 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import numpy as np
+import time
 from PyQt6.QtCore import QThreadPool
 from GUI.Modes.UniMode import UniMode
 from Model.AudioEngine.audio_to_buffer import a2b
@@ -28,6 +29,7 @@ class LearnMode(UniMode):
         super().__init__(parent)
         self.name = 'Learn'
         self.currentDrillFreq = None
+        self.autoNext = False
         self.view.SliceLenSpin.setEnabled(False)
         if self.parent.LastMode.name != 'Preview':
             self.parent.EQContr.resetEQ()
@@ -87,6 +89,7 @@ class LearnMode(UniMode):
             if not self.parent.mw_view.actionLoop_Sequence.isChecked() and \
                     self.parent.ADGen.exercise_gen.isLastItemInSeq:
                 return
+            time.sleep(0.05)
             self.nextDrill()
 
     def oncePlayingStarted(self):

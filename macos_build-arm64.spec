@@ -61,7 +61,7 @@ app = BUNDLE(
     'CFBundlePackageType': 'APPL',
     'CFBundleSignature': 'EQFREQ',
     'CFBundleIdentifier': 'org.earquiz.frequencies',
-    'CFBundleShortVersionString': '0.1.7',
+    'CFBundleShortVersionString': '0.1.8',
     'NSHighResolutionCapable': True,
     'LSMinimumSystemVersion': '12.0.0',
     'CFBundleDevelopmentRegion': 'en_US',
@@ -70,7 +70,7 @@ app = BUNDLE(
         'CFBundleTypeExtensions': ['wav', 'flac', 'mp3', 'ogg', 'aiff', 'pls', 'xspf', 'm3u', 'm3u8',],
         'CFBundleTypeRole': "Viewer",
          }],
-    'NSHumanReadableCopyright': '© 2023-2024 Gdaliy Garmiza',
+    'NSHumanReadableCopyright': '© 2023-2025 Gdaliy Garmiza',
     'NSPrincipalClass': 'NSApplication'
     },
 )

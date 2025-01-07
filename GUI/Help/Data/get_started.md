@@ -1,7 +1,7 @@
 <img align="left" src=":/Logo/Icons/Logo/EarQuiz_Header.png"/>
 
 ## EarQuiz Frequencies  
-### &copy; 2023-2024 Gdaliy Garmiza. [https://earquiz.org/EQ_Frequencies/](https://earquiz.org/EQ_Frequencies/)
+### &copy; 2023-2025 Gdaliy Garmiza. [https://earquiz.org/EQ_Frequencies/](https://earquiz.org/EQ_Frequencies/)
 
 ----------------
 

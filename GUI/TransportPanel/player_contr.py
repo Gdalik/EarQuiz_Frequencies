@@ -1,5 +1,5 @@
 #    EarQuiz Frequencies. Software for technical ear training on equalization.
-#    Copyright (C) 2023-2024, Gdaliy Garmiza.
+#    Copyright (C) 2023-2025, Gdaliy Garmiza.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -16,9 +16,6 @@
 
 import io
 import platform
-import time
-
-from application import app
 from PyQt6.QtCore import QUrl, QTimer, QBuffer
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
@@ -177,7 +174,6 @@ class PlayerContr(QMediaPlayer):
         self.setPosition(int(self.startPos))
         if self.mw_view.actionLoop_Playback.isChecked() and self.mw_contr.CurrentMode.name == 'Preview':
             self.play()
-        time.sleep(0.05)
         self.mw_contr.CurrentMode.playbackEnded()
 
     def onPlayTriggered(self):

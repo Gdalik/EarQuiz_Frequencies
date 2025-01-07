@@ -107,7 +107,7 @@ class Ui_AboutDialog(object):
         AboutDialog.setWindowTitle(_translate("AboutDialog", "About EarQuiz Frequencies"))
         self.AppNameLab.setText(_translate("AboutDialog", "EarQuiz Frequencies"))
         self.VersionLab.setText(_translate("AboutDialog", "Version"))
-        self.CopyrightLab.setText(_translate("AboutDialog", "Copyright (c) 2023-2024 by Gdaliy Garmiza"))
+        self.CopyrightLab.setText(_translate("AboutDialog", "Copyright (c) 2023-2025 by Gdaliy Garmiza"))
         self.DescriptionLab.setText(_translate("AboutDialog", "Software for technical ear training"))
         self.LicenseLab.setText(_translate("AboutDialog", "Licensed under <a href=\'https://www.gnu.org/licenses/gpl-3.0.html\'>GNU GPL v3</a>"))
         self.WebsiteLab.setText(_translate("AboutDialog", "<a href=\'https://earquiz.org\'>https://earquiz.org</a>"))

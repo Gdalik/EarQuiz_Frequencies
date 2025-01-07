@@ -56,7 +56,7 @@ install:
 artifacts:
   - path: Distribution\Windows\output\*.exe
 
-version: 0.1.7-build-{build}
+version: 0.1.8-build-{build}
 pull_requests:
   do_not_increment_build_number: true
 

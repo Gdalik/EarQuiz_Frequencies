@@ -68,7 +68,7 @@ The bundled application should now be available in the *dist* folder.
 
 ## License
 
-`EarQuiz Frequencies` is Copyright &copy; 2023-2024 by Gdaliy Garmiza.<br />
+`EarQuiz Frequencies` is Copyright &copy; 2023-2025 by Gdaliy Garmiza.<br />
 `EarQuiz Frequencies` is licensed under the [GNU General Public License v3](https://github.com/Gdalik/EarQuiz_Frequencies/blob/master/LICENSE).
 
 This application uses the following open source libraries:
