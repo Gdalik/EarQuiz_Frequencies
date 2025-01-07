@@ -237,7 +237,8 @@ class PlaylistContr(QObject):
                     self.PlNavi.setCurrentSong(_currentSong)
                     return
         if prev_song is not None:
-            self.loadAndSelectSong(prev_song)
+            self.loadAndSelectSong(prev_song,
+                                   forceNotPlayAfter=not(self.mw_view.actionStartPlayingAfterLoading.isChecked()))
 
     def onNextTrack_trig(self):
         next_song = self.PlNavi.next()
@@ -253,20 +254,19 @@ class PlaylistContr(QObject):
                 next_song = None
         self.PlNavi.setCurrentSong(_currentSong)
         if next_song is not None:
-            self.loadAndSelectSong(next_song)
+            self.loadAndSelectSong(next_song,
+                                   forceNotPlayAfter=not(self.mw_view.actionStartPlayingAfterLoading.isChecked()))
 
     def onPreviewNextBut_clicked(self):
         _next = self.PlNavi.next()
         if _next is None or (_next == self.mw_contr.SourceAudio and self.mw_contr.CurrentMode.name != 'Preview'):
             return
-        #self.mw_view.actionPreview_Mode.setChecked(True)
         self.onNextTrack_trig()
 
     def onPreviewPreviousBut_clicked(self):
         _prev = self.PlNavi.prev()
         if _prev is None or (_prev == self.mw_contr.SourceAudio and self.mw_contr.CurrentMode.name != 'Preview'):
             return
-        #self.mw_view.actionPreview_Mode.setChecked(True)
         self.onPreviousTrack_trig()
 
     def selectCurrentSong(self):
