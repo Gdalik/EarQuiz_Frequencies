@@ -24,7 +24,7 @@ class UniMode(QObject):
         self.TimeSettingsChangesEnabled = None
         self.name = 'Uni'
         self.view = parent.mw_view
-        QThread.currentThread().msleep(100)
+        QThread.currentThread().msleep(50)
         self.view.status.clearMessage()
         self.parent = parent
         self.parent.CurrentMode = self

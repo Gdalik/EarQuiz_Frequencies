@@ -89,7 +89,8 @@ class LearnMode(UniMode):
             if not self.parent.mw_view.actionLoop_Sequence.isChecked() and \
                     self.parent.ADGen.exercise_gen.isLastItemInSeq:
                 return
-            time.sleep(0.05)
+            #time.sleep(0.05)
+            self.parent.TransportContr.PlayerContr.waitForLoadedMedia()
             self.nextDrill()
 
     def oncePlayingStarted(self):

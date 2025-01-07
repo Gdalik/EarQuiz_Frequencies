@@ -142,6 +142,10 @@ class PlayerContr(QMediaPlayer):
         elif status == QMediaPlayer.MediaStatus.EndOfMedia:
             self._onEndofMedia()
 
+    def waitForLoadedMedia(self):
+        while self.mediaStatus() != self.MediaStatus.LoadedMedia:
+            pass
+
     def _onLoadingMedia(self):
         self.mw_view.status.showMessage(f'{self.mw_contr.SourceAudio.name}: Loading...', 0)
 
@@ -193,7 +197,10 @@ class PlayerContr(QMediaPlayer):
     def onStopTriggered(self, checkPlaybackState=False):
         if checkPlaybackState and not self.isPlaying():
             return
+        wasPlayingBeforeStop = self.isPlaying()
         self.stop()
+        if wasPlayingBeforeStop:
+            self.waitForLoadedMedia()
         try:
             starttime = self.startPos
         except AttributeError:
