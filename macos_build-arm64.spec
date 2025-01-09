@@ -63,7 +63,7 @@ app = BUNDLE(
     'CFBundleIdentifier': 'org.earquiz.frequencies',
     'CFBundleShortVersionString': '0.1.8',
     'NSHighResolutionCapable': True,
-    'LSMinimumSystemVersion': '12.0.0',
+    'LSMinimumSystemVersion': '13.0.0',
     'CFBundleDevelopmentRegion': 'en_US',
     'CFBundleDocumentTypes': [{
         'CFBundleTypeName': 'EarQuiz_Frequencies_Audio',
