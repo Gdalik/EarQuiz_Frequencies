@@ -153,7 +153,7 @@ class PlaylistModel(QtCore.QAbstractTableModel):
 
 
 class PLSortFilterProxyModel(QSortFilterProxyModel):
-    def __init__(self, parent, **kwargs):
+    def __init__(self, parent):
         super().__init__()
         self.setSourceModel(parent.playlistModel)
         self._filter_string = ''

@@ -20,7 +20,7 @@ from PyQt6.QtCore import QTimer, QThread
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.globals import MinAudioDuration
 from definitions import PN
-from application import Settings, app
+from application import Settings
 from pathlib import Path
 
 
