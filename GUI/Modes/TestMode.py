@@ -71,9 +71,6 @@ class TestMode(UniMode):
         self.parent.EQContr.resetEQ()
         self.generateDrill(fromStart=fromStart)
 
-    def playbackEnded(self):
-        self.parent.TransportContr.PlayerContr.waitForLoadedMedia()
-
     def acceptAnswer(self):
         eq_values = self.parent.EQContr.getEQValues()
         self.parent.ExScore.onAnswerAccepted(RightAnswer=self.currentDrillFreq, UserAnswer=eq_values)
