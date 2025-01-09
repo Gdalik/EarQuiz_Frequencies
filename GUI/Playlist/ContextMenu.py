@@ -14,7 +14,6 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import platform
 from PyQt6.QtGui import QAction
 from PyQt6.QtWidgets import QMenu
 from Utilities.selectFileInSysExplorer import selectFile
