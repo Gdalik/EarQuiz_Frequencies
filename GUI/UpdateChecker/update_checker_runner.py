@@ -29,6 +29,7 @@ class UpdRunSignals(QObject):
 class UpdCheckRun(QRunnable):
     VersionData_URL = 'https://www.dropbox.com/s/gha3fm6duhh87so/version.json?dl=1'
     signals = UpdRunSignals()
+    cert = certifi.where()
 
     def __init__(self):
         super().__init__()
@@ -39,7 +40,7 @@ class UpdCheckRun(QRunnable):
     def run(self):
         self.in_process = True
         try:
-            upd_data = request.urlopen(self.VersionData_URL, cafile=certifi.where()).read()
+            upd_data = request.urlopen(self.VersionData_URL, cafile=self.cert).read()
             latest_version = version_int(external_data=upd_data)
         except Exception as e:
             self.signals.error.emit(str(e))
@@ -63,7 +64,7 @@ class UpdCheckRun(QRunnable):
         if not info_url:
             return True
         try:
-            info_data = request.urlopen(info_url).read()
+            info_data = request.urlopen(info_url, cafile=self.cert).read()
             self.upd_data['info_data'] = info_data.decode('utf-8')
         except Exception as e:
             self.signals.error.emit(str(e))
