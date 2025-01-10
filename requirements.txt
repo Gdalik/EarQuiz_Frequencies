@@ -1,7 +1,7 @@
 pedalboard==0.9.6
 pyqtgraph~=0.13.4
 numpy~=1.26.4
-PyQt6~=6.8.0; sys_platform == 'windows' or sys_platform == 'darwin'
+PyQt6~=6.8.0; sys_platform == 'win32' or sys_platform == 'darwin'
 PyQt6~=6.7.1; sys_platform == 'linux'
 tendo~=0.3.0
 certifi
