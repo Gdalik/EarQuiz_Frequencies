@@ -15,7 +15,6 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import io
-import platform
 from PyQt6.QtCore import QUrl, QTimer, QBuffer
 from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
 from PyQt6.QtWidgets import QMessageBox
@@ -153,7 +152,7 @@ class PlayerContr(QMediaPlayer):
         self._playLoadedAudio()
 
     def _onOnceAudioLoaded(self):
-        self._refreshAudioOutput_mac()
+        # self._refreshAudioOutput_mac()
         self._hashAndRefreshLoadedAudioData()
         self.parent.onLoadSourceAudio()
         self.checkPreviewStartTime()
@@ -201,16 +200,15 @@ class PlayerContr(QMediaPlayer):
         if self.position() != starttime:
             self.setPosition(int(starttime))
 
-    def _refreshAudioOutput_mac(self):
+    '''def _refreshAudioOutput_mac(self):
         if platform.system() == 'Darwin':
-            self._setupAudioOutput(anyplatform=True)
+            self._setupAudioOutput(anyplatform=True)'''
 
-    def _setupAudioOutput(self, anyplatform=False):
+    def _setupAudioOutput(self):
         self.audioOutput = QAudioOutput()
         self.audioOutput.volumeChanged.connect(self.PlayerView.upd_VolumeLevelLab)
-        if platform.system() != 'Darwin' or anyplatform:
-            self.audioOutput.setDevice(self.mw_view.AudioDevicesView.selectedOutput())
-            self.setAudioOutput(self.audioOutput)
+        self.setAudioOutput(self.audioOutput)
+        self.audioOutput.setDevice(self.mw_view.AudioDevicesView.selectedOutput())
         self.VolumeSliderContr.applyVolume(self.VolumeSlider.value())
 
     def _playLoadedAudio(self):
