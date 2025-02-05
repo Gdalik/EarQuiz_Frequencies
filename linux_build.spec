@@ -10,7 +10,7 @@ a = Analysis(
     hiddenimports=['tendo'],
     hookspath=[],
     hooksconfig={},
-    runtime_hooks=[],
+    runtime_hooks=['env_vars.py'],
     excludes=['PySide6'],
     noarchive=False,
 )

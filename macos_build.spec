@@ -12,7 +12,7 @@ a = Analysis(
     ('GUI/About/credits.md', 'GUI/About')],
     hiddenimports=['tendo'],
     hookspath=[],
-    runtime_hooks=[],
+    runtime_hooks=['env_vars.py'],
     excludes=['PySide6'],
     win_no_prefer_redirects=False,
     win_private_assemblies=False,
