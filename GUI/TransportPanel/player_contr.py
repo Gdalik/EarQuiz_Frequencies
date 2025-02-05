@@ -90,7 +90,8 @@ class PlayerContr(QMediaPlayer):
         QTimer.singleShot(0, lambda: self.loadCurrentAudio(**kwargs))
 
     def clearSource(self, clearBuffer=False):
-        self.setSource(QUrl())
+        if self.mediaStatus() != self.MediaStatus.NoMedia:
+            self.setSource(QUrl())
         if clearBuffer:
             self.LoadedAudioBuffer = QBuffer()
 
@@ -192,6 +193,9 @@ class PlayerContr(QMediaPlayer):
     def onStopTriggered(self, checkPlaybackState=False):
         if checkPlaybackState and not self.isPlaying():
             return
+        self.blockSignals(True)
+        self.pause()    # Workaround to prevent random freezes
+        self.blockSignals(False)
         self.stop()
         try:
             starttime = self.startPos

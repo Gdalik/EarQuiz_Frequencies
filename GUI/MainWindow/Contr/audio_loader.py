@@ -83,7 +83,7 @@ class AudioLoad:
             # play the same audio file without leaving the Preview mode
             if not reloaded_same:
                 self.parent.PlaylistContr.setCurrentSongToPlaylistModel()
-            #QThread.msleep(50)
+            QThread.msleep(50)
             self.TransportContr.PlayerContr.play()
             return
         elif not reloaded_same_path:

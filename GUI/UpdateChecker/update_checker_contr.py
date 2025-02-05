@@ -73,7 +73,7 @@ class UpdCheckContr(QObject):
         self.saveLastSuccessfulCheck()
 
     def updCheckStoppedEnded(self):
-        self.UpdCheckRun.signals.disconnect()
+        self.UpdCheckRun.signals.disconnect(self)
         self.UpdCheckRun.in_process = False
         self.manual_call = False
         self.mw_view.status.TempLabel.clear()

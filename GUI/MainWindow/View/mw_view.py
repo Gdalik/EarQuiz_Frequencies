@@ -93,8 +93,8 @@ class MainWindowView(QMainWindow, Ui_MainWindow):
                 w_font.setPointSize(w_fontsize - 3)
             elif w_fontsize >= 11:
                 w_font.setPointSize(w_fontsize - 2)
-            if 'TimeEdit' in W.objectName():
-                w_font.setPointSize(12)
+            '''if 'TimeEdit' in W.objectName():
+                w_font.setPointSize(12)'''
             W.setFont(w_font)
         # Adjusting fonts of EQ Labels
         for W in self.centralwidget.findChildren(QLabel):

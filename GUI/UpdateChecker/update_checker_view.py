@@ -16,6 +16,7 @@
 
 import contextlib
 import platform
+import warnings
 import webbrowser
 from PySide6.QtWidgets import QMessageBox
 from PySide6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QTextBrowser
@@ -115,9 +116,11 @@ class UpdCheckView:
         setParameters(self.Dialog.TextBr, document, font_size=font_size, line_height=line_height)
 
     def setDownloadButton(self):
-        with contextlib.suppress(TypeError):
-            self.Dialog.DownloadBut.clicked.disconnect()
-        self.Dialog.DownloadBut.clicked.connect(self.onDownloadClicked)
+        with warnings.catch_warnings():
+            warnings.filterwarnings('ignore', category=RuntimeWarning)
+            with contextlib.suppress(TypeError):
+                self.Dialog.DownloadBut.clicked.disconnect()
+            self.Dialog.DownloadBut.clicked.connect(self.onDownloadClicked)
 
     def onDownloadClicked(self):
         webbrowser.open(self.download_link)

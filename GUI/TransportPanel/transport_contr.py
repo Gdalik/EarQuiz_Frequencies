@@ -219,7 +219,7 @@ class TransportContr(QObject):
         threadPool.start(self.AudioRefresh)
 
     def _onAudioRefreshed(self, play_after):
-        self.AudioRefresh.signals.disconnect()
+        self.AudioRefresh.signals.disconnect(self)
         self.onPlaybackPosChanged()
         self.PlayerContr.loadCurrentAudio(play_after=play_after)
 
