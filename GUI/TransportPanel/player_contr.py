@@ -193,9 +193,6 @@ class PlayerContr(QMediaPlayer):
     def onStopTriggered(self, checkPlaybackState=False):
         if checkPlaybackState and not self.isPlaying():
             return
-        self.blockSignals(True)
-        self.pause()    # Workaround to prevent random freezes
-        self.blockSignals(False)
         self.stop()
         try:
             starttime = self.startPos
