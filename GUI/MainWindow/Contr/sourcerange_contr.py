@@ -15,6 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import contextlib
+import warnings
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.calc import optimal_range_length
 from Model.sourcerange_manager import SourceRangeManager
@@ -77,9 +78,11 @@ class SourceRangeContr:  # parent: MainWindowContr
         return 0, opt_length, slice_length
 
     def disconnectSourceRangeSig(self):
-        with contextlib.suppress(AttributeError, TypeError):
-            self.parent.SourceRange.rangeChanged.disconnect(self.TransportContr.onSourceRangeChanged)
-            self.parent.SourceRange.sliceLengthChanged.disconnect(self.TransportContr.onSliceLenChanged)
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", category=RuntimeWarning)
+            with contextlib.suppress(AttributeError, TypeError):
+                self.parent.SourceRange.rangeChanged.disconnect(self.TransportContr.onSourceRangeChanged)
+                self.parent.SourceRange.sliceLengthChanged.disconnect(self.TransportContr.onSliceLenChanged)
 
     def savePrevSourceAudioRange(self):
         if self.parent.LoadedFileHash is None or self.parent.SourceAudio is None or self.parent.SourceRange is None:

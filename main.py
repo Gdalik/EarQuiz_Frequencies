@@ -13,7 +13,7 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-import os
+from env_vars import *
 from multiprocessing import freeze_support
 import multiprocessing as mp
 import platform
@@ -23,7 +23,6 @@ from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.Misc.StartScreen import StartLogo
 from PySide6.QtGui import QIcon
 from application import app
-
 
 if __name__ == '__main__':
     freeze_support()
@@ -37,6 +36,5 @@ if __name__ == '__main__':
     app.openFileRequest.connect(app.handle_open_file_request)
     StartLogo.show()
     app.processEvents()
-    os.environ['QT_MEDIA_BACKEND'] = 'ffmpeg'
     mw = MainWindowContr()
     app.exec()
