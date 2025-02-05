@@ -19,8 +19,8 @@ from pathlib import Path
 from definitions import ROOT_DIR
 from GUI.About.AboutDialog import Ui_AboutDialog
 from GUI.Misc.TextBrowserDocParameters import setParameters
-from PyQt6.QtWidgets import QDialog, QLabel
-from PyQt6.QtGui import QTextDocument
+from PySide6.QtWidgets import QDialog, QLabel
+from PySide6.QtGui import QTextDocument
 from Model.get_version import version
 
 

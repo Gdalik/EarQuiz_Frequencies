@@ -1,10 +1,10 @@
-from PyQt6.QtCore import QRunnable, pyqtSignal, pyqtSlot, QObject
+from PySide6.QtCore import QRunnable, Signal, Slot, QObject
 import numpy as np
 
 
 class ADGProcSig(QObject):
-    drillGenerated = pyqtSignal(object, np.ndarray)
-    audioRefreshed = pyqtSignal(bool)
+    drillGenerated = Signal(object, np.ndarray)
+    audioRefreshed = Signal(bool)
 
 
 class ADGProc(QRunnable):
@@ -15,7 +15,7 @@ class ADGProc(QRunnable):
         self.gen_func = gen_func
         self.kwargs = kwargs
 
-    @pyqtSlot(int or tuple, np.ndarray)
+    @Slot(int or tuple, np.ndarray)
     def run(self):
         freq, audio = self.gen_func(**self.kwargs)
         self.signals.drillGenerated.emit(freq, audio)
@@ -31,7 +31,7 @@ class ADGRefresh(QRunnable):
         self.filepath = filepath
         self.play_after = play_after
 
-    @pyqtSlot()
+    @Slot()
     def run(self):
         self.refresh_func(filepath=self.filepath)
         self.signals.audioRefreshed.emit(self.play_after)

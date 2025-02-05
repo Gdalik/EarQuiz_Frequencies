@@ -14,16 +14,16 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import Qt, pyqtSignal, QObject, QMimeData, QUrl, QItemSelection, QItemSelectionModel, QModelIndex
-from PyQt6.QtGui import QPainter, QDrag, QColor
-from PyQt6.QtWidgets import QTableView, QAbstractItemView, QHeaderView
+from PySide6.QtCore import Qt, Signal, QObject, QMimeData, QUrl, QItemSelection, QItemSelectionModel, QModelIndex
+from PySide6.QtGui import QPainter, QDrag, QColor
+from PySide6.QtWidgets import QTableView, QAbstractItemView, QHeaderView
 from Utilities.checkMimeData import checkDroppedMimeData
 
 
 class PL_Signals(QObject):
-    urlsDropped = pyqtSignal(list, int)
-    dragDropFromPLFinished = pyqtSignal(Qt.DropAction)
-    keyPressed = pyqtSignal(int)
+    urlsDropped = Signal(list, int)
+    dragDropFromPLFinished = Signal(Qt.DropAction)
+    keyPressed = Signal(int)
 
 
 class PlaylistView(QTableView):

@@ -20,7 +20,7 @@ import pathlib
 import platform
 import subprocess
 from GUI.Misc.filemanager_name import fn
-from PyQt6.QtWidgets import QMessageBox
+from PySide6.QtWidgets import QMessageBox
 
 
 def SuccessDialog(mw, filespath: str, mode_name='Learning'):

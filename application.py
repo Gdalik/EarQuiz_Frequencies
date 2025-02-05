@@ -16,10 +16,10 @@
 import platform
 import sys
 import copy
-from PyQt6 import QtCore, QtWidgets
-from PyQt6.QtCore import QSettings, QLibraryInfo
-from PyQt6.QtMultimedia import QMediaDevices
-from PyQt6.QtGui import QFont
+from PySide6 import QtCore, QtWidgets
+from PySide6.QtCore import QSettings, QLibraryInfo
+from PySide6.QtMultimedia import QMediaDevices
+from PySide6.QtGui import QFont
 from definitions import SETTINGS_PATH
 
 app_name = 'EarQuiz Frequencies'
@@ -28,7 +28,7 @@ IsWin11 = platform.system() == 'Windows' and sys.getwindowsversion().build >= 22
 
 
 class EQFreqApp(QtWidgets.QApplication):
-    openFileRequest = QtCore.pyqtSignal(QtCore.QUrl, name='openFileRequest')
+    openFileRequest = QtCore.Signal(QtCore.QUrl, name='openFileRequest')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

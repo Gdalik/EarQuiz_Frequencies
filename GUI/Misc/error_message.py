@@ -14,8 +14,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6 import QtWidgets, QtCore
-from PyQt6.QtWidgets import QMessageBox
+from PySide6 import QtWidgets, QtCore
+from PySide6.QtWidgets import QMessageBox
 
 
 def error_message(window, msg: str, modal='WinModal'):

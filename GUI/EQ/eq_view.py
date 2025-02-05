@@ -16,9 +16,9 @@
 
 from dataclasses import dataclass, field
 
-from PyQt6.QtCore import QObject
-from PyQt6.QtGui import QWheelEvent
-from PyQt6.QtWidgets import QSlider, QLabel
+from PySide6.QtCore import QObject
+from PySide6.QtGui import QWheelEvent
+from PySide6.QtWidgets import QSlider, QLabel
 from GUI.MainWindow.View.dark_theme import green_color
 from GUI.globals import SliderAmplitude as SA
 from Utilities.common_calcs import findAdjacentEl

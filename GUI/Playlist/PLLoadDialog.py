@@ -15,14 +15,14 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from multiprocessing import Process, Manager
-from PyQt6.QtCore import QObject, Qt, QRunnable, pyqtSignal, pyqtSlot, QThreadPool
-from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QLabel, QVBoxLayout
+from PySide6.QtCore import QObject, Qt, QRunnable, Signal, Slot, QThreadPool
+from PySide6.QtWidgets import QDialog, QDialogButtonBox, QLabel, QVBoxLayout
 from Model.FileLinksParser import pathsResolve
 
 
 class PLLoadSignals(QObject):
-    finished = pyqtSignal()
-    error = pyqtSignal(str)
+    finished = Signal()
+    error = Signal(str)
 
 
 class PLLoadChecker(QRunnable):
@@ -33,7 +33,7 @@ class PLLoadChecker(QRunnable):
         self.process = process
         self._killed = False
 
-    @pyqtSlot()
+    @Slot()
     def run(self):
         while self.process.is_alive() and not self._killed:
             pass

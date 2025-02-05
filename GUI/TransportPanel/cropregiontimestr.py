@@ -14,7 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import QTime
+from PySide6.QtCore import QTime
 from Utilities.common_calcs import hhmmss, get_sec
 
 

@@ -14,7 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import QRunnable, QObject, pyqtSignal, pyqtSlot
+from PySide6.QtCore import QRunnable, QObject, Signal, Slot
 import json
 import certifi
 from urllib import request
@@ -22,8 +22,8 @@ from Model.get_version import version_int
 
 
 class UpdRunSignals(QObject):
-    finished = pyqtSignal()
-    error = pyqtSignal(str)
+    finished = Signal()
+    error = Signal(str)
 
 
 class UpdCheckRun(QRunnable):
@@ -36,7 +36,7 @@ class UpdCheckRun(QRunnable):
         self.upd_data = None
         self.in_process = False
 
-    @pyqtSlot()
+    @Slot()
     def run(self):
         self.in_process = True
         try:

@@ -15,16 +15,16 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import platform
-from PyQt6.QtCore import QObject, Qt, QRunnable, pyqtSignal, pyqtSlot, QThreadPool
-from PyQt6.QtWidgets import QProgressBar, QDialog, QDialogButtonBox, QLabel, QVBoxLayout
+from PySide6.QtCore import QObject, Qt, QRunnable, Signal, Slot, QThreadPool
+from PySide6.QtWidgets import QProgressBar, QDialog, QDialogButtonBox, QLabel, QVBoxLayout
 
 from Utilities.exceptions import InterruptedException
 
 
 class TrackedProcSignals(QObject):
-    finished = pyqtSignal()
-    progress = pyqtSignal(dict)
-    error = pyqtSignal(str)
+    finished = Signal()
+    progress = Signal(dict)
+    error = Signal(str)
 
 
 class TrackedProcRun(QRunnable):
@@ -39,7 +39,7 @@ class TrackedProcRun(QRunnable):
         self.return_obj = None
         self._current_proc_name = ''
 
-    @pyqtSlot()
+    @Slot()
     def run(self):
         self.kwargs['callback'] = self.callback
         try:

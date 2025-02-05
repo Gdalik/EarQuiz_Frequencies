@@ -15,7 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import math
-from PyQt6.QtCore import QObject, Qt, QThreadPool
+from PySide6.QtCore import QObject, Qt, QThreadPool
 from GUI.TransportPanel.player_contr import PlayerContr
 from GUI.globals import defaultSliceLenUpd
 from Model.calc import proc_unproc_len

@@ -14,8 +14,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import QObject, QTimer
-from PyQt6.QtWidgets import QSlider
+from PySide6.QtCore import QObject, QTimer
+from PySide6.QtWidgets import QSlider
 from Model.eq_patterns import EQPatterns
 from GUI.globals import SliderAmplitude as SA
 from functools import partial

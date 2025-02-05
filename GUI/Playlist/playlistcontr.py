@@ -18,9 +18,9 @@ import copy
 import contextlib
 import mimetypes
 from pathlib import Path
-from PyQt6.QtCore import QObject, Qt, QModelIndex, QUrl
-from PyQt6.QtWidgets import QFileDialog, QWidget
-from PyQt6.QtGui import QAction, QKeySequence
+from PySide6.QtCore import QObject, Qt, QModelIndex, QUrl
+from PySide6.QtWidgets import QFileDialog, QWidget
+from PySide6.QtGui import QAction, QKeySequence
 from GUI.FileMaker.make_playlist import saveCurrentPlaylist
 from GUI.Misc.error_message import error_message
 from GUI.Playlist.ContextMenu import PLContextMenu

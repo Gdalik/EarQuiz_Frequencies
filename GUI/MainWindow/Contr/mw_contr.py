@@ -16,7 +16,7 @@
 
 import datetime
 import platform
-from PyQt6.QtCore import QObject, QTimer
+from PySide6.QtCore import QObject, QTimer
 from GUI.MainWindow.Contr.app_modes_handler import AppModesHandler
 from GUI.MainWindow.Contr.learn_freq_order_handler import LearnFreqOrderHandler
 from GUI.MainWindow.View import dark_theme

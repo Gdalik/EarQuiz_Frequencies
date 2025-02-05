@@ -16,8 +16,8 @@
 
 import platform
 import sys
-from PyQt6.QtGui import QPixmap, QIcon, QColor
-from PyQt6.QtCore import Qt
+from PySide6.QtGui import QPixmap, QIcon, QColor
+from PySide6.QtCore import Qt
 from contextlib import suppress
 import application
 

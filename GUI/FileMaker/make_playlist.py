@@ -17,7 +17,7 @@
 import contextlib
 from pathlib import Path
 
-from PyQt6.QtWidgets import QFileDialog
+from PySide6.QtWidgets import QFileDialog
 
 from GUI.Playlist.plsong import PlSong
 from Model.export_playlist import export_m3u_playlist

@@ -15,9 +15,9 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from pathlib import Path
-from PyQt6 import QtCore, QtGui
-from PyQt6.QtCore import Qt, QSortFilterProxyModel, QModelIndex, QRegularExpression
-from PyQt6.QtGui import QImage
+from PySide6 import QtCore, QtGui
+from PySide6.QtCore import Qt, QSortFilterProxyModel, QModelIndex, QRegularExpression
+from PySide6.QtGui import QImage
 from GUI.Playlist.plsong import PlSong
 from GUI.MainWindow.View.dark_theme import playlist_even_background_color
 from Model.globals import MinAudioDuration

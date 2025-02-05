@@ -18,9 +18,9 @@ import contextlib
 import datetime
 import platform
 from functools import partial
-from PyQt6.QtCore import Qt, QObject, pyqtSignal, QTimer
-from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QDockWidget, QLabel, QMainWindow, QWidget, QToolButton
+from PySide6.QtCore import Qt, QObject, Signal, QTimer
+from PySide6.QtGui import QAction
+from PySide6.QtWidgets import QDockWidget, QLabel, QMainWindow, QWidget, QToolButton
 from GUI.Misc.StartScreen import StartLogo
 import application
 from application import Settings
@@ -42,8 +42,8 @@ from Utilities.checkMimeData import checkDroppedMimeData
 
 
 class MW_Signals(QObject):
-    appClose = pyqtSignal()
-    MWFirstShown = pyqtSignal()
+    appClose = Signal()
+    MWFirstShown = Signal()
 
 
 class MainWindowView(QMainWindow, Ui_MainWindow):

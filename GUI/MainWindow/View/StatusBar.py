@@ -14,8 +14,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import Qt, QTimer
-from PyQt6.QtWidgets import QStatusBar, QLabel, QHBoxLayout, QWidget, QFrame
+from PySide6.QtCore import Qt, QTimer
+from PySide6.QtWidgets import QStatusBar, QLabel, QHBoxLayout, QWidget, QFrame
 from GUI.MainWindow.View.dark_theme import blue_color, green_color
 
 

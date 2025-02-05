@@ -20,7 +20,7 @@ import math
 from copy import copy
 import numpy
 import numpy as np
-from PyQt6.QtCore import QObject, pyqtSignal
+from PySide6.QtCore import QObject, Signal
 from pedalboard.io import AudioFile
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.calc import find_divider
@@ -30,7 +30,7 @@ from definitions import PN
 
 
 class AudioChunkSignals(QObject):
-    showNormalizationLevel = pyqtSignal(float)
+    showNormalizationLevel = Signal(float)
 
 
 class AudioChunk(PreviewAudioCrop, QObject):

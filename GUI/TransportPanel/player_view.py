@@ -15,8 +15,8 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import math
-from PyQt6.QtCore import QSize
-from PyQt6.QtGui import QIcon
+from PySide6.QtCore import QSize
+from PySide6.QtGui import QIcon
 
 
 class PlayerView:

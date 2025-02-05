@@ -17,10 +17,10 @@
 import contextlib
 import platform
 import webbrowser
-from PyQt6.QtWidgets import QMessageBox
-from PyQt6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QTextBrowser
-from PyQt6.QtGui import QTextDocument
-from PyQt6.QtCore import Qt
+from PySide6.QtWidgets import QMessageBox
+from PySide6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QTextBrowser
+from PySide6.QtGui import QTextDocument
+from PySide6.QtCore import Qt
 from Model.get_version import version
 from GUI.Misc.TextBrowserDocParameters import setParameters
 

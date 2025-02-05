@@ -14,7 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import QTimer, QObject, QThread
+from PySide6.QtCore import QTimer, QObject, QThread
 from application import app
 
 
@@ -24,7 +24,7 @@ class UniMode(QObject):
         self.TimeSettingsChangesEnabled = None
         self.name = 'Uni'
         self.view = parent.mw_view
-        QThread.currentThread().msleep(50)
+        #QThread.currentThread().msleep(50)
         self.view.status.clearMessage()
         self.parent = parent
         self.parent.CurrentMode = self

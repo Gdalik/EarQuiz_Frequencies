@@ -15,7 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from PyQt6.QtCore import QObject
+from PySide6.QtCore import QObject
 import Model.AudioEngine.audio_proc_settings as APS
 from Model.AudioEngine.audio_proc_settings import default_EQOnTimePerc, default_EQTransitionDur, default_ExFadeInOutDur
 

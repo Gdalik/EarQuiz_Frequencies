@@ -16,8 +16,8 @@
 
 import platform
 import webbrowser
-from PyQt6.QtCore import QObject, QTimer
-from PyQt6.QtGui import QTextDocument
+from PySide6.QtCore import QObject, QTimer
+from PySide6.QtGui import QTextDocument
 from GUI.Help.QuickHelpWin import QuickHelpWin
 from GUI.Misc.TextBrowserDocParameters import setParameters
 from definitions import ROOT_DIR

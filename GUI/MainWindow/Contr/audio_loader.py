@@ -16,7 +16,7 @@
 
 from GUI.Modes.PreviewMode import PreviewMode
 from GUI.Playlist.plsong import PlSong
-from PyQt6.QtCore import QTimer, QThread
+from PySide6.QtCore import QTimer, QThread
 from Model.AudioEngine.preview_audio import PreviewAudioCrop
 from Model.globals import MinAudioDuration
 from definitions import PN
@@ -83,7 +83,7 @@ class AudioLoad:
             # play the same audio file without leaving the Preview mode
             if not reloaded_same:
                 self.parent.PlaylistContr.setCurrentSongToPlaylistModel()
-            QThread.msleep(50)
+            #QThread.msleep(50)
             self.TransportContr.PlayerContr.play()
             return
         elif not reloaded_same_path:

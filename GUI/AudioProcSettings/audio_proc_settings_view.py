@@ -18,8 +18,8 @@ from GUI.AudioProcSettings.audio_proc_settings_widget import Ui_AudioProcSetting
 from GUI.MainWindow.View.dark_theme import green_color
 from GUI.Misc.colorStr import colorStr
 from GUI.AudioProcSettings.eq_indicator_view import EqOnOffIndicatorView
-from PyQt6.QtWidgets import QWidget
-from PyQt6.QtCore import Qt
+from PySide6.QtWidgets import QWidget
+from PySide6.QtCore import Qt
 from Utilities.common_calcs import eq_off_perc
 import Model.AudioEngine.audio_proc_settings as APS
 

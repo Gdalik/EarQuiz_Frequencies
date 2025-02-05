@@ -14,8 +14,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtWidgets import QMenu
-from PyQt6.QtMultimedia import QAudio
+from PySide6.QtWidgets import QMenu
+from PySide6.QtMultimedia import QAudio
 
 
 class VolumeSliderContr():

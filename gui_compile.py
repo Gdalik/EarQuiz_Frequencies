@@ -21,7 +21,7 @@ import subprocess
 from definitions import ROOT_DIR
 
 # replace with current virtual environment directory name:
-venv_dir = 'venv'
+venv_dir = '.venv_ps6'
 
 ui_files = ('GUI/MainWindow/View/mainwindow.ui',
             'GUI/AudioConvertDialog/convert_dialog_view.ui',
@@ -30,7 +30,7 @@ ui_files = ('GUI/MainWindow/View/mainwindow.ui',
             'GUI/About/AboutDialog.ui',)
 
 script_dir = 'bin' if platform.system() == 'Darwin' else 'Scripts'
-script_path = os.path.normpath(os.path.join(ROOT_DIR, venv_dir, script_dir, 'pyuic6'))
+script_path = os.path.normpath(os.path.join(ROOT_DIR, venv_dir, script_dir, 'pyside6-uic'))
 
 for F in ui_files:
     full_ui_path = os.path.normpath(os.path.join(ROOT_DIR, F))

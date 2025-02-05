@@ -14,8 +14,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import QObject, QTimer
-from PyQt6.QtGui import QActionGroup
+from PySide6.QtCore import QObject, QTimer
+from PySide6.QtGui import QActionGroup
 from GUI.Modes.LearnMode import LearnMode
 from GUI.Modes.PreviewMode import PreviewMode
 from GUI.Modes.TestMode import TestMode

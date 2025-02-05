@@ -18,5 +18,8 @@ import sys
 
 from GUI.Playlist import playlistview
 from GUI import icons_rc
+from GUI.Help import help_img_rc
 
 sys.modules["playlistview"] = playlistview
+sys.modules["icons_rc"] = icons_rc
+sys.modules["help_img_rc"] = help_img_rc

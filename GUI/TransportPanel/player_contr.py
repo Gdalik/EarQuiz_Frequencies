@@ -15,9 +15,9 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import io
-from PyQt6.QtCore import QUrl, QTimer, QBuffer
-from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
-from PyQt6.QtWidgets import QMessageBox
+from PySide6.QtCore import QUrl, QTimer, QBuffer
+from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput, QMediaMetaData
+from PySide6.QtWidgets import QMessageBox
 from GUI.TransportPanel.volumeslider_contr import VolumeSliderContr
 from GUI.Misc.error_message import reformat_message
 from definitions import PN

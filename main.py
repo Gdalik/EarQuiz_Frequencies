@@ -21,7 +21,7 @@ import signal
 from tendo.singleton import SingleInstance
 from GUI.MainWindow.Contr.mw_contr import MainWindowContr
 from GUI.Misc.StartScreen import StartLogo
-from PyQt6.QtGui import QIcon
+from PySide6.QtGui import QIcon
 from application import app
 
 

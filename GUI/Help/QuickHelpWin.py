@@ -15,10 +15,10 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import platform
-from PyQt6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QTextBrowser, QCheckBox, QLineEdit, \
+from PySide6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QTextBrowser, QCheckBox, QLineEdit, \
     QToolButton, QStyle
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QTextCursor, QTextDocument, QKeySequence, QAction
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QTextCursor, QTextDocument, QKeySequence, QAction
 from application import Settings
 from Utilities.str2bool import str2bool
 

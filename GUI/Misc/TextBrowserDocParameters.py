@@ -14,7 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtGui import QTextBlockFormat
+from PySide6.QtGui import QTextBlockFormat
 
 
 def setParameters(TextBrowser, document, font_size=16, line_height=120):

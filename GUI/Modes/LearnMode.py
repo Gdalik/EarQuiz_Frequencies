@@ -15,7 +15,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import numpy as np
-from PyQt6.QtCore import QThreadPool
+from PySide6.QtCore import QThreadPool
 from GUI.Modes.UniMode import UniMode
 from Model.AudioEngine.audio_to_buffer import a2b
 from GUI.Misc.adg_thread_run import ADGProc

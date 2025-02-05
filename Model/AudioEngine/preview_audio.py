@@ -14,14 +14,14 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import pyqtSignal, QObject
+from PySide6.QtCore import Signal, QObject
 
 
 class PreviewAudioCrop(QObject):
     min_slice_length = 10
     max_slice_length = 30
-    rangeChanged = pyqtSignal()
-    sliceLengthChanged = pyqtSignal(int)
+    rangeChanged = Signal()
+    sliceLengthChanged = Signal(int)
 
     def __init__(self, audiofile_length: int or float, starttime: int or float, endtime: int or float,
                  slice_length=15, strictMode=False):

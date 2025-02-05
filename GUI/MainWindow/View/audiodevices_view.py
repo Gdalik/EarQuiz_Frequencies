@@ -14,9 +14,9 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import QObject
-from PyQt6.QtGui import QActionGroup
-from PyQt6.QtMultimedia import QMediaDevices
+from PySide6.QtCore import QObject
+from PySide6.QtGui import QActionGroup
+from PySide6.QtMultimedia import QMediaDevices
 from application import MediaDevices, Settings
 
 

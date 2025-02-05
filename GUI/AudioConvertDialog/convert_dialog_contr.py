@@ -14,8 +14,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QDialog, QDialogButtonBox, QRadioButton
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QDialog, QDialogButtonBox, QRadioButton
 from GUI.AudioConvertDialog.convert_dialog_view import Ui_AudioConvertDialog
 
 
