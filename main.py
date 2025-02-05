@@ -24,6 +24,7 @@ from GUI.Misc.StartScreen import StartLogo
 from PySide6.QtGui import QIcon
 from application import app
 
+
 if __name__ == '__main__':
     freeze_support()
     if platform.system() == 'Darwin':
