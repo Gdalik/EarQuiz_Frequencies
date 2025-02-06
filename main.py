@@ -15,7 +15,6 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from env_vars import *
 import pedalboard
-import os
 from multiprocessing import freeze_support
 import multiprocessing as mp
 import platform
